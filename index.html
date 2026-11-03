@@ -439,7 +439,7 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
     <div class="row"><button class="btn" onclick="enroll()">ส่งข้อมูลสมัครเรียน</button></div>
   </div>
   <div id="enDone" style="display:none" class="card">
-    <b>ส่งข้อมูลแล้ว รอทีมงานตรวจสอบ</b>
+    <b>ส่งข้อมูลเรียบร้อยแล้ว 🎉</b><div style="margin:6px 0 10px">รอพี่แป๊บนึงน้าาา เดี๋ยวพี่จะรีบตรวจเอกสารและกดอนุมัติให้ภายใน 24 ชั่วโมง พออนุมัติแล้วจะมีอีเมลแจ้งไปที่อีเมลที่กรอกไว้นะ</div>
     <div class="mut">รหัสนักเรียนของคุณ ใช้คู่กับรหัสผ่านที่ตั้งไว้ (เข้าเรียนได้หลังทีมงานตรวจสอบและอนุมัติ) จดหรือแคปหน้าจอเก็บไว้</div>
     <div class="code" id="newCode"></div>
     <div class="row"><button class="btn" onclick="go('s-login');$('lc').value=me.code">ไปหน้าเข้าสู่ระบบ</button></div>
@@ -532,6 +532,7 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
       <label for="lm">ข้อความถึงนักเรียน (ไม่บังคับ)</label><input id="lm" placeholder="เช่น เตรียมหนังสือบทที่ 3 มาด้วย">
       <div class="mut" style="margin-top:12px">ผู้รับ: <b id="rc">0</b> คน (เลือกจากแท็บ "นักเรียน")</div>
       <div class="row"><button class="btn" onclick="sendLive()">ส่งอีเมลถึงผู้ที่เลือก</button></div>
+      <p class="mut" style="font-size:12px;margin:8px 0 0">ระบบส่งอีเมลให้นักเรียน 2 รอบ: ทันทีที่กดส่ง และเตือนอีกครั้งก่อนเริ่มไลฟ์ประมาณ 1 ชั่วโมง · ลิงก์จะขึ้นในหน้าเรียนของนักเรียนด้วย</p>
     </div>
     <div id="sent"></div>
   </div>
@@ -1795,8 +1796,10 @@ window.approve=async function(code,fromApp){
   const r=byCode(code);if(!r)return;
   if(!confirm(`ยืนยันว่าตรวจสลิปและสำเนาบัตรประชาชนของ ${r.name} แล้ว และอนุมัติให้เข้าเรียน?`))return;
   if(fromApp)closePv();
-  const due=r.ins?new Date(Date.now()+30*864e5).toISOString():null;
-  if(await upd(code,{status:"active",approved_at:new Date().toISOString(),due},"อนุมัติแล้ว นักเรียนเข้าสู่ระบบได้ทันที")){r.st="ยืนยันแล้ว";r.due=ms(due);renderAdmin()}
+  try{const j=await adminFn({action:"approve",student_id:r.id});
+    r.st="ยืนยันแล้ว";if(j.due)r.due=ms(j.due);renderAdmin();
+    toast(j.emailed?"อนุมัติแล้ว ส่งอีเมลแจ้ง "+r.name+" แล้ว":"อนุมัติแล้ว แต่ส่งอีเมลหานักเรียนไม่สำเร็จ แจ้งทาง LINE แทนได้",!j.emailed&&!j.already)}
+  catch(e){fail(e,"อนุมัติไม่สำเร็จ: "+e.message);adminLoad()}
 };
 window.accTog=async function(c,k){const r=byCode(c),a=r.access.slice(),i=a.indexOf(k);i<0?a.push(k):a.splice(i,1);
   if(await upd(c,{access:a})){r.access=a;$("as-"+c).textContent=accLbl(r)}};
@@ -1838,14 +1841,16 @@ window.lvDone=async function(id){const {error}=await sb.from("leaves").update({s
 /* ---------- แอดมิน: ไลฟ์ ---------- */
 window.sendLive=async function(){
   const t=$("lt").value.trim(),l=$("ll").value.trim(),w=$("lw").value,m=$("lm").value.trim();
-  const to=SUBS.filter(r=>SEL.has(r.code)&&!r.sus);
+  const to=SUBS.filter(r=>SEL.has(r.code)&&!r.sus&&r.st!=="รอตรวจสอบ");
   if(!t||!w){alert("กรุณากรอกหัวข้อและวันเวลา");return}
   if(!/^https:\/\/meet\.google\.com\/[a-z0-9-]+$/i.test(l)){alert("ลิงก์ต้องขึ้นต้นด้วย https://meet.google.com/");return}
   if(!to.length){alert("ยังไม่ได้เลือกนักเรียน ไปที่แท็บ นักเรียน แล้วติ๊กเลือกก่อน");return}
-  const {data,error}=await sb.from("lives").insert({title:t,starts_at:new Date(w).toISOString(),meet_url:l,message:m}).select("id").single();
-  if(error){fail(error);return}
-  const r2=await sb.from("live_to").insert(to.map(s=>({live_id:data.id,student_id:s.id})));if(r2.error){fail(r2.error);return}
-  ["lt","ll","lw","lm"].forEach(i=>$(i).value="");SEL.clear();toast("นัดไลฟ์แล้ว นักเรียนที่เลือกจะเห็นลิงก์ในหน้าเรียน");adminLoad();
+  const at=new Date(w);if(!(+at>Date.now())){alert("กรุณาเลือกวันเวลาที่ยังไม่ผ่านไป");return}
+  const btn=document.querySelector("#a-live .btn");busy(btn,true,"กำลังส่ง…");
+  try{const j=await adminFn({action:"send_live",title:t,starts_at:at.toISOString(),meet_url:l,message:m,student_ids:to.map(s=>s.id)});
+    ["lt","ll","lw","lm"].forEach(i=>$(i).value="");SEL.clear();
+    toast(j.emailed?`ส่งอีเมลนัดไลฟ์ให้ ${j.recipients} คนแล้ว และจะเตือนอีกครั้งก่อนเริ่ม 1 ชั่วโมง`:`บันทึกไลฟ์แล้ว ${j.recipients} คนเห็นลิงก์ในหน้าเรียน แต่ส่งอีเมลไม่สำเร็จ`,!j.emailed);adminLoad()}
+  catch(e){fail(e,"ส่งไม่สำเร็จ: "+e.message)}finally{busy(btn,false)}
 };
 
 /* ---------- แอดมิน: ตารางเวลา ---------- */
