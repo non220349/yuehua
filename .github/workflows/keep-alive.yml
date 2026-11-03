@@ -1,0 +1,16 @@
+name: keep-supabase-awake
+# Supabase free projects pause after 7 days without activity.
+# This pings the database twice a week so the site stays available.
+on:
+  schedule:
+    - cron: "17 3 * * 1,4"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        run: |
+          curl -fsS -X POST "https://zhzckrjacvlgfrwdwqvs.supabase.co/rest/v1/rpc/public_slots" \
+            -H "apikey: sb_publishable_EUcJNxCygdzWcMi8_ASROg_6yO4LX5E" \
+            -H "Content-Type: application/json" -d '{}' -o /dev/null -w "%{http_code}\n"
