@@ -356,6 +356,25 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .cbx.done{border-color:#2e7d5a!important;box-shadow:0 0 0 4px rgba(46,125,90,.18)!important;outline-color:#2e7d5a!important}
 ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPinyin","Noto Sans Thai",sans-serif;color:var(--mut);letter-spacing:0;padding-bottom:2px}
 .gbig ruby.gr rt{font-size:.3em}.gsent{line-height:2.3}.gtile ruby.gr rt,.opt ruby.gr rt{font-size:.5em}.gtile{line-height:1.35}
+.gic{display:inline-block;font-size:13px;letter-spacing:-1px;line-height:1.25;white-space:nowrap}.gic .dim,.gic.none{opacity:.22;filter:grayscale(1)}
+.gsc{gap:1px;min-width:52px}.gsc small{font-size:11px;color:var(--mut)}
+.glvs{display:grid;gap:10px;margin-top:6px}
+.glv{display:flex;align-items:center;gap:12px;text-align:left;border:2px solid var(--bd);background:var(--card);color:var(--fg);border-radius:16px;padding:14px;cursor:pointer;font:inherit}
+.glv:hover{border-color:var(--seal)}.glv-e{border-left:6px solid #2e7d5a}.glv-m{border-left:6px solid #d4892a}.glv-h{border-left:6px solid #a32626}
+.glvi{font-size:38px;flex:none;line-height:1}.glv .gic{font-size:16px}
+.gstbig .gic{font-size:46px;letter-spacing:4px}
+.gtime{margin-left:auto;font-weight:700;background:var(--soft);color:var(--fg);border-radius:10px;padding:6px 10px;font-variant-numeric:tabular-nums}.gtime.low{background:var(--seal);color:#fff}
+.gtmo{font-weight:700;color:var(--seal);margin:4px 0}
+.ghc{margin:10px 0 12px}.ghc>summary{cursor:pointer;list-style:none}.ghc>summary::-webkit-details-marker{display:none}.ghc>summary::after{content:" ▾";color:var(--mut)}
+.ghst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.ghst div{background:var(--soft);border-radius:10px;padding:8px;text-align:center;display:flex;flex-direction:column}.ghst b{font-size:20px}.ghst span{font-size:11px;color:var(--mut)}.ghst .up{color:#2e7d5a}.ghst .dn{color:var(--seal)}
+.ghsvg{width:100%;height:auto;display:block;margin-top:4px}.ghg{stroke:var(--bd);stroke-width:1}.ght{font-size:9px;fill:var(--mut)}
+.ghleg{display:flex;gap:12px;justify-content:center;font-size:12px;color:var(--mut);margin:4px 0 8px;flex-wrap:wrap}.ghleg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.ghl{display:flex;flex-direction:column;gap:6px}.ghlab{font-size:12px;color:var(--mut);margin:6px 0}.ghmore{margin-top:8px}.ghmore>summary{cursor:pointer;color:var(--seal);font-size:13px;margin-bottom:6px}
+.ghr{border:1px solid var(--bd);border-radius:10px;padding:8px 10px}.ghr summary{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:13px;flex-wrap:wrap}
+.ghd{color:var(--mut);min-width:92px}.ghm{flex:1;min-width:120px}.ghs{display:flex;gap:6px;align-items:center}.ghx{font-size:13px;margin-top:6px;color:var(--fg)}
+.ghe{text-align:center;padding:14px 4px;font-size:14px}
+.ghm-o{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow:auto}
+.ghm-in{background:var(--bg);border-radius:16px;padding:16px;width:100%;max-width:640px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
 </style>
 </head>
 <body>
@@ -661,6 +680,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 </div>
 
 <div id="pv" style="display:none"><div class="pvbar"><button class="btn" onclick="doPrint()">พิมพ์ / บันทึกเป็น PDF</button><button class="btn alt" onclick="closePv()">ปิด</button></div><div id="pvb"></div></div>
+<div id="ghm" class="ghm-o" onclick="if(event.target===this)this.style.display='none'"><div class="ghm-in"><div class="row" style="justify-content:space-between;align-items:center;margin:0"><b id="ghmt"></b><button class="btn alt sm" onclick="$('ghm').style.display='none'">ปิด</button></div><div id="ghmb"></div></div></div>
 <div id="wd" style="display:none"><div class="pvbar"><button class="btn alt" onclick="$('wd').style.display='none'">‹ กลับ</button></div><div id="wdb"></div><div class="wnav" id="wnav"><div class="wnav-in"><button class="btn alt" id="wprev" onclick="navW(-1)" aria-label="คำก่อนหน้า">‹ ก่อนหน้า</button><div class="wpos" id="wpos"></div><button class="btn" id="wnext" onclick="navW(1)" aria-label="คำถัดไป">คำถัดไป ›</button></div></div></div>
 <script>
 const $=id=>document.getElementById(id);
@@ -879,7 +899,7 @@ function renderAdmin(){
   ${r.idc?`<details><summary>ดูหลักฐาน</summary>${r.slip?`<img src="${r.slip}" alt="สลิปโอนเงิน">`:""}<img src="${r.idc}" alt="บัตรประชาชน"></details>`:""}
   <div class="row"><span class="tag">${r.st}</span><button class="btn sm" onclick="openApp('${r.code}')">เปิดใบสมัคร / พิมพ์</button><button class="btn sm" onclick="approve('${r.code}')">ตรวจเอกสารแล้ว อนุมัติ</button></div></div>`).join(""):"<div class='card mut'>ไม่มีผู้สมัครที่รอตรวจสอบ</div>";
   const q=($("ss").value||"").toLowerCase(),st=SUBS.filter(r=>r.st!=="รอตรวจสอบ"&&(!q||(r.name+r.em).toLowerCase().includes(q)));
-  $("sl2").innerHTML=st.length?st.map(r=>`<div class="vw"><input type="checkbox" ${SEL.has(r.code)?"checked":""} ${r.sus?"disabled":""} onchange="selTog('${r.code}')"><div style="flex:1"><b>${r.pic?`<span class="av sm"><img src="${r.pic}" alt=""></span> `:(r.av?r.av+" ":"")}${esc(r.name)}${r.nick?" ("+esc(r.nick)+")":""}</b>${r.pic?` <button class="bdg" style="background:var(--mut)" onclick="rmPh('${r.code}')">ลบรูป</button>`:""}${r.book==="รับหนังสือเล่ม"?" "+bkb(r):""}<div class="mut">${esc(r.em)} · ${r.course}</div><details><summary class="mut" style="margin:4px 0">สิทธิ์วิดีโอ: <span id="as-${r.code}">${accLbl(r)}</span></summary>${ALL.map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${r.access.includes(k)?"checked":""} onchange="accTog('${r.code}','${k}')"> ${C[k].n}</label>`).join("")}</details></div><span class="tag">${r.sus?"ระงับ":"ใช้งานได้"}</span><button class="btn alt sm" onclick="susTog('${r.code}')">${r.sus?"เปิดสิทธิ์":"ระงับ"}</button><button class="btn alt sm" onclick="openApp('${r.code}')">ใบสมัคร</button><button class="btn alt sm" onclick="resetPw('${r.code}')">รีเซ็ตรหัสผ่าน</button><button class="btn alt sm" onclick="delStu('${r.code}')">${DEL===r.code?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีนักเรียนที่ยืนยันแล้ว</div>";
+  $("sl2").innerHTML=st.length?st.map(r=>`<div class="vw"><input type="checkbox" ${SEL.has(r.code)?"checked":""} ${r.sus?"disabled":""} onchange="selTog('${r.code}')"><div style="flex:1"><b>${r.pic?`<span class="av sm"><img src="${r.pic}" alt=""></span> `:(r.av?r.av+" ":"")}${esc(r.name)}${r.nick?" ("+esc(r.nick)+")":""}</b>${r.pic?` <button class="bdg" style="background:var(--mut)" onclick="rmPh('${r.code}')">ลบรูป</button>`:""}${r.book==="รับหนังสือเล่ม"?" "+bkb(r):""}<div class="mut">${esc(r.em)} · ${r.course}</div><details><summary class="mut" style="margin:4px 0">สิทธิ์วิดีโอ: <span id="as-${r.code}">${accLbl(r)}</span></summary>${ALL.map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${r.access.includes(k)?"checked":""} onchange="accTog('${r.code}','${k}')"> ${C[k].n}</label>`).join("")}</details></div><span class="tag">${r.sus?"ระงับ":"ใช้งานได้"}</span><button class="btn alt sm" onclick="susTog('${r.code}')">${r.sus?"เปิดสิทธิ์":"ระงับ"}</button><button class="btn alt sm" onclick="ghOpen('${r.code}')">คะแนนแบบฝึกหัด</button><button class="btn alt sm" onclick="openApp('${r.code}')">ใบสมัคร</button><button class="btn alt sm" onclick="resetPw('${r.code}')">รีเซ็ตรหัสผ่าน</button><button class="btn alt sm" onclick="delStu('${r.code}')">${DEL===r.code?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีนักเรียนที่ยืนยันแล้ว</div>";
   $("rc").textContent=SUBS.filter(r=>SEL.has(r.code)&&!r.sus).length;
   const td=(new Date().getDay()+6)%7,ts=SL.filter(x=>x.dw===td);
   $("ast").innerHTML=`<div class="card sc"><b>${ts.filter(x=>x.bk.length).length}</b><span class="mut">คลาสที่มีคนจองวันนี้</span></div><div class="card sc"><b>${SUBS.filter(r=>r.st==="รอตรวจสอบ").length}</b><span class="mut">รออนุมัติ</span></div><div class="card sc"><b>${ts.reduce((a,x)=>a+x.cap-x.bk.length,0)}</b><span class="mut">ที่นั่งว่างวันนี้</span></div>`;
@@ -1157,13 +1177,54 @@ function gUse(){const b=bookOf();GBOOK=b==="pick"?"":b;if(GBOOK){GAME=GAMES[GBOO
 function setVol(v){GVOL=v;try{v?localStorage.setItem("yh_vol_hsk4",v):localStorage.removeItem("yh_vol_hsk4")}catch(e){}renderGame();renderGram()}
 function volPicker(){return `<div class="card vpk"><b class="vpt">HSK4 มี 2 เล่ม</b><div class="mut">เลือกเล่มที่ต้องการเรียนก่อน เปลี่ยนเล่มทีหลังได้เสมอ</div><div class="vpb"><button class="glesson" onclick="setVol('a')"><span class="gno">上</span><span class="gtt"><b class="han">新HSK教程4上</b><small>บทที่ 1–10</small></span></button><button class="glesson" onclick="setVol('b')"><span class="gno">下</span><span class="gtt"><b class="han">新HSK教程4下</b><small>บทที่ 11–20</small></span></button></div></div>`}
 function volSwitch(){return CUR==="hsk4"&&GVOL?`<div class="vsw" role="group" aria-label="เลือกเล่ม"><button class="${GVOL==="a"?"on":""}" onclick="setVol('a')">เล่ม 上 · บท 1–10</button><button class="${GVOL==="b"?"on":""}" onclick="setVol('b')">เล่ม 下 · บท 11–20</button></div>`:""}
-let GQ=[],GI=0,GS=0,GL=0,GDONE=false,GMISS=[],GW_=[];
+let GQ=[],GI=0,GS=0,GL=0,GLV="e",GPK=0,GDONE=false,GMISS=[],GW_=[],GT0=0,GTM=null,GTL=0;
 const gsh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const gk=L=>"yh_game_"+GBOOK+"_"+L;
 const gget=L=>{try{return JSON.parse(localStorage.getItem(gk(L))||"null")}catch(e){return null}};
-const gput=(L,v)=>{try{localStorage.setItem(gk(L),JSON.stringify(v))}catch(e){}};
 const gstars=s=>s>=27?3:s>=21?2:s>=15?1:0;
-const gstarHTML=n=>"★".repeat(n)+"<span style='opacity:.25'>"+"★".repeat(3-n)+"</span>";
+/* ระดับความยาก: ต้น 🐼 · กลาง 🐯 · อัจฉริยะ 🐉 */
+const LVS=["e","m","h"],LV={e:{n:"ต้น",ic:"🐼",c:"#2e7d5a"},m:{n:"กลาง",ic:"🐯",c:"#d4892a"},h:{n:"อัจฉริยะ",ic:"🐉",c:"#a32626"}};
+function lvDesc(lv){const p=pyOn();
+  if(lv==="e")return (p?"มีพินอินทั้งโจทย์และตัวเลือก · ":"")+"ตัวเลือก 3 ข้อ · เขียนตัวจีนมีเส้นนำและคำใบ้";
+  if(lv==="m")return (p?"พินอินเฉพาะโจทย์ ตัวเลือกไม่มีพินอิน · ":"")+"ตัวเลือก 4 ข้อ · เขียนตัวจีนไม่มีเส้นนำ";
+  return (p?"ไม่มีพินอินเลย · ":"")+"ตัวเลือกหลอกคล้ายกัน · เรียงประโยคมีคำหลอก · เขียนแบบไม่มีคำใบ้ · จับเวลาทุกข้อ"}
+const gicons=(lv,n)=>`<span class="gic">${LV[lv].ic.repeat(n)}<span class="dim">${LV[lv].ic.repeat(3-n)}</span></span>`;
+/* ประวัติการทำแบบฝึกหัด (เว็บจริงเก็บในบัญชีนักเรียน) */
+let GHIST=(()=>{try{const v=JSON.parse(localStorage.getItem("yh_ghist")||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}})();
+function ghPersist(){try{localStorage.setItem("yh_ghist",JSON.stringify(GHIST.slice(-400)))}catch(e){}}
+function gbest(L,lv){let m=-1;GHIST.forEach(r=>{if(r.b===GBOOK&&r.L===L&&r.lv===lv&&r.s>m)m=r.s});if(lv==="e"){const o=gget(L);if(o&&o.b>m)m=o.b}return m}
+const ghDate=d=>new Date(d).toLocaleString("th-TH",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+const ghBook=b=>(GBN[b]||b);
+function ghChart(rs){
+  if(rs.length<2)return `<div class="mut ghe">ทำแบบฝึกหัดอย่างน้อย 2 รอบ แล้วกราฟการเติบโตจะขึ้นตรงนี้</div>`;
+  rs=rs.slice(-30);const W=320,H=150,l=26,r=8,t=10,b=22,n=rs.length,X=i=>l+(n<2?0:i*(W-l-r)/(n-1)),Y=v=>t+(1-v)*(H-t-b);
+  let g="";[0,10,20,30].forEach(v=>{const y=Y(v/30);g+=`<line x1="${l}" x2="${W-r}" y1="${y}" y2="${y}" class="ghg"/><text x="${l-5}" y="${y+3}" class="ght" text-anchor="end">${v}</text>`});
+  LVS.forEach(lv=>{const pts=rs.map((x,i)=>[x,i]).filter(([x])=>x.lv===lv);if(!pts.length)return;
+    if(pts.length>1)g+=`<polyline fill="none" stroke="${LV[lv].c}" stroke-width="2.2" stroke-linejoin="round" points="${pts.map(([x,i])=>X(i).toFixed(1)+","+Y(x.s/(x.n||30)).toFixed(1)).join(" ")}"/>`;
+    pts.forEach(([x,i])=>{g+=`<circle cx="${X(i).toFixed(1)}" cy="${Y(x.s/(x.n||30)).toFixed(1)}" r="3.6" fill="${LV[lv].c}"><title>${ghDate(x.d)} · บทที่ ${x.L} · ${LV[lv].n} · ${x.s}/${x.n||30}</title></circle>`})});
+  g+=`<text x="${l}" y="${H-6}" class="ght">${ghDate(rs[0].d).split(" ").slice(0,2).join(" ")}</text><text x="${W-r}" y="${H-6}" class="ght" text-anchor="end">${ghDate(rs[n-1].d).split(" ").slice(0,2).join(" ")}</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" class="ghsvg" role="img" aria-label="กราฟคะแนนแต่ละรอบ">${g}</svg><div class="ghleg">${LVS.map(lv=>`<span><i style="background:${LV[lv].c}"></i>${LV[lv].ic} ${LV[lv].n}</span>`).join("")}</div>`;
+}
+function ghView(list,showBook){
+  const rs=list.slice().sort((a,b)=>a.d-b.d);
+  if(!rs.length)return `<div class="mut ghe">ยังไม่มีประวัติการทำแบบฝึกหัด</div>`;
+  const avg=a=>a.length?Math.round(a.reduce((s,x)=>s+x.s/(x.n||30)*30,0)/a.length*10)/10:0,last5=rs.slice(-5),prev5=rs.slice(-10,-5);
+  const gr=prev5.length?Math.round((avg(last5)-avg(prev5))*10)/10:null;
+  let h=`<div class="ghst"><div><b>${rs.length}</b><span>รอบทั้งหมด</span></div><div><b>${avg(last5)}</b><span>เฉลี่ย 5 รอบล่าสุด</span></div><div><b class="${gr>0?"up":gr<0?"dn":""}">${gr==null?"–":(gr>0?"+":"")+gr}</b><span>เทียบ 5 รอบก่อน</span></div></div>`;
+  h+=ghChart(rs);
+  const row=x=>{const st=gstars(x.s*30/(x.n||30));return `<details class="ghr"><summary><span class="ghd">${ghDate(x.d)}</span><span class="ghm">${showBook?esc(ghBook(x.b))+" · ":""}บทที่ ${x.L} · ${LV[x.lv]?LV[x.lv].ic+" "+LV[x.lv].n:""}</span><span class="ghs"><b>${x.s}/${x.n||30}</b>${LV[x.lv]?gicons(x.lv,st):""}</span></summary>
+<div class="ghx">${x.m&&x.m.length?`พลาด ${x.m.length} ข้อ: <span class="han">${x.m.map(esc).join("、")}</span>`:"ไม่พลาดเลย 🎉"}${x.t?` · ใช้เวลา ${Math.floor(x.t/60)} นาที ${x.t%60} วินาที`:""}</div></details>`};
+  const rv=rs.slice().reverse();
+  h+=`<div class="ghlab">รอบล่าสุด · แตะเพื่อดูข้อที่พลาด</div><div class="ghl">${rv.slice(0,5).map(row).join("")}</div>${rv.length>5?`<details class="ghmore"><summary>ดูประวัติทั้งหมด (${rv.length} รอบ)</summary><div class="ghl">${rv.slice(5,200).map(row).join("")}</div></details>`:""}`;
+  return h;
+}
+function ghCard(){const mine=GHIST.filter(r=>r.b===GBOOK);
+  return `<details class="card ghc" ${mine.length?"open":""}><summary><b>📈 พัฒนาการของฉัน</b> <span class="mut">${GBN[GBOOK]} · ${mine.length} รอบ</span></summary>${ghView(mine,false)}</details>`}
+function ghOpen(code){const r=SUBS.find(x=>x.code===code);if(!r)return;const gh=(r.state&&Array.isArray(r.state.gh))?r.state.gh:[];
+  $("ghmt").textContent="คะแนนแบบฝึกหัด · "+r.name+(r.nick?" ("+r.nick+")":"")+" · "+r.code;
+  const books=[...new Set(gh.map(x=>x.b))];
+  $("ghmb").innerHTML=gh.length?books.map(b=>`<h3 style="margin:14px 0 6px">${esc(ghBook(b))}</h3>${ghView(gh.filter(x=>x.b===b),false)}`).join(""):`<div class="mut ghe">นักเรียนคนนี้ยังไม่เคยทำแบบฝึกหัด</div>`;
+  $("ghm").style.display="flex"}
 /* เสียงอ่าน */
 let ZHV=null;const gwst=t=>{const e=$("gwst");if(e)e.textContent=t};
 function zhVoice(){try{const v=speechSynthesis.getVoices();ZHV=v.find(x=>/^zh(-|_)?(CN|Hans)?/i.test(x.lang)&&/CN|Hans/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}catch(e){ZHV=null}document.querySelectorAll(".gspk").forEach(b=>b.style.display=ZHV&&(!b.classList.contains("after")||GDONE)?"":"none")}
@@ -1172,46 +1233,78 @@ function say(t){try{if(!ZHV)return;speechSynthesis.cancel();const u=new SpeechSy
 const spk=()=>"";
 /* เมนูบท */
 function renderGame(){
+  gStopT();GPK=0;
   const m=$("gmenu"),p=$("gplay");p.style.display="none";m.style.display="block";
   const u=gUse();if(u==="pick"){m.innerHTML=volPicker();return}
   if(!u){m.innerHTML="<div class='card mut' style='margin-top:10px'>แบบฝึกหัดรายบทตอนนี้มีสำหรับคอร์ส HSK1–HSK4 · คอร์สอื่นกำลังจัดทำ</div>";return}
   const GO=GAME.O||0;
-  m.innerHTML=volSwitch()+`<div class="gintro"><b>แบบฝึกหัด ${GBOOK.slice(0,4).toUpperCase()}${GBOOK.length>4?(GBOOK.endsWith("a")?" เล่ม上":" เล่ม下"):""}</b><span class="mut">ตามหนังสือ ${GBN[GBOOK]} · บทละ 30 ข้อ อ่าน เขียน เลือกพินอิน และเรียงประโยค</span></div>
-  <div class="glist">${GAME.T.map((t,i)=>{const n=i+1+GO,r=gget(n);return `<button class="glesson" onclick="startGame(${n})"><span class="gno">${n}</span><span class="gtt"><b class="han">${t[0]}</b><small>${GTH[i]}</small></span><span class="gsc">${r?`<span class="gst">${gstarHTML(r.s)}</span><small>${r.b}/30</small>`:"<small class='mut'>ยังไม่เล่น</small>"}</span></button>`}).join("")}</div>`;
+  m.innerHTML=volSwitch()+`<div class="gintro"><b>แบบฝึกหัด ${GBOOK.slice(0,4).toUpperCase()}${GBOOK.length>4?(GBOOK.endsWith("a")?" เล่ม上":" เล่ม下"):""}</b><span class="mut">ตามหนังสือ ${GBN[GBOOK]} · บทละ 30 ข้อ · เลือกได้ 3 ระดับ 🐼 ต้น · 🐯 กลาง · 🐉 อัจฉริยะ</span></div>`+ghCard()+`
+  <div class="glist">${GAME.T.map((t,i)=>{const n=i+1+GO;return `<button class="glesson" onclick="gPickLv(${n})"><span class="gno">${n}</span><span class="gtt"><b class="han">${t[0]}</b><small>${GTH[i]}</small></span><span class="gsc">${LVS.map(lv=>{const b=gbest(n,lv);return b<0?`<span class="gic none">${LV[lv].ic.repeat(3)}</span>`:gicons(lv,gstars(b))}).join("")}</span></button>`}).join("")}</div>`;
+}
+function gPickLv(L){
+  gStopT();GPK=L;const GO=GAME.O||0,t=GAME.T[L-1-GO]||["",""];
+  $("gplay").style.display="none";const m=$("gmenu");m.style.display="block";
+  m.innerHTML=`<div class="gtop"><button class="btn alt sm" onclick="renderGame()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${L} <span class="han">${t[0]}</span></b><span class="mut">${GTH[L-1-GO]||""}</span></div></div>
+  <div class="gintro"><b>เลือกระดับความยาก</b><span class="mut">ทำได้ 27 ข้อขึ้นไปได้ 3 ตัว · 21 ข้อได้ 2 ตัว · 15 ข้อได้ 1 ตัว</span></div>
+  <div class="glvs">${LVS.map(lv=>{const b=gbest(L,lv);return `<button class="glv glv-${lv}" onclick="startGame(${L},'${lv}')"><span class="glvi">${LV[lv].ic}</span><span class="gtt"><b>ระดับ${LV[lv].n}</b><small>${lvDesc(lv)}</small></span><span class="gsc">${gicons(lv,b<0?0:gstars(b))}<small>${b<0?"ยังไม่เคยทำ":"ดีที่สุด "+b+"/30"}</small></span></button>`}).join("")}</div>`;
+  scrollTo(0,0);
 }
 /* สร้างชุดคำถาม */
 const GPY={"S":{"hsk1":{"老师好":["lǎoshī","hǎo"],"同学们好":["tóngxuémen","hǎo"],"大家好":["dàjiā","hǎo"],"你们好":["nǐmen","hǎo"],"王老师，您好":["wáng lǎoshī","nín hǎo"],"谢谢老师":["xièxie","lǎoshī"],"谢谢大家":["xièxie","dàjiā"],"老师再见":["lǎoshī","zàijiàn"],"同学们再见":["tóngxuémen","zàijiàn"],"不客气，同学们":["bú kèqi","tóngxuémen"],"学生们好":["xuéshēngmen","hǎo"],"谢谢你们":["xièxie","nǐmen"],"我是老师":["wǒ","shì","lǎoshī"],"你叫什么名字":["nǐ","jiào","shénme","míngzi"],"认识你很高兴":["rènshi","nǐ","hěn","gāoxìng"],"我也很高兴":["wǒ","yě","hěn","gāoxìng"],"我不是老师":["wǒ","bú","shì","lǎoshī"],"我是学生":["wǒ","shì","xuéshēng"],"请问，您叫什么名字":["qǐngwèn","nín","jiào","shénme","míngzi"],"对不起，老师":["duìbuqǐ","lǎoshī"],"没关系，同学":["méi guānxi","tóngxué"],"我没事，谢谢":["wǒ","méishì","xièxie"],"我认识王老师":["wǒ","rènshi","Wáng lǎoshī"],"你是学生，我也是学生":["nǐ","shì","xuéshēng","wǒ","yě","shì","xuéshēng"],"你是中国人吗":["nǐ","shì","Zhōngguórén","ma"],"我是泰国人":["wǒ","shì","Tàiguórén"],"她是谁":["tā","shì","shéi"],"她是我姐姐":["tā","shì","wǒ","jiějie"],"这是我的女朋友":["zhè","shì","wǒ","de","nǚpéngyou"],"你是哪国人":["nǐ","shì","nǎ","guó","rén"],"我们是同学":["wǒmen","shì","tóngxué"],"你工作忙吗":["nǐ","gōngzuò","máng","ma"],"我不太忙":["wǒ","bú","tài","máng"],"我想认识她":["wǒ","xiǎng","rènshi","tā"],"喂，你好":["wèi","nǐ hǎo"],"对，她是法国人":["duì","tā","shì","Fǎguórén"],"我还好":["wǒ","hái","hǎo"],"这是中文吗":["zhè","shì","Zhōngwén","ma"],"我有两个孩子":["wǒ","yǒu","liǎng","ge","háizi"],"你家有几口人":["nǐ","jiā","yǒu","jǐ","kǒu","rén"],"我家有四口人":["wǒ","jiā","yǒu","sì","kǒu","rén"],"你今年多大":["nǐ","jīnnián","duō","dà"],"我今年十八岁":["wǒ","jīnnián","shíbā","suì"],"他是我哥哥":["tā","shì","wǒ","gēge"],"我没有妹妹":["wǒ","méiyǒu","mèimei"],"我有一个儿子和一个女儿":["wǒ","yǒu","yí","ge","érzi","hé","yí","ge","nǚ'ér"],"我是学生，你呢":["wǒ","shì","xuéshēng","nǐ","ne"],"你们有多少学生":["nǐmen","yǒu","duōshao","xuéshēng"],"这是我爸爸和妈妈":["zhè","shì","wǒ","bàba","hé","māma"],"他有三个孩子":["tā","yǒu","sān","ge","háizi"],"她的女儿七岁":["tā","de","nǚ'ér","qī","suì"],"今天我休息":["jīntiān","wǒ","xiūxi"],"今天星期几":["jīntiān","xīngqī","jǐ"],"今天五月八号":["jīntiān","wǔ","yuè","bā","hào"],"我会做饭":["wǒ","huì","zuò fàn"],"我喜欢饺子":["wǒ","xǐhuan","jiǎozi"],"这是我的新电脑":["zhè","shì","wǒ","de","xīn","diànnǎo"],"它真好看":["tā","zhēn","hǎokàn"],"星期天你做什么":["xīngqītiān","nǐ","zuò","shénme"],"妈妈星期日不休息":["māma","Xīngqīrì","bù","xiūxi"],"我会做一些菜":["wǒ","huì","zuò","yìxiē","cài"],"你喜欢面条儿吗":["nǐ","xǐhuan","miàntiáor","ma"],"今天几月几日":["jīntiān","jǐ","yuè","jǐ","rì"],"你的手机号是多少":["nǐ","de","shǒujī","hào","shì","duōshao"],"我想去超市":["wǒ","xiǎng","qù","chāoshì"],"你去哪儿":["nǐ","qù","nǎr"],"我去超市买东西":["wǒ","qù","chāoshì","mǎi","dōngxi"],"我们坐出租车去":["wǒmen","zuò","chūzūchē","qù"],"这个包子非常好吃":["zhè","ge","bāozi","fēicháng","hǎochī"],"你想吃什么":["nǐ","xiǎng","chī","shénme"],"我想买一些牛奶":["wǒ","xiǎng","mǎi","yìxiē","niúnǎi"],"明天你去西安饭店吗":["míngtiān","nǐ","qù","Xī'ān Fàndiàn","ma"],"西安饭店怎么去":["xī'ān Fàndiàn","zěnme","qù"],"晚饭我想吃米饭":["wǎnfàn","wǒ","xiǎng","chī","mǐfàn"],"我想去那边的超市":["wǒ","xiǎng","qù","nàbiān","de","chāoshì"],"我晚上六点半下班":["wǒ","wǎnshang","liù","diǎn","bàn","xiàbān"],"现在几点":["xiànzài","jǐ","diǎn"],"我们去看电影吧":["wǒmen","qù","kàn","diànyǐng","ba"],"我早上八点上班":["wǒ","zǎoshang","bā","diǎn","shàngbān"],"我在医院工作":["wǒ","zài","yīyuàn","gōngzuò"],"下午你有课吗":["xiàwǔ","nǐ","yǒu","kè","ma"],"你在哪儿呢":["nǐ","zài","nǎr","ne"],"十分钟后见":["shí","fēnzhōng","hòu","jiàn"],"上午我没有事":["shàngwǔ","wǒ","méiyǒu","shì"],"电影院里有很多人":["diànyǐngyuàn","li","yǒu","hěn","duō","rén"],"我们几点下课":["wǒmen","jǐ","diǎn","xiàkè"],"明天见":["míngtiān","jiàn"],"我在家看电影":["wǒ","zài","jiā","kàn","diànyǐng"],"我爸爸也在医院工作":["wǒ","bàba","yě","zài","yīyuàn","gōngzuò"],"胡医生在房间里":["hú yīshēng","zài","fángjiān","li"],"猫在桌子下":["māo","zài","zhuōzi","xià"],"学校前有一个书店":["xuéxiào","qián","yǒu","yí","ge","shūdiàn"],"我没看见你的猫":["wǒ","méi","kànjiàn","nǐ","de","māo"],"我能去你家吗":["wǒ","néng","qù","nǐ","jiā","ma"],"这只小猫真漂亮":["zhè","zhī","xiǎo","māo","zhēn","piàoliang"],"我十二点到学校":["wǒ","shí'èr","diǎn","dào","xuéxiào"],"我在学校吃午饭":["wǒ","zài","xuéxiào","chī","wǔfàn"],"医院里有很多病人":["yīyuàn","li","yǒu","hěn","duō","bìngrén"],"我的房间很小":["wǒ","de","fángjiān","hěn","xiǎo"],"我们去吃饭吧":["wǒmen","qù","chī","fàn","ba"],"她是医生，工作很忙":["tā","shì","yīshēng","gōngzuò","hěn","máng"],"书店在学校外":["shūdiàn","zài","xuéxiào","wài"],"我明天上午在学校学习":["wǒ","míngtiān","shàngwǔ","zài","xuéxiào","xuéxí"],"桌子上有三本书":["zhuōzi","shang","yǒu","sān","běn","shū"],"椅子上有一只狗":["yǐzi","shang","yǒu","yì","zhī","gǒu"],"她唱歌很好听":["tā","chàng","gē","hěn","hǎotīng"],"那个人是我的朋友":["nàge","rén","shì","wǒ","de","péngyou"],"白天我工作，晚上我学习":["báitiān","wǒ","gōngzuò","wǎnshang","wǒ","xuéxí"],"学校前边有一个超市":["xuéxiào","qiánbian","yǒu","yí","ge","chāoshì"],"我喜欢在家看电视":["wǒ","xǐhuan","zài","jiā","kàn","diànshì"],"孩子们在外边玩":["háizimen","zài","wàibian","wán"],"第三个人是我哥哥":["dì","sān","ge","rén","shì","wǒ","gēge"],"我和朋友去唱歌":["wǒ","hé","péngyou","qù","chàng","gē"],"我姐姐在中国读书":["wǒ","jiějie","zài","Zhōngguó","dúshū"],"你想做什么":["nǐ","xiǎng","zuò","shénme"],"这儿的苹果真便宜":["zhèr","de","píngguǒ","zhēn","piányi"],"苹果多少钱一斤":["píngguǒ","duōshao","qián","yì","jīn"],"五块钱一斤":["wǔ","kuài","qián","yì","jīn"],"这件衣服怎么样":["zhè","jiàn","yīfu","zěnmeyàng"],"这件衣服很贵":["zhè","jiàn","yīfu","hěn","guì"],"你穿这件衣服很漂亮":["nǐ","chuān","zhè","jiàn","yīfu","hěn","piàoliang"],"这些水果多少钱":["zhèxiē","shuǐguǒ","duōshao","qián"],"那儿有一个商店":["nàr","yǒu","yí","ge","shāngdiàn"],"我的钱很少":["wǒ","de","qián","hěn","shǎo"],"那个售货员是男的":["nàge","shòuhuòyuán","shì","nán","de"],"一个杯子二十元":["yí","ge","bēizi","èrshí","yuán"],"这边的衣服很便宜":["zhèbiān","de","yīfu","hěn","piányi"],"那些苹果很好吃":["nàxiē","píngguǒ","hěn","hǎochī"],"我读大学呢":["wǒ","dú","dàxué","ne"],"你是不是大学生":["nǐ","shì","bu","shì","dàxuéshēng"],"我弟弟正在睡觉":["wǒ","dìdi","zhèngzài","shuìjiào"],"你几点起床":["nǐ","jǐ","diǎn","qǐchuáng"],"我要学中文":["wǒ","yào","xué","Zhōngwén"],"你知道她叫什么名字吗":["nǐ","zhīdào","tā","jiào","shénme","míngzi","ma"],"你找谁":["nǐ","zhǎo","shéi"],"我爸爸会开车":["wǒ","bàba","huì","kāichē"],"你在哪里学中文":["nǐ","zài","nǎlǐ","xué","Zhōngwén"],"昨天你在哪儿":["zuótiān","nǐ","zài","nǎr"],"小朋友，你几岁":["xiǎopéngyǒu","nǐ","jǐ","suì"],"我想问你":["wǒ","xiǎng","wèn","nǐ"],"她在那里工作":["tā","zài","nàlǐ","gōngzuò"],"我们坐车去饭店":["wǒmen","zuò","chē","qù","fàndiàn"],"昨天下雪了":["zuótiān","xià","xuě","le"],"今天天气怎么样":["jīntiān","tiānqì","zěnmeyàng"],"今天太热了":["jīntiān","tài","rè","le"],"我有点儿冷":["wǒ","yǒudiǎnr","lěng"],"他生病了，要去医院看病":["tā","shēngbìng","le","yào","qù","yīyuàn","kànbìng"],"你喝一点儿水吧":["nǐ","hē","yìdiǎnr","shuǐ","ba"],"外边下雨了":["wàibian","xià yǔ","le"],"我觉得这个药很好":["wǒ","juéde","zhè","ge","yào","hěn","hǎo"],"他回家了":["tā","huí","jiā","le"],"你什么时候来我家":["nǐ","shénme","shíhou","lái","wǒ","jiā"],"我在一个公司工作":["wǒ","zài","yí","ge","gōngsī","gōngzuò"],"这里的天气很冷":["zhèlǐ","de","tiānqì","hěn","lěng"],"明天再来吧":["míngtiān","zài","lái","ba"],"我喝了药，病好了":["wǒ","hē","le","yào","bìng","hǎo","le"],"请给我一杯茶":["qǐng","gěi","wǒ","yì","bēi","chá"],"服务员，我要两个包子":["fúwùyuán","wǒ","yào","liǎng","ge","bāozi"],"我可以坐这儿吗":["wǒ","kěyǐ","zuò","zhèr","ma"],"你看一下":["nǐ","kàn","yíxià"],"早饭我吃了面包和鸡蛋":["zǎofàn","wǒ","chī","le","miànbāo","hé","jīdàn"],"先生，您要喝什么":["xiānsheng","nín","yào","hē","shénme"],"这个超市卖水果吗":["zhège","chāoshì","mài","shuǐguǒ","ma"],"我给你打电话":["wǒ","gěi","nǐ","dǎ diànhuà"],"你有什么问题":["nǐ","yǒu","shénme","wèntí"],"请再说一下":["qǐng","zài","shuō","yíxià"],"这个苹果，一半给你":["zhège","píngguǒ","yíbàn","gěi","nǐ"],"女士，请坐":["nǚshì","qǐng","zuò"],"他给了我一杯水":["tā","gěi","le","wǒ","yì","bēi","shuǐ"],"我看了一个电影":["wǒ","kàn","le","yí","ge","diànyǐng"],"我们都是中学生":["wǒmen","dōu","shì","zhōngxuéshēng"],"她写了三个汉字":["tā","xiě","le","sān","ge","Hànzì"],"上课的时候不要说话":["shàngkè","de","shíhou","búyào","shuōhuà"],"你听见了吗":["nǐ","tīngjiàn","le","ma"],"有些学生不喜欢写字":["yǒuxiē","xuéshēng","bù","xǐhuan","xiě","zì"],"火车几点开":["huǒchē","jǐ","diǎn","kāi"],"我弟弟明年上小学":["wǒ","dìdi","míngnián","shàng","xiǎoxué"],"我今天中午在学校吃饭":["wǒ","jīntiān","zhōngwǔ","zài","xuéxiào","chī","fàn"],"他们都在学汉语":["tāmen","dōu","zài","xué","Hànyǔ"],"你喜欢听什么歌":["nǐ","xǐhuan","tīng","shénme","gē"],"我晚了，对不起":["wǒ","wǎn","le","duìbuqǐ"],"你想买哪些东西":["nǐ","xiǎng","mǎi","nǎxiē","dōngxi"],"我去年去了西安":["wǒ","qùnián","qù","le","Xī'ān"],"北京非常好玩儿":["běijīng","fēicháng","hǎowánr"],"我爱我的家人":["wǒ","ài","wǒ","de","jiārén"],"坐飞机去北京要几个小时":["zuò","fēijī","qù","Běijīng","yào","jǐ","ge","xiǎoshí"],"星期天我去机场接你":["xīngqītiān","wǒ","qù","jīchǎng","jiē","nǐ"],"你住在哪儿":["nǐ","zhù","zài","nǎr"],"你有时间吗":["nǐ","yǒu","shíjiān","ma"],"我喜欢这个，也喜欢那个":["wǒ","xǐhuan","zhè","ge","yě","xǐhuan","nà","ge"],"你喜欢哪个":["nǐ","xǐhuan","nǎge"],"我们早上八点在大兴机场见":["wǒmen","zǎoshang","bā","diǎn","zài","Dàxīng Jīchǎng","jiàn"],"她男朋友是北京人":["tā","nánpéngyou","shì","Běijīngrén"],"你来中国几年了":["nǐ","lái","Zhōngguó","jǐ","nián","le"],"明天你要早一点儿起床":["míngtiān","nǐ","yào","zǎo","yìdiǎnr","qǐchuáng"],"我学汉语，还学汉字":["wǒ","xué","Hànyǔ","hái","xué","Hànzì"]},"hsk2":{"你是老师吧":["nǐ","shì","lǎoshī","ba"],"我是昨天到的":["wǒ","shì","zuótiān","dào","de"],"我想请你帮忙":["wǒ","xiǎng","qǐng","nǐ","bāngmáng"],"我来介绍一下":["wǒ","lái","jièshào","yíxià"],"我们是来旅游的":["wǒmen","shì","lái","lǚyóu","de"],"这是我第一次来北京":["zhè","shì","wǒ","dì yī","cì","lái","Běijīng"],"王老师让我们说汉语":["wáng lǎoshī","ràng","wǒmen","shuō","Hànyǔ"],"不好意思，我已经到北京了":["bù hǎoyìsi","wǒ","yǐjīng","dào","Běijīng","le"],"你有事就给我打电话":["nǐ","yǒu","shì","jiù","gěi","wǒ","dǎ diànhuà"],"这个字是什么意思":["zhège","zì","shì","shénme","yìsi"],"我有时去中国旅游":["wǒ","yǒushí","qù","Zhōngguó","lǚyóu"],"她请我们吃了北京烤鸭":["tā","qǐng","wǒmen","chī","le","Běijīng Kǎoyā"],"你懂我的意思吗":["nǐ","dǒng","wǒ","de","yìsi","ma"],"我去接你吧":["wǒ","qù","jiē","nǐ","ba"],"那我们明天见吧":["nà","wǒmen","míngtiān","jiàn","ba"],"我们还是打车去吧":["wǒmen","háishi","dǎchē","qù","ba"],"我有二十多本中文书":["wǒ","yǒu","èrshí","duō","běn","Zhōngwén","shū"],"你认识那个唱歌的人吗":["nǐ","rènshi","nàge","chàng","gē","de","rén","ma"],"北京大学有四万多名学生":["běijīng Dàxué","yǒu","sì","wàn","duō","míng","xuésheng"],"车站远不远":["chēzhàn","yuǎn","bu","yuǎn"],"我们坐公交车去吧":["wǒmen","zuò","gōngjiāochē","qù","ba"],"你别去了":["nǐ","bié","qù","le"],"这间教室很大":["zhè","jiān","jiàoshì","hěn","dà"],"我在网上买了票":["wǒ","zài","wǎngshang","mǎi","le","piào"],"你过来一下":["nǐ","guòlái","yíxià"],"他是外国人":["tā","shì","wàiguó","rén"],"你的汉语真好啊":["nǐ","de","Hànyǔ","zhēn","hǎo","a"],"我想去北京大学学习，但我的汉语不好":["wǒ","xiǎng","qù","Běijīng Dàxué","xuéxí","dàn","wǒ","de","Hànyǔ","bù","hǎo"],"我们打车去北京大学吧":["wǒmen","dǎchē","qù","Běijīng Dàxué","ba"],"我吃完饭了":["wǒ","chī","wán","fàn","le"],"我想休息休息":["wǒ","xiǎng","xiūxi","xiūxi"],"我看了看这本书":["wǒ","kàn","le","kàn","zhè","běn","shū"],"你为什么不去":["nǐ","wèi shénme","bú","qù"],"我们一起出去玩吧":["wǒmen","yìqǐ","chūqù","wán","ba"],"我每天都很累":["wǒ","měi","tiān","dōu","hěn","lèi"],"你什么时候回来":["nǐ","shénme","shíhou","huílái"],"我要回去了":["wǒ","yào","huíqù","le"],"请你拿一下这个":["qǐng","nǐ","ná","yíxià","zhège"],"吃饭前要洗手":["chī","fàn","qián","yào","xǐ","shǒu"],"这是我送你的":["zhè","shì","wǒ","sòng","nǐ","de"],"这个菜不错":["zhège","cài","búcuò"],"我自己做饭":["wǒ","zìjǐ","zuò","fàn"],"今天怎么这么冷":["jīntiān","zěnme","zhème","lěng"],"我去过北京":["wǒ","qù","guo","Běijīng"],"因为我生病了，所以没去上班":["yīnwèi","wǒ","shēngbìng","le","suǒyǐ","méi","qù","shàngbān"],"红色的好看":["hóngsè","de","hǎokàn"],"我想试试这条裤子":["wǒ","xiǎng","shìshi","zhè","tiáo","kùzi"],"你喜欢什么颜色":["nǐ","xǐhuan","shénme","yánsè"],"我的书包是黑色的":["wǒ","de","shūbāo","shì","hēisè","de"],"这件白色的衣服更好看":["zhè","jiàn","báisè","de","yīfu","gèng","hǎokàn"],"我们去商场买衣服吧":["wǒmen","qù","shāngchǎng","mǎi","yīfu","ba"],"你进去吧":["nǐ","jìnqù","ba"],"你穿红色的很好看":["nǐ","chuān","hóngsè","de","hěn","hǎokàn"],"我没去过中国":["wǒ","méi","qù","guo","Zhōngguó"],"那条绿色的裤子是谁的":["nà","tiáo","lǜsè","de","kùzi","shì","shéi","de"],"你过去看看吧":["nǐ","guòqù","kànkan","ba"],"因为下雨了，所以我没出去":["yīnwèi","xià","yǔ","le","suǒyǐ","wǒ","méi","chūqù"],"你过来吧":["nǐ","guòlái","ba"],"王老师进教室去了":["wáng lǎoshī","jìn","jiàoshì","qù","le"],"都十二点了，你快睡觉吧":["dōu","shí'èr","diǎn","le","nǐ","kuài","shuìjiào","ba"],"我在下面等你":["wǒ","zài","xiàmian","děng","nǐ"],"我不上去了":["wǒ","bú","shàngqù","le"],"你下来一下":["nǐ","xiàlái","yíxià"],"爷爷和奶奶在家等我们":["yéye","hé","nǎinai","zài","jiā","děng","wǒmen"],"我给你们准备了奶茶":["wǒ","gěi","nǐmen","zhǔnbèi","le","nǎichá"],"你跟我走吧":["nǐ","gēn","wǒ","zǒu","ba"],"我们一会儿去酒店":["wǒmen","yíhuìr","qù","jiǔdiàn"],"这是我送给奶奶的礼物":["zhè","shì","wǒ","sòng","gěi","nǎinai","de","lǐwù"],"你快进来吧":["nǐ","kuài","jìnlái","ba"],"他已经走了":["tā","yǐjīng","zǒu","le"],"今天是我的生日":["jīntiān","shì","wǒ","de","shēngrì"],"生日快乐":["shēngrì","kuàilè"],"我给你买了一个大大的蛋糕":["wǒ","gěi","nǐ","mǎi","le","yí","ge","dàdà","de","dàngāo"],"妈妈做了鱼啊肉啊什么的":["māma","zuò","le","yú","a","ròu","a","shénme","de"],"他早早地到了教室":["tā","zǎozǎo","de","dào","le","jiàoshì"],"你打开看看吧":["nǐ","dǎkāi","kànkan","ba"],"我忘了他的名字":["wǒ","wàng","le","tā","de","míngzi"],"这个床很舒服":["zhège","chuáng","hěn","shūfu"],"她在画一只小小的猫":["tā","zài","huà","yì","zhī","xiǎoxiǎo","de","māo"],"中国人过生日的时候吃面条儿":["zhōngguó","rén","guò","shēngrì","de","shíhou","chī","miàntiáor"],"他们高高兴兴地回家了":["tāmen","gāogāoxìngxìng","de","huí","jiā","le"],"我喜欢吃肉，不喜欢吃鱼":["wǒ","xǐhuan","chī","ròu","bù","xǐhuan","chī","yú"],"这只猫小小的，真漂亮":["zhè","zhī","māo","xiǎoxiǎo","de","zhēn","piàoliang"],"我一下飞机就给妈妈打电话":["wǒ","yí","xià","fēijī","jiù","gěi","māma","dǎ diànhuà"],"他跑得很快":["tā","pǎo","de","hěn","kuài"],"他打篮球打得很好":["tā","dǎ","lánqiú","dǎ","de","hěn","hǎo"],"我的爱好是游泳":["wǒ","de","àihào","shì","yóuyǒng"],"我们去踢足球吧":["wǒmen","qù","tī","zúqiú","ba"],"我每天早上跑步":["wǒ","měi","tiān","zǎoshang","pǎobù"],"你从几点开始上课":["nǐ","cóng","jǐ","diǎn","kāishǐ","shàngkè"],"你往前走":["nǐ","wǎng","qián","zǒu"],"他游泳游得不快":["tā","yóuyǒng","yóu","de","bú","kuài"],"一到星期六，他就去打篮球":["yí","dào","xīngqīliù","tā","jiù","qù","dǎ","lánqiú"],"你喜欢什么运动":["nǐ","xǐhuan","shénme","yùndòng"],"她唱歌唱得很好听":["tā","chàng","gē","chàng","de","hěn","hǎotīng"],"你汉语说得怎么样":["nǐ","Hànyǔ","shuō","de","zěnmeyàng"],"今天比昨天冷":["jīntiān","bǐ","zuótiān","lěng"],"今天比昨天更冷":["jīntiān","bǐ","zuótiān","gèng","lěng"],"外边虽然下雪了，但是不冷":["wàibian","suīrán","xià","xuě","le","dànshì","bù","lěng"],"你还记得我吗":["nǐ","hái","jìde","wǒ","ma"],"我和妻子去饭馆吃饭":["wǒ","hé","qīzi","qù","fànguǎn","chī","fàn"],"我们点菜吧":["wǒmen","diǎn","cài","ba"],"这是丈夫送我的手表":["zhè","shì","zhàngfu","sòng","wǒ","de","shǒubiǎo"],"这个爱情片很有意思":["zhège","àiqíngpiàn","hěn","yǒu yìsi"],"饭馆在左边还是右边":["fànguǎn","zài","zuǒbian","háishi","yòubian"],"我买了一些花":["wǒ","mǎi","le","yìxiē","huā"],"虽然他很忙，但是每天都来":["suīrán","tā","hěn","máng","dànshì","měi","tiān","dōu","lái"],"我坐在他的左边":["wǒ","zuò","zài","tā","de","zuǒbian"],"这本书比那本更有意思":["zhè","běn","shū","bǐ","nà","běn","gèng","yǒu yìsi"],"姐姐没有哥哥高":["jiějie","méiyǒu","gēge","gāo"],"我家离学校很近":["wǒ","jiā","lí","xuéxiào","hěn","jìn"],"我们休息十分钟":["wǒmen","xiūxi","shí","fēnzhōng"],"他的个子很高":["tā","de","gèzi","hěn","gāo"],"咖啡店就在学校门口":["kāfēi","diàn","jiù","zài","xuéxiào","ménkǒu"],"我的手机坏了":["wǒ","de","shǒujī","huài","le"],"我每天走路去学校":["wǒ","měi","tiān","zǒulù","qù","xuéxiào"],"那个男孩儿是谁":["nàge","nánháir","shì","shéi"],"今天没有昨天那么冷":["jīntiān","méiyǒu","zuótiān","nàme","lěng"],"我等了你半个小时":["wǒ","děng","le","nǐ","bàn","ge","xiǎoshí"],"下周我去北京":["xià","zhōu","wǒ","qù","Běijīng"],"你别这样":["nǐ","bié","zhèyàng"],"医院离这儿不远":["yīyuàn","lí","zhèr","bù","yuǎn"],"我喝了一杯咖啡":["wǒ","hē","le","yì","bēi","kāfēi"],"他学习很好":["tā","xuéxí","hěn","hǎo"],"你喝咖啡还是茶":["nǐ","hē","kāfēi","háishi","chá"],"我要回国了":["wǒ","yào","huí","guó","le"],"我们下星期就要考试了":["wǒmen","xià","xīngqī","jiù","yào","kǎoshì","le"],"快要开学了":["kuàiyào","kāixué","le"],"这个题我做错了":["zhège","tí","wǒ","zuò","cuò","le"],"你能帮我一下吗":["nǐ","néng","bāng","wǒ","yíxià","ma"],"我的本子和笔在书包里":["wǒ","de","běnzi","hé","bǐ","zài","shūbāo","li"],"这个词是什么意思":["zhège","cí","shì","shénme","yìsi"],"他坐在我后面":["tā","zuò","zài","wǒ","hòumiàn"],"这门课很有意思":["zhè","mén","kè","hěn","yǒu yìsi"],"你为什么笑":["nǐ","wèi shénme","xiào"],"我考得不好":["wǒ","kǎo","de","bù","hǎo"],"火车快开了":["huǒchē","kuài","kāi","le"],"他在那儿坐着":["tā","zài","nàr","zuò","zhe"],"她穿着白色的裤子":["tā","chuān","zhe","báisè","de","kùzi"],"在我们家，爸爸最高":["zài","wǒmen","jiā","bàba","zuì","gāo"],"我头疼":["wǒ","tóu","téng"],"你身体怎么样":["nǐ","shēntǐ","zěnmeyàng"],"我去药店买药":["wǒ","qù","yàodiàn","mǎi","yào"],"路上车很多，你开慢一点儿":["lùshang","chē","hěn","duō","nǐ","kāi","màn","yìdiǎnr"],"我经常去那家饭馆":["wǒ","jīngcháng","qù","nà","jiā","fànguǎn"],"教室的门开着":["jiàoshì","de","mén","kāi","zhe"],"我不想动":["wǒ","bù","xiǎng","dòng"],"你最喜欢吃什么":["nǐ","zuì","xǐhuan","chī","shénme"],"上课时不能看手机":["shàngkè","shí","bù","néng","kàn","shǒujī"],"外边下着雨":["wàibian","xià","zhe","yǔ"],"请进":["qǐng","jìn"],"今天比昨天热多了":["jīntiān","bǐ","zuótiān","rè","duō","le"],"我写得比他快":["wǒ","xiě","de","bǐ","tā","kuài"],"他踢足球比我踢得好":["tā","tī","zúqiú","bǐ","wǒ","tī","de","hǎo"],"我从小就喜欢跑步":["wǒ","cóngxiǎo","jiù","xǐhuan","pǎobù"],"我每天坐两站地铁去学校":["wǒ","měi","tiān","zuò","liǎng","zhàn","dìtiě","qù","xuéxiào"],"今天是晴天":["jīntiān","shì","qíng","tiān"],"我好高兴啊":["wǒ","hǎo","gāoxìng","a"],"我家在三楼":["wǒ","jiā","zài","sān","lóu"],"小时候我经常去外面玩":["xiǎoshíhou","wǒ","jīngcháng","qù","wàimiàn","wán"],"我今天有事情":["wǒ","jīntiān","yǒu","shìqing"],"我正要给你打电话":["wǒ","zhèng","yào","gěi","nǐ","dǎ diànhuà"],"你跑步跑得比我快":["nǐ","pǎobù","pǎo","de","bǐ","wǒ","kuài"],"这件衣服比那件贵多了":["zhè","jiàn","yīfu","bǐ","nà","jiàn","guì","duō","le"],"外面很冷，你别出去了":["wàimiàn","hěn","lěng","nǐ","bié","chūqù","le"],"我送给她一本书":["wǒ","sòng","gěi","tā","yì","běn","shū"],"我哥哥比我大两岁":["wǒ","gēge","bǐ","wǒ","dà","liǎng","suì"],"姐姐比我高一点儿":["jiějie","bǐ","wǒ","gāo","yìdiǎnr"],"王老师教我们汉语":["wáng lǎoshī","jiāo","wǒmen","Hànyǔ"],"请告诉我你的电话":["qǐng","gàosu","wǒ","nǐ","de","diànhuà"],"我希望你新年快乐":["wǒ","xīwàng","nǐ","xīnnián","kuàilè"],"洗手间在哪儿":["xǐshǒujiān","zài","nǎr"],"我们班有二十个学生":["wǒmen","bān","yǒu","èrshí","ge","xuésheng"],"他可能不来了":["tā","kěnéng","bù","lái","le"],"桌子上面有一本书":["zhuōzi","shàngmiàn","yǒu","yì","běn","shū"],"我晚上经常上网":["wǒ","wǎnshang","jīngcháng","shàngwǎng"],"你别那样说":["nǐ","bié","nàyàng","shuō"],"书包里面有什么":["shūbāo","lǐmiàn","yǒu","shénme"],"我花了很多钱":["wǒ","huā","le","hěn","duō","qián"],"楼下站着很多人":["lóu","xià","zhàn","zhe","hěn","duō","rén"],"她的汉语说得多好啊":["tā","de","Hànyǔ","shuō","de","duō","hǎo","a"],"我们走回家去吧":["wǒmen","zǒu","huí","jiā","qù","ba"],"一个人过年多没意思啊":["yí","ge","rén","guònián","duō","méi yìsi","a"],"过年的时候我们一起包饺子":["guònián","de","shíhou","wǒmen","yìqǐ","bāo","jiǎozi"],"那个女孩儿的眼睛很大":["nàge","nǚháir","de","yǎnjing","hěn","dà"],"您姓什么":["nín","xìng","shénme"],"这位是王老师":["zhè","wèi","shì","Wáng lǎoshī"],"我前面坐着一个小孩儿":["wǒ","qiánmiàn","zuò","zhe","yí","ge","xiǎoháir"],"她很喜欢跳舞":["tā","hěn","xǐhuan","tiàowǔ"],"他们家的房子很大":["tāmen","jiā","de","fángzi","hěn","dà"],"同学们都走进教室去了":["tóngxuémen","dōu","zǒu","jìn","jiàoshì","qù","le"],"她跑上来了":["tā","pǎo","shànglái","le"],"我去过两次北京":["wǒ","qù","guo","liǎng","cì","Běijīng"],"我来过这儿两次":["wǒ","lái","guo","zhèr","liǎng","cì"],"你的老师有三十岁吗":["nǐ","de","lǎoshī","yǒu","sānshí","suì","ma"],"我想再去一次中国":["wǒ","xiǎng","zài","qù","yí","cì","Zhōngguó"],"我在网上买了机票":["wǒ","zài","wǎngshang","mǎi","le","jīpiào"],"飞机在天上飞":["fēijī","zài","tiān","shang","fēi"],"我一年没出国了":["wǒ","yì","nián","méi","chūguó","le"],"请写一下你的姓名":["qǐng","xiě","yíxià","nǐ","de","xìngmíng"],"颐和园的门票多少钱":["yíhé Yuán","de","ménpiào","duōshao","qián"],"他好像不在家":["tā","hǎoxiàng","bú","zài","jiā"],"我高中的时候学过汉语":["wǒ","gāozhōng","de","shíhou","xué","guo","Hànyǔ"],"我每天早上七点出门":["wǒ","měi","tiān","zǎoshang","qī","diǎn","chūmén"],"这条路很长":["zhè","tiáo","lù","hěn","cháng"],"那儿有很多鸟":["nàr","yǒu","hěn","duō","niǎo"]}},"W":{"爱":"ài","八":"bā","爸爸":"bàba","吧":"ba","白天":"báitiān","百":"bǎi","半":"bàn","包子":"bāozi","杯":"bēi","杯子":"bēizi","本":"běn","边":"biān","病":"bìng","病人":"bìngrén","不客气":"bú kèqi","不要":"búyào","不":"bù","菜":"cài","茶":"chá","唱":"chàng","超市":"chāoshì","车":"chē","吃":"chī","出租车":"chūzūchē","穿":"chuān","打电话":"dǎ diànhuà","大":"dà","大家":"dàjiā","大学":"dàxué","大学生":"dàxuéshēng","到":"dào","的":"de","弟弟":"dìdi","第":"dì","点":"diǎn","电话":"diànhuà","电脑":"diànnǎo","电视":"diànshì","电影":"diànyǐng","电影院":"diànyǐngyuàn","店":"diàn","东西":"dōngxi","都":"dōu","读":"dú","读书":"dúshū","对":"duì","对不起":"duìbuqǐ","多":"duō","多少":"duōshao","儿子":"érzi","二":"èr","饭":"fàn","饭店":"fàndiàn","房间":"fángjiān","飞机":"fēijī","非常":"fēicháng","分":"fēn","分钟":"fēnzhōng","服务员":"fúwùyuán","高兴":"gāoxìng","哥哥":"gēge","歌":"gē","个":"gè","给":"gěi","工作":"gōngzuò","公司":"gōngsī","狗":"gǒu","贵":"guì","国":"guó","还":"hái","孩子":"háizi","好":"hǎo","好吃":"hǎochī","好看":"hǎokàn","好听":"hǎotīng","好玩儿":"hǎowánr","号":"hào","喝":"hē","和":"hé","很":"hěn","后":"hòu","回":"huí","会":"huì","火车":"huǒchē","机场":"jīchǎng","鸡蛋":"jīdàn","几":"jǐ","家":"jiā","家人":"jiārén","见":"jiàn","件":"jiàn","饺子":"jiǎozi","叫":"jiào","接":"jiē","姐姐":"jiějie","斤":"jīn","今年":"jīnnián","今天":"jīntiān","九":"jiǔ","觉得":"juéde","开":"kāi","开车":"kāichē","看":"kàn","看病":"kànbìng","看见":"kànjiàn","可以":"kěyǐ","课":"kè","口":"kǒu","块":"kuài","来":"lái","老师":"lǎoshī","了":"le","冷":"lěng","里":"lǐ","两":"liǎng","零":"líng","六":"liù","妈妈":"māma","吗":"ma","买":"mǎi","卖":"mài","忙":"máng","猫":"māo","没":"méi","没关系":"méi guānxi","没事":"méishì","没有":"méiyǒu","妹妹":"mèimei","们":"men","米饭":"mǐfàn","面包":"miànbāo","面条儿":"miàntiáor","名字":"míngzi","明年":"míngnián","明天":"míngtiān","哪":"nǎ","哪个":"nǎge","哪里":"nǎlǐ","哪儿":"nǎr","哪些":"nǎxiē","那":"nà","那边":"nàbiān","那个":"nàge","那里":"nàlǐ","那儿":"nàr","那些":"nàxiē","男":"nán","男朋友":"nánpéngyou","呢":"ne","能":"néng","你":"nǐ","你好":"nǐ hǎo","你们":"nǐmen","年":"nián","您":"nín","牛奶":"niúnǎi","女":"nǚ","女儿":"nǚ'ér","女朋友":"nǚpéngyou","女士":"nǚshì","朋友":"péngyou","便宜":"piányi","漂亮":"piàoliang","苹果":"píngguǒ","七":"qī","起床":"qǐchuáng","千":"qiān","前":"qián","前边":"qiánbian","钱":"qián","请":"qǐng","请问":"qǐngwèn","去":"qù","去年":"qùnián","热":"rè","人":"rén","认识":"rènshi","日":"rì","三":"sān","商店":"shāngdiàn","上":"shàng","上班":"shàngbān","上课":"shàngkè","上午":"shàngwǔ","上学":"shàngxué","少":"shǎo","谁":"shéi","什么":"shénme","生病":"shēngbìng","十":"shí","时候":"shíhou","时间":"shíjiān","事":"shì","是":"shì","手机":"shǒujī","售货员":"shòuhuòyuán","书":"shū","书店":"shūdiàn","水":"shuǐ","水果":"shuǐguǒ","睡":"shuì","睡觉":"shuìjiào","说":"shuō","说话":"shuōhuà","四":"sì","岁":"suì","他":"tā","他们":"tāmen","它":"tā","它们":"tāmen","她":"tā","她们":"tāmen","太":"tài","天":"tiān","天气":"tiānqì","听":"tīng","听见":"tīngjiàn","同学":"tóngxué","外":"wài","外边":"wàibian","玩":"wán","晚":"wǎn","晚饭":"wǎnfàn","晚上":"wǎnshang","喂":"wèi","问":"wèn","问题":"wèntí","我":"wǒ","我们":"wǒmen","五":"wǔ","午饭":"wǔfàn","喜欢":"xǐhuan","下":"xià","下班":"xiàbān","下课":"xiàkè","下午":"xiàwǔ","下雨":"xià yǔ","先生":"xiānsheng","现在":"xiànzài","想":"xiǎng","小":"xiǎo","小朋友":"xiǎopéngyǒu","小时":"xiǎoshí","小学":"xiǎoxué","小学生":"xiǎoxuéshēng","些":"xiē","写":"xiě","谢谢":"xièxie","新":"xīn","星期":"xīngqī","星期日":"Xīngqīrì","星期天":"Xīngqītiān","休息":"xiūxi","学":"xué","学生":"xuéshēng","学习":"xuéxí","学校":"xuéxiào","雪":"xuě","药":"yào","要":"yào","也":"yě","一":"yī","一半":"yíbàn","一下":"yíxià","一点儿":"yìdiǎnr","一些":"yìxiē","衣服":"yīfu","医":"yī","医生":"yīshēng","医院":"yīyuàn","椅子":"yǐzi","有":"yǒu","有的":"yǒude","有点儿":"yǒudiǎnr","有些":"yǒuxiē","雨":"yǔ","元":"yuán","月":"yuè","再":"zài","再见":"zàijiàn","在":"zài","早":"zǎo","早饭":"zǎofàn","早上":"zǎoshang","怎么":"zěnme","怎么样":"zěnmeyàng","找":"zhǎo","这":"zhè","这边":"zhèbiān","这个":"zhège","这里":"zhèlǐ","这儿":"zhèr","这些":"zhèxiē","真":"zhēn","正在":"zhèngzài","只":"zhī","知道":"zhīdào","中午":"zhōngwǔ","中学":"zhōngxué","中学生":"zhōngxuéshēng","住":"zhù","桌子":"zhuōzi","字":"zì","昨天":"zuótiān","坐":"zuò","做":"zuò","做饭":"zuò fàn","北京":"Běijīng","大兴机场":"Dàxīng Jīchǎng","法国":"Fǎguó","汉语":"Hànyǔ","汉字":"Hànzì","胡医生":"Hú yīshēng","泰国":"Tàiguó","王老师":"Wáng lǎoshī","西安":"Xī'ān","西安饭店":"Xī'ān Fàndiàn","中国":"Zhōngguó","中文":"Zhōngwén","中国人":"zhōngguórén","法国人":"fǎguórén","不是":"búshì","啊":"a","爱好":"àihào","爱情片":"àiqíngpiàn","白色":"báisè","班":"bān","帮":"bāng","帮忙":"bāngmáng","包":"bāo","本子":"běnzi","比":"bǐ","笔":"bǐ","别":"bié","不错":"búcuò","不好意思":"bù hǎoyìsi","长":"cháng","车站":"chēzhàn","出国":"chūguó","出门":"chūmén","出去":"chūqù","床":"chuáng","词":"cí","次":"cì","从":"cóng","从小":"cóngxiǎo","错":"cuò","打":"dǎ","打车":"dǎchē","打开":"dǎkāi","但":"dàn","但是":"dànshì","蛋糕":"dàngāo","地":"de","得":"de","等":"děng","地铁":"dìtiě","懂":"dǒng","动":"dòng","饭馆":"fànguǎn","房子":"fángzi","飞":"fēi","高":"gāo","高中":"gāozhōng","告诉":"gàosu","个子":"gèzi","跟":"gēn","更":"gèng","公交车":"gōngjiāochē","过":"guo","过来":"guòlái","过年":"guònián","过去":"guòqù","还是":"háishi","好像":"hǎoxiàng","黑色":"hēisè","红色":"hóngsè","后面":"hòumiàn","花":"huā","画":"huà","画笔":"huàbǐ","坏":"huài","回来":"huílái","回去":"huíqù","机票":"jīpiào","记得":"jìde","间":"jiān","教":"jiāo","教室":"jiàoshì","介绍":"jièshào","进":"jìn","进来":"jìnlái","进去":"jìnqù","近":"jìn","经常":"jīngcháng","酒店":"jiǔdiàn","就":"jiù","咖啡":"kāfēi","开始":"kāishǐ","开学":"kāixué","考":"kǎo","考试":"kǎoshì","可能":"kěnéng","裤子":"kùzi","快":"kuài","快乐":"kuàilè","快要":"kuàiyào","篮球":"lánqiú","累":"lèi","离":"lí","礼物":"lǐwù","里面":"lǐmiàn","楼":"lóu","路":"lù","路上":"lùshang","旅游":"lǚyóu","绿色":"lǜsè","慢":"màn","没意思":"méi yìsi","每":"měi","门":"mén","门口":"ménkǒu","门票":"ménpiào","面":"miàn","名":"míng","拿":"ná","那么":"nàme","那样":"nàyàng","奶茶":"nǎichá","奶奶":"nǎinai","男孩儿":"nánháir","鸟":"niǎo","女孩儿":"nǚháir","旁边":"pángbiān","跑":"pǎo","跑步":"pǎobù","票":"piào","妻子":"qīzi","前面":"qiánmiàn","晴":"qíng","球":"qiú","让":"ràng","肉":"ròu","商场":"shāngchǎng","上来":"shànglái","上面":"shàngmiàn","上去":"shàngqù","上网":"shàngwǎng","身体":"shēntǐ","生日":"shēngrì","时":"shí","事情":"shìqing","试":"shì","手":"shǒu","手表":"shǒubiǎo","书包":"shūbāo","舒服":"shūfu","送":"sòng","虽然":"suīrán","所以":"suǒyǐ","疼":"téng","踢":"tī","题":"tí","条":"tiáo","跳舞":"tiàowǔ","头":"tóu","外国":"wàiguó","外面":"wàimiàn","完":"wán","万":"wàn","网上":"wǎngshang","往":"wǎng","忘":"wàng","为什么":"wèi shénme","位":"wèi","希望":"xīwàng","洗":"xǐ","洗手间":"xǐshǒujiān","下来":"xiàlái","下面":"xiàmian","下去":"xiàqù","小孩儿":"xiǎoháir","小时候":"xiǎoshíhou","笑":"xiào","新年":"xīnnián","姓":"xìng","姓名":"xìngmíng","颜色":"yánsè","眼睛":"yǎnjing","药店":"yàodiàn","爷爷":"yéye","一会儿":"yíhuìr","一起":"yìqǐ","已经":"yǐjīng","意思":"yìsi","因为":"yīnwèi","阴":"yīn","游":"yóu","游泳":"yóuyǒng","有时":"yǒushí","有意思":"yǒu yìsi","右":"yòu","右边":"yòubian","鱼":"yú","远":"yuǎn","运动":"yùndòng","站":"zhàn","丈夫":"zhàngfu","这么":"zhème","这样":"zhèyàng","着":"zhe","正":"zhèng","周":"zhōu","准备":"zhǔnbèi","自己":"zìjǐ","走":"zǒu","走路":"zǒulù","足球":"zúqiú","最":"zuì","左":"zuǒ","左边":"zuǒbian","北京烤鸭":"Běijīng Kǎoyā","北京大学":"Běijīng Dàxué","颐和园":"Yíhé Yuán","不会":"búhuì"}};
 const pyOn=()=>GBOOK==="hsk1"||GBOOK==="hsk2";
-const rb=(h,p)=>{if(!pyOn()||!p)return h;const m=String(h).match(/^(.*?)([，。？！、]*)$/);return `<ruby class="gr">${m[1]}<rt>${p}</rt></ruby>${m[2]}`};
+const pyQ=()=>pyOn()&&GLV!=="h",pyO=()=>pyOn()&&GLV==="e";
+const rb=(h,p,on)=>{if(!on||!p)return h;const m=String(h).match(/^(.*?)([，。？！、]*)$/);return `<ruby class="gr">${m[1]}<rt>${p}</rt></ruby>${m[2]}`};
 const sPy=s=>(GPY.S[GBOOK]||{})[s[1].join("")]||[];
 const oPy=(x,s)=>{const sp=sPy(s);const i=s[1].findIndex(t=>t.replace(/[，。？！]/g,"")===x);return i>=0&&sp[i]?sp[i]:(GPY.W[x]||"")};
+const gClean=t=>String(t).replace(/[，。？！]/g,"");
 function gOverlap(a,b){const A=a.split("/").map(x=>x.replace(/\s*\(.*\)/,"").trim()),B=b.split("/").map(x=>x.replace(/\s*\(.*\)/,"").trim());return A.some(x=>B.includes(x))}
-function gDistract(w,pool,n,key){const out=[];for(const x of gsh(pool)){if(out.length>=n)break;if(x[0]===w[0]||x[1]===w[1])continue;if(key==="g"&&(gOverlap(x[2],w[2])||out.some(o=>gOverlap(o[2],x[2]))))continue;if(key==="h"&&(out.some(o=>o[0]===x[0])||gOverlap(x[2],w[2])))continue;out.push(x)}return out}
-function buildGame(L){
+function gDistract(w,pool,n,key,hard){
+  let cand=pool;
+  if(hard){const lw=new Set([...w[0]]);cand=pool.map(x=>[x,([...x[0]].some(c=>lw.has(c))?3:0)+([...x[0]].length===[...w[0]].length?1:0)+(x[3].some(l=>w[3].includes(l))?1:0)+Math.random()*.9]).sort((a,b)=>b[1]-a[1]).map(a=>a[0])}
+  else cand=gsh(pool);
+  const out=[];for(const x of cand){if(out.length>=n)break;if(x[0]===w[0]||x[1]===w[1])continue;if(key==="g"&&(gOverlap(x[2],w[2])||out.some(o=>gOverlap(o[2],x[2]))))continue;if(key==="h"&&(out.some(o=>o[0]===x[0])||gOverlap(x[2],w[2])))continue;out.push(x)}return out}
+function buildGame(L,lv){
+  const no=lv==="e"?2:3,hard=lv==="h";
   const lw=GAME.W.filter(w=>w[3].includes(L)),pool=GAME.W.filter(w=>Math.min(...w[3])<=L),ls=gsh(GAME.S.filter(s=>s[0]===L));
   const pick=(arr,n)=>{if(!arr.length)return[];let o=[];while(o.length<n)o=o.concat(gsh(arr));return o.slice(0,n)};
-  const writeW=pick(lw.filter(w=>[...w[0]].length<=3&&[...w[0]].every(c=>!SD||SD[c])),GPER),meanW=pick(lw,GPER),pyW=pick(lw.filter(w=>w[6].length>=3),GPER);
+  const writeW=pick(lw.filter(w=>[...w[0]].length<=3&&[...w[0]].every(c=>!SD||SD[c])),GPER),meanW=pick(lw,GPER),pyW=pick(lw.filter(w=>w[6].length>=no),GPER);
   const ordS=Array.from({length:GPER},(_,i)=>ls[i%ls.length]),fillS=Array.from({length:GPER},(_,i)=>ls[(i+GPER)%ls.length]);
-  const Q={write:writeW.map(w=>({t:"write",w})),mean:meanW.map((w,i)=>({t:"mean",w,dir:i%2,ds:gDistract(w,pool,3,i%2?"h":"g")})),py:pyW.map(w=>({t:"py",w,opts:gsh([w[1]].concat(w[6].slice(0,3)))})),order:ordS.map(s=>({t:"order",s})),fill:fillS.map(s=>({t:"fill",s,opts:gsh([s[1][s[5]].replace(/[，。？！]/g,"")].concat(s[6]))}))};
+  const Q={write:writeW.map(w=>({t:"write",w})),
+    mean:meanW.map((w,i)=>({t:"mean",w,dir:i%2,ds:gDistract(w,pool,no,i%2?"h":"g",hard)})),
+    py:pyW.map(w=>({t:"py",w,opts:gsh([w[1]].concat(gsh(w[6]).slice(0,no)))})),
+    order:ordS.map(s=>{const inS=new Set(s[1].map(gClean));return {t:"order",s,x:hard?gsh((s[6]||[]).map(gClean).filter(x=>x&&!inS.has(x))).slice(0,2):[]}}),
+    fill:fillS.map(s=>({t:"fill",s,opts:gsh([gClean(s[1][s[5]])].concat(gsh(s[6]||[]).slice(0,no)))}))};
   Object.values(Q).forEach(a=>a.sort(()=>Math.random()-.5));
   const types=Object.keys(Q),seq=[];let last=null;
   for(let b=0;b<GPER;b++){let p;do{p=gsh(types)}while(p[0]===last);seq.push(...p);last=p[p.length-1]}
   const c={write:0,mean:0,py:0,order:0,fill:0};
   return seq.map(t=>Q[t][c[t]++]);
 }
-function startGame(L){
-  GL=L;$("gmenu").style.display="none";$("gplay").style.display="block";
-  $("gbody").innerHTML="<div class='card mut' style='text-align:center'>กำลังเตรียมแบบฝึกหัด…</div>";
-  const go=()=>{GQ=buildGame(L);GI=0;GS=0;GMISS=[];showQ()};
-  loadSD().then(go).catch(go);
+function startGame(L,lv){
+  gStopT();GL=L;GLV=LV[lv]?lv:GLV;GPK=0;$("gmenu").style.display="none";$("gplay").style.display="block";
+  $("gbody").innerHTML="<div class='card mut' style='text-align:center'>กำลังเตรียมแบบฝึกหัด…</div>";$("gtop").innerHTML="";
+  const go=()=>{GQ=buildGame(L,GLV);GI=0;GS=0;GMISS=[];GT0=Date.now();showQ()};
+  loadSD().then(go).catch(go);scrollTo(0,0);
 }
 function gHead(){
-  $("gtop").innerHTML=`<button class="btn alt sm" onclick="gQuit()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${GL}</b><span class="mut">ข้อ ${Math.min(GI+1,GN)}/${GN} · ถูก ${GS}</span></div>`;
+  $("gtop").innerHTML=`<button class="btn alt sm" onclick="gQuit()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${GL} · ${LV[GLV].ic} ${LV[GLV].n}</b><span class="mut">ข้อ ${Math.min(GI+1,GN)}/${GN} · ถูก ${GS}</span></div>${GLV==="h"&&!GDONE&&GI<GN?`<span class="gtime" id="gtime">⏱ ${GTL}</span>`:""}`;
   $("gbar").style.width=(GI/GN*100)+"%";
 }
-function gQuit(){WG++;WB.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}});WB=[];try{speechSynthesis.cancel()}catch(e){}renderGame()}
+/* จับเวลา (ระดับอัจฉริยะ) */
+function gStopT(){if(GTM){clearInterval(GTM);GTM=null}}
+function gStartT(sec){gStopT();if(GLV!=="h")return;GTL=sec;const qi=GI;
+  GTM=setInterval(()=>{if(GDONE||GI!==qi){gStopT();return}GTL--;const e=$("gtime");if(e){e.textContent="⏱ "+GTL;e.classList.toggle("low",GTL<=5)}if(GTL<=0){gStopT();gTimeout()}},1000)}
+function gTimeout(){
+  if(GDONE)return;const q=GQ[GI],tm=`<div class="gtmo">หมดเวลา ⏱</div>`;
+  if(q.t==="write")return gGiveUp(tm);
+  if(q.t==="order"){document.querySelectorAll("#gline .gtile,#gtiles .gtile").forEach(x=>x.disabled=true);$("gchk").style.display="none";gFeedback(false,tm+sInfo(q.s));say(q.s[1].join(""));return}
+  document.querySelectorAll("#gbody .opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("ok")});
+  if(q.t==="fill"){const s=q.s,ans=gClean(s[1][s[5]]);const bl=document.querySelector(".gblank");bl.innerHTML=rb(ans,oPy(ans,s),pyQ());bl.classList.add("on");gFeedback(false,tm+sInfo(s));say(s[1].join(""))}
+  else{gFeedback(false,tm+wInfo(q.w));say(q.w[0])}
+}
+function gQuit(){gStopT();WG++;WB.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}});WB=[];try{speechSynthesis.cancel()}catch(e){}renderGame()}
 function gFeedback(ok,html){
-  GDONE=true;if(ok)GS++;else GMISS.push(GQ[GI]);
+  gStopT();GDONE=true;if(ok)GS++;else GMISS.push(GQ[GI]);
   $("gfb").innerHTML=`<div class="gfb ${ok?"ok":"no"}"><b>${ok?"ถูกต้อง! ✓":"ยังไม่ถูก ✗"}</b>${html||""}</div><button class="btn gnext" onclick="nextQ()">${GI+1>=GN?"ดูผลคะแนน":"ข้อถัดไป ›"}</button>`;
   gHead();$("gbar").style.width=((GI+1)/GN*100)+"%";
   document.querySelectorAll(".gspk.after").forEach(b=>b.style.display=ZHV?"":"none");
@@ -1220,65 +1313,71 @@ function gFeedback(ok,html){
 const wInfo=w=>`<div class="gans"><span class="han">${w[0]}</span> <span class="gpy">${w[1]}</span> ${spk(w[0])}<div>${w[2]}</div></div>`;
 const sInfo=s=>`<div class="gans"><span class="han">${s[1].join("")}${s[2]}</span> ${spk(s[1].join(""))}<div class="gpy">${s[3]}</div><div>${s[4]}</div></div>`;
 function nextQ(){GI++;if(GI>=GN)return gEnd();showQ()}
+const GTS={mean:20,py:20,fill:25,order:45};
 function showQ(){
   GDONE=false;WG++;WB.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}});WB=[];
-  const q=GQ[GI];gHead();
+  const q=GQ[GI],PQ=pyQ(),PO=pyO();GTL=q.t==="write"?25*[...q.w[0]].length:GTS[q.t];gHead();
   let h=`<div class="gtype">${GTYPE[q.t]}</div>`;
   if(q.t==="write"){const w=q.w;
-    h+=`<div class="gq">เขียนคำว่า <b>“${w[2]}”</b></div><div class="gsub"><span class="gpy">${w[1]}</span> ${spk(w[0])}</div><div class="cbr" id="gcb"></div><div class="mut" id="gwst" style="text-align:center;font-size:13px;min-height:20px">ใช้นิ้วเขียนในช่องตามลำดับขีด</div><div class="row" style="justify-content:center;margin:6px 0"><button class="btn alt sm" onclick="gGiveUp()">ดูเฉลย</button></div>`;
+    h+=`<div class="gq">เขียนคำว่า <b>“${w[2]}”</b></div><div class="gsub">${GLV==="h"?"":`<span class="gpy">${w[1]}</span>`} ${spk(w[0])}</div><div class="cbr" id="gcb"></div><div class="mut" id="gwst" style="text-align:center;font-size:13px;min-height:20px">ใช้นิ้วเขียนในช่องตามลำดับขีด</div><div class="row" style="justify-content:center;margin:6px 0"><button class="btn alt sm" onclick="gGiveUp()">ดูเฉลย</button></div>`;
   }else if(q.t==="mean"){const w=q.w,o=gsh([w].concat(q.ds));
-    if(q.dir===0){h+=`<div class="gq">คำนี้แปลว่าอะไร?</div><div class="gbig han">${rb(w[0],w[1])}</div><div class="gsub">${spk(w[0])}</div><div class="gops">${o.map(x=>`<button class="opt" data-ok="${x===w?1:0}" onclick="gPick(this)">${x[2]}</button>`).join("")}</div>`}
-    else{h+=`<div class="gq">ข้อใดแปลว่า <b>“${w[2]}”</b></div><div class="gops g2">${o.map(x=>`<button class="opt han gh" data-ok="${x===w?1:0}" onclick="gPick(this)">${rb(x[0],x[1])}</button>`).join("")}</div>`}
+    if(q.dir===0){h+=`<div class="gq">คำนี้แปลว่าอะไร?</div><div class="gbig han">${rb(w[0],w[1],PQ)}</div><div class="gsub">${spk(w[0])}</div><div class="gops">${o.map(x=>`<button class="opt" data-ok="${x===w?1:0}" onclick="gPick(this)">${x[2]}</button>`).join("")}</div>`}
+    else{h+=`<div class="gq">ข้อใดแปลว่า <b>“${w[2]}”</b></div><div class="gops g2">${o.map(x=>`<button class="opt han gh" data-ok="${x===w?1:0}" onclick="gPick(this)">${rb(x[0],x[1],PO)}</button>`).join("")}</div>`}
   }else if(q.t==="py"){const w=q.w;
     h+=`<div class="gq">พินอินของคำนี้ข้อใดถูกต้อง?</div><div class="gbig han">${w[0]}</div><div class="gsub">${w[2]} ${spk(w[0],true).replace('class="gspk"','class="gspk after"')}</div><div class="gops g2">${q.opts.map(x=>`<button class="opt gpyo" data-ok="${x===w[1]?1:0}" onclick="gPick(this)">${x}</button>`).join("")}</div>`;
-  }else if(q.t==="order"){const s=q.s,sp=sPy(s);let t=gsh(s[1].map((x,i)=>i));if(t.length>1&&t.every((x,i)=>x===i))t.reverse();
-    h+=`<div class="gq">เรียงคำให้เป็นประโยค</div><div class="gsub">“${s[4]}”</div><div class="gline" id="gline"></div><div class="gtiles" id="gtiles">${t.map(i=>`<button class="gtile han" data-i="${i}" onclick="gTile(this)">${rb(s[1][i],sp[i])}</button>`).join("")}</div><div class="row" style="justify-content:center"><button class="btn" id="gchk" disabled onclick="gCheckOrder()">ตรวจคำตอบ</button></div>`;
+  }else if(q.t==="order"){const s=q.s,sp=sPy(s);
+    const tiles=s[1].map((x,i)=>({x,p:sp[i]})).concat((q.x||[]).map(x=>({x,p:GPY.W[x]||""})));let t=gsh(tiles.map((_,i)=>i));if(t.length>1&&t.every((x,i)=>x===i))t.reverse();
+    h+=`<div class="gq">เรียงคำให้เป็นประโยค</div><div class="gsub">“${s[4]}”${q.x&&q.x.length?`<div class="mut" style="font-size:13px">มีคำหลอกปนอยู่ ${q.x.length} คำ ไม่ต้องใช้ทุกคำ</div>`:""}</div><div class="gline" id="gline"></div><div class="gtiles" id="gtiles">${t.map(i=>`<button class="gtile han" data-t="${esc(tiles[i].x)}" onclick="gTile(this)">${rb(tiles[i].x,tiles[i].p,PO)}</button>`).join("")}</div><div class="row" style="justify-content:center"><button class="btn" id="gchk" disabled onclick="gCheckOrder()">ตรวจคำตอบ</button></div>`;
   }else if(q.t==="fill"){const s=q.s,sp=sPy(s);
-    h+=`<div class="gq">เลือกคำมาเติมในช่องว่าง</div><div class="gsent han">${s[1].map((x,i)=>i===s[5]?`<span class="gblank">${"＿".repeat(2)}</span>${(x.match(/[，]$/)||[""])[0]}`:rb(x,sp[i])).join("")}${s[2]}</div><div class="gsub">“${s[4]}”</div><div class="gops g2">${q.opts.map(x=>`<button class="opt han gh" data-ok="${x===s[1][s[5]].replace(/[，。？！]/g,"")?1:0}" onclick="gPick(this)">${rb(x,oPy(x,s))}</button>`).join("")}</div>`;
+    h+=`<div class="gq">เลือกคำมาเติมในช่องว่าง</div><div class="gsent han">${s[1].map((x,i)=>i===s[5]?`<span class="gblank">${"＿".repeat(2)}</span>${(x.match(/[，]$/)||[""])[0]}`:rb(x,sp[i],PQ)).join("")}${s[2]}</div>${GLV==="h"?"":`<div class="gsub">“${s[4]}”</div>`}<div class="gops g2">${q.opts.map(x=>`<button class="opt han gh" data-ok="${x===gClean(s[1][s[5]])?1:0}" onclick="gPick(this)">${rb(x,oPy(x,s),PO)}</button>`).join("")}</div>`;
   }
   $("gbody").innerHTML=h+`<div id="gfb"></div>`;
   if(q.t==="write")gWrite(q.w);
+  gStartT(GTL);
 }
 function gPick(b){
   if(GDONE)return;const q=GQ[GI],ok=b.dataset.ok==="1";
   document.querySelectorAll("#gbody .opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("ok")});if(!ok)b.classList.add("no");
-  if(q.t==="fill"){const s=q.s,ans=s[1][s[5]].replace(/[，。？！]/g,"");document.querySelector(".gblank").innerHTML=rb(ans,oPy(ans,s));document.querySelector(".gblank").classList.add("on");gFeedback(ok,sInfo(s));say(s[1].join(""))}
+  if(q.t==="fill"){const s=q.s,ans=gClean(s[1][s[5]]);document.querySelector(".gblank").innerHTML=rb(ans,oPy(ans,s),pyQ());document.querySelector(".gblank").classList.add("on");gFeedback(ok,sInfo(s));say(s[1].join(""))}
   else{gFeedback(ok,wInfo(q.w));say(q.w[0])}
 }
 function gTile(b){
-  if(GDONE)return;const line=$("gline"),pool=$("gtiles");
+  if(GDONE)return;const line=$("gline"),pool=$("gtiles"),q=GQ[GI];
   (b.parentNode===pool?line:pool).appendChild(b);
-  $("gchk").disabled=pool.children.length>0;
+  $("gchk").disabled=q.x&&q.x.length?line.children.length<q.s[1].length:pool.children.length>0;
 }
 function gCheckOrder(){
-  if(GDONE)return;const s=GQ[GI].s,got=[...$("gline").children].map(x=>s[1][+x.dataset.i]).join(""),ok=got===s[1].join("");
-  [...$("gline").children].forEach(x=>{x.disabled=true;x.classList.add(ok?"ok":"no")});$("gchk").style.display="none";
+  if(GDONE)return;const s=GQ[GI].s,got=[...$("gline").children].map(x=>x.dataset.t).join(""),ok=got===s[1].join("");
+  [...$("gline").children].forEach(x=>{x.disabled=true;x.classList.add(ok?"ok":"no")});[...$("gtiles").children].forEach(x=>x.disabled=true);$("gchk").style.display="none";
   gFeedback(ok,sInfo(s));say(s[1].join(""));
 }
+const GWR={e:{hint:2,len:1.5,ol:true,mx:3,txt:"ผิด 2 ครั้งจะมีคำใบ้"},m:{hint:3,len:1.3,ol:false,mx:2,txt:"ผิด 3 ครั้งจะมีคำใบ้"},h:{hint:false,len:1.1,ol:false,mx:1,txt:"ไม่มีคำใบ้"}};
 function gWrite(w){
   const ch=[...w[0]],cs=getComputedStyle(document.body),fg=cs.getPropertyValue("--fg").trim()||"#222",bd=cs.getPropertyValue("--bd").trim()||"#ddd",seal=cs.getPropertyValue("--seal").trim()||"#b73532";
-  const cw=$("gbody").clientWidth||340,n=ch.length,sz=Math.max(96,Math.min(150,Math.floor((cw-(n-1)*10)/n)));let miss=0;
+  const cw=$("gbody").clientWidth||340,n=ch.length,sz=Math.max(96,Math.min(150,Math.floor((cw-(n-1)*10)/n)));let miss=0;const R=GWR[GLV]||GWR.m;
   if(!SD||!ch.every(c=>SD[c])){$("gwst").textContent="เครื่องนี้โหลดข้อมูลลำดับขีดไม่ได้ ข้ามข้อนี้";return gFeedback(true,wInfo(w))}
   WB=ch.map((c,k)=>{const el=document.createElement("div");el.className="cbx q";el.style.width=el.style.height=sz+"px";$("gcb").appendChild(el);
-    const hw=HanziWriter.create(el,c,{width:sz,height:sz,padding:8,showCharacter:false,showOutline:false,strokeColor:fg,outlineColor:bd,drawingColor:seal,highlightColor:seal,drawingWidth:6,charDataLoader:(x,ok)=>ok(SD[x])});return{ch:c,el,hw,mode:"quiz"}});
+    const hw=HanziWriter.create(el,c,{width:sz,height:sz,padding:8,showCharacter:false,showOutline:R.ol,strokeColor:fg,outlineColor:bd,drawingColor:seal,highlightColor:seal,drawingWidth:6,charDataLoader:(x,ok)=>ok(SD[x])});return{ch:c,el,hw,mode:"quiz"}});
   const run=k=>{const o=WB[k];if(!o||GDONE)return;WB.forEach((x,j)=>x.el.classList.toggle("act",j===k));
-    gwst(`เขียนตัวที่ ${k+1}/${n} (ผิด 3 ครั้งจะมีคำใบ้)`);
-    o.hw.quiz({showHintAfterMisses:3,leniency:1.3,onMistake:()=>{miss++},onComplete:()=>{o.el.classList.remove("act");o.el.classList.add("done");if(k+1<n)setTimeout(()=>run(k+1),350);else{const ok=miss<=3*n;if(!ok)WB.forEach(x=>x.el.classList.remove("done"));gFeedback(ok,wInfo(w)+(ok?"":`<div class="mut">เขียนผิดเกินกำหนด (${miss} ครั้ง) ลองฝึกในพจนานุกรมเพิ่มนะ</div>`));say(w[0])}}})};
+    gwst(`เขียนตัวที่ ${k+1}/${n} (${R.txt})`);
+    o.hw.quiz({showHintAfterMisses:R.hint,leniency:R.len,onMistake:()=>{miss++},onComplete:()=>{if(GDONE)return;o.el.classList.remove("act");o.el.classList.add("done");if(k+1<n)setTimeout(()=>run(k+1),350);else{const ok=miss<=R.mx*n;if(!ok)WB.forEach(x=>x.el.classList.remove("done"));gFeedback(ok,wInfo(w)+(ok?"":`<div class="mut">เขียนผิดเกินกำหนด (${miss} ครั้ง) ลองฝึกในพจนานุกรมเพิ่มนะ</div>`));say(w[0])}}})};
   run(0);
 }
-function gGiveUp(){
+function gGiveUp(pre){
   if(GDONE)return;WG++;const q=GQ[GI];
   WB.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}o.el.classList.remove("act","done");o.hw.showOutline();o.hw.hideCharacter()});
   let i=0;const g=WG,nx=()=>{if(g!==WG||i>=WB.length)return;WB[i++].hw.animateCharacter({onComplete:nx})};nx();
-  gFeedback(false,wInfo(q.w));say(q.w[0]);
+  gFeedback(false,(typeof pre==="string"?pre:"")+wInfo(q.w));say(q.w[0]);
 }
 function gEnd(){
-  const st=gstars(GS),old=gget(GL);if(!old||GS>old.b)gput(GL,{b:GS,s:Math.max(st,old?old.s:0)});
-  $("gbar").style.width="100%";$("gtop").innerHTML=`<button class="btn alt sm" onclick="gQuit()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${GL}</b><span class="mut">จบแล้ว</span></div>`;
+  gStopT();const st=gstars(GS),old=gbest(GL,GLV),L=LV[GLV];
   const seen=new Set(),rev=GMISS.filter(q=>{const k=q.w?q.w[0]:q.s[1].join("");if(seen.has(k))return false;seen.add(k);return true});
-  $("gbody").innerHTML=`<div class="gend"><div class="gstbig">${gstarHTML(st)}</div><div class="gscore">${GS}<small>/${GN}</small></div><div class="mut">${st===3?"ยอดเยี่ยม! เข้าใจบทนี้ดีมาก":st===2?"เก่งมาก! อีกนิดเดียวจะได้ 3 ดาว":st===1?"ผ่านแล้ว ลองทบทวนคำที่ผิดอีกครั้ง":"ลองทบทวนบทเรียนแล้วเล่นใหม่อีกครั้งนะ"}</div></div>
+  GHIST.push({d:Date.now(),b:GBOOK,L:GL,lv:GLV,s:GS,n:GN,t:Math.round((Date.now()-GT0)/1000),m:rev.map(q=>q.w?q.w[0]:q.s[1].join("")+q.s[2])});
+  if(GHIST.length>400)GHIST=GHIST.slice(-400);try{ghPersist()}catch(e){console.error(e)}
+  $("gbar").style.width="100%";$("gtop").innerHTML=`<button class="btn alt sm" onclick="gQuit()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${GL} · ${L.ic} ${L.n}</b><span class="mut">จบแล้ว</span></div>`;
+  $("gbody").innerHTML=`<div class="gend"><div class="gstbig">${gicons(GLV,st)}</div><div class="gscore">${GS}<small>/${GN}</small></div>${GS>old&&old>=0?`<div class="tag">ทำลายสถิติเดิม ${old}/30 🎉</div>`:""}<div class="mut">${st===3?"ยอดเยี่ยม! ได้ครบ 3 "+L.ic+" แล้ว":st===2?"เก่งมาก! อีกนิดเดียวจะได้ 3 "+L.ic:st===1?"ผ่านแล้ว ลองทบทวนคำที่ผิดอีกครั้ง":"ลองทบทวนบทเรียนแล้วเล่นใหม่อีกครั้งนะ"}${st===3&&GLV!=="h"?` · ลองระดับ${LV[GLV==="e"?"m":"h"].n}ดูไหม?`:""}</div></div>
   ${rev.length?`<h3 style="margin-top:16px">ทบทวนข้อที่ผิด</h3>${rev.map(q=>`<div class="card grev">${q.w?wInfo(q.w):sInfo(q.s)}</div>`).join("")}`:""}
-  <div class="row" style="justify-content:center"><button class="btn" onclick="startGame(${GL})">เล่นอีกครั้ง</button>${GL<(GAME.O||0)+GAME.T.length?`<button class="btn alt" onclick="startGame(${GL+1})">ไปบทที่ ${GL+1} ›</button>`:""}<button class="btn alt" onclick="gQuit()">เลือกบท</button></div>`;
+  <div class="row" style="justify-content:center"><button class="btn" onclick="startGame(${GL},'${GLV}')">เล่นอีกครั้ง</button>${st===3&&GLV!=="h"?`<button class="btn alt" onclick="startGame(${GL},'${GLV==="e"?"m":"h"}')">ระดับ${LV[GLV==="e"?"m":"h"].n} ${LV[GLV==="e"?"m":"h"].ic}</button>`:""}${GL<(GAME.O||0)+GAME.T.length?`<button class="btn alt" onclick="startGame(${GL+1},'${GLV}')">ไปบทที่ ${GL+1} ›</button>`:""}<button class="btn alt" onclick="gPickLv(${GL})">เปลี่ยนระดับ</button><button class="btn alt" onclick="gQuit()">เลือกบท</button></div>`;
   zhVoice();
 }
 
@@ -1531,8 +1630,9 @@ function navSnap(){
   if(sc==="s-admin")o.at=AT;
   if(sc==="s-dash"){const b=document.querySelector("#tabs button.on");o.t=b?b.dataset.t:"p-today";
     if(o.t==="p-learn"&&vis("lview"))o.sec=SECK;
-    if(o.t==="p-game"&&vis("gplay"))o.gl=GL;}
+    if(o.t==="p-game"){if(vis("gplay")){o.gl=GL;o.lv=GLV}else if(GPK)o.gp=GPK}}
   if(vis("wd"))o.wd=CI;
+  if(vis("ghm"))o.ghm=1;
   return o;
 }
 const navEq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -1553,6 +1653,7 @@ function navRestore(s){
     if(["s-dash","s-prof","s-pick"].includes(sc)&&!ST)sc="s-home";
     if(sc==="s-admin"&&(typeof ROLE!=="undefined"?ROLE!=="admin":!AUTH))sc="s-home";
     if(vis("wd")&&s.wd==null)$("wd").style.display="none";
+    if(vis("ghm")&&!s.ghm)$("ghm").style.display="none";
     if(sc==="s-course"&&s.ck&&s.ck!==CK){CK=s.ck;FM="v";drawCourse()}
     if(sc==="s-admin"&&s.at&&s.at!==AT){AT=s.at;renderAdmin()}
     if((document.querySelector(".scr.on")||{}).id!==sc){document.querySelectorAll(".scr").forEach(x=>x.classList.toggle("on",x.id===sc));scrollTo(0,0)}
@@ -1560,7 +1661,7 @@ function navRestore(s){
       const b=document.querySelector(`#tabs button[data-t="${s.t}"]`),cur=document.querySelector("#tabs button.on");
       if(b&&b!==cur)b.click();
       if(s.t==="p-learn"){if(s.sec&&!(vis("lview")&&SECK===s.sec))openSec(s.sec);else if(!s.sec&&vis("lview"))renderMenu()}
-      if(s.t==="p-game"){if(s.gl&&!(vis("gplay")&&GL===s.gl))startGame(s.gl);else if(!s.gl&&vis("gplay"))gQuit()}
+      if(s.t==="p-game"){if(s.gl){if(!(vis("gplay")&&GL===s.gl&&GLV===s.lv))startGame(s.gl,s.lv)}else if(s.gp){if(GPK!==s.gp||vis("gplay")){gQuit();gPickLv(s.gp)}}else if(vis("gplay")||GPK)gQuit()}
     }
     if(s.wd!=null&&!vis("wd"))showW(s.wd);
   }catch(e){console.error(e)}
@@ -1710,7 +1811,14 @@ async function loadStudentData(){
   await Promise.all([loadVideos().catch(e=>console.error(e)),loadBooks(true).catch(e=>console.error(e))]);
   const s=ST.state||{};Object.keys(DONE).forEach(k=>delete DONE[k]);
   Object.entries(s.done||{}).forEach(([k,a])=>DONE[k]=new Set(a));
+  GHIST=Array.isArray(s.gh)?s.gh:[];
 }
+/* ประวัติแบบฝึกหัด: เก็บในบัญชีนักเรียน (state.gh) */
+window.ghPersist=async function(){
+  if(ROLE!=="student"||!ST)return;
+  ST.state=Object.assign({},ST.state,{gh:GHIST.slice(-400)});
+  const {error}=await sb.from("students").update({state:ST.state}).eq("id",ST.id);if(error)console.error(error);
+};
 let saveT=null;
 function saveState(){
   if(ROLE!=="student"||!ST)return;clearTimeout(saveT);
@@ -1741,7 +1849,7 @@ window.login=async function(){
     $("lpw").value="";const m=await startStudent(r);if(m)e.textContent=m;
   }catch(x){fail(x)}finally{busy(btn,false)}
 };
-window.studentLogout=async function(){ROLE=null;ST=null;await sb.auth.signOut();go("s-home")};
+window.studentLogout=async function(){ROLE=null;ST=null;GHIST=[];await sb.auth.signOut();go("s-home")};
 const _go=window.go;
 window.go=function(id){
   if(id==="s-login"&&ROLE===null&&!window._resume){
