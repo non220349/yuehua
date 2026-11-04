@@ -1329,7 +1329,7 @@ function showQ(){
     const tiles=s[1].map((x,i)=>({x,p:sp[i]})).concat((q.x||[]).map(x=>({x,p:GPY.W[x]||""})));let t=gsh(tiles.map((_,i)=>i));if(t.length>1&&t.every((x,i)=>x===i))t.reverse();
     h+=`<div class="gq">เรียงคำให้เป็นประโยค</div><div class="gsub">“${s[4]}”${q.x&&q.x.length?`<div class="mut" style="font-size:13px">มีคำหลอกปนอยู่ ${q.x.length} คำ ไม่ต้องใช้ทุกคำ</div>`:""}</div><div class="gline" id="gline"></div><div class="gtiles" id="gtiles">${t.map(i=>`<button class="gtile han" data-t="${esc(tiles[i].x)}" onclick="gTile(this)">${rb(tiles[i].x,tiles[i].p,PO)}</button>`).join("")}</div><div class="row" style="justify-content:center"><button class="btn" id="gchk" disabled onclick="gCheckOrder()">ตรวจคำตอบ</button></div>`;
   }else if(q.t==="fill"){const s=q.s,sp=sPy(s);
-    h+=`<div class="gq">เลือกคำมาเติมในช่องว่าง</div><div class="gsent han">${s[1].map((x,i)=>i===s[5]?`<span class="gblank">${"＿".repeat(2)}</span>${(x.match(/[，]$/)||[""])[0]}`:rb(x,sp[i],PQ)).join("")}${s[2]}</div>${GLV==="h"?"":`<div class="gsub">“${s[4]}”</div>`}<div class="gops g2">${q.opts.map(x=>`<button class="opt han gh" data-ok="${x===gClean(s[1][s[5]])?1:0}" onclick="gPick(this)">${rb(x,oPy(x,s),PO)}</button>`).join("")}</div>`;
+    h+=`<div class="gq">เลือกคำมาเติมในช่องว่าง</div><div class="gsent han">${s[1].map((x,i)=>i===s[5]?`<span class="gblank">${"＿".repeat(2)}</span>${(x.match(/[，]$/)||[""])[0]}`:rb(x,sp[i],PQ)).join("")}${s[2]}</div><div class="gsub">“${s[4]}”</div><div class="gops g2">${q.opts.map(x=>`<button class="opt han gh" data-ok="${x===gClean(s[1][s[5]])?1:0}" onclick="gPick(this)">${rb(x,oPy(x,s),PO)}</button>`).join("")}</div>`;
   }
   $("gbody").innerHTML=h+`<div id="gfb"></div>`;
   if(q.t==="write")gWrite(q.w);
