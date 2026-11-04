@@ -903,11 +903,12 @@ function rmPh(c){SUBS.find(x=>x.code===c).pic="";renderAdmin()}
 function selTog(c){SEL.has(c)?SEL.delete(c):SEL.add(c);renderAdmin()}
 function selAll(){SUBS.forEach(r=>{if(r.st!=="รอตรวจสอบ"&&!r.sus)SEL.add(r.code)});renderAdmin()}
 function susTog(c){const r=SUBS.find(x=>x.code===c);r.sus=!r.sus;SEL.delete(c);renderAdmin()}
+const meetUrl=t=>{t=String(t||"").trim();let m=t.match(/meet\.google\.com\/(?:lookup\/)?([a-z0-9-]{3,})/i)||t.match(/^([a-z]{3,4}-[a-z]{4}-[a-z]{3,4})$/i);return m?"https://meet.google.com/"+m[1].toLowerCase():""};
 function sendLive(){
-  const t=$("lt").value.trim(),l=$("ll").value.trim(),w=$("lw").value,m=$("lm").value.trim();
+  const t=$("lt").value.trim(),l=meetUrl($("ll").value),w=$("lw").value,m=$("lm").value.trim();
   const to=SUBS.filter(r=>SEL.has(r.code)&&!r.sus);
   if(!t||!w){alert("กรุณากรอกหัวข้อและวันเวลา");return}
-  if(!/^https:\/\/meet\.google\.com\/[a-z0-9-]+$/i.test(l)){alert("ลิงก์ต้องขึ้นต้นด้วย https://meet.google.com/");return}
+  if(!l){alert("วางลิงก์ Google Meet เช่น meet.google.com/abc-defg-hij");$("ll").focus();return}$("ll").value=l;
   if(!to.length){alert("ยังไม่ได้เลือกนักเรียน ไปที่แท็บ นักเรียน แล้วติ๊กเลือกก่อน");return}
   const when=new Date(w).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"});
   LIVES.unshift({t,when,l});
@@ -1902,11 +1903,12 @@ window.openApp=async function(c){const r=byCode(c);if(!r)return;
 window.lvDone=async function(id){const {error}=await sb.from("leaves").update({status:"scheduled"}).eq("id",id);if(error){fail(error);return}const l=LEAVES.find(x=>x.id===id);if(l)l.st="นัดแล้ว";renderAdmin()};
 
 /* ---------- แอดมิน: ไลฟ์ ---------- */
+const meetUrl=t=>{t=String(t||"").trim();let m=t.match(/meet\.google\.com\/(?:lookup\/)?([a-z0-9-]{3,})/i)||t.match(/^([a-z]{3,4}-[a-z]{4}-[a-z]{3,4})$/i);return m?"https://meet.google.com/"+m[1].toLowerCase():""};
 window.sendLive=async function(){
-  const t=$("lt").value.trim(),l=$("ll").value.trim(),w=$("lw").value,m=$("lm").value.trim();
+  const t=$("lt").value.trim(),l=meetUrl($("ll").value),w=$("lw").value,m=$("lm").value.trim();
   const to=SUBS.filter(r=>SEL.has(r.code)&&!r.sus&&r.st!=="รอตรวจสอบ");
   if(!t||!w){alert("กรุณากรอกหัวข้อและวันเวลา");return}
-  if(!/^https:\/\/meet\.google\.com\/[a-z0-9-]+$/i.test(l)){alert("ลิงก์ต้องขึ้นต้นด้วย https://meet.google.com/");return}
+  if(!l){alert("วางลิงก์ Google Meet เช่น meet.google.com/abc-defg-hij");$("ll").focus();return}$("ll").value=l;
   if(!to.length){alert("ยังไม่ได้เลือกนักเรียน ไปที่แท็บ นักเรียน แล้วติ๊กเลือกก่อน");return}
   const at=new Date(w);if(!(+at>Date.now())){alert("กรุณาเลือกวันเวลาที่ยังไม่ผ่านไป");return}
   const btn=document.querySelector("#a-live .btn");busy(btn,true,"กำลังส่ง…");
