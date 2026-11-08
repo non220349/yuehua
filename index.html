@@ -375,6 +375,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .ghe{text-align:center;padding:14px 4px;font-size:14px}
 .ghm-o{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow:auto}
 .ghm-in{background:var(--bg);border-radius:16px;padding:16px;width:100%;max-width:640px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.toolg{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:10px}.toolc{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg);border:1px solid var(--bd)}.toolc:hover{border-color:var(--seal)}.toolc>span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:4px}.toolc b{font-size:17px}.tooli{font-size:34px}.toolgo{color:var(--seal);font-weight:700;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -480,8 +481,15 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b></div>
-  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">หนังสือ</button><button data-t="a-rs">ตารางนักเรียน</button></div>
+  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">หนังสือ</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-tools">เครื่องมือ</button></div>
   <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
+  <div class="pane" id="a-tools">
+    <div class="toolg">
+      <a class="card toolc" href="tools/pdf/"><span class="tooli">📄</span><span><b>รวมไฟล์ PDF</b><small class="mut">รวมหลายไฟล์ เรียง/หมุน/เลือกหน้า ใส่เลขหน้า แล้วดาวน์โหลดเป็นไฟล์เดียว</small></span><span class="toolgo">เปิด ›</span></a>
+      <a class="card toolc" href="tools/worksheet/"><span class="tooli">✍️</span><span><b>ตัวทำสมุดคัดจีน</b><small class="mut">ใส่คำศัพท์หรือนำเข้า .txt ได้ตารางคัดพร้อมลำดับขีด หัว/ท้ายกระดาษ เลขหน้า บันทึกเป็น PDF</small></span><span class="toolgo">เปิด ›</span></a>
+    </div>
+    <p class="mut" style="font-size:13px">เปิดเต็มหน้าจอ · ไฟล์ทั้งหมดทำงานในเครื่องนี้ ไม่ถูกอัปโหลด · เปิดได้เฉพาะตอนเข้าสู่ระบบผู้ดูแลอยู่</p>
+  </div>
   <div class="pane" id="a-stu">
     <div class="row" style="margin:10px 0"><button class="btn alt sm" onclick="selAll()">เลือกทั้งหมด</button><button class="btn alt sm" onclick="SEL.clear();renderAdmin()">ล้างที่เลือก</button></div>
     <div id="lvs"></div>
@@ -2101,6 +2109,9 @@ window.mvBf=async function(k,i,d){
 /* ---------- เริ่มต้น ---------- */
 SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};
 loadPublic();
+/* กลับจากหน้าเครื่องมือ: #admin หรือ #admin-tools เปิดหลังบ้านให้เลย */
+if(/^#admin/.test(location.hash)){const h=location.hash;try{history.replaceState(history.state,"",location.pathname+location.search)}catch(e){}
+  if(h==="#admin-tools")AT="a-tools";setTimeout(()=>openAdmin(),0)}
 })();
 
 </script>

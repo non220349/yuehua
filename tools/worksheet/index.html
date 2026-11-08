@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ตัวทำตารางคัดศัพท์จีน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="uiFont" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap">
+<script src="lib/pinyin-pro.js"></script>
+<script src="lib/jspdf.umd.min.js"></script>
+<style>
+:root{--ac:#c8102e;--ac2:#9e0b22;--bg:#f3f3f3;--line:#dcdcdc;--tx:#141414;--mut:#666;--blk:#141414}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:Sarabun,system-ui,sans-serif;color:var(--tx);background:var(--bg);font-size:15px}
+header.top{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--blk);border-bottom:4px solid var(--ac);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+header.top h1{font-size:18px;margin:0;font-weight:600;color:#fff}
+header.top .hint{color:#bbb}
+header.top .sp{flex:1}
+.wrap{display:flex;gap:0;height:calc(100% - 56px)}
+aside{width:430px;min-width:330px;overflow:auto;background:#fff;border-right:1px solid var(--line);padding:8px 12px 40px}
+main{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px}
+@media (max-width:900px){.wrap{flex-direction:column;height:auto}aside{width:100%;border-right:0;border-bottom:1px solid var(--line)}main{overflow:visible}}
+details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff}
+details>summary{cursor:pointer;padding:9px 12px;font-weight:600;list-style:none;border-left:4px solid var(--ac);border-radius:10px 0 0 10px}
+details>summary::before{content:"▸ ";color:var(--ac)}
+details[open]>summary::before{content:"▾ "}
+.sec{padding:4px 12px 12px}
+.row{display:flex;align-items:center;gap:8px;margin:6px 0;flex-wrap:wrap}
+.row label{min-width:120px;color:var(--mut);font-size:14px}
+input[type=text],input[type=number],select,textarea{font:inherit;font-size:14px;padding:5px 7px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--tx)}
+input[type=number]{width:76px}
+input[type=color]{width:40px;height:30px;border:1px solid var(--line);border-radius:7px;padding:1px;background:#fff}
+textarea{width:100%;min-height:90px}
+button{font:inherit;font-size:14px;border:1px solid var(--ac);background:#fff;color:var(--ac);border-radius:8px;padding:6px 12px;cursor:pointer}
+button.pri{background:var(--ac);color:#fff}
+button:hover{filter:brightness(.95)}
+header.top button.pri{border-color:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:-1px}
+.form{border:1px solid var(--line);border-top:3px solid var(--ac);border-radius:10px;padding:10px;background:#fff;margin:8px 0}
+.form .g{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.form .g input{width:100%}
+.form .full{grid-column:1/3}
+#fH{font-size:22px}
+button.sm{padding:3px 8px;font-size:13px}
+button:disabled{opacity:.5;cursor:default}
+.drop{border:2px dashed var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--mut);margin:6px 0}
+.drop.on{border-color:var(--ac);background:#fdecef}
+.hint{font-size:13px;color:var(--mut);line-height:1.5}
+.wl{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.wi{border:1px solid var(--line);border-radius:10px;padding:8px;background:#fafafa}
+.wi .g{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.wi .g input{width:100%}
+.wi .g .full{grid-column:1/3}
+.wi .hd{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.wi .hd .n{color:var(--mut);font-size:13px;min-width:30px}
+.wi .hd .zh{font-size:20px;font-weight:300;flex:1;min-width:0}
+.pg{display:flex;align-items:center;gap:8px;justify-content:center;margin:8px 0;flex-wrap:wrap}
+.page{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15);width:min(760px,100%);aspect-ratio:210/297;position:relative}
+.page canvas{width:100%;height:100%;display:block}
+.page .no{position:absolute;top:-2px;left:-34px;font-size:12px;color:var(--mut)}
+.modal{position:fixed;inset:0;background:rgba(30,20,50,.35);display:none;align-items:center;justify-content:center;z-index:20}
+.modal.on{display:flex}
+.box{background:#fff;border-radius:14px;padding:18px;width:min(420px,92vw);box-shadow:0 10px 40px rgba(0,0,0,.2)}
+.box h3{margin:0 0 10px;color:var(--ac)}
+.box{border-top:5px solid var(--ac)}
+.prog{height:8px;background:#eee;border-radius:5px;overflow:hidden;margin:10px 0}
+.prog i{display:block;height:100%;width:0;background:var(--ac)}
+.msg{font-size:14px;color:var(--mut);min-height:20px}
+.empty{color:var(--mut);margin-top:60px;text-align:center;line-height:1.8}
+.pnbox{border:1px dashed var(--line);border-radius:10px;padding:4px 10px;margin:8px 0;background:#fffdf7}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#141414;border-left:4px solid var(--ac);color:#fff;padding:9px 16px;border-radius:9px;font-size:14px;display:none;z-index:30}
+</style>
+</head>
+<body>
+<div id="yhGate" style="position:fixed;inset:0;background:#141414;color:#fff;z-index:99999;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:16px/1.7 Sarabun,'Noto Sans Thai',Tahoma,sans-serif"><div id="yhGateMsg">กำลังตรวจสอบสิทธิ์ผู้ดูแล…</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>(async function(){var g=document.getElementById("yhGate"),m=document.getElementById("yhGateMsg");
+function deny(){m.innerHTML='<div style="font-size:40px">🔒</div><b>เครื่องมือนี้สำหรับผู้ดูแลเท่านั้น</b><br><span style="color:#bbb">กรุณาเข้าสู่ระบบหลังบ้านก่อน</span><br><a href="../../#admin-tools" style="display:inline-block;margin-top:14px;background:#c8102e;color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:700">เข้าสู่ระบบหลังบ้าน</a>'}
+try{var sb=supabase.createClient("https://zhzckrjacvlgfrwdwqvs.supabase.co","sb_publishable_EUcJNxCygdzWcMi8_ASROg_6yO4LX5E",{auth:{persistSession:true,autoRefreshToken:true,storageKey:"yh_auth"}});
+var r=await sb.auth.getSession(),s=r&&r.data&&r.data.session;
+if(s){var u=await sb.auth.getUser();var usr=u&&u.data&&u.data.user;if(usr&&usr.app_metadata&&usr.app_metadata.role==="admin"){g.remove();return}}
+deny()}catch(e){deny()}})();</script>
+
+<header class="top">
+  <a href="../../#admin-tools" class="yhback" style="color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:8px;padding:6px 12px;font-size:14px;font-weight:600;white-space:nowrap">‹ กลับหลังบ้าน</a><h1><span style="color:var(--ac)">■</span> ตัวทำตารางคัดศัพท์จีน</h1>
+  <span class="hint" id="stat"></span>
+  <span class="sp"></span>
+  <button class="pri" id="btnPdf">💾 บันทึกเป็น PDF</button>
+</header>
+<div class="wrap">
+<aside>
+  <details open>
+    <summary>1. ใส่คำศัพท์</summary>
+    <div class="sec">
+      <div class="form">
+        <div style="font-weight:600;margin-bottom:6px">✍️ พิมพ์คำศัพท์เอง</div>
+        <div class="g">
+          <input type="text" id="fH" placeholder="ตัวจีน เช่น 书店" class="full">
+          <input type="text" id="fPy" placeholder="พินอิน (ขึ้นเองอัตโนมัติ)">
+          <input type="text" id="fPos" placeholder="ชนิดคำ" list="posList">
+          <input type="text" id="fTh" placeholder="แปลไทย" class="full">
+          <input type="text" id="fEx" placeholder="ประโยคตัวอย่าง (ไม่ใส่ก็ได้)" class="full">
+          <input type="text" id="fExPy" placeholder="พินอินประโยค (ขึ้นเองอัตโนมัติ)" class="full">
+          <input type="text" id="fExTh" placeholder="แปลประโยค (ไม่ใส่ก็ได้)" class="full">
+        </div>
+        <div class="row"><button class="pri" id="btnFormAdd">➕ เพิ่มคำนี้</button><span class="hint">กด Enter ที่ช่องไหนก็ได้เพื่อเพิ่ม</span></div>
+      </div>
+      <div class="hint" style="margin:10px 0 2px"><b>หรือ</b> นำเข้าหลายคำพร้อมกัน</div>
+      <div class="drop" id="drop">
+        ลากไฟล์ .txt มาวางตรงนี้ หรือ<br>
+        <button id="btnFile" style="margin-top:6px">📂 เลือกไฟล์ .txt</button>
+        <input type="file" id="file" accept=".txt,text/plain" multiple hidden>
+      </div>
+      <div class="row">
+        <label style="min-width:auto">ถ้านำเข้าไฟล์ใหม่</label>
+        <select id="impMode"><option value="replace">แทนที่คำเดิมทั้งหมด</option><option value="append">ต่อท้ายคำเดิม</option></select>
+      </div>
+      <textarea id="paste" placeholder="หรือพิมพ์/วางคำศัพท์ตรงนี้ บรรทัดละ 1 คำ เช่น&#10;书店&#10;超市	คำนาม	ซูเปอร์มาร์เก็ต	我去超市买东西。		ฉันไปซื้อของที่ซูเปอร์มาร์เก็ต"></textarea>
+      <div class="row"><button id="btnPaste">➕ เพิ่มทุกคำจากช่องนี้</button></div>
+      <div class="hint">
+        รูปแบบไฟล์: บรรทัดละ 1 คำ คั่นแต่ละช่องด้วยปุ่ม Tab (หรือ |)<br>
+        <b>คำ · ชนิดคำ · แปลไทย · ประโยคตัวอย่าง · พินอินประโยค · แปลประโยค</b><br>
+        ใส่แค่ตัวจีนอย่างเดียวก็ได้ พินอินจะสร้างให้อัตโนมัติ ถ้าช่องที่ 2 เป็นพินอิน ระบบจะรู้เองว่าเป็นพินอินของคำ
+      </div>
+    </div>
+  </details>
+
+  <details open>
+    <summary>2. แก้ไขคำศัพท์ (<span id="cnt">0</span> คำ)</summary>
+    <div class="sec">
+      <div class="row">
+        <input type="text" id="search" placeholder="🔍 ค้นหาคำ" style="flex:1">
+        <button class="sm" id="btnAutoPy" title="สร้างพินอินของคำทุกคำใหม่">↻ พินอินใหม่ทั้งหมด</button>
+      </div>
+      <div class="row">
+        <button class="sm" id="btnExportTxt">⬇︎ บันทึกรายการคำเป็น .txt</button>
+        <button class="sm" id="btnClear">🗑 ลบทั้งหมด</button>
+      </div>
+      <div class="pg" id="pgTop"></div>
+      <div class="wl" id="wl"></div>
+      <div class="pg" id="pgBot"></div>
+      <datalist id="posList">
+        <option value="คำนาม"><option value="คำกริยา"><option value="คำคุณศัพท์"><option value="คำวิเศษณ์">
+        <option value="คำบุพบท"><option value="คำสันธาน"><option value="ลักษณนาม"><option value="คำสรรพนาม">
+        <option value="คำช่วย"><option value="คำอุทาน"><option value="ตัวเลข"><option value="กริยานุเคราะห์">
+        <option value="วลี"><option value="สำนวน">
+      </datalist>
+    </div>
+  </details>
+
+  <details open>
+    <summary>3. หน้ากระดาษ</summary>
+    <div class="sec">
+      <div class="row"><label>คำต่อหน้า</label><input type="number" data-k="perPage" min="1" max="8"></div>
+      <div class="row"><label>ขนาดช่องคัด (มม.)</label><input type="number" data-k="cellMM" min="6" max="25" step="0.5"></div>
+      <div class="row"><label>ช่องพินอินในตาราง</label><select data-k="strip"><option value="1">มี</option><option value="0">ไม่มี</option></select></div>
+      <div class="row"><label>เส้นช่วยในช่อง</label><select data-k="guide"><option value="tian">田 (กากบาท)</option><option value="mi">米 (กากบาท+แนวทแยง)</option><option value="none">ไม่มี</option></select></div>
+      <div class="row"><label>ตัวจางให้คัดตาม</label><input type="number" data-k="trace" min="0" max="10"> <span class="hint">รอบ</span></div>
+      <div class="row"><label>ขนาดช่องลำดับขีด (มม.)</label><input type="number" data-k="stepMM" min="4" max="14" step="0.5"></div>
+      <div class="row"><label>แสดงลำดับขีด</label><select data-k="showSteps"><option value="1">แสดง</option><option value="0">ซ่อน</option></select></div>
+      <div class="row"><label>แสดงประโยคตัวอย่าง</label><select data-k="showEx"><option value="1">แสดง</option><option value="0">ซ่อน</option></select></div>
+      <div class="row"><label>แสดงชนิดคำ</label><select data-k="showPos"><option value="1">แสดง</option><option value="0">ซ่อน</option></select></div>
+      <div class="row"><label>ข้อความหัวกระดาษ</label><input type="text" data-k="header" style="flex:1" placeholder="เช่น คัดศัพท์ HSK1 by ..."></div>
+      <div class="row"><label>ข้อความท้ายกระดาษ</label><input type="text" data-k="footer" style="flex:1" placeholder="เช่น ชื่อของคุณ"></div>
+      <div class="pnbox">
+        <div class="row"><label>เลขหน้า</label><select data-k="pageNum"><option value="1">แสดง</option><option value="0">ซ่อน</option></select></div>
+        <div class="row"><label>ตำแหน่ง</label><select data-k="pnPos"><option value="bc">ล่างกลาง</option><option value="br">ล่างขวา</option><option value="bl">ล่างซ้าย</option><option value="tc">บนกลาง</option><option value="tr">บนขวา</option><option value="tl">บนซ้าย</option></select></div>
+        <div class="row"><label>รูปแบบ</label><select data-k="pnFmt"><option value="n">1</option><option value="page">หน้า 1</option><option value="dash">- 1 -</option><option value="of">1/20</option><option value="pageof">หน้า 1 จาก 20</option></select></div>
+        <div class="row"><label>เริ่มใส่เลขตั้งแต่หน้าที่</label><input type="number" data-k="pnFrom" min="1"></div>
+        <div class="row"><label>เลขแรกที่แสดง</label><input type="number" data-k="pageStart" min="0"></div>
+        <div class="row"><label>ขนาดตัวเลข (pt)</label><input type="number" data-k="pnSize" min="6" max="30" step="0.5"></div>
+        <div class="hint" id="pnHint"></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>4. ฟอนต์และขนาดตัวอักษร</summary>
+    <div class="sec">
+      <div class="hint" style="margin-bottom:4px"><b>ตัวจีน</b></div>
+      <div class="row"><label>ฟอนต์</label><select data-k="zhFont" id="zhFont"></select></div>
+      <div class="row"><label>ความหนา</label><select data-k="zhWeight" id="zhWeight"></select></div>
+      <div class="row"><label>ขนาดคำหลัก (pt)</label><input type="number" data-k="zhSize" min="12" max="80"></div>
+      <div class="row"><label>ขนาดประโยค (pt)</label><input type="number" data-k="exSize" min="6" max="30"></div>
+      <div class="hint" style="margin:8px 0 4px"><b>พินอิน</b></div>
+      <div class="row"><label>ฟอนต์</label><select data-k="pyFont" id="pyFont"></select></div>
+      <div class="row"><label>ความหนา</label><select data-k="pyWeight" id="pyWeight"></select></div>
+      <div class="row"><label>ขนาดพินอินคำหลัก (pt)</label><input type="number" data-k="pySize" min="5" max="30"></div>
+      <div class="row"><label>ขนาดพินอินประโยค (pt)</label><input type="number" data-k="exPySize" min="4" max="20"></div>
+      <div class="hint" style="margin:8px 0 4px"><b>ภาษาไทย</b></div>
+      <div class="row"><label>ฟอนต์</label><select data-k="thFont" id="thFont"></select></div>
+      <div class="row"><label>ความหนา</label><select data-k="thWeight" id="thWeight"></select></div>
+      <div class="row"><label>ขนาดคำแปล (pt)</label><input type="number" data-k="thSize" min="6" max="30"></div>
+      <div class="row"><label>ขนาดชนิดคำ (pt)</label><input type="number" data-k="posSize" min="5" max="24"></div>
+      <div class="row"><label>ขนาดแปลประโยค (pt)</label><input type="number" data-k="exThSize" min="5" max="24"></div>
+    </div>
+  </details>
+
+  <details>
+    <summary>5. สี</summary>
+    <div class="sec" id="colors"></div>
+    <div class="sec"><button class="sm" id="btnReset">↺ คืนค่าตั้งค่าเริ่มต้นทั้งหมด</button></div>
+  </details>
+  <div class="hint" style="margin-top:10px">ข้อมูลลำดับขีด: Make Me a Hanzi / hanzi-writer-data (Arphic Public License)</div>
+</aside>
+<main id="main"><div class="empty" id="empty">ยังไม่มีคำศัพท์<br>นำเข้าไฟล์ .txt หรือพิมพ์คำทางซ้ายได้เลย</div></main>
+</div>
+
+<div class="modal" id="mdl">
+  <div class="box">
+    <h3>บันทึกเป็น PDF</h3>
+    <div class="row"><label style="min-width:auto">ชื่อไฟล์</label><input type="text" id="fname" style="flex:1"><span>.pdf</span></div>
+    <div class="row"><label style="min-width:auto">หน้า</label>
+      <select id="range"><option value="all">ทุกหน้า</option><option value="some">กำหนดเอง</option></select>
+      <input type="number" id="rFrom" min="1" value="1" style="width:64px" disabled> ถึง <input type="number" id="rTo" min="1" value="1" style="width:64px" disabled>
+    </div>
+    <div class="row"><label style="min-width:auto">ความคมชัด</label>
+      <select id="dpi"><option value="150">ปกติ (ไฟล์เล็ก เร็ว)</option><option value="200" selected>คมชัด</option><option value="300">คมชัดมาก (ช้า)</option></select>
+    </div>
+    <div class="prog"><i id="bar"></i></div>
+    <div class="msg" id="pmsg"></div>
+    <div class="row" style="justify-content:flex-end;margin-top:10px">
+      <button id="btnCancel">ยกเลิก</button><button class="pri" id="btnGo">สร้าง PDF</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ---------------- fonts ---------------- */
+const ZH_FONTS={"Noto Sans SC":[100,200,300,400,500,600,700],"Noto Serif SC":[200,300,400,500,600,700],"LXGW WenKai TC":[300,400,700],"ZCOOL XiaoWei":[400],"Ma Shan Zheng":[400],"Long Cang":[400],"Zhi Mang Xing":[400]};
+const PY_FONTS={"Noto Sans":[100,200,300,400,500,600,700],"Andika":[400,700],"Lexend":[100,200,300,400,500],"Roboto":[100,300,400,500,700],"Sarabun":[100,200,300,400,500,600],"Noto Serif":[100,200,300,400,500,600,700]};
+const TH_FONTS={"Sarabun":[100,200,300,400,500,600],"Noto Sans Thai":[100,200,300,400,500,600],"IBM Plex Sans Thai":[100,200,300,400,500,600],"Kanit":[100,200,300,400,500],"Prompt":[100,200,300,400,500],"Mitr":[200,300,400,500],"Chakra Petch":[300,400,500,600],"Niramit":[200,300,400,500],"Bai Jamjuree":[200,300,400,500],"Charm":[400,700]};
+const WNAME={100:"บางมาก (100)",200:"บางพิเศษ (200)",300:"บาง (300)",400:"ปกติ (400)",500:"กลาง (500)",600:"ค่อนหนา (600)",700:"หนา (700)"};
+const loadedCss={};
+function ensureCss(fam,ws){
+  if(loadedCss[fam])return loadedCss[fam];
+  return loadedCss[fam]=new Promise(res=>{
+    const l=document.createElement("link");l.rel="stylesheet";
+    l.href="https://fonts.googleapis.com/css2?family="+fam.replace(/ /g,"+")+":wght@"+ws.join(";")+"&display=swap";
+    l.onload=()=>res();l.onerror=()=>res();setTimeout(res,6000);
+    document.head.appendChild(l);
+  });
+}
+function withTimeout(p,ms){return Promise.race([p,new Promise(r=>setTimeout(r,ms))]);}
+async function loadFont(fam,w,text){
+  try{if(loadedCss[fam])await loadedCss[fam];await withTimeout(document.fonts.load(w+" 32px \""+fam+"\"",text||"a"),5000);}catch(e){}
+}
+
+/* ---------------- settings ---------------- */
+const DEF={perPage:3,cellMM:10,strip:1,guide:"tian",trace:1,stepMM:6.5,showSteps:1,showEx:1,showPos:1,header:"",footer:"",pageNum:1,pageStart:1,pnPos:"bc",pnFmt:"n",pnFrom:1,pnSize:9,
+  zhFont:"Noto Sans SC",zhWeight:300,zhSize:34,exSize:11,pyFont:"Noto Sans",pyWeight:400,pySize:10,exPySize:6.5,
+  thFont:"Sarabun",thWeight:300,thSize:14,posSize:10,exThSize:11,
+  cTheme:"#c8102e",cZh:"#141414",cPy:"#c8102e",cTh:"#141414",cPos:"#555555",cExZh:"#141414",cExPy:"#9e0b22",cExTh:"#333333",
+  cDone:"#3a3a3a",cCur:"#d93636",cGrid:"#e3a1ab",cGuide:"#f1d0d5",cTrace:"#c9c9c9",cBox:"#9a9a9a",cHeadFoot:"#8a8a8a"};
+const COLORS=[["cTheme","กรอบแต่ละคำ"],["cZh","ตัวจีนคำหลัก"],["cPy","พินอินคำหลัก"],["cTh","คำแปลไทย"],["cPos","ชนิดคำ"],["cExZh","ประโยคตัวอย่าง (จีน)"],["cExPy","พินอินประโยค"],["cExTh","แปลประโยค"],["cDone","ลำดับขีด: ขีดที่เขียนแล้ว"],["cCur","ลำดับขีด: ขีดปัจจุบัน"],["cGrid","เส้นตาราง"],["cGuide","เส้นช่วยในช่อง"],["cTrace","ตัวจางให้คัดตาม"],["cBox","กรอบคำหลัก"],["cHeadFoot","หัว/ท้ายกระดาษ"]];
+let S=Object.assign({},DEF);
+let W=[];
+function store(){try{localStorage.setItem("hzws_s",JSON.stringify(S));localStorage.setItem("hzws_w",JSON.stringify(W));}catch(e){}}
+try{const a=JSON.parse(localStorage.getItem("hzws_s")||"null");if(a){const OLD={cTheme:"#7b5ea7",cPy:"#3b2a6b",cExPy:"#3b2a6b",cGrid:"#8fbf9f",cGuide:"#c9dfd0"};for(const q in OLD)if(a[q]===OLD[q])delete a[q];S=Object.assign({},DEF,a);}const b=JSON.parse(localStorage.getItem("hzws_w")||"null");if(Array.isArray(b))W=b;}catch(e){}
+
+/* ---------------- pinyin ---------------- */
+function autoPy(t){try{return pinyinPro.pinyin(t,{type:"array",toneSandhi:true}).join(" ").replace(/ ([，。！？、：；,.!?:;）」』])/g,"$1").replace(/([（「『]) /g,"$1");}catch(e){return "";}}
+function charPys(w){
+  const chars=[...w.h];
+  let parts=(w.py||"").trim().split(/\s+/).filter(Boolean);
+  const hz=chars.filter(c=>/\p{Script=Han}/u.test(c));
+  if(parts.length!==hz.length){try{parts=pinyinPro.pinyin(w.h,{type:"array",toneSandhi:true});}catch(e){parts=[];}
+    return chars.map((c,i)=>parts[i]||"");}
+  let k=0;return chars.map(c=>/\p{Script=Han}/u.test(c)?parts[k++]:"");
+}
+
+/* ---------------- import ---------------- */
+const PYRE=/^[a-zA-Zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüê'’\s·-]+$/;
+const HAN=/\p{Script=Han}/u;
+function parseText(txt){
+  const out=[];
+  for(let line of txt.replace(/\r/g,"").split("\n")){
+    if(!line.trim())continue;
+    let c=line.includes("\t")?line.split("\t"):line.split("|");
+    c=c.map(x=>x.trim());
+    if(/^\d+[.)]?$/.test(c[0])&&c.length>1)c.shift();
+    if(!HAN.test(c[0]||""))continue;
+    const w={h:c[0],py:"",pos:"",th:"",ex:"",expy:"",exth:""};
+    let i=1;
+    if(c[1]&&PYRE.test(c[1])&&/[a-z]/i.test(c[1])){w.py=c[1];i=2;}
+    w.pos=c[i]||"";w.th=c[i+1]||"";w.ex=c[i+2]||"";
+    let r=c.slice(i+3);
+    if(r.length===1){if(HAN.test(r[0])||!PYRE.test(r[0]))w.exth=r[0];else w.expy=r[0];}
+    else{w.expy=r[0]||"";w.exth=r[1]||"";}
+    if(w.expy&&!PYRE.test(w.expy.replace(/[，。！？、：；,.!?:;“”"（）()]/g,""))){ if(!w.exth){w.exth=w.expy;} w.expy=""; }
+    if(!w.py)w.py=autoPy(w.h);
+    if(w.ex&&!w.expy)w.expy=autoPy(w.ex);
+    out.push(w);
+  }
+  return out;
+}
+function addWords(arr,mode){
+  if(mode==="replace")W=arr;else W=W.concat(arr);
+  page=0;afterWords();toast("เพิ่ม "+arr.length+" คำ");
+}
+
+/* ---------------- editor ---------------- */
+const PER=40;let page=0;
+function esc(s){return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+function filtered(){const q=$("search").value.trim();return W.map((w,i)=>[w,i]).filter(([w])=>!q||(w.h+w.py+w.th+w.pos).includes(q));}
+function renderList(){
+  const f=filtered();const np=Math.max(1,Math.ceil(f.length/PER));if(page>=np)page=np-1;
+  const pg=`<button class="sm" data-p="-1" ${page<=0?"disabled":""}>‹ ก่อนหน้า</button><span class="hint">ชุดที่ ${page+1}/${np}</span><button class="sm" data-p="1" ${page>=np-1?"disabled":""}>ถัดไป ›</button>`;
+  $("pgTop").innerHTML=np>1?pg:"";$("pgBot").innerHTML=np>1?pg:"";
+  $("wl").innerHTML=f.slice(page*PER,page*PER+PER).map(([w,i])=>`
+  <div class="wi" data-i="${i}">
+    <div class="hd"><span class="n">${i+1}.</span><input type="text" data-f="h" value="${esc(w.h)}" class="zh" style="font-family:'${S.zhFont}'">
+      <button class="sm" data-a="py" title="สร้างพินอินใหม่">↻ พินอิน</button>
+      <button class="sm" data-a="up" title="เลื่อนขึ้น">↑</button><button class="sm" data-a="dn" title="เลื่อนลง">↓</button>
+      <button class="sm" data-a="del" title="ลบ">✕</button></div>
+    <div class="g">
+      <input type="text" data-f="py" value="${esc(w.py)}" placeholder="พินอิน (เว้นวรรคทีละพยางค์)">
+      <input type="text" data-f="pos" value="${esc(w.pos)}" placeholder="ชนิดคำ" list="posList">
+      <input type="text" data-f="th" value="${esc(w.th)}" placeholder="แปลไทย" class="full">
+      <input type="text" data-f="ex" value="${esc(w.ex)}" placeholder="ประโยคตัวอย่าง (จีน)" class="full">
+      <input type="text" data-f="expy" value="${esc(w.expy)}" placeholder="พินอินประโยค" class="full">
+      <input type="text" data-f="exth" value="${esc(w.exth)}" placeholder="แปลประโยค (ไทย)" class="full">
+    </div></div>`).join("");
+  $("cnt").textContent=W.length;
+}
+function afterWords(){store();renderList();rebuild();}
+
+/* ---------------- stroke data ---------------- */
+const SCACHE={},BUCK={};
+function bucketOf(ch){return (ch.codePointAt(0)>>7).toString(16);}
+async function loadChars(chars){
+  const need=new Set();
+  for(const c of chars){if(HAN.test(c)&&!(c in SCACHE))need.add(bucketOf(c));}
+  await Promise.all([...need].map(b=>{
+    if(!BUCK[b])BUCK[b]=fetch("s/"+b+".json").then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{Object.assign(SCACHE,d);return d;});
+    return BUCK[b];
+  }));
+  for(const c of chars)if(HAN.test(c)&&!(c in SCACHE))SCACHE[c]=null;
+}
+const P2D={};
+function path(p){return P2D[p]||(P2D[p]=new Path2D(p));}
+
+/* ---------------- drawing ---------------- */
+const PT=0.3528; // mm per pt
+function F(fam,w,pt,k){return w+" "+(pt*PT*k).toFixed(2)+"px \""+fam+"\", \"Noto Sans SC\", sans-serif";}
+function fitText(ctx,text,maxW,fam,w,pt,k,minRatio){
+  let s=pt;ctx.font=F(fam,w,s,k);
+  while(ctx.measureText(text).width>maxW&&s>pt*(minRatio||.55)){s-=.25;ctx.font=F(fam,w,s,k);}
+  return s;
+}
+function guides(ctx,x,y,s,k,col,mode,thin){
+  if(mode==="none")return;
+  ctx.save();ctx.strokeStyle=col;ctx.lineWidth=Math.max(.6,(thin||.15)*k);ctx.setLineDash([.8*k,.6*k]);
+  ctx.beginPath();ctx.moveTo(x+s/2,y);ctx.lineTo(x+s/2,y+s);ctx.moveTo(x,y+s/2);ctx.lineTo(x+s,y+s/2);
+  if(mode==="mi"){ctx.moveTo(x,y);ctx.lineTo(x+s,y+s);ctx.moveTo(x+s,y);ctx.lineTo(x,y+s);}
+  ctx.stroke();ctx.restore();
+}
+function drawStrokes(ctx,strokes,x,y,s,upto,cur,colDone,colCur){
+  const pad=s*.06,ss=s-2*pad;
+  ctx.save();ctx.translate(x+pad,y+pad);ctx.scale(ss/1024,ss/1024);ctx.translate(0,900);ctx.scale(1,-1);
+  for(let i=0;i<upto;i++){ctx.fillStyle=(i===cur)?colCur:colDone;ctx.fill(path(strokes[i]));}
+  ctx.restore();
+}
+function rrect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+function pageCount(){return Math.ceil(W.length/S.perPage);}
+function pageText(pi){
+  let t="";for(const w of W.slice(pi*S.perPage,(pi+1)*S.perPage))t+=w.h+(w.ex||"");return t;
+}
+async function preparePage(pi){
+  const ws=W.slice(pi*S.perPage,(pi+1)*S.perPage);
+  const zh=pageText(pi);
+  let th="",py="";for(const w of ws){th+=w.th+w.pos+w.exth;py+=w.py+w.expy;}
+  th+=S.header+S.footer+"0123456789()";
+  await Promise.all([loadChars([...zh]),loadFont(S.zhFont,S.zhWeight,zh||"中"),loadFont(S.thFont,S.thWeight,th||"ก"),loadFont(S.pyFont,S.pyWeight,py||"a"),
+    loadFont("Noto Sans SC",300,zh||"中")]);
+}
+
+function pnLabel(pi){
+  if(!+S.pageNum)return null;
+  const p=pi+1,from=Math.max(1,Math.round(+S.pnFrom||1)),st=Math.round(+S.pageStart||0);
+  if(p<from)return null;
+  const n=st+(p-from),t=st+(pageCount()-from);
+  return S.pnFmt==="page"?"หน้า "+n:S.pnFmt==="dash"?"- "+n+" -":S.pnFmt==="of"?n+"/"+t:S.pnFmt==="pageof"?"หน้า "+n+" จาก "+t:String(n);
+}
+function pnHint(){const e=$("pnHint");if(!e)return;const n=pageCount();
+  if(!+S.pageNum){e.textContent="";return}
+  if(!n){e.textContent="";return}
+  const from=Math.max(1,Math.round(+S.pnFrom||1));
+  if(from>n){e.textContent="⚠️ มีแค่ "+n+" หน้า จะไม่มีหน้าไหนได้เลขหน้า";return}
+  e.textContent=(from>1?"หน้า 1–"+(from-1)+" ไม่มีเลข · ":"")+"หน้าที่ "+from+" แสดง “"+pnLabel(from-1)+"”"+(n>from?" … หน้าสุดท้ายแสดง “"+pnLabel(n-1)+"”":"");}
+function drawPage(ctx,pi,k){
+  const PW=210,PH=297,M=9;
+  ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle="#fff";ctx.fillRect(0,0,PW*k,PH*k);
+  ctx.textBaseline="alphabetic";
+  const pn=pnLabel(pi),pos=S.pnPos||"bc",pnOn=+S.pageNum;
+  const slots={tl:[],tc:[],tr:[],bl:[],bc:[],br:[]};
+  if(S.header)slots.tr.push([S.header,9]);
+  if(S.footer)slots.bc.push([S.footer,9]);
+  if(pn)(slots[pos]||slots.bc).push([pn,+S.pnSize||9]);
+  const topUsed=S.header||(pnOn&&pos[0]==="t"),botUsed=S.footer||(pnOn&&pos[0]==="b");
+  const top=M+(topUsed?4:0),bottom=PH-M-(botUsed?5:0);
+  ctx.fillStyle=S.cHeadFoot;
+  for(const key in slots){const parts=slots[key];if(!parts.length)continue;
+    const sep="   ·   ";ctx.font=F(S.thFont,S.thWeight,9,k);const sw=ctx.measureText(sep).width;
+    const ws=parts.map(([t,sz])=>{ctx.font=F(S.thFont,S.thWeight,sz,k);return ctx.measureText(t).width});
+    const tw=ws.reduce((a,b)=>a+b,0)+sw*(parts.length-1);
+    let x=key[1]==="l"?M*k:key[1]==="r"?(PW-M)*k-tw:(PW*k-tw)/2;
+    const y=key[0]==="t"?(M+2.5)*k:(PH-M+1)*k;
+    ctx.textAlign="left";
+    parts.forEach(([t,sz],i)=>{if(i){ctx.font=F(S.thFont,S.thWeight,9,k);ctx.fillText(sep,x,y);x+=sw}ctx.font=F(S.thFont,S.thWeight,sz,k);ctx.fillText(t,x,y);x+=ws[i]});
+  }
+  const per=+S.perPage||3,gap=3,bh=(bottom-top-gap*(per-1))/per;
+  const ws=W.slice(pi*per,(pi+1)*per);
+  ws.forEach((w,j)=>drawWord(ctx,w,M*k,(top+j*(bh+gap))*k,(PW-2*M)*k,bh*k,k));
+}
+
+function drawWord(ctx,w,X,Y,BW,BH,k){
+  const mm=v=>v*k;
+  ctx.save();
+  ctx.strokeStyle=S.cTheme;ctx.lineWidth=mm(.45);rrect(ctx,X,Y,BW,BH,mm(2.2));ctx.stroke();
+  ctx.beginPath();ctx.rect(X,Y,BW,BH);ctx.clip();
+  const pad=mm(3.2),x0=X+pad,W0=BW-2*pad;let y=Y+pad;
+  const chars=[...w.h];const cps=charPys(w);
+  // --- main word box
+  const zpx=S.zhSize*PT*k,ppx=S.pySize*PT*k;
+  const stripH=ppx*1.7,cellW=zpx*1.08;
+  ctx.font=F(S.pyFont,S.pyWeight,S.pySize,k);const pyJoined=(w.py||"").replace(/\s+/g,"");
+  const boxW=Math.max(chars.length*cellW+zpx*.35,ctx.measureText(pyJoined).width+mm(4),mm(18));
+  const boxH=stripH+zpx*1.18;
+  ctx.strokeStyle=S.cBox;ctx.lineWidth=mm(.2);ctx.strokeRect(x0,y,boxW,boxH);
+  ctx.beginPath();ctx.moveTo(x0,y+stripH);ctx.lineTo(x0+boxW,y+stripH);ctx.stroke();
+  ctx.fillStyle=S.cPy;ctx.textAlign="center";
+  fitText(ctx,pyJoined,boxW-mm(2),S.pyFont,S.pyWeight,S.pySize,k);
+  ctx.fillText(pyJoined,x0+boxW/2,y+stripH*.72);
+  ctx.fillStyle=S.cZh;ctx.font=F(S.zhFont,S.zhWeight,S.zhSize,k);
+  ctx.fillText(w.h,x0+boxW/2,y+stripH+zpx*.98);
+  // --- pos + thai
+  let tx=x0+boxW+mm(4);const midY=y+stripH+zpx*.72;ctx.textAlign="left";
+  if(+S.showPos&&w.pos){ctx.fillStyle=S.cPos;ctx.font=F(S.thFont,S.thWeight,S.posSize,k);const s="("+w.pos+")";ctx.fillText(s,tx,midY);tx+=ctx.measureText(s).width+mm(2.5);}
+  if(w.th){ctx.fillStyle=S.cTh;const avail=X+BW-pad-tx;fitText(ctx,w.th,avail,S.thFont,S.thWeight,S.thSize,k,.45);ctx.fillText(w.th,tx,midY);}
+  y+=boxH+mm(2.2);
+  // --- example
+  if(+S.showEx&&w.ex){
+    const epx=S.exSize*PT*k,eppx=S.exPySize*PT*k;
+    ctx.font=F(S.zhFont,S.zhWeight,S.exSize,k);
+    const exW=ctx.measureText(w.ex).width;
+    let cx=x0;const baseY=y+(w.expy?eppx*1.35:0)+epx*.92;
+    if(w.expy){ctx.fillStyle=S.cExPy;ctx.textAlign="left";fitText(ctx,w.expy,W0,S.pyFont,S.pyWeight,S.exPySize,k);ctx.fillText(w.expy,x0,y+eppx*1.05);}
+    ctx.fillStyle=S.cExZh;ctx.textAlign="left";ctx.font=F(S.zhFont,S.zhWeight,S.exSize,k);ctx.fillText(w.ex,x0,baseY);cx=x0+exW;
+    if(w.exth){ctx.fillStyle=S.cExTh;ctx.textAlign="left";const sx=cx+mm(4);const avail=X+BW-pad-sx;
+      if(avail>mm(25)){fitText(ctx,w.exth,avail,S.thFont,S.thWeight,S.exThSize,k,.6);ctx.fillText(w.exth,sx,baseY);y=baseY+epx*.35;}
+      else{y=baseY+epx*.3;ctx.font=F(S.thFont,S.thWeight,S.exThSize,k);y+=S.exThSize*PT*k*1.1;fitText(ctx,w.exth,W0,S.thFont,S.thWeight,S.exThSize,k,.6);ctx.fillText(w.exth,x0,y);y+=mm(.6);}
+    }else y=baseY+epx*.35;
+    y+=mm(2.2);
+  }
+  // --- stroke order
+  if(+S.showSteps){
+    const ss=mm(S.stepMM);const perRow=Math.max(1,Math.floor(W0/ss));
+    let idx=0;const steps=[];
+    for(const c of chars){const d=SCACHE[c];if(d)for(let i=0;i<d.length;i++)steps.push([d,i]);}
+    if(steps.length){
+      for(const [d,i] of steps){
+        const r=Math.floor(idx/perRow),cI=idx%perRow;const sx=x0+cI*ss,sy=y+r*ss;
+        ctx.strokeStyle=S.cGrid;ctx.lineWidth=mm(.18);ctx.strokeRect(sx,sy,ss,ss);
+        guides(ctx,sx,sy,ss,k,S.cGuide,S.guide==="none"?"none":"mi",.1);
+        drawStrokes(ctx,d,sx,sy,ss,i+1,i,S.cDone,S.cCur);idx++;
+      }
+      y+=Math.ceil(steps.length/perRow)*ss+mm(2.2);
+    }
+  }
+  // --- practice grid
+  const cols=Math.max(1,Math.round(W0/mm(S.cellMM)));
+  const cs=W0/cols,sh=+S.strip?cs*.36:0,rowH=cs+sh;
+  const rows=Math.max(1,Math.floor((Y+BH-pad*.7-y)/rowH));
+  const tr=[];for(let t=0;t<(+S.trace||0);t++)chars.forEach((c,i)=>tr.push([c,cps[i]]));
+  const gx=x0,gw=cols*cs;
+  ctx.strokeStyle=S.cGrid;ctx.lineWidth=mm(.22);
+  for(let r=0;r<rows;r++){
+    const ry=y+r*rowH;
+    for(let c=0;c<cols;c++){
+      const cx=gx+c*cs;
+      if(sh){ctx.strokeStyle=S.cGrid;ctx.lineWidth=mm(.16);ctx.strokeRect(cx,ry,cs,sh);}
+      ctx.strokeStyle=S.cGrid;ctx.lineWidth=mm(.22);ctx.strokeRect(cx,ry+sh,cs,cs);
+      guides(ctx,cx,ry+sh,cs,k,S.cGuide,S.guide,.15);
+      const ti=r*cols+c;
+      if(ti<tr.length){
+        const [ch,py]=tr[ti];const d=SCACHE[ch];
+        if(d)drawStrokes(ctx,d,cx,ry+sh,cs,d.length,-1,S.cTrace,S.cTrace);
+        else{ctx.fillStyle=S.cTrace;ctx.textAlign="center";ctx.font=F(S.zhFont,S.zhWeight,cs/k/PT*.78,k);ctx.fillText(ch,cx+cs/2,ry+sh+cs*.82);}
+        if(sh&&py){ctx.fillStyle=S.cTrace;ctx.textAlign="center";fitText(ctx,py,cs-mm(.6),S.pyFont,S.pyWeight,Math.min(sh/k/PT*.72,S.pySize),k);ctx.fillText(py,cx+cs/2,ry+sh*.76);}
+      }
+    }
+  }
+  ctx.restore();
+}
+
+/* ---------------- preview ---------------- */
+let gen=0,io=null;
+function $(id){return document.getElementById(id);}
+function rebuild(){
+  gen++;const g=gen;const main=$("main");
+  main.querySelectorAll(".page").forEach(e=>e.remove());
+  const n=pageCount();$("empty").style.display=n?"none":"block";
+  $("stat").textContent=W.length?(W.length+" คำ · "+n+" หน้า"):"";pnHint();
+  if(io)io.disconnect();
+  io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){io.unobserve(e.target);paint(e.target,g);}},{root:null,rootMargin:"600px"});
+  for(let i=0;i<n;i++){
+    const d=document.createElement("div");d.className="page";d.dataset.i=i;
+    d.innerHTML='<span class="no">'+(i+1)+'</span>';main.appendChild(d);io.observe(d);
+  }
+}
+async function paint(div,g){
+  const i=+div.dataset.i;await preparePage(i);if(g!==gen)return;
+  const k=Math.min(2.4*(window.devicePixelRatio||1),5.2); // px per mm
+  const c=document.createElement("canvas");c.width=Math.round(210*k);c.height=Math.round(297*k);
+  drawPage(c.getContext("2d"),i,k);
+  if(g!==gen)return;div.appendChild(c);
+}
+let tmr=null;function later(){clearTimeout(tmr);tmr=setTimeout(rebuild,350);}
+
+/* ---------------- settings UI ---------------- */
+function fillSel(sel,obj){sel.innerHTML=Object.keys(obj).map(f=>`<option>${f}</option>`).join("");}
+function fillW(sel,arr,cur){sel.innerHTML=arr.map(w=>`<option value="${w}">${WNAME[w]||w}</option>`).join("");if(!arr.includes(+cur))S[sel.dataset.k]=arr.includes(300)?300:arr[0];sel.value=S[sel.dataset.k];}
+function syncFonts(){
+  ensureCss(S.zhFont,ZH_FONTS[S.zhFont]||[400]);ensureCss(S.pyFont,PY_FONTS[S.pyFont]||[400]);ensureCss(S.thFont,TH_FONTS[S.thFont]||[400]);ensureCss("Noto Sans SC",[300]);
+  fillW($("zhWeight"),ZH_FONTS[S.zhFont]||[400],S.zhWeight);fillW($("pyWeight"),PY_FONTS[S.pyFont]||[400],S.pyWeight);fillW($("thWeight"),TH_FONTS[S.thFont]||[400],S.thWeight);
+}
+function initSettings(){
+  fillSel($("zhFont"),ZH_FONTS);fillSel($("pyFont"),PY_FONTS);fillSel($("thFont"),TH_FONTS);
+  if(!ZH_FONTS[S.zhFont])S.zhFont=DEF.zhFont;if(!PY_FONTS[S.pyFont])S.pyFont=DEF.pyFont;if(!TH_FONTS[S.thFont])S.thFont=DEF.thFont;
+  $("colors").innerHTML=COLORS.map(([key,l])=>`<div class="row"><input type="color" data-k="${key}"><label>${l}</label></div>`).join("");
+  syncFonts();
+  document.querySelectorAll("[data-k]").forEach(el=>{el.value=S[el.dataset.k];
+    el.addEventListener("input",()=>{let v=el.value;if(el.type==="number"){v=parseFloat(v);if(isNaN(v))return;}
+      if(/Weight$/.test(el.dataset.k))v=+v;
+      S[el.dataset.k]=v;if(/Font$/.test(el.dataset.k)){syncFonts();if(el.dataset.k==="zhFont")renderList();}
+      store();later();});});
+}
+
+/* ---------------- events ---------------- */
+$("btnFile").onclick=()=>$("file").click();
+async function readFiles(files){let all=[];for(const f of files){const t=await f.text();all=all.concat(parseText(t));}
+  if(!all.length){toast("ไม่พบคำศัพท์ภาษาจีนในไฟล์");return;}addWords(all,$("impMode").value);}
+$("file").onchange=e=>{readFiles(e.target.files);e.target.value="";};
+const dr=$("drop");["dragenter","dragover"].forEach(ev=>dr.addEventListener(ev,e=>{e.preventDefault();dr.classList.add("on");}));
+["dragleave","drop"].forEach(ev=>dr.addEventListener(ev,e=>{e.preventDefault();dr.classList.remove("on");}));
+dr.addEventListener("drop",e=>{if(e.dataTransfer.files.length)readFiles(e.dataTransfer.files);});
+document.addEventListener("dragover",e=>e.preventDefault());document.addEventListener("drop",e=>{e.preventDefault();if(e.dataTransfer.files.length&&!dr.contains(e.target))readFiles(e.dataTransfer.files);});
+$("btnPaste").onclick=()=>{const a=parseText($("paste").value);if(!a.length){toast("ยังไม่มีคำภาษาจีนในช่อง");return;}addWords(a,"append");$("paste").value="";};
+let fPyEd=false,fExPyEd=false;
+$("fH").addEventListener("input",()=>{if(!fPyEd)$("fPy").value=autoPy($("fH").value.trim());});
+$("fEx").addEventListener("input",()=>{if(!fExPyEd)$("fExPy").value=autoPy($("fEx").value.trim());});
+$("fPy").addEventListener("input",()=>{fPyEd=!!$("fPy").value;});
+$("fExPy").addEventListener("input",()=>{fExPyEd=!!$("fExPy").value;});
+function formAdd(){
+  const h=$("fH").value.trim();if(!HAN.test(h)){toast("กรุณาพิมพ์ตัวจีนก่อน");$("fH").focus();return;}
+  const ex=$("fEx").value.trim();
+  W.push({h,py:$("fPy").value.trim()||autoPy(h),pos:$("fPos").value.trim(),th:$("fTh").value.trim(),ex,expy:$("fExPy").value.trim()||(ex?autoPy(ex):""),exth:$("fExTh").value.trim()});
+  ["fH","fPy","fPos","fTh","fEx","fExPy","fExTh"].forEach(i=>$(i).value="");fPyEd=fExPyEd=false;
+  $("search").value="";page=Math.floor((W.length-1)/PER);afterWords();toast("เพิ่ม "+h+" แล้ว");$("fH").focus();
+  const last=document.querySelector('.page[data-i="'+(pageCount()-1)+'"]');if(last)last.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("btnFormAdd").onclick=formAdd;
+["fH","fPy","fPos","fTh","fEx","fExPy","fExTh"].forEach(i=>$(i).addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing){e.preventDefault();formAdd();}}));
+$("btnAutoPy").onclick=()=>{W.forEach(w=>{w.py=autoPy(w.h);if(w.ex)w.expy=autoPy(w.ex);});afterWords();toast("สร้างพินอินใหม่แล้ว");};
+$("btnClear").onclick=()=>{confirmBox("ลบคำศัพท์ทั้งหมด?",()=>{W=[];afterWords();});};
+$("search").oninput=()=>{page=0;renderList();};
+document.addEventListener("click",e=>{const b=e.target.closest(".pg button");if(b){page+=+b.dataset.p;renderList();$("wl").scrollIntoView({block:"start"});}});
+$("wl").addEventListener("input",e=>{const f=e.target.dataset.f;if(!f)return;const i=+e.target.closest(".wi").dataset.i;W[i][f]=e.target.value;
+  if(f==="h"){const n=e.target.closest(".wi");}
+  store();later();});
+$("wl").addEventListener("change",e=>{const f=e.target.dataset.f;if(f==="h"||f==="ex"){const i=+e.target.closest(".wi").dataset.i;const w=W[i];
+  if(f==="h"&&!w._pyEdited){w.py=autoPy(w.h);e.target.closest(".wi").querySelector('[data-f=py]').value=w.py;}
+  if(f==="ex"){w.expy=autoPy(w.ex);e.target.closest(".wi").querySelector('[data-f=expy]').value=w.expy;}
+  store();later();}
+  if(f==="py"){const i=+e.target.closest(".wi").dataset.i;W[i]._pyEdited=true;store();}});
+$("wl").addEventListener("click",e=>{const b=e.target.closest("button[data-a]");if(!b)return;const i=+b.closest(".wi").dataset.i;const a=b.dataset.a;
+  if(a==="del")W.splice(i,1);
+  if(a==="up"&&i>0)[W[i-1],W[i]]=[W[i],W[i-1]];
+  if(a==="dn"&&i<W.length-1)[W[i+1],W[i]]=[W[i],W[i+1]];
+  if(a==="py"){W[i].py=autoPy(W[i].h);W[i]._pyEdited=false;if(W[i].ex)W[i].expy=autoPy(W[i].ex);}
+  afterWords();});
+$("btnReset").onclick=()=>confirmBox("คืนค่าตั้งค่าทั้งหมดเป็นค่าเริ่มต้น? (คำศัพท์ไม่หาย)",()=>{S=Object.assign({},DEF);store();initSettings();rebuild();renderList();});
+
+/* ---------------- toast / confirm ---------------- */
+let tt=null;function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(tt);tt=setTimeout(()=>t.style.display="none",2600);}
+function confirmBox(msg,yes){
+  const m=document.createElement("div");m.className="modal on";m.innerHTML=`<div class="box"><div style="margin-bottom:14px">${esc(msg)}</div><div class="row" style="justify-content:flex-end"><button>ยกเลิก</button><button class="pri">ตกลง</button></div></div>`;
+  document.body.appendChild(m);const [no,ok]=m.querySelectorAll("button");no.onclick=()=>m.remove();ok.onclick=()=>{m.remove();yes();};
+}
+
+/* ---------------- save files ---------------- */
+let DL=null;
+(async()=>{try{if(window.claude&&claude.use)DL=await claude.use("downloads");}catch(e){DL=null;}})();
+async function saveFile(name,blob){
+  if(DL){try{await DL.save({filename:name,data:blob});return "saved";}catch(e){if(e&&e.code==="declined")return "declined";if(e&&e.code==="rate_limited")return "busy";}}
+  try{const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);return "saved";}catch(e){return "fail";}
+}
+$("btnExportTxt").onclick=async()=>{
+  if(!W.length){toast("ยังไม่มีคำศัพท์");return;}
+  const txt=W.map(w=>[w.h,w.py,w.pos,w.th,w.ex,w.expy,w.exth].map(x=>(x||"").replace(/[\t\n]/g," ")).join("\t")).join("\n");
+  const r=await saveFile("คำศัพท์.txt",new Blob([txt],{type:"text/plain"}));if(r==="fail")toast("บันทึกไม่ได้ในหน้านี้");
+};
+
+/* ---------------- PDF ---------------- */
+let busy=false,cancel=false;
+$("btnPdf").onclick=()=>{
+  if(!W.length){toast("ยังไม่มีคำศัพท์");return;}
+  const n=pageCount();$("rTo").value=n;$("rTo").max=n;$("rFrom").max=n;
+  if(!$("fname").value)$("fname").value="ตารางคัดศัพท์";
+  $("bar").style.width="0";$("pmsg").textContent=n+" หน้า";$("btnGo").disabled=false;$("mdl").classList.add("on");setTimeout(()=>$("fname").select(),50);
+};
+$("range").onchange=()=>{const d=$("range").value!=="some";$("rFrom").disabled=d;$("rTo").disabled=d;};
+$("btnCancel").onclick=()=>{if(busy){cancel=true;return;}$("mdl").classList.remove("on");};
+$("btnGo").onclick=async()=>{
+  if(busy)return;
+  let name=($("fname").value||"ตารางคัดศัพท์").trim().replace(/[\\/:*?"<>|]+/g,"-").replace(/\.pdf$/i,"");
+  const n=pageCount();let a=1,b=n;
+  if($("range").value==="some"){a=Math.max(1,Math.min(n,+$("rFrom").value||1));b=Math.max(a,Math.min(n,+$("rTo").value||n));}
+  busy=true;cancel=false;$("btnGo").disabled=true;$("btnCancel").textContent="หยุด";
+  const dpi=+$("dpi").value,k=dpi/25.4;
+  const c=document.createElement("canvas");c.width=Math.round(210*k);c.height=Math.round(297*k);const ctx=c.getContext("2d");
+  const pdf=new jspdf.jsPDF({unit:"mm",format:"a4",compress:true});
+  try{
+    for(let p=a;p<=b;p++){
+      if(cancel)throw "cancel";
+      $("pmsg").textContent="กำลังสร้างหน้า "+(p-a+1)+" / "+(b-a+1);$("bar").style.width=((p-a)/(b-a+1)*100)+"%";
+      await preparePage(p-1);drawPage(ctx,p-1,k);
+      if(p>a)pdf.addPage();
+      pdf.addImage(c.toDataURL("image/jpeg",.9),"JPEG",0,0,210,297,undefined,"FAST");
+      await new Promise(r=>setTimeout(r,0));
+    }
+    $("bar").style.width="100%";$("pmsg").textContent="กำลังบันทึกไฟล์…";
+    const blob=pdf.output("blob");
+    const r=await saveFile(name+".pdf",blob);
+    $("pmsg").textContent=r==="saved"?"บันทึกแล้ว: "+name+".pdf":r==="declined"?"ยกเลิกการบันทึก":"บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง";
+  }catch(e){$("pmsg").textContent=e==="cancel"?"หยุดแล้ว":"เกิดข้อผิดพลาด: "+e;}
+  busy=false;$("btnGo").disabled=false;$("btnCancel").textContent="ปิด";
+};
+
+/* ---------------- start ---------------- */
+initSettings();renderList();rebuild();
+document.fonts&&document.fonts.addEventListener&&document.fonts.addEventListener("loadingdone",()=>{});
+</script>
+</body>
+</html>
