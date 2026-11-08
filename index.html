@@ -423,16 +423,24 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 #atabs .asub button.on{background:var(--soft);color:var(--seal);border-color:var(--seal)}
 .gbd{display:inline-block;min-width:18px;padding:0 5px;border-radius:999px;background:var(--seal);color:#fff;font-size:11px;line-height:18px;text-align:center;margin-left:2px}.gbd:empty{display:none}
 #atabs .agh.on .gbd{background:#fff;color:var(--seal)}
-@media(min-width:901px){#atabs.agnav{flex-wrap:nowrap;row-gap:0}#atabs .agh{flex:none;font-size:15px}#atabs .agh.on{background:var(--soft);color:var(--seal)}#atabs .agh.on .gbd{background:var(--seal);color:#fff}
-  #atabs .asub{order:0;flex-basis:auto;flex-direction:column;flex-wrap:nowrap;gap:2px;padding:0 0 6px 12px;border:0;margin-left:10px;border-left:2px solid var(--bd)}#atabs .asub button{font-size:14px;padding:9px 12px;border:0}}
+@media(min-width:901px){#atabs.agnav{flex-wrap:nowrap;row-gap:0}#atabs .agh{flex:none;font-size:15px;margin-top:4px}#atabs .agh.on{background:transparent;color:var(--seal)}#atabs .agh[data-g=ov].on{background:var(--soft)}#atabs .agh:not([data-g=ov])::after{content:"›";float:right;color:var(--mut);transition:transform .15s}#atabs .agh[aria-expanded=true]::after{transform:rotate(90deg)}#atabs .agh.on .gbd{background:var(--seal);color:#fff}
+  #atabs .asub{order:0;flex-basis:auto;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:2px 0 8px 12px;border:0;margin-left:10px;border-left:2px solid var(--bd)}#atabs .asub button{font-size:14px;padding:9px 12px;border:0}}
 .fch{width:100%;height:auto;display:block;margin-top:8px}.fch .ftx{fill:var(--mut)}#ovw .sc b,#fsum .sc b{font-size:clamp(17px,4.8vw,26px)}.fch .fgl{stroke:var(--bd);stroke-width:1}.fch .fz{stroke:var(--mut);stroke-width:1}.fch .fhit{fill:transparent}.fch .fgm.on .fhit{fill:var(--soft)}.fch .fgm:hover .fhit{fill:var(--soft)}
 .flg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:4px}.flg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}.flg i.ln{height:3px;width:14px;background:var(--gold);vertical-align:3px}
 .fg2{gap:10px}.fg2 .card{margin:0}
 .fgd{border-top:1px solid var(--bd);padding:6px 0}.fgd summary{color:var(--fg);font-weight:400;display:flex;justify-content:space-between;gap:8px;cursor:pointer;list-style:none;padding:4px 0}.fgd summary::-webkit-details-marker{display:none}
 .frw{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:4px 0}
 .ftb .frw{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;align-items:center;border-top:1px solid var(--bd);padding:6px 0}.ftb .frw>*:not(:first-child){text-align:right}.ftb .fhd{color:var(--mut);font-size:12px;border-top:0}
-.fcl{display:flex;flex-direction:column;font-size:12px;color:var(--mut);margin:0}.fcl input{width:110px;margin:2px 0 0}#fec2{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.fcl2 input{width:90px}
+.fcl{display:flex;flex-direction:column;font-size:12px;color:var(--mut);margin:0}.fcl input{width:110px;margin:2px 0 0}.fcl2 input{width:90px}
 .ofin{font-size:13px;color:var(--mut)}
+.fbh{margin:16px 0 6px;font-size:15px}
+.fmg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.fmg label,.fbi label{font-size:12px;color:var(--mut);margin:0;display:flex;flex-direction:column;gap:2px}
+.fu{display:flex;align-items:center;gap:6px}.fu input{margin:0;min-width:0;flex:1}.fu i{font-style:normal;font-size:12px;color:var(--mut);white-space:nowrap}
+.fot{display:flex;gap:6px;align-items:center;margin:4px 0}.fot>input{flex:1.3;margin:0;min-width:0}.fot .fu{flex:1}
+.fbr{display:grid;grid-template-columns:1.2fr 1.3fr 1fr;gap:10px;align-items:center;border-top:1px solid var(--bd);padding:10px 0}
+.fbi{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}.fbi input[data-p]{width:110px;margin:0}.fbd{margin:0 0 8px!important;flex-direction:row!important;align-items:center;font-size:13px!important;color:var(--fg)!important}
+.fbo summary{cursor:pointer;color:var(--fg);font-weight:400}.fbo details[open] summary{margin-bottom:4px}
+@media(max-width:700px){.fbr{grid-template-columns:1fr}}
 .ovl{display:grid;gap:8px}.ovi{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;margin:0;font:inherit;color:var(--fg)}.ovi:hover{border-color:var(--seal)}
 .ovn{flex:none;min-width:44px;height:44px;border-radius:12px;background:var(--soft);color:var(--seal);display:grid;place-items:center;font-size:20px}.ovt{flex:1;display:flex;flex-direction:column}.ovt small{font-size:13px}
 #s-home>.sh{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:max(14px,calc(50vw - 50%));padding-right:max(14px,calc(50vw - 50%))}
@@ -607,9 +615,10 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="vg2"><div><label for="frc">หมวด</label><select id="frc"></select></div><div><label for="frf">เริ่มนับเดือน</label><input id="frf" type="month"></div></div>
     <div class="row"><button class="btn" id="frsv" onclick="saveFr()">เพิ่มค่าใช้จ่ายประจำ</button></div>
     <div id="frl"></div></div>
-  <div class="card"><b>ต้นทุนหนังสือ</b><div class="mut" style="font-size:13px">ใส่ครั้งเดียว ระบบหักให้อัตโนมัติทุกคำสั่งซื้อ (ค่าพิมพ์ + เข้าสันเกลียว + ค่าส่ง)</div>
-    <div id="fpc"></div>
-    <div style="margin-top:10px"><b style="font-size:14px">หนังสือที่ส่งให้นักเรียนตอนสมัครเรียน (ต่อคอร์ส)</b></div><div id="fec2"></div>
+  <div class="card" id="fbc"><b>คิดต้นทุนหนังสือ</b><div class="mut" style="font-size:13px">ใส่ราคาวัสดุครั้งเดียว แล้วแต่ละเล่มใส่แค่จำนวนหน้า ระบบคิดต้นทุนต่อเล่มให้ และหักให้อัตโนมัติทุกคำสั่งซื้อ</div>
+    <h4 class="fbh">1. ราคาวัสดุ (ใช้กับทุกเล่ม)</h4><div id="fmat"></div>
+    <h4 class="fbh">2. หนังสือในร้าน</h4><div id="fpc"></div>
+    <h4 class="fbh">3. หนังสือที่ส่งให้นักเรียนตอนสมัครเรียน</h4><div id="fec2"></div>
     <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button></div></div>
   <p class="mut" style="font-size:12px">ตัวเลขในหน้านี้ไว้ดูภาพรวมธุรกิจ ไม่ใช่เอกสารบัญชีหรือภาษี · ค่าเรียนนับในเดือนที่สมัครและได้รับอนุมัติ · ร้านหนังสือนับในเดือนที่กด “เงินเข้าแล้ว”</p>
 </div>
@@ -619,7 +628,6 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label for="pft2">ชื่อหนังสือ</label><input id="pft2" placeholder="เช่น 新HSK教程 1">
       <label for="pfd">รายละเอียดสั้น ๆ</label><textarea id="pfd" rows="2" placeholder="เช่น หนังสือเรียน HSK1 ใช้คู่กับคอร์ส"></textarea>
       <div class="vg2"><div><label for="pfpf">ราคาไฟล์ PDF (บาท)</label><input id="pfpf" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div><div><label for="pfpb">ราคาหนังสือเล่ม (บาท · ส่งฟรี)</label><input id="pfpb" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div></div>
-      <label for="pfcb">ต้นทุนต่อเล่ม (บาท · ค่าพิมพ์ + เข้าสันเกลียว + ค่าส่ง) <span class="mut" style="font-weight:400">ลูกค้าไม่เห็น</span></label><input id="pfcb" type="number" min="0" inputmode="numeric" placeholder="เช่น 120 · เว้นว่างได้">
       <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><input id="pfu" placeholder="https://drive.google.com/file/d/...">
       <label>ปกหนังสือ</label><div class="row" style="margin:0;align-items:center"><span id="pfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfPic(this)"></label><span id="pfprev"></span></div>
       <label>ตัวอย่างหน้าหนังสือ (ลูกค้ากดดูได้ในร้าน · สูงสุด 12 หน้า)</label>
@@ -1178,10 +1186,8 @@ function renderFin(){if(!$("fsum"))return;const ms=finMonths();if(!FNM||!ms.incl
   if(!$("frc").options.length)$("frc").innerHTML=FCAT.exp.map(c=>`<option ${c==="โปรแกรม/แอป"?"selected":""}>${c}</option>`).join("");if(!$("frf").value)$("frf").value=ym(Date.now());
   const nowM=ym(Date.now());
   $("frl").innerHTML=FIN.rec.length?FIN.rec.map(r=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${esc(r.t)}</b> <span class="tag">${esc(r.cat)}</span><div class="mut" style="font-size:12px">เริ่ม ${ymL(r.f,1)}${r.to?` · หยุดหลัง ${ymL(r.to,1)}`:" · ยังนับอยู่"}</div></div><b>${B(+r.a)}/เดือน</b>${r.to?"":`<button class="btn alt sm" onclick="stopFr(${r.id})">หยุดนับตั้งแต่เดือนหน้า</button>`}<button class="btn alt sm ${FRDEL===r.id?"dg":""}" onclick="delFr(${r.id})">${FRDEL===r.id?"ยืนยันลบ (ลบย้อนหลังด้วย)":"ลบ"}</button></div>`).join(""):'<div class="mut" style="font-size:13px;margin-top:6px">ยังไม่มีค่าใช้จ่ายประจำ</div>';
-  // ต้นทุนหนังสือ
-  if(document.activeElement===null||!document.activeElement.closest||!document.activeElement.closest("#fpc,#fec2")){
-    $("fpc").innerHTML=PRODS.length?PRODS.map(p=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${esc(p.t)}</b><div class="mut" style="font-size:12px">ขายเล่มละ ${p.pb!=null?B(p.pb):"— (ไม่ขายแบบเล่ม)"}${p.pb!=null&&p.cb?` · กำไรเล่มละ ${B(p.pb-p.cb)}`:""}</div></div><label class="fcl">ต้นทุน/เล่ม<input type="number" min="0" inputmode="numeric" data-pid="${p.id}" value="${p.cb||""}" placeholder="0"></label></div>`).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือในร้าน</div>';
-    $("fec2").innerHTML=FCRS.map(([k,n])=>`<label class="fcl fcl2"><span>${n}</span><input type="number" min="0" inputmode="numeric" data-eb="${k}" value="${FIN.eb[k]||""}" placeholder="0"></label>`).join("")}}
+  // ต้นทุนหนังสือ (ไม่วาดใหม่ระหว่างพิมพ์)
+  if(!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest("#fbc")))renderBc()}
 function feVals(){const d=$("fed").value,t=$("fet").value.trim(),a=numOrNull($("fea").value);
   if(!/^\d{4}-\d{2}-\d{2}$/.test(d)){note("กรุณาเลือกวันที่",1);return null}if(!t){note("กรุณาใส่ชื่อรายการ",1);$("fet").focus();return null}if(!a){note("กรุณาใส่จำนวนเงิน",1);$("fea").focus();return null}
   return {k:FEK,d,cat:$("fec").value,t,a}}
@@ -1192,19 +1198,53 @@ function frVals(){const t=$("frt").value.trim(),a=numOrNull($("fra").value),f=$(
 function saveFr(){const v=frVals();if(!v)return;FIN.rec.push(Object.assign({id:Math.max(0,...FIN.rec.map(r=>r.id))+1},v));$("frt").value="";$("fra").value="";renderFin();note("เพิ่มค่าใช้จ่ายประจำแล้ว")}
 function stopFr(id){const r=FIN.rec.find(x=>x.id===id);r.to=ym(Date.now());renderFin();note("หยุดนับตั้งแต่เดือนหน้าแล้ว")}
 function delFr(id){if(FRDEL!==id){FRDEL=id;renderFin();return}FRDEL=null;FIN.rec=FIN.rec.filter(r=>r.id!==id);renderFin()}
-function fcVals(){const pc=[],eb={};let bad=false;document.querySelectorAll("#fpc input[data-pid]").forEach(i=>{const v=numOrNull(i.value);if(Number.isNaN(v))bad=true;pc.push([+i.dataset.pid,v||0])});
-  document.querySelectorAll("#fec2 input[data-eb]").forEach(i=>{const v=numOrNull(i.value);if(Number.isNaN(v))bad=true;eb[i.dataset.eb]=v||0});if(bad){note("ต้นทุนต้องเป็นตัวเลข",1);return null}return {pc,eb}}
-function saveFc(){const v=fcVals();if(!v)return;v.pc.forEach(([id,c])=>{const p=prodBy(id);if(p)p.cb=c});FIN.eb=Object.assign({},FIN.eb,v.eb);document.activeElement&&document.activeElement.blur&&document.activeElement.blur();renderFin();note("บันทึกต้นทุนแล้ว")}
+/* ----- เครื่องคิดต้นทุนหนังสือ ----- */
+const MATDEF={rp:0,rs:500,ip:0,iy:0,sp:0,cp:0,cn:1,vp:0,vn:2,pk:0,sh:0,ot:[]};
+let BMAT=Object.assign({},MATDEF),EBC={};
+const MATF=[["rp","กระดาษเนื้อใน: ราคาต่อรีม","บาท"],["rs","กระดาษ 1 รีมมีกี่แผ่น","แผ่น"],["ip","หมึก: ราคาหมึก","บาท"],["iy","หมึกพิมพ์ได้กี่หน้า","หน้า"],["sp","สันเกลียว","บาท/เล่ม"],["cp","แผ่นใส: ราคาต่อแผ่น","บาท"],["cn","แผ่นใสต่อเล่ม","แผ่น"],["vp","กระดาษปก: ราคาต่อแผ่น","บาท"],["vn","กระดาษปกต่อเล่ม","แผ่น"],["pk","ซอง/กล่องบรรจุ","บาท/เล่ม"],["sh","ค่าส่งเฉลี่ย","บาท/เล่ม"]];
+const fnum=v=>{const n=+v;return isFinite(n)&&n>0?n:0};
+const r2=n=>Math.round(n*100)/100;
+function bcCalc(c,m){m=m||BMAT;const pg=Math.max(0,Math.round(fnum(c&&c.p))),sheets=c&&c.d?Math.ceil(pg/2):pg;
+  const L=[["กระดาษเนื้อใน",`${sheets} แผ่น`,m.rs?sheets*fnum(m.rp)/fnum(m.rs):0],["หมึก",`${pg} หน้า`,m.iy?pg*fnum(m.ip)/fnum(m.iy):0],["สันเกลียว","",fnum(m.sp)],["แผ่นใส",`${fnum(m.cn)} แผ่น`,fnum(m.cp)*fnum(m.cn)],["กระดาษปก",`${fnum(m.vn)} แผ่น`,fnum(m.vp)*fnum(m.vn)],["ซอง/กล่อง","",fnum(m.pk)],["ค่าส่ง","",fnum(m.sh)]].concat((m.ot||[]).filter(o=>o.n||fnum(o.a)).map(o=>[o.n||"อื่น ๆ","",fnum(o.a)]));
+  const tot=L.reduce((a,x)=>a+x[2],0);return {pg,sheets,L,tot,cb:pg?Math.ceil(tot):0}}
+function matRead(){const m=Object.assign({},MATDEF);MATF.forEach(([k])=>{const e=$("bm-"+k);if(e)m[k]=fnum(e.value)});
+  m.ot=[...document.querySelectorAll("#fmot .fot")].map(r=>({n:r.querySelector("input[data-n]").value.trim().slice(0,40),a:fnum(r.querySelector("input[data-a]").value)})).filter(o=>o.n||o.a);return m}
+function bcRow(key,title,sub,c,price){const r=bcCalc(c);return `<div class="fbr" data-k="${key}"><div class="fbt"><b>${esc(title)}</b>${sub?`<div class="mut" style="font-size:12px">${sub}</div>`:""}</div>
+  <div class="fbi"><label>จำนวนหน้า<input type="number" min="0" inputmode="numeric" data-p value="${c&&c.p||""}" placeholder="เช่น 120" oninput="bcLive()"></label><label class="chk fbd"><input type="checkbox" data-d ${c&&c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label></div>
+  <div class="fbo" data-o>${bcOut(r,price)}</div></div>`}
+function bcOut(r,price){if(!r.pg)return '<span class="mut" style="font-size:13px">ใส่จำนวนหน้าเพื่อคิดต้นทุน</span>';
+  return `<details><summary><b>${B(r.cb)}</b> <span class="mut">/ เล่ม</span>${price!=null?` · กำไร <b style="color:${price-r.cb<0?"var(--seal)":"var(--ok)"}">${B(price-r.cb)}</b>`:""}</summary>${r.L.filter(x=>x[2]).map(x=>`<div class="frw"><span>${esc(x[0])}${x[1]?` <span class="mut">(${x[1]})</span>`:""}</span><span>${r2(x[2]).toLocaleString("th-TH")} บาท</span></div>`).join("")}<div class="frw"><span>รวม (ปัดขึ้น)</span><b>${B(r.cb)}</b></div></details>`}
+function bcLive(){BMAT=matRead();const pu=$("fmu");if(pu)pu.innerHTML=matUnit();
+  document.querySelectorAll("#fbc .fbr").forEach(row=>{const c={p:row.querySelector("[data-p]").value,d:row.querySelector("[data-d]").checked},k=row.dataset.k,p=k.startsWith("p")?prodBy(+k.slice(1)):null;
+    row.querySelector("[data-o]").innerHTML=bcOut(bcCalc(c),p?p.pb:null)})}
+const matUnit=()=>`กระดาษ ${BMAT.rs?r2(fnum(BMAT.rp)/fnum(BMAT.rs)):0} บาท/แผ่น · หมึก ${BMAT.iy?r2(fnum(BMAT.ip)/fnum(BMAT.iy)):0} บาท/หน้า`;
+function renderBc(){if(!$("fmat"))return;
+  $("fmat").innerHTML=`<div class="fmg">${MATF.map(([k,l,u])=>`<label>${l}<span class="fu"><input id="bm-${k}" type="number" min="0" step="any" inputmode="decimal" value="${BMAT[k]||""}" placeholder="0" oninput="bcLive()"><i>${u}</i></span></label>`).join("")}</div>
+  <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อเล่ม)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
+  <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
+  $("fpc").innerHTML=PRODS.length?PRODS.map(p=>bcRow("p"+p.id,p.t,p.pb!=null?`ขายเล่มละ ${B(p.pb)}`:"ไม่ขายแบบเล่ม",p.bc||{},p.pb)).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือในร้าน</div>';
+  $("fec2").innerHTML=FCRS.map(([k,n])=>bcRow("e"+k,n,"",EBC[k]||{},null)).join("")}
+const fotRow=o=>`<div class="fot"><input data-n maxlength="40" placeholder="เช่น สติกเกอร์" value="${esc(o&&o.n||"")}" oninput="bcLive()"><span class="fu"><input data-a type="number" min="0" step="any" inputmode="decimal" placeholder="0" value="${o&&o.a||""}" oninput="bcLive()"><i>บาท/เล่ม</i></span><button class="btn alt sm" onclick="this.parentNode.remove();bcLive()" aria-label="ลบรายการ">ลบ</button></div>`;
+function addFot(){$("fmot").insertAdjacentHTML("beforeend",fotRow());$("fmot").lastElementChild.querySelector("input").focus()}
+function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
+  document.querySelectorAll("#fpc .fbr").forEach(row=>{const c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};pc.push([+row.dataset.k.slice(1),bcCalc(c,m).cb,c])});
+  document.querySelectorAll("#fec2 .fbr").forEach(row=>{const k=row.dataset.k.slice(1),c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};ebc[k]=c;eb[k]=bcCalc(c,m).cb});
+  return {m,pc,eb,ebc}}
+function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;EBC=v.ebc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
 const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
 const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-rv"};
 function aTab(t){AT=t;renderAdmin();try{scrollTo({top:0})}catch(e){}}
 function agNav(){const g=AGRP[AT]||"ov";AGL[g]=AT;
   document.querySelectorAll("#atabs .agh").forEach(b=>b.classList.toggle("on",b.dataset.g===g));
-  document.querySelectorAll("#atabs .asub").forEach(d=>d.classList.toggle("open",d.dataset.g===g));
+  document.querySelectorAll("#atabs .asub").forEach(d=>d.classList.toggle("open",d.dataset.g===g&&!AGC));
+  document.querySelectorAll("#atabs .agh").forEach(b=>b.setAttribute("aria-expanded",String(b.dataset.g===g&&!AGC)));
   const n=x=>{const v=parseInt(String(x||"").replace(/\D/g,""))||0;return v};
   const set=(id,v)=>{const e=$(id);if(e)e.textContent=v?String(v):""};
   set("gb-stu",n($("bn").textContent));set("gb-shop",n($("bkn").textContent));set("gb-sys",n($("mln").textContent));set("gb-ov",ovCount())}
-$("atabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.t){aTab(b.dataset.t);return}if(b.dataset.g)aTab(AGL[b.dataset.g])};
+let AGC=false;
+$("atabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;const g=b.dataset.g;
+  if(g&&g!=="ov"&&g===(AGRP[AT]||"ov")){AGC=!AGC;agNav();return}
+  AGC=false;if(b.dataset.t){aTab(b.dataset.t);return}if(g)aTab(AGL[g])};
 /* ===== หน้าภาพรวมหลังบ้าน: งานที่ต้องทำวันนี้ ===== */
 function ovItems(){const now=Date.now(),rows=orderRows(),c=k=>rows.filter(x=>x.stage===k).length,iv=SUBS.filter(r=>r.ins&&!r.paid2&&r.st==="ยืนยันแล้ว");
   return [[SUBS.filter(r=>r.st==="รอตรวจสอบ").length,"ผู้สมัครรอตรวจเอกสาร","ตรวจสลิป/บัตร แล้วกดอนุมัติ","aTab('a-new')"],
@@ -2059,7 +2099,7 @@ function placeOrder(){if(pvBlock())return;const [o,err]=orderForm();$("oerr").te
 let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null,PFSM=[],SMPDF=null;
 function renderShopAdmin(){const e=$("prl");if(!e)return;
   const cur=PFE!=null?prodBy(PFE):null;
-  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";$("pfcb").value=cur&&cur.cb?cur.cb:"";$("pfu").value=cur?cur.u||"":"";$("pfon").checked=cur?cur.on:true;
+  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";$("pfu").value=cur?cur.u||"":"";$("pfon").checked=cur?cur.on:true;
     PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";PFSM=cur?(cur.sm||[]).slice():[];SMPDF=null;$("smpdf").style.display="none";smpDraw();$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
   $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
   e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
@@ -2080,8 +2120,8 @@ function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),p
   if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
   if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
   if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https://");return null}
-  const cb=numOrNull($("pfcb").value);if(Number.isNaN(cb)){note("ต้นทุนต้องเป็นตัวเลข",1);return null}
-  return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cb||0}}
+  const cur=PFE!=null?prodBy(PFE):null;
+  return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
 function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
 /* ตัวอย่างหน้าหนังสือ: PDF (เลือกหน้า) หรือรูป */
 const SMMAX=12;
@@ -2379,8 +2419,8 @@ async function loadVideos(){
 async function loadShop(admin){
   const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
   if(p.error)throw p.error;
-  let files={},costs={};if(admin){const [f,c]=await Promise.all([sb.from("product_files").select("product_id,file_url"),sb.from("product_costs").select("product_id,cost_book")]);(f.data||[]).forEach(x=>files[x.product_id]=x.file_url);(c.data||[]).forEach(x=>costs[x.product_id]=x.cost_book)}
-  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]||0}));
+  let files={},costs={};if(admin){const [f,c]=await Promise.all([sb.from("product_files").select("product_id,file_url"),sb.from("product_costs").select("product_id,cost_book,calc")]);(f.data||[]).forEach(x=>files[x.product_id]=x.file_url);(c.data||[]).forEach(x=>costs[x.product_id]=x)}
+  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]?costs[x.id].cost_book||0:0,bc:costs[x.id]?costs[x.id].calc:null}));
   PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort}));
   cartBadge();
 }
@@ -2571,7 +2611,7 @@ window.gate=async function(){
     $("gp").value="";e.textContent="";ROLE="admin";AUTH=true;window.YH_ADMIN=true;go("s-admin");renderAdmin();adminLoad();
   }catch(x){fail(x)}finally{busy(btn,false)}
 };
-window.adminLogout=async function(){ROLE=null;AUTH=false;window.YH_ADMIN=false;MAILS=[];FIN={eb:{},ent:[],rec:[]};try{closeTool();const o=$("toolov");if(o)o.innerHTML=""}catch(e){}SUBS.length=0;await sb.auth.signOut();go("s-home");loadPublic()};
+window.adminLogout=async function(){ROLE=null;AUTH=false;window.YH_ADMIN=false;MAILS=[];FIN={eb:{},ent:[],rec:[]};BMAT=Object.assign({},MATDEF);EBC={};try{closeTool();const o=$("toolov");if(o)o.innerHTML=""}catch(e){}SUBS.length=0;await sb.auth.signOut();go("s-home");loadPublic()};
 async function adminFn(body){
   const {data}=await sb.auth.getSession();const tok=data&&data.session&&data.session.access_token;
   const r=await fetch(FN+"admin",{method:"POST",headers:{"Content-Type":"application/json",apikey:SB_KEY,Authorization:"Bearer "+tok},body:JSON.stringify(body)});
@@ -2791,7 +2831,7 @@ window.savePr=async function(){const v=prVals();if(!v)return;
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
     const {error:fe}=await sb.from("product_files").upsert({product_id:id,file_url:v.u});if(fe)throw fe;
-    const {error:ce}=await sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,updated_at:new Date().toISOString()});if(ce)throw ce;
+    const {error:ce}=await sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()});if(ce)throw ce;
     PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
 window.delPr=async function(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;
   const {error}=await sb.from("products").delete().eq("id",id);if(error){fail(error);return}
@@ -2821,6 +2861,7 @@ VOCAB=[];PRODS=[];PROMOS=[];ORDERS=[];
 async function loadFin(){const [e,r,c]=await Promise.all([sb.from("fin_entries").select("*").order("d",{ascending:false}).limit(5000),sb.from("fin_recurring").select("*").order("id"),sb.from("fin_cfg").select("k,v")]);
   if(e.error)throw e.error;if(r.error)throw r.error;
   const cfg=Object.fromEntries((c.data||[]).map(x=>[x.k,x.v]));
+  BMAT=Object.assign({},MATDEF,cfg.book_mat||{});EBC=cfg.enroll_book_calc||{};
   FIN={eb:cfg.enroll_book_cost||{},ent:(e.data||[]).map(x=>({id:Number(x.id),k:x.kind,d:x.d,cat:x.category,t:x.title,a:x.amount})),rec:(r.data||[]).map(x=>({id:Number(x.id),t:x.title,cat:x.category,a:x.amount,f:x.from_month,to:x.to_month||null}))};
   if(AT==="a-fin")renderFin()}
 const finRe=async()=>{await loadFin();renderFin()};
@@ -2832,10 +2873,10 @@ window.saveFr=async function(){const v=frVals();if(!v)return;const btn=$("frsv")
   try{const {error}=await sb.from("fin_recurring").insert({title:v.t,category:v.cat,amount:v.a,from_month:v.f});if(error)throw error;$("frt").value="";$("fra").value="";await finRe();toast("เพิ่มค่าใช้จ่ายประจำแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 window.stopFr=async function(id){const {error}=await sb.from("fin_recurring").update({to_month:ym(Date.now())}).eq("id",id);if(error){fail(error);return}await finRe();toast("หยุดนับตั้งแต่เดือนหน้าแล้ว")};
 window.delFr=async function(id){if(FRDEL!==id){FRDEL=id;renderFin();return}FRDEL=null;const {error}=await sb.from("fin_recurring").delete().eq("id",id);if(error){fail(error);return}await finRe();toast("ลบแล้ว")};
-window.saveFc=async function(){const v=fcVals();if(!v)return;const btn=$("fcsv");busy(btn,true);
-  try{const now=new Date().toISOString();if(v.pc.length){const {error}=await sb.from("product_costs").upsert(v.pc.map(([id,c])=>({product_id:id,cost_book:c,updated_at:now})));if(error)throw error}
-    const eb=Object.assign({},FIN.eb,v.eb);const {error:e2}=await sb.from("fin_cfg").upsert({k:"enroll_book_cost",v:eb});if(e2)throw e2;
-    v.pc.forEach(([id,c])=>{const p=prodBy(id);if(p)p.cb=c});FIN.eb=eb;try{document.activeElement.blur()}catch(e){}renderFin();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+window.saveFc=async function(){const v=fcVals();const btn=$("fcsv");busy(btn,true);
+  try{const now=new Date().toISOString();if(v.pc.length){const {error}=await sb.from("product_costs").upsert(v.pc.map(([id,cb,c])=>({product_id:id,cost_book:cb,calc:c,updated_at:now})));if(error)throw error}
+    const {error:e2}=await sb.from("fin_cfg").upsert([{k:"book_mat",v:v.m},{k:"enroll_book_calc",v:v.ebc},{k:"enroll_book_cost",v:v.eb}]);if(e2)throw e2;
+    BMAT=v.m;EBC=v.ebc;FIN.eb=v.eb;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});try{document.activeElement.blur()}catch(e){}renderFin();renderBc();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 
 /* ---------- รีวิว (พี่เขียนเองในหลังบ้าน) ---------- */
 async function loadReviews(){const {data,error}=await sb.from("reviews").select("*").order("sort").order("id");if(error)throw error;
