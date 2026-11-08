@@ -412,7 +412,26 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .toolov{position:fixed;inset:0;z-index:90;background:#fff;display:none}.toolov iframe{width:100%;height:100%;height:100dvh;border:0;display:none}.toolov iframe.on{display:block}
 
 .notet{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#141414;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;border-left:4px solid var(--gold);opacity:0;pointer-events:none;transition:.2s;z-index:200;max-width:92vw}.notet.on{opacity:1;transform:translateX(-50%)}.notet.err{border-left-color:var(--seal)}
-.cartb{position:relative}.cartn{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--gold);color:#141414;font-size:12px;font-weight:700;margin-left:4px}
+.cartb{position:relative}
+.rst{display:block;color:#e0a526;font-size:14px;letter-spacing:1px;line-height:1.2}.rst i{font-style:normal;color:var(--bd)}
+.savx{display:inline-grid;place-items:center;background:var(--soft);color:var(--seal);font-weight:700;font-size:22px}
+.rvsr{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;padding:10px;border:1px solid var(--bd);border-radius:12px;margin:6px 0}.rvsr select{width:auto;margin:0}
+.rvp{display:flex;flex-direction:column;font-size:12px;color:var(--mut);margin:0}.rvp input{width:76px;margin:2px 0 0}
+.rvt{font-size:13px;color:var(--mut);padding-bottom:10px}.rvt b{color:var(--seal)}
+.rvsn{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rvb{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;max-width:240px}
+.smpl{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.smpt{position:relative;width:96px}.smpt img{width:96px;height:128px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--bd);background:#fff;display:block}
+.smpn{position:absolute;top:4px;left:4px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;border-radius:6px;padding:1px 6px}
+.smpa{display:flex;gap:2px;margin-top:4px}.smpa button{flex:1;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 0;cursor:pointer;font:inherit;font-size:13px}.smpa button:disabled{opacity:.35}
+.smpw{margin:4px 0 12px;text-align:left}.smph{font-weight:700;font-size:14px;margin-bottom:6px}.smph .mut{font-weight:400;font-size:12px}
+.smps{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.smps button{flex:none;border:1px solid var(--bd);border-radius:8px;padding:0;background:#fff;cursor:zoom-in;scroll-snap-align:start}.smps img{display:block;height:150px;width:auto;border-radius:7px}
+#smpv{position:fixed;inset:0;z-index:300;background:rgba(15,12,10,.92);display:none;flex-direction:column}#smpv.on{display:flex}
+.smvb{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#fff;padding:10px 14px;font-size:14px}.smvb button{background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+.smvi{flex:1;min-height:0;overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:0 12px 16px}.smvi img{max-width:min(900px,100%);height:auto;border-radius:6px;background:#fff}
+.smvn{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:64px;border:0;border-radius:12px;background:rgba(255,255,255,.18);color:#fff;font-size:30px;cursor:pointer}.smvn.p{left:8px}.smvn.x{right:8px}.smvn:disabled{opacity:.25}
+svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline-block}.cartempty{color:var(--seal);display:flex;justify-content:center;margin:6px 0 8px}.cartempty svg.cki{width:56px;height:56px;stroke-width:1.6}.cartn{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--gold);color:#141414;font-size:12px;font-weight:700;margin-left:4px}
 .shh{margin:18px 0 6px}
 .promo{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--seal) 10%,var(--card)),var(--card));border:1px solid color-mix(in srgb,var(--seal) 30%,var(--bd));border-radius:18px;padding:16px;margin:10px 0;cursor:pointer;flex-wrap:wrap}
 .pstack{--w:96px;--dx:52px;position:relative;flex:none;width:calc(var(--w) + (var(--n) - 1) * var(--dx));height:calc(var(--w) * 1.42 + 14px);margin:4px 6px}
@@ -541,7 +560,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b></div>
-  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-vf">ไฟล์คำศัพท์</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div>
+  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-vf">ไฟล์คำศัพท์</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div>
   <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
   <div class="pane" id="a-shop">
     <div class="card" style="margin-top:10px"><b id="pfh">เพิ่มหนังสือ</b>
@@ -550,6 +569,10 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
       <div class="vg2"><div><label for="pfpf">ราคาไฟล์ PDF (บาท)</label><input id="pfpf" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div><div><label for="pfpb">ราคาหนังสือเล่ม (บาท · ส่งฟรี)</label><input id="pfpb" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div></div>
       <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><input id="pfu" placeholder="https://drive.google.com/file/d/...">
       <label>ปกหนังสือ</label><div class="row" style="margin:0;align-items:center"><span id="pfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfPic(this)"></label><span id="pfprev"></span></div>
+      <label>ตัวอย่างหน้าหนังสือ (ลูกค้ากดดูได้ในร้าน · สูงสุด 12 หน้า)</label>
+      <div class="row" style="margin:0"><label class="btn alt sm" style="margin:0">เลือกไฟล์ PDF<input type="file" accept="application/pdf" style="display:none" onchange="smpPdf(this)"></label><label class="btn alt sm" style="margin:0">อัปโหลดรูปหน้า<input type="file" accept="image/*" multiple style="display:none" onchange="smpImgs(this)"></label></div>
+      <div id="smpdf" class="card" style="display:none;margin:8px 0 0;padding:10px 12px"></div>
+      <div id="smpl" class="smpl"></div>
       <label class="chk" style="margin-top:10px"><input type="checkbox" id="pfon" checked> แสดงในร้าน</label>
       <div class="row"><button class="btn" onclick="savePr()">บันทึกหนังสือ</button><button class="btn alt" id="pfx" onclick="cancelPr()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="prl"></div>
@@ -569,6 +592,18 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
       <label>ปก</label><div class="row" style="margin:0;align-items:center"><span id="vfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="vfPic(this)"></label><span id="vfprev"></span></div>
       <div class="row"><button class="btn" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="vfl"></div>
+  </div>
+  <div class="pane" id="a-rv">
+    <div class="card" style="margin-top:10px"><b id="rvh">เพิ่มรีวิว</b><div class="mut" style="font-size:13px">พี่เขียนรีวิวเองจากที่นักเรียนส่งมาทาง LINE · ต้องมีชื่อเล่น และข้อความหรือผลสอบอย่างน้อย 1 อย่าง</div>
+      <label for="rvn">ชื่อเล่น (ระบบเติมคำว่า “น้อง” ให้เอง)</label><input id="rvn" maxlength="40" placeholder="เช่น หยก">
+      <label>รูปนักเรียน</label><div class="row" style="margin:0;align-items:center"><span id="rvpv"></span><label class="btn alt sm" style="margin:0">อัปโหลดรูป<input type="file" accept="image/*" style="display:none" onchange="rvPic(this)"></label><button class="btn alt sm" id="rvpx" onclick="RVPIC='';rvPrev()" style="display:none">ไม่ใช้รูป</button></div>
+      <label for="rvr">ข้อความรีวิว</label><textarea id="rvr" rows="4" maxlength="1200" placeholder="พิมพ์หรือวางข้อความรีวิวที่นักเรียนส่งมา"></textarea>
+      <div class="vg2"><div><label for="rvc">คอร์สที่เรียน (ไม่ใส่ก็ได้)</label><input id="rvc" maxlength="60" placeholder="เช่น HSK1 + พินอิน"></div><div><label for="rvst">คะแนนดาว</label><select id="rvst"><option value="0">ไม่แสดงดาว</option><option value="5">★★★★★ 5 ดาว</option><option value="4">★★★★ 4 ดาว</option><option value="3">★★★ 3 ดาว</option><option value="2">★★ 2 ดาว</option><option value="1">★ 1 ดาว</option></select></div></div>
+      <label>ผลสอบ HSK (ไม่ใส่ก็ได้ · คะแนนรวมคิดให้อัตโนมัติ)</label><div id="rvsc"></div><button class="btn alt sm" onclick="rvAddSc()">+ เพิ่มผลสอบ</button>
+      <label class="chk" style="margin-top:10px"><input type="checkbox" id="rvon" checked> แสดงบนหน้าเว็บ</label>
+      <div class="row"><button class="btn" id="rvsv" onclick="saveRv()">บันทึกรีวิว</button><button class="btn alt" id="rvx" onclick="cancelRv()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+    <p class="mut" style="font-size:13px;margin:12px 0 4px">หน้าเว็บเรียงรีวิวตามลำดับในรายการนี้ · กด ↑ ↓ เพื่อย้าย</p>
+    <div id="rvl"></div>
   </div>
   <div class="pane" id="a-mail">
     <div class="segf" id="mfl"></div>
@@ -702,14 +737,14 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
   <div id="pgslot"></div>
 </section>
 <section class="scr" id="s-shop">
-  <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button><button class="btn sm cartb" onclick="openCart()">🛒 ตะกร้า<span class="cartn" style="display:none"></span></button></div>
+  <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button><button class="btn sm cartb" onclick="openCart()"><svg class="cki" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> ตะกร้า<span class="cartn" style="display:none"></span></button></div>
   <div class="eb">BOOK SHOP</div><h2>ร้านหนังสือ YUEHUA 📚</h2>
   <p class="mut" style="margin-top:-6px">เลือกได้ทั้งไฟล์ PDF และหนังสือเล่ม · หนังสือเล่มส่งฟรีทั่วไทย</p>
   <div id="shpromo"></div><div id="shlist"></div>
 </section>
 <section class="scr" id="s-cart">
   <div class="top"><button class="btn alt sm" onclick="openShop()">‹ เลือกหนังสือต่อ</button></div>
-  <h2>ตะกร้าของฉัน 🛒</h2>
+  <h2>ตะกร้าของฉัน <span style="color:var(--seal)"><svg class="cki" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span></h2>
   <div id="cartl"></div><div id="cartf" style="margin-top:12px"></div>
 </section>
 <section class="scr" id="s-dict">
@@ -835,7 +870,8 @@ const stTop=st=>st.s.length?Math.max(...st.s.map(x=>x[0])):0;
 const stBest=st=>st.s.find(x=>x[0]===stTop(st));
 function stuOrder(){STU.forEach(st=>st.s.sort((a,b)=>b[0]-a[0]));
   return STU.slice().sort((a,b)=>stTop(b)-stTop(a)||(stTop(a)&&(stBest(b)[1]-stBest(a)[1]||stBest(b)[3][0]-stBest(a)[3][0])))}
-const stAv=(st,c)=>st.i?`<img class="${c}" src="${RVIMG[st.i]}" alt="รูปน้อง${rvE(st.n)}" loading="lazy">`:"";
+const stAv=(st,c)=>{const src=st.p||(st.i?RVIMG[st.i]:"");return src?`<img class="${c}" src="${rvE(src)}" alt="รูปน้อง${rvE(st.n)}" loading="lazy">`:`<span class="${c} savx">${rvE(String(st.n||"?").slice(0,1))}</span>`};
+const stars=n=>n?`<span class="rst" aria-label="${n} ดาว">${"★".repeat(n)}<i>${"★".repeat(5-n)}</i></span>`:"";
 function scoreBox(x){const[lv,t,mx,p]=x;
   return `<div class="sbx"><div class="sbt"><span class="slv">HSK ${lv}</span><span class="stot"><b>${t}</b> / ${mx}</span></div>`+
   p.map((v,k)=>`<div class="sbr"><span class="sic">${RVI[SPART[k][0]]}</span><span class="spn">${SPART[k][1]}</span><span class="sbar"><i style="width:${v}%"></i></span><span class="spv"><b>${v}</b>/100</span></div>`).join("")+`</div>`}
@@ -847,8 +883,9 @@ function scoreWrap(st){if(!st.s.length)return "";
 function ssGo(b,i){const s=b.closest(".sbw").querySelector(".ssl");s.scrollTo({left:i*s.clientWidth,behavior:"smooth"})}
 function ssUpd(s){const i=Math.round(s.scrollLeft/Math.max(1,s.clientWidth));s.closest(".sbw").querySelectorAll(".sstab button").forEach((b,k)=>b.classList.toggle("on",k===i))}
 function renderStu(){
-  const ord=stuOrder();
-  const rev=ord.map(st=>`<article class="rcd"><div class="sth">${stAv(st,"sav")}<div><b class="stn">น้อง${rvE(st.n)}</b>${st.s.length?`<div class="stl">${st.s.map(x=>"HSK "+x[0]).join(" · ")}</div>`:""}</div></div>${st.r?`<p class="stq">${rvE(st.r)}</p>`:""}${scoreWrap(st)}</article>`).join("");
+  if(!STU._o){const o=stuOrder();STU.length=0;o.forEach(x=>STU.push(x));STU._o=1}
+  const ord=STU.filter(x=>x.on!==false);if($("reviews"))$("reviews").style.display=ord.length?"":"none";
+  const rev=ord.map(st=>`<article class="rcd"><div class="sth">${stAv(st,"sav")}<div><b class="stn">น้อง${rvE(st.n)}</b>${stars(st.st)}${st.c?`<div class="stl">${rvE(st.c)}</div>`:st.s.length?`<div class="stl">${st.s.map(x=>"HSK "+x[0]).join(" · ")}</div>`:""}</div></div>${st.r?`<p class="stq">${rvE(st.r)}</p>`:""}${scoreWrap(st)}</article>`).join("");
   const sam=REV.map(r=>`<div class="rv"><div class="shot"><div class="b l">${r[1]}</div><div class="b r">${r[2]}</div></div><div class="mut" style="font-size:12px;margin-top:6px">ตัวอย่างแคปรีวิว · ${r[0]}</div></div>`).join("");
   $("rvs").innerHTML=slider("sldr",rev);
 }
@@ -1013,6 +1050,7 @@ function gate(){
   else{GF++;$("ge").textContent="รหัสไม่ถูกต้อง"}
 }
 function renderAdmin(){
+  if(AT==="a-rv")renderRvAdmin();
   if(AT==="a-mail")renderMail();else mailBadge();
   if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
   document.querySelectorAll("#atabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===AT));
@@ -1803,6 +1841,7 @@ let ORDERS=[{id:1,code:"OD1001",at:Date.now()-36e5,bt:"public",name:"สมห�
   {id:2,code:"OD1002",at:Date.now()-72e5,bt:"student",name:"มานี มีสุข",em:"manee@example.com",ph:"0899998888",items:[{kind:"product",id:3,title:"新HSK教程 3",fmt:"file",qty:1,price:249}],total:249,st:"done",ns:false,hf:true,car:"",trk:""}];
 let CART=(()=>{try{const v=JSON.parse(localStorage.getItem("yh_cart")||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}})();
 const cartSave=()=>{try{localStorage.setItem("yh_cart",JSON.stringify(CART))}catch(e){}cartBadge()};
+const CARTI='<svg class="cki" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>';
 const prodBy=id=>PRODS.find(p=>p.id===id),promoBy=id=>PROMOS.find(p=>p.id===id);
 const itemOf=l=>l.k==="b"?promoBy(l.id):prodBy(l.id);
 const fmts=x=>[x.pb!=null&&x.pb!==""?"book":null,x.pf!=null&&x.pf!==""?"file":null].filter(Boolean);
@@ -1816,20 +1855,20 @@ function renderShop(){cartBadge();
   $("shpromo").innerHTML=pr.length?`<h3 class="shh">🔥 โปรโมชันสุดคุ้ม</h3>${pr.map(x=>{const fs=fmts(x);
     const lines=fs.map(f=>{const n=promoNormal(x,f),p=priceOf(x,f);return `<div class="ppr"><span>${f==="file"?"📄 ไฟล์ PDF":"📚 หนังสือเล่ม"}</span>${n>p?`<s>${B(n)}</s>`:""}<b>${B(p)}</b></div>`}).join("");
     const save=Math.max(...fs.map(f=>promoNormal(x,f)-priceOf(x,f)));
-    return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">ใส่ตะกร้า 🛒</button></div></div>`}).join("")}`:"";
+    return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button></div></div>`}).join("")}`:"";
   const ps=PRODS.filter(p=>p.on);
   $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?shelfRows(ps,3,p=>{const lo=Math.min(...fmts(p).map(f=>priceOf(p,f)));return `<button class="book" onclick="openProd(${p.id})" aria-label="${esc(p.t)}"><span class="bcv">${cov(p)}</span>${isFinite(lo)?`<span class="brib">เริ่ม ${lo}฿</span>`:""}<span class="bnm">${esc(p.t)}</span></button>`}):"<div class='card mut'>เร็ว ๆ นี้</div>");
 }
 function openShop(){renderShop();go("s-shop")}
-const fmtLine=(x,f)=>`<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF <small class='mut'>ได้ลิงก์ทางอีเมล</small>":"📚 หนังสือเล่ม <small class='mut'>ส่งฟรีทั่วไทย</small>"}</span><b>${B(priceOf(x,f))}</b></div>`;
+const fmtLine=(x,f)=>`<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF <small class='mut'>ได้ลิงก์ทางอีเมล</small>":"📚 หนังสือเล่ม <small class='mut'>เข้าสันเกลียว · ส่งฟรีทั่วไทย</small>"}</span><b>${B(priceOf(x,f))}</b></div>`;
 function openProd(id){const p=prodBy(id);if(!p)return;
-  pop(`<span class="bcv">${cov(p)}</span><h3 id="bkmt">${esc(p.t)}</h3>${p.d?`<p class="mut" style="margin:4px 0 10px">${esc(p.d)}</p>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">ใส่ตะกร้า 🛒</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  const sm=p.sm||[];pop(`<span class="bcv">${cov(p)}</span><h3 id="bkmt">${esc(p.t)}</h3>${p.d?`<p class="mut" style="margin:4px 0 10px">${esc(p.d)}</p>`:""}${sm.length?`<div class="smpw"><div class="smph">ตัวอย่างหน้าหนังสือ <span class="mut">· ${sm.length} หน้า · แตะเพื่อดูเต็มจอ</span></div><div class="smps">${sm.map((u,i)=>`<button onclick="smpOpen(${p.id},${i})" aria-label="ดูตัวอย่างหน้า ${i+1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div></div>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function openPromo(id){const x=promoBy(id);if(!x)return;
-  pop(`${stackHTML(x.ids,1)}<h3 id="bkmt">${esc(x.t)}</h3>${x.d?`<p class="mut" style="margin:4px 0 8px">${esc(x.d)}</p>`:""}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${p.d?`<div class="mut" style="font-size:12px">${esc(p.d)}</div>`:""}</div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">ใส่ตะกร้า 🛒</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  pop(`${stackHTML(x.ids,1)}<h3 id="bkmt">${esc(x.t)}</h3>${x.d?`<p class="mut" style="margin:4px 0 8px">${esc(x.d)}</p>`:""}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${p.d?`<div class="mut" style="font-size:12px">${esc(p.d)}</div>`:""}</div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด <small class='mut'>เข้าสันเกลียว</small>"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function addCart(k,id){const x=k==="b"?promoBy(id):prodBy(id);if(!x)return;const fs=fmts(x);if(!fs.length){note("รายการนี้ยังไม่เปิดขาย",1);return}
   const ex=CART.find(l=>l.k===k&&l.id===id);
   if(ex){if(ex.f==="book")ex.q=Math.min(20,(ex.q||1)+1)}else CART.push({k,id,f:fs[0],q:1});
-  cartSave();note("ใส่ตะกร้าแล้ว 🛒 กดปุ่มตะกร้าเพื่อชำระเงิน")}
+  cartSave();note("ใส่ตะกร้าแล้ว กดปุ่มตะกร้าเพื่อชำระเงิน")}
 let CO=false,ODONE=null;
 function openCart(){CO=false;ODONE=null;renderCart();go("s-cart")}
 function cartClean(){CART=CART.filter(l=>{const x=itemOf(l);if(!x||!x.on)return false;const fs=fmts(x);if(!fs.length)return false;if(!fs.includes(l.f))l.f=fs[0];if(l.f==="file")l.q=1;return true})}
@@ -1839,11 +1878,11 @@ function setCartQ(i,d){CART[i].q=Math.max(1,Math.min(20,(CART[i].q||1)+d));cartS
 function rmCart(i){CART.splice(i,1);cartSave();renderCart()}
 function renderCart(){cartClean();cartSave();
   if(ODONE){$("cartl").innerHTML=`<div class="card" style="text-align:center"><div style="font-size:48px">🎉</div><b style="font-size:18px">ได้รับคำสั่งซื้อแล้ว</b><div class="code" style="margin:8px 0">${esc(ODONE.code)}</div><p>รอพี่แป๊บนึงน้าาา เดี๋ยวพี่จะรีบตรวจยอดเงินให้ภายใน 24 ชั่วโมง พอตรวจแล้วจะแจ้งทางอีเมล${ODONE.hf?" พร้อมลิงก์ดาวน์โหลดไฟล์":""}${ODONE.ns?" และพอส่งหนังสือแล้วจะแจ้งเลขพัสดุให้นะ 📦":""}</p><div class="row" style="justify-content:center"><button class="btn" onclick="openShop()">กลับไปร้านหนังสือ</button><button class="btn alt" onclick="go('s-home')">หน้าหลัก</button></div></div>`;$("cartf").innerHTML="";return}
-  if(!CART.length){$("cartl").innerHTML=`<div class="card" style="text-align:center"><div style="font-size:44px">🛒</div><b>ตะกร้ายังว่างอยู่เลย</b><p class="mut">ไปเลือกหนังสือที่ชอบก่อนน้า</p><button class="btn" onclick="openShop()">ไปที่ร้านหนังสือ</button></div>`;$("cartf").innerHTML="";return}
+  if(!CART.length){$("cartl").innerHTML=`<div class="card" style="text-align:center"><div class="cartempty">${CARTI}</div><b>ตะกร้ายังว่างอยู่เลย</b><p class="mut">ไปเลือกหนังสือที่ชอบก่อนน้า</p><button class="btn" onclick="openShop()">ไปที่ร้านหนังสือ</button></div>`;$("cartf").innerHTML="";return}
   $("cartl").innerHTML=CART.map((l,i)=>{const x=itemOf(l),fs=fmts(x),one=priceOf(x,l.f);
     return `<div class="card cl"><div class="clh">${l.k==="b"?stackHTML(x.ids):`<span class="bcv sm2">${cov(x)}</span>`}<div style="flex:1;min-width:0"><b>${esc(x.t)}</b>${l.k==="b"?` <span class="tag">โปรชุด</span><div class="mut" style="font-size:12px">${x.ids.map(prodBy).filter(Boolean).map(p=>esc(p.t)).join(" + ")}</div>`:""}</div><button class="btn alt sm" onclick="rmCart(${i})" aria-label="ลบ">✕</button></div>
     <div class="seg cseg">${fs.map(f=>`<button class="${l.f===f?"on":""}" onclick="setCartF(${i},'${f}')">${f==="file"?"📄 ไฟล์":"📚 เล่ม"} ${B(priceOf(x,f))}</button>`).join("")}</div>
-    <div class="clf">${l.f==="book"?`<div class="qty"><button onclick="setCartQ(${i},-1)" aria-label="ลด">−</button><b>${l.q||1}</b><button onclick="setCartQ(${i},1)" aria-label="เพิ่ม">+</button></div>`:'<span class="mut" style="font-size:13px">ได้ลิงก์ดาวน์โหลดทางอีเมล</span>'}<b>${B(one*(l.q||1))}</b></div></div>`}).join("")+
+    <div class="clf">${l.f==="book"?`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="qty"><button onclick="setCartQ(${i},-1)" aria-label="ลด">−</button><b>${l.q||1}</b><button onclick="setCartQ(${i},1)" aria-label="เพิ่ม">+</button></div><span class="mut" style="font-size:12px">เล่มจริงเข้าสันเกลียว</span></div>`:'<span class="mut" style="font-size:13px">ได้ลิงก์ดาวน์โหลดทางอีเมล</span>'}<b>${B(one*(l.q||1))}</b></div></div>`}).join("")+
     `<div class="card ctot"><span>รวมทั้งหมด</span><b>${B(cartTotal2())}</b></div>${CO?"":`<button class="btn" style="width:100%" onclick="CO=true;renderCart();setTimeout(()=>$('cartf').scrollIntoView({behavior:'smooth'}),50)">ไปชำระเงิน ›</button>`}`;
   if(!CO){$("cartf").innerHTML="";return}
   const ns=CART.some(l=>l.f==="book"),me=(window.yhRole?window.yhRole()==="student":false)&&ST?ST:null,keep=id=>($(id)&&$(id).value)||"";
@@ -1870,11 +1909,11 @@ function placeOrder(){const [o,err]=orderForm();$("oerr").textContent=err;if(!o)
   ODONE={code,ns:o.ns,hf:items.some(i=>i.fmt==="file")};CART=[];cartSave();renderCart();scrollTo(0,0)}
 
 /* ===================== หลังบ้าน: ร้านค้า ===================== */
-let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null;
+let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null,PFSM=[],SMPDF=null;
 function renderShopAdmin(){const e=$("prl");if(!e)return;
   const cur=PFE!=null?prodBy(PFE):null;
   if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";$("pfu").value=cur?cur.u||"":"";$("pfon").checked=cur?cur.on:true;
-    PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
+    PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";PFSM=cur?(cur.sm||[]).slice():[];SMPDF=null;$("smpdf").style.display="none";smpDraw();$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
   $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
   e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
   // โปรโมชัน
@@ -1894,8 +1933,37 @@ function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),p
   if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
   if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
   if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https://");return null}
-  return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c}}
+  return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice()}}
 function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
+/* ตัวอย่างหน้าหนังสือ: PDF (เลือกหน้า) หรือรูป */
+const SMMAX=12;
+function smpDraw(){const e=$("smpl");if(!e)return;e.innerHTML=PFSM.length?PFSM.map((u,i)=>`<div class="smpt"><img src="${esc(u)}" alt="หน้าตัวอย่าง ${i+1}"><span class="smpn">${i+1}</span><div class="smpa"><button onclick="smpMv(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนซ้าย">‹</button><button onclick="smpMv(${i},1)" ${i<PFSM.length-1?"":"disabled"} aria-label="เลื่อนขวา">›</button><button onclick="PFSM.splice(${i},1);smpDraw()" aria-label="ลบหน้านี้">✕</button></div></div>`).join("")+`<div class="mut" style="font-size:12px;align-self:center">${PFSM.length}/${SMMAX} หน้า</div>`:'<div class="mut" style="font-size:13px">ยังไม่มีตัวอย่าง</div>'}
+function smpMv(i,d){const j=i+d;if(j<0||j>=PFSM.length)return;[PFSM[i],PFSM[j]]=[PFSM[j],PFSM[i]];smpDraw()}
+async function smpImgs(inp){const fs=[...(inp.files||[])];inp.value="";for(const f of fs){if(PFSM.length>=SMMAX){note("ใส่ตัวอย่างได้สูงสุด "+SMMAX+" หน้า",1);break}try{PFSM.push(await picToJpeg(f,1400))}catch(e){note("อ่านรูปไม่ได้: "+f.name,1)}}smpDraw()}
+let PDFJ=null;
+function loadPdfJs(){if(window.pdfjsLib)return Promise.resolve(window.pdfjsLib);if(PDFJ)return PDFJ;PDFJ=new Promise((ok,no)=>{const e=document.createElement("script");e.src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";e.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";ok(pdfjsLib)};e.onerror=()=>{PDFJ=null;e.remove();no(new Error("pdfjs"))};document.head.appendChild(e)});return PDFJ}
+async function smpPdf(inp){const f=inp.files&&inp.files[0];inp.value="";if(!f)return;const box=$("smpdf");box.style.display="";box.innerHTML='<span class="mut">กำลังเปิดไฟล์ PDF…</span>';
+  try{const lib=await loadPdfJs();const doc=await lib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;SMPDF=doc;
+    box.innerHTML=`<div class="mut" style="font-size:13px">${esc(f.name)} · ทั้งหมด ${doc.numPages} หน้า</div><label for="smpg" style="margin-top:6px">หน้าที่จะโชว์</label><input id="smpg" placeholder="เช่น 1-5 หรือ 1,3,8,12" value="1-${Math.min(5,doc.numPages)}"><div class="row" style="margin:8px 0 0"><button class="btn sm" id="smpgo" onclick="smpMake()">สร้างรูปตัวอย่าง</button><button class="btn alt sm" onclick="SMPDF=null;$('smpdf').style.display='none'">ปิด</button></div><div class="mut" style="font-size:12px;margin-top:6px">ไฟล์ PDF ไม่ถูกอัปโหลด ระบบเอาเฉพาะหน้าที่เลือกมาทำเป็นรูป</div>`}
+  catch(e){console.error(e);box.innerHTML='<span style="color:var(--seal)">เปิดไฟล์ PDF ไม่ได้ ลองไฟล์อื่น หรืออัปโหลดเป็นรูปแทน</span>'}}
+function pgParse(t,max){const out=[];for(const part of String(t).split(/[,\s]+/).filter(Boolean)){const m=part.match(/^(\d+)(?:-(\d+))?$/);if(!m)return null;let a=+m[1],b=m[2]?+m[2]:a;if(a>b)[a,b]=[b,a];for(let i=a;i<=b;i++)if(i>=1&&i<=max&&!out.includes(i))out.push(i)}return out}
+async function smpMake(){const doc=SMPDF;if(!doc)return;const pg=pgParse($("smpg").value,doc.numPages);
+  if(!pg||!pg.length){note("ใส่เลขหน้าให้ถูก เช่น 1-5 หรือ 1,3,8",1);return}
+  const room=SMMAX-PFSM.length;if(room<=0){note("ใส่ตัวอย่างได้สูงสุด "+SMMAX+" หน้า ลบหน้าเดิมก่อน",1);return}
+  const use=pg.slice(0,room),btn=$("smpgo");btn.disabled=true;
+  try{for(let k=0;k<use.length;k++){btn.textContent=`กำลังสร้าง ${k+1}/${use.length}…`;const p=await doc.getPage(use[k]),v0=p.getViewport({scale:1}),sc=Math.min(2.5,1300/v0.width),v=p.getViewport({scale:sc});
+      const c=document.createElement("canvas");c.width=Math.round(v.width);c.height=Math.round(v.height);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);await p.render({canvasContext:x,viewport:v}).promise;PFSM.push(c.toDataURL("image/jpeg",.82))}
+    smpDraw();note(`เพิ่มตัวอย่าง ${use.length} หน้าแล้ว${use.length<pg.length?` (เกิน ${SMMAX} หน้า ตัดส่วนที่เหลือออก)`:""} อย่าลืมกดบันทึกหนังสือ`)}
+  catch(e){console.error(e);note("สร้างรูปไม่สำเร็จ",1)}finally{btn.disabled=false;btn.textContent="สร้างรูปตัวอย่าง"}}
+/* ดูตัวอย่างแบบเต็มจอ */
+let SMV={l:[],i:0};
+function smpOpen(id,i){const p=prodBy(id);if(!p||!(p.sm||[]).length)return;SMV={l:p.sm,i,t:p.t};let v=$("smpv");
+  if(!v){v=document.createElement("div");v.id="smpv";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.onclick=e=>{if(e.target===v)smpClose()};document.body.appendChild(v)}
+  smpShow();v.classList.add("on")}
+function smpShow(){const v=$("smpv"),n=SMV.l.length,i=SMV.i;v.innerHTML=`<div class="smvb"><span>${esc(SMV.t)} · ตัวอย่างหน้า ${i+1}/${n}</span><button onclick="smpClose()" aria-label="ปิด">✕</button></div><div class="smvi"><img src="${esc(SMV.l[i])}" alt="ตัวอย่างหน้า ${i+1}"></div>${n>1?`<button class="smvn p" onclick="smpGo(-1)" ${i?"":"disabled"} aria-label="หน้าก่อน">‹</button><button class="smvn x" onclick="smpGo(1)" ${i<n-1?"":"disabled"} aria-label="หน้าถัดไป">›</button>`:""}`}
+function smpGo(d){SMV.i=Math.max(0,Math.min(SMV.l.length-1,SMV.i+d));smpShow()}
+function smpClose(){const v=$("smpv");if(v)v.classList.remove("on")}
+document.addEventListener("keydown",e=>{const v=$("smpv");if(!v||!v.classList.contains("on"))return;if(e.key==="Escape")smpClose();if(e.key==="ArrowRight")smpGo(1);if(e.key==="ArrowLeft")smpGo(-1)});
 function cancelPr(){PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
 function delPr(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;PRODS=PRODS.filter(p=>p.id!==id);PROMOS.forEach(x=>x.ids=x.ids.filter(i=>i!==id));if(PFE===id)PFE=null;renderShopAdmin()}
 function mvPr(i,d){const j=i+d;if(j<0||j>=PRODS.length)return;[PRODS[i],PRODS[j]]=[PRODS[j],PRODS[i]];renderShopAdmin()}
@@ -1949,6 +2017,34 @@ const oAsSub=o=>({code:o.code,name:o.name,ph:o.ph,addr:o.addr,zip:o.zip,car:o.ca
 
 cartBadge();
 let TOOL=null;
+/* ===== รีวิว (หลังบ้าน · พี่เขียนเอง) ===== */
+let RVE=null,RVPIC=null,RVDEL=null,RVSC=[];
+const hskMax=lv=>lv>=3?300:200,hskParts=lv=>lv>=3?3:2;
+function rvPrev(){const cur=RVE!=null?STU[RVE]:null,src=RVPIC!==null?RVPIC:(cur?(cur.p||(cur.i?RVIMG[cur.i]:"")):"");
+  $("rvpv").innerHTML=src?`<img class="sav" src="${rvE(src)}" alt="" style="width:56px;height:56px">`:'<span class="sav savx" style="width:56px;height:56px">?</span>';$("rvpx").style.display=src?"":"none"}
+async function rvPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{RVPIC=await picSq(f,360);rvPrev()}catch(e){note("อ่านรูปไม่ได้",1)}inp.value=""}
+function picSq(file,sz){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=sz;const m=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);res(c.toDataURL("image/jpeg",.85))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+function rvScDraw(){$("rvsc").innerHTML=RVSC.map((x,i)=>{const n=hskParts(x[0]),tot=x[3].slice(0,n).reduce((a,v)=>a+(+v||0),0);
+  return `<div class="rvsr"><select onchange="rvScLv(${i},this.value)" aria-label="ระดับ HSK">${[1,2,3,4,5,6].map(l=>`<option value="${l}" ${x[0]===l?"selected":""}>HSK ${l}</option>`).join("")}</select>${SPART.slice(0,n).map((p,k)=>`<label class="rvp"><span>${p[1]}</span><input type="number" min="0" max="100" inputmode="numeric" value="${x[3][k]??""}" oninput="rvScP(${i},${k},this.value)"></label>`).join("")}<span class="rvt" id="rvt${i}">รวม <b>${tot}</b> / ${hskMax(x[0])}</span><button class="btn alt sm" onclick="RVSC.splice(${i},1);rvScDraw()" aria-label="ลบผลสอบ">ลบ</button></div>`}).join("")}
+function rvAddSc(){RVSC.push([1,0,200,[]]);rvScDraw()}
+function rvScLv(i,v){RVSC[i][0]=+v;rvScDraw()}
+function rvScP(i,k,v){RVSC[i][3][k]=v===""?"":Math.max(0,Math.min(100,Math.round(+v)||0));const x=RVSC[i],n=hskParts(x[0]);$("rvt"+i).innerHTML=`รวม <b>${x[3].slice(0,n).reduce((a,v)=>a+(+v||0),0)}</b> / ${hskMax(x[0])}`}
+function renderRvAdmin(){const e=$("rvl");if(!e)return;const cur=RVE!=null?STU[RVE]:null;
+  if($("rvn").dataset.k!==String(RVE)){$("rvn").dataset.k=String(RVE);$("rvn").value=cur?cur.n:"";$("rvr").value=cur?cur.r||"":"";$("rvc").value=cur?cur.c||"":"";$("rvst").value=String(cur&&cur.st||0);$("rvon").checked=cur?cur.on!==false:true;
+    RVPIC=null;RVSC=cur?cur.s.map(x=>[x[0],x[1],x[2],x[3].slice()]):[];rvPrev();rvScDraw()}
+  $("rvh").textContent=cur?"แก้ไขรีวิว":"เพิ่มรีวิว";$("rvx").style.display=cur?"":"none";
+  e.innerHTML=STU.length?STU.map((st,i)=>`<div class="vw" style="align-items:center">${stAv(st,"sav")}<div style="flex:1;min-width:0"><b>น้อง${rvE(st.n)}</b> ${st.on===false?'<span class="tag">ซ่อนอยู่</span>':""}${stars(st.st)}<div class="mut rvsn">${rvE(st.r||"")}</div><div class="mut" style="font-size:12px">${[st.c,...st.s.map(x=>`HSK ${x[0]} ${x[1]}/${x[2]}`)].filter(Boolean).map(rvE).join(" · ")}</div></div><div class="rvb"><button class="btn alt sm" onclick="mvRv(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button class="btn alt sm" onclick="mvRv(${i},1)" ${i<STU.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button><button class="btn alt sm" onclick="RVE=${i};renderRvAdmin();$('rvh').scrollIntoView({behavior:'smooth',block:'center'})">แก้ไข</button><button class="btn alt sm" onclick="togRv(${i})">${st.on===false?"แสดง":"ซ่อน"}</button><button class="btn alt sm ${RVDEL===i?"dg":""}" onclick="delRv(${i})">${RVDEL===i?"ยืนยันลบ":"ลบ"}</button></div></div>`).join(""):"<div class='card mut'>ยังไม่มีรีวิว</div>"}
+function rvVals(){const n=$("rvn").value.trim().replace(/^น้อง\s*/,""),r=$("rvr").value.trim();
+  if(!n){note("กรุณาใส่ชื่อเล่น",1);$("rvn").focus();return null}
+  const sc=[];for(const x of RVSC){const k=hskParts(x[0]),p=x[3].slice(0,k).map(v=>+v||0);if(p.some(v=>v<0||v>100)){note("คะแนนแต่ละพาร์ทต้องอยู่ระหว่าง 0–100",1);return null}if(p.every(v=>!v))continue;sc.push([x[0],p.reduce((a,v)=>a+v,0),hskMax(x[0]),p])}
+  if(!r&&!sc.length){note("ใส่ข้อความรีวิว หรือผลสอบอย่างน้อย 1 อย่าง",1);$("rvr").focus();return null}
+  const cur=RVE!=null?STU[RVE]:null;
+  return {n,r,c:$("rvc").value.trim(),st:+$("rvst").value||0,on:$("rvon").checked,s:sc.sort((a,b)=>b[0]-a[0]),p:RVPIC!==null?RVPIC:(cur?cur.p||"":""),i:RVPIC!==null?"":(cur?cur.i||"":"")}}
+function saveRv(){const v=rvVals();if(!v)return;if(RVE!=null)Object.assign(STU[RVE],v);else STU.push(v);RVE=null;$("rvn").dataset.k="";renderRvAdmin();renderStu();note("บันทึกรีวิวแล้ว")}
+function cancelRv(){RVE=null;$("rvn").dataset.k="";renderRvAdmin()}
+function togRv(i){STU[i].on=STU[i].on===false;renderRvAdmin();renderStu()}
+function delRv(i){if(RVDEL!==i){RVDEL=i;renderRvAdmin();return}RVDEL=null;STU.splice(i,1);if(RVE===i)RVE=null;$("rvn").dataset.k="";renderRvAdmin();renderStu()}
+function mvRv(i,d){const j=i+d;if(j<0||j>=STU.length)return;[STU[i],STU[j]]=[STU[j],STU[i]];if(RVE===i)RVE=j;else if(RVE===j)RVE=i;renderRvAdmin();renderStu()}
 /* ===== บันทึกการส่งอีเมล (หลังบ้าน) ===== */
 let MAILS=[],MF="all";
 const MK={live:"ลิงก์ไลฟ์",live_remind:"เตือนก่อนไลฟ์ 1 ชม.",approve:"อนุมัติการสมัคร",owner_enroll:"แจ้งพี่: ผู้สมัครใหม่",owner_order:"แจ้งพี่: คำสั่งซื้อใหม่",order_new:"ได้รับคำสั่งซื้อ",order_paid:"ยืนยันเงินเข้า",ship:"แจ้งเลขพัสดุ",test:"ทดสอบระบบ",other:"อื่น ๆ"};
@@ -2074,7 +2170,7 @@ const FN=SB_URL+"/functions/v1/";
 const loginEmail=code=>code.toLowerCase()+"@students.yuehua.app";
 const normCode=s=>{const d=String(s||"").toUpperCase().replace(/\s/g,"").replace(/^YH-?/,"");return /^\d{3,6}$/.test(d)?"YH"+d:""};
 const ms=t=>t?new Date(t).getTime():null;
-const toast=(m,bad)=>{let t=document.getElementById("yhToast");if(!t){t=document.createElement("div");t.id="yhToast";t.setAttribute("role","status");t.style.cssText="position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:200;max-width:90vw;padding:10px 16px;border-radius:12px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:opacity .3s";document.body.appendChild(t)}
+const toast=(m,bad)=>{let t=document.getElementById("yhToast");if(!t){t=document.createElement("div");t.id="yhToast";t.setAttribute("role","status");t.style.cssText="pointer-events:none;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:200;max-width:90vw;padding:10px 16px;border-radius:12px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:opacity .3s";document.body.appendChild(t)}
   t.style.background=bad?"#8a1c1c":"#2a211b";t.style.color="#fff";t.textContent=m;t.style.opacity="1";clearTimeout(t._h);t._h=setTimeout(()=>t.style.opacity="0",3200)};
 window.yhToast=toast;
 const busy=(btn,on,txt)=>{if(!btn)return;if(on){btn._t=btn.textContent;btn.disabled=true;btn.textContent=txt||"กำลังบันทึก…"}else{btn.disabled=false;if(btn._t)btn.textContent=btn._t}};
@@ -2118,14 +2214,14 @@ async function loadShop(admin){
   const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
   if(p.error)throw p.error;
   let files={};if(admin){const f=await sb.from("product_files").select("product_id,file_url");(f.data||[]).forEach(x=>files[x.product_id]=x.file_url)}
-  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",sort:x.sort}));
+  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[]}));
   PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort}));
   cartBadge();
 }
 async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
   VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort}))}
 async function loadPublic(){
-  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e))])}catch(e){console.error(e)}
+  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e))])}catch(e){console.error(e)}
   const on=document.querySelector(".scr.on");if(!on)return;
   if(on.id==="s-hour")renderHour();if(on.id==="s-trial")drawTrial();if(on.id==="s-course")drawCourse();
   if(on.id==="s-shop")renderShop();if(on.id==="s-cart")renderCart();if(on.id==="s-dict")renderVocab();
@@ -2337,7 +2433,7 @@ async function adminLoad(){
       LIVES.push({t:x.title,when,l:x.meet_url});
       SENT.push({t:x.title,when,n:to.length,em:to.map(r=>r.em),ex:`สวัสดีครับ\n\nครูขอเชิญเข้าเรียนไลฟ์สด: ${x.title}\nเวลา: ${when}\nเข้าห้อง: ${x.meet_url}\n${x.message?"\n"+x.message+"\n":""}\n– YUEHUA 悦华中文`})});
     (se.data||[]).forEach(r=>{if(r.k==="sender")SENDER=r.v});
-    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e))]);
+    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e))]);
     const pend=SUBS.filter(s=>s.st==="รอตรวจสอบ"),paths=pend.flatMap(s=>[s.slipPath,s.idcPath]).filter(Boolean);
     if(paths.length){const {data}=await sb.storage.from("applications").createSignedUrls(paths,3600);
       const u=Object.fromEntries((data||[]).map(d=>[d.path,d.signedUrl]));pend.forEach(s=>{s.slip=s.slipPath?u[s.slipPath]||null:null;s.idc=s.idcPath?u[s.idcPath]||"#":"#"})}
@@ -2525,7 +2621,7 @@ async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))ret
   return sb.storage.from("public-assets").getPublicUrl(path).data.publicUrl}
 /* ---------- หลังบ้าน: ร้านค้า ---------- */
 window.savePr=async function(){const v=prVals();if(!v)return;
-  try{const cover=await upCover(v.c,"shop");const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on};
+  try{const cover=await upCover(v.c,"shop");const samples=[];for(const u of v.sm||[])samples.push(await upCover(u,"samples"));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples};
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
     const {error:fe}=await sb.from("product_files").upsert({product_id:id,file_url:v.u});if(fe)throw fe;
@@ -2554,6 +2650,20 @@ window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCA
 /* ---------- เริ่มต้น ---------- */
 SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};
 VOCAB=[];PRODS=[];PROMOS=[];ORDERS=[];
+/* ---------- รีวิว (พี่เขียนเองในหลังบ้าน) ---------- */
+async function loadReviews(){const {data,error}=await sb.from("reviews").select("*").order("sort").order("id");if(error)throw error;
+  STU.length=0;(data||[]).forEach(x=>{const ph=x.photo||"",k=ph.startsWith("key:");STU.push({id:Number(x.id),sort:x.sort,n:x.name,r:x.body||"",c:x.course||"",st:x.stars||0,on:x.active,s:Array.isArray(x.scores)?x.scores:[],i:k?ph.slice(4):"",p:k?"":ph})});
+  STU._o=1;try{renderStu()}catch(e){}if(ROLE==="admin"&&AT==="a-rv")renderRvAdmin()}
+window.saveRv=async function(){const v=rvVals();if(!v)return;const btn=$("rvsv");busy(btn,true);
+  try{const photo=v.p?await upCover(v.p,"reviews"):(v.i?"key:"+v.i:null);
+    const row={name:v.n,body:v.r,course:v.c||null,stars:v.st||null,active:v.on,scores:v.s,photo};const cur=RVE!=null?STU[RVE]:null;
+    const q=cur?sb.from("reviews").update(row).eq("id",cur.id):sb.from("reviews").insert(Object.assign(row,{sort:STU.length}));
+    const {error}=await q;if(error)throw error;RVE=null;$("rvn").dataset.k="";await loadReviews();renderRvAdmin();toast("บันทึกรีวิวแล้ว")}
+  catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+window.togRv=async function(i){const x=STU[i];const {error}=await sb.from("reviews").update({active:x.on===false}).eq("id",x.id);if(error){fail(error);return}await loadReviews();renderRvAdmin();toast(x.on===false?"แสดงรีวิวแล้ว":"ซ่อนรีวิวแล้ว")};
+window.delRv=async function(i){if(RVDEL!==i){RVDEL=i;renderRvAdmin();return}RVDEL=null;const {error}=await sb.from("reviews").delete().eq("id",STU[i].id);if(error){fail(error);return}if(RVE===i)RVE=null;$("rvn").dataset.k="";await loadReviews();renderRvAdmin();toast("ลบรีวิวแล้ว")};
+window.mvRv=async function(i,d){const j=i+d;if(j<0||j>=STU.length)return;[STU[i],STU[j]]=[STU[j],STU[i]];if(RVE===i)RVE=j;else if(RVE===j)RVE=i;renderRvAdmin();renderStu();await reorder("reviews",STU);await loadReviews()};
+
 /* ---------- บันทึกการส่งอีเมล ---------- */
 async function loadMails(){const {data,error}=await sb.from("mail_log").select("id,created_at,kind,ref,to_email,subject,ok,error,tries").order("id",{ascending:false}).limit(300);if(error)throw error;
   MAILS=(data||[]).map(m=>({id:Number(m.id),at:ms(m.created_at),k:m.kind,ref:m.ref||"",to:m.to_email,sub:m.subject,ok:m.ok,err:m.error||"",tries:m.tries||1}))}
