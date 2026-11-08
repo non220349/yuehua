@@ -452,6 +452,9 @@ body.pvmode{padding-bottom:64px}body.pvmode .fab{bottom:80px}
 .rvsr{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;padding:10px;border:1px solid var(--bd);border-radius:12px;margin:6px 0}.rvsr select{width:auto;margin:0}
 .rvp{display:flex;flex-direction:column;font-size:12px;color:var(--mut);margin:0}.rvp input{width:76px;margin:2px 0 0}
 .rvt{font-size:13px;color:var(--mut);padding-bottom:10px}.rvt b{color:var(--seal)}
+.crsw{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.crsw button{width:34px;height:34px;border-radius:9px;border:2px solid transparent;cursor:pointer;padding:0}.crsw button.on{outline:3px solid var(--seal);outline-offset:1px}
+.crex{border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;padding:8px 10px;margin:8px 0}.crex input,.crex textarea{margin:4px 0}.crrow{margin:8px 0;padding:12px 14px}.crcalc{font-size:13px;background:rgba(163,38,38,.06);border-radius:8px;padding:8px 10px;margin-top:8px}
+details.crd{margin-top:12px}details.crd>summary{cursor:pointer;font-weight:700}
 .rvsn{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rvb{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;max-width:240px}
 .smpl{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
@@ -503,7 +506,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <p>อีก 30% ค่อยจ่ายเมื่อเรียนครบ 1 เดือน ใช้ได้กับคอร์สออนไลน์ทั้งวิดีโอและเรียนสด</p><div class="sm2">*ไม่รวมค่าหนังสือ (ค่าหนังสือชำระพร้อมงวดแรก)</div>
     <div class="row"><button class="btn gold" id="ibtn" onclick="openEnroll(EXK,1)">สมัครแบบผ่อน 70/30</button><button class="btn ghost" onclick="jump('courses')">ดูคอร์สทั้งหมด</button></div>
     <details class="terms"><summary>ดูเงื่อนไขโปรโมชั่น 70/30</summary><div id="tr1"></div></details></div>
-    <div class="iex" id="iex"></div></div></div><div class="inst sl s2"><div class="ig"><div><div class="eb" style="color:#f6d7a8">PINYIN</div><h2>พินอิน เริ่มต้นให้ถูก<br>ออกเสียงให้มั่นใจ</h2><p>ฐานสำคัญก่อนเริ่มเรียน HSK</p><ul class="cks"><li>ฝึกวรรณยุกต์ 4 เสียง</li><li>อ่านออกเสียงพินอินได้ถูกต้อง</li><li>เหมาะกับคนไม่เคยเรียนมาก่อน</li></ul><div class="row"><button class="btn gold" onclick="openEnroll('pinyin')">สมัครคอร์สพินอิน</button><button class="btn ghost" onclick="openCourse('pinyin')">ดูรายละเอียด</button></div></div><div class="iex" id="s2f"></div></div></div><div class="inst sl s3"><div class="ig"><div><div class="eb" style="color:#f6d7a8">FREE TRIAL</div><h2>ลองเรียนก่อน<br>ไม่ต้องจ่ายอะไร</h2><p>ทดลองเรียน 1 คลาสกับครูตัวจริง</p><ul class="cks"><li>ห้องเล็ก ไม่เกิน 10 คน</li><li>เลือกได้ทั้ง 5 คอร์ส</li><li>จองง่ายผ่านเว็บไซต์</li></ul><div class="row"><button class="btn gold" onclick="openTrial()">ทดลองเรียนฟรี</button></div></div><div class="iex" id="s3f"></div></div></div><div class="inst sl s4"><div class="ig"><div><div class="eb" style="color:#f6d7a8">LIVE CLASS</div><h2>เรียนสดรายชั่วโมง<br>เลือกเวลาเองได้</h2><p>จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง</p><ul class="cks"><li>เรียนกลุ่มหรือตัวต่อตัว</li><li>เวลาเดิมทุกสัปดาห์ ครั้งละ 1 ชม.</li><li>เรียนที่ห้องเรียนหรือออนไลน์</li></ul><div class="row"><button class="btn gold" onclick="openHour('group')">เลือกวันและเวลา</button></div></div><div class="iex" id="s4f"></div></div></div><div class="inst sl s5"><div class="ig"><div><div class="eb" style="color:#f6d7a8">HSK 1</div><h2>HSK 1<br>เริ่มจากศูนย์ก็เรียนได้</h2><p>สร้างพื้นฐานภาษาจีนอย่างเป็นระบบ</p><ul class="cks"><li>ทักทาย แนะนำตัว ตัวเลข ครอบครัว</li><li>เตรียมสอบ HSK ระดับ 1</li><li>ไม่ต้องมีพื้นฐานมาก่อน</li></ul><div class="row"><button class="btn gold" onclick="openEnroll('hsk1')">สมัคร HSK1</button><button class="btn ghost" onclick="openCourse('hsk1')">ดูรายละเอียด</button></div></div><div class="iex" id="s5f"></div></div></div><div class="inst sl s6"><div class="ig"><div><div class="eb" style="color:#f6d7a8">HSK 2</div><h2>HSK 2<br>คุยในชีวิตประจำวันได้</h2><p>ต่อยอดจาก HSK1 ให้สื่อสารคล่องขึ้น</p><ul class="cks"><li>ซื้อของ ถามทาง เล่าเรื่องสั้น</li><li>เตรียมสอบ HSK ระดับ 2</li><li>ควรผ่าน HSK1 หรือเทียบเท่า</li></ul><div class="row"><button class="btn gold" onclick="openEnroll('hsk2')">สมัคร HSK2</button><button class="btn ghost" onclick="openCourse('hsk2')">ดูรายละเอียด</button></div></div><div class="iex" id="s6f"></div></div></div><div class="inst sl s7"><div class="ig"><div><div class="eb" style="color:#f6d7a8">HSK 3</div><h2>HSK 3<br>สื่อสารได้คล่องขึ้น</h2><p>ไวยากรณ์ระดับกลาง พร้อมเตรียมสอบ</p><ul class="cks"><li>ไวยากรณ์ระดับกลาง</li><li>เตรียมสอบ HSK ระดับ 3</li><li>ควรผ่าน HSK2 หรือเทียบเท่า</li></ul><div class="row"><button class="btn gold" onclick="openEnroll('hsk3')">สมัคร HSK3</button><button class="btn ghost" onclick="openCourse('hsk3')">ดูรายละเอียด</button></div></div><div class="iex" id="s7f"></div></div></div><div class="inst sl s8"><div class="ig"><div><div class="eb" style="color:#f6d7a8">HSK 4</div><h2>HSK 4<br>ระดับสอบจริง</h2><p>ฝึกอ่านเขียนยาวขึ้น พร้อมข้อสอบจำลอง</p><ul class="cks"><li>อ่านเขียนได้ยาวขึ้น</li><li>ฝึกข้อสอบจำลอง</li><li>ควรผ่าน HSK3 หรือเทียบเท่า</li></ul><div class="row"><button class="btn gold" onclick="openEnroll('hsk4')">สมัคร HSK4</button><button class="btn ghost" onclick="openCourse('hsk4')">ดูรายละเอียด</button></div></div><div class="iex" id="s8f"></div></div></div></div>
+    <div class="iex" id="iex"></div></div></div><div class="inst sl s3"><div class="ig"><div><div class="eb" style="color:#f6d7a8">FREE TRIAL</div><h2>ลองเรียนก่อน<br>ไม่ต้องจ่ายอะไร</h2><p>ทดลองเรียน 1 คลาสกับครูตัวจริง</p><ul class="cks"><li>ห้องเล็ก ไม่เกิน 10 คน</li><li>เลือกได้ทุกคอร์ส</li><li>จองง่ายผ่านเว็บไซต์</li></ul><div class="row"><button class="btn gold" onclick="openTrial()">ทดลองเรียนฟรี</button></div></div><div class="iex" id="s3f"></div></div></div><div class="inst sl s4"><div class="ig"><div><div class="eb" style="color:#f6d7a8">LIVE CLASS</div><h2>เรียนสดรายชั่วโมง<br>เลือกเวลาเองได้</h2><p>จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง</p><ul class="cks"><li>เรียนกลุ่มหรือตัวต่อตัว</li><li>เวลาเดิมทุกสัปดาห์ ครั้งละ 1 ชม.</li><li>เรียนที่ห้องเรียนหรือออนไลน์</li></ul><div class="row"><button class="btn gold" onclick="openHour('group')">เลือกวันและเวลา</button></div></div><div class="iex" id="s4f"></div></div></div></div>
     <button class="cn cp" onclick="slideNext(-1)" aria-label="ก่อนหน้า">‹</button><button class="cn cx" onclick="slideNext(1)" aria-label="ถัดไป">›</button>
     <div class="dots" id="dots"></div></section>
   <section class="hero"><div class="hg"><div><div class="eb">YUEHUA 悦华中文</div><h1>เรียนจีน<br><span>มันกว่าที่คิด</span></h1>
@@ -596,7 +599,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b><button class="btn sm" onclick="adminPreview()" title="ดูหน้าเรียนแบบที่นักเรียนเห็น เห็นทุกคอร์ส ไม่บันทึกอะไร">มุมมองนักเรียน</button></div>
-  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
+  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
   <div class="pane" id="a-ov"><div id="ovw"></div></div>
 <div class="pane" id="a-fin">
   <div class="row" style="margin:10px 0;align-items:center"><label for="fmsel" style="margin:0">เดือน</label><select id="fmsel" style="width:auto;margin:0" onchange="FNM=this.value;renderFin()"></select></div>
@@ -653,6 +656,37 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label>ปก</label><div class="row" style="margin:0;align-items:center"><span id="vfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="vfPic(this)"></label><span id="vfprev"></span></div>
       <div class="row"><button class="btn" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="vfl"></div>
+  </div>
+  <div class="pane" id="a-crs">
+    <div class="card" style="margin-top:10px"><b id="crh">เพิ่มคอร์สใหม่</b><div class="mut" style="font-size:13px">แก้แล้วกด “บันทึกคอร์ส” หน้าเว็บเปลี่ยนตามทันที · ราคาที่นักเรียนเห็นตอนสมัครคิดจากข้อมูลตรงนี้</div>
+      <div id="crty"></div>
+      <div class="vg2"><div><label for="crn">ชื่อคอร์ส</label><input id="crn" maxlength="40" placeholder="เช่น HSK5"></div><div><label for="crt">คำโปรยสั้น</label><input id="crt" maxlength="80" placeholder="เช่น ระดับสูง อ่านข่าวได้"></div></div>
+      <div class="vg2"><div><label for="crtag">ป้ายบนการ์ด (ไม่ใส่ก็ได้)</label><input id="crtag" maxlength="20" placeholder="เช่น คุ้มกว่า, ใหม่"></div><div><label for="crg">สีหัวการ์ด</label><select id="crg"><option value="0">แดง</option><option value="1">ทอง</option></select></div></div>
+      <div id="crpkw"><label>คอร์สในแพ็ก (เลือกอย่างน้อย 2 คอร์ส · นักเรียนที่ซื้อแพ็กได้สิทธิ์เรียนทุกคอร์สที่เลือก)</label><div id="crpk"></div></div>
+      <div class="vg2"><div><label for="crp">ราคาคอร์สวิดีโอ (บาท)</label><input id="crp" type="number" min="0" inputmode="numeric" oninput="crCalc()"></div><div id="crhrw"><label for="crhr">ชั่วโมงเรียน</label><input id="crhr" type="number" min="0" step="0.5" inputmode="decimal" oninput="crCalc()"></div></div>
+      <div class="vg2" id="crrw"><div><label for="crrg">เรียนสดกลุ่ม (บาท/ชม.)</label><input id="crrg" type="number" min="0" inputmode="numeric" oninput="crCalc()"></div><div><label for="crrs">เรียนสดเดี่ยว (บาท/ชม.)</label><input id="crrs" type="number" min="0" inputmode="numeric" oninput="crCalc()"></div></div>
+      <div class="crcalc" id="crcalc"></div>
+      <label class="chk" style="margin-top:10px"><input type="checkbox" id="crins"> ผ่อน 70/30 ได้</label>
+      <label class="chk"><input type="checkbox" id="cron" checked> แสดงบนหน้าเว็บ</label>
+      <details class="crd" open><summary>หน้ารายละเอียดด้านใน (ตอนกด “ดูคอร์ส”)</summary>
+        <label for="cruse">เหมาะกับ</label><textarea id="cruse" rows="3" maxlength="800" placeholder="เช่น ผู้ที่ผ่าน HSK4 แล้ว อยากอ่านบทความและข่าวภาษาจีน"></textarea>
+        <label for="crlv">พื้นฐานที่ต้องมี</label><input id="crlv" maxlength="80" placeholder="เช่น ไม่ต้องมีพื้นฐานมาก่อน">
+        <label for="crbk">หนังสือ (แสดงเมื่อยังไม่ได้อัปโหลดไฟล์หนังสือของคอร์สนี้)</label><input id="crbk" maxlength="160" placeholder="เช่น หนังสือเรียนประกอบคอร์ส พร้อมแบบฝึกหัด">
+        <label>หัวข้อเพิ่มเติม (ไม่ใส่ก็ได้)</label><div class="mut" style="font-size:12px">เช่น “เรียนอะไรบ้าง”, “ได้อะไรหลังเรียนจบ” · บรรทัดที่ขึ้นต้นด้วย - จะกลายเป็นข้อ ๆ</div>
+        <div id="crex"></div><button class="btn alt sm" onclick="crAddEx()">+ เพิ่มหัวข้อ</button>
+      </details>
+      <details class="crd"><summary>สไลด์แบนเนอร์หน้าแรก</summary>
+        <label class="chk" style="margin-top:8px"><input type="checkbox" id="crsl"> แสดงสไลด์ของคอร์สนี้</label>
+        <div class="vg2"><div><label for="crse">หัวเล็กด้านบน</label><input id="crse" maxlength="24" placeholder="เช่น HSK 5"></div><div><label>สีพื้นสไลด์</label><div class="crsw" id="crsc"></div></div></div>
+        <label for="crs1">หัวข้อบรรทัด 1</label><input id="crs1" maxlength="40" placeholder="เช่น HSK 5">
+        <label for="crs2">หัวข้อบรรทัด 2</label><input id="crs2" maxlength="40" placeholder="เช่น อ่านข่าวจีนได้จริง">
+        <label for="crsp">คำอธิบายสั้น</label><input id="crsp" maxlength="80">
+        <label>จุดเด่น 3 ข้อ</label><input id="crb0" maxlength="50"><input id="crb1" maxlength="50"><input id="crb2" maxlength="50">
+        <div class="mut" style="font-size:12px;margin-top:6px">กล่องสรุปด้านขวาของสไลด์ (ชั่วโมง ราคาวิดีโอ ราคาเรียนสด) ดึงจากข้อมูลคอร์สให้อัตโนมัติ</div>
+      </details>
+      <div class="row"><button class="btn" id="crsv" onclick="saveCrs()">บันทึกคอร์ส</button><button class="btn alt" id="crx" onclick="cancelCrs()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+    <p class="mut" style="font-size:13px;margin:12px 0 4px">หน้าเว็บเรียงการ์ดคอร์สและสไลด์ตามลำดับนี้ · กด ↑ ↓ เพื่อย้าย</p>
+    <div id="crl"></div>
   </div>
   <div class="pane" id="a-rv">
     <div class="card" style="margin-top:10px"><b id="rvh">เพิ่มรีวิว</b><div class="mut" style="font-size:13px">พี่เขียนรีวิวเองจากที่นักเรียนส่งมาทาง LINE · ต้องมีชื่อเล่น และข้อความหรือผลสอบอย่างน้อย 1 อย่าง</div>
@@ -833,14 +867,14 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 </section>
 
 <section class="scr" id="s-pick">
-  <div class="top"><div style="display:flex;gap:6px"><button class="btn alt sm" id="chg" style="display:none" onclick="renderPick();go('s-pick')">เปลี่ยนคอร์ส</button><button class="btn alt sm" onclick="studentLogout()">ออกจากระบบ</button></div></div>
+  <div class="top"><span></span><button class="btn alt sm" onclick="studentLogout()">ออกจากระบบ</button></div>
   <h2>เลือกคอร์สที่ต้องการเรียน</h2><div class="mut" id="pn"></div>
   <div id="pk" style="margin-top:10px"></div>
 </section>
 
 <!-- 4 หน้าเรียน -->
 <section class="scr" id="s-dash">
-  <div class="top"><div class="pfh" onclick="openProfile(false)" title="แก้ไขโปรไฟล์"><div class="av" id="hav"></div><div><b id="hi"></b><div class="mut" id="lvl"></div></div></div><button class="btn alt sm" onclick="studentLogout()">ออก</button></div>
+  <div class="top"><div class="pfh" onclick="openProfile(false)" title="แก้ไขโปรไฟล์"><div class="av" id="hav"></div><div><b id="hi"></b><div class="mut" id="lvl"></div></div></div><div style="display:flex;gap:6px;flex-shrink:0"><button class="btn alt sm" id="chg" style="display:none" onclick="renderPick();go('s-pick')">เปลี่ยนคอร์ส</button><button class="btn alt sm" onclick="studentLogout()">ออก</button></div></div>
   <div class="tabs" id="tabs">
     <button class="on" data-t="p-today">วันนี้</button>
     <button data-t="p-learn">วิดีโอ</button>
@@ -909,14 +943,28 @@ const $=id=>document.getElementById(id);
 const L=["บทที่ 1 – ทักทาย","บทที่ 2 – แนะนำตัว","บทที่ 3 – ตัวเลข","บทที่ 4 – ครอบครัว","บทที่ 5 – ทบทวน"];
 let me={name:"นักเรียนทดลอง",code:"YH0000",course:"HSK1"},done=new Set([0]);
 function go(id){if(typeof PREV!=="undefined"&&PREV&&id==="s-home"){exitPreview();return}if(id==="s-dash"&&typeof GPUB!=="undefined"&&GPUB){GPUB=false;pgPlace();try{gQuit()}catch(e){}}document.querySelectorAll(".scr").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0);navLater()}
+/* ข้อมูลคอร์ส · แก้/เพิ่มได้ในหลังบ้าน (แท็บ คอร์สเรียน) · hr=ชั่วโมง rg/rs=ราคาเรียนสดกลุ่ม/เดี่ยวต่อชม. pk=คอร์สในแพ็ก ex=หัวข้อเพิ่มเติม sl..sc=สไลด์แบนเนอร์ */
+const CDEF=()=>({n:"",t:"",p:0,hr:0,lv:"",use:"",bk:"",tag:"",gold:false,on:true,ins:true,rg:0,rs:0,pk:null,ex:[],sl:false,se:"",s1:"",s2:"",sp:"",sb:["","",""],sc:5});
 const C={
-hsk1:{n:"HSK1",t:"เริ่มต้นจากศูนย์",p:1990,h:"30 ชั่วโมง",lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เหมาะกับผู้เริ่มเรียนภาษาจีนและผู้ที่เตรียมสอบ HSK ระดับ 1 เรียนทักทาย แนะนำตัว ตัวเลข ครอบครัว",bk:"หนังสือเรียนประกอบคอร์ส พร้อมแบบฝึกหัด (ตัวอย่าง)"},
-pinyin:{n:"พินอิน",t:"ออกเสียงให้ถูกตั้งแต่ต้น",p:490,h:"8 ชั่วโมง",lv:"สำหรับผู้เริ่มต้น",use:"ฝึกพินอิน วรรณยุกต์ 4 เสียง และการอ่านออกเสียง เหมาะเรียนคู่กับ HSK1",bk:"เอกสารฝึกออกเสียง (ตัวอย่าง)"},
-hsk2:{n:"HSK2",t:"สนทนาในชีวิตประจำวัน",p:2490,h:"30 ชั่วโมง",lv:"ผ่าน HSK1 หรือเทียบเท่า",use:"ซื้อของ ถามทาง เล่าเรื่องสั้น (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)"},
-hsk3:{n:"HSK3",t:"สื่อสารได้คล่องขึ้น",p:2990,h:"36 ชั่วโมง",lv:"ผ่าน HSK2 หรือเทียบเท่า",use:"ไวยากรณ์ระดับกลาง เตรียมสอบ HSK3 (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)"},
-hsk4:{n:"HSK4",t:"ระดับสอบจริง",p:3490,h:"40 ชั่วโมง",lv:"ผ่าน HSK3 หรือเทียบเท่า",use:"อ่านเขียนยาวขึ้น ข้อสอบจำลอง (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)"},
-hsk1pin:{n:"HSK1 + พินอิน",t:"แพ็กคู่ ประหยัดกว่าซื้อแยก",p:2290,h:"38 ชั่วโมง",lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เรียนพินอินให้ออกเสียงถูกก่อน แล้วต่อ HSK1 ได้ทันที เหมาะกับคนเริ่มต้นจากศูนย์",bk:"หนังสือเรียนประกอบคอร์ส HSK1 พร้อมเอกสารพินอิน (ตัวอย่าง)",b:1},live:{n:"เรียนสดรายชั่วโมง",p:0,b:1}};
-const P=[["โปรแพ็กคู่","HSK1 + พินอิน เหลือ 2,290 บาท จากปกติ 2,480","hsk1pin",""],["เริ่มต้นให้ถูก","คอร์สพินอิน 490 บาท ออกเสียงถูกตั้งแต่วันแรก","pinyin","r"],["รับหนังสือเล่ม","เพิ่มเพียง 300 บาท เลือกได้ตอนสมัคร","hsk1","r"]];
+pinyin:{n:"พินอิน",t:"ออกเสียงให้ถูกตั้งแต่ต้น",p:490,hr:8,lv:"สำหรับผู้เริ่มต้น",use:"ฝึกพินอิน วรรณยุกต์ 4 เสียง และการอ่านออกเสียง เหมาะเรียนคู่กับ HSK1",bk:"เอกสารฝึกออกเสียง (ตัวอย่าง)",gold:true,ins:false,rg:70,rs:100,sl:true,se:"PINYIN",s1:"พินอิน เริ่มต้นให้ถูก",s2:"ออกเสียงให้มั่นใจ",sp:"ฐานสำคัญก่อนเริ่มเรียน HSK",sb:["ฝึกวรรณยุกต์ 4 เสียง","อ่านออกเสียงพินอินได้ถูกต้อง","เหมาะกับคนไม่เคยเรียนมาก่อน"],sc:2},
+hsk1:{n:"HSK1",t:"เริ่มต้นจากศูนย์",p:1990,hr:30,lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เหมาะกับผู้เริ่มเรียนภาษาจีนและผู้ที่เตรียมสอบ HSK ระดับ 1 เรียนทักทาย แนะนำตัว ตัวเลข ครอบครัว",bk:"หนังสือเรียนประกอบคอร์ส พร้อมแบบฝึกหัด (ตัวอย่าง)",rg:75,rs:110,sl:true,se:"HSK 1",s1:"HSK 1",s2:"เริ่มจากศูนย์ก็เรียนได้",sp:"สร้างพื้นฐานภาษาจีนอย่างเป็นระบบ",sb:["ทักทาย แนะนำตัว ตัวเลข ครอบครัว","เตรียมสอบ HSK ระดับ 1","ไม่ต้องมีพื้นฐานมาก่อน"],sc:5},
+hsk1pin:{n:"HSK1 + พินอิน",t:"แพ็กคู่ ประหยัดกว่าซื้อแยก",p:2290,lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เรียนพินอินให้ออกเสียงถูกก่อน แล้วต่อ HSK1 ได้ทันที เหมาะกับคนเริ่มต้นจากศูนย์",bk:"หนังสือเรียนประกอบคอร์ส HSK1 พร้อมเอกสารพินอิน (ตัวอย่าง)",tag:"คุ้มกว่า",gold:true,ins:false,pk:["hsk1","pinyin"]},
+hsk2:{n:"HSK2",t:"สนทนาในชีวิตประจำวัน",p:2490,hr:30,lv:"ผ่าน HSK1 หรือเทียบเท่า",use:"ซื้อของ ถามทาง เล่าเรื่องสั้น (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)",rg:85,rs:120,sl:true,se:"HSK 2",s1:"HSK 2",s2:"คุยในชีวิตประจำวันได้",sp:"ต่อยอดจาก HSK1 ให้สื่อสารคล่องขึ้น",sb:["ซื้อของ ถามทาง เล่าเรื่องสั้น","เตรียมสอบ HSK ระดับ 2","ควรผ่าน HSK1 หรือเทียบเท่า"],sc:6},
+hsk3:{n:"HSK3",t:"สื่อสารได้คล่องขึ้น",p:2990,hr:36,lv:"ผ่าน HSK2 หรือเทียบเท่า",use:"ไวยากรณ์ระดับกลาง เตรียมสอบ HSK3 (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)",rg:85,rs:125,sl:true,se:"HSK 3",s1:"HSK 3",s2:"สื่อสารได้คล่องขึ้น",sp:"ไวยากรณ์ระดับกลาง พร้อมเตรียมสอบ",sb:["ไวยากรณ์ระดับกลาง","เตรียมสอบ HSK ระดับ 3","ควรผ่าน HSK2 หรือเทียบเท่า"],sc:7},
+hsk4:{n:"HSK4",t:"ระดับสอบจริง",p:3490,hr:40,lv:"ผ่าน HSK3 หรือเทียบเท่า",use:"อ่านเขียนยาวขึ้น ข้อสอบจำลอง (ข้อมูลตัวอย่าง)",bk:"หนังสือเรียนประกอบคอร์ส (ตัวอย่าง)",rg:90,rs:135,sl:true,se:"HSK 4",s1:"HSK 4",s2:"ระดับสอบจริง",sp:"ฝึกอ่านเขียนยาวขึ้น พร้อมข้อสอบจำลอง",sb:["อ่านเขียนได้ยาวขึ้น","ฝึกข้อสอบจำลอง","ควรผ่าน HSK3 หรือเทียบเท่า"],sc:8},
+live:{n:"เรียนสดรายชั่วโมง",p:0,b:1}};
+let CORD=["pinyin","hsk1","hsk1pin","hsk2","hsk3","hsk4"];
+Object.keys(C).forEach(k=>{if(k!=="live")C[k]=Object.assign(CDEF(),C[k])});
+/* CL = คอร์สที่เรียนได้จริง (ไม่ใช่แพ็ก) · CV = คอร์สที่แสดงบนหน้าเว็บ · CLV = ทั้งสองอย่าง */
+const CL=()=>CORD.filter(k=>!C[k].pk),CV=()=>CORD.filter(k=>C[k].on!==false),CLV=()=>CL().filter(k=>C[k].on!==false);
+const lrate=(k,t)=>+(t==="single"?C[k].rs:C[k].rg)||0,pkSum=k=>(C[k].pk||[]).reduce((a,x)=>a+(+C[x].p||0),0);
+const cnm=n=>(/^[A-Za-z0-9]/.test(n)?" ":"")+n;
+function cNorm(){CORD=CORD.filter(k=>C[k]&&k!=="live");
+  CORD.forEach(k=>{const c=C[k];if(c.pk){c.pk=c.pk.filter(x=>C[x]&&!C[x].pk&&x!=="live");c.hr=c.pk.reduce((a,x)=>a+(+C[x].hr||0),0)}c.h=(+c.hr||0)+" ชั่วโมง"})}
+cNorm();
+const txtH=t=>{let h="",ul=[];const fl=()=>{if(ul.length){h+=`<ul class="ul">${ul.map(x=>`<li>${x}</li>`).join("")}</ul>`;ul=[]}};
+  String(t||"").split("\n").forEach(l=>{const m=l.match(/^\s*[-•*]\s*(.*)$/);if(m){if(m[1].trim())ul.push(esc(m[1]));return}fl();if(l.trim())h+=`<div>${esc(l)}</div>`});fl();return h};
+const P0=[["โปรแพ็กคู่","HSK1 + พินอิน เหลือ 2,290 บาท จากปกติ 2,480","hsk1pin",""],["เริ่มต้นให้ถูก","คอร์สพินอิน 490 บาท ออกเสียงถูกตั้งแต่วันแรก","pinyin","r"],["รับหนังสือเล่ม","เพิ่มเพียง 300 บาท เลือกได้ตอนสมัคร","hsk1","r"]];
 const SUBS=[],
 LIVES=[],SENT=[],SEL=new Set();let AT="a-ov";const B=n=>n.toLocaleString("th-TH")+" บาท";
 const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -963,35 +1011,42 @@ const REV=[["HSK1","ครูคะ หนูสอบ HSK1 ผ่านแล�
 const CT=[["Instagram","https://www.instagram.com/",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>'],["TikTok","https://www.tiktok.com/",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.4 2 4 4.5 4.2"/></svg>'],["LINE","https://line.me/ti/p/4ssGEo74A7",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4.4 0-8 2.8-8 6.3 0 3 2.6 5.5 6.2 6.1l-.4 2 3.6-2.3c3.4-.5 6.6-2.7 6.6-5.8C20 6.8 16.4 4 12 4z"/></svg>']];
 let EXK="hsk1";
 function showEx(k){
+  const XL=CV().filter(x=>C[x].ins&&!C[x].pk);if(!XL.includes(k))k=XL[0];if(!k){$("iex").innerHTML="";return}
   EXK=k;const p=C[k].p,f=Math.round(p*.7);
-  $("iex").innerHTML=`<div class="eb" style="color:#f6d7a8">ตัวอย่างยอดชำระแต่ละคอร์ส</div><div class="chips">${["hsk1","hsk2","hsk3","hsk4"].map(x=>`<button class="${x===k?"on":""}" onclick="showEx('${x}')">${C[x].n}</button>`).join("")}</div><div class="r"><span>ราคาคอร์ส</span><b>${B(p)}</b></div><div class="r"><span>จ่ายวันนี้ (70%)</span><b>${B(f)}</b></div><div class="r"><span>จ่ายเมื่อครบ 1 เดือน (30%)</span><b>${B(p-f)}</b></div>`;
-  $("ibtn").textContent="สมัคร "+C[k].n+" แบบผ่อน 70/30";
+  $("iex").innerHTML=`<div class="eb" style="color:#f6d7a8">ตัวอย่างยอดชำระแต่ละคอร์ส</div><div class="chips">${XL.map(x=>`<button class="${x===k?"on":""}" onclick="showEx('${x}')">${esc(C[x].n)}</button>`).join("")}</div><div class="r"><span>ราคาคอร์ส</span><b>${B(p)}</b></div><div class="r"><span>จ่ายวันนี้ (70%)</span><b>${B(f)}</b></div><div class="r"><span>จ่ายเมื่อครบ 1 เดือน (30%)</span><b>${B(p-f)}</b></div>`;
+  $("ibtn").textContent="สมัคร"+cnm(C[k].n)+" แบบผ่อน 70/30";
 }
-const lv=(k,t)=>k==="hsk1pin"?lv("pinyin",t)+lv("hsk1",t):parseInt(C[k].h)*RATE[t][k];
+const lv=(k,t)=>C[k].pk?C[k].pk.reduce((a,x)=>a+lv(x,t),0):(+C[k].hr||0)*lrate(k,t);
 const fx=(t,rows)=>`<div class="eb" style="color:#f6d7a8">${t}</div>`+rows.map(r=>`<div class="r"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
 function ban(){
-  $("s2f").innerHTML=fx("สรุปคอร์สพินอิน",[["ชั่วโมงเรียน",C.pinyin.h],["คอร์สวิดีโอ",B(C.pinyin.p)],["เรียนสดกลุ่ม",B(lv("pinyin","group"))],["เรียนสดเดี่ยว",B(lv("pinyin","single"))]]);
   $("s3f").innerHTML=fx("ทดลองเรียนฟรี",[["ราคา","ฟรี"],["ระยะเวลา","1 คลาส (2 ชม.)"],["สิทธิ์","คนละ 1 ครั้ง"]]);
   $("s4f").innerHTML=fx("เรียนสดรายชั่วโมง",[["ห้องกลุ่ม",B(rt("group"))+"/ชม."],["ตัวต่อตัว",B(rt("single"))+"/ชม."],["การชำระเงิน","จ่ายหลังเรียน"]]);
-  [["hsk1","s5f"],["hsk2","s6f"],["hsk3","s7f"],["hsk4","s8f"]].forEach(([k,f])=>{$(f).innerHTML=fx("สรุปคอร์ส "+C[k].n,[["ชั่วโมงเรียน",C[k].h],["คอร์สวิดีโอ",B(C[k].p)],["เรียนสดกลุ่ม",B(lv(k,"group"))],["เรียนสดเดี่ยว",B(lv(k,"single"))]])});
+  document.querySelectorAll("#bcs .csl").forEach(e=>e.remove());
+  CV().filter(k=>C[k].sl).forEach((k,i)=>{const c=C[k],d=document.createElement("div"),sb=(c.sb||[]).filter(x=>String(x).trim());d.className="inst sl csl s"+(c.sc||5);
+    d.innerHTML=`<div class="ig"><div><div class="eb" style="color:#f6d7a8">${esc(c.se||c.n)}</div><h2>${esc(c.s1||c.n)}${c.s2?"<br>"+esc(c.s2):""}</h2>${c.sp?`<p>${esc(c.sp)}</p>`:""}${sb.length?`<ul class="cks">${sb.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}<div class="row"><button class="btn gold" onclick="openEnroll('${k}')">${/^[A-Za-z0-9]/.test(c.n)?"สมัคร "+esc(c.n):"สมัครคอร์ส"+esc(c.n)}</button><button class="btn ghost" onclick="openCourse('${k}')">ดูรายละเอียด</button></div></div><div class="iex">${fx("สรุปคอร์ส"+esc(cnm(c.n)),[["ชั่วโมงเรียน",c.h],["คอร์สวิดีโอ",B(c.p)],["เรียนสดกลุ่ม",B(lv(k,"group"))],["เรียนสดเดี่ยว",B(lv(k,"single"))]])}</div></div>`;
+    if(i===0)$("bcs").querySelector(".s1").after(d);else $("bcs").appendChild(d)});
   $("dots").innerHTML=[...$("bcs").children].map((_,i)=>`<button class="${i?"":"on"}" aria-label="สไลด์ ${i+1}" onclick="slideTo(${i})"></button>`).join("");
 }
 const slW=()=>{const c=$("bcs");return c.clientWidth+14};
 function slideTo(i){$("bcs").scrollTo({left:i*slW(),behavior:"smooth"})}
 function slideNext(d){const i=Math.round($("bcs").scrollLeft/slW())+d;slideTo((i+$("bcs").children.length)%$("bcs").children.length)}
+function renderCl(){
+  $("cl").innerHTML=CV().map(k=>{const c=C[k],sm=c.pk?pkSum(k):0;return `<div class="card cc"><div class="ct ${c.gold?"gold":""}"><span class="tg">${c.h}</span>${c.tag?` <span class="tg">${esc(c.tag)}</span>`:""}<h3>${esc(c.n)}</h3></div><div class="cb"><div class="mut">${esc(c.t)}</div><div class="pr">${B(c.p)}</div><div class="mut" style="font-size:12px;margin:-6px 0 4px">คอร์สวิดีโอ · เรียนสดกลุ่ม ${B(lv(k,"group"))} · เดี่ยว ${B(lv(k,"single"))}</div>${c.pk&&sm>c.p?`<div class="mut" style="font-size:12px;margin:-6px 0 10px">ซื้อแยก ${B(sm)} · ประหยัด ${B(sm-c.p)}</div>`:""}${c.ins?`<div class="mut" style="font-size:12px;margin:-6px 0 10px">ผ่อน 70/30 · วันนี้ ${B(Math.round(c.p*.7))}</div>`:""}<button class="btn" onclick="openCourse('${k}')">ดูคอร์ส</button></div></div>`}).join("")}
+function fillCs(){const e=$("cs"),v=e.value;e.innerHTML=[...CORD,"live"].map(k=>`<option value="${k}"${k==="live"||C[k].on===false?" hidden":""}>${esc(C[k].n)}</option>`).join("");if(v&&C[v])e.value=v}
+function syncCourses(){cNorm();renderCl();fillCs();ban();showEx(EXK);
+  const on=document.querySelector(".scr.on");if(on&&on.id==="s-course")drawCourse();if(on&&on.id==="s-enroll")calc();if(on&&on.id==="s-trial")drawTrial()}
 function renderHome(){
   renderAbout();renderStu();
 $("ctc").innerHTML=CT.map(c=>`<a class="ci" href="${c[1]}" target="_blank" rel="noopener"><span class="cic">${c[2]}</span><span>${c[0]}</span></a>`).join("");
-  showEx("hsk1");ban();
+  showEx(EXK);ban();
   $("tr1").innerHTML=TERMS;$("idexImg").src=IDEX;$("tr2").innerHTML=TERMS;
   $("hrul").innerHTML=RULES;
-  $("cl").innerHTML=["pinyin","hsk1","hsk1pin","hsk2","hsk3","hsk4"].map(k=>`<div class="card cc"><div class="ct ${k==="pinyin"||k==="hsk1pin"?"gold":""}"><span class="tg">${C[k].h}</span>${k==="hsk1pin"?' <span class="tg">คุ้มกว่า</span>':""}<h3>${C[k].n}</h3></div><div class="cb"><div class="mut">${C[k].t}</div><div class="pr">${B(C[k].p)}</div><div class="mut" style="font-size:12px;margin:-6px 0 4px">คอร์สวิดีโอ · เรียนสดกลุ่ม ${B(lv(k,"group"))} · เดี่ยว ${B(lv(k,"single"))}</div>${k==="hsk1pin"?`<div class="mut" style="font-size:12px;margin:-6px 0 10px">ซื้อแยก ${B(C.hsk1.p+C.pinyin.p)} · ประหยัด ${B(C.hsk1.p+C.pinyin.p-C.hsk1pin.p)}</div>`:k==="pinyin"?"":`<div class="mut" style="font-size:12px;margin:-6px 0 10px">ผ่อน 70/30 · วันนี้ ${B(Math.round(C[k].p*.7))}</div>`}<button class="btn" onclick="openCourse('${k}')">ดูคอร์ส</button></div></div>`).join("");
-  $("cs").innerHTML=["pinyin","hsk1","hsk1pin","hsk2","hsk3","hsk4","live"].map(k=>`<option value="${k}"${k==="live"?" hidden":""}>${C[k].n}</option>`).join("");
+  renderCl();fillCs();
 }
 let CK="hsk1",FM="v",HT="group",BK=[],SID=4,DW=null,LC=null,AUTH=false,GF=0;
 const at=(d,h)=>{const x=new Date();x.setDate(x.getDate()+d);x.setHours(Math.floor(h),(h%1)*60,0,0);return +x};
 const SL=[];
-const RATE={group:{pinyin:70,hsk1:75,hsk2:85,hsk3:85,hsk4:90},single:{pinyin:100,hsk1:110,hsk2:120,hsk3:125,hsk4:135}},rt=t=>t==="single"?200:150,bkh=()=>BK.reduce((a,id)=>a+(SL.find(x=>x.id===id).du||2),0),cartTotal=()=>BK.reduce((a,id)=>{const x=SL.find(y=>y.id===id);return a+rt(x.ty)*4*(x.du||2)},0);
+const rt=t=>t==="single"?200:150,bkh=()=>BK.reduce((a,id)=>a+(SL.find(x=>x.id===id).du||2),0),cartTotal=()=>BK.reduce((a,id)=>{const x=SL.find(y=>y.id===id);return a+rt(x.ty)*4*(x.du||2)},0);
 const RULES_LC='<ul class="ul"><li>จองครั้งเดียว เรียนเวลาเดิมทุกสัปดาห์</li><li>เรียนได้สูงสุด 4 ชม./สัปดาห์ (2 วัน)</li><li>ไม่เกิน 8 ครั้ง/เดือน รวม 16 ชม.</li><li>1 ห้องรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
 /* กติกาเรียนสดรายชั่วโมง */
 const RULES='<div class="rul3"><div><b>เลือกเอง</b><span>วันและช่วงเวลา</span></div><div><b>150/200</b><span>บาท/ชม. กลุ่ม/เดี่ยว</span></div><div><b>ตามจริง</b><span>คิดตามความยาวช่วง</span></div></div><ul class="ul"><li>จองครั้งเดียว เรียนวันและเวลาเดิมทุกสัปดาห์</li><li>ค่าเรียนคิดตามความยาวจริงของช่วงเวลา เช่น 1.5 ชม. = 1.5 × ราคาต่อชั่วโมง</li><li>ห้องกลุ่มรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
@@ -1004,18 +1059,20 @@ const h2t=h=>{const m=Math.round(h*60);return p2(Math.floor(m/60))+":"+p2(m%60)}
 
 function openCourse(k){CK=k;FM="v";drawCourse();go("s-course")}
 function drawCourse(){
-  const k=CK,c=C[k],n=parseInt(c.h);
-  $("cd").innerHTML=`<h2 class="han" style="font-size:30px">${c.n}</h2><div class="mut">${c.t}</div>
-  <div class="card"><b>เหมาะกับ</b><div>${c.use}</div></div>
-  ${bookList(k).length?`<div class="card"><div class="eb">ฟรี! ไฟล์หนังสือเรียน PDF</div><b>หนังสือที่ใช้เรียนในคอร์สนี้</b>${shelf(k,"pre")}<div class="mut" style="font-size:13px">สมัครเรียนแล้วดาวน์โหลดไฟล์ได้ทันทีในหน้าเรียน · อยากได้เล่มจริง เพิ่ม 300 บาท (เลือกตอนสมัคร)</div></div>`:`<div class="card"><b>หนังสือ</b><div>${c.bk}</div><div class="mut">รับหนังสือเล่มเพิ่ม 300 บาท</div></div>`}
-  <div class="card"><b>ชั่วโมงเรียน</b> ${c.h}<div class="mut">พื้นฐาน: ${c.lv}</div></div>
+  if(!C[CK]||CK==="live")CK=CV()[0];const k=CK,c=C[k],sm=c.pk?pkSum(k):0,pks=CV().filter(x=>C[x].pk&&C[x].pk.includes(k));
+  $("cd").innerHTML=`<h2 class="han" style="font-size:30px">${esc(c.n)}</h2><div class="mut">${esc(c.t)}</div>
+  ${c.pk?`<div class="card"><b>ในแพ็กนี้มี</b><div>${c.pk.map(x=>esc(C[x].n)).join(" + ")}</div>${sm>c.p?`<div class="mut">ซื้อแยก ${B(sm)} · ประหยัด ${B(sm-c.p)}</div>`:""}</div>`:""}
+  ${c.use?`<div class="card"><b>เหมาะกับ</b>${txtH(c.use)}</div>`:""}
+  ${bookList(k).length?`<div class="card"><div class="eb">ฟรี! ไฟล์หนังสือเรียน PDF</div><b>หนังสือที่ใช้เรียนในคอร์สนี้</b>${shelf(k,"pre")}<div class="mut" style="font-size:13px">สมัครเรียนแล้วดาวน์โหลดไฟล์ได้ทันทีในหน้าเรียน · อยากได้เล่มจริง เพิ่ม 300 บาท (เลือกตอนสมัคร)</div></div>`:c.bk?`<div class="card"><b>หนังสือ</b><div>${esc(c.bk)}</div><div class="mut">รับหนังสือเล่มเพิ่ม 300 บาท</div></div>`:""}
+  <div class="card"><b>ชั่วโมงเรียน</b> ${c.h}${c.lv?`<div class="mut">พื้นฐาน: ${esc(c.lv)}</div>`:""}</div>
+  ${(c.ex||[]).filter(x=>x.t||x.b).map(x=>`<div class="card">${x.t?`<b>${esc(x.t)}</b>`:""}${txtH(x.b)}</div>`).join("")}
   <div class="card" style="border-color:var(--seal)"><b>ทดลองเรียนฟรี 1 คลาส (2 ชม.)</b><div class="mut">ลองเรียนจริงกับครูก่อนตัดสินใจ</div><button class="btn sm" style="margin-top:8px" onclick="openTrial(CK)">ทดลองเรียนฟรี</button></div>
   <h3 style="margin-top:18px">อยากเรียนแบบไหน</h3>
   <div class="seg"><button class="${FM==="v"?"on":""}" onclick="FM='v';drawCourse()">วิดีโอ</button><button class="${FM==="l"?"on":""}" onclick="FM='l';drawCourse()">เรียนสด</button></div>
-  ${FM==="v"?`<div class="card"><b>เรียนจากวิดีโอ</b><ul class="ul"><li>เรียนตามเวลาของตัวเอง</li><li>ราคาคอร์ส ${B(c.p)}</li>${k==="pinyin"||k==="hsk1pin"?"":"<li>ผ่อน 70/30 ได้ (ไม่รวมค่าหนังสือ)</li>"}</ul></div>
-  ${k==="hsk1"?`<div class="card" style="border-color:var(--seal)"><b>โปรแพ็กคู่</b><div>HSK1 + พินอิน เหลือ ${B(C.hsk1pin.p)}</div><button class="btn alt sm" style="margin-top:8px" onclick="openEnroll('hsk1pin')">เลือกแพ็กคู่</button></div>`:""}
-  <div class="row"><button class="btn" onclick="openEnroll(CK)">สมัครแบบวิดีโอ</button>${k==="pinyin"||k==="hsk1pin"?"":`<button class="btn alt" onclick="openEnroll(CK,1)">ผ่อน 70/30</button>`}</div>`
-  :`<div class="card"><b>เรียนสดกับครู</b><div class="mut">เลือกเรียนกลุ่มหรือเดี่ยวได้ตอนสมัคร${k==="pinyin"||k==="hsk1pin"?"":" · ผ่อน 70/30 ได้ตอนสมัคร (ไม่รวมค่าหนังสือ)"}</div>${RULES_LC}</div>
+  ${FM==="v"?`<div class="card"><b>เรียนจากวิดีโอ</b><ul class="ul"><li>เรียนตามเวลาของตัวเอง</li><li>ราคาคอร์ส ${B(c.p)}</li>${c.ins?"<li>ผ่อน 70/30 ได้ (ไม่รวมค่าหนังสือ)</li>":""}</ul></div>
+  ${pks.map(x=>`<div class="card" style="border-color:var(--seal)"><b>${C[x].pk.length===2?"โปรแพ็กคู่":"โปรแพ็กรวม"}</b><div>${esc(C[x].n)} เหลือ ${B(C[x].p)}</div><button class="btn alt sm" style="margin-top:8px" onclick="openEnroll('${x}')">เลือกแพ็กนี้</button></div>`).join("")}
+  <div class="row"><button class="btn" onclick="openEnroll(CK)">สมัครแบบวิดีโอ</button>${c.ins?`<button class="btn alt" onclick="openEnroll(CK,1)">ผ่อน 70/30</button>`:""}</div>`
+  :`<div class="card"><b>เรียนสดกับครู</b><div class="mut">เลือกเรียนกลุ่มหรือเดี่ยวได้ตอนสมัคร${c.ins?" · ผ่อน 70/30 ได้ตอนสมัคร (ไม่รวมค่าหนังสือ)":""}</div>${RULES_LC}</div>
   <div class="row"><button class="btn" onclick="openEnroll(CK,0,'l')">สมัครเรียนสด</button></div>`}`;
 }
 function openHour(t,lc){HT=t;LC=lc||null;DW=null;renderHour();go("s-hour")}
@@ -1063,21 +1120,21 @@ function renderSch(){
   $("asl").innerHTML=g+DN.map((n,i)=>{const l=SL.filter(x=>x.dw===i).sort((a,b)=>a.h-b.h);
     return `<details class="card"><summary><b>วัน${n}</b> <span class="mut">${l.length} ช่วงเวลา</span></summary>${l.map(x=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${fh(x.h,x.du)}</b> <span class="tag">${x.ty==="single"?"เดี่ยว":"กลุ่ม"}</span> <span class="tag">${KD(x)==="lc"?"คอร์สเรียนสด":"รายชั่วโมง"}</span>${x.full?' <span class="tag" style="background:#555;color:#fff">ปิดรับ (เต็ม)</span>':""}<div class="mut">${esc(x.tp)} · จองผ่านเว็บ ${x.bk.length} · นักเรียนเก่า ${x.tk||0} · ว่าง ${SLEFT(x)}/${x.cap}${x.bk.length?" · "+x.bk.map(esc).join(", "):""}</div><div class="slx"><label class="chk" style="margin:0"><input type="checkbox" ${x.full?"checked":""} onchange="slotFull(${x.id},this.checked)"> ปิดรับ (เต็มแล้ว)</label><span>นักเรียนเก่าที่นั่งอยู่แล้ว</span><input type="number" min="0" max="${x.cap}" value="${x.tk||0}" onchange="slotTk(${x.id},this.value)"> <span>คน</span></div></div><button class="btn alt sm" onclick="delSlot(${x.id})">ลบ</button></div>`).join("")}</details>`}).join("");
 }
-function openEnroll(k,ins,fm,ty){FMT=fm||"v";TYP=ty||"group";$("enForm").style.display="block";$("enDone").style.display="none";$("cs").value=k;$("ins").checked=!!ins;$("insok").checked=false;$("ad").value="";$("zp").value="";calc();go("s-enroll")}
+function openEnroll(k,ins,fm,ty){if(!C[k])k=CV().find(x=>!C[x].pk)||CV()[0]||"live";FMT=fm||"v";TYP=ty||"group";$("enForm").style.display="block";$("enDone").style.display="none";$("cs").value=k;$("ins").checked=!!ins;$("insok").checked=false;$("ad").value="";$("zp").value="";calc();go("s-enroll")}
 const ty0=()=>BK.length?SL.find(x=>x.id===BK[0]).ty:HT;
 const base=()=>{const k=$("cs").value;return k!=="live"?(FMT==="l"?lv(k,TYP):C[k].p):(LC?parseInt(C[LC].h)*rt(ty0()):0)};
-const eligible=k=>k==="live"?(!!LC&&LC!=="pinyin"&&LC!=="hsk1pin"):(k!=="pinyin"&&k!=="hsk1pin");
+const eligible=k=>k==="live"?(!!LC&&!!C[LC]&&!!C[LC].ins):!!(C[k]&&C[k].ins);
 let FMT="v",TYP="group";
 function setFm(f){FMT=f;calc()}
 function setTy(t){TYP=t;calc()}
 function calc(){
   const k=$("cs").value,c=C[k],need=k!=="live"||!!LC,el=eligible(k),b=need?+$("bk").value:0;if(!el)$("ins").checked=false;const ins=el&&$("ins").checked;
   {const nl=k==="live";$("fmw").style.display=nl?"none":"block";$("tyw").style.display=(!nl&&FMT==="l")?"block":"none";
-  $("tg").textContent="เรียนกลุ่ม · "+(k==="hsk1pin"?B(lv(k,"group")):nl?"":B(RATE.group[k])+"/ชม.");$("ts").textContent="เรียนเดี่ยว · "+(k==="hsk1pin"?B(lv(k,"single")):nl?"":B(RATE.single[k])+"/ชม.");
+  $("tg").textContent="เรียนกลุ่ม · "+(nl?"":c.pk?B(lv(k,"group")):B(lrate(k,"group"))+"/ชม.");$("ts").textContent="เรียนเดี่ยว · "+(nl?"":c.pk?B(lv(k,"single")):B(lrate(k,"single"))+"/ชม.");
   $("fv").classList.toggle("on",FMT==="v");$("fl").classList.toggle("on",FMT==="l");$("tg").classList.toggle("on",TYP==="group");$("ts").classList.toggle("on",TYP==="single")}
   $("bkw").style.display=$("slw").style.display=need?"block":"none";$("inw").style.display=el?"block":"none";$("adw").style.display=need&&b?"block":"none";$("iok").style.display=ins?"flex":"none";
   const bs=base(),f=Math.round(bs*.7);let h;
-  if(k!=="live")h=FMT==="l"?`<div>${c.n} เรียนสด (${TYP==="single"?"เดี่ยว":"กลุ่ม"}) ${c.h}${k==="hsk1pin"?"":" × "+B(RATE[TYP][k])+"/ชม."} = ${B(bs)}</div>`:`<div>${c.n} (คอร์สวิดีโอ): ${B(c.p)}</div>`;
+  if(k!=="live")h=FMT==="l"?`<div>${c.n} เรียนสด (${TYP==="single"?"เดี่ยว":"กลุ่ม"}) ${c.h}${c.pk?"":" × "+B(lrate(k,TYP))+"/ชม."} = ${B(bs)}</div>`:`<div>${c.n} (คอร์สวิดีโอ): ${B(c.p)}</div>`;
   else if(LC)h=`<div>${C[LC].n} เรียนสด ${C[LC].h} × ${B(rt(ty0()))}/ชม. = ${B(bs)}</div>`;
   else h=`<div>เรียนสด ${bkh()} ชม./สัปดาห์ · ${B(rt(ty0()))}/ชม.</div><b>ยังไม่ต้องโอนเงิน</b><div class="mut">จ่ายหลังเรียนจบ ตามจำนวนชั่วโมงที่เรียนจริง</div>`;
   if(need){
@@ -1099,7 +1156,7 @@ async function enroll(){
   if(+$("bk").value&&(k!=="live"||LC)&&(!$("ad").value.trim()||!/^\d{5}$/.test($("zp").value.trim()))){alert("กรุณากรอกที่อยู่จัดส่งหนังสือและรหัสไปรษณีย์ 5 หลัก");return}
   if(k==="live"){const e=BK.length?chk():"ยังไม่ได้เลือกช่วงเวลาเรียน";if(e){alert(e);return}}
   const need=k!=="live"||!!LC,ins=eligible(k)&&$("ins").checked,c=C[k],b=need?+$("bk").value:0,code="YH"+Math.floor(1000+Math.random()*9000);
-  SUBS.unshift({name:n,ph,em,course:(k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n)),book:b?"รับหนังสือเล่ม":"ไม่รับหนังสือ",total:(need?(ins?Math.round(base()*.7):base()):0)+b,after:!need,addr:b?$("ad").value.trim():"",zip:b?$("zp").value.trim():"",ins,insAt:ins?new Date().toLocaleString("th-TH"):null,second:ins?base()-Math.round(base()*.7):0,paid2:false,live:k==="live"||FMT==="l",access:k==="hsk1pin"?["hsk1","pinyin"]:k==="live"?(LC?[LC]:[]):[k],slip:sl?await rd(sl):null,idc:await rd(id),at:new Date().toLocaleString("th-TH"),st:"รอตรวจสอบ",code});
+  SUBS.unshift({name:n,ph,em,course:(k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n)),book:b?"รับหนังสือเล่ม":"ไม่รับหนังสือ",total:(need?(ins?Math.round(base()*.7):base()):0)+b,after:!need,addr:b?$("ad").value.trim():"",zip:b?$("zp").value.trim():"",ins,insAt:ins?new Date().toLocaleString("th-TH"):null,second:ins?base()-Math.round(base()*.7):0,paid2:false,live:k==="live"||FMT==="l",access:C[k].pk?[...C[k].pk]:k==="live"?(LC?[LC]:[]):[k],slip:sl?await rd(sl):null,idc:await rd(id),at:new Date().toLocaleString("th-TH"),st:"รอตรวจสอบ",code});
   if(k==="live"){BK.forEach(id=>SL.find(x=>x.id===id).bk.push(n));BK=[]}
   me={name:n,course:c.n,code};
   $("newCode").textContent=code;$("enForm").style.display="none";$("enDone").style.display="block";
@@ -1112,7 +1169,7 @@ function gate(){
 }
 function renderAdmin(){
   if(AT==="a-fin")renderFin();
-  if(AT==="a-rv")renderRvAdmin();
+  if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();
   if(AT==="a-mail")renderMail();else mailBadge();
   if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
   document.querySelectorAll("#atabs .asub button").forEach(b=>b.classList.toggle("on",b.dataset.t===AT));
@@ -1124,7 +1181,7 @@ function renderAdmin(){
   ${r.idc?`<details><summary>ดูหลักฐาน</summary>${r.slip?`<img src="${r.slip}" alt="สลิปโอนเงิน">`:""}<img src="${r.idc}" alt="บัตรประชาชน"></details>`:""}
   <div class="row"><span class="tag">${r.st}</span><button class="btn sm" onclick="openApp('${r.code}')">เปิดใบสมัคร / พิมพ์</button><button class="btn sm" onclick="approve('${r.code}')">ตรวจเอกสารแล้ว อนุมัติ</button></div></div>`).join(""):"<div class='card mut'>ไม่มีผู้สมัครที่รอตรวจสอบ</div>";
   const q=($("ss").value||"").toLowerCase(),st=SUBS.filter(r=>r.st!=="รอตรวจสอบ"&&(!q||(r.name+r.em).toLowerCase().includes(q)));
-  $("sl2").innerHTML=st.length?st.map(r=>`<div class="vw"><input type="checkbox" ${SEL.has(r.code)?"checked":""} ${r.sus?"disabled":""} onchange="selTog('${r.code}')"><div style="flex:1"><b>${r.pic?`<span class="av sm"><img src="${r.pic}" alt=""></span> `:(r.av?r.av+" ":"")}${esc(r.name)}${r.nick?" ("+esc(r.nick)+")":""}</b>${r.pic?` <button class="bdg" style="background:var(--mut)" onclick="rmPh('${r.code}')">ลบรูป</button>`:""}${r.book==="รับหนังสือเล่ม"?" "+bkb(r):""}<div class="mut">${esc(r.em)} · ${r.course}</div><details><summary class="mut" style="margin:4px 0">สิทธิ์วิดีโอ: <span id="as-${r.code}">${accLbl(r)}</span></summary>${ALL.map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${r.access.includes(k)?"checked":""} onchange="accTog('${r.code}','${k}')"> ${C[k].n}</label>`).join("")}</details></div><span class="tag">${r.sus?"ระงับ":"ใช้งานได้"}</span><button class="btn alt sm" onclick="susTog('${r.code}')">${r.sus?"เปิดสิทธิ์":"ระงับ"}</button><button class="btn alt sm" onclick="ghOpen('${r.code}')">คะแนนแบบฝึกหัด</button><button class="btn alt sm" onclick="openApp('${r.code}')">ใบสมัคร</button><button class="btn alt sm" onclick="resetPw('${r.code}')">รีเซ็ตรหัสผ่าน</button><button class="btn alt sm" onclick="delStu('${r.code}')">${DEL===r.code?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีนักเรียนที่ยืนยันแล้ว</div>";
+  $("sl2").innerHTML=st.length?st.map(r=>`<div class="vw"><input type="checkbox" ${SEL.has(r.code)?"checked":""} ${r.sus?"disabled":""} onchange="selTog('${r.code}')"><div style="flex:1"><b>${r.pic?`<span class="av sm"><img src="${r.pic}" alt=""></span> `:(r.av?r.av+" ":"")}${esc(r.name)}${r.nick?" ("+esc(r.nick)+")":""}</b>${r.pic?` <button class="bdg" style="background:var(--mut)" onclick="rmPh('${r.code}')">ลบรูป</button>`:""}${r.book==="รับหนังสือเล่ม"?" "+bkb(r):""}<div class="mut">${esc(r.em)} · ${r.course}</div><details><summary class="mut" style="margin:4px 0">สิทธิ์วิดีโอ: <span id="as-${r.code}">${accLbl(r)}</span></summary>${CL().map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${r.access.includes(k)?"checked":""} onchange="accTog('${r.code}','${k}')"> ${C[k].n}</label>`).join("")}</details></div><span class="tag">${r.sus?"ระงับ":"ใช้งานได้"}</span><button class="btn alt sm" onclick="susTog('${r.code}')">${r.sus?"เปิดสิทธิ์":"ระงับ"}</button><button class="btn alt sm" onclick="ghOpen('${r.code}')">คะแนนแบบฝึกหัด</button><button class="btn alt sm" onclick="openApp('${r.code}')">ใบสมัคร</button><button class="btn alt sm" onclick="resetPw('${r.code}')">รีเซ็ตรหัสผ่าน</button><button class="btn alt sm" onclick="delStu('${r.code}')">${DEL===r.code?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีนักเรียนที่ยืนยันแล้ว</div>";
   $("rc").textContent=SUBS.filter(r=>SEL.has(r.code)&&!r.sus).length;
   const td=(new Date().getDay()+6)%7,ts=SL.filter(x=>x.dw===td);
   $("ast").innerHTML=`<div class="card sc"><b>${ts.filter(x=>x.bk.length).length}</b><span class="mut">คลาสที่มีคนจองวันนี้</span></div><div class="card sc"><b>${SUBS.filter(r=>r.st==="รอตรวจสอบ").length}</b><span class="mut">รออนุมัติ</span></div><div class="card sc"><b>${ts.reduce((a,x)=>a+SLEFT(x),0)}</b><span class="mut">ที่นั่งว่างวันนี้</span></div>`;
@@ -1138,7 +1195,7 @@ function renderAdmin(){
 let FIN={eb:{},ent:[],rec:[]};
 let FNM=null,FEE=null,FEK="exp",FRDEL=null,FEDEL=null;
 const FCAT={exp:["ค่าโฆษณา","โปรแกรม/แอป","อุปกรณ์","ค่าพิมพ์/วัสดุ","ค่าส่ง","ค่าจ้าง","อื่น ๆ"],inc:["เรียนสดรายชั่วโมง","สอนนอกระบบ","อื่น ๆ"]};
-const FCRS=[["pinyin","พินอิน"],["hsk1","HSK1"],["hsk2","HSK2"],["hsk3","HSK3"],["hsk4","HSK4"]];
+const FCRS=()=>CL().map(k=>[k,C[k].n]);
 const ym=t=>{const d=new Date(t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")};
 const ymL=(k,long)=>{const [y,m]=k.split("-").map(Number);return new Date(y,m-1,1).toLocaleDateString("th-TH",{month:long?"long":"short",year:long?"numeric":"2-digit"})};
 function finMonths(){const out=[],d=new Date();for(let i=11;i>=0;i--)out.push(ym(new Date(d.getFullYear(),d.getMonth()-i,1)));return out}
@@ -1223,7 +1280,7 @@ function renderBc(){if(!$("fmat"))return;
   <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อเล่ม)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
   <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
   $("fpc").innerHTML=PRODS.length?PRODS.map(p=>bcRow("p"+p.id,p.t,p.pb!=null?`ขายเล่มละ ${B(p.pb)}`:"ไม่ขายแบบเล่ม",p.bc||{},p.pb)).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือในร้าน</div>';
-  $("fec2").innerHTML=FCRS.map(([k,n])=>bcRow("e"+k,n,"",EBC[k]||{},null)).join("")}
+  $("fec2").innerHTML=FCRS().map(([k,n])=>bcRow("e"+k,n,"",EBC[k]||{},null)).join("")}
 const fotRow=o=>`<div class="fot"><input data-n maxlength="40" placeholder="เช่น สติกเกอร์" value="${esc(o&&o.n||"")}" oninput="bcLive()"><span class="fu"><input data-a type="number" min="0" step="any" inputmode="decimal" placeholder="0" value="${o&&o.a||""}" oninput="bcLive()"><i>บาท/เล่ม</i></span><button class="btn alt sm" onclick="this.parentNode.remove();bcLive()" aria-label="ลบรายการ">ลบ</button></div>`;
 function addFot(){$("fmot").insertAdjacentHTML("beforeend",fotRow());$("fmot").lastElementChild.querySelector("input").focus()}
 function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
@@ -1231,8 +1288,8 @@ function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
   document.querySelectorAll("#fec2 .fbr").forEach(row=>{const k=row.dataset.k.slice(1),c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};ebc[k]=c;eb[k]=bcCalc(c,m).cb});
   return {m,pc,eb,ebc}}
 function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;EBC=v.ebc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
-const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
-const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-rv"};
+const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
+const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-crs"};
 function aTab(t){AT=t;renderAdmin();try{scrollTo({top:0})}catch(e){}}
 function agNav(){const g=AGRP[AT]||"ov";AGL[g]=AT;
   document.querySelectorAll("#atabs .agh").forEach(b=>b.classList.toggle("on",b.dataset.g===g));
@@ -1329,7 +1386,7 @@ b2:{g:"เล่ม",n:"เล่ม 2",l:["บทที่ 6 – ซื้อ�
 e1:{g:"แบบฝึกหัด",n:"แบบฝึกหัด 1",l:["ชุดที่ 1","ชุดที่ 2","ชุดที่ 3"]},
 e2:{g:"แบบฝึกหัด",n:"แบบฝึกหัด 2",l:["ชุดที่ 1","ชุดที่ 2","ชุดที่ 3"]},
 ex:{g:"เพิ่มเติม",n:"แบบฝึกหัดเพิ่มเติม",l:["ชุดเสริม 1","ชุดเสริม 2"]}};
-const ALL=["hsk1","pinyin","hsk2","hsk3","hsk4"],accLbl=r=>r.access.length?r.access.map(k=>C[k].n).join(", "):"ไม่มี";
+const accLbl=r=>r.access.length?r.access.map(k=>C[k]?C[k].n:k).join(", "):"ไม่มี";
 function login(){
   const raw=$("lc").value.trim().toUpperCase().replace(/^YH-?/,""),e=$("le");
   if(!raw){e.textContent="กรุณากรอกรหัสนักเรียน";return}
@@ -1379,12 +1436,12 @@ const TRIALS=[];let TC="hsk1",TS=null,TD=0;
 const TSES=[];
 const tsBooked=x=>TRIALS.filter(t=>t.ses===x.id).length,tsLeft=x=>x.cap-tsBooked(x),tsTime=x=>`${hm(x.at)}–${hm(x.at+x.du*36e5)} น.`;
 function openTrial(k){
-  TC=(k&&k!=="hsk1pin")?k:"hsk1";TS=null;
+  {const L=CLV();TC=(k&&C[k]&&C[k].pk)?C[k].pk[0]:k;if(!L.includes(TC))TC=L.includes("hsk1")?"hsk1":L[0]}TS=null;
   $("trForm").style.display="block";$("trDone").style.display="none";$("tre").textContent="";
   drawTrial();go("s-trial");
 }
 function drawTrial(){
-  $("trc").innerHTML=["pinyin","hsk1","hsk2","hsk3","hsk4"].map(k=>`<button class="${k===TC?"on":""}" onclick="TC='${k}';TS=null;drawTrial()">${C[k].n}</button>`).join("");
+  $("trc").innerHTML=CLV().map(k=>`<button class="${k===TC?"on":""}" onclick="TC='${k}';TS=null;drawTrial()">${esc(C[k].n)}</button>`).join("");
   const L=TSES.filter(x=>x.at>Date.now()&&(x.course==="all"||x.course===TC)).sort((a,b)=>a.at-b.at);
   $("trs").innerHTML=L.length?L.map(x=>{const left=tsLeft(x),ok=left>0,sel=TS&&TS.ses===x.id;
     return `<div class="card lv" style="margin:6px 0;opacity:${ok?1:.5}"><div style="flex:1"><b>${dstr(new Date(x.at))}</b> · ${tsTime(x)}<div class="mut">${x.note?esc(x.note)+" · ":""}เหลือ ${ok?left:0} ที่</div></div><button class="btn sm ${sel?"alt":""}" ${ok?"":"disabled"} onclick="TS={ses:${x.id}};drawTrial()">${ok?(sel?"เลือกแล้ว ✓":"เลือก"):"เต็ม"}</button></div>`}).join("")
@@ -1408,7 +1465,7 @@ function trDone(n,x){
 /* หลังบ้าน: รอบทดลองเรียน */
 let TSDEL=null;
 function renderTr(){
-  if(!$("tsc").options.length)$("tsc").innerHTML='<option value="all">ทุกคอร์ส</option>'+["pinyin","hsk1","hsk2","hsk3","hsk4"].map(k=>`<option value="${k}">${C[k].n}</option>`).join("");
+  {const e=$("tsc"),v=e.value;e.innerHTML='<option value="all">ทุกคอร์ส</option>'+CL().map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join("");if(v)e.value=v}
   const now=Date.now(),up=TSES.filter(x=>x.at>now-3*36e5).sort((a,b)=>a.at-b.at),past=TSES.filter(x=>x.at<=now-3*36e5).sort((a,b)=>b.at-a.at);
   const card=x=>{const L=TRIALS.filter(t=>t.ses===x.id);
     return `<div class="card"><div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1"><b>${dstr(new Date(x.at))} · ${tsTime(x)}</b><div class="mut">${x.course==="all"?"ทุกคอร์ส":C[x.course].n} · จองแล้ว ${L.length}/${x.cap}${x.note?" · "+esc(x.note):""}</div></div><button class="btn alt sm ${TSDEL===x.id?"dg":""}" onclick="delTs(${x.id})">${TSDEL===x.id?"ยืนยันลบรอบ":"ลบรอบ"}</button></div>`+
@@ -1834,7 +1891,7 @@ const BCOV={"hsk1": "a/img-e3d3866f.jpg", "hsk2": "a/img-67a50d3a.jpg", "hsk3": 
 const BKDEF={hsk1:[{t:"新HSK教程 1",c:"hsk1"}],hsk2:[{t:"新HSK教程 2",c:"hsk2"}],hsk3:[{t:"新HSK教程 3",c:"hsk3"}],hsk4:[{t:"新HSK教程 4上",c:"hsk4a"},{t:"新HSK教程 4下",c:"hsk4b"}]};
 let BOOKS=(()=>{try{const v=JSON.parse(localStorage.getItem("yh_books")||"null");if(v)return v}catch(e){}return JSON.parse(JSON.stringify(BKDEF))})();
 const bkSave=()=>{try{localStorage.setItem("yh_books",JSON.stringify(BOOKS))}catch(e){alert("บันทึกไม่สำเร็จ พื้นที่ในเบราว์เซอร์อาจเต็ม ลองใช้รูปปกที่เล็กลง")}};
-const bookList=k=>k==="hsk1pin"?(BOOKS.hsk1||[]).concat(BOOKS.pinyin||[]):(BOOKS[k]||[]);
+const bookList=k=>C[k]&&C[k].pk?C[k].pk.reduce((a,x)=>a.concat(BOOKS[x]||[]),[]):(BOOKS[k]||[]);
 const covImg=b=>{const src=BCOV[b.c]||(/^(data:image\/|https:\/\/)/.test(String(b.c||""))?b.c:"");return src?`<img src="${src}" alt="ปกหนังสือ ${esc(b.t)}" loading="lazy">`:`<span class="bfb">${esc(b.t)}</span>`};
 const driveId=u=>{const m=String(u||"").match(/(?:\/d\/|[?&]id=)([\w-]{20,})/);return m?m[1]:""};
 const dlUrl=u=>{const id=driveId(u);return id?`https://drive.google.com/uc?export=download&id=${id}`:u};
@@ -1852,8 +1909,8 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBook()});
 /* หลังบ้าน */
 let BFE=null,BFDEL=null,BFPIC=null;
 function renderBfAdmin(){const sel=$("bfc");
-  if(!sel.options.length)sel.innerHTML=["pinyin","hsk1","hsk2","hsk3","hsk4"].map(k=>`<option value="${k}">${C[k].n}</option>`).join("");
-  $("bfla").innerHTML=["pinyin","hsk1","hsk2","hsk3","hsk4"].map(k=>{const L=BOOKS[k]||[];
+  {const v=sel.value;sel.innerHTML=CL().map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join("");if(v&&CL().includes(v))sel.value=v}
+  $("bfla").innerHTML=CL().map(k=>{const L=BOOKS[k]||[];
     return `<div class="card"><b>${C[k].n}</b> <span class="mut">(${L.length} เล่ม)</span>`+(L.length?L.map((b,i)=>`<div class="bfl"><span class="bcv">${covImg(b)}</span><div class="vin"><b>${esc(b.t)}</b>${b.u?`<small>${esc(b.u)}</small>`:'<small class="no">ยังไม่ได้ใส่ลิงก์ไฟล์ · นักเรียนยังดาวน์โหลดไม่ได้</small>'}</div><div class="vac">
       <button onclick="mvBf('${k}',${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนซ้าย">↑</button><button onclick="mvBf('${k}',${i},1)" ${i<L.length-1?"":"disabled"} aria-label="เลื่อนขวา">↓</button><button onclick="editBf('${k}',${i})">แก้ไข</button><button class="${BFDEL===k+i?"dg":""}" onclick="delBf('${k}',${i})">${BFDEL===k+i?"ยืนยันลบ":"ลบ"}</button></div></div>`).join(""):'<div class="vno">ยังไม่มีหนังสือ · หน้าคอร์สจะแสดงข้อความหนังสือแบบเดิม</div>')+`</div>`}).join("")}
 function bfChk(){const u=$("bfu").value.trim();$("bfe").textContent=u&&!/^https:\/\//.test(u)?"ลิงก์ต้องขึ้นต้นด้วย https://":u&&!driveId(u)?"ลิงก์นี้ไม่ใช่ไฟล์ Google Drive ระบบจะเปิดลิงก์ตรงๆ แทนการดาวน์โหลด":""}
@@ -1886,7 +1943,7 @@ const vList=(c,k)=>((VIDS[c]||{})[k]||[]);
 let VEDIT=null;
 function renderVidAdmin(){
   const vc=$("vc"),vs=$("vs");
-  if(!vc.options.length){vc.innerHTML=Object.keys(C).map(k=>`<option value="${k}">${C[k].n}</option>`).join("");vs.innerHTML=Object.keys(SEC).map(k=>`<option value="${k}">${SEC[k].g} · ${SEC[k].n}</option>`).join("")}
+  {const v=vc.value;vc.innerHTML=CL().map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join("");if(v&&CL().includes(v))vc.value=v}if(!vs.options.length){vs.innerHTML=Object.keys(SEC).map(k=>`<option value="${k}">${SEC[k].g} · ${SEC[k].n}</option>`).join("")}
   const c=vc.value;
   $("vla").innerHTML=Object.keys(SEC).map(k=>{const L=vList(c,k);return `<div class="card"><b>${C[c].n} · ${SEC[k].n}</b> <span class="mut">(${L.length} วิดีโอ)</span>`+
     (L.length?L.map((v,i)=>`<div class="vli"><img class="vth" src="${ytThumb(v.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div class="vin"><b>${i+1}. ${esc(v.t)}</b><small>youtu.be/${v.id}</small></div><div class="vac">
@@ -2233,6 +2290,67 @@ function cancelRv(){RVE=null;$("rvn").dataset.k="";renderRvAdmin()}
 function togRv(i){STU[i].on=STU[i].on===false;renderRvAdmin();renderStu()}
 function delRv(i){if(RVDEL!==i){RVDEL=i;renderRvAdmin();return}RVDEL=null;STU.splice(i,1);if(RVE===i)RVE=null;$("rvn").dataset.k="";renderRvAdmin();renderStu()}
 function mvRv(i,d){const j=i+d;if(j<0||j>=STU.length)return;[STU[i],STU[j]]=[STU[j],STU[i]];if(RVE===i)RVE=j;else if(RVE===j)RVE=i;renderRvAdmin();renderStu()}
+/* ===== คอร์สเรียน (หลังบ้าน) ===== */
+let CRE=null,CRT="one",CREX=[],CRSC=5,CRPK=[],CRDEL=null;
+const SCOL=[[5,"แดง","#7a2a2a,#a8403c"],[2,"น้ำตาลเข้ม","#332923,#5d3d32"],[3,"ทอง","#7a5a2b,#a7834d"],[6,"ส้มทอง","#6b4a22,#9a6f35"],[7,"ม่วงเทา","#43363a,#6e555d"],[8,"เขียวหม่น","#2d3b3a,#4d6663"],[4,"เทาเข้ม","#2b2a28,#4a3f38"]];
+const crTxt=(v,ml)=>String(v||"").replace(/[<>"`]/g,"").trim().slice(0,ml||200),crArea=(v,ml)=>String(v||"").replace(/[<>`]/g,"").replace(/\r/g,"").trim().slice(0,ml||800);
+function crFill(){const c=CRE?C[CRE]:Object.assign(CDEF(),{ins:CRT!=="pk"});
+  $("crn").value=c.n;$("crt").value=c.t;$("crtag").value=c.tag||"";$("crg").value=c.gold?"1":"0";$("crp").value=c.p||"";$("crhr").value=c.pk?"":(c.hr||"");$("crrg").value=c.rg||"";$("crrs").value=c.rs||"";
+  $("crins").checked=!!c.ins;$("cron").checked=c.on!==false;$("cruse").value=c.use||"";$("crlv").value=c.lv||"";$("crbk").value=c.bk||"";
+  $("crsl").checked=!!c.sl;$("crse").value=c.se||"";$("crs1").value=c.s1||"";$("crs2").value=c.s2||"";$("crsp").value=c.sp||"";[0,1,2].forEach(i=>$("crb"+i).value=(c.sb||[])[i]||"");
+  CREX=(c.ex||[]).map(x=>({t:x.t||"",b:x.b||""}));CRSC=c.sc||5;CRPK=c.pk?[...c.pk]:[];if(CRE)CRT=c.pk?"pk":"one"}
+function crSync(){$("crex").querySelectorAll(".crex").forEach((e,i)=>{if(CREX[i]){CREX[i].t=e.querySelector("input").value;CREX[i].b=e.querySelector("textarea").value}})}
+function crExDraw(){$("crex").innerHTML=CREX.map((x,i)=>`<div class="crex"><div class="row" style="margin:0;align-items:center;gap:6px"><input placeholder="ชื่อหัวข้อ เช่น เรียนอะไรบ้าง" maxlength="60" value="${esc(x.t)}" style="flex:1"><button class="btn alt sm" onclick="crMvEx(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button class="btn alt sm" onclick="crMvEx(${i},1)" ${i<CREX.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button><button class="btn alt sm" onclick="crDelEx(${i})">ลบ</button></div><textarea rows="3" maxlength="1200" placeholder="เนื้อหา · ขึ้นบรรทัดด้วย - เพื่อทำเป็นข้อ ๆ">${esc(x.b)}</textarea></div>`).join("")}
+function crAddEx(){crSync();CREX.push({t:"",b:""});crExDraw();const L=$("crex").querySelectorAll(".crex input");L[L.length-1].focus()}
+function crDelEx(i){crSync();CREX.splice(i,1);crExDraw()}
+function crMvEx(i,d){crSync();const j=i+d;if(j<0||j>=CREX.length)return;[CREX[i],CREX[j]]=[CREX[j],CREX[i]];crExDraw()}
+function crScDraw(){$("crsc").innerHTML=SCOL.map(([n,t,g])=>`<button type="button" class="${n===CRSC?"on":""}" style="background:linear-gradient(135deg,${g})" title="${t}" aria-label="สี${t}" onclick="CRSC=${n};crScDraw()"></button>`).join("")}
+function crPk(k,on){const i=CRPK.indexOf(k);if(on&&i<0)CRPK.push(k);if(!on&&i>=0)CRPK.splice(i,1);crCalc()}
+function crType(t){if(CRE)return;CRT=t;$("crn").dataset.k="";$("crins").checked=t!=="pk";renderCrsAdmin()}
+function crCalc(){const p=+$("crp").value||0;let h;
+  if(CRT==="pk"){const L=CL().filter(k=>CRPK.includes(k)),hr=L.reduce((a,k)=>a+(+C[k].hr||0),0),sm=L.reduce((a,k)=>a+(+C[k].p||0),0),g=L.reduce((a,k)=>a+lv(k,"group"),0),sg=L.reduce((a,k)=>a+lv(k,"single"),0);
+    h=L.length<2?"เลือกคอร์สในแพ็กอย่างน้อย 2 คอร์ส":`รวม ${hr} ชั่วโมง · ซื้อแยก ${B(sm)}${p&&sm>p?` · <b>ประหยัด ${B(sm-p)}</b>`:p>sm?' · <b style="color:#c62828">แพงกว่าซื้อแยก</b>':""}<br>เรียนสดทั้งแพ็ก (รวมราคาแต่ละคอร์ส): กลุ่ม ${B(g)} · เดี่ยว ${B(sg)}`}
+  else{const hr=+$("crhr").value||0,g=+$("crrg").value||0,sg=+$("crrs").value||0;h=`เรียนสดทั้งคอร์ส ${hr} ชม.: กลุ่ม ${B(hr*g)} · เดี่ยว ${B(hr*sg)}${p?` · ผ่อน 70/30 จ่ายวันแรก ${B(Math.round(p*.7))}`:""}`}
+  $("crcalc").innerHTML=h}
+function crUse(k){const r=[];
+  if(SUBS.some(x=>(x.access||[]).includes(k)||x.ck===k))r.push("มีนักเรียนในคอร์สนี้");
+  if(Object.values(VIDS[k]||{}).some(a=>a&&a.length))r.push("มีวิดีโอ");if((BOOKS[k]||[]).length)r.push("มีไฟล์หนังสือ");
+  if(CORD.some(x=>C[x].pk&&C[x].pk.includes(k)))r.push("อยู่ในแพ็กรวม");return r}
+function renderCrsAdmin(){const e=$("crl");if(!e)return;if(CRE&&!C[CRE])CRE=null;
+  if($("crn").dataset.k!==String(CRE)+CRT){$("crn").dataset.k=String(CRE)+CRT;crFill();crExDraw();crScDraw()}
+  const pk=CRT==="pk";
+  $("crh").textContent=CRE?"แก้ไขคอร์ส: "+C[CRE].n:(pk?"เพิ่มแพ็กรวมใหม่":"เพิ่มคอร์สใหม่");$("crx").style.display=CRE?"":"none";
+  $("crty").innerHTML=CRE?"":`<div class="seg" style="margin:10px 0 2px"><button class="${pk?"":"on"}" onclick="crType('one')">คอร์สเดี่ยว</button><button class="${pk?"on":""}" onclick="crType('pk')">แพ็กรวมหลายคอร์ส</button></div>`;
+  $("crpkw").style.display=pk?"":"none";$("crhrw").style.display=pk?"none":"";$("crrw").style.display=pk?"none":"";
+  $("crpk").innerHTML=CL().map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${CRPK.includes(k)?"checked":""} onchange="crPk('${k}',this.checked)"> ${esc(C[k].n)}${C[k].on===false?' <span class="mut">(ซ่อนอยู่)</span>':""}</label>`).join("");
+  crCalc();
+  e.innerHTML=CORD.map((k,i)=>{const c=C[k],u=CRDEL===k?crUse(k):[];return `<div class="card crrow"${CRE===k?' style="border-color:var(--seal)"':""}><div><b>${esc(c.n)}</b> ${c.pk?'<span class="tag">แพ็กรวม</span>':""}${c.on===false?' <span class="tag">ซ่อนอยู่</span>':""}${c.sl?' <span class="tag">มีสไลด์</span>':""}</div>
+    <div class="mut" style="font-size:13px">${B(c.p)} · ${c.h}${c.pk?" · "+c.pk.map(x=>esc(C[x].n)).join(" + "):` · เรียนสด ${B(lrate(k,"group"))}/${B(lrate(k,"single"))} ต่อชม.`}${c.ins?" · ผ่อนได้":""}</div>
+    ${CRDEL===k?(u.length?`<div style="color:#c62828;font-size:13px">ลบไม่ได้: ${u.join(", ")} · กด “ซ่อน” แทนได้</div>`:'<div style="color:#c62828;font-size:13px">กด “ยืนยันลบ” อีกครั้งเพื่อลบถาวร</div>'):""}
+    <div class="row" style="margin:8px 0 0;gap:6px"><button class="btn alt sm" onclick="mvCrs(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button class="btn alt sm" onclick="mvCrs(${i},1)" ${i<CORD.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button><button class="btn alt sm" onclick="editCrs('${k}')">แก้ไข</button><button class="btn alt sm" onclick="togCrs('${k}')">${c.on===false?"แสดง":"ซ่อน"}</button><button class="btn alt sm" onclick="delCrs('${k}')">${CRDEL===k&&!u.length?"ยืนยันลบ":"ลบ"}</button></div></div>`}).join("")}
+function editCrs(k){CRE=k;CRDEL=null;renderCrsAdmin();$("crh").scrollIntoView({behavior:"smooth",block:"center"})}
+function cancelCrs(){CRE=null;CRT="one";$("crn").dataset.k="";renderCrsAdmin()}
+function crsVals(){crSync();const pk=CRT==="pk",n=crTxt($("crn").value,40);
+  if(!n){note("กรุณาใส่ชื่อคอร์ส",1);$("crn").focus();return null}
+  if(CORD.some(k=>k!==CRE&&C[k].n.trim().toLowerCase()===n.toLowerCase())){note("มีคอร์สชื่อนี้อยู่แล้ว",1);$("crn").focus();return null}
+  const p=Math.round(+$("crp").value||0),hr=Math.round((+$("crhr").value||0)*2)/2,rg=Math.round(+$("crrg").value||0),rs=Math.round(+$("crrs").value||0);
+  if(p<=0){note("กรุณาใส่ราคาคอร์สวิดีโอ",1);$("crp").focus();return null}
+  const pkL=CL().filter(k=>CRPK.includes(k));
+  if(pk&&pkL.length<2){note("แพ็กรวมต้องเลือกอย่างน้อย 2 คอร์ส",1);return null}
+  if(!pk&&hr<=0){note("กรุณาใส่ชั่วโมงเรียน",1);$("crhr").focus();return null}
+  if(!pk&&(rg<=0||rs<=0)){note("กรุณาใส่ราคาเรียนสดกลุ่มและเดี่ยวต่อชั่วโมง",1);(rg<=0?$("crrg"):$("crrs")).focus();return null}
+  const k=CRE||("c"+Date.now().toString(36)),old=CRE?C[CRE]:null;
+  const v={n,t:crTxt($("crt").value,80),p,hr:pk?0:hr,lv:crTxt($("crlv").value,80),use:crArea($("cruse").value,800),bk:crTxt($("crbk").value,160),tag:crTxt($("crtag").value,20),gold:$("crg").value==="1",on:$("cron").checked,ins:$("crins").checked,
+    rg:pk?0:rg,rs:pk?0:rs,pk:pk?pkL:null,ex:CREX.map(x=>({t:crTxt(x.t,60),b:crArea(x.b,1200)})).filter(x=>x.t||x.b),
+    sl:$("crsl").checked,se:crTxt($("crse").value,24),s1:crTxt($("crs1").value,40),s2:crTxt($("crs2").value,40),sp:crTxt($("crsp").value,80),sb:[0,1,2].map(i=>crTxt($("crb"+i).value,50)),sc:CRSC};
+  return {k,isNew:!old,v}}
+function crApply(r){C[r.k]=Object.assign(CDEF(),r.v);if(r.isNew)CORD.push(r.k);syncCourses();CRE=null;CRT="one";$("crn").dataset.k="";renderCrsAdmin()}
+function crRow(k){const d=Object.assign({},C[k]);delete d.h;return {k,sort:CORD.indexOf(k),data:d}}
+function saveCrs(){const r=crsVals();if(!r)return;crApply(r);note(r.isNew?"เพิ่มคอร์สแล้ว":"บันทึกคอร์สแล้ว")}
+function togCrs(k){C[k].on=C[k].on===false;syncCourses();renderCrsAdmin()}
+function delCrs(k){if(CRDEL!==k){CRDEL=k;renderCrsAdmin();return}CRDEL=null;if(crUse(k).length){renderCrsAdmin();return}
+  CORD=CORD.filter(x=>x!==k);delete C[k];if(CRE===k)CRE=null;$("crn").dataset.k="";syncCourses();renderCrsAdmin();note("ลบคอร์สแล้ว")}
+function mvCrs(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD[i],CORD[j]]=[CORD[j],CORD[i]];syncCourses();renderCrsAdmin()}
 /* ===== บันทึกการส่งอีเมล (หลังบ้าน) ===== */
 let MAILS=[],MF="all";
 const MK={live:"ลิงก์ไลฟ์",live_remind:"เตือนก่อนไลฟ์ 1 ชม.",approve:"อนุมัติการสมัคร",owner_enroll:"แจ้งพี่: ผู้สมัครใหม่",owner_order:"แจ้งพี่: คำสั่งซื้อใหม่",order_new:"ได้รับคำสั่งซื้อ",order_paid:"ยืนยันเงินเข้า",ship:"แจ้งเลขพัสดุ",test:"ทดสอบระบบ",other:"อื่น ๆ"};
@@ -2274,7 +2392,7 @@ let PREV=null;const PVN="แอดมิน (มุมมองนักเร�
 function adminPreview(){if(PREV)return;
   PREV={st:ST,cur:CUR,last:LAST,gh:GHIST,done:Object.entries(DONE).map(([k,v])=>[k,[...v]])};
   SL.forEach(x=>{if(!x.bk.includes(PVN))x.bk.push(PVN)});
-  ST={name:PVN,nick:"แอดมิน",code:"ตัวอย่าง",access:["pinyin","hsk1","hsk2","hsk3","hsk4"],live:true,pd:true,av:"🐼",st:"ยืนยันแล้ว",em:"",ph:"",course:"",preview:true};
+  ST={name:PVN,nick:"แอดมิน",code:"ตัวอย่าง",access:CL(),live:true,pd:true,av:"🐼",st:"ยืนยันแล้ว",em:"",ph:"",course:"",preview:true};
   GHIST=[];Object.keys(DONE).forEach(k=>delete DONE[k]);LAST=null;
   pvBar(true);proceed()}
 function exitPreview(){if(!PREV)return;const p=PREV;PREV=null;
@@ -2427,7 +2545,7 @@ async function loadShop(admin){
 async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
   VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort}))}
 async function loadPublic(){
-  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e))])}catch(e){console.error(e)}
+  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),(window.YH_CRS=loadCourses().catch(e=>console.error(e)))])}catch(e){console.error(e)}
   const on=document.querySelector(".scr.on");if(!on)return;
   if(on.id==="s-hour")renderHour();if(on.id==="s-trial")drawTrial();if(on.id==="s-course")drawCourse();
   if(on.id==="s-shop")renderShop();if(on.id==="s-cart")renderCart();if(on.id==="s-dict")renderVocab();
@@ -2523,6 +2641,8 @@ async function startStudent(r){
   if(r.status==="pending"){await sb.auth.signOut();ROLE=null;return "รหัสนี้ยังรอทีมงานตรวจสอบและอนุมัติ"}
   if(r.suspended){await sb.auth.signOut();ROLE=null;return "สิทธิ์ถูกระงับ กรุณาติดต่อทีมงาน"}
   ROLE="student";ST=toSub(r);
+  try{await (window.YH_CRS||Promise.resolve())}catch(e){}
+  ST.access=(ST.access||[]).filter(k=>C[k]&&k!=="live");
   try{await loadStudentData()}catch(e){console.error(e)}
   if(!ST.pd)openProfile(true);else proceed();
   return "";
@@ -2877,6 +2997,23 @@ window.saveFc=async function(){const v=fcVals();const btn=$("fcsv");busy(btn,tru
   try{const now=new Date().toISOString();if(v.pc.length){const {error}=await sb.from("product_costs").upsert(v.pc.map(([id,cb,c])=>({product_id:id,cost_book:cb,calc:c,updated_at:now})));if(error)throw error}
     const {error:e2}=await sb.from("fin_cfg").upsert([{k:"book_mat",v:v.m},{k:"enroll_book_calc",v:v.ebc},{k:"enroll_book_cost",v:v.eb}]);if(e2)throw e2;
     BMAT=v.m;EBC=v.ebc;FIN.eb=v.eb;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});try{document.activeElement.blur()}catch(e){}renderFin();renderBc();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+
+/* ---------- คอร์สเรียน (แก้/เพิ่มในหลังบ้าน) ---------- */
+async function loadCourses(){const {data,error}=await sb.from("courses").select("k,sort,data").order("sort");if(error)throw error;if(!data||!data.length)return;
+  const live=C.live;Object.keys(C).forEach(k=>delete C[k]);C.live=live;
+  CORD=data.filter(r=>r.k!=="live"&&r.data).map(r=>{C[r.k]=Object.assign(CDEF(),r.data);return r.k});
+  syncCourses();if(ROLE==="admin"&&AT==="a-crs")renderCrsAdmin()}
+async function crsSaveAll(){const {error}=await sb.from("courses").upsert(CORD.map(crRow));if(error)throw error}
+window.saveCrs=async function(){const r=crsVals();if(!r)return;const btn=$("crsv");busy(btn,true);
+  try{const ks=r.isNew?[...CORD,r.k]:CORD,rows=ks.map((k,i)=>k===r.k?{k,sort:i,data:Object.assign({},r.v)}:Object.assign(crRow(k),{sort:i}));
+    const {error}=await sb.from("courses").upsert(rows);if(error)throw error;crApply(r);toast(r.isNew?"เพิ่มคอร์สแล้ว":"บันทึกคอร์สแล้ว")}
+  catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+window.togCrs=async function(k){const on=C[k].on===false;
+  try{const rows=CORD.map(crRow);rows.find(x=>x.k===k).data.on=on;const {error}=await sb.from("courses").upsert(rows);if(error)throw error;C[k].on=on;syncCourses();renderCrsAdmin();toast(on?"แสดงคอร์สแล้ว":"ซ่อนคอร์สแล้ว")}catch(e){fail(e)}};
+window.delCrs=async function(k){if(CRDEL!==k){CRDEL=k;renderCrsAdmin();return}CRDEL=null;if(crUse(k).length){renderCrsAdmin();return}
+  try{const {error}=await sb.from("courses").delete().eq("k",k);if(error)throw error;CORD=CORD.filter(x=>x!==k);delete C[k];if(CRE===k)CRE=null;$("crn").dataset.k="";syncCourses();renderCrsAdmin();toast("ลบคอร์สแล้ว")}catch(e){fail(e)}};
+window.mvCrs=async function(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD[i],CORD[j]]=[CORD[j],CORD[i]];syncCourses();renderCrsAdmin();
+  try{await crsSaveAll()}catch(e){fail(e,"บันทึกลำดับไม่สำเร็จ");try{await loadCourses()}catch(x){}}};
 
 /* ---------- รีวิว (พี่เขียนเองในหลังบ้าน) ---------- */
 async function loadReviews(){const {data,error}=await sb.from("reviews").select("*").order("sort").order("id");if(error)throw error;
