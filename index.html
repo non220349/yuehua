@@ -222,7 +222,7 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .avg{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 12px}
 .avb{aspect-ratio:1;border-radius:14px;border:2px solid var(--bd);background:var(--card);font-size:26px;cursor:pointer;padding:0}
 .avb.on{border-color:var(--seal);background:var(--soft)}
-.w{overflow-x:clip}
+html,body{overflow-x:clip}
 .ig>*,.hg>*{min-width:0}
 .terms li{overflow-wrap:anywhere}
 @media(max-width:900px){.ig,.hg{grid-template-columns:minmax(0,1fr)}}
@@ -413,6 +413,10 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 
 .notet{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#141414;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;border-left:4px solid var(--gold);opacity:0;pointer-events:none;transition:.2s;z-index:200;max-width:92vw}.notet.on{opacity:1;transform:translateX(-50%)}.notet.err{border-left-color:var(--seal)}
 .cartb{position:relative}
+#s-home>.sh{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:max(14px,calc(50vw - 50%));padding-right:max(14px,calc(50vw - 50%))}
+#pvbar{position:fixed;left:0;right:0;bottom:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#1c1714;color:#f6e7cf;font-size:14px;box-shadow:0 -6px 20px rgba(0,0,0,.25);border-top:3px solid var(--gold)}
+#pvbar b{color:var(--gold)}#pvbar button{flex:none;border:0;border-radius:10px;background:var(--seal);color:#fff;font:inherit;font-weight:700;padding:8px 14px;cursor:pointer}
+body.pvmode{padding-bottom:64px}body.pvmode .fab{bottom:80px}
 .rst{display:block;color:#e0a526;font-size:14px;letter-spacing:1px;line-height:1.2}.rst i{font-style:normal;color:var(--bd)}
 .savx{display:inline-grid;place-items:center;background:var(--soft);color:var(--seal);font-weight:700;font-size:22px}
 .rvsr{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;padding:10px;border:1px solid var(--bd);border-radius:12px;margin:6px 0}.rvsr select{width:auto;margin:0}
@@ -559,7 +563,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
-  <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b></div>
+  <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b><button class="btn sm" onclick="adminPreview()" title="ดูหน้าเรียนแบบที่นักเรียนเห็น เห็นทุกคอร์ส ไม่บันทึกอะไร">มุมมองนักเรียน</button></div>
   <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-vf">ไฟล์คำศัพท์</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div>
   <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
   <div class="pane" id="a-shop">
@@ -847,7 +851,7 @@ const $=id=>document.getElementById(id);
 
 const L=["บทที่ 1 – ทักทาย","บทที่ 2 – แนะนำตัว","บทที่ 3 – ตัวเลข","บทที่ 4 – ครอบครัว","บทที่ 5 – ทบทวน"];
 let me={name:"นักเรียนทดลอง",code:"YH0000",course:"HSK1"},done=new Set([0]);
-function go(id){if(id==="s-dash"&&typeof GPUB!=="undefined"&&GPUB){GPUB=false;pgPlace();try{gQuit()}catch(e){}}document.querySelectorAll(".scr").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0);navLater()}
+function go(id){if(typeof PREV!=="undefined"&&PREV&&id==="s-home"){exitPreview();return}if(id==="s-dash"&&typeof GPUB!=="undefined"&&GPUB){GPUB=false;pgPlace();try{gQuit()}catch(e){}}document.querySelectorAll(".scr").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0);navLater()}
 const C={
 hsk1:{n:"HSK1",t:"เริ่มต้นจากศูนย์",p:1990,h:"30 ชั่วโมง",lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เหมาะกับผู้เริ่มเรียนภาษาจีนและผู้ที่เตรียมสอบ HSK ระดับ 1 เรียนทักทาย แนะนำตัว ตัวเลข ครอบครัว",bk:"หนังสือเรียนประกอบคอร์ส พร้อมแบบฝึกหัด (ตัวอย่าง)"},
 pinyin:{n:"พินอิน",t:"ออกเสียงให้ถูกตั้งแต่ต้น",p:490,h:"8 ชั่วโมง",lv:"สำหรับผู้เริ่มต้น",use:"ฝึกพินอิน วรรณยุกต์ 4 เสียง และการอ่านออกเสียง เหมาะเรียนคู่กับ HSK1",bk:"เอกสารฝึกออกเสียง (ตัวอย่าง)"},
@@ -1136,7 +1140,7 @@ function renderSched(){
   $("sch").innerHTML=(m.length?m.map(({x,d})=>{const done=lv.some(l=>l.sid===x.id&&l.when===+d);
     return `<div class="card"><b>วัน${DN[x.dw]} ${fh(x.h,x.du)}</b> <span class="tag">${x.ty==="single"?"เดี่ยว":"กลุ่ม"}</span><div class="mut">ครั้งถัดไป ${dstr(d)}</div>${done?'<span class="tag">แจ้งลาแล้ว · รอนัดชดเชย</span>':lv.length>=4?'<button class="btn alt sm" disabled>ลาครบ 4 ครั้งแล้ว</button>':`<button class="btn alt sm" style="margin-top:8px" onclick="leave(${x.id},${+d})">แจ้งลาครั้งนี้</button>`}</div>`}).join(""):"<div class='card mut'>ยังไม่มีช่วงเวลาที่จองไว้</div>")+`<div class="mut" style="font-size:13px">ลาได้ไม่เกิน 4 ครั้ง ลาแล้วทีมงานจะนัดวันชดเชยกับคุณ · ลาแล้ว ${lv.length}/4</div><div class="row"><button class="btn" onclick="openHour('group')">จองช่วงเวลาเพิ่ม</button></div>`;
 }
-function leave(id,when){const x=SL.find(y=>y.id===id);LEAVES.push({name:ST.name,code:ST.code,sid:id,when,label:`วัน${DN[x.dw]} ${fh(x.h,x.du)} (${new Date(when).toLocaleDateString("th-TH",{day:"numeric",month:"short"})})`,st:"รอนัดชดเชย"});renderSched();renderToday()}const DONE={};
+function leave(id,when){if(pvBlock())return;const x=SL.find(y=>y.id===id);LEAVES.push({name:ST.name,code:ST.code,sid:id,when,label:`วัน${DN[x.dw]} ${fh(x.h,x.du)} (${new Date(when).toLocaleDateString("th-TH",{day:"numeric",month:"short"})})`,st:"รอนัดชดเชย"});renderSched();renderToday()}const DONE={};
 const SEC={b1:{g:"เล่ม",n:"เล่ม 1",l:["บทที่ 1 – ทักทาย","บทที่ 2 – แนะนำตัว","บทที่ 3 – ตัวเลข","บทที่ 4 – ครอบครัว","บทที่ 5 – ทบทวน"]},
 b2:{g:"เล่ม",n:"เล่ม 2",l:["บทที่ 6 – ซื้อของ","บทที่ 7 – เวลา","บทที่ 8 – สถานที่","บทที่ 9 – อาหาร","บทที่ 10 – ทบทวน"]},
 e1:{g:"แบบฝึกหัด",n:"แบบฝึกหัด 1",l:["ชุดที่ 1","ชุดที่ 2","ชุดที่ 3"]},
@@ -1903,7 +1907,7 @@ function orderForm(){const g=id=>($(id)&&$(id).value||"").trim();const ns=CART.s
   if(!/^\S+@\S+\.\S+$/.test(o.email))return [null,"กรุณากรอกอีเมลให้ถูกต้อง"];
   if(ns&&(!o.addr||!/^\d{5}$/.test(o.zip)))return [null,"กรุณากรอกที่อยู่และรหัสไปรษณีย์ 5 หลัก"];
   if(!o.slip)return [null,"กรุณาแนบสลิปการโอนเงิน"];return [o,""]}
-function placeOrder(){const [o,err]=orderForm();$("oerr").textContent=err;if(!o)return;
+function placeOrder(){if(pvBlock())return;const [o,err]=orderForm();$("oerr").textContent=err;if(!o)return;
   const items=CART.map(l=>{const x=itemOf(l);return {kind:l.k==="b"?"promo":"product",id:l.id,title:x.t,fmt:l.f,qty:l.q||1,price:priceOf(x,l.f),books:l.k==="b"?x.ids.map(prodBy).filter(Boolean).map(p=>p.t):undefined}});
   const code="OD"+(1001+ORDERS.length);ORDERS.unshift({id:ORDERS.length+1,code,at:Date.now(),bt:(window.yhRole&&window.yhRole()==="student")?"student":"public",name:o.name,em:o.email,ph:o.phone,addr:o.ns?o.addr:"",zip:o.ns?o.zip:"",items,total:cartTotal2(),st:"pending",ns:o.ns,hf:items.some(i=>i.fmt==="file"),car:"",trk:"",slip:null});
   ODONE={code,ns:o.ns,hf:items.some(i=>i.fmt==="file")};CART=[];cartSave();renderCart();scrollTo(0,0)}
@@ -2081,6 +2085,23 @@ async function backupXlsx(){const st=$("bkxs"),t0=st?st.textContent:"";if(st)st.
     const d=new Date(),p=n=>String(n).padStart(2,"0");XLSX.writeFile(wb,`YUEHUA-สำรองข้อมูล-${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}.xlsx`);note("ดาวน์โหลดไฟล์สำรองแล้ว เก็บไว้ในที่ปลอดภัยนะ")}
   catch(e){console.error(e);note("สำรองข้อมูลไม่สำเร็จ: "+(e.message||e),1)}finally{if(st)st.textContent=t0}}
 function goHome(){try{closeBook()}catch(e){}const on=document.querySelector(".scr.on");if(!on||on.id!=="s-home")go("s-home");scrollTo({top:0,behavior:"smooth"})}
+/* ===== แอดมิน: มุมมองนักเรียน (เห็นทุกคอร์ส · ไม่บันทึกอะไร) ===== */
+let PREV=null;const PVN="แอดมิน (มุมมองนักเรียน)";
+function adminPreview(){if(PREV)return;
+  PREV={st:ST,cur:CUR,last:LAST,gh:GHIST,done:Object.entries(DONE).map(([k,v])=>[k,[...v]])};
+  SL.forEach(x=>{if(!x.bk.includes(PVN))x.bk.push(PVN)});
+  ST={name:PVN,nick:"แอดมิน",code:"ตัวอย่าง",access:["pinyin","hsk1","hsk2","hsk3","hsk4"],live:true,pd:true,av:"🐼",st:"ยืนยันแล้ว",em:"",ph:"",course:"",preview:true};
+  GHIST=[];Object.keys(DONE).forEach(k=>delete DONE[k]);LAST=null;
+  pvBar(true);proceed()}
+function exitPreview(){if(!PREV)return;const p=PREV;PREV=null;
+  SL.forEach(x=>{const i=x.bk.indexOf(PVN);if(i>=0)x.bk.splice(i,1)});
+  try{gStopT()}catch(e){}try{if($("gplay").style.display==="block")gQuit()}catch(e){}
+  ST=p.st;CUR=p.cur;LAST=p.last;GHIST=p.gh;Object.keys(DONE).forEach(k=>delete DONE[k]);p.done.forEach(([k,v])=>DONE[k]=new Set(v));
+  pvBar(false);go("s-admin");renderAdmin()}
+function pvBar(on){let b=$("pvbar");document.body.classList.toggle("pvmode",!!on);if(!on){if(b)b.remove();return}
+  if(!b){b=document.createElement("div");b.id="pvbar";b.setAttribute("role","status");document.body.appendChild(b)}
+  b.innerHTML=`<span><b>มุมมองนักเรียน</b> · แอดมินเห็นทุกคอร์ส · ไม่บันทึกอะไร</span><button onclick="exitPreview()">‹ กลับหลังบ้าน</button>`}
+function pvBlock(){if(PREV){note("มุมมองนักเรียน: ปุ่มนี้ใช้ได้เฉพาะนักเรียนจริง ไม่มีอะไรถูกบันทึก",1);return true}return false}
 function openTool(e,url){if(e&&e.preventDefault)e.preventDefault();
   let o=$("toolov");if(!o){o=document.createElement("div");o.id="toolov";o.className="toolov";document.body.appendChild(o)}
   let f=[...o.querySelectorAll("iframe")].find(x=>x.dataset.u===url);
@@ -2689,6 +2710,12 @@ window.bkSheets=async function(){
     ["คะแนนแบบฝึกหัด",gh],
     ["อีเมลที่ส่ง",ml.map(m=>({"วันที่":xd(m.created_at),"ประเภท":MK[m.kind]||m.kind,"อ้างอิง":m.ref||"","ถึง":m.to_email,"ชื่อเรื่อง":m.subject,"ผล":m.ok?"สำเร็จ":"ไม่สำเร็จ","สาเหตุ":m.error||"","ส่งกี่ครั้ง":m.tries}))]];
 };
+
+/* ---------- มุมมองนักเรียนของแอดมิน: กันปุ่มที่จะบันทึกข้อมูลจริง ---------- */
+["leave","changePw","placeOrder"].forEach(n=>{const f=window[n];if(typeof f!=="function")return;window[n]=function(...a){if(PREV){pvBlock();return}return f.apply(this,a)}});
+{const f=window.saveProf;window.saveProf=function(...a){if(PREV){pvBlock();go("s-dash");return}return f.apply(this,a)}}
+{const f=window.studentLogout;window.studentLogout=function(...a){if(PREV){exitPreview();return}return f.apply(this,a)}}
+{const f=window.adminLogout;window.adminLogout=function(...a){if(PREV)exitPreview();return f.apply(this,a)}}
 
 loadPublic();
 /* กลับจากหน้าเครื่องมือ: #admin หรือ #admin-tools เปิดหลังบ้านให้เลย */
