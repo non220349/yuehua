@@ -377,6 +377,33 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .ghm-in{background:var(--bg);border-radius:16px;padding:16px;width:100%;max-width:640px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
 .toolg{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:10px}.toolc{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg);border:1px solid var(--bd)}.toolc:hover{border-color:var(--seal)}.toolc>span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:4px}.toolc b{font-size:17px}.tooli{font-size:34px}.toolgo{color:var(--seal);font-weight:700;white-space:nowrap}
 .toolov{position:fixed;inset:0;z-index:90;background:#fff;display:none}.toolov iframe{width:100%;height:100%;height:100dvh;border:0;display:none}.toolov iframe.on{display:block}
+
+.notet{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#141414;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;border-left:4px solid var(--gold);opacity:0;pointer-events:none;transition:.2s;z-index:200;max-width:92vw}.notet.on{opacity:1;transform:translateX(-50%)}.notet.err{border-left-color:var(--seal)}
+.cartb{position:relative}.cartn{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--gold);color:#141414;font-size:12px;font-weight:700;margin-left:4px}
+.shh{margin:18px 0 6px}
+.promo{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--seal) 10%,var(--card)),var(--card));border:1px solid color-mix(in srgb,var(--seal) 30%,var(--bd));border-radius:18px;padding:16px;margin:10px 0;cursor:pointer;flex-wrap:wrap}
+.pstack{--w:96px;--dx:52px;position:relative;flex:none;width:calc(var(--w) + (var(--n) - 1) * var(--dx));height:calc(var(--w) * 1.42 + 14px);margin:4px 6px}
+.pstack.big{--w:118px;--dx:66px;margin:4px auto 12px}
+.pcv{position:absolute;left:calc(var(--i) * var(--dx));top:calc(var(--i) * 7px);width:var(--w);aspect-ratio:240/340;border-radius:3px 7px 7px 3px;overflow:hidden;background:var(--soft);box-shadow:-1px 0 0 rgba(0,0,0,.25),6px 6px 14px rgba(0,0,0,.3);transform:rotate(calc((var(--i) - (var(--n) - 1) / 2) * 6deg));transform-origin:50% 90%}
+.pcv img{width:100%;height:100%;object-fit:cover;display:block}.pcv .bfb{font-size:12px}
+.pinfo{flex:1;min-width:200px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.pinfo .pt{font-size:18px}.psave{background:var(--seal);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pbl{margin:2px 0 4px;padding-left:18px;font-size:14px}.ppr{display:flex;gap:8px;align-items:baseline;font-size:14px}.ppr s{color:var(--mut)}.ppr b{color:var(--seal);font-size:16px}
+.pfm{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;margin:6px 0;text-align:left}
+.pdet{display:flex;flex-direction:column;gap:6px;margin:6px 0 8px}.pdi{display:flex;gap:10px;align-items:center;border:1px solid var(--bd);border-radius:10px;padding:6px 8px}
+.bcv.sm2{--bw:46px;width:46px;transform:none;flex:none;margin:0}.bcv.sm2 img{width:100%;height:100%;object-fit:cover}.bcv.sm2 .bfb{font-size:8px;padding:2px}
+.bcv img{width:100%;height:100%;object-fit:cover;display:block}
+.cl .clh{display:flex;gap:12px;align-items:center}.cl .pstack{--w:46px;--dx:22px;margin:0}
+.cseg{margin:10px 0 6px}.clf{display:flex;justify-content:space-between;align-items:center}
+.qty{display:flex;align-items:center;gap:10px}.qty button{width:34px;height:34px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--fg);font-size:18px;cursor:pointer}
+.ctot{display:flex;justify-content:space-between;font-size:18px}
+.payqr img{width:min(240px,80%);border-radius:12px;margin:8px auto;display:block}
+.vsh .shelf{margin-top:8px}
+.ocd .oits{border:1px solid var(--bd);border-radius:10px;padding:4px 10px;margin:8px 0}.oit{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dashed var(--bd);font-size:14px}.oit:last-child{border-bottom:0}
+.segf{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.segf button{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:99px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}.segf button.on{background:var(--seal);color:#fff;border-color:var(--seal)}.segf button.on .mut{color:#fff}
+.glv.lk{opacity:.72;border-style:dashed}.glv.lk .glvi{filter:grayscale(.3)}
+.slx{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px}.slx input[type=number]{width:70px;padding:6px 8px}
+.chip.full{background:#555!important;color:#fff!important}
 </style>
 </head>
 <body>
@@ -385,8 +412,8 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 <!-- 1 หน้าต้อนรับ -->
 <section class="scr on" id="s-home">
   <header class="sh"><div class="bw"><div class="logo sm" role="img" aria-label="โลโก้ YUEHUA 悦华"></div><div class="brand">YUEHUA <span>悦华中文</span><small>เรียนจีนมันกว่าที่คิด</small></div></div>
-    <div class="hnav"><button onclick="openDict()">พจนานุกรม</button><button onclick="openTrial()">ทดลองเรียนฟรี</button><button onclick="jump('courses')">คอร์สเรียน</button><button onclick="jump('hourly')">เรียนรายชั่วโมง</button><button onclick="jump('why')">ทำไม YUEHUA</button><button onclick="jump('contact')">ติดต่อ</button><button onclick="jump('reviews')">รีวิว</button></div>
-    <div class="hact"><button class="btn alt sm" onclick="tg()" aria-label="สลับโหมดสว่าง/มืด">◐</button><button class="btn alt sm" onclick="go('s-login')">เข้าสู่ระบบ</button><button class="btn sm" onclick="openEnroll('hsk1')">สมัครเรียน</button></div></header>
+    <div class="hnav"><button onclick="openDict()">พจนานุกรม</button><button onclick="openPubGame()">เกมฝึกจีน</button><button onclick="openShop()">ร้านหนังสือ</button><button onclick="openTrial()">ทดลองเรียนฟรี</button><button onclick="jump('courses')">คอร์สเรียน</button><button onclick="jump('hourly')">เรียนรายชั่วโมง</button><button onclick="jump('why')">ทำไม YUEHUA</button><button onclick="jump('contact')">ติดต่อ</button><button onclick="jump('reviews')">รีวิว</button></div>
+    <div class="hact"><button class="btn alt sm" onclick="tg()" aria-label="สลับโหมดสว่าง/มืด">◐</button><button class="btn alt sm cartb" onclick="openCart()" aria-label="ตะกร้าสินค้า">🛒<span class="cartn" style="display:none"></span></button><button class="btn alt sm" onclick="go('s-login')">เข้าสู่ระบบ</button><button class="btn sm" onclick="openEnroll('hsk1')">สมัครเรียน</button></div></header>
   <section class="ban"><div class="cs" id="bcs"><div class="inst sl s1"><div class="ig"><div><div class="eb" style="color:#f6d7a8">PROMOTION</div><h2>จ่ายก่อนแค่ 70%<br>เริ่มเรียนได้เลย</h2>
     <p>อีก 30% ค่อยจ่ายเมื่อเรียนครบ 1 เดือน ใช้ได้กับคอร์สออนไลน์ทั้งวิดีโอและเรียนสด</p><div class="sm2">*ไม่รวมค่าหนังสือ (ค่าหนังสือชำระพร้อมงวดแรก)</div>
     <div class="row"><button class="btn gold" id="ibtn" onclick="openEnroll(EXK,1)">สมัครแบบผ่อน 70/30</button><button class="btn ghost" onclick="jump('courses')">ดูคอร์สทั้งหมด</button></div>
@@ -396,7 +423,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
     <div class="dots" id="dots"></div></section>
   <section class="hero"><div class="hg"><div><div class="eb">YUEHUA 悦华中文</div><h1>เรียนจีน<br><span>มันกว่าที่คิด</span></h1>
     <p class="mut" style="font-size:17px;max-width:560px">เรียนภาษาจีนอย่างเป็นระบบ ตั้งแต่พินอินถึง HSK พร้อมวิดีโอ แบบฝึกหัด และจองเวลาเรียนสดในที่เดียว</p>
-    <div class="row"><button class="btn" onclick="jump('courses')">ดูคอร์สเรียน</button><button class="btn gold" style="border:1px solid #e5c791" onclick="openTrial()">ทดลองเรียนฟรี</button><button class="btn alt" onclick="openHour('group')">จองเรียนสด</button><button class="btn alt" onclick="openDict()">พจนานุกรมฟรี</button></div></div>
+    <div class="row"><button class="btn" onclick="jump('courses')">ดูคอร์สเรียน</button><button class="btn gold" style="border:1px solid #e5c791" onclick="openTrial()">ทดลองเรียนฟรี</button><button class="btn alt" onclick="openHour('group')">จองเรียนสด</button><button class="btn alt" onclick="openDict()">พจนานุกรมฟรี</button><button class="btn alt" onclick="openPubGame()">🎮 เกมฝึกจีนฟรี</button><button class="btn alt" onclick="openShop()">📚 ร้านหนังสือ</button></div></div>
     <div class="card hc"><div class="hh"><div class="logo lg" role="img" aria-label="โลโก้ YUEHUA 悦华"></div><div><div class="eb">LEARNING PATH</div><h3 style="margin:6px 0 0">เริ่มจากศูนย์ก็เรียนได้</h3></div></div>
     <div class="mini"><div>① <b>พินอิน</b> · ออกเสียงให้ถูก</div><div>② <b>HSK 1</b> · สร้างพื้นฐาน</div><div>③ <b>HSK 2</b> · ต่อประโยคให้คล่อง</div><div>④ <b>HSK 3–4</b> · พร้อมสอบจริง</div></div></div></div></section>
   <section class="sec" id="courses"><div class="eb">COURSES</div><h2>เลือกคอร์สที่เหมาะกับคุณ</h2><div class="g" id="cl"></div>
@@ -482,8 +509,35 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b></div>
-  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">หนังสือ</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-tools">เครื่องมือ</button></div>
+  <div class="tabs" id="atabs"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-vf">ไฟล์คำศัพท์</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-tools">เครื่องมือ</button></div>
   <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
+  <div class="pane" id="a-shop">
+    <div class="card" style="margin-top:10px"><b id="pfh">เพิ่มหนังสือ</b>
+      <label for="pft2">ชื่อหนังสือ</label><input id="pft2" placeholder="เช่น 新HSK教程 1">
+      <label for="pfd">รายละเอียดสั้น ๆ</label><textarea id="pfd" rows="2" placeholder="เช่น หนังสือเรียน HSK1 ใช้คู่กับคอร์ส"></textarea>
+      <div class="vg2"><div><label for="pfpf">ราคาไฟล์ PDF (บาท)</label><input id="pfpf" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div><div><label for="pfpb">ราคาหนังสือเล่ม (บาท · ส่งฟรี)</label><input id="pfpb" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div></div>
+      <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><input id="pfu" placeholder="https://drive.google.com/file/d/...">
+      <label>ปกหนังสือ</label><div class="row" style="margin:0;align-items:center"><span id="pfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfPic(this)"></label><span id="pfprev"></span></div>
+      <label class="chk" style="margin-top:10px"><input type="checkbox" id="pfon" checked> แสดงในร้าน</label>
+      <div class="row"><button class="btn" onclick="savePr()">บันทึกหนังสือ</button><button class="btn alt" id="pfx" onclick="cancelPr()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+    <div id="prl"></div>
+    <div class="card" style="margin-top:18px;border-color:var(--seal)"><b id="poh">เพิ่มโปรโมชันชุดหนังสือ</b><div class="mut" style="font-size:13px">โปรจะแสดงเป็นชั้นบนสุดของร้าน</div>
+      <label for="pot">ชื่อโปร</label><input id="pot" placeholder="เช่น ซื้อคู่ HSK1 + HSK2 ถูกกว่า">
+      <label for="pod">คำอธิบาย</label><input id="pod" placeholder="เช่น เริ่มจากศูนย์จนคุยได้">
+      <label>เลือกหนังสือในชุด (2 เล่มขึ้นไป)</label><div id="pops"></div><div class="mut" id="pohint" style="font-size:13px"></div>
+      <div class="vg2"><div><label for="popf">ราคาโปร · ไฟล์ทั้งชุด</label><input id="popf" type="number" min="0" placeholder="เว้นว่าง = ไม่มี"></div><div><label for="popb">ราคาโปร · เล่มทั้งชุด</label><input id="popb" type="number" min="0" placeholder="เว้นว่าง = ไม่มี"></div></div>
+      <label class="chk" style="margin-top:10px"><input type="checkbox" id="poon" checked> เปิดใช้โปรนี้</label>
+      <div class="row"><button class="btn" onclick="savePo()">บันทึกโปรโมชัน</button><button class="btn alt" id="pox" onclick="cancelPo()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+    <div id="pol"></div>
+  </div>
+  <div class="pane" id="a-vf">
+    <div class="card" style="margin-top:10px"><b id="vfh">เพิ่มไฟล์คำศัพท์</b><div class="mut" style="font-size:13px">แสดงเป็นชั้นหนังสือบนหน้าพจนานุกรม ทุกคนโหลดได้ฟรี</div>
+      <label for="vft">ชื่อไฟล์</label><input id="vft" placeholder="เช่น คำศัพท์ HSK1 · 300 คำ">
+      <label for="vfu">ลิงก์ Google Drive</label><input id="vfu" placeholder="https://drive.google.com/file/d/...">
+      <label>ปก</label><div class="row" style="margin:0;align-items:center"><span id="vfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="vfPic(this)"></label><span id="vfprev"></span></div>
+      <div class="row"><button class="btn" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+    <div id="vfl"></div>
+  </div>
   <div class="pane" id="a-tools">
     <div class="toolg">
       <a class="card toolc" href="tools/pdf/" onclick="return openTool(event,'tools/pdf/')"><span class="tooli">📄</span><span><b>รวมไฟล์ PDF</b><small class="mut">รวมหลายไฟล์ เรียง/หมุน/เลือกหน้า ใส่เลขหน้า แล้วดาวน์โหลดเป็นไฟล์เดียว</small></span><span class="toolgo">เปิด ›</span></a>
@@ -499,7 +553,8 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
   </div>
   <div class="pane" id="a-bk">
     <details class="card" style="margin-top:10px"><summary>ที่อยู่ผู้ส่ง (ใช้บนใบปะหน้า)</summary><textarea id="snd" rows="3" placeholder="ชื่อร้าน ที่อยู่ เบอร์โทร" oninput="SENDER=this.value;saveSender()"></textarea></details>
-    <div class="row" style="margin:10px 0"><button class="btn sm" onclick="printSel()">พิมพ์ที่เลือก</button><button class="btn alt sm" onclick="document.querySelectorAll('.bkc').forEach(c=>c.checked=true)">เลือกทั้งหมด</button></div>
+    <div class="segf" id="ofl"></div>
+    <div class="row" style="margin:10px 0"><button class="btn sm" onclick="printSel()">พิมพ์ใบปะหน้าที่เลือก</button><button class="btn alt sm" onclick="document.querySelectorAll('.bkc').forEach(c=>c.checked=true)">เลือกทั้งหมด</button></div>
     <div id="bkl"></div>
   </div>
   <div class="pane" id="a-rs">
@@ -509,9 +564,9 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
   </div>
   <div class="pane" id="a-sch">
     <div class="card" style="margin-top:10px"><b>เพิ่มช่วงเวลาเรียน</b>
-      <label for="sdu">ใช้สำหรับ</label><select id="sdu" onchange="shOpts()"><option value="1">เรียนสดรายชั่วโมง (ครั้งละ 1 ชม.)</option><option value="2">คอร์สเรียนสด (ครั้งละ 2 ชม.)</option></select>
+      <label for="sdu">ใช้สำหรับ</label><select id="sdu" onchange="shOpts()"><option value="hr">เรียนสดรายชั่วโมง (คิดตามชั่วโมงจริง)</option><option value="lc">คอร์สเรียนสด</option></select>
       <label for="sd">วัน (ซ้ำทุกสัปดาห์)</label><select id="sd"></select>
-      <label for="sh" id="shl">เวลา (ครั้งละ 1 ชม.)</label><select id="sh"></select>
+      <label for="sh1">เวลา (กำหนดเองได้)</label><div class="row" style="margin:0;align-items:center;flex-wrap:nowrap"><input type="time" id="sh1" step="300" value="09:00" oninput="shOpts()" style="flex:1"><span>ถึง</span><input type="time" id="sh2" step="300" value="10:00" oninput="shOpts()" style="flex:1"></div><div class="mut" id="shd" style="font-size:13px;margin-top:4px"></div>
       <label for="sty">ประเภท</label><select id="sty" onchange="$('scp').disabled=this.value==='single'"><option value="group">กลุ่ม (150 บาท/ชม.)</option><option value="single">เดี่ยว (200 บาท/ชม.)</option></select>
       <label for="scp">จำนวนที่นั่ง (สูงสุด 10)</label><input type="number" id="scp" min="1" max="10" value="10">
       <label for="stp">หัวข้อ</label><input id="stp" placeholder="เช่น HSK1 บทที่ 3">
@@ -597,8 +652,27 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
   <div id="trDone" class="card" style="display:none"></div>
 </section>
 
+<section class="scr" id="s-game">
+  <div class="top"><button class="btn alt sm" onclick="pgQuit()">‹ กลับหน้าหลัก</button></div>
+  <div class="eb">FREE GAME</div><h2>เกมฝึกภาษาจีน 🎮</h2>
+  <p class="mut" style="margin-top:-6px">เล่นฟรีระดับ 🐼 ต้น ได้ทุกบท · ระดับ 🐯 กลาง และ 🐉 อัจฉริยะ สำหรับนักเรียน YUEHUA</p>
+  <div class="vsw" id="pgbk" role="group" aria-label="เลือกเล่ม"></div>
+  <div id="pgslot"></div>
+</section>
+<section class="scr" id="s-shop">
+  <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button><button class="btn sm cartb" onclick="openCart()">🛒 ตะกร้า<span class="cartn" style="display:none"></span></button></div>
+  <div class="eb">BOOK SHOP</div><h2>ร้านหนังสือ YUEHUA 📚</h2>
+  <p class="mut" style="margin-top:-6px">เลือกได้ทั้งไฟล์ PDF และหนังสือเล่ม · หนังสือเล่มส่งฟรีทั่วไทย</p>
+  <div id="shpromo"></div><div id="shlist"></div>
+</section>
+<section class="scr" id="s-cart">
+  <div class="top"><button class="btn alt sm" onclick="openShop()">‹ เลือกหนังสือต่อ</button></div>
+  <h2>ตะกร้าของฉัน 🛒</h2>
+  <div id="cartl"></div><div id="cartf" style="margin-top:12px"></div>
+</section>
 <section class="scr" id="s-dict">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
+  <div id="vshelf"></div>
   <div class="eb">DICTIONARY</div><h2>พจนานุกรม HSK 1–6</h2>
   <p class="mut">ค้นหาคำศัพท์ หรือกดเลือกระดับเพื่อดูคำ กดที่คำเพื่อดูลำดับขีด พินอิน คำแปลไทย และประโยคตัวอย่าง</p>
   <input id="dq" oninput="drawDict()" placeholder="ค้นหาตัวจีน พินอิน หรือคำไทย">
@@ -696,7 +770,7 @@ const $=id=>document.getElementById(id);
 
 const L=["บทที่ 1 – ทักทาย","บทที่ 2 – แนะนำตัว","บทที่ 3 – ตัวเลข","บทที่ 4 – ครอบครัว","บทที่ 5 – ทบทวน"];
 let me={name:"นักเรียนทดลอง",code:"YH0000",course:"HSK1"},done=new Set([0]);
-function go(id){document.querySelectorAll(".scr").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0);navLater()}
+function go(id){if(id==="s-dash"&&typeof GPUB!=="undefined"&&GPUB){GPUB=false;pgPlace();try{gQuit()}catch(e){}}document.querySelectorAll(".scr").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0);navLater()}
 const C={
 hsk1:{n:"HSK1",t:"เริ่มต้นจากศูนย์",p:1990,h:"30 ชั่วโมง",lv:"ไม่ต้องมีพื้นฐานมาก่อน",use:"เหมาะกับผู้เริ่มเรียนภาษาจีนและผู้ที่เตรียมสอบ HSK ระดับ 1 เรียนทักทาย แนะนำตัว ตัวเลข ครอบครัว",bk:"หนังสือเรียนประกอบคอร์ส พร้อมแบบฝึกหัด (ตัวอย่าง)"},
 pinyin:{n:"พินอิน",t:"ออกเสียงให้ถูกตั้งแต่ต้น",p:490,h:"8 ชั่วโมง",lv:"สำหรับผู้เริ่มต้น",use:"ฝึกพินอิน วรรณยุกต์ 4 เสียง และการอ่านออกเสียง เหมาะเรียนคู่กับ HSK1",bk:"เอกสารฝึกออกเสียง (ตัวอย่าง)"},
@@ -780,8 +854,14 @@ const SL=[];
 const RATE={group:{pinyin:70,hsk1:75,hsk2:85,hsk3:85,hsk4:90},single:{pinyin:100,hsk1:110,hsk2:120,hsk3:125,hsk4:135}},rt=t=>t==="single"?200:150,bkh=()=>BK.reduce((a,id)=>a+(SL.find(x=>x.id===id).du||2),0),cartTotal=()=>BK.reduce((a,id)=>{const x=SL.find(y=>y.id===id);return a+rt(x.ty)*4*(x.du||2)},0);
 const RULES_LC='<ul class="ul"><li>จองครั้งเดียว เรียนเวลาเดิมทุกสัปดาห์</li><li>เรียนได้สูงสุด 4 ชม./สัปดาห์ (2 วัน)</li><li>ไม่เกิน 8 ครั้ง/เดือน รวม 16 ชม.</li><li>1 ห้องรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
 /* กติกาเรียนสดรายชั่วโมง */
-const RULES='<div class="rul3"><div><b>1 ชม.</b><span>ต่อครั้ง</span></div><div><b>2 ชม.</b><span>สูงสุดต่อวัน</span></div><div><b>4 ชม.</b><span>สูงสุดต่อสัปดาห์</span></div></div><ul class="ul"><li>จองครั้งเดียว เรียนวันและเวลาเดิมทุกสัปดาห์</li><li>ถ้าเรียน 2 ชม. ในวันเดียว ต้องเป็นชั่วโมงติดกัน</li><li>ห้องกลุ่มรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
-const p2=n=>String(n).padStart(2,"0"),hm=t=>{const d=new Date(t);return p2(d.getHours())+":"+p2(d.getMinutes())},DN=["จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์","อาทิตย์"],dw=t=>(new Date(t).getDay()+6)%7,fh=(h,du=2)=>p2(Math.floor(h))+":"+p2((h%1)*60)+"–"+p2(Math.floor(h+du))+":"+p2(((h+du)%1)*60)+" น.";
+const RULES='<div class="rul3"><div><b>เลือกเอง</b><span>วันและช่วงเวลา</span></div><div><b>150/200</b><span>บาท/ชม. กลุ่ม/เดี่ยว</span></div><div><b>ตามจริง</b><span>คิดตามความยาวช่วง</span></div></div><ul class="ul"><li>จองครั้งเดียว เรียนวันและเวลาเดิมทุกสัปดาห์</li><li>ค่าเรียนคิดตามความยาวจริงของช่วงเวลา เช่น 1.5 ชม. = 1.5 × ราคาต่อชั่วโมง</li><li>ห้องกลุ่มรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
+const p2=n=>String(n).padStart(2,"0"),hm=t=>{const d=new Date(t);return p2(d.getHours())+":"+p2(d.getMinutes())},DN=["จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์","อาทิตย์"],dw=t=>(new Date(t).getDay()+6)%7,fhm=x=>{const m=Math.round(x*60);return p2(Math.floor(m/60))+":"+p2(m%60)},fh=(h,du=2)=>fhm(h)+"–"+fhm(h+du)+" น.";
+const KD=x=>x.kd||((x.du||2)===1?"hr":"lc");
+const SLEFT=x=>x.full?0:Math.max(0,x.cap-x.bk.length-(x.tk||0));
+const hrs=n=>{const v=Math.round(n*100)/100;return String(v)};
+const t2h=t=>{const m=String(t||"").match(/^(\d{1,2}):(\d{2})/);return m?(+m[1])+(+m[2])/60:NaN};
+const h2t=h=>{const m=Math.round(h*60);return p2(Math.floor(m/60))+":"+p2(m%60)};
+
 function openCourse(k){CK=k;FM="v";drawCourse();go("s-course")}
 function drawCourse(){
   const k=CK,c=C[k],n=parseInt(c.h);
@@ -802,53 +882,46 @@ function openHour(t,lc){HT=t;LC=lc||null;DW=null;renderHour();go("s-hour")}
 function pickSlot(id){const i=BK.indexOf(id);i<0?BK.push(id):BK.splice(i,1);renderHour()}
 function chk(){
   const S=BK.map(id=>SL.find(x=>x.id===id));
-  if(!LC&&S.every(x=>x.du===1)){
-    if(S.length>4)return "เลือกได้สูงสุด 4 ชม. ต่อสัปดาห์";
-    const by={};S.forEach(x=>(by[x.dw]=by[x.dw]||[]).push(x.h));
-    for(const d in by){const h=by[d].sort((a,b)=>a-b);
-      if(h.length>2)return `วัน${DN[d]} เลือกได้สูงสุด 2 ชม. ต่อวัน`;
-      if(h.length===2&&h[1]-h[0]!==1)return `วัน${DN[d]} ถ้าเรียน 2 ชม. ต้องเป็นชั่วโมงติดกัน`}
-    return "";
-  }
+  if(!LC)return "";
   const ds=S.map(x=>x.dw);
   if(BK.length>2)return "เลือกได้ไม่เกิน 2 ช่วงต่อสัปดาห์ (4 ชม.)";
   if(new Set(ds).size<ds.length)return "2 ช่วงต้องเป็นคนละวัน";
   return "";
 }
-const slotcard=s=>{const left=s.cap-s.bk.length,sel=BK.includes(s.id);
-  return `<div class="card"><b>${fh(s.h,s.du)}</b> <span class="tag">ทุกสัปดาห์</span><div class="mut">${esc(s.tp)} · ที่นั่งเหลือ ${left}/${s.cap}${LC?"":" · "+B(rt(s.ty))+"/ชม."}</div><button class="btn sm ${sel?"alt":""}" style="margin-top:8px" ${left?"":"disabled"} onclick="pickSlot(${s.id})">${left?(sel?"ยกเลิก":"จอง"):"เต็ม"}</button></div>`};
+const slotcard=s=>{const left=SLEFT(s),sel=BK.includes(s.id);
+  return `<div class="card"><b>${fh(s.h,s.du)}</b> <span class="tag">ทุกสัปดาห์</span>${LC?"":` <span class="tag">${hrs(s.du)} ชม.</span>`}<div class="mut">${esc(s.tp)} · ${left?`ที่นั่งเหลือ ${left}/${s.cap}`:"เต็มแล้ว"}${LC?"":" · "+B(rt(s.ty))+"/ชม. · ครั้งละ "+B(Math.round(rt(s.ty)*s.du))}</div><button class="btn sm ${sel?"alt":""}" style="margin-top:8px" ${left?"":"disabled"} onclick="pickSlot(${s.id})">${left?(sel?"ยกเลิก":"จอง"):"เต็ม"}</button></div>`};
 function renderHour(){
   $("hh").textContent=LC?C[LC].n+" · เรียนสด":"เรียนสดรายชั่วโมง";
   $("hr").innerHTML="<b>กติกาการเรียนสด</b>"+(LC?RULES_LC:RULES);
   ["group","single"].forEach(t=>$("ht-"+t).classList.toggle("on",HT===t));
   $("ht-group").textContent=LC?"เรียนกลุ่ม":"กลุ่ม "+rt("group")+" บาท/ชม.";$("ht-single").textContent=LC?"เรียนเดี่ยว":"เดี่ยว "+rt("single")+" บาท/ชม.";
-  const l=SL.filter(x=>x.ty===HT&&(x.du||2)===(LC?2:1));
+  const l=SL.filter(x=>x.ty===HT&&KD(x)===(LC?"lc":"hr"));
   if(DW===null){
-    $("hl").innerHTML="<h3>เลือกวัน</h3>"+DN.map((n,i)=>{const c=l.filter(x=>x.dw===i&&x.cap>x.bk.length).length;
+    $("hl").innerHTML="<h3>เลือกวัน</h3>"+DN.map((n,i)=>{const c=l.filter(x=>x.dw===i&&SLEFT(x)>0).length;
       return `<div class="card lv" style="cursor:pointer" onclick="DW=${i};renderHour()"><b style="flex:1">วัน${n}</b><span class="mut">${c?c+" ช่วงเวลาว่าง":"ไม่มีช่วงว่าง"}</span><span class="mut">›</span></div>`}).join("");
   }else{
     const d=l.filter(x=>x.dw===DW).sort((a,b)=>a.h-b.h);
     $("hl").innerHTML=`<div class="row" style="margin:12px 0 0;align-items:center"><button class="btn alt sm" onclick="DW=null;renderHour()">‹ เปลี่ยนวัน</button><b>วัน${DN[DW]}</b></div>`+(d.length?d.map(slotcard).join(""):"<div class='card mut'>ยังไม่มีช่วงเวลาในวันนี้ ลองเลือกวันอื่น</div>");
   }
   const e=BK.length?chk():"";
-  $("hsum").innerHTML=BK.length?`<b>เลือก ${bkh()} ชม./สัปดาห์</b><div>${LC?C[LC].n+" เรียนสด "+C[LC].h:B(rt(ty0()))+"/ชม. · จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง"}</div>${e?`<div style="color:var(--seal)">${e}</div>`:""}<button class="btn" style="margin-top:8px" ${e?"disabled":""} onclick="openEnroll('live')">${LC?"ไปสมัครและชำระเงิน":"ไปสมัคร"}</button>`:"<span class='mut'>เลือกวัน แล้วแตะ จอง ที่ช่วงเวลาที่ต้องการ</span>";
+  $("hsum").innerHTML=BK.length?`<b>เลือก ${hrs(bkh())} ชม./สัปดาห์</b><div>${LC?C[LC].n+" เรียนสด "+C[LC].h:B(rt(ty0()))+"/ชม. · ประมาณ "+B(Math.round(rt(ty0())*bkh()))+"/สัปดาห์ · จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง"}</div>${e?`<div style="color:var(--seal)">${e}</div>`:""}<button class="btn" style="margin-top:8px" ${e?"disabled":""} onclick="openEnroll('live')">${LC?"ไปสมัครและชำระเงิน":"ไปสมัคร"}</button>`:"<span class='mut'>เลือกวัน แล้วแตะ จอง ที่ช่วงเวลาที่ต้องการ</span>";
 }
-function addSlot(){
-  const d=+$("sd").value,h=+$("sh").value,ty=$("sty").value,du=+$("sdu").value;
-  if(SL.some(x=>x.dw===d&&x.h===h&&x.ty===ty&&(x.du||2)===du)){alert("มีช่วงเวลานี้อยู่แล้ว");return}
-  SL.push({id:++SID,dw:d,h,ty,du,cap:ty==="single"?1:Math.min(10,Math.max(1,+$("scp").value||10)),tp:$("stp").value.trim()||(du===1?"เรียนสดรายชั่วโมง":"คอร์สเรียนสด"),bk:[]});
-  renderAdmin();
-}
+function slotForm(){const d=+$("sd").value,kd=$("sdu").value,ty=$("sty").value,a=t2h($("sh1").value),b=t2h($("sh2").value);
+  if(isNaN(a)||isNaN(b)||b<=a){alert("กรุณาตั้งเวลาเริ่มและเวลาสิ้นสุดให้ถูกต้อง");return null}
+  const h=Math.round(a*60)/60,du=Math.round((b-a)*60)/60;
+  if(SL.some(x=>x.dw===d&&Math.abs(x.h-h)<1e-6&&x.ty===ty&&KD(x)===kd)){alert("มีช่วงเวลานี้อยู่แล้ว");return null}
+  return {dw:d,h,du,ty,kd,cap:ty==="single"?1:Math.min(10,Math.max(1,+$("scp").value||10)),tp:$("stp").value.trim()||(kd==="hr"?"เรียนสดรายชั่วโมง":"คอร์สเรียนสด")}}
+function addSlot(){const f=slotForm();if(!f)return;SL.push(Object.assign({id:++SID,bk:[],full:false,tk:0},f));renderAdmin()}
 function delSlot(id){const s=SL.find(x=>x.id===id);if(s.bk.length&&!confirm("มีนักเรียนจองแล้ว ต้องการลบหรือไม่?"))return;SL.splice(SL.indexOf(s),1);BK=BK.filter(x=>x!==id);renderAdmin()}
-function quickAdd(d,h){$("sd").value=d;$("sh").value=h;$("sd").scrollIntoView({behavior:"smooth",block:"center"})}
+function quickAdd(d,h){$("sd").value=d;$("sh1").value=h2t(h);$("sh2").value=h2t(Math.min(23.99,h+1));shOpts();$("sd").scrollIntoView({behavior:"smooth",block:"center"})}
 function renderSch(){
   const hs=[...new Set(SL.map(x=>x.h))].sort((a,b)=>a-b);
   let g='<div class="calw"><div class="cal"><div class="gh">เวลา</div>'+DN.map(n=>`<div class="gh">${n}</div>`).join("");
   hs.forEach(h=>{g+=`<div class="gt">${fh(h).split("–")[0]}</div>`;DN.forEach((n,d)=>{const l=SL.filter(x=>x.dw===d&&x.h===h);
-    g+=`<div class="gc">${l.length?l.map(x=>`<div class="chip ${x.bk.length>=x.cap?"f":""}">${(x.du||2)===2?"คอร์ส ":""}${x.ty==="single"?"เดี่ยว":"กลุ่ม"} ${x.bk.length}/${x.cap}</div>`).join(""):`<div class="gadd" onclick="quickAdd(${d},${h})">＋</div>`}</div>`})});
-  g+='</div></div><div class="mut" style="margin:6px 0 14px;font-size:12px">แตะ ＋ เพื่อเพิ่มช่วงเวลา · ตัวเลขคือจำนวนที่จอง/ที่นั่ง · สีแดงคือเต็มแล้ว</div>';
+    g+=`<div class="gc">${l.length?l.map(x=>`<div class="chip ${x.full?"full":SLEFT(x)<=0?"f":""}">${KD(x)==="lc"?"คอร์ส ":""}${x.ty==="single"?"เดี่ยว":"กลุ่ม"} ${x.full?"เต็ม":(x.bk.length+(x.tk||0))+"/"+x.cap}</div>`).join(""):`<div class="gadd" onclick="quickAdd(${d},${h})">＋</div>`}</div>`})});
+  g+='</div></div><div class="mut" style="margin:6px 0 14px;font-size:12px">แตะ ＋ เพื่อเพิ่มช่วงเวลา · ตัวเลขคือที่นั่งที่ใช้แล้ว/ทั้งหมด (รวมนักเรียนเก่า) · สีแดงคือเต็ม · สีเทาคือปิดรับ</div>';
   $("asl").innerHTML=g+DN.map((n,i)=>{const l=SL.filter(x=>x.dw===i).sort((a,b)=>a.h-b.h);
-    return `<details class="card"><summary><b>วัน${n}</b> <span class="mut">${l.length} ช่วงเวลา</span></summary>${l.map(x=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${fh(x.h,x.du)}</b> <span class="tag">${x.ty==="single"?"เดี่ยว":"กลุ่ม"}</span> <span class="tag">${(x.du||2)===2?"คอร์สเรียนสด":"รายชั่วโมง"}</span><div class="mut">${esc(x.tp)} · จอง ${x.bk.length}/${x.cap}${x.bk.length?" · "+x.bk.map(esc).join(", "):""}</div></div><button class="btn alt sm" onclick="delSlot(${x.id})">ลบ</button></div>`).join("")}</details>`}).join("");
+    return `<details class="card"><summary><b>วัน${n}</b> <span class="mut">${l.length} ช่วงเวลา</span></summary>${l.map(x=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${fh(x.h,x.du)}</b> <span class="tag">${x.ty==="single"?"เดี่ยว":"กลุ่ม"}</span> <span class="tag">${KD(x)==="lc"?"คอร์สเรียนสด":"รายชั่วโมง"}</span>${x.full?' <span class="tag" style="background:#555;color:#fff">ปิดรับ (เต็ม)</span>':""}<div class="mut">${esc(x.tp)} · จองผ่านเว็บ ${x.bk.length} · นักเรียนเก่า ${x.tk||0} · ว่าง ${SLEFT(x)}/${x.cap}${x.bk.length?" · "+x.bk.map(esc).join(", "):""}</div><div class="slx"><label class="chk" style="margin:0"><input type="checkbox" ${x.full?"checked":""} onchange="slotFull(${x.id},this.checked)"> ปิดรับ (เต็มแล้ว)</label><span>นักเรียนเก่าที่นั่งอยู่แล้ว</span><input type="number" min="0" max="${x.cap}" value="${x.tk||0}" onchange="slotTk(${x.id},this.value)"> <span>คน</span></div></div><button class="btn alt sm" onclick="delSlot(${x.id})">ลบ</button></div>`).join("")}</details>`}).join("");
 }
 function openEnroll(k,ins,fm,ty){FMT=fm||"v";TYP=ty||"group";$("enForm").style.display="block";$("enDone").style.display="none";$("cs").value=k;$("ins").checked=!!ins;$("insok").checked=false;$("ad").value="";$("zp").value="";calc();go("s-enroll")}
 const ty0=()=>BK.length?SL.find(x=>x.id===BK[0]).ty:HT;
@@ -898,7 +971,7 @@ function gate(){
   else{GF++;$("ge").textContent="รหัสไม่ถูกต้อง"}
 }
 function renderAdmin(){
-  if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();
+  if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
   document.querySelectorAll("#atabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===AT));
   document.querySelectorAll("#s-admin .pane").forEach(p=>p.classList.toggle("on",p.id===AT));
   const nw=SUBS.map((r,i)=>[r,i]).filter(x=>x[0].st==="รอตรวจสอบ");
@@ -911,7 +984,7 @@ function renderAdmin(){
   $("sl2").innerHTML=st.length?st.map(r=>`<div class="vw"><input type="checkbox" ${SEL.has(r.code)?"checked":""} ${r.sus?"disabled":""} onchange="selTog('${r.code}')"><div style="flex:1"><b>${r.pic?`<span class="av sm"><img src="${r.pic}" alt=""></span> `:(r.av?r.av+" ":"")}${esc(r.name)}${r.nick?" ("+esc(r.nick)+")":""}</b>${r.pic?` <button class="bdg" style="background:var(--mut)" onclick="rmPh('${r.code}')">ลบรูป</button>`:""}${r.book==="รับหนังสือเล่ม"?" "+bkb(r):""}<div class="mut">${esc(r.em)} · ${r.course}</div><details><summary class="mut" style="margin:4px 0">สิทธิ์วิดีโอ: <span id="as-${r.code}">${accLbl(r)}</span></summary>${ALL.map(k=>`<label class="chk" style="margin:4px 0"><input type="checkbox" ${r.access.includes(k)?"checked":""} onchange="accTog('${r.code}','${k}')"> ${C[k].n}</label>`).join("")}</details></div><span class="tag">${r.sus?"ระงับ":"ใช้งานได้"}</span><button class="btn alt sm" onclick="susTog('${r.code}')">${r.sus?"เปิดสิทธิ์":"ระงับ"}</button><button class="btn alt sm" onclick="ghOpen('${r.code}')">คะแนนแบบฝึกหัด</button><button class="btn alt sm" onclick="openApp('${r.code}')">ใบสมัคร</button><button class="btn alt sm" onclick="resetPw('${r.code}')">รีเซ็ตรหัสผ่าน</button><button class="btn alt sm" onclick="delStu('${r.code}')">${DEL===r.code?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีนักเรียนที่ยืนยันแล้ว</div>";
   $("rc").textContent=SUBS.filter(r=>SEL.has(r.code)&&!r.sus).length;
   const td=(new Date().getDay()+6)%7,ts=SL.filter(x=>x.dw===td);
-  $("ast").innerHTML=`<div class="card sc"><b>${ts.filter(x=>x.bk.length).length}</b><span class="mut">คลาสที่มีคนจองวันนี้</span></div><div class="card sc"><b>${SUBS.filter(r=>r.st==="รอตรวจสอบ").length}</b><span class="mut">รออนุมัติ</span></div><div class="card sc"><b>${ts.reduce((a,x)=>a+x.cap-x.bk.length,0)}</b><span class="mut">ที่นั่งว่างวันนี้</span></div>`;
+  $("ast").innerHTML=`<div class="card sc"><b>${ts.filter(x=>x.bk.length).length}</b><span class="mut">คลาสที่มีคนจองวันนี้</span></div><div class="card sc"><b>${SUBS.filter(r=>r.st==="รอตรวจสอบ").length}</b><span class="mut">รออนุมัติ</span></div><div class="card sc"><b>${ts.reduce((a,x)=>a+SLEFT(x),0)}</b><span class="mut">ที่นั่งว่างวันนี้</span></div>`;
   $("lvs").innerHTML=LEAVES.length?`<div class="card"><b>แจ้งลา / รอนัดชดเชย</b>${LEAVES.map((l,i)=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${esc(l.name)}</b><div class="mut">${esc(l.label)}</div></div>${l.st==="รอนัดชดเชย"?`<button class="btn sm" onclick="lvDone(${l.id})">นัดชดเชยแล้ว</button>`:'<span class="tag">นัดชดเชยแล้ว</span>'}</div>`).join("")}</div>`:"";
   {const iv=SUBS.filter(r=>r.ins&&!r.paid2&&r.st==="ยืนยันแล้ว"),dd=r=>r.due?new Date(r.due).toLocaleDateString("th-TH",{day:"numeric",month:"short"}):"-";
   $("lvs").innerHTML=(iv.length?`<div class="card"><b>ค้างชำระงวดที่ 2 (30%)</b>${iv.map(r=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${esc(r.name)}</b><div class="mut">${B(r.second)} · ครบกำหนด ${dd(r)}${locked(r)?" · ถูกล็อกการเข้าเรียน":r.due<Date.now()?" · เลยกำหนด (ผ่อนผัน)":""}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn alt sm" onclick="ext('${r.code}')">ขยาย +7 วัน</button><button class="btn sm" onclick="paid2('${r.code}')">ได้รับงวด 2 แล้ว</button></div></div>`).join("")}</div>`:"")+$("lvs").innerHTML}
@@ -1112,23 +1185,17 @@ const CARR=["ไปรษณีย์ไทย","Flash Express","J&T Express","K
 let SENDER="",PVL=[];
 const bkb=r=>{const t=r.sh||"todo";return `<button class="bdg ${t}" onclick="openOrder('${r.code}')">${t==="sent"?"✓ ส่งแล้ว":t==="printed"?"พิมพ์ใบแล้ว":"● ต้องจัดส่ง"}</button>`};
 const ordH=r=>`<div class="ob"><h2 style="margin:0;font-size:20px">ใบคำสั่งซื้อหนังสือ</h2><div>YUEHUA 悦华中文</div><hr>
-<table class="ot"><tr><td>เลขที่คำสั่งซื้อ</td><td>BK-${r.code}</td></tr><tr><td>วันที่</td><td>${new Date().toLocaleDateString("th-TH")}</td></tr><tr><td>ชื่อผู้สั่ง</td><td>${esc(r.name)}</td></tr><tr><td>เบอร์โทร</td><td>${esc(r.ph)}</td></tr><tr><td>คอร์ส</td><td>${esc(r.course)}</td></tr></table>
-<table class="ot" style="margin-top:14px"><tr><th>รายการ</th><th>จำนวน</th><th>ราคา</th></tr><tr><td>หนังสือเรียนประกอบคอร์ส ${esc(r.course)} (เล่มจริง)</td><td>1</td><td>300 บาท</td></tr></table>
-<p>ชำระแล้วพร้อมงวดแรก · ขนส่ง: ${esc(r.car||"-")}${r.trk?" · เลขพัสดุ "+esc(r.trk):""}</p></div>`;
-const labH=r=>`<div class="lbw"><div class="lbx"><b>ผู้ส่ง</b><div class="pre">${esc(SENDER||"(ใส่ที่อยู่ผู้ส่งในหน้าหนังสือ)")}</div><hr><b>ผู้รับ</b><div style="font-size:22px">${esc(r.name)} · ${esc(r.ph)}</div><div class="pre" style="font-size:20px">${esc(r.addr||"")}</div><div style="font-size:28px;font-weight:700;letter-spacing:4px">${esc(r.zip||"")}</div><hr><div style="font-size:13px">${esc(r.car||"-")} · BK-${r.code} · หนังสือเรียน</div></div></div>`;
+<table class="ot"><tr><td>เลขที่คำสั่งซื้อ</td><td>${r._o?r.code:"BK-"+r.code}</td></tr><tr><td>วันที่</td><td>${new Date().toLocaleDateString("th-TH")}</td></tr><tr><td>ชื่อผู้สั่ง</td><td>${esc(r.name)}</td></tr><tr><td>เบอร์โทร</td><td>${esc(r.ph)}</td></tr>${r._o?"":`<tr><td>คอร์ส</td><td>${esc(r.course)}</td></tr>`}</table>
+<table class="ot" style="margin-top:14px"><tr><th>รายการ</th><th>จำนวน</th><th>ราคา</th></tr>${r._o?r._o.items.map(i=>`<tr><td>${esc(i.title)}${i.books?" ("+i.books.map(esc).join(" + ")+")":""} · ${i.fmt==="file"?"ไฟล์ PDF":"เล่มจริง"}</td><td>${i.qty}</td><td>${B(i.price*i.qty)}</td></tr>`).join(""):`<tr><td>หนังสือเรียนประกอบคอร์ส ${esc(r.course)} (เล่มจริง)</td><td>1</td><td>300 บาท</td></tr>`}</table>
+<p>${r._o?"ชำระแล้ว "+B(r._o.total):"ชำระแล้วพร้อมงวดแรก"} · ขนส่ง: ${esc(r.car||"-")}${r.trk?" · เลขพัสดุ "+esc(r.trk):""}</p></div>`;
+const labH=r=>`<div class="lbw"><div class="lbx"><b>ผู้ส่ง</b><div class="pre">${esc(SENDER||"(ใส่ที่อยู่ผู้ส่งในหน้าหนังสือ)")}</div><hr><b>ผู้รับ</b><div style="font-size:22px">${esc(r.name)} · ${esc(r.ph)}</div><div class="pre" style="font-size:20px">${esc(r.addr||"")}</div><div style="font-size:28px;font-weight:700;letter-spacing:4px">${esc(r.zip||"")}</div><hr><div style="font-size:13px">${esc(r.car||"-")} · ${r._o?r.code:"BK-"+r.code} · หนังสือ</div></div></div>`;
 const pgH=r=>`<div class="pg one">${labH(r)}<div class="cut">✂ ตัดตามเส้นประ · ด้านบนติดพัสดุ ด้านล่างใส่ในพัสดุ</div>${ordH(r)}</div>`;
 function showPv(h,l){PVL=l||[];$("pvb").innerHTML=h;$("pv").style.display="block"}
 function closePv(){$("pv").style.display="none";renderAdmin()}
-function doPrint(){PVL.forEach(r=>{if(r.sh!=="sent")r.sh="printed"});try{window.print()}catch(e){}}
+function doPrint(){PVL.forEach(r=>{if(!r._o&&r.sh!=="sent")r.sh="printed"});try{window.print()}catch(e){}}
 function openOrder(c){const r=SUBS.find(x=>x.code===c);showPv(pgH(r),[r])}
-function printSel(){const l=[...document.querySelectorAll(".bkc:checked")].map(c=>SUBS.find(r=>r.code===c.value));if(!l.length){alert("ยังไม่ได้เลือกรายการ");return}showPv(l.map(pgH).join(""),l)}
+function printSel(){const l=[...document.querySelectorAll(".bkc:checked")].map(c=>{const [t,v]=c.value.split(":");return t==="o"?oAsSub(ORDERS.find(o=>String(o.id)===v)):SUBS.find(r=>r.code===v)}).filter(Boolean);if(!l.length){alert("ยังไม่ได้เลือกรายการ");return}showPv(l.map(pgH).join(""),l)}
 function setBk(c,k,v){SUBS.find(r=>r.code===c)[k]=v}
-function renderBk(){
-  if(document.activeElement!==$("snd"))$("snd").value=SENDER;
-  const L=SUBS.filter(r=>r.book==="รับหนังสือเล่ม");
-  $("bkl").innerHTML=L.length?L.map(r=>{const ok=r.st!=="รอตรวจสอบ";
-    return `<div class="card"><div style="display:flex;gap:8px;align-items:center">${ok?`<input type="checkbox" class="bkc" value="${r.code}">`:""}<b style="flex:1">${esc(r.name)}</b>${ok?bkb(r):'<span class="tag">รออนุมัติ</span>'}</div><div class="mut">${r.course} · ${esc(r.ph)}</div><div class="mut">${esc(r.addr||"ยังไม่มีที่อยู่")} ${esc(r.zip||"")}</div>${ok?`<div class="row" style="margin:8px 0 0"><select onchange="setBk('${r.code}','car',this.value)"><option value="">เลือกขนส่ง</option>${CARR.map(c=>`<option ${r.car===c?"selected":""}>${c}</option>`).join("")}</select><input placeholder="เลขพัสดุ" value="${esc(r.trk||"")}" onchange="setBk('${r.code}','trk',this.value)"><button class="btn alt sm" onclick="setBk('${r.code}','sh','sent');renderAdmin()">ทำเครื่องหมายส่งแล้ว</button></div>`:""}</div>`}).join(""):"<div class='card mut'>ยังไม่มีคำสั่งซื้อหนังสือ</div>";
-}
 const rsT=()=>{const L=SUBS.filter(r=>r.st==="ยืนยันแล้ว");
   return "<thead><tr><th>ชื่อ</th><th>คอร์ส</th>"+DS.map(d=>`<th>${d}</th>`).join("")+"<th>ชม./สัปดาห์</th></tr></thead><tbody>"+L.map(r=>{const m=SL.filter(x=>x.bk.includes(r.name));
     return `<tr><td>${esc(r.name)}</td><td>${esc(r.course)}</td>${DS.map((d,i)=>`<td>${m.filter(x=>x.dw===i).map(x=>fh(x.h,x.du).replace(" น.","")+(x.ty==="single"?" (เดี่ยว)":"")).join("<br>")}</td>`).join("")}<td>${m.reduce((a,x)=>a+(x.du||2),0)}</td></tr>`}).join("")+"</tbody>"};
@@ -1145,7 +1212,7 @@ const DD=[[1,"爱","ài","รัก","我爱我的妈妈。","Wǒ ài wǒ de mā
 const GR={"非常":{"t":"คำวิเศษณ์บอกระดับ 非常","st":"ประธาน + 非常 + คำคุณศัพท์ / กริยาแสดงความรู้สึก","why":"非常 แปลว่า มาก อย่างยิ่ง ให้น้ำหนักมากกว่า 很 ใช้เน้นว่ามากเป็นพิเศษ","use":"วางหลังประธานและหน้าคำคุณศัพท์ ไม่ต้องใส่ 是 (ห้ามพูดว่า 今天是非常热) ใช้กับกริยาแสดงความรู้สึกได้ เช่น 非常喜欢","ex":["我非常喜欢学汉语。","Wǒ fēicháng xǐhuan xué Hànyǔ.","ฉันชอบเรียนภาษาจีนมาก"]},"觉得":{"t":"觉得 + ความคิดเห็น","st":"ประธาน + 觉得 + ประโยค / คำคุณศัพท์","why":"ใช้บอกความรู้สึกหรือความคิดเห็นส่วนตัว ตามด้วยประโยคทั้งประโยคได้เลย ไม่ต้องมีคำเชื่อมแบบ ว่า ในภาษาไทย","use":"ปฏิเสธใส่ 不 หน้า 觉得 เช่น 我不觉得难 (ฉันไม่รู้สึกว่ายาก) ถามความเห็นด้วย 你觉得怎么样？","ex":["你觉得怎么样？","Nǐ juéde zěnmeyàng?","คุณคิดว่าอย่างไร"]},"经常":{"t":"คำวิเศษณ์บอกความถี่ 经常","st":"ประธาน + 经常 + กริยา","why":"บอกว่าทำสิ่งนั้นบ่อยๆ เป็นประจำ","use":"วางหน้ากริยาเสมอ ไม่วางท้ายประโยคแบบคำว่า บ่อยๆ ในภาษาไทย ปฏิเสธใช้ 不经常 หรือ 不常","ex":["他经常去图书馆。","Tā jīngcháng qù túshūguǎn.","เขาไปห้องสมุดบ่อยๆ"]},"避免":{"t":"避免 + สิ่งที่ไม่อยากให้เกิด","st":"ประธาน + (要 / 应该) + 避免 + กริยา / คำนาม","why":"ใช้กับเรื่องไม่ดีหรือสิ่งที่ไม่อยากให้เกิดขึ้น เพื่อบอกว่าป้องกันไว้ก่อน","use":"มักใช้คู่กับ 要 หรือ 应该 สิ่งที่ตามหลังต้องเป็นเรื่องไม่ดี เช่น 避免错误 避免迟到","ex":["我们应该避免迟到。","Wǒmen yīnggāi bìmiǎn chídào.","เราควรหลีกเลี่ยงการมาสาย"]},"彻底":{"t":"彻底 ใช้ได้ทั้งหน้ากริยาและหลัง 得","st":"彻底 + กริยา   /   กริยา + 得 + 很彻底","why":"บอกว่าทำอย่างสมบูรณ์ หมดจด ไม่มีอะไรเหลือค้าง","use":"วางหน้ากริยาเพื่อขยายกริยา เช่น 彻底解决 หรือวางหลัง 得 เพื่อบอกผลของการกระทำ เช่น 打扫得很彻底","ex":["房间打扫得很彻底。","Fángjiān dǎsǎo de hěn chèdǐ.","ห้องถูกทำความสะอาดอย่างหมดจด"]}};
 const nz=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s/g,"").toLowerCase();
 const chip=(w,k)=>`<button class="wc" style="animation-delay:${Math.min(k,20)*30}ms" onclick="showW(${DD.indexOf(w)})"><b class="han">${w[1]}</b><small>${w[2]}</small>${GR[w[1]]?'<i class="gtag">ไวยากรณ์</i>':""}</button>`;
-function openDict(){$("dq").value="";drawDict();go("s-dict");loadSD().catch(()=>{})}
+function openDict(){$("dq").value="";drawDict();renderVocab();go("s-dict");loadSD().catch(()=>{})}
 function drawDict(){
   const q=$("dq").value.trim(),n=nz(q);
   if(q){const ps=w=>w[2].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),pm=w=>{const t=ps(w);return n&&(t.replace(/\s/g,"").startsWith(n)||t.split(/\s+/).some(x=>x.startsWith(n)))};
@@ -1182,10 +1249,10 @@ const GTYPE={write:"เขียนตัวจีน",mean:"ความหม�
 const GBOOKS={hsk1:"hsk1",hsk1pin:"hsk1",hsk2:"hsk2",hsk3:"hsk3",hsk4:"hsk4"},GBN={hsk1:"新HSK教程1",hsk2:"新HSK教程2",hsk3:"新HSK教程3",hsk4a:"新HSK教程4上",hsk4b:"新HSK教程4下"},GPER=6,GN=30;let GBOOK="hsk1";
 let GVOL=(()=>{try{return localStorage.getItem("yh_vol_hsk4")}catch(e){return null}})();
 function bookOf(){let b=GBOOKS[CUR]||"";if(b==="hsk4")b=GVOL?"hsk4"+GVOL:"pick";return b}
-function gUse(){const b=bookOf();GBOOK=b==="pick"?"":b;if(GBOOK){GAME=GAMES[GBOOK];GTH=GTHS[GBOOK]}return b}
+function gUse(){if(GPUB){GBOOK=PGB;GAME=GAMES[GBOOK];GTH=GTHS[GBOOK];return GBOOK}const b=bookOf();GBOOK=b==="pick"?"":b;if(GBOOK){GAME=GAMES[GBOOK];GTH=GTHS[GBOOK]}return b}
 function setVol(v){GVOL=v;try{v?localStorage.setItem("yh_vol_hsk4",v):localStorage.removeItem("yh_vol_hsk4")}catch(e){}renderGame();renderGram()}
 function volPicker(){return `<div class="card vpk"><b class="vpt">HSK4 มี 2 เล่ม</b><div class="mut">เลือกเล่มที่ต้องการเรียนก่อน เปลี่ยนเล่มทีหลังได้เสมอ</div><div class="vpb"><button class="glesson" onclick="setVol('a')"><span class="gno">上</span><span class="gtt"><b class="han">新HSK教程4上</b><small>บทที่ 1–10</small></span></button><button class="glesson" onclick="setVol('b')"><span class="gno">下</span><span class="gtt"><b class="han">新HSK教程4下</b><small>บทที่ 11–20</small></span></button></div></div>`}
-function volSwitch(){return CUR==="hsk4"&&GVOL?`<div class="vsw" role="group" aria-label="เลือกเล่ม"><button class="${GVOL==="a"?"on":""}" onclick="setVol('a')">เล่ม 上 · บท 1–10</button><button class="${GVOL==="b"?"on":""}" onclick="setVol('b')">เล่ม 下 · บท 11–20</button></div>`:""}
+function volSwitch(){return !GPUB&&CUR==="hsk4"&&GVOL?`<div class="vsw" role="group" aria-label="เลือกเล่ม"><button class="${GVOL==="a"?"on":""}" onclick="setVol('a')">เล่ม 上 · บท 1–10</button><button class="${GVOL==="b"?"on":""}" onclick="setVol('b')">เล่ม 下 · บท 11–20</button></div>`:""}
 let GQ=[],GI=0,GS=0,GL=0,GLV="e",GPK=0,GDONE=false,GMISS=[],GW_=[],GT0=0,GTM=null,GTL=0;
 const gsh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const gk=L=>"yh_game_"+GBOOK+"_"+L;
@@ -1227,7 +1294,7 @@ function ghView(list,showBook){
   h+=`<div class="ghlab">รอบล่าสุด · แตะเพื่อดูข้อที่พลาด</div><div class="ghl">${rv.slice(0,5).map(row).join("")}</div>${rv.length>5?`<details class="ghmore"><summary>ดูประวัติทั้งหมด (${rv.length} รอบ)</summary><div class="ghl">${rv.slice(5,200).map(row).join("")}</div></details>`:""}`;
   return h;
 }
-function ghCard(){const mine=GHIST.filter(r=>r.b===GBOOK);
+function ghCard(){if(GPUB)return "";const mine=GHIST.filter(r=>r.b===GBOOK);
   return `<details class="card ghc" ${mine.length?"open":""}><summary><b>📈 พัฒนาการของฉัน</b> <span class="mut">${GBN[GBOOK]} · ${mine.length} รอบ</span></summary>${ghView(mine,false)}</details>`}
 function ghOpen(code){const r=SUBS.find(x=>x.code===code);if(!r)return;const gh=(r.state&&Array.isArray(r.state.gh))?r.state.gh:[];
   $("ghmt").textContent="คะแนนแบบฝึกหัด · "+r.name+(r.nick?" ("+r.nick+")":"")+" · "+r.code;
@@ -1248,14 +1315,14 @@ function renderGame(){
   if(!u){m.innerHTML="<div class='card mut' style='margin-top:10px'>แบบฝึกหัดรายบทตอนนี้มีสำหรับคอร์ส HSK1–HSK4 · คอร์สอื่นกำลังจัดทำ</div>";return}
   const GO=GAME.O||0;
   m.innerHTML=volSwitch()+`<div class="gintro"><b>แบบฝึกหัด ${GBOOK.slice(0,4).toUpperCase()}${GBOOK.length>4?(GBOOK.endsWith("a")?" เล่ม上":" เล่ม下"):""}</b><span class="mut">ตามหนังสือ ${GBN[GBOOK]} · บทละ 30 ข้อ · เลือกได้ 3 ระดับ 🐼 ต้น · 🐯 กลาง · 🐉 อัจฉริยะ</span></div>`+ghCard()+`
-  <div class="glist">${GAME.T.map((t,i)=>{const n=i+1+GO;return `<button class="glesson" onclick="gPickLv(${n})"><span class="gno">${n}</span><span class="gtt"><b class="han">${t[0]}</b><small>${GTH[i]}</small></span><span class="gsc">${LVS.map(lv=>{const b=gbest(n,lv);return b<0?`<span class="gic none">${LV[lv].ic.repeat(3)}</span>`:gicons(lv,gstars(b))}).join("")}</span></button>`}).join("")}</div>`;
+  <div class="glist">${GAME.T.map((t,i)=>{const n=i+1+GO;return `<button class="glesson" onclick="gPickLv(${n})"><span class="gno">${n}</span><span class="gtt"><b class="han">${t[0]}</b><small>${GTH[i]}</small></span><span class="gsc">${LVS.map(lv=>{if(GPUB&&lv!=="e")return `<span class="gic none">🔒${LV[lv].ic}</span>`;const b=gbest(n,lv);return b<0?`<span class="gic none">${LV[lv].ic.repeat(3)}</span>`:gicons(lv,gstars(b))}).join("")}</span></button>`}).join("")}</div>`;
 }
 function gPickLv(L){
   gStopT();GPK=L;const GO=GAME.O||0,t=GAME.T[L-1-GO]||["",""];
   $("gplay").style.display="none";const m=$("gmenu");m.style.display="block";
   m.innerHTML=`<div class="gtop"><button class="btn alt sm" onclick="renderGame()">‹ เลือกบท</button><div class="gprog"><b>บทที่ ${L} <span class="han">${t[0]}</span></b><span class="mut">${GTH[L-1-GO]||""}</span></div></div>
   <div class="gintro"><b>เลือกระดับความยาก</b><span class="mut">ทำได้ 27 ข้อขึ้นไปได้ 3 ตัว · 21 ข้อได้ 2 ตัว · 15 ข้อได้ 1 ตัว</span></div>
-  <div class="glvs">${LVS.map(lv=>{const b=gbest(L,lv);return `<button class="glv glv-${lv}" onclick="startGame(${L},'${lv}')"><span class="glvi">${LV[lv].ic}</span><span class="gtt"><b>ระดับ${LV[lv].n}</b><small>${lvDesc(lv)}</small></span><span class="gsc">${gicons(lv,b<0?0:gstars(b))}<small>${b<0?"ยังไม่เคยทำ":"ดีที่สุด "+b+"/30"}</small></span></button>`}).join("")}</div>`;
+  <div class="glvs">${LVS.map(lv=>{const b=gbest(L,lv);if(GPUB&&lv!=="e")return `<button class="glv glv-${lv} lk" onclick="gLocked('${lv}')"><span class="glvi">${LV[lv].ic}</span><span class="gtt"><b>ระดับ${LV[lv].n} 🔒</b><small>สำหรับนักเรียน YUEHUA · สมัครเรียนแล้วมาเล่นด้วยกันน้า 🥰</small></span></button>`;return `<button class="glv glv-${lv}" onclick="startGame(${L},'${lv}')"><span class="glvi">${LV[lv].ic}</span><span class="gtt"><b>ระดับ${LV[lv].n}</b><small>${lvDesc(lv)}</small></span><span class="gsc">${gicons(lv,b<0?0:gstars(b))}<small>${b<0?"ยังไม่เคยทำ":"ดีที่สุด "+b+"/30"}</small></span></button>`}).join("")}</div>`;
   scrollTo(0,0);
 }
 /* สร้างชุดคำถาม */
@@ -1290,6 +1357,7 @@ function buildGame(L,lv){
   return seq.map(t=>Q[t][c[t]++]);
 }
 function startGame(L,lv){
+  if(GPUB&&lv&&lv!=="e"){gLocked(lv);return}
   gStopT();GL=L;GLV=LV[lv]?lv:GLV;GPK=0;$("gmenu").style.display="none";$("gplay").style.display="block";
   $("gbody").innerHTML="<div class='card mut' style='text-align:center'>กำลังเตรียมแบบฝึกหัด…</div>";$("gtop").innerHTML="";
   const go=()=>{GQ=buildGame(L,GLV);GI=0;GS=0;GMISS=[];GT0=Date.now();showQ()};
@@ -1616,8 +1684,9 @@ function resetT(){
 }
 
 $("sd").innerHTML=DN.map((n,i)=>`<option value="${i}">วัน${n}</option>`).join("");
-function shOpts(){const du=+$("sdu").value,v=$("sh").value||"9";let o="";for(let h=8;h<=22-du;h+=.5)o+=`<option value="${h}">${fh(h,du).replace("–"," – ")}</option>`;$("sh").innerHTML=o;$("sh").value=[...$("sh").options].some(x=>x.value===v)?v:"9";
-  $("shl").textContent=`เวลา (ครั้งละ ${du} ชม.)`;$("sty").options[0].text=du===1?`กลุ่ม (${rt("group")} บาท/ชม.)`:"กลุ่ม (ราคาตามคอร์ส)";$("sty").options[1].text=du===1?`เดี่ยว (${rt("single")} บาท/ชม.)`:"เดี่ยว (ราคาตามคอร์ส)"}
+function shOpts(){const k=$("sdu").value,a=t2h($("sh1").value),b=t2h($("sh2").value),du=b-a;
+  $("shd").innerHTML=isNaN(du)?"":du<=0?'<span style="color:var(--seal)">เวลาสิ้นสุดต้องหลังเวลาเริ่ม</span>':`ยาว ${hrs(du)} ชม.${k==="hr"?` · กลุ่ม ${B(Math.round(rt("group")*du))} / เดี่ยว ${B(Math.round(rt("single")*du))} ต่อครั้ง`:""}`;
+  $("sty").options[0].text=k==="hr"?`กลุ่ม (${rt("group")} บาท/ชม.)`:"กลุ่ม (ราคาตามคอร์ส)";$("sty").options[1].text=k==="hr"?`เดี่ยว (${rt("single")} บาท/ชม.)`:"เดี่ยว (ราคาตามคอร์ส)"}
 shOpts();
 renderHome();
 let BT=null,BP=false;
@@ -1631,6 +1700,211 @@ bStart();
 $("bcs").addEventListener("scroll",()=>{const i=Math.round($("bcs").scrollLeft/slW());document.querySelectorAll("#dots button").forEach((b,k)=>b.classList.toggle("on",k===i))});
 
 /* ===== เครื่องมือในหลังบ้าน: เปิดเต็มจอซ้อนบนหน้าเดิม (ไม่ต้องล็อกอินซ้ำ งานค้างไม่หาย) ===== */
+/* ===================== ตารางเรียน: เวลาเอง + เต็ม/ที่นั่งนักเรียนเก่า ===================== */
+function slotFull(id,on){const s=SL.find(x=>x.id===id);if(!s)return;s.full=!!on;renderAdmin()}
+function slotTk(id,v){const s=SL.find(x=>x.id===id);if(!s)return;s.tk=Math.max(0,Math.min(s.cap,Math.round(+v||0)));renderAdmin()}
+
+/* ===================== ข้อความเด้ง (ใช้ร่วม) ===================== */
+function note(m,err){let t=$("note");if(!t){t=document.createElement("div");t.id="note";t.className="notet";document.body.appendChild(t)}
+  t.textContent=m;t.classList.toggle("err",!!err);t.classList.add("on");clearTimeout(note._t);note._t=setTimeout(()=>t.classList.remove("on"),3200)}
+function pop(html){$("bkmb").innerHTML=html;$("bkm").classList.add("on")}
+
+/* ===================== เกมหน้าหลัก (คนทั่วไปเล่นได้เฉพาะ 🐼 ต้น) ===================== */
+let GPUB=false,PGB="hsk1";
+const PGBOOKS=[["hsk1","HSK1"],["hsk2","HSK2"],["hsk3","HSK3"],["hsk4a","HSK4 上"],["hsk4b","HSK4 下"]];
+function pgPlace(){const dst=GPUB?$("pgslot"):$("p-game");["gmenu","gplay"].forEach(id=>{const e=$(id);if(e&&e.parentNode!==dst)dst.appendChild(e)})}
+function pgBooks(){$("pgbk").innerHTML=PGBOOKS.map(([k,n])=>`<button class="${PGB===k?"on":""}" onclick="pgBook('${k}')">${n}</button>`).join("")}
+function pgBook(k){PGB=k;try{gQuit()}catch(e){}pgBooks()}
+function openPubGame(){GPUB=true;pgPlace();pgBooks();renderGame();go("s-game")}
+function pgQuit(){try{gStopT();WG++;WB.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}});WB=[]}catch(e){}go("s-home")}
+function gLocked(lv){const L=LV[lv]||LV.m;
+  pop(`<div style="font-size:54px;line-height:1.1">🔒${L.ic}</div><h3 id="bkmt" style="margin:8px 0 4px">เดี๋ยวก่อนน้าาา 🥺</h3>
+  <p style="margin:6px 0">ระดับ ${LV.m.ic} กลาง และ ${LV.h.ic} อัจฉริยะ<br>เปิดให้เฉพาะนักเรียน YUEHUA นะครับ</p>
+  <p class="mut" style="margin:6px 0 14px">สมัครเรียนก่อนน้า แล้วมาตะลุยด่านยาก ๆ ด้วยกัน 💪🐼✨<br>ไว้มาเจอกันในห้องเรียนนะครับ 👋💕</p>
+  <button class="btn" onclick="closeBook();go('s-home');setTimeout(()=>jump('courses'),60)">ดูคอร์สและสมัครเรียน 📝</button>
+  <button class="btn gold" style="border:1px solid #e5c791" onclick="closeBook();openTrial()">ทดลองเรียนฟรี 🎁</button>
+  <button class="btn alt" onclick="closeBook()">เล่นระดับ ${LV.e.ic} ต้นต่อ</button>`)}
+
+/* ===================== ไฟล์คำศัพท์ (ชั้นหนังสือในพจนานุกรม) ===================== */
+let VOCAB=(()=>{try{const v=JSON.parse(localStorage.getItem("yh_vocab")||"null");if(Array.isArray(v))return v}catch(e){}
+  return [{t:"คำศัพท์ HSK1 · 300 คำ",c:"hsk1",u:"https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz012345/view"},{t:"คำศัพท์ HSK2 · 200 คำ",c:"",u:""}]})();
+const vSaveV=()=>{try{localStorage.setItem("yh_vocab",JSON.stringify(VOCAB))}catch(e){}};
+const cov=b=>{const c=String(b.c||"");const src=BCOV[c]||(/^(data:image\/|https:\/\/)/.test(c)?c:"");return src?`<img src="${esc(src)}" alt="ปก ${esc(b.t)}" loading="lazy">`:`<span class="bfb">${esc(b.t)}</span>`};
+function shelfRows(list,per,cell){let h="";for(let i=0;i<list.length;i+=per)h+=`<div class="shelf"><div class="shrow">${list.slice(i,i+per).map((x,j)=>cell(x,i+j)).join("")}</div><div class="plank"></div></div>`;return h}
+function renderVocab(){const e=$("vshelf");if(!e)return;
+  if(!VOCAB.length){e.innerHTML="";return}
+  e.innerHTML=`<div class="card vsh"><div class="eb">FREE DOWNLOAD</div><b>ไฟล์คำศัพท์ โหลดฟรี 📚</b><div class="mut" style="font-size:13px">แตะที่ปกเพื่อดาวน์โหลด</div>${shelfRows(VOCAB,4,(b,i)=>`<button class="book" onclick="openVocab(${i})" aria-label="${esc(b.t)}"><span class="bcv">${cov(b)}</span>${b.u?'<span class="brib dl">↓ ฟรี</span>':""}<span class="bnm">${esc(b.t)}</span></button>`)}</div>`}
+function openVocab(i){const b=VOCAB[i];if(!b)return;
+  pop(`<span class="bcv">${cov(b)}</span><h3 id="bkmt">${esc(b.t)}</h3>${b.u?`<a class="btn" href="${esc(dlUrl(b.u))}" target="_blank" rel="noopener">ดาวน์โหลดไฟล์</a><a class="btn alt" href="${esc(b.u)}" target="_blank" rel="noopener">เปิดใน Google Drive</a>`:'<p class="mut">ไฟล์นี้กำลังเตรียม เร็ว ๆ นี้โหลดได้นะ</p>'}<button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+/* หลังบ้าน: ไฟล์คำศัพท์ */
+let VFE=null,VFPIC="",VFDEL=null;
+function covSel(id,cur){return `<select id="${id}"><option value="">ไม่มีรูป (ใช้ชื่อเป็นปก)</option>${Object.keys(BCOV).map(k=>`<option value="${k}" ${cur===k?"selected":""}>ปก ${k.toUpperCase()}</option>`).join("")}${/^(data:|https:)/.test(cur||"")?`<option value="__pic" selected>รูปที่อัปโหลด</option>`:""}</select>`}
+function picToJpeg(file,max){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.85))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+async function vfPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{VFPIC=await picToJpeg(f,700);$("vfprev").innerHTML=`<span class="bcv sm2"><img src="${VFPIC}" alt=""></span>`;$("vfcv").innerHTML=covSel("vfc","__pic").replace(/^<select id="vfc">/,'<select id="vfc">')}catch(e){alert("อ่านรูปไม่ได้")}}
+function renderVfAdmin(){const e=$("vfl");if(!e)return;const cur=VFE!=null?VOCAB[VFE]:null;
+  $("vfh").textContent=cur?"แก้ไขไฟล์คำศัพท์":"เพิ่มไฟล์คำศัพท์";
+  if(!$("vft").dataset.k||$("vft").dataset.k!==String(VFE)){$("vft").dataset.k=String(VFE);$("vft").value=cur?cur.t:"";$("vfu").value=cur?cur.u:"";VFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";$("vfcv").innerHTML=covSel("vfc",cur?(VFPIC?"__pic":cur.c):"");$("vfprev").innerHTML=VFPIC?`<span class="bcv sm2"><img src="${esc(VFPIC)}" alt=""></span>`:""}
+  $("vfx").style.display=cur?"":"none";
+  e.innerHTML=VOCAB.length?VOCAB.map((b,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(b)}</span><div style="flex:1;min-width:0"><b>${esc(b.t)}</b><div class="mut" style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${b.u?esc(b.u):"ยังไม่ใส่ลิงก์"}</div></div><button class="btn alt sm" onclick="mvVf(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvVf(${i},1)" ${i<VOCAB.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="VFE=${i};renderVfAdmin();$('vft').focus()">แก้ไข</button><button class="btn alt sm" onclick="delVf(${i})">${VFDEL===i?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีไฟล์คำศัพท์</div>"}
+function vfVals(){const t=$("vft").value.trim(),u=$("vfu").value.trim(),c=$("vfc").value;if(!t){alert("กรุณาใส่ชื่อไฟล์");return null}
+  if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ต้องขึ้นต้นด้วย https://");return null}return {t,u,c:c==="__pic"?VFPIC:c}}
+function saveVf(){const v=vfVals();if(!v)return;if(VFE!=null)VOCAB[VFE]=v;else VOCAB.push(v);vSaveV();VFE=null;$("vft").dataset.k="";renderVfAdmin();renderVocab()}
+function cancelVf(){VFE=null;$("vft").dataset.k="";renderVfAdmin()}
+function delVf(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;VOCAB.splice(i,1);vSaveV();if(VFE===i)VFE=null;renderVfAdmin();renderVocab()}
+function mvVf(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]]=[VOCAB[j],VOCAB[i]];vSaveV();renderVfAdmin();renderVocab()}
+
+/* ===================== ร้านหนังสือ ===================== */
+let PRODS=[{id:1,t:"新HSK教程 1",d:"หนังสือเรียน HSK1 ใช้คู่กับคอร์สของสถาบัน",c:"hsk1",pf:199,pb:350,on:true,u:""},{id:2,t:"新HSK教程 2",d:"หนังสือเรียน HSK2",c:"hsk2",pf:199,pb:350,on:true,u:""},{id:3,t:"新HSK教程 3",d:"หนังสือเรียน HSK3",c:"hsk3",pf:249,pb:390,on:true,u:""}];
+let PROMOS=[{id:1,t:"ชุด HSK1 + HSK2",d:"เริ่มจากศูนย์จนคุยได้ ซื้อคู่คุ้มกว่า",ids:[1,2],pf:349,pb:599,on:true}];
+let ORDERS=[{id:1,code:"OD1001",at:Date.now()-36e5,bt:"public",name:"สมหญิง ใจงาม",em:"somying@example.com",ph:"0812223333",addr:"99/1 ถ.สุขุมวิท กรุงเทพฯ",zip:"10110",items:[{kind:"promo",id:1,title:"ชุด HSK1 + HSK2",fmt:"book",qty:1,price:599,books:["新HSK教程 1","新HSK教程 2"]}],total:599,st:"pending",ns:true,hf:false,car:"",trk:""},
+  {id:2,code:"OD1002",at:Date.now()-72e5,bt:"student",name:"มานี มีสุข",em:"manee@example.com",ph:"0899998888",items:[{kind:"product",id:3,title:"新HSK教程 3",fmt:"file",qty:1,price:249}],total:249,st:"done",ns:false,hf:true,car:"",trk:""}];
+let CART=(()=>{try{const v=JSON.parse(localStorage.getItem("yh_cart")||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}})();
+const cartSave=()=>{try{localStorage.setItem("yh_cart",JSON.stringify(CART))}catch(e){}cartBadge()};
+const prodBy=id=>PRODS.find(p=>p.id===id),promoBy=id=>PROMOS.find(p=>p.id===id);
+const itemOf=l=>l.k==="b"?promoBy(l.id):prodBy(l.id);
+const fmts=x=>[x.pb!=null&&x.pb!==""?"book":null,x.pf!=null&&x.pf!==""?"file":null].filter(Boolean);
+const priceOf=(x,f)=>f==="file"?+x.pf:+x.pb;
+const promoNormal=(pr,f)=>pr.ids.map(prodBy).filter(Boolean).reduce((a,p)=>a+(priceOf(p,f)||0),0);
+function cartBadge(){const n=CART.reduce((a,l)=>a+(l.q||1),0);document.querySelectorAll(".cartn").forEach(e=>{e.textContent=n?String(n):"";e.style.display=n?"":"none"})}
+function stackHTML(ids,big){const P=ids.map(prodBy).filter(Boolean),n=P.length;
+  return `<div class="pstack${big?" big":""}" style="--n:${n}">${P.map((p,i)=>`<span class="pcv" style="--i:${i}">${cov(p)}</span>`).join("")}</div>`}
+function renderShop(){cartBadge();
+  const pr=PROMOS.filter(x=>x.on&&x.ids.filter(prodBy).length>=2);
+  $("shpromo").innerHTML=pr.length?`<h3 class="shh">🔥 โปรโมชันสุดคุ้ม</h3>${pr.map(x=>{const fs=fmts(x);
+    const lines=fs.map(f=>{const n=promoNormal(x,f),p=priceOf(x,f);return `<div class="ppr"><span>${f==="file"?"📄 ไฟล์ PDF":"📚 หนังสือเล่ม"}</span>${n>p?`<s>${B(n)}</s>`:""}<b>${B(p)}</b></div>`}).join("");
+    const save=Math.max(...fs.map(f=>promoNormal(x,f)-priceOf(x,f)));
+    return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">ใส่ตะกร้า 🛒</button></div></div>`}).join("")}`:"";
+  const ps=PRODS.filter(p=>p.on);
+  $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?shelfRows(ps,3,p=>{const lo=Math.min(...fmts(p).map(f=>priceOf(p,f)));return `<button class="book" onclick="openProd(${p.id})" aria-label="${esc(p.t)}"><span class="bcv">${cov(p)}</span>${isFinite(lo)?`<span class="brib">เริ่ม ${lo}฿</span>`:""}<span class="bnm">${esc(p.t)}</span></button>`}):"<div class='card mut'>เร็ว ๆ นี้</div>");
+}
+function openShop(){renderShop();go("s-shop")}
+const fmtLine=(x,f)=>`<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF <small class='mut'>ได้ลิงก์ทางอีเมล</small>":"📚 หนังสือเล่ม <small class='mut'>ส่งฟรีทั่วไทย</small>"}</span><b>${B(priceOf(x,f))}</b></div>`;
+function openProd(id){const p=prodBy(id);if(!p)return;
+  pop(`<span class="bcv">${cov(p)}</span><h3 id="bkmt">${esc(p.t)}</h3>${p.d?`<p class="mut" style="margin:4px 0 10px">${esc(p.d)}</p>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">ใส่ตะกร้า 🛒</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+function openPromo(id){const x=promoBy(id);if(!x)return;
+  pop(`${stackHTML(x.ids,1)}<h3 id="bkmt">${esc(x.t)}</h3>${x.d?`<p class="mut" style="margin:4px 0 8px">${esc(x.d)}</p>`:""}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${p.d?`<div class="mut" style="font-size:12px">${esc(p.d)}</div>`:""}</div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">ใส่ตะกร้า 🛒</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+function addCart(k,id){const x=k==="b"?promoBy(id):prodBy(id);if(!x)return;const fs=fmts(x);if(!fs.length){note("รายการนี้ยังไม่เปิดขาย",1);return}
+  const ex=CART.find(l=>l.k===k&&l.id===id);
+  if(ex){if(ex.f==="book")ex.q=Math.min(20,(ex.q||1)+1)}else CART.push({k,id,f:fs[0],q:1});
+  cartSave();note("ใส่ตะกร้าแล้ว 🛒 กดปุ่มตะกร้าเพื่อชำระเงิน")}
+let CO=false,ODONE=null;
+function openCart(){CO=false;ODONE=null;renderCart();go("s-cart")}
+function cartClean(){CART=CART.filter(l=>{const x=itemOf(l);if(!x||!x.on)return false;const fs=fmts(x);if(!fs.length)return false;if(!fs.includes(l.f))l.f=fs[0];if(l.f==="file")l.q=1;return true})}
+const cartTotal2=()=>CART.reduce((a,l)=>{const x=itemOf(l);return a+(x?priceOf(x,l.f)*(l.q||1):0)},0);
+function setCartF(i,f){CART[i].f=f;if(f==="file")CART[i].q=1;cartSave();renderCart()}
+function setCartQ(i,d){CART[i].q=Math.max(1,Math.min(20,(CART[i].q||1)+d));cartSave();renderCart()}
+function rmCart(i){CART.splice(i,1);cartSave();renderCart()}
+function renderCart(){cartClean();cartSave();
+  if(ODONE){$("cartl").innerHTML=`<div class="card" style="text-align:center"><div style="font-size:48px">🎉</div><b style="font-size:18px">ได้รับคำสั่งซื้อแล้ว</b><div class="code" style="margin:8px 0">${esc(ODONE.code)}</div><p>รอพี่แป๊บนึงน้าาา เดี๋ยวพี่จะรีบตรวจยอดเงินให้ภายใน 24 ชั่วโมง พอตรวจแล้วจะแจ้งทางอีเมล${ODONE.hf?" พร้อมลิงก์ดาวน์โหลดไฟล์":""}${ODONE.ns?" และพอส่งหนังสือแล้วจะแจ้งเลขพัสดุให้นะ 📦":""}</p><div class="row" style="justify-content:center"><button class="btn" onclick="openShop()">กลับไปร้านหนังสือ</button><button class="btn alt" onclick="go('s-home')">หน้าหลัก</button></div></div>`;$("cartf").innerHTML="";return}
+  if(!CART.length){$("cartl").innerHTML=`<div class="card" style="text-align:center"><div style="font-size:44px">🛒</div><b>ตะกร้ายังว่างอยู่เลย</b><p class="mut">ไปเลือกหนังสือที่ชอบก่อนน้า</p><button class="btn" onclick="openShop()">ไปที่ร้านหนังสือ</button></div>`;$("cartf").innerHTML="";return}
+  $("cartl").innerHTML=CART.map((l,i)=>{const x=itemOf(l),fs=fmts(x),one=priceOf(x,l.f);
+    return `<div class="card cl"><div class="clh">${l.k==="b"?stackHTML(x.ids):`<span class="bcv sm2">${cov(x)}</span>`}<div style="flex:1;min-width:0"><b>${esc(x.t)}</b>${l.k==="b"?` <span class="tag">โปรชุด</span><div class="mut" style="font-size:12px">${x.ids.map(prodBy).filter(Boolean).map(p=>esc(p.t)).join(" + ")}</div>`:""}</div><button class="btn alt sm" onclick="rmCart(${i})" aria-label="ลบ">✕</button></div>
+    <div class="seg cseg">${fs.map(f=>`<button class="${l.f===f?"on":""}" onclick="setCartF(${i},'${f}')">${f==="file"?"📄 ไฟล์":"📚 เล่ม"} ${B(priceOf(x,f))}</button>`).join("")}</div>
+    <div class="clf">${l.f==="book"?`<div class="qty"><button onclick="setCartQ(${i},-1)" aria-label="ลด">−</button><b>${l.q||1}</b><button onclick="setCartQ(${i},1)" aria-label="เพิ่ม">+</button></div>`:'<span class="mut" style="font-size:13px">ได้ลิงก์ดาวน์โหลดทางอีเมล</span>'}<b>${B(one*(l.q||1))}</b></div></div>`}).join("")+
+    `<div class="card ctot"><span>รวมทั้งหมด</span><b>${B(cartTotal2())}</b></div>${CO?"":`<button class="btn" style="width:100%" onclick="CO=true;renderCart();setTimeout(()=>$('cartf').scrollIntoView({behavior:'smooth'}),50)">ไปชำระเงิน ›</button>`}`;
+  if(!CO){$("cartf").innerHTML="";return}
+  const ns=CART.some(l=>l.f==="book"),me=(window.yhRole?window.yhRole()==="student":false)&&ST?ST:null,keep=id=>($(id)&&$(id).value)||"";
+  const v={n:keep("onm")||(me?me.name:""),p:keep("oph")||(me?me.ph||"":""),e:keep("oem")||(me?me.em||"":""),a:keep("oad")||(me?me.addr||"":""),z:keep("ozp")||(me?me.zip||"":"")};
+  $("cartf").innerHTML=`<div class="card"><b>ข้อมูลผู้สั่งซื้อ</b>${me?`<div class="mut" style="font-size:13px">สั่งในนามนักเรียน ${esc(me.code)}</div>`:""}
+    <label for="onm">ชื่อ-นามสกุล</label><input id="onm" value="${esc(v.n)}" autocomplete="name">
+    <label for="oph">เบอร์โทร</label><input id="oph" value="${esc(v.p)}" inputmode="tel" autocomplete="tel">
+    <label for="oem">อีเมล (ใช้รับลิงก์ไฟล์และเลขพัสดุ)</label><input id="oem" type="email" value="${esc(v.e)}" autocomplete="email">
+    ${ns?`<label for="oad">ที่อยู่จัดส่ง (ส่งฟรี)</label><textarea id="oad" rows="3" placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด">${esc(v.a)}</textarea><label for="ozp">รหัสไปรษณีย์</label><input id="ozp" inputmode="numeric" maxlength="5" value="${esc(v.z)}">`:""}
+    <label for="ont">หมายเหตุ (ไม่ใส่ก็ได้)</label><input id="ont" maxlength="200" value="${esc(keep("ont"))}"></div>
+    <div class="card" style="text-align:center"><b>สแกนจ่าย ${B(cartTotal2())}</b><div class="payqr"><img src="${PAYQR}" alt="QR พร้อมเพย์ของสถาบัน"></div><div class="mut" style="font-size:13px">ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล</div>
+    <label for="osl" style="text-align:left">แนบสลิปการโอนเงิน</label><input type="file" id="osl" accept="image/*,application/pdf"></div>
+    <div id="oerr" style="color:var(--seal);min-height:22px"></div>
+    <button class="btn" id="obtn" style="width:100%" onclick="placeOrder()">ยืนยันคำสั่งซื้อ</button>`}
+function orderForm(){const g=id=>($(id)&&$(id).value||"").trim();const ns=CART.some(l=>l.f==="book");
+  const o={name:g("onm"),phone:g("oph").replace(/\D/g,""),email:g("oem"),addr:g("oad"),zip:g("ozp"),note:g("ont"),slip:$("osl")&&$("osl").files[0],ns};
+  if(o.name.length<2)return [null,"กรุณากรอกชื่อ-นามสกุล"];if(o.phone.length<9)return [null,"กรุณากรอกเบอร์โทรให้ถูกต้อง"];
+  if(!/^\S+@\S+\.\S+$/.test(o.email))return [null,"กรุณากรอกอีเมลให้ถูกต้อง"];
+  if(ns&&(!o.addr||!/^\d{5}$/.test(o.zip)))return [null,"กรุณากรอกที่อยู่และรหัสไปรษณีย์ 5 หลัก"];
+  if(!o.slip)return [null,"กรุณาแนบสลิปการโอนเงิน"];return [o,""]}
+function placeOrder(){const [o,err]=orderForm();$("oerr").textContent=err;if(!o)return;
+  const items=CART.map(l=>{const x=itemOf(l);return {kind:l.k==="b"?"promo":"product",id:l.id,title:x.t,fmt:l.f,qty:l.q||1,price:priceOf(x,l.f),books:l.k==="b"?x.ids.map(prodBy).filter(Boolean).map(p=>p.t):undefined}});
+  const code="OD"+(1001+ORDERS.length);ORDERS.unshift({id:ORDERS.length+1,code,at:Date.now(),bt:(window.yhRole&&window.yhRole()==="student")?"student":"public",name:o.name,em:o.email,ph:o.phone,addr:o.ns?o.addr:"",zip:o.ns?o.zip:"",items,total:cartTotal2(),st:"pending",ns:o.ns,hf:items.some(i=>i.fmt==="file"),car:"",trk:"",slip:null});
+  ODONE={code,ns:o.ns,hf:items.some(i=>i.fmt==="file")};CART=[];cartSave();renderCart();scrollTo(0,0)}
+
+/* ===================== หลังบ้าน: ร้านค้า ===================== */
+let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null;
+function renderShopAdmin(){const e=$("prl");if(!e)return;
+  const cur=PFE!=null?prodBy(PFE):null;
+  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";$("pfu").value=cur?cur.u||"":"";$("pfon").checked=cur?cur.on:true;
+    PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
+  $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
+  e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
+  // โปรโมชัน
+  const cp=POE!=null?promoBy(POE):null;
+  if($("pot").dataset.k!==String(POE)){$("pot").dataset.k=String(POE);$("pot").value=cp?cp.t:"";$("pod").value=cp?cp.d:"";$("popf").value=cp&&cp.pf!=null?cp.pf:"";$("popb").value=cp&&cp.pb!=null?cp.pb:"";$("poon").checked=cp?cp.on:true;
+    $("pops").dataset.ids=cp?cp.ids.join(","):""}
+  {const was=new Set([...document.querySelectorAll("#pops input:checked")].map(i=>+i.value)),init=$("pops").dataset.ids;if(init!==undefined&&init!==null&&$("pops").dataset.done!==String(POE)){$("pops").dataset.done=String(POE);was.clear();init.split(",").filter(Boolean).forEach(x=>was.add(+x))}
+    $("pops").innerHTML=PRODS.map(p=>`<label class="chk"><input type="checkbox" value="${p.id}" ${was.has(p.id)?"checked":""} onchange="poHint()"> ${esc(p.t)}</label>`).join("")||'<span class="mut">เพิ่มหนังสือก่อน</span>'}
+  $("poh").textContent=cp?"แก้ไขโปรโมชัน":"เพิ่มโปรโมชันชุดหนังสือ";$("pox").style.display=cp?"":"none";poHint();
+  $("pol").innerHTML=PROMOS.length?PROMOS.map((x,i)=>`<div class="vw" style="align-items:center">${stackHTML(x.ids)}<div style="flex:1;min-width:0"><b>${esc(x.t)}</b> ${x.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">${x.ids.map(prodBy).filter(Boolean).map(p=>esc(p.t)).join(" + ")}</div><div class="mut" style="font-size:13px">ไฟล์ ${x.pf!=null&&x.pf!==""?B(+x.pf)+` (ปกติ ${B(promoNormal(x,"file"))})`:"ไม่มี"} · เล่ม ${x.pb!=null&&x.pb!==""?B(+x.pb)+` (ปกติ ${B(promoNormal(x,"book"))})`:"ไม่มี"}</div></div><button class="btn alt sm" onclick="mvPo(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPo(${i},1)" ${i<PROMOS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="POE=${x.id};renderShopAdmin();$('pot').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPo(${x.id})">${PODEL===x.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีโปรโมชัน</div>";
+}
+function poHint(){const ids=[...document.querySelectorAll("#pops input:checked")].map(i=>+i.value);const t={ids};
+  $("pohint").textContent=ids.length<2?"เลือกหนังสืออย่างน้อย 2 เล่ม":`ราคาปกติรวม · ไฟล์ ${B(promoNormal(t,"file"))} · เล่ม ${B(promoNormal(t,"book"))}`}
+async function pfPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{PFPIC=await picToJpeg(f,700);$("pfprev").innerHTML=`<span class="bcv sm2"><img src="${PFPIC}" alt=""></span>`;$("pfcv").innerHTML=covSel("pfc","__pic")}catch(e){alert("อ่านรูปไม่ได้")}}
+const numOrNull=v=>{v=String(v).trim();if(v==="")return null;const n=Math.round(+v);return isFinite(n)&&n>=0?n:NaN};
+function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),u=$("pfu").value.trim(),c=$("pfc").value;
+  if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
+  if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
+  if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https://");return null}
+  return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c}}
+function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
+function cancelPr(){PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
+function delPr(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;PRODS=PRODS.filter(p=>p.id!==id);PROMOS.forEach(x=>x.ids=x.ids.filter(i=>i!==id));if(PFE===id)PFE=null;renderShopAdmin()}
+function mvPr(i,d){const j=i+d;if(j<0||j>=PRODS.length)return;[PRODS[i],PRODS[j]]=[PRODS[j],PRODS[i]];renderShopAdmin()}
+function poVals(){const t=$("pot").value.trim(),ids=[...document.querySelectorAll("#pops input:checked")].map(i=>+i.value),pf=numOrNull($("popf").value),pb=numOrNull($("popb").value);
+  if(!t){alert("กรุณาใส่ชื่อโปรโมชัน");return null}if(ids.length<2){alert("เลือกหนังสืออย่างน้อย 2 เล่ม");return null}
+  if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}if(pf==null&&pb==null){alert("ใส่ราคาโปรอย่างน้อย 1 แบบ");return null}
+  return {t,d:$("pod").value.trim(),ids,pf,pb,on:$("poon").checked}}
+function savePo(){$("pops").dataset.done="";const v=poVals();if(!v)return;if(POE!=null)Object.assign(promoBy(POE),v);else PROMOS.push(Object.assign({id:Math.max(0,...PROMOS.map(p=>p.id))+1},v));POE=null;$("pot").dataset.k="";renderShopAdmin()}
+function cancelPo(){$("pops").dataset.done="";POE=null;$("pot").dataset.k="";renderShopAdmin()}
+function delPo(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return}PODEL=null;PROMOS=PROMOS.filter(p=>p.id!==id);if(POE===id)POE=null;renderShopAdmin()}
+function mvPo(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PROMOS[i],PROMOS[j]]=[PROMOS[j],PROMOS[i]];renderShopAdmin()}
+
+/* ===================== หลังบ้าน: คำสั่งซื้อ (ร้าน + หนังสือตอนสมัครเรียน) ===================== */
+let OF="all";
+const OST={pending:["รอตรวจเงิน","#c47f17"],paid:["ชำระแล้ว · รอส่ง","#1565c0"],shipped:["ส่งแล้ว","#2e7d5a"],done:["เสร็จแล้ว","#2e7d5a"],cancelled:["ยกเลิก","#888"]};
+const oBadge=s=>{const v=OST[s]||[s,"#888"];return `<span class="bdg" style="background:${v[1]}">${v[0]}</span>`};
+const oItems=o=>o.items.map(i=>`<div class="oit"><span>${esc(i.title)}${i.kind==="promo"?' <span class="tag">โปรชุด</span>':""} · ${i.fmt==="file"?"📄 ไฟล์":"📚 เล่ม"}${i.qty>1?" × "+i.qty:""}${i.books?`<div class="mut" style="font-size:12px">${i.books.map(esc).join(" + ")}</div>`:""}</span><b>${B(i.price*i.qty)}</b></div>`).join("");
+function orderRows(){
+  const shop=ORDERS.map(o=>({t:"o",o,at:o.at,stage:o.st==="pending"?"pay":(o.st==="paid"&&o.ns)?"ship":(o.st==="cancelled"?"x":"done")}));
+  const enr=SUBS.filter(r=>r.book==="รับหนังสือเล่ม").map(r=>({t:"s",r,at:0,stage:r.st==="รอตรวจสอบ"?"pay":r.sh==="sent"?"done":"ship"}));
+  return shop.concat(enr)}
+function renderBk(){
+  if(document.activeElement!==$("snd"))$("snd").value=SENDER;
+  const all=orderRows(),cnt=k=>all.filter(x=>x.stage===k).length;
+  $("bkn").textContent=cnt("pay")+cnt("ship")?"("+(cnt("pay")+cnt("ship"))+")":"";
+  $("ofl").innerHTML=[["all","ทั้งหมด",all.length],["pay","รอตรวจเงิน",cnt("pay")],["ship","ต้องจัดส่ง",cnt("ship")],["done","เสร็จแล้ว",cnt("done")]].map(([k,n,c])=>`<button class="${OF===k?"on":""}" onclick="OF='${k}';renderBk()">${n} <span class="mut">${c}</span></button>`).join("");
+  const L=all.filter(x=>OF==="all"||x.stage===OF).sort((a,b)=>(b.at||0)-(a.at||0));
+  $("bkl").innerHTML=L.length?L.map(x=>x.t==="o"?orderCard(x.o):stuBookCard(x.r)).join(""):"<div class='card mut'>ไม่มีรายการในหมวดนี้</div>";
+}
+function orderCard(o){
+  const who=o.bt==="student"?'<span class="tag" style="background:#e8f1ff;color:#1565c0">นักเรียน</span>':'<span class="tag">บุคคลทั่วไป</span>';
+  const ship=o.st==="paid"&&o.ns||o.st==="shipped";
+  return `<div class="card ocd"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${o.ns&&o.st!=="pending"&&o.st!=="cancelled"?`<input type="checkbox" class="bkc" value="o:${o.id}">`:""}<b>${esc(o.code)}</b>${who}<span class="tag">สั่งในร้าน</span>${oBadge(o.st)}<span class="mut" style="margin-left:auto;font-size:12px">${new Date(o.at).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"})}</span></div>
+  <div style="margin-top:6px"><b>${esc(o.name)}</b> <span class="mut">${esc(o.ph)} · ${esc(o.em)}</span></div>
+  <div class="oits">${oItems(o)}<div class="oit"><span>รวม</span><b>${B(o.total)}</b></div></div>
+  ${o.ns?`<div class="mut" style="font-size:13px">📦 ${esc(o.addr||"")} ${esc(o.zip||"")}</div>`:""}${o.note?`<div class="mut" style="font-size:13px">หมายเหตุ: ${esc(o.note)}</div>`:""}
+  <div class="row" style="margin:8px 0 0"><button class="btn alt sm" onclick="oSlip(${o.id})">ดูสลิป</button>${o.st==="pending"?`<button class="btn sm" onclick="oPaid(${o.id})">เงินเข้าแล้ว · ยืนยันและส่งอีเมล${o.hf?" (พร้อมลิงก์ไฟล์)":""}</button><button class="btn alt sm" onclick="oCancel(${o.id})">ยกเลิก</button>`:""}</div>
+  ${ship?`<div class="row" style="margin:8px 0 0"><select id="oc-${o.id}"><option value="">เลือกขนส่ง</option>${CARR.map(c=>`<option ${o.car===c?"selected":""}>${c}</option>`).join("")}</select><input id="ot-${o.id}" placeholder="เลขพัสดุ" value="${esc(o.trk||"")}"><button class="btn sm" onclick="oShip(${o.id})">${o.st==="shipped"?"แก้ไขและแจ้งอีกครั้ง":"บันทึกเลขพัสดุ · แจ้งลูกค้าทางอีเมล"}</button></div>`:""}</div>`}
+function stuBookCard(r){const ok=r.st!=="รอตรวจสอบ";
+  return `<div class="card ocd"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${ok?`<input type="checkbox" class="bkc" value="s:${r.code}">`:""}<b>BK-${esc(r.code)}</b><span class="tag" style="background:#e8f1ff;color:#1565c0">นักเรียน</span><span class="tag">สมัครเรียน</span>${ok?bkb(r):'<span class="tag">รออนุมัติ</span>'}</div>
+  <div style="margin-top:6px"><b>${esc(r.name)}</b> <span class="mut">${esc(r.ph)} · ${esc(r.em||"")}</span></div><div class="oits"><div class="oit"><span>หนังสือเรียนคอร์ส ${esc(r.course)} · 📚 เล่ม</span><b>${B(300)}</b></div></div>
+  <div class="mut" style="font-size:13px">📦 ${esc(r.addr||"ยังไม่มีที่อยู่")} ${esc(r.zip||"")}</div>
+  ${ok?`<div class="row" style="margin:8px 0 0"><select id="sc-${r.code}"><option value="">เลือกขนส่ง</option>${CARR.map(c=>`<option ${r.car===c?"selected":""}>${c}</option>`).join("")}</select><input id="stk-${r.code}" placeholder="เลขพัสดุ" value="${esc(r.trk||"")}"><button class="btn sm" onclick="sShip('${r.code}')">${r.sh==="sent"?"แก้ไขและแจ้งอีกครั้ง":"บันทึกเลขพัสดุ · แจ้งนักเรียนทางอีเมล"}</button></div>`:""}</div>`}
+function oSlip(id){const o=ORDERS.find(x=>x.id===id);pop(o&&o.slip?`<img src="${esc(o.slip)}" alt="สลิป" style="width:100%;border-radius:10px"><button class="btn alt" onclick="closeBook()">ปิด</button>`:`<p class="mut">ตัวอย่าง: ไม่มีรูปสลิป</p><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+function oPaid(id){const o=ORDERS.find(x=>x.id===id);if(!o||!confirm(`ยืนยันว่าเงินเข้าแล้ว ${B(o.total)}?\nระบบจะส่งอีเมลยืนยัน${o.hf?"พร้อมลิงก์ดาวน์โหลดไฟล์":""}ให้ลูกค้า`))return;o.st=o.ns?"paid":"done";renderBk()}
+function oCancel(id){const o=ORDERS.find(x=>x.id===id);if(!o||!confirm("ยกเลิกคำสั่งซื้อนี้?"))return;o.st="cancelled";renderBk()}
+function shipVals(cs,ts){const c=$(cs).value,t=$(ts).value.trim();if(!c||!t){alert("กรุณาเลือกขนส่งและใส่เลขพัสดุ");return null}return {c,t}}
+function oShip(id){const o=ORDERS.find(x=>x.id===id),v=shipVals("oc-"+id,"ot-"+id);if(!o||!v)return;o.car=v.c;o.trk=v.t;o.st="shipped";renderBk()}
+function sShip(code){const r=SUBS.find(x=>x.code===code),v=shipVals("sc-"+code,"stk-"+code);if(!r||!v)return;r.car=v.c;r.trk=v.t;r.sh="sent";renderBk()}
+const oAsSub=o=>({code:o.code,name:o.name,ph:o.ph,addr:o.addr,zip:o.zip,car:o.car,trk:o.trk,course:o.items.filter(i=>i.fmt==="book").map(i=>i.title+(i.qty>1?" × "+i.qty:"")).join(", "),_o:o});
+
+cartBadge();
 let TOOL=null;
 function openTool(e,url){if(e&&e.preventDefault)e.preventDefault();
   let o=$("toolov");if(!o){o=document.createElement("div");o.id="toolov";o.className="toolov";document.body.appendChild(o)}
@@ -1650,6 +1924,7 @@ function navSnap(){
   if(sc==="s-dash"){const b=document.querySelector("#tabs button.on");o.t=b?b.dataset.t:"p-today";
     if(o.t==="p-learn"&&vis("lview"))o.sec=SECK;
     if(o.t==="p-game"){if(vis("gplay")){o.gl=GL;o.lv=GLV}else if(GPK)o.gp=GPK}}
+  if(sc==="s-game"){o.pb=PGB;if(vis("gplay")){o.gl=GL;o.lv=GLV}else if(GPK)o.gp=GPK}
   if(vis("wd"))o.wd=CI;
   if(vis("ghm"))o.ghm=1;
   if(vis("toolov")&&TOOL)o.tool=TOOL;
@@ -1685,6 +1960,8 @@ function navRestore(s){
       if(s.t==="p-game"){if(s.gl){if(!(vis("gplay")&&GL===s.gl&&GLV===s.lv))startGame(s.gl,s.lv)}else if(s.gp){if(GPK!==s.gp||vis("gplay")){gQuit();gPickLv(s.gp)}}else if(vis("gplay")||GPK)gQuit()}
     }
     if(s.wd!=null&&!vis("wd"))showW(s.wd);
+    if(sc==="s-game"){if(!GPUB){GPUB=true;pgPlace()}if(s.pb&&s.pb!==PGB){PGB=s.pb;pgBooks()}
+      if(s.gl){if(!(vis("gplay")&&GL===s.gl&&GLV===s.lv))startGame(s.gl,s.lv)}else if(s.gp){if(GPK!==s.gp||vis("gplay")){gQuit();gPickLv(s.gp)}}else if(vis("gplay")||GPK||!$("gmenu").innerHTML)gQuit()}
     if(s.tool&&sc==="s-admin"&&!(vis("toolov")&&TOOL===s.tool))openTool(null,s.tool);
   }catch(e){console.error(e)}
   setTimeout(()=>{NREST=false},60);
@@ -1725,6 +2002,7 @@ window.yhToast=toast;
 const busy=(btn,on,txt)=>{if(!btn)return;if(on){btn._t=btn.textContent;btn.disabled=true;btn.textContent=txt||"กำลังบันทึก…"}else{btn.disabled=false;if(btn._t)btn.textContent=btn._t}};
 const fail=(e,m)=>{console.error(e);toast(m||"ทำรายการไม่สำเร็จ ลองใหม่อีกครั้ง",true)};
 let ROLE=null; // "student" | "admin" | null
+window.yhRole=()=>ROLE;
 
 /* ---------- แปลงแถวนักเรียน -> รูปแบบเดิมในหน้าเว็บ ---------- */
 function toSub(r){return {id:r.id,uid:r.user_id,code:r.code,name:r.name,ph:r.phone,em:r.email,course:r.course_label,ck:r.course_key,
@@ -1738,8 +2016,8 @@ const byCode=c=>SUBS.find(x=>x.code===c);
 
 /* ---------- ข้อมูลสาธารณะ: ช่วงเวลา ที่นั่ง หนังสือ ---------- */
 async function loadSlots(names){
-  const {data,error}=await sb.rpc("public_slots");if(error)throw error;
-  SL.length=0;(data||[]).forEach(s=>SL.push({id:Number(s.id),dw:s.dw,h:Number(s.h),du:s.du,ty:s.ty,cap:s.cap,tp:s.topic||"",bk:Array(s.booked).fill("·")}));
+  const {data,error}=await sb.rpc("public_slots2");if(error)throw error;
+  SL.length=0;(data||[]).forEach(s=>SL.push({id:Number(s.id),dw:s.dw,h:Number(s.h),du:Number(s.du),kd:s.kind,full:!!s.is_full,tk:Number(s.taken)||0,ty:s.ty,cap:s.cap,tp:s.topic||"",bk:Array(s.booked).fill("·")}));
   if(names)names.forEach(([sid,nm])=>{const x=SL.find(y=>y.id===sid);if(!x)return;const i=x.bk.indexOf("·");i>=0?x.bk[i]=nm:x.bk.push(nm)});
 }
 async function loadTrialSessions(){
@@ -1758,10 +2036,21 @@ async function loadVideos(){
   const V={};(data||[]).forEach(v=>{V[v.course]=V[v.course]||{};(V[v.course][v.section]=V[v.course][v.section]||[]).push({dbid:v.id,t:v.title,id:v.yt_id,sort:v.sort})});
   VIDS=V;
 }
+async function loadShop(admin){
+  const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
+  if(p.error)throw p.error;
+  let files={};if(admin){const f=await sb.from("product_files").select("product_id,file_url");(f.data||[]).forEach(x=>files[x.product_id]=x.file_url)}
+  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",sort:x.sort}));
+  PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort}));
+  cartBadge();
+}
+async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
+  VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort}))}
 async function loadPublic(){
-  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false)])}catch(e){console.error(e)}
+  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e))])}catch(e){console.error(e)}
   const on=document.querySelector(".scr.on");if(!on)return;
   if(on.id==="s-hour")renderHour();if(on.id==="s-trial")drawTrial();if(on.id==="s-course")drawCourse();
+  if(on.id==="s-shop")renderShop();if(on.id==="s-cart")renderCart();if(on.id==="s-dict")renderVocab();
 }
 window.yhReload=loadPublic;
 
@@ -1970,7 +2259,7 @@ async function adminLoad(){
       LIVES.push({t:x.title,when,l:x.meet_url});
       SENT.push({t:x.title,when,n:to.length,em:to.map(r=>r.em),ex:`สวัสดีครับ\n\nครูขอเชิญเข้าเรียนไลฟ์สด: ${x.title}\nเวลา: ${when}\nเข้าห้อง: ${x.meet_url}\n${x.message?"\n"+x.message+"\n":""}\n– YUEHUA 悦华中文`})});
     (se.data||[]).forEach(r=>{if(r.k==="sender")SENDER=r.v});
-    await Promise.all([loadVideos(),loadBooks(true)]);
+    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e))]);
     const pend=SUBS.filter(s=>s.st==="รอตรวจสอบ"),paths=pend.flatMap(s=>[s.slipPath,s.idcPath]).filter(Boolean);
     if(paths.length){const {data}=await sb.storage.from("applications").createSignedUrls(paths,3600);
       const u=Object.fromEntries((data||[]).map(d=>[d.path,d.signedUrl]));pend.forEach(s=>{s.slip=s.slipPath?u[s.slipPath]||null:null;s.idc=s.idcPath?u[s.idcPath]||"#":"#"})}
@@ -1978,6 +2267,8 @@ async function adminLoad(){
   }catch(e){fail(e,"โหลดข้อมูลหลังบ้านไม่สำเร็จ ลองรีเฟรชหน้าเว็บ")}
 }
 window.adminLoad=adminLoad;
+async function loadOrders(){const {data,error}=await sb.from("orders").select("*").order("created_at",{ascending:false}).limit(500);if(error)throw error;
+  ORDERS=(data||[]).map(o=>({id:Number(o.id),code:o.code,at:ms(o.created_at),bt:o.buyer_type,name:o.name,em:o.email,ph:o.phone,addr:o.addr||"",zip:o.zip||"",items:o.items||[],total:o.total,st:o.status,ns:o.needs_ship,hf:o.has_file,car:o.carrier||"",trk:o.tracking||"",note:o.note||"",slipPath:o.slip_path}))}
 async function upd(code,patch,msg){
   const r=byCode(code);if(!r)return;
   const {error}=await sb.from("students").update(patch).eq("id",r.id);
@@ -2013,7 +2304,7 @@ window.paid2=async function(c){if(await upd(c,{paid2:true},"บันทึก�
 window.rmPh=async function(c){if(await upd(c,{photo_url:null},"ลบรูปแล้ว")){byCode(c).pic="";renderAdmin()}};
 window.susTog=async function(c){const r=byCode(c);if(await upd(c,{suspended:!r.sus},r.sus?"เปิดสิทธิ์แล้ว":"ระงับสิทธิ์แล้ว")){r.sus=!r.sus;SEL.delete(c);renderAdmin()}};
 window.setBk=function(c,k,v){const r=byCode(c);if(!r)return;r[k]=v;const col={sh:"ship_status",car:"carrier",trk:"tracking"}[k];if(col)upd(c,{[col]:v||null})};
-const _doPrint=window.doPrint;window.doPrint=function(){PVL.forEach(r=>{if(r.sh!=="sent")upd(r.code,{ship_status:"printed"})});_doPrint()};
+const _doPrint=window.doPrint;window.doPrint=function(){PVL.forEach(r=>{if(!r._o&&r.sh!=="sent")upd(r.code,{ship_status:"printed"})});_doPrint()};
 let sT=null;window.saveSender=function(){clearTimeout(sT);sT=setTimeout(()=>sb.from("settings").upsert({k:"sender",v:SENDER}).then(({error})=>error&&console.error(error)),700)};
 window.trDel=async function(id){if(!confirm("ยกเลิกการจองทดลองเรียนนี้?"))return;const {error}=await sb.from("trials").delete().eq("id",id);if(error){fail(error);return}toast("ยกเลิกแล้ว");adminLoad()};
 window.addTs=async function(){const f=tsForm();if(!f)return;
@@ -2050,11 +2341,14 @@ window.sendLive=async function(){
 
 /* ---------- แอดมิน: ตารางเวลา ---------- */
 window.addSlot=async function(){
-  const d=+$("sd").value,h=+$("sh").value,ty=$("sty").value,du=+$("sdu").value;
-  if(SL.some(x=>x.dw===d&&x.h===h&&x.ty===ty&&(x.du||2)===du)){alert("มีช่วงเวลานี้อยู่แล้ว");return}
-  const {error}=await sb.from("slots").insert({dw:d,h,ty,du,cap:ty==="single"?1:Math.min(10,Math.max(1,+$("scp").value||10)),topic:$("stp").value.trim()||(du===1?"เรียนสดรายชั่วโมง":"คอร์สเรียนสด")});
+  const f=slotForm();if(!f)return;
+  const {error}=await sb.from("slots").insert({dw:f.dw,h:f.h,du:f.du,ty:f.ty,cap:f.cap,topic:f.tp,kind:f.kd});
   if(error){fail(error);return}toast("เพิ่มช่วงเวลาแล้ว");adminLoad();
 };
+window.slotFull=async function(id,on){const {error}=await sb.from("slots").update({is_full:!!on}).eq("id",id);if(error){fail(error);return}
+  const s=SL.find(x=>x.id===id);if(s)s.full=!!on;toast(on?"ปิดรับช่วงนี้แล้ว (แสดงว่าเต็ม)":"เปิดรับจองอีกครั้งแล้ว");renderAdmin()};
+window.slotTk=async function(id,v){const s=SL.find(x=>x.id===id);if(!s)return;const n=Math.max(0,Math.min(s.cap,Math.round(+v||0)));
+  const {error}=await sb.from("slots").update({taken:n}).eq("id",id);if(error){fail(error);return}s.tk=n;toast("บันทึกจำนวนนักเรียนเก่าแล้ว");renderAdmin()};
 window.delSlot=async function(id){
   const s=SL.find(x=>x.id===id);if(!s)return;
   if(!confirm(s.bk.length?"มีนักเรียนจองช่วงนี้แล้ว "+s.bk.length+" คน ต้องการลบหรือไม่?":"ลบช่วงเวลานี้?"))return;
@@ -2120,8 +2414,68 @@ window.mvBf=async function(k,i,d){
   if(r.some(x=>x.error))fail(r.find(x=>x.error).error);await loadBooks(true);renderBfAdmin();
 };
 
+/* ---------- ร้านหนังสือ: สั่งซื้อ ---------- */
+window.placeOrder=async function(){
+  const [o,err]=orderForm();$("oerr").textContent=err;if(!o)return;const btn=$("obtn");
+  const items=CART.map(l=>({k:l.k,id:l.id,f:l.f,q:l.q||1}));
+  const fd=new FormData();const put=(a,v)=>fd.append(a,v==null?"":String(v));
+  put("name",o.name);put("phone",o.phone);put("email",o.email);put("addr",o.ns?o.addr:"");put("zip",o.ns?o.zip:"");put("note",o.note);
+  put("items",JSON.stringify(items));put("total",cartTotal2());fd.append("slip",o.slip);
+  let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(ROLE==="student"&&data&&data.session)tok=data.session.access_token}catch(e){}
+  busy(btn,true,"กำลังส่งคำสั่งซื้อ…");
+  try{const r=await fetch(FN+"shop",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+tok},body:fd});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||!j.code){$("oerr").textContent=j.error||"ส่งคำสั่งซื้อไม่สำเร็จ ลองใหม่อีกครั้ง";if(r.status===409){await loadShop(false);renderCart()}return}
+    ODONE={code:j.code,ns:o.ns,hf:items.some(i=>i.f==="file")};CART=[];cartSave();renderCart();scrollTo(0,0);
+  }catch(e){fail(e,"ส่งคำสั่งซื้อไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่")}finally{const b=$("obtn");if(b)busy(b,false)}
+};
+/* ---------- หลังบ้าน: คำสั่งซื้อ ---------- */
+window.oSlip=async function(id){const o=ORDERS.find(x=>x.id===id);if(!o||!o.slipPath){pop('<p class="mut">ไม่มีสลิป</p><button class="btn alt" onclick="closeBook()">ปิด</button>');return}
+  const {data,error}=await sb.storage.from("applications").createSignedUrl(o.slipPath,600);if(error){fail(error);return}
+  const u=data.signedUrl;pop(/\.pdf$/i.test(o.slipPath)?`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">เปิดสลิป (PDF)</a><button class="btn alt" onclick="closeBook()">ปิด</button>`:`<img src="${esc(u)}" alt="สลิปการโอนเงิน ${esc(o.code)}" style="width:100%;border-radius:10px"><button class="btn alt" onclick="closeBook()">ปิด</button>`)};
+async function ordAct(body,ok){try{const j=await adminFn(body);toast(j.emailed===false?ok+" แต่ส่งอีเมลไม่สำเร็จ":ok,j.emailed===false);await loadOrders();renderBk()}catch(e){fail(e,e.message)}}
+window.oPaid=function(id){const o=ORDERS.find(x=>x.id===id);if(!o||!confirm(`ยืนยันว่าเงินเข้าแล้ว ${B(o.total)}?\nระบบจะส่งอีเมลยืนยัน${o.hf?"พร้อมลิงก์ดาวน์โหลดไฟล์":""}ให้ลูกค้า`))return;ordAct({action:"order_paid",order_id:id},"ยืนยันการชำระเงินและส่งอีเมลแล้ว")};
+window.oCancel=function(id){if(!confirm("ยกเลิกคำสั่งซื้อนี้?"))return;ordAct({action:"order_cancel",order_id:id},"ยกเลิกแล้ว")};
+window.oShip=function(id){const v=shipVals("oc-"+id,"ot-"+id);if(!v)return;ordAct({action:"order_ship",order_id:id,carrier:v.c,tracking:v.t},"บันทึกเลขพัสดุและแจ้งลูกค้าแล้ว")};
+window.sShip=async function(code){const v=shipVals("sc-"+code,"stk-"+code);if(!v)return;
+  try{const j=await adminFn({action:"order_ship",student_code:code,carrier:v.c,tracking:v.t});const r=byCode(code);if(r){r.car=v.c;r.trk=v.t;r.sh="sent"}
+    toast(j.emailed===false?"บันทึกแล้ว แต่ส่งอีเมลไม่สำเร็จ":"บันทึกเลขพัสดุและแจ้งนักเรียนแล้ว",j.emailed===false);renderBk()}catch(e){fail(e,e.message)}};
+/* ---------- หลังบ้าน: รูปปก ---------- */
+async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))return dataUrl;
+  const blob=await (await fetch(dataUrl)).blob(),path=`${folder}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
+  const {error}=await sb.storage.from("public-assets").upload(path,blob,{contentType:"image/jpeg",upsert:false});if(error)throw error;
+  return sb.storage.from("public-assets").getPublicUrl(path).data.publicUrl}
+/* ---------- หลังบ้าน: ร้านค้า ---------- */
+window.savePr=async function(){const v=prVals();if(!v)return;
+  try{const cover=await upCover(v.c,"shop");const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on};
+    let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
+    else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
+    const {error:fe}=await sb.from("product_files").upsert({product_id:id,file_url:v.u});if(fe)throw fe;
+    PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
+window.delPr=async function(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;
+  const {error}=await sb.from("products").delete().eq("id",id);if(error){fail(error);return}
+  for(const x of PROMOS.filter(p=>p.ids.includes(id)))await sb.from("promos").update({product_ids:x.ids.filter(i=>i!==id)}).eq("id",x.id);
+  if(PFE===id)PFE=null;await loadShop(true);renderShopAdmin();toast("ลบแล้ว")};
+async function reorder(tbl,list){await Promise.all(list.map((x,n)=>x.sort!==n?sb.from(tbl).update({sort:n}).eq("id",x.id||x.dbid):null).filter(Boolean))}
+window.mvPr=async function(i,d){const j=i+d;if(j<0||j>=PRODS.length)return;[PRODS[i],PRODS[j]]=[PRODS[j],PRODS[i]];renderShopAdmin();await reorder("products",PRODS);await loadShop(true)};
+window.savePo=async function(){const v=poVals();if(!v)return;const row={title:v.t,descr:v.d,product_ids:v.ids,price_file:v.pf,price_book:v.pb,active:v.on};
+  const q=POE!=null?sb.from("promos").update(row).eq("id",POE):sb.from("promos").insert(Object.assign(row,{sort:PROMOS.length}));
+  const {error}=await q;if(error){fail(error);return}POE=null;$("pot").dataset.k="";$("pops").dataset.done="";await loadShop(true);renderShopAdmin();toast("บันทึกโปรโมชันแล้ว")};
+window.delPo=async function(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return}PODEL=null;
+  const {error}=await sb.from("promos").delete().eq("id",id);if(error){fail(error);return}if(POE===id)POE=null;await loadShop(true);renderShopAdmin();toast("ลบแล้ว")};
+window.mvPo=async function(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PROMOS[i],PROMOS[j]]=[PROMOS[j],PROMOS[i]];renderShopAdmin();await reorder("promos",PROMOS);await loadShop(true)};
+/* ---------- หลังบ้าน: ไฟล์คำศัพท์ ---------- */
+window.saveVf=async function(){const v=vfVals();if(!v)return;
+  try{const cover=await upCover(v.c,"vocab");const row={title:v.t,file_url:v.u,cover};const cur=VFE!=null?VOCAB[VFE]:null;
+    const q=cur?sb.from("vocab_files").update(row).eq("id",cur.dbid):sb.from("vocab_files").insert(Object.assign(row,{sort:VOCAB.length}));
+    const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
+window.delVf=async function(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;
+  const {error}=await sb.from("vocab_files").delete().eq("id",VOCAB[i].dbid);if(error){fail(error);return}if(VFE===i)VFE=null;await loadVocab();renderVfAdmin();toast("ลบแล้ว")};
+window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]]=[VOCAB[j],VOCAB[i]];renderVfAdmin();await reorder("vocab_files",VOCAB);await loadVocab()};
+
 /* ---------- เริ่มต้น ---------- */
 SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};
+VOCAB=[];PRODS=[];PROMOS=[];ORDERS=[];
 loadPublic();
 /* กลับจากหน้าเครื่องมือ: #admin หรือ #admin-tools เปิดหลังบ้านให้เลย */
 if(/^#admin/.test(location.hash)){const h=location.hash;try{history.replaceState(history.state,"",location.pathname+location.search)}catch(e){}
