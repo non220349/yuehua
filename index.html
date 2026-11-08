@@ -376,6 +376,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .ghm-o{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow:auto}
 .ghm-in{background:var(--bg);border-radius:16px;padding:16px;width:100%;max-width:640px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
 .toolg{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:10px}.toolc{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg);border:1px solid var(--bd)}.toolc:hover{border-color:var(--seal)}.toolc>span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:4px}.toolc b{font-size:17px}.tooli{font-size:34px}.toolgo{color:var(--seal);font-weight:700;white-space:nowrap}
+.toolov{position:fixed;inset:0;z-index:90;background:#fff;display:none}.toolov iframe{width:100%;height:100%;height:100dvh;border:0;display:none}.toolov iframe.on{display:block}
 </style>
 </head>
 <body>
@@ -485,10 +486,10 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
   <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
   <div class="pane" id="a-tools">
     <div class="toolg">
-      <a class="card toolc" href="tools/pdf/"><span class="tooli">📄</span><span><b>รวมไฟล์ PDF</b><small class="mut">รวมหลายไฟล์ เรียง/หมุน/เลือกหน้า ใส่เลขหน้า แล้วดาวน์โหลดเป็นไฟล์เดียว</small></span><span class="toolgo">เปิด ›</span></a>
-      <a class="card toolc" href="tools/worksheet/"><span class="tooli">✍️</span><span><b>ตัวทำสมุดคัดจีน</b><small class="mut">ใส่คำศัพท์หรือนำเข้า .txt ได้ตารางคัดพร้อมลำดับขีด หัว/ท้ายกระดาษ เลขหน้า บันทึกเป็น PDF</small></span><span class="toolgo">เปิด ›</span></a>
+      <a class="card toolc" href="tools/pdf/" onclick="return openTool(event,'tools/pdf/')"><span class="tooli">📄</span><span><b>รวมไฟล์ PDF</b><small class="mut">รวมหลายไฟล์ เรียง/หมุน/เลือกหน้า ใส่เลขหน้า แล้วดาวน์โหลดเป็นไฟล์เดียว</small></span><span class="toolgo">เปิด ›</span></a>
+      <a class="card toolc" href="tools/worksheet/" onclick="return openTool(event,'tools/worksheet/')"><span class="tooli">✍️</span><span><b>ตัวทำสมุดคัดจีน</b><small class="mut">ใส่คำศัพท์หรือนำเข้า .txt ได้ตารางคัดพร้อมลำดับขีด หัว/ท้ายกระดาษ เลขหน้า บันทึกเป็น PDF</small></span><span class="toolgo">เปิด ›</span></a>
     </div>
-    <p class="mut" style="font-size:13px">เปิดเต็มหน้าจอ · ไฟล์ทั้งหมดทำงานในเครื่องนี้ ไม่ถูกอัปโหลด · เปิดได้เฉพาะตอนเข้าสู่ระบบผู้ดูแลอยู่</p>
+    <p class="mut" style="font-size:13px">เปิดเต็มหน้าจอ ไม่ต้องใส่รหัสซ้ำ · กด “‹ กลับหลังบ้าน” แล้วงานที่ทำค้างไว้ยังอยู่ กลับมาเปิดต่อได้ · ไฟล์ทำงานในเครื่องนี้ ไม่ถูกอัปโหลด</p>
   </div>
   <div class="pane" id="a-stu">
     <div class="row" style="margin:10px 0"><button class="btn alt sm" onclick="selAll()">เลือกทั้งหมด</button><button class="btn alt sm" onclick="SEL.clear();renderAdmin()">ล้างที่เลือก</button></div>
@@ -1629,6 +1630,16 @@ function bStart(){clearInterval(BT);if(window.matchMedia&&matchMedia("(prefers-r
 bStart();
 $("bcs").addEventListener("scroll",()=>{const i=Math.round($("bcs").scrollLeft/slW());document.querySelectorAll("#dots button").forEach((b,k)=>b.classList.toggle("on",k===i))});
 
+/* ===== เครื่องมือในหลังบ้าน: เปิดเต็มจอซ้อนบนหน้าเดิม (ไม่ต้องล็อกอินซ้ำ งานค้างไม่หาย) ===== */
+let TOOL=null;
+function openTool(e,url){if(e&&e.preventDefault)e.preventDefault();
+  let o=$("toolov");if(!o){o=document.createElement("div");o.id="toolov";o.className="toolov";document.body.appendChild(o)}
+  let f=[...o.querySelectorAll("iframe")].find(x=>x.dataset.u===url);
+  if(!f){f=document.createElement("iframe");f.dataset.u=url;f.src=url;f.title="เครื่องมือ";f.setAttribute("allow","clipboard-write");o.appendChild(f)}
+  o.querySelectorAll("iframe").forEach(x=>x.classList.toggle("on",x===f));
+  o.style.display="block";document.documentElement.style.overflow="hidden";TOOL=url;navLater();return false}
+function closeTool(){const o=$("toolov");if(o)o.style.display="none";document.documentElement.style.overflow="";TOOL=null;navLater()}
+window.YH_TOOL_CLOSE=closeTool;
 /* ===== ปุ่มย้อนกลับของมือถือ/แท็บเล็ต: กลับไปหน้าก่อนหน้าในเว็บ ===== */
 let NST=[],NI=-1,NREST=false,NSKIP=0,NT=0;
 const vis=id=>{const e=document.getElementById(id);return !!e&&e.style.display!=="none"&&getComputedStyle(e).display!=="none"};
@@ -1641,6 +1652,7 @@ function navSnap(){
     if(o.t==="p-game"){if(vis("gplay")){o.gl=GL;o.lv=GLV}else if(GPK)o.gp=GPK}}
   if(vis("wd"))o.wd=CI;
   if(vis("ghm"))o.ghm=1;
+  if(vis("toolov")&&TOOL)o.tool=TOOL;
   return o;
 }
 const navEq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -1662,6 +1674,7 @@ function navRestore(s){
     if(sc==="s-admin"&&(typeof ROLE!=="undefined"?ROLE!=="admin":!AUTH))sc="s-home";
     if(vis("wd")&&s.wd==null)$("wd").style.display="none";
     if(vis("ghm")&&!s.ghm)$("ghm").style.display="none";
+    if(vis("toolov")&&!s.tool)closeTool();
     if(sc==="s-course"&&s.ck&&s.ck!==CK){CK=s.ck;FM="v";drawCourse()}
     if(sc==="s-admin"&&s.at&&s.at!==AT){AT=s.at;renderAdmin()}
     if((document.querySelector(".scr.on")||{}).id!==sc){document.querySelectorAll(".scr").forEach(x=>x.classList.toggle("on",x.id===sc));scrollTo(0,0)}
@@ -1672,6 +1685,7 @@ function navRestore(s){
       if(s.t==="p-game"){if(s.gl){if(!(vis("gplay")&&GL===s.gl&&GLV===s.lv))startGame(s.gl,s.lv)}else if(s.gp){if(GPK!==s.gp||vis("gplay")){gQuit();gPickLv(s.gp)}}else if(vis("gplay")||GPK)gQuit()}
     }
     if(s.wd!=null&&!vis("wd"))showW(s.wd);
+    if(s.tool&&sc==="s-admin"&&!(vis("toolov")&&TOOL===s.tool))openTool(null,s.tool);
   }catch(e){console.error(e)}
   setTimeout(()=>{NREST=false},60);
 }
@@ -1913,7 +1927,7 @@ window.leave=async function(id,when){
 /* ---------- แอดมิน: เข้าสู่ระบบ ---------- */
 window.openAdmin=async function(){
   const {data}=await sb.auth.getSession(),s=data&&data.session;
-  if(s&&s.user.app_metadata&&s.user.app_metadata.role==="admin"){ROLE="admin";AUTH=true;go("s-admin");renderAdmin();adminLoad();return}
+  if(s&&s.user.app_metadata&&s.user.app_metadata.role==="admin"){ROLE="admin";AUTH=true;window.YH_ADMIN=true;go("s-admin");renderAdmin();adminLoad();return}
   $("ge").textContent="";go("s-gate");
 };
 window.gate=async function(){
@@ -1925,10 +1939,10 @@ window.gate=async function(){
     const {data,error}=await sb.auth.signInWithPassword({email:em,password:pw});
     if(error){e.textContent="รหัสผู้ดูแลไม่ถูกต้อง";return}
     if(!(data.user.app_metadata&&data.user.app_metadata.role==="admin")){await sb.auth.signOut();e.textContent="บัญชีนี้ไม่มีสิทธิ์ผู้ดูแล";return}
-    $("gp").value="";e.textContent="";ROLE="admin";AUTH=true;go("s-admin");renderAdmin();adminLoad();
+    $("gp").value="";e.textContent="";ROLE="admin";AUTH=true;window.YH_ADMIN=true;go("s-admin");renderAdmin();adminLoad();
   }catch(x){fail(x)}finally{busy(btn,false)}
 };
-window.adminLogout=async function(){ROLE=null;AUTH=false;SUBS.length=0;await sb.auth.signOut();go("s-home");loadPublic()};
+window.adminLogout=async function(){ROLE=null;AUTH=false;window.YH_ADMIN=false;try{closeTool();const o=$("toolov");if(o)o.innerHTML=""}catch(e){}SUBS.length=0;await sb.auth.signOut();go("s-home");loadPublic()};
 async function adminFn(body){
   const {data}=await sb.auth.getSession();const tok=data&&data.session&&data.session.access_token;
   const r=await fetch(FN+"admin",{method:"POST",headers:{"Content-Type":"application/json",apikey:SB_KEY,Authorization:"Bearer "+tok},body:JSON.stringify(body)});

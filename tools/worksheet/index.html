@@ -77,6 +77,8 @@ button:disabled{opacity:.5;cursor:default}
 <div id="yhGate" style="position:fixed;inset:0;background:#141414;color:#fff;z-index:99999;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:16px/1.7 Sarabun,'Noto Sans Thai',Tahoma,sans-serif"><div id="yhGateMsg">กำลังตรวจสอบสิทธิ์ผู้ดูแล…</div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>(async function(){var g=document.getElementById("yhGate"),m=document.getElementById("yhGateMsg");
+var P=null;try{if(window.parent!==window&&window.parent.YH_ADMIN===true)P=window.parent}catch(e){}
+if(P){g.remove();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.yhback");if(a){e.preventDefault();P.YH_TOOL_CLOSE()}});return}
 function deny(){m.innerHTML='<div style="font-size:40px">🔒</div><b>เครื่องมือนี้สำหรับผู้ดูแลเท่านั้น</b><br><span style="color:#bbb">กรุณาเข้าสู่ระบบหลังบ้านก่อน</span><br><a href="../../#admin-tools" style="display:inline-block;margin-top:14px;background:#c8102e;color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:700">เข้าสู่ระบบหลังบ้าน</a>'}
 try{var sb=supabase.createClient("https://zhzckrjacvlgfrwdwqvs.supabase.co","sb_publishable_EUcJNxCygdzWcMi8_ASROg_6yO4LX5E",{auth:{persistSession:true,autoRefreshToken:true,storageKey:"yh_auth"}});
 var r=await sb.auth.getSession(),s=r&&r.data&&r.data.session;
