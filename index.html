@@ -452,6 +452,8 @@ body.pvmode{padding-bottom:64px}body.pvmode .fab{bottom:80px}
 .rvsr{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;padding:10px;border:1px solid var(--bd);border-radius:12px;margin:6px 0}.rvsr select{width:auto;margin:0}
 .rvp{display:flex;flex-direction:column;font-size:12px;color:var(--mut);margin:0}.rvp input{width:76px;margin:2px 0 0}
 .rvt{font-size:13px;color:var(--mut);padding-bottom:10px}.rvt b{color:var(--seal)}
+.ig.ig1{grid-template-columns:1fr}.iex.bimg{padding:0;overflow:hidden;background:none}.iex.bimg img{display:block;width:100%;max-height:360px;object-fit:cover;border-radius:18px}
+.bnrow{display:flex;gap:10px;align-items:center}.bnsw{width:44px;height:30px;border-radius:8px;flex-shrink:0;background-size:cover;background-position:center}
 .crsw{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.crsw button{width:34px;height:34px;border-radius:9px;border:2px solid transparent;cursor:pointer;padding:0}.crsw button.on{outline:3px solid var(--seal);outline-offset:1px}
 .crex{border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;padding:8px 10px;margin:8px 0}.crex input,.crex textarea{margin:4px 0}.crrow{margin:8px 0;padding:12px 14px}.crcalc{font-size:13px;background:rgba(163,38,38,.06);border-radius:8px;padding:8px 10px;margin-top:8px}
 details.crd{margin-top:12px}details.crd>summary{cursor:pointer;font-weight:700}
@@ -502,25 +504,21 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <section class="scr on" id="s-home">
   <header class="sh"><div class="bw" role="link" tabindex="0" aria-label="กลับหน้าหลัก YUEHUA" title="กลับหน้าหลัก" onclick="goHome()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goHome()}"><div class="logo sm" role="img" aria-label="โลโก้ YUEHUA 悦华"></div><div class="brand">YUEHUA <span>悦华中文</span><small>เรียนจีนมันกว่าที่คิด</small></div></div>
     <div class="hact"><button class="btn alt sm hib" onclick="tg()" aria-label="สลับโหมดสว่าง/มืด" title="โหมดสว่าง/มืด"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button><button class="btn alt sm hib cartb" onclick="openCart()" aria-label="ตะกร้าสินค้า" title="ตะกร้า"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg><span class="cartn" style="display:none"></span></button><button class="btn alt sm" onclick="go('s-login')">เข้าสู่ระบบ</button><button class="btn sm" onclick="openEnroll('hsk1')">สมัครเรียน</button></div></header>
-  <section class="ban"><div class="cs" id="bcs"><div class="inst sl s1"><div class="ig"><div><div class="eb" style="color:#f6d7a8">PROMOTION</div><h2>จ่ายก่อนแค่ 70%<br>เริ่มเรียนได้เลย</h2>
-    <p>อีก 30% ค่อยจ่ายเมื่อเรียนครบ 1 เดือน ใช้ได้กับคอร์สออนไลน์ทั้งวิดีโอและเรียนสด</p><div class="sm2">*ไม่รวมค่าหนังสือ (ค่าหนังสือชำระพร้อมงวดแรก)</div>
-    <div class="row"><button class="btn gold" id="ibtn" onclick="openEnroll(EXK,1)">สมัครแบบผ่อน 70/30</button><button class="btn ghost" onclick="jump('courses')">ดูคอร์สทั้งหมด</button></div>
-    <details class="terms"><summary>ดูเงื่อนไขโปรโมชั่น 70/30</summary><div id="tr1"></div></details></div>
-    <div class="iex" id="iex"></div></div></div><div class="inst sl s3"><div class="ig"><div><div class="eb" style="color:#f6d7a8">FREE TRIAL</div><h2>ลองเรียนก่อน<br>ไม่ต้องจ่ายอะไร</h2><p>ทดลองเรียน 1 คลาสกับครูตัวจริง</p><ul class="cks"><li>ห้องเล็ก ไม่เกิน 10 คน</li><li>เลือกได้ทุกคอร์ส</li><li>จองง่ายผ่านเว็บไซต์</li></ul><div class="row"><button class="btn gold" onclick="openTrial()">ทดลองเรียนฟรี</button></div></div><div class="iex" id="s3f"></div></div></div><div class="inst sl s4"><div class="ig"><div><div class="eb" style="color:#f6d7a8">LIVE CLASS</div><h2>เรียนสดรายชั่วโมง<br>เลือกเวลาเองได้</h2><p>จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง</p><ul class="cks"><li>เรียนกลุ่มหรือตัวต่อตัว</li><li>เวลาเดิมทุกสัปดาห์ ครั้งละ 1 ชม.</li><li>เรียนที่ห้องเรียนหรือออนไลน์</li></ul><div class="row"><button class="btn gold" onclick="openHour('group')">เลือกวันและเวลา</button></div></div><div class="iex" id="s4f"></div></div></div></div>
+  <section class="ban"><div class="cs" id="bcs"></div>
     <button class="cn cp" onclick="slideNext(-1)" aria-label="ก่อนหน้า">‹</button><button class="cn cx" onclick="slideNext(1)" aria-label="ถัดไป">›</button>
     <div class="dots" id="dots"></div></section>
   <section class="hero"><div class="hg"><div><div class="eb">YUEHUA 悦华中文</div><h1>เรียนจีน<br><span>มันกว่าที่คิด</span></h1>
     <p class="mut" style="font-size:17px;max-width:560px">เรียนภาษาจีนอย่างเป็นระบบ ตั้งแต่พินอินถึง HSK พร้อมวิดีโอ แบบฝึกหัด และจองเวลาเรียนสดในที่เดียว</p>
 </div>
     <div class="card hc"><div class="hh"><div class="logo lg" role="img" aria-label="โลโก้ YUEHUA 悦华"></div><div><div class="eb">START HERE</div><h3 style="margin:6px 0 0">เริ่มจากศูนย์ก็เรียนได้</h3></div></div>
-    <div class="qag"><button class="qa qp" onclick="openTrial()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8s2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span class="qt"><b>ทดลองเรียนฟรี</b><small>1 คลาส 1 ชม.</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openHour('group')"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><span class="qt"><b>จองเรียนสด</b><small>เลือกเวลาเอง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openDict()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="qt"><b>พจนานุกรม</b><small>ค้นคำฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openPubGame()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59c-.01.05-.02.1-.02.15C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.68-7.26-.01-.05-.01-.1-.02-.15A4 4 0 0 0 17.32 5z"/></svg></span><span class="qt"><b>เกมฝึกจีน</b><small>เล่นฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openShop()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="qt"><b>ร้านหนังสือ</b><small>PDF และเล่มจริง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button></div></div></div></section>
+    <div class="qag"><button class="qa qp" onclick="openTrial()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8s2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span class="qt"><b>ทดลองเรียนฟรี</b><small id="qtrh">1 คลาส 1 ชม.</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openHour('group')"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><span class="qt"><b>จองเรียนสด</b><small>เลือกเวลาเอง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openDict()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="qt"><b>พจนานุกรม</b><small>ค้นคำฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openPubGame()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59c-.01.05-.02.1-.02.15C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.68-7.26-.01-.05-.01-.1-.02-.15A4 4 0 0 0 17.32 5z"/></svg></span><span class="qt"><b>เกมฝึกจีน</b><small>เล่นฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openShop()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="qt"><b>ร้านหนังสือ</b><small>PDF และเล่มจริง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button></div></div></div></section>
   <section class="sec" id="courses"><div class="eb">COURSES</div><h2>เลือกคอร์สที่เหมาะกับคุณ</h2><div class="g" id="cl"></div>
     </section>
   <section class="sec" id="hourly"><div class="eb">LIVE CLASS</div><h2>เรียนสดรายชั่วโมง</h2>
     <p class="mut" style="margin:-8px 0 16px">เลือกวันและเวลาเอง จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง</p>
     <div class="g2">
-      <div class="card cc"><div class="ct gold"><span class="tg">สูงสุด 10 คน/ห้อง</span><h3>เรียนกลุ่ม</h3></div><div class="cb"><div class="pr">150 บาท/ชม.</div><ul class="ul"><li>ครั้งละ 1 ชม. เวลาเดิมทุกสัปดาห์</li><li>เรียนพร้อมเพื่อนในห้อง</li></ul><button class="btn" style="margin-top:12px" onclick="openHour('group')">เลือกวันและเวลา</button></div></div>
-      <div class="card cc"><div class="ct"><span class="tg">ตัวต่อตัว</span><h3>เรียนเดี่ยว</h3></div><div class="cb"><div class="pr">200 บาท/ชม.</div><ul class="ul"><li>ครั้งละ 1 ชม. เวลาเดิมทุกสัปดาห์</li><li>ครู 1 คน เรียนกับคุณคนเดียว</li></ul><button class="btn" style="margin-top:12px" onclick="openHour('single')">เลือกวันและเวลา</button></div></div>
+      <div class="card cc"><div class="ct gold"><span class="tg">สูงสุด 10 คน/ห้อง</span><h3>เรียนกลุ่ม</h3></div><div class="cb"><div class="pr" id="hrpg">150 บาท/ชม.</div><ul class="ul"><li>ครั้งละ 1 ชม. เวลาเดิมทุกสัปดาห์</li><li>เรียนพร้อมเพื่อนในห้อง</li></ul><button class="btn" style="margin-top:12px" onclick="openHour('group')">เลือกวันและเวลา</button></div></div>
+      <div class="card cc"><div class="ct"><span class="tg">ตัวต่อตัว</span><h3>เรียนเดี่ยว</h3></div><div class="cb"><div class="pr" id="hrps">200 บาท/ชม.</div><ul class="ul"><li>ครั้งละ 1 ชม. เวลาเดิมทุกสัปดาห์</li><li>ครู 1 คน เรียนกับคุณคนเดียว</li></ul><button class="btn" style="margin-top:12px" onclick="openHour('single')">เลือกวันและเวลา</button></div></div>
     </div>
     <div class="card" style="margin-top:16px"><b>กติกาการเรียนสด</b><div id="hrul"></div></div>
   </section>
@@ -599,7 +597,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b><button class="btn sm" onclick="adminPreview()" title="ดูหน้าเรียนแบบที่นักเรียนเห็น เห็นทุกคอร์ส ไม่บันทึกอะไร">มุมมองนักเรียน</button></div>
-  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
+  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
   <div class="pane" id="a-ov"><div id="ovw"></div></div>
 <div class="pane" id="a-fin">
   <div class="row" style="margin:10px 0;align-items:center"><label for="fmsel" style="margin:0">เดือน</label><select id="fmsel" style="width:auto;margin:0" onchange="FNM=this.value;renderFin()"></select></div>
@@ -688,6 +686,27 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <p class="mut" style="font-size:13px;margin:12px 0 4px">หน้าเว็บเรียงการ์ดคอร์สและสไลด์ตามลำดับนี้ · กด ↑ ↓ เพื่อย้าย</p>
     <div id="crl"></div>
   </div>
+  <div class="pane" id="a-ban">
+    <div class="card" style="margin-top:10px"><b>ค่าที่ใช้ทั้งเว็บ</b><div class="mut" style="font-size:13px">เปลี่ยนตรงนี้แล้ว ตัวเลขในสไลด์ การ์ดหน้าแรก และยอดตอนสมัครเปลี่ยนตามทันที</div>
+      <div class="vg2"><div><label for="cfgg">เรียนสดรายชั่วโมง กลุ่ม (บาท/ชม.)</label><input id="cfgg" type="number" min="1" inputmode="numeric"></div><div><label for="cfgs">เรียนสดรายชั่วโมง เดี่ยว (บาท/ชม.)</label><input id="cfgs" type="number" min="1" inputmode="numeric"></div></div>
+      <label for="cfgt">ทดลองเรียนฟรี (เวลาต่อ 1 คลาส)</label><select id="cfgt"><option value="0.5">30 นาที</option><option value="1">1 ชั่วโมง</option><option value="1.5">1.5 ชั่วโมง</option><option value="2">2 ชั่วโมง</option></select>
+      <div class="row"><button class="btn sm" id="cfgsv" onclick="saveCfg()">บันทึกค่า</button></div></div>
+    <div class="card" id="bnf" style="display:none"><b id="bnh">แก้ไขสไลด์</b><div class="mut" id="bnm" style="font-size:13px"></div>
+      <div id="bntx">
+        <div class="vg2"><div><label for="bneb">หัวเล็กด้านบน</label><input id="bneb" maxlength="30" placeholder="เช่น PROMOTION"></div><div><label>สีพื้นสไลด์</label><div class="crsw" id="bnsc"></div></div></div>
+        <label for="bnh1">หัวข้อบรรทัด 1</label><input id="bnh1" maxlength="40">
+        <label for="bnh2">หัวข้อบรรทัด 2</label><input id="bnh2" maxlength="40">
+        <label for="bnp">คำอธิบาย</label><textarea id="bnp" rows="2" maxlength="200"></textarea>
+        <label for="bnno">ข้อความเล็กใต้คำอธิบาย (ไม่ใส่ก็ได้)</label><input id="bnno" maxlength="100">
+        <label>จุดเด่น (ไม่ใส่ก็ได้)</label><input id="bnb0" maxlength="50"><input id="bnb1" maxlength="50"><input id="bnb2" maxlength="50">
+        <div class="vg2"><div><label for="bnbt">ข้อความบนปุ่ม</label><input id="bnbt" maxlength="40"></div><div id="bnb2w"><label for="bnbt2">ปุ่มที่ 2 (ดูคอร์สทั้งหมด · เว้นว่าง = ไม่แสดง)</label><input id="bnbt2" maxlength="40"></div><div id="bngow"><label for="bngo">กดปุ่มแล้วไปที่</label><select id="bngo"></select></div></div>
+      </div>
+      <label>รูปภาพ (ไม่ใส่ก็ได้ · ถ้าใส่ รูปจะแทนกล่องสรุปด้านขวา)</label><div class="row" style="margin:0;align-items:center"><span id="bnpv"></span><label class="btn alt sm" style="margin:0">อัปโหลดรูป<input type="file" accept="image/*" style="display:none" onchange="bnPic(this)"></label><button class="btn alt sm" id="bnpx" onclick="BNIMG='';bnPrev()" style="display:none">ไม่ใช้รูป</button></div>
+      <label class="chk" style="margin-top:10px" id="bnonw"><input type="checkbox" id="bnon" checked> แสดงบนหน้าเว็บ</label>
+      <div class="row"><button class="btn" id="bnsv" onclick="saveBan()">บันทึกสไลด์</button><button class="btn alt" onclick="cancelBan()">ยกเลิก</button></div></div>
+    <div class="row" style="margin:12px 0 4px;align-items:center;justify-content:space-between"><span class="mut" style="font-size:13px">ลำดับสไลด์บนหน้าแรก · กด ↑ ↓ เพื่อย้าย</span><button class="btn sm" onclick="addBan()">+ เพิ่มสไลด์โปรใหม่</button></div>
+    <div id="bnl"></div>
+  </div>
   <div class="pane" id="a-rv">
     <div class="card" style="margin-top:10px"><b id="rvh">เพิ่มรีวิว</b><div class="mut" style="font-size:13px">พี่เขียนรีวิวเองจากที่นักเรียนส่งมาทาง LINE · ต้องมีชื่อเล่น และข้อความหรือผลสอบอย่างน้อย 1 อย่าง</div>
       <label for="rvn">ชื่อเล่น (ระบบเติมคำว่า “น้อง” ให้เอง)</label><input id="rvn" maxlength="40" placeholder="เช่น หยก">
@@ -739,7 +758,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label for="sdu">ใช้สำหรับ</label><select id="sdu" onchange="shOpts()"><option value="hr">เรียนสดรายชั่วโมง (คิดตามชั่วโมงจริง)</option><option value="lc">คอร์สเรียนสด</option></select>
       <label for="sd">วัน (ซ้ำทุกสัปดาห์)</label><select id="sd"></select>
       <label for="sh1">เวลา (กำหนดเองได้)</label><div class="row" style="margin:0;align-items:center;flex-wrap:nowrap"><input type="time" id="sh1" step="300" value="09:00" oninput="shOpts()" style="flex:1"><span>ถึง</span><input type="time" id="sh2" step="300" value="10:00" oninput="shOpts()" style="flex:1"></div><div class="mut" id="shd" style="font-size:13px;margin-top:4px"></div>
-      <label for="sty">ประเภท</label><select id="sty" onchange="$('scp').disabled=this.value==='single'"><option value="group">กลุ่ม (150 บาท/ชม.)</option><option value="single">เดี่ยว (200 บาท/ชม.)</option></select>
+      <label for="sty">ประเภท</label><select id="sty" onchange="$('scp').disabled=this.value==='single'"><option value="group" id="styg">กลุ่ม (150 บาท/ชม.)</option><option value="single" id="stys">เดี่ยว (200 บาท/ชม.)</option></select>
       <label for="scp">จำนวนที่นั่ง (สูงสุด 10)</label><input type="number" id="scp" min="1" max="10" value="10">
       <label for="stp">หัวข้อ</label><input id="stp" placeholder="เช่น HSK1 บทที่ 3">
       <div class="row"><button class="btn" onclick="addSlot()">เพิ่มช่วงเวลา</button></div></div>
@@ -762,7 +781,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   <div class="pane" id="a-tr">
     <div class="card" style="margin-top:10px"><b>เพิ่มรอบทดลองเรียน</b>
       <div class="vg2"><div><label for="tsd">วันที่และเวลาเริ่ม</label><input type="datetime-local" id="tsd"></div>
-      <div><label for="tsu">ระยะเวลา</label><select id="tsu"><option value="1">1 ชั่วโมง</option><option value="2">2 ชั่วโมง</option></select></div></div>
+      <div><label for="tsu">ระยะเวลา</label><select id="tsu"><option value="0.5">30 นาที</option><option value="1">1 ชั่วโมง</option><option value="1.5">1.5 ชั่วโมง</option><option value="2">2 ชั่วโมง</option></select></div></div>
       <div class="vg2"><div><label for="tsc">คอร์ส</label><select id="tsc"></select></div>
       <div><label for="tsn">จำนวนที่นั่ง</label><input type="number" id="tsn" min="1" max="10" value="3"></div></div>
       <label for="tso">หมายเหตุ (ไม่บังคับ)</label><input id="tso" placeholder="เช่น ออนไลน์ Google Meet หรือ เรียนที่สถาบัน">
@@ -1012,21 +1031,54 @@ const REV=[["HSK1","ครูคะ หนูสอบ HSK1 ผ่านแล�
 const CT=[["Instagram","https://www.instagram.com/",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>'],["TikTok","https://www.tiktok.com/",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.4 2 4 4.5 4.2"/></svg>'],["LINE","https://line.me/ti/p/4ssGEo74A7",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4.4 0-8 2.8-8 6.3 0 3 2.6 5.5 6.2 6.1l-.4 2 3.6-2.3c3.4-.5 6.6-2.7 6.6-5.8C20 6.8 16.4 4 12 4z"/></svg>']];
 let EXK="hsk1";
 function showEx(k){
-  const XL=CV().filter(x=>C[x].ins&&!C[x].pk);if(!XL.includes(k))k=XL[0];if(!k){$("iex").innerHTML="";return}
+  const XL=CV().filter(x=>C[x].ins&&!C[x].pk);if(!XL.includes(k))k=XL[0];if(!k){if($("iex"))$("iex").innerHTML="";return}
   EXK=k;const p=C[k].p,f=Math.round(p*.7);
-  $("iex").innerHTML=`<div class="eb" style="color:#f6d7a8">ตัวอย่างยอดชำระแต่ละคอร์ส</div><div class="chips">${XL.map(x=>`<button class="${x===k?"on":""}" onclick="showEx('${x}')">${esc(C[x].n)}</button>`).join("")}</div><div class="r"><span>ราคาคอร์ส</span><b>${B(p)}</b></div><div class="r"><span>จ่ายวันนี้ (70%)</span><b>${B(f)}</b></div><div class="r"><span>จ่ายเมื่อครบ 1 เดือน (30%)</span><b>${B(p-f)}</b></div>`;
-  $("ibtn").textContent="สมัคร"+cnm(C[k].n)+" แบบผ่อน 70/30";
+  if($("iex"))$("iex").innerHTML=`<div class="eb" style="color:#f6d7a8">ตัวอย่างยอดชำระแต่ละคอร์ส</div><div class="chips">${XL.map(x=>`<button class="${x===k?"on":""}" onclick="showEx('${x}')">${esc(C[x].n)}</button>`).join("")}</div><div class="r"><span>ราคาคอร์ส</span><b>${B(p)}</b></div><div class="r"><span>จ่ายวันนี้ (70%)</span><b>${B(f)}</b></div><div class="r"><span>จ่ายเมื่อครบ 1 เดือน (30%)</span><b>${B(p-f)}</b></div>`;
+  if($("ibtn"))$("ibtn").textContent=banGet("promo").btn||("สมัคร"+cnm(C[k].n)+" แบบผ่อน 70/30");
 }
 const lv=(k,t)=>C[k].pk?C[k].pk.reduce((a,x)=>a+lv(x,t),0):(+C[k].hr||0)*lrate(k,t);
 const fx=(t,rows)=>`<div class="eb" style="color:#f6d7a8">${t}</div>`+rows.map(r=>`<div class="r"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
-function ban(){
-  $("s3f").innerHTML=fx("ทดลองเรียนฟรี",[["ราคา","ฟรี"],["ระยะเวลา","1 คลาส (1 ชม.)"],["สิทธิ์","คนละ 1 ครั้ง"]]);
-  $("s4f").innerHTML=fx("เรียนสดรายชั่วโมง",[["ห้องกลุ่ม",B(rt("group"))+"/ชม."],["ตัวต่อตัว",B(rt("single"))+"/ชม."],["การชำระเงิน","จ่ายหลังเรียน"]]);
-  document.querySelectorAll("#bcs .csl").forEach(e=>e.remove());
-  CV().filter(k=>C[k].sl).forEach((k,i)=>{const c=C[k],d=document.createElement("div"),sb=(c.sb||[]).filter(x=>String(x).trim());d.className="inst sl csl s"+(c.sc||5);
-    d.innerHTML=`<div class="ig"><div><div class="eb" style="color:#f6d7a8">${esc(c.se||c.n)}</div><h2>${esc(c.s1||c.n)}${c.s2?"<br>"+esc(c.s2):""}</h2>${c.sp?`<p>${esc(c.sp)}</p>`:""}${sb.length?`<ul class="cks">${sb.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}<div class="row"><button class="btn gold" onclick="openEnroll('${k}')">${/^[A-Za-z0-9]/.test(c.n)?"สมัคร "+esc(c.n):"สมัครคอร์ส"+esc(c.n)}</button><button class="btn ghost" onclick="openCourse('${k}')">ดูรายละเอียด</button></div></div><div class="iex">${fx("สรุปคอร์ส"+esc(cnm(c.n)),[["ชั่วโมงเรียน",c.h],["คอร์สวิดีโอ",B(c.p)],["เรียนสดกลุ่ม",B(lv(k,"group"))],["เรียนสดเดี่ยว",B(lv(k,"single"))]])}</div></div>`;
-    if(i===0)$("bcs").querySelector(".s1").after(d);else $("bcs").appendChild(d)});
-  $("dots").innerHTML=[...$("bcs").children].map((_,i)=>`<button class="${i?"":"on"}" aria-label="สไลด์ ${i+1}" onclick="slideTo(${i})"></button>`).join("");
+/* ===== แบนเนอร์ใหญ่หน้าแรก · แก้ได้ในหลังบ้าน (แท็บ แบนเนอร์) ===== */
+let RTS={group:150,single:200},TRH=1;
+const BDEF={
+ promo:{eb:"PROMOTION",h1:"จ่ายก่อนแค่ 70%",h2:"เริ่มเรียนได้เลย",p:"อีก 30% ค่อยจ่ายเมื่อเรียนครบ 1 เดือน ใช้ได้กับคอร์สออนไลน์ทั้งวิดีโอและเรียนสด",note:"*ไม่รวมค่าหนังสือ (ค่าหนังสือชำระพร้อมงวดแรก)",sb:["","",""],btn:"",btn2:"ดูคอร์สทั้งหมด",sc:1},
+ trial:{eb:"FREE TRIAL",h1:"ลองเรียนก่อน",h2:"ไม่ต้องจ่ายอะไร",p:"ทดลองเรียน 1 คลาสกับครูตัวจริง",note:"",sb:["ห้องเล็ก ไม่เกิน 10 คน","เลือกได้ทุกคอร์ส","จองง่ายผ่านเว็บไซต์"],btn:"ทดลองเรียนฟรี",btn2:"",sc:3},
+ live:{eb:"LIVE CLASS",h1:"เรียนสดรายชั่วโมง",h2:"เลือกเวลาเองได้",p:"จ่ายหลังเรียนตามชั่วโมงที่เรียนจริง",note:"",sb:["เรียนกลุ่มหรือตัวต่อตัว","เวลาเดิมทุกสัปดาห์ ครั้งละ 1 ชม.","เรียนที่ห้องเรียนหรือออนไลน์"],btn:"เลือกวันและเวลา",btn2:"",sc:4}};
+const BNAME={promo:"โปรผ่อน 70/30",trial:"ทดลองเรียนฟรี",live:"เรียนสดรายชั่วโมง"};
+let BAN=[{id:"promo"},{id:"c:pinyin"},{id:"trial"},{id:"live"},{id:"c:hsk1"},{id:"c:hsk2"},{id:"c:hsk3"},{id:"c:hsk4"}];
+const bnType=id=>id.startsWith("c:")?"crs":BDEF[id]?"sys":"cus";
+function banList(){const L=[],seen=new Set();
+  BAN.forEach(e=>{if(!e||!e.id||seen.has(e.id))return;if(bnType(e.id)==="crs"&&!C[e.id.slice(2)])return;seen.add(e.id);L.push(e)});
+  ["promo","trial","live"].forEach(id=>{if(!seen.has(id)){seen.add(id);L.push({id})}});
+  CORD.forEach(k=>{if(!seen.has("c:"+k)){seen.add("c:"+k);L.push({id:"c:"+k})}});return L}
+const banGet=id=>{const e=banList().find(x=>x.id===id)||{id};return bnType(id)==="sys"?Object.assign({},BDEF[id],e):e};
+const banVis=e=>bnType(e.id)==="crs"?(C[e.id.slice(2)].on!==false&&!!C[e.id.slice(2)].sl):e.on!==false;
+const BGO=[["trial","ทดลองเรียนฟรี"],["live","จองเรียนสดรายชั่วโมง"],["courses","ดูคอร์สทั้งหมด"],["shop","ร้านหนังสือ"],["line","แชต LINE"]];
+const goJs=g=>{g=String(g||"");if(g==="trial")return "openTrial()";if(g==="live")return "openHour('group')";if(g==="shop")return "openShop()";if(g==="line")return "bnLine()";
+  const m=g.match(/^([ce]):([a-z0-9]+)$/);if(m&&C[m[2]])return m[1]==="c"?`openCourse('${m[2]}')`:`openEnroll('${m[2]}')`;return "jump('courses')"};
+function bnLine(){const l=CT.find(c=>c[0]==="LINE");if(l)window.open(l[1],"_blank","noopener")}
+const crsBox=k=>{const c=C[k];return `<div class="iex">${fx("สรุปคอร์ส"+esc(cnm(c.n)),[["ชั่วโมงเรียน",c.h],["คอร์สวิดีโอ",B(c.p)],["เรียนสดกลุ่ม",B(lv(k,"group"))],["เรียนสดเดี่ยว",B(lv(k,"single"))]])}</div>`};
+function banHTML(e){const t=bnType(e.id);let d,btns,box="",extra="";
+  if(t==="crs"){const k=e.id.slice(2),c=C[k];d={eb:c.se||c.n,h1:c.s1||c.n,h2:c.s2,p:c.sp,note:"",sb:c.sb,sc:c.sc||5,img:e.img};
+    btns=`<button class="btn gold" onclick="openEnroll('${k}')">${/^[A-Za-z0-9]/.test(c.n)?"สมัคร "+esc(c.n):"สมัครคอร์ส"+esc(c.n)}</button><button class="btn ghost" onclick="openCourse('${k}')">ดูรายละเอียด</button>`;box=crsBox(k)}
+  else{d=t==="sys"?Object.assign({},BDEF[e.id],e):e;
+    if(e.id==="promo"){btns=`<button class="btn gold" id="ibtn" onclick="openEnroll(EXK,1)">${esc(d.btn||"สมัครแบบผ่อน 70/30")}</button>${d.btn2?`<button class="btn ghost" onclick="jump('courses')">${esc(d.btn2)}</button>`:""}`;
+      extra='<details class="terms"><summary>ดูเงื่อนไขโปรโมชั่น 70/30</summary><div id="tr1"></div></details>';box='<div class="iex" id="iex"></div>'}
+    else if(e.id==="trial"){btns=`<button class="btn gold" onclick="openTrial()">${esc(d.btn||"ทดลองเรียนฟรี")}</button>`;box=`<div class="iex">${fx("ทดลองเรียนฟรี",[["ราคา","ฟรี"],["ระยะเวลา","1 คลาส ("+hrs(TRH)+" ชม.)"],["สิทธิ์","คนละ 1 ครั้ง"]])}</div>`}
+    else if(e.id==="live"){btns=`<button class="btn gold" onclick="openHour('group')">${esc(d.btn||"เลือกวันและเวลา")}</button>`;box=`<div class="iex">${fx("เรียนสดรายชั่วโมง",[["ห้องกลุ่ม",B(rt("group"))+"/ชม."],["ตัวต่อตัว",B(rt("single"))+"/ชม."],["การชำระเงิน","จ่ายหลังเรียน"]])}</div>`}
+    else{btns=d.btn?`<button class="btn gold" onclick="${goJs(d.go)}">${esc(d.btn)}</button>`:"";const m=String(d.go||"").match(/^[ce]:([a-z0-9]+)$/);if(m&&C[m[1]])box=crsBox(m[1])}}
+  if(d.img)box=`<div class="iex bimg"><img src="${esc(d.img)}" alt="${esc(d.h1||"")}" loading="lazy"></div>`;
+  const sb=(d.sb||[]).filter(x=>String(x||"").trim());
+  return `<div class="inst sl s${d.sc||1}"><div class="ig${box?"":" ig1"}"><div><div class="eb" style="color:#f6d7a8">${esc(d.eb||"")}</div><h2>${esc(d.h1||"")}${d.h2?"<br>"+esc(d.h2):""}</h2>${d.p?`<p>${esc(d.p)}</p>`:""}${d.note?`<div class="sm2">${esc(d.note)}</div>`:""}${sb.length?`<ul class="cks">${sb.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}${btns?`<div class="row">${btns}</div>`:""}${extra}</div>${box}</div></div>`}
+function applyCfg(){const g=B(rt("group"))+"/ชม.",sg=B(rt("single"))+"/ชม.";
+  if($("hrpg"))$("hrpg").textContent=g;if($("hrps"))$("hrps").textContent=sg;if($("styg"))$("styg").textContent="กลุ่ม ("+g+")";if($("stys"))$("stys").textContent="เดี่ยว ("+sg+")";
+  if($("qtrh"))$("qtrh").textContent="1 คลาส "+hrs(TRH)+" ชม.";if($("hrul"))$("hrul").innerHTML=rulesH();
+  const u=$("tsu");if(u&&!$("tsd").value)u.value=String(TRH)}
+function ban(){const box=$("bcs");applyCfg();
+  const h=banList().filter(banVis).map(banHTML).join("");
+  if(box._h!==h){box._h=h;box.innerHTML=h;if($("tr1"))$("tr1").innerHTML=TERMS;
+    $("dots").innerHTML=[...box.children].map((_,i)=>`<button class="${i?"":"on"}" aria-label="สไลด์ ${i+1}" onclick="slideTo(${i})"></button>`).join("")}
+  showEx(EXK);
 }
 const slW=()=>{const c=$("bcs");return c.clientWidth+14};
 function slideTo(i){$("bcs").scrollTo({left:i*slW(),behavior:"smooth"})}
@@ -1040,17 +1092,17 @@ function renderHome(){
   renderAbout();renderStu();
 $("ctc").innerHTML=CT.map(c=>`<a class="ci" href="${c[1]}" target="_blank" rel="noopener"><span class="cic">${c[2]}</span><span>${c[0]}</span></a>`).join("");
   showEx(EXK);ban();
-  $("tr1").innerHTML=TERMS;$("idexImg").src=IDEX;$("tr2").innerHTML=TERMS;
-  $("hrul").innerHTML=RULES;
+  if($("tr1"))$("tr1").innerHTML=TERMS;$("idexImg").src=IDEX;$("tr2").innerHTML=TERMS;
+  $("hrul").innerHTML=rulesH();
   renderCl();fillCs();
 }
 let CK="hsk1",FM="v",HT="group",BK=[],SID=4,DW=null,LC=null,AUTH=false,GF=0;
 const at=(d,h)=>{const x=new Date();x.setDate(x.getDate()+d);x.setHours(Math.floor(h),(h%1)*60,0,0);return +x};
 const SL=[];
-const rt=t=>t==="single"?200:150,bkh=()=>BK.reduce((a,id)=>a+(SL.find(x=>x.id===id).du||2),0),cartTotal=()=>BK.reduce((a,id)=>{const x=SL.find(y=>y.id===id);return a+rt(x.ty)*4*(x.du||2)},0);
+const rt=t=>t==="single"?RTS.single:RTS.group,bkh=()=>BK.reduce((a,id)=>a+(SL.find(x=>x.id===id).du||2),0),cartTotal=()=>BK.reduce((a,id)=>{const x=SL.find(y=>y.id===id);return a+rt(x.ty)*4*(x.du||2)},0);
 const RULES_LC='<ul class="ul"><li>จองครั้งเดียว เรียนเวลาเดิมทุกสัปดาห์</li><li>เรียนได้สูงสุด 4 ชม./สัปดาห์ (2 วัน)</li><li>ไม่เกิน 8 ครั้ง/เดือน รวม 16 ชม.</li><li>1 ห้องรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
 /* กติกาเรียนสดรายชั่วโมง */
-const RULES='<div class="rul3"><div><b>เลือกเอง</b><span>วันและช่วงเวลา</span></div><div><b>150/200</b><span>บาท/ชม. กลุ่ม/เดี่ยว</span></div><div><b>ตามจริง</b><span>คิดตามความยาวช่วง</span></div></div><ul class="ul"><li>จองครั้งเดียว เรียนวันและเวลาเดิมทุกสัปดาห์</li><li>ค่าเรียนคิดตามความยาวจริงของช่วงเวลา เช่น 1.5 ชม. = 1.5 × ราคาต่อชั่วโมง</li><li>ห้องกลุ่มรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
+const rulesH=()=>'<div class="rul3"><div><b>เลือกเอง</b><span>วันและช่วงเวลา</span></div><div><b>'+RTS.group+'/'+RTS.single+'</b><span>บาท/ชม. กลุ่ม/เดี่ยว</span></div><div><b>ตามจริง</b><span>คิดตามความยาวช่วง</span></div></div><ul class="ul"><li>จองครั้งเดียว เรียนวันและเวลาเดิมทุกสัปดาห์</li><li>ค่าเรียนคิดตามความยาวจริงของช่วงเวลา เช่น 1.5 ชม. = 1.5 × ราคาต่อชั่วโมง</li><li>ห้องกลุ่มรับสูงสุด 10 คน</li><li>ลาได้ไม่เกิน 4 ครั้ง ชดเชยในวันที่ตกลงกัน</li></ul>';
 const p2=n=>String(n).padStart(2,"0"),hm=t=>{const d=new Date(t);return p2(d.getHours())+":"+p2(d.getMinutes())},DN=["จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์","อาทิตย์"],dw=t=>(new Date(t).getDay()+6)%7,fhm=x=>{const m=Math.round(x*60);return p2(Math.floor(m/60))+":"+p2(m%60)},fh=(h,du=2)=>fhm(h)+"–"+fhm(h+du)+" น.";
 const KD=x=>x.kd||((x.du||2)===1?"hr":"lc");
 const SLEFT=x=>x.full?0:Math.max(0,x.cap-x.bk.length-(x.tk||0));
@@ -1067,7 +1119,7 @@ function drawCourse(){
   ${bookList(k).length?`<div class="card"><div class="eb">ฟรี! ไฟล์หนังสือเรียน PDF</div><b>หนังสือที่ใช้เรียนในคอร์สนี้</b>${shelf(k,"pre")}<div class="mut" style="font-size:13px">สมัครเรียนแล้วดาวน์โหลดไฟล์ได้ทันทีในหน้าเรียน · อยากได้เล่มจริง เพิ่ม 300 บาท (เลือกตอนสมัคร)</div></div>`:c.bk?`<div class="card"><b>หนังสือ</b><div>${esc(c.bk)}</div><div class="mut">รับหนังสือเล่มเพิ่ม 300 บาท</div></div>`:""}
   <div class="card"><b>ชั่วโมงเรียน</b> ${c.h}${c.lv?`<div class="mut">พื้นฐาน: ${esc(c.lv)}</div>`:""}</div>
   ${(c.ex||[]).filter(x=>x.t||x.b).map(x=>`<div class="card">${x.t?`<b>${esc(x.t)}</b>`:""}${txtH(x.b)}</div>`).join("")}
-  <div class="card" style="border-color:var(--seal)"><b>ทดลองเรียนฟรี 1 คลาส (1 ชม.)</b><div class="mut">ลองเรียนจริงกับครูก่อนตัดสินใจ</div><button class="btn sm" style="margin-top:8px" onclick="openTrial(CK)">ทดลองเรียนฟรี</button></div>
+  <div class="card" style="border-color:var(--seal)"><b>ทดลองเรียนฟรี 1 คลาส (${hrs(TRH)} ชม.)</b><div class="mut">ลองเรียนจริงกับครูก่อนตัดสินใจ</div><button class="btn sm" style="margin-top:8px" onclick="openTrial(CK)">ทดลองเรียนฟรี</button></div>
   <h3 style="margin-top:18px">อยากเรียนแบบไหน</h3>
   <div class="seg"><button class="${FM==="v"?"on":""}" onclick="FM='v';drawCourse()">วิดีโอ</button><button class="${FM==="l"?"on":""}" onclick="FM='l';drawCourse()">เรียนสด</button></div>
   ${FM==="v"?`<div class="card"><b>เรียนจากวิดีโอ</b><ul class="ul"><li>เรียนตามเวลาของตัวเอง</li><li>ราคาคอร์ส ${B(c.p)}</li>${c.ins?"<li>ผ่อน 70/30 ได้ (ไม่รวมค่าหนังสือ)</li>":""}</ul></div>
@@ -1090,7 +1142,7 @@ const slotcard=s=>{const left=SLEFT(s),sel=BK.includes(s.id);
   return `<div class="card"><b>${fh(s.h,s.du)}</b> <span class="tag">ทุกสัปดาห์</span>${LC?"":` <span class="tag">${hrs(s.du)} ชม.</span>`}<div class="mut">${esc(s.tp)} · ${left?`ที่นั่งเหลือ ${left}/${s.cap}`:"เต็มแล้ว"}${LC?"":" · "+B(rt(s.ty))+"/ชม. · ครั้งละ "+B(Math.round(rt(s.ty)*s.du))}</div><button class="btn sm ${sel?"alt":""}" style="margin-top:8px" ${left?"":"disabled"} onclick="pickSlot(${s.id})">${left?(sel?"ยกเลิก":"จอง"):"เต็ม"}</button></div>`};
 function renderHour(){
   $("hh").textContent=LC?C[LC].n+" · เรียนสด":"เรียนสดรายชั่วโมง";
-  $("hr").innerHTML="<b>กติกาการเรียนสด</b>"+(LC?RULES_LC:RULES);
+  $("hr").innerHTML="<b>กติกาการเรียนสด</b>"+(LC?RULES_LC:rulesH());
   ["group","single"].forEach(t=>$("ht-"+t).classList.toggle("on",HT===t));
   $("ht-group").textContent=LC?"เรียนกลุ่ม":"กลุ่ม "+rt("group")+" บาท/ชม.";$("ht-single").textContent=LC?"เรียนเดี่ยว":"เดี่ยว "+rt("single")+" บาท/ชม.";
   const l=SL.filter(x=>x.ty===HT&&KD(x)===(LC?"lc":"hr"));
@@ -1170,7 +1222,7 @@ function gate(){
 }
 function renderAdmin(){
   if(AT==="a-fin")renderFin();
-  if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();
+  if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();if(AT==="a-ban")renderBanAdmin();
   if(AT==="a-mail")renderMail();else mailBadge();
   if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
   document.querySelectorAll("#atabs .asub button").forEach(b=>b.classList.toggle("on",b.dataset.t===AT));
@@ -1289,7 +1341,7 @@ function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
   document.querySelectorAll("#fec2 .fbr").forEach(row=>{const k=row.dataset.k.slice(1),c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};ebc[k]=c;eb[k]=bcCalc(c,m).cb});
   return {m,pc,eb,ebc}}
 function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;EBC=v.ebc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
-const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
+const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
 const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-crs"};
 function aTab(t){AT=t;renderAdmin();try{scrollTo({top:0})}catch(e){}}
 function agNav(){const g=AGRP[AT]||"ov";AGL[g]=AT;
@@ -1477,7 +1529,7 @@ function renderTr(){
 function tsForm(){const w=$("tsd").value,du=+$("tsu").value,course=$("tsc").value,cap=Math.min(10,Math.max(1,+$("tsn").value||3)),note=$("tso").value.trim();
   if(!w){alert("กรุณาเลือกวันที่และเวลาเริ่ม");return null}const at=new Date(w).getTime();
   if(!(at>Date.now())){alert("กรุณาเลือกวันเวลาที่ยังไม่ผ่านไป");return null}return {at,du,course,cap,note}}
-function tsClear(){$("tsd").value="";$("tso").value=""}
+function tsClear(){$("tsd").value="";$("tso").value="";$("tsu").value=String(TRH)}
 function addTs(){const f=tsForm();if(!f)return;TSES.push(Object.assign({id:Date.now()},f));tsClear();renderTr()}
 function delTs(id){if(TSDEL!==id){TSDEL=id;renderTr();return}TSDEL=null;const i=TSES.findIndex(x=>x.id===id);if(i>=0)TSES.splice(i,1);for(let k=TRIALS.length-1;k>=0;k--)if(TRIALS[k].ses===id)TRIALS.splice(k,1);renderTr()}
 function trDel(id){if(!confirm("ยกเลิกการจองทดลองเรียนนี้?"))return;const i=TRIALS.findIndex(t=>t.id===id);if(i>=0)TRIALS.splice(i,1);renderTr()}
@@ -2299,9 +2351,56 @@ function cancelRv(){RVE=null;$("rvn").dataset.k="";renderRvAdmin()}
 function togRv(i){STU[i].on=STU[i].on===false;renderRvAdmin();renderStu()}
 function delRv(i){if(RVDEL!==i){RVDEL=i;renderRvAdmin();return}RVDEL=null;STU.splice(i,1);if(RVE===i)RVE=null;$("rvn").dataset.k="";renderRvAdmin();renderStu()}
 function mvRv(i,d){const j=i+d;if(j<0||j>=STU.length)return;[STU[i],STU[j]]=[STU[j],STU[i]];if(RVE===i)RVE=j;else if(RVE===j)RVE=i;renderRvAdmin();renderStu()}
+/* ===== แบนเนอร์ (หลังบ้าน) ===== */
+let BNE=null,BNNEW=false,BNIMG=null,BNSC=1,BNDEL=null;
+function picFit(file,mw){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const r=Math.min(1,mw/im.width),c=document.createElement("canvas");c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.85))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+async function bnPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{BNIMG=await picFit(f,1200);bnPrev()}catch(e){note("อ่านรูปไม่ได้",1)}inp.value=""}
+function bnCur(){return BNNEW?{id:BNE,on:true,sc:1,sb:["","",""],go:"trial"}:banGet(BNE)}
+function bnPrev(){const c=bnCur(),u=BNIMG!==null?BNIMG:(c.img||"");$("bnpv").innerHTML=u?`<img src="${esc(u)}" alt="" style="height:56px;border-radius:8px;display:block">`:'<span class="mut" style="font-size:13px">ยังไม่มีรูป</span>';$("bnpx").style.display=u?"":"none"}
+function bnScDraw(){$("bnsc").innerHTML=SCOL.map(([n,t,g])=>`<button type="button" class="${n===BNSC?"on":""}" style="background:linear-gradient(135deg,${g})" title="${t}" aria-label="สี${t}" onclick="BNSC=${n};bnScDraw()"></button>`).join("")}
+function bnTitle(e){const t=bnType(e.id);return t==="crs"?"คอร์ส "+C[e.id.slice(2)].n:t==="sys"?BNAME[e.id]:(e.h1||"สไลด์โปร")}
+function bnFill(){const c=bnCur(),t=bnType(BNE);
+  $("bnf").style.display="";$("bnh").textContent=BNNEW?"เพิ่มสไลด์โปรใหม่":"แก้ไขสไลด์: "+bnTitle(c);
+  $("bntx").style.display=t==="crs"?"none":"";$("bnonw").style.display=t==="crs"?"none":"";
+  $("bnm").innerHTML=t==="crs"?"ข้อความของสไลด์คอร์สแก้ในแท็บ <b>คอร์สเรียน</b> · ตรงนี้ใส่รูปได้":t==="sys"?"กล่องสรุปด้านขวาดึงตัวเลขให้อัตโนมัติ (ถ้าไม่ใส่รูป)":"ถ้าเลือกปุ่มไปที่คอร์ส ระบบจะโชว์กล่องสรุปราคาคอร์สนั้นให้อัตโนมัติ (ถ้าไม่ใส่รูป)";
+  if(t!=="crs"){$("bneb").value=c.eb||"";$("bnh1").value=c.h1||"";$("bnh2").value=c.h2||"";$("bnp").value=c.p||"";$("bnno").value=c.note||"";[0,1,2].forEach(i=>$("bnb"+i).value=(c.sb||[])[i]||"");
+    $("bnbt").value=c.btn||"";$("bnbt").placeholder=BNE==="promo"?"เว้นว่าง = สมัคร [คอร์ส] แบบผ่อน 70/30":"เช่น สมัครเลย";$("bnbt2").value=c.btn2||"";$("bnb2w").style.display=BNE==="promo"?"":"none";
+    $("bngow").style.display=t==="cus"?"":"none";$("bngo").innerHTML=BGO.map(([v,n])=>`<option value="${v}">${n}</option>`).join("")+CV().map(k=>`<option value="c:${k}">ดูคอร์ส ${esc(C[k].n)}</option><option value="e:${k}">สมัครคอร์ส ${esc(C[k].n)}</option>`).join("");$("bngo").value=c.go||"trial";if(!$("bngo").value)$("bngo").value="trial";
+    $("bnon").checked=c.on!==false;BNSC=c.sc||1;bnScDraw()}
+  BNIMG=null;bnPrev()}
+function renderBanAdmin(){const e=$("bnl");if(!e)return;
+  if(document.activeElement!==$("cfgg"))$("cfgg").value=RTS.group;if(document.activeElement!==$("cfgs"))$("cfgs").value=RTS.single;$("cfgt").value=String(TRH);
+  if(!BNE)$("bnf").style.display="none";
+  const L=banList();e.innerHTML=L.map((x,i)=>{const t=bnType(x.id),d=t==="sys"?Object.assign({},BDEF[x.id],x):x,cc=t==="crs"?C[x.id.slice(2)]:null,sc=t==="crs"?cc.sc||5:d.sc||1,g=(SCOL.find(z=>z[0]===sc)||SCOL[0])[2],vis=banVis(x);
+    return `<div class="card crrow"${BNE===x.id?' style="border-color:var(--seal)"':""}><div class="bnrow"><span class="bnsw" style="background:${x.img?`url('${esc(x.img)}') center/cover`:`linear-gradient(135deg,${g})`}"></span><div style="flex:1;min-width:0"><b>${esc(bnTitle(d))}</b> <span class="tag">${t==="crs"?"สไลด์คอร์ส":t==="sys"?"สไลด์หลัก":"สไลด์ที่เพิ่มเอง"}</span>${vis?"":' <span class="tag">ซ่อนอยู่</span>'}${x.img?' <span class="tag">มีรูป</span>':""}
+      <div class="mut" style="font-size:13px">${t==="crs"?esc([cc.s1||cc.n,cc.s2].filter(Boolean).join(" · ")):esc([d.h1,d.h2].filter(Boolean).join(" · "))}</div></div></div>
+      ${BNDEL===x.id?'<div style="color:#c62828;font-size:13px;margin-top:4px">กด “ยืนยันลบ” อีกครั้งเพื่อลบสไลด์นี้</div>':""}
+      <div class="row" style="margin:8px 0 0;gap:6px"><button class="btn alt sm" onclick="mvBan(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button class="btn alt sm" onclick="mvBan(${i},1)" ${i<L.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button><button class="btn alt sm" onclick="editBan('${x.id}')">แก้ไข</button><button class="btn alt sm" onclick="togBan('${x.id}')">${vis?"ซ่อน":"แสดง"}</button>${t==="cus"?`<button class="btn alt sm" onclick="delBan('${x.id}')">${BNDEL===x.id?"ยืนยันลบ":"ลบ"}</button>`:""}</div></div>`}).join("")}
+function editBan(id){BNE=id;BNNEW=false;BNDEL=null;renderBanAdmin();bnFill();$("bnf").scrollIntoView({behavior:"smooth",block:"start"})}
+function addBan(){BNE="p"+Date.now().toString(36);BNNEW=true;BNDEL=null;renderBanAdmin();bnFill();$("bnf").scrollIntoView({behavior:"smooth",block:"start"});$("bnh1").focus()}
+function cancelBan(){BNE=null;BNNEW=false;BNIMG=null;renderBanAdmin()}
+function bnVals(){const c=bnCur(),t=bnType(BNE),e={id:BNE};
+  if(c.img)e.img=c.img;if(BNIMG!==null){if(BNIMG)e.img=BNIMG;else delete e.img}
+  if(t==="crs")return {id:BNE,e};
+  const v={eb:crTxt($("bneb").value,30),h1:crTxt($("bnh1").value,40),h2:crTxt($("bnh2").value,40),p:crTxt($("bnp").value,200),note:crTxt($("bnno").value,100),sb:[0,1,2].map(i=>crTxt($("bnb"+i).value,50)),btn:crTxt($("bnbt").value,40),sc:BNSC,on:$("bnon").checked};
+  if(!v.h1){note("กรุณาใส่หัวข้อบรรทัด 1",1);$("bnh1").focus();return null}
+  if(BNE==="promo")v.btn2=crTxt($("bnbt2").value,40);
+  if(t==="cus"){v.go=$("bngo").value;if(!v.btn){note("กรุณาใส่ข้อความบนปุ่ม",1);$("bnbt").focus();return null}}
+  return {id:BNE,e:Object.assign(e,v)}}
+const banNext=r=>{const L=banList().map(x=>Object.assign({},x)),i=L.findIndex(x=>x.id===r.id);if(i<0)L.push(r.e);else L[i]=r.e;return L};
+function banSet(L){BAN=L;ban();renderBanAdmin()}
+function saveBan(){const r=bnVals();if(!r)return;BNE=null;BNNEW=false;BNIMG=null;banSet(banNext(r));note("บันทึกสไลด์แล้ว")}
+function togBan(id){if(bnType(id)==="crs"){const k=id.slice(2);if(C[k].on===false){note("คอร์สนี้ซ่อนอยู่ เปิดแสดงคอร์สในแท็บ คอร์สเรียน ก่อน",1);return}C[k].sl=!C[k].sl;syncCourses();renderBanAdmin();return}
+  banSet(banList().map(x=>x.id===id?Object.assign({},x,{on:x.on===false}):x))}
+function delBan(id){if(BNDEL!==id){BNDEL=id;renderBanAdmin();return}BNDEL=null;if(BNE===id)BNE=null;banSet(banList().filter(x=>x.id!==id))}
+function mvBan(i,d){const L=banList().slice(),j=i+d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]];banSet(L)}
+function cfgVals(){const g=Math.round(+$("cfgg").value||0),s=Math.round(+$("cfgs").value||0),t=+$("cfgt").value||1;
+  if(g<=0||s<=0){note("กรุณาใส่ราคาเรียนสดรายชั่วโมงให้ครบ",1);return null}return {g,s,t}}
+function cfgApply(v){RTS={group:v.g,single:v.s};TRH=v.t;ban();renderCl();const on=document.querySelector(".scr.on");if(on&&on.id==="s-enroll")calc();renderBanAdmin()}
+function saveCfg(){const v=cfgVals();if(!v)return;cfgApply(v);note("บันทึกค่าแล้ว")}
 /* ===== คอร์สเรียน (หลังบ้าน) ===== */
 let CRE=null,CRT="one",CREX=[],CRSC=5,CRPK=[],CRDEL=null;
-const SCOL=[[5,"แดง","#7a2a2a,#a8403c"],[2,"น้ำตาลเข้ม","#332923,#5d3d32"],[3,"ทอง","#7a5a2b,#a7834d"],[6,"ส้มทอง","#6b4a22,#9a6f35"],[7,"ม่วงเทา","#43363a,#6e555d"],[8,"เขียวหม่น","#2d3b3a,#4d6663"],[4,"เทาเข้ม","#2b2a28,#4a3f38"]];
+const SCOL=[[1,"แดงสด","#8f2623,#b73532"],[5,"แดง","#7a2a2a,#a8403c"],[2,"น้ำตาลเข้ม","#332923,#5d3d32"],[3,"ทอง","#7a5a2b,#a7834d"],[6,"ส้มทอง","#6b4a22,#9a6f35"],[7,"ม่วงเทา","#43363a,#6e555d"],[8,"เขียวหม่น","#2d3b3a,#4d6663"],[4,"เทาเข้ม","#2b2a28,#4a3f38"]];
 const crTxt=(v,ml)=>String(v||"").replace(/[<>"`]/g,"").trim().slice(0,ml||200),crArea=(v,ml)=>String(v||"").replace(/[<>`]/g,"").replace(/\r/g,"").trim().slice(0,ml||800);
 function crFill(){const c=CRE?C[CRE]:Object.assign(CDEF(),{ins:CRT!=="pk"});
   $("crn").value=c.n;$("crt").value=c.t;$("crtag").value=c.tag||"";$("crg").value=c.gold?"1":"0";$("crp").value=c.p||"";$("crhr").value=c.pk?"":(c.hr||"");$("crrg").value=c.rg||"";$("crrs").value=c.rs||"";
@@ -2554,7 +2653,7 @@ async function loadShop(admin){
 async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
   VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort}))}
 async function loadPublic(){
-  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),(window.YH_CRS=loadCourses().catch(e=>console.error(e)))])}catch(e){console.error(e)}
+  try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),(window.YH_CRS=loadCourses().catch(e=>console.error(e))),loadSiteCfg().catch(e=>console.error(e))])}catch(e){console.error(e)}
   const on=document.querySelector(".scr.on");if(!on)return;
   if(on.id==="s-hour")renderHour();if(on.id==="s-trial")drawTrial();if(on.id==="s-course")drawCourse();
   if(on.id==="s-shop")renderShop();if(on.id==="s-cart")renderCart();if(on.id==="s-dict")renderVocab();
@@ -3023,6 +3122,24 @@ window.delCrs=async function(k){if(CRDEL!==k){CRDEL=k;renderCrsAdmin();return}CR
   try{const {error}=await sb.from("courses").delete().eq("k",k);if(error)throw error;CORD=CORD.filter(x=>x!==k);delete C[k];if(CRE===k)CRE=null;$("crn").dataset.k="";syncCourses();renderCrsAdmin();toast("ลบคอร์สแล้ว")}catch(e){fail(e)}};
 window.mvCrs=async function(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD[i],CORD[j]]=[CORD[j],CORD[i]];syncCourses();renderCrsAdmin();
   try{await crsSaveAll()}catch(e){fail(e,"บันทึกลำดับไม่สำเร็จ");try{await loadCourses()}catch(x){}}};
+
+/* ---------- แบนเนอร์ใหญ่ + ค่าที่ใช้ทั้งเว็บ (ราคาเรียนสดรายชั่วโมง / เวลาทดลองเรียน) ---------- */
+async function loadSiteCfg(){const {data,error}=await sb.from("site_cfg").select("k,v");if(error)throw error;
+  (data||[]).forEach(r=>{const v=r.v||{};if(r.k==="banner"&&Array.isArray(v.list))BAN=v.list;if(r.k==="rates"&&+v.group>0&&+v.single>0)RTS={group:+v.group,single:+v.single};if(r.k==="trial"&&+v.h>0)TRH=+v.h});
+  ban();renderCl();const on=document.querySelector(".scr.on");if(on&&on.id==="s-hour")renderHour();if(ROLE==="admin"&&AT==="a-ban")renderBanAdmin()}
+async function banSave(L){const {error}=await sb.from("site_cfg").upsert({k:"banner",v:{list:L}});if(error)throw error;banSet(L)}
+window.saveBan=async function(){const r=bnVals();if(!r)return;const btn=$("bnsv");busy(btn,true);
+  try{if(r.e.img&&/^data:image\//.test(r.e.img))r.e.img=await upCover(r.e.img,"banner");await banSave(banNext(r));BNE=null;BNNEW=false;BNIMG=null;renderBanAdmin();toast("บันทึกสไลด์แล้ว")}
+  catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+window.togBan=async function(id){
+  if(bnType(id)==="crs"){const k=id.slice(2);if(C[k].on===false){toast("คอร์สนี้ซ่อนอยู่ เปิดแสดงคอร์สในแท็บ คอร์สเรียน ก่อน",true);return}
+    C[k].sl=!C[k].sl;try{await crsSaveAll();syncCourses();renderBanAdmin()}catch(e){C[k].sl=!C[k].sl;fail(e)}return}
+  try{await banSave(banList().map(x=>x.id===id?Object.assign({},x,{on:x.on===false}):x))}catch(e){fail(e)}};
+window.delBan=async function(id){if(BNDEL!==id){BNDEL=id;renderBanAdmin();return}BNDEL=null;if(BNE===id)BNE=null;try{await banSave(banList().filter(x=>x.id!==id));toast("ลบสไลด์แล้ว")}catch(e){fail(e)}};
+window.mvBan=async function(i,d){const L=banList().slice(),j=i+d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]];try{await banSave(L)}catch(e){fail(e,"บันทึกลำดับไม่สำเร็จ")}};
+window.saveCfg=async function(){const v=cfgVals();if(!v)return;const btn=$("cfgsv");busy(btn,true);
+  try{const {error}=await sb.from("site_cfg").upsert([{k:"rates",v:{group:v.g,single:v.s}},{k:"trial",v:{h:v.t}}]);if(error)throw error;cfgApply(v);toast("บันทึกค่าแล้ว")}
+  catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 
 /* ---------- รีวิว (พี่เขียนเองในหลังบ้าน) ---------- */
 async function loadReviews(){const {data,error}=await sb.from("reviews").select("*").order("sort").order("id");if(error)throw error;
