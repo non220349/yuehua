@@ -1159,6 +1159,7 @@ function renderHour(){
 function slotForm(){const d=+$("sd").value,kd=$("sdu").value,ty=$("sty").value,a=t2h($("sh1").value),b=t2h($("sh2").value);
   if(isNaN(a)||isNaN(b)||b<=a){alert("กรุณาตั้งเวลาเริ่มและเวลาสิ้นสุดให้ถูกต้อง");return null}
   const h=Math.round(a*60)/60,du=Math.round((b-a)*60)/60;
+  if(du>8){alert("ช่วงเวลาหนึ่งยาวได้ไม่เกิน 8 ชั่วโมง กรุณาเช็กเวลาสิ้นสุดอีกครั้ง");return null}
   if(SL.some(x=>x.dw===d&&Math.abs(x.h-h)<1e-6&&x.ty===ty&&KD(x)===kd)){alert("มีช่วงเวลานี้อยู่แล้ว");return null}
   return {dw:d,h,du,ty,kd,cap:ty==="single"?1:Math.min(10,Math.max(1,+$("scp").value||10)),tp:$("stp").value.trim()||(kd==="hr"?"เรียนสดรายชั่วโมง":"คอร์สเรียนสด")}}
 function addSlot(){const f=slotForm();if(!f)return;SL.push(Object.assign({id:++SID,bk:[],full:false,tk:0},f));renderAdmin()}
@@ -2951,7 +2952,7 @@ window.sendLive=async function(){
 window.addSlot=async function(){
   const f=slotForm();if(!f)return;
   const {error}=await sb.from("slots").insert({dw:f.dw,h:f.h,du:f.du,ty:f.ty,cap:f.cap,topic:f.tp,kind:f.kd});
-  if(error){fail(error);return}toast("เพิ่มช่วงเวลาแล้ว");adminLoad();
+  if(error){fail(error,/check constraint/.test(error.message||"")?"เพิ่มไม่สำเร็จ: ข้อมูลช่วงเวลาไม่ถูกต้อง (เช็กเวลาเริ่ม/สิ้นสุด และจำนวนที่นั่ง)":undefined);return}toast("เพิ่มช่วงเวลาแล้ว");adminLoad();
 };
 window.slotFull=async function(id,on){const {error}=await sb.from("slots").update({is_full:!!on}).eq("id",id);if(error){fail(error);return}
   const s=SL.find(x=>x.id===id);if(s)s.full=!!on;toast(on?"ปิดรับช่วงนี้แล้ว (แสดงว่าเต็ม)":"เปิดรับจองอีกครั้งแล้ว");renderAdmin()};
