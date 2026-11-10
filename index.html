@@ -1731,8 +1731,8 @@ function ghOpen(code){const r=SUBS.find(x=>x.code===code);if(!r)return;const gh=
 let ZHV=null;const HASTTS=typeof speechSynthesis!=="undefined"&&typeof SpeechSynthesisUtterance!=="undefined";const gwst=t=>{const e=$("gwst");if(e)e.textContent=t};
 function zhVoice(){try{const v=speechSynthesis.getVoices();ZHV=v.find(x=>/^zh(-|_)?(CN|Hans)?/i.test(x.lang)&&/CN|Hans/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}catch(e){ZHV=null}document.querySelectorAll(".gspk").forEach(b=>b.style.display=HASTTS?"":"none")}
 try{speechSynthesis.onvoiceschanged=zhVoice;zhVoice()}catch(e){}
-/* m=1 คือกดปุ่มฟังเอง: เครื่องที่หาเสียงจีนไม่เจอก็ยังลองอ่านด้วยภาษา zh-CN */
-function say(t,m){try{if(!ZHV&&!m)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);if(ZHV)u.voice=ZHV;u.lang=ZHV?(ZHV.lang||"zh-CN"):"zh-CN";u.rate=.8;speechSynthesis.speak(u)}catch(e){note("เครื่องนี้เล่นเสียงไม่ได้",1)}}
+/* อ่านออกเสียงอัตโนมัติหลังตอบ + ปุ่มฟังซ้ำ · เครื่องที่หาเสียงจีนไม่เจอก็ยังลองอ่านด้วยภาษา zh-CN */
+function say(t,m){try{if(!HASTTS)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);if(ZHV)u.voice=ZHV;u.lang=ZHV?(ZHV.lang||"zh-CN"):"zh-CN";u.rate=.8;speechSynthesis.speak(u)}catch(e){note("เครื่องนี้เล่นเสียงไม่ได้",1)}}
 const spk=()=>"";
 /* ปุ่มฟังเสียง (ไอคอนลำโพง) แสดงหลังตอบทุกข้อ */
 const SPKI='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor" fill-opacity=".18"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
