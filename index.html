@@ -193,6 +193,12 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .rfzh{font:900 24px/1.2 "Noto Serif SC",serif;color:#b3122b}.rfpy{font-size:12px;color:#5f574c;letter-spacing:.5px}
 .rfhd h2{margin:6px 0 0;font-size:24px;line-height:1.3;color:#1a1a1a}.rfhd h2 span{color:#b3122b}.rfhd p{margin:2px 0 0;font-size:14px;color:#3a342c}
 .rfgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rfl{background:#b3122b;color:#fff;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.4}
+.rfl>span,.rfk>span{font-size:12px;font-weight:600;letter-spacing:.5px;opacity:.9}
+.rfl div{display:flex;gap:8px;align-items:flex-start}.rfl i{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#fff;color:#b3122b;font:700 12px/18px sans-serif;text-align:center;font-style:normal;margin-top:1px}
+.rfk{background:#1a1a1a;color:#fff;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.rftr{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.rftr div{border-radius:9px;background:rgba(255,255,255,.12);padding:6px 4px;text-align:center;display:flex;flex-direction:column;line-height:1.25}
+.rftr small{font-size:11px;opacity:.85}.rftr b{font-size:17px}.rftr .on{background:#f2b705;color:#1a1a1a}.rfk p{margin:0;font-size:12px;opacity:.85;line-height:1.5}
 .rfbx{border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:2px;line-height:1.3;color:#fff}
 .rfbx.r{background:#b3122b}.rfbx.k{background:#1a1a1a}.rfbx.k b{color:#f2b705}
 .rfbx span{font-size:13px}.rfbx b{font-size:clamp(17px,5.2vw,22px);white-space:nowrap}.rfbx small{font-size:12px;opacity:.85}
@@ -1296,12 +1302,13 @@ function refView(code,nick,own){RFV={code,nick:nick||"",own:!!own};
   $("rfback").textContent=own?"‹ กลับหน้าเรียน":"‹ หน้าแรก";$("rfback").onclick=()=>go(own?"s-dash":"s-home");
   $("rfv").innerHTML=`<div class="rfx"><i class="rfbar"></i>
   <div class="rfhd"><span class="rfzh">一起学中文吧！</span><span class="rfpy">yìqǐ xué Zhōngwén ba · มาเรียนจีนด้วยกันนะ</span>
-  <h2>${nick?`<span>${esc(nick)}</span> ชวนคุณ`:"เพื่อนชวนคุณ"}มาเรียนภาษาจีน</h2><p>สมัครด้วยรหัสผู้แนะนำ รับส่วนลดสำหรับเพื่อนใหม่</p></div>
-  <div class="rfgr"><div class="rfbx r"><span>ค่าคอร์สลด</span><b>200 บาท</b><small>คอร์สพินอินลด 100 บาท</small></div><div class="rfbx k"><span>หนังสือเล่ม</span><b>เหลือ 100 บาท</b><small>จากปกติ 150 บาท</small></div></div>
+  <h2>${nick?`<span>${esc(nick)}</span> ชวนคุณ`:"เพื่อนชวนคุณ"}มาเรียนภาษาจีน</h2><p>สมัครด้วยรหัสผู้แนะนำ รับสิทธิ์สำหรับเพื่อนใหม่</p></div>
+  <div class="rfl"><span>เพื่อนใหม่ได้</span><div><i>✓</i><p style="margin:0"><b>ลดค่าคอร์ส 200 บาท</b> ทั้งคอร์สวิดีโอและคอร์สเรียนสด</p></div><div><i>✓</i><p style="margin:0"><b>หนังสือเล่ม 150 → 100 บาท</b> เข้าสันเกลียว ส่งถึงบ้าน</p></div><div><i>✓</i><p style="margin:0"><b>ทดลองเรียนฟรี 1 ชม.</b> ก่อนตัดสินใจได้</p></div><div><i>✓</i><p style="margin:0">ผ่อน 70/30 ได้เหมือนเดิม (HSK1–4)</p></div></div>
   <div class="rfcd"><span>รหัสผู้แนะนำ</span><b>${esc(code)}</b></div>
   <div class="rfbt"><button class="btn" onclick="refGo('enroll')">สมัครเรียน · ใส่ส่วนลดให้แล้ว</button><button class="btn alt" onclick="refGo('trial')">ทดลองเรียนฟรี 1 ชม. ก่อน</button><a class="btn alt" href="${LINEU}" target="_blank" rel="noopener">ถามพี่ทาง LINE</a></div>
-  <p class="rft">ใช้กับคอร์สวิดีโอและคอร์สเรียนสด (ไม่รวมเรียนสดรายชั่วโมง) · สำหรับคนที่ยังไม่เคยเรียนกับ YUEHUA</p></div>
-  ${own?`<div class="card rfown"><b>ส่งการ์ดนี้ให้เพื่อน</b><div class="mut" style="font-size:13px">เพื่อนกดลิงก์หรือสแกน QR ในรูป ช่องรหัสผู้แนะนำจะใส่ให้เอง</div>
+  <div class="rfk"><span>สมัครแล้วชวนเพื่อนต่อ คุณก็ได้คูปองลดคอร์สถัดไป</span><div class="rftr"><div><small>ชวน 1 คน</small><b>200 บาท</b></div><div><small>ชวน 2 คน</small><b>250 บาท</b></div><div class="on"><small>ชวน 3 คนขึ้นไป</small><b>300 บาท</b></div></div><p>ได้คูปองทันทีที่เพื่อนสมัครสำเร็จ · อายุ 1 ปี · ใช้แล้วชวนต่อได้เรื่อย ๆ</p></div>
+  <p class="rft">สิทธิ์เพื่อนใหม่สำหรับคนที่ยังไม่เคยเรียนกับ YUEHUA · คอร์สพินอินลด 100 บาท · ไม่รวมเรียนสดรายชั่วโมง · ใช้คูปองได้ 1 ใบต่อ 1 คอร์ส</p></div>
+  ${own?`<div class="card rfown"><b>ส่งการ์ดนี้ให้เพื่อน</b><div class="mut" style="font-size:13px">เพื่อนกดลิงก์หรือสแกน QR ในรูป ช่องรหัสผู้แนะนำจะใส่ให้เอง · ส่งเป็นรูปจะเห็นสิทธิ์ทันที ชัดกว่าส่งลิงก์เปล่า</div>
   <div class="row"><button class="btn sm" onclick="rfShare()">แชร์รูปการ์ด</button><button class="btn alt sm" onclick="rfSave()">บันทึกรูปการ์ด</button><button class="btn alt sm" onclick="rfCopy()">คัดลอกลิงก์</button></div><div class="mut" id="rfsm" style="font-size:13px;min-height:20px"></div></div>`:""}`}
 function refGo(w){if(RFV&&RFV.own){toast2("นี่คือหน้าที่เพื่อนจะเห็น ปุ่มนี้ให้เพื่อนกดนะ");return}
   if(w==="trial"){openTrial();return}
@@ -1317,29 +1324,42 @@ let QRP=null;
 function qrLib(){if(window.qrcode)return Promise.resolve();if(QRP)return QRP;
   QRP=new Promise((ok,no)=>{const s=document.createElement("script");s.src="tools/qr/qrcode.js";s.onload=ok;s.onerror=()=>{QRP=null;no(new Error("qr"))};document.head.appendChild(s)});return QRP}
 async function rfImage(code,nick){
-  await qrLib();try{await Promise.all(['700 60px "Noto Sans Thai"','400 26px "Noto Sans Thai"','900 60px "Noto Serif SC"'].map(f=>document.fonts.load(f,"一起学中文吧！ชวนคุณ")))}catch(e){}
+  await qrLib();try{await Promise.all(['700 60px "Noto Sans Thai"','400 26px "Noto Sans Thai"','600 26px "Noto Sans Thai"','900 60px "Noto Serif SC"'].map(f=>document.fonts.load(f,"一起学中文吧！ชวนคุณ")))}catch(e){}
   const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
-  const TH='"Noto Sans Thai",Tahoma,sans-serif';
+  const TH='"Noto Sans Thai",Tahoma,sans-serif',RED="#b3122b",INK="#1a1a1a",YEL="#f2b705";
   x.fillStyle="#fbf6ec";x.fillRect(0,0,W,H);x.strokeStyle="#ece2cf";x.lineWidth=2;
   for(let i=0;i<=W;i+=36){x.beginPath();x.moveTo(i,0);x.lineTo(i,H);x.stroke()}for(let j=0;j<=H;j+=36){x.beginPath();x.moveTo(0,j);x.lineTo(W,j);x.stroke()}
-  x.fillStyle="#b3122b";x.fillRect(0,0,W,16);
-  const T=(t,y,font,col,al)=>{x.font=font;x.fillStyle=col;x.textAlign=al||"center";x.textBaseline="alphabetic";x.fillText(t,al==="left"?0:W/2,y)};
-  const fit=(t,max,px,w)=>{let p=px;do{x.font=`${w} ${p}px ${TH}`;if(x.measureText(t).width<=max)break;p-=2}while(p>24);return p};
+  x.fillStyle=RED;x.fillRect(0,0,W,16);
+  const T=(t,X,y,font,col,al)=>{x.font=font;x.fillStyle=col;x.textAlign=al||"center";x.textBaseline="alphabetic";x.fillText(t,X,y)};
+  const fit=(t,max,px,w)=>{let p=px;do{x.font=`${w} ${p}px ${TH}`;if(x.measureText(t).width<=max)break;p-=2}while(p>22);return p};
   const rr=(X,Y,w,h,r,fill,stroke,dash)=>{x.beginPath();x.roundRect?x.roundRect(X,Y,w,h,r):x.rect(X,Y,w,h);if(fill){x.fillStyle=fill;x.fill()}if(stroke){x.setLineDash(dash||[]);x.lineWidth=4;x.strokeStyle=stroke;x.stroke();x.setLineDash([])}};
-  T("一起学中文吧！",130,'900 64px "Noto Serif SC",serif',"#b3122b");
-  T("yìqǐ xué Zhōngwén ba · มาเรียนจีนด้วยกันนะ",182,`400 28px ${TH}`,"#5f574c");
-  const hd=(nick?nick+" ":"เพื่อน")+"ชวนคุณมาเรียนภาษาจีน",hp=fit(hd,960,64,700);T(hd,280,`700 ${hp}px ${TH}`,"#1a1a1a");
-  T("สมัครด้วยรหัสผู้แนะนำ รับส่วนลดสำหรับเพื่อนใหม่",336,`400 32px ${TH}`,"#3a342c");
-  rr(70,380,455,230,24,"#b3122b");rr(555,380,455,230,24,"#1a1a1a");
-  x.textAlign="left";x.fillStyle="#fff";x.font=`400 32px ${TH}`;x.fillText("ค่าคอร์สลด",100,436);x.font=`700 72px ${TH}`;x.fillText("200 บาท",100,526);x.font=`400 26px ${TH}`;x.fillText("คอร์สพินอินลด 100 บาท",100,580);
-  x.fillStyle="#fff";x.font=`400 32px ${TH}`;x.fillText("หนังสือเล่ม",585,436);x.fillStyle="#f2b705";x.font=`700 64px ${TH}`;x.fillText("เหลือ 100 บาท",585,522);x.fillStyle="#fff";x.font=`400 26px ${TH}`;x.fillText("จากปกติ 150 บาท",585,580);
-  rr(200,644,680,96,18,"#fff","#b3122b",[16,12]);x.textAlign="left";x.font=`700 34px ${TH}`;x.fillStyle="#1a1a1a";const lb="รหัสผู้แนะนำ  ",lw=x.measureText(lb).width;x.font='700 48px "Noto Serif SC",monospace';const cw=x.measureText(code).width,sx=(W-(lw+cw))/2;
-  x.font=`700 34px ${TH}`;x.fillText(lb,sx,706);x.font='700 48px "Noto Serif SC",monospace';x.fillStyle="#b3122b";x.fillText(code,sx+lw,710);
-  const q=qrcode(0,"M");q.addData(rfUrl(code));q.make();const n=q.getModuleCount(),QS=360,cell=QS/(n+8),qx=(W-QS)/2,qy=780;
-  rr(qx,qy,QS,QS,22,"#fff");x.fillStyle="#1a1a1a";for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))x.fillRect(Math.floor(qx+(c+4)*cell),Math.floor(qy+(r+4)*cell),Math.ceil(cell),Math.ceil(cell));
-  T("สแกนเพื่อสมัคร ช่องรหัสผู้แนะนำจะใส่ให้เอง",1196,`600 30px ${TH}`,"#1a1a1a");
-  T("ใช้กับคอร์สวิดีโอและคอร์สเรียนสด · สำหรับคนที่ยังไม่เคยเรียนกับ YUEHUA",1244,`400 24px ${TH}`,"#5f574c");
-  x.fillStyle="#b3122b";x.fillRect(0,H-70,W,70);T("YUEHUA 悦华中文 · เรียนภาษาจีนออนไลน์ HSK 1–4",H-24,`700 30px ${TH}`,"#fff");
+  T("一起学中文吧！",W/2,100,'900 58px "Noto Serif SC",serif',RED);
+  T("yìqǐ xué Zhōngwén ba · มาเรียนจีนด้วยกันนะ",W/2,146,`400 26px ${TH}`,"#5f574c");
+  const hd=(nick?nick+" ":"เพื่อน")+"ชวนคุณมาเรียนภาษาจีน",hp=fit(hd,960,60,700);T(hd,W/2,226,`700 ${hp}px ${TH}`,INK);
+  T("สมัครด้วยรหัสผู้แนะนำ รับสิทธิ์สำหรับเพื่อนใหม่",W/2,274,`400 30px ${TH}`,"#3a342c");
+  /* เพื่อนใหม่ได้ */
+  rr(60,302,960,286,24,RED);T("เพื่อนใหม่ได้",96,350,`600 28px ${TH}`,"#ffd9dd","left");
+  const L=[["ลดค่าคอร์ส 200 บาท"," ทั้งคอร์สวิดีโอและคอร์สเรียนสด"],["หนังสือเล่ม 150 → 100 บาท"," ส่งถึงบ้าน"],["ทดลองเรียนฟรี 1 ชม."," ก่อนตัดสินใจได้"],["","ผ่อน 70/30 ได้เหมือนเดิม (HSK1–4)"]];
+  L.forEach(([b,t],i)=>{const y=404+i*52;x.beginPath();x.arc(110,y-11,15,0,7);x.fillStyle="#fff";x.fill();
+    x.strokeStyle=RED;x.lineWidth=4;x.beginPath();x.moveTo(102,y-11);x.lineTo(108,y-5);x.lineTo(119,y-18);x.stroke();
+    x.textAlign="left";x.fillStyle="#fff";x.font=`700 33px ${TH}`;x.fillText(b,140,y);const bw=b?x.measureText(b).width:0;x.font=`400 30px ${TH}`;x.fillText(t,140+bw,y)});
+  /* รหัสผู้แนะนำ */
+  rr(170,610,740,90,18,"#fff",RED,[16,12]);x.font=`700 34px ${TH}`;const lb="รหัสผู้แนะนำ  ",lw=x.measureText(lb).width;x.font='700 48px "Noto Serif SC",monospace';const cw=x.measureText(code).width,sx=(W-(lw+cw))/2;
+  T(lb,sx,668,`700 34px ${TH}`,INK,"left");T(code,sx+lw,672,'700 48px "Noto Serif SC",monospace',RED,"left");
+  /* คนชวนได้คูปอง */
+  rr(60,722,960,232,24,INK);T("สมัครแล้วชวนเพื่อนต่อ คุณก็ได้คูปองลดคอร์สถัดไป",96,770,`600 28px ${TH}`,"#e8e2d8","left");
+  [["ชวน 1 คน","200 บาท"],["ชวน 2 คน","250 บาท"],["ชวน 3 คนขึ้นไป","300 บาท"]].forEach(([a,b],i)=>{const X=96+i*302,on=i===2;rr(X,792,282,108,16,on?YEL:"rgba(255,255,255,0.13)");
+    T(a,X+141,832,`400 26px ${TH}`,on?INK:"#fff");T(b,X+141,882,`700 40px ${TH}`,on?INK:"#fff")});
+  T("ได้คูปองทันทีที่เพื่อนสมัครสำเร็จ · อายุ 1 ปี · ชวนต่อได้เรื่อย ๆ",W/2,934,`400 24px ${TH}`,"#cfc8bd");
+  /* QR + วิธีใช้ */
+  const q=qrcode(0,"M");q.addData(rfUrl(code));q.make();const n=q.getModuleCount(),QS=262,cell=QS/(n+8),qx=70,qy=978;
+  rr(qx,qy,QS,QS,20,"#fff");x.fillStyle=INK;for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))x.fillRect(Math.floor(qx+(c+4)*cell),Math.floor(qy+(r+4)*cell),Math.ceil(cell),Math.ceil(cell));
+  T("สแกนเพื่อสมัคร",370,1040,`700 40px ${TH}`,INK,"left");
+  T("ช่องรหัสผู้แนะนำจะใส่ให้เอง",370,1090,`400 30px ${TH}`,"#3a342c","left");
+  T("มีคำถาม ทักพี่ทาง LINE ได้เลย",370,1140,`400 30px ${TH}`,"#3a342c","left");
+  T("non220349.github.io/yuehua",370,1190,`600 28px ${TH}`,RED,"left");
+  T("สิทธิ์เพื่อนใหม่สำหรับคนที่ยังไม่เคยเรียน · พินอินลด 100 · ไม่รวมเรียนสดรายชั่วโมง",W/2,1268,`400 22px ${TH}`,"#5f574c");
+  x.fillStyle=RED;x.fillRect(0,H-56,W,56);T("YUEHUA 悦华中文 · เรียนภาษาจีนออนไลน์ HSK 1–4",W/2,H-18,`700 28px ${TH}`,"#fff");
   return await new Promise(ok=>cv.toBlob(ok,"image/png"))}
 async function rfBlob(){const m=$("rfsm");if(m)m.textContent="กำลังสร้างรูปการ์ด…";
   try{const b=await rfImage(RFV.code,RFV.nick);if(m)m.textContent="";return b}catch(e){console.error(e);if(m)m.textContent="สร้างรูปไม่สำเร็จ ลองใช้ปุ่มคัดลอกลิงก์แทน";return null}}
