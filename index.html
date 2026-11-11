@@ -868,11 +868,11 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <section class="scr" id="s-dict">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
   <div id="vshelf"></div>
-  <div class="eb">DICTIONARY</div><h2>พจนานุกรม HSK 1–6</h2>
+  <div class="eb">DICTIONARY</div><h2>พจนานุกรม HSK 1–9</h2>
   <p class="mut">ค้นหาคำศัพท์ หรือกดเลือกระดับเพื่อดูคำ กดที่คำเพื่อดูลำดับขีด พินอิน คำแปลไทย และประโยคตัวอย่าง</p>
   <input id="dq" oninput="drawDict()" placeholder="ค้นหาตัวจีน พินอิน หรือคำไทย">
   <div id="dl" style="margin-top:12px"></div>
-  <p class="mut" style="font-size:12px">คลังคำศัพท์ HSK 1–6 รวม 5,400 คำ · ลำดับขีด: Hanzi Writer และข้อมูล Make Me a Hanzi</p>
+  <p class="mut" style="font-size:12px">คลังคำศัพท์ HSK 1–9 รวม 11,000 คำ · ลำดับขีด: Hanzi Writer และข้อมูล Make Me a Hanzi</p>
 </section>
 
 <section class="scr" id="s-prof">
@@ -1628,26 +1628,50 @@ function fitSch(){const w=document.querySelector("#pv .tsw"),t=w&&w.querySelecto
   if(z<1){t.style.transformOrigin="0 0";t.style.transform=`scale(${z})`}
   if(t.offsetHeight*z<av-4)t.style.height=Math.floor((av-4)/z)+"px"}
 function printRoster(){showPv(`<div class="pg" style="width:min(297mm,100%)"><h2 style="margin:0">ตารางเรียนของนักเรียนทั้งหมด</h2><div style="margin-bottom:10px">YUEHUA 悦华中文 · พิมพ์เมื่อ ${new Date().toLocaleDateString("th-TH")}</div><table class="rt">${rsT()}</table></div>`,[])}
-const HL=[1,2,3,4,5,6].map(n=>["HSK "+n,0]);
+const HL=[1,2,3,4,5,6].map(n=>["HSK "+n,0]).concat([["HSK 7-9",0]]);const lvn=l=>l===7?"HSK 7-9":"HSK "+l;
 let SDP=null;
 function loadSD(){if(SD)return Promise.resolve(SD);if(SDP)return SDP;
   SDP=(async()=>{const r=await fetch("a/sd-c6d686e6.gz");if(!r.ok)throw new Error("sd");const b=new Uint8Array(await r.arrayBuffer());if(b[0]!==0x1f||b[1]!==0x8b){SD=JSON.parse(new TextDecoder().decode(b));return SD}
     if(typeof DecompressionStream==="undefined")throw new Error("nods");
     SD=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).json();return SD})();
   SDP.catch(()=>{SDP=null});return SDP}
+/* HSK 7-9: คำศัพท์ + ลำดับขีด โหลดแยกเมื่อเปิดพจนานุกรม */
+const D79N=5600,s79k=c=>c.codePointAt(0)%8,isHz=c=>/[\u3400-\u9fff]/.test(c);let D79OK=0,D79ERR=0,P79=null,D79URL="a/d79-e14aba38.js";const S79P={},S79N=new Set();
+function load79(){if(D79OK)return Promise.resolve();if(P79)return P79;
+  P79=(window.yhData?yhData():Promise.resolve()).then(()=>window.DD79||new Promise((ok,no)=>{const e=document.createElement("script");e.src=D79URL;e.onload=()=>window.DD79?ok():no(new Error("d79"));e.onerror=()=>{e.remove();no(new Error("d79"))};document.head.appendChild(e)}))
+    .then(()=>{if(!D79OK){DD.push(...window.DD79);window.DD79=null;D79OK=1;D79ERR=0}});
+  P79.catch(()=>{P79=null;D79ERR=1});return P79}
+function loadS79(k){if(S79N.has(k))return Promise.resolve();if(S79P[k])return S79P[k];
+  S79P[k]=(async()=>{
+    const r=await fetch(S79U[k]);if(!r.ok)throw new Error("sd79");const b=new Uint8Array(await r.arrayBuffer());if(b[0]!==0x1f||b[1]!==0x8b){Object.assign(SD,JSON.parse(new TextDecoder().decode(b)));S79N.add(k);return}
+    if(typeof DecompressionStream==="undefined")throw new Error("nods");
+    Object.assign(SD,await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).json());S79N.add(k)})();
+  S79P[k].catch(()=>{delete S79P[k]});return S79P[k]}
+const sdReady=w=>!!SD&&(w[0]!==7||[...w[1]].every(c=>!isHz(c)||SD[c]||S79N.has(s79k(c))));
+function sdFor(w){return loadSD().then(()=>{if(w[0]!==7)return;return Promise.all([...new Set([...w[1]].filter(c=>isHz(c)&&!SD[c]).map(s79k))].map(loadS79))})}
 
 
 const nz=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s/g,"").toLowerCase();
-const chip=(w,k)=>`<button class="wc" style="animation-delay:${Math.min(k,20)*30}ms" onclick="showW(${DD.indexOf(w)})"><b class="han">${w[1]}</b><small>${w[2]}</small>${GR[w[1]]?'<i class="gtag">ไวยากรณ์</i>':""}</button>`;
-function openDict(){$("dq").value="";drawDict();renderVocab();go("s-dict");loadSD().catch(()=>{})}
+const chipI=(i,k)=>{const w=DD[i];return `<button class="wc" style="animation-delay:${Math.min(k,20)*30}ms" onclick="showW(${i})"><b class="han">${w[1]}</b><small>${w[2]}</small>${GR[w[1]]?'<i class="gtag">ไวยากรณ์</i>':""}</button>`};
+const chip=(w,k)=>chipI(DD.indexOf(w),k);
+const PYK=new WeakMap(),pyk=w=>{let t=PYK.get(w);if(t==null){t=w[2].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();PYK.set(w,t)}return t};
+function openDict(){$("dq").value="";drawDict();renderVocab();go("s-dict");loadSD().catch(()=>{});load79().catch(()=>{})}
 function drawDict(){
-  const q=$("dq").value.trim(),n=nz(q);
-  if(q){const ps=w=>w[2].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),pm=w=>{const t=ps(w);return n&&(t.replace(/\s/g,"").startsWith(n)||t.split(/\s+/).some(x=>x.startsWith(n)))};
-    const r=DD.filter(w=>w[1].includes(q)||pm(w)||w[3].includes(q)).sort((x,y)=>(y[1]===q)-(x[1]===q)||x[0]-y[0]);NAV=r.slice(0,200).map(w=>DD.indexOf(w));
-    $("dl").innerHTML=r.length?`<div class="mut">พบ ${r.length} คำ${r.length>200?" (แสดง 200 คำแรก)":""}</div><div class="wg">${r.slice(0,200).map(chip).join("")}</div>`:"<div class='card mut'>ไม่พบคำนี้ ลองพิมพ์คำอื่น</div>";return}
-  NAV=null;$("dl").innerHTML=HL.map((h,i)=>{const l=DD.filter(w=>w[0]===i+1);
-    return `<details class="card lvd" data-l="${i+1}" ontoggle="if(this.open&&!this.dataset.r){this.dataset.r=1;this.querySelector('.wg').innerHTML=DD.filter(w=>w[0]===${i+1}).map(chip).join('')}"><summary><b>${h[0]}</b><span class="mut">${l.length.toLocaleString()} คำ</span><span class="mut" style="margin-left:auto;font-size:12px">มีประโยคตัวอย่าง ${l.filter(w=>w[4]).length.toLocaleString()} คำ</span></summary><div class="wg"></div></details>`}).join("");
+  const q=$("dq").value.trim(),n=nz(q).replace(/['’\-]/g,"");
+  if(q){const pm=w=>{const t=pyk(w);return n&&(t.replace(/[\s'’\-]/g,"").startsWith(n)||t.split(/[\s\-]+/).some(x=>x.replace(/['’]/g,"").startsWith(n)))};
+    const I=[];DD.forEach((w,i)=>{if(w[1].includes(q)||pm(w)||w[3].includes(q))I.push(i)});
+    I.sort((x,y)=>(DD[y][1]===q)-(DD[x][1]===q)||DD[x][0]-DD[y][0]||x-y);NAV=I.slice(0,200);
+    let st="";if(!D79OK){if(D79ERR)st=`<div class="mut" style="font-size:12px">โหลดคำศัพท์ HSK 7-9 ไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วพิมพ์ค้นหาใหม่อีกครั้ง</div>`;
+      else{st=`<div class="mut" style="font-size:12px">กำลังโหลดคำศัพท์ HSK 7-9 เพิ่มเติม…</div>`;load79().then(()=>{if($("dq").value.trim()===q)drawDict()},()=>{if($("dq").value.trim()===q)drawDict()})}}
+    $("dl").innerHTML=st+(I.length?`<div class="mut">พบ ${I.length.toLocaleString()} คำ${I.length>200?" (แสดง 200 คำแรก)":""}</div><div class="wg">${NAV.map(chipI).join("")}</div>`:(st&&!D79ERR?"":"<div class='card mut'>ไม่พบคำนี้ ลองพิมพ์คำอื่น</div>"));return}
+  NAV=null;$("dl").innerHTML=HL.map((h,i)=>{const l=i+1,L=DD.filter(w=>w[0]===l),c=l===7&&!D79OK?D79N:L.length,e=l===7&&!D79OK?D79N:L.filter(w=>w[4]).length;
+    return `<details class="card lvd" data-l="${l}" ontoggle="lvOpen(this,${l})"><summary><b>${h[0]}</b><span class="mut">${c.toLocaleString()} คำ</span><span class="mut" style="margin-left:auto;font-size:12px">มีประโยคตัวอย่าง ${e.toLocaleString()} คำ</span></summary><div class="wg"></div></details>`}).join("");
 }
+function lvOpen(d,l){if(!d.open||d.dataset.r)return;const g=d.querySelector(".wg");
+  if(l===7&&!D79OK){g.innerHTML="<div class='mut'>กำลังโหลดคำศัพท์ HSK 7-9…</div>";
+    load79().then(()=>lvOpen(d,l),()=>{g.innerHTML="<div class='mut'>โหลดคำศัพท์ไม่สำเร็จ ลองเช็กอินเทอร์เน็ต แล้วกดปิดและเปิดระดับนี้ใหม่อีกครั้ง</div>"});return}
+  d.dataset.r=1;const I=DD.reduce((a,w,k)=>(w[0]===l&&a.push(k),a),[]);let k=0;g.innerHTML="";
+  const add=()=>{if(!g.isConnected)return;const s0=k;k+=400;g.insertAdjacentHTML("beforeend",I.slice(s0,k).map((i,j)=>chipI(i,s0+j)).join(""));if(k<I.length)requestAnimationFrame(add)};add()}
 const stp=(d,k)=>`<div class="st1"><svg viewBox="0 0 1024 1024" width="44" height="44"><g transform="scale(1,-1) translate(0,-900)">${d.strokes.slice(0,k+1).map((p,j)=>`<path d="${p}" fill="${j===k?"#b73532":"#9a9a9a"}"/>`).join("")}</g></svg><span>${k+1}</span></div>`;
 let WB=[];
 const wst=t=>{$("wst").textContent=t};
@@ -1934,24 +1958,24 @@ let NAV=null,CI=-1;
 function navInfo(){
   if(NAV&&NAV.includes(CI)){const p=NAV.indexOf(CI);return{prev:NAV[p-1],next:NAV[p+1],top:"ผลค้นหา",sub:`${p+1} / ${NAV.length}`}}
   const lv=DD[CI][0],L=DD.reduce((a,w,k)=>(w[0]===lv&&a.push(k),a),[]),p=L.indexOf(CI);
-  return{prev:CI>0?CI-1:undefined,next:CI<DD.length-1?CI+1:undefined,top:"HSK "+lv,sub:`${p+1} / ${L.length}`}
+  return{prev:CI>0?CI-1:undefined,next:CI<DD.length-1?CI+1:undefined,top:lvn(lv),sub:`${p+1} / ${L.length}`}
 }
 function updNav(){
   const f=navInfo(),n=f.next!=null?DD[f.next]:null,c=DD[CI];
   $("wpos").innerHTML=`<b>${f.sub}</b>${f.top}`;
   $("wprev").disabled=f.prev==null;$("wnext").disabled=f.next==null;
-  $("wnext").textContent=!n?"คำสุดท้ายแล้ว":(!NAV&&n[0]!==c[0]?`เริ่ม HSK ${n[0]} ›`:`คำถัดไป: ${n[1]} ›`);
+  $("wnext").textContent=!n?"คำสุดท้ายแล้ว":(!NAV&&n[0]!==c[0]?`เริ่ม ${lvn(n[0])} ›`:`คำถัดไป: ${n[1]} ›`);
 }
 function navW(d){const f=navInfo(),t=d>0?f.next:f.prev;if(t!=null)showW(t)}
 document.addEventListener("keydown",e=>{if($("wd").style.display!=="block"||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
   if(e.key==="ArrowRight")navW(1);else if(e.key==="ArrowLeft")navW(-1);else if(e.key==="Escape")$("wd").style.display="none"});
 function showW(i){
   CI=i;WG++;WB.forEach(o=>{try{o.hw.cancelQuiz();o.hw.pauseAnimation()}catch(e){}});WB=[];updNav();
-  if(!SD){$("wd").style.display="block";$("wdb").innerHTML="<div class='card mut' style='text-align:center'>กำลังโหลดข้อมูลลำดับขีด…</div>";
-    loadSD().then(()=>showW(i)).catch(()=>{$("wdb").innerHTML="<div class='card mut'>เบราว์เซอร์นี้โหลดข้อมูลลำดับขีดไม่ได้ ลองอัปเดต Chrome หรือเปิดด้วยเบราว์เซอร์อื่น</div>"});return}
+  if(!sdReady(DD[i])){$("wd").style.display="block";$("wdb").innerHTML="<div class='card mut' style='text-align:center'>กำลังโหลดข้อมูลลำดับขีด…</div>";
+    sdFor(DD[i]).then(()=>{if(CI===i)showW(i)}).catch(()=>{if(CI===i)$("wdb").innerHTML="<div class='card mut'>โหลดข้อมูลลำดับขีดไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดคำนี้ใหม่อีกครั้ง ถ้ายังไม่ได้ ลองอัปเดต Chrome หรือเปิดด้วยเบราว์เซอร์อื่น</div>"});return}
   const w=DD[i],g=GR[w[1]],ch=[...w[1]].filter(c=>SD[c]);
   $("wd").style.display="block";$("wd").scrollTop=0;updNav();
-  $("wdb").innerHTML=`<div class="eb" style="text-align:center">HSK ${w[0]}</div>
+  $("wdb").innerHTML=`<div class="eb" style="text-align:center">${lvn(w[0])}</div>
   <div class="cbr" id="cbr"></div>
   <div class="wctl"><button class="btn alt sm" onclick="playAll()">▶ ดูการเขียน</button><button class="btn sm" onclick="startQuiz(0,true)">✍ ฝึกเขียนทั้งคำ</button></div>
   <div class="mut" id="wst" style="text-align:center;font-size:13px;min-height:20px"></div>
@@ -2628,6 +2652,8 @@ document.addEventListener("click",()=>navLater());
 NST=[navSnap()];NI=0;try{history.replaceState({yh:0},"")}catch(e){}
 </script>
 <script>let SD=null;</script>
+<script>const S79U=["a/s790-a759e8a5.gz","a/s791-a030e3ab.gz","a/s792-55885bb3.gz","a/s793-0c90a099.gz","a/s794-050932f4.gz","a/s795-2ac66a1b.gz","a/s796-b1e19be3.gz","a/s797-e4c94000.gz"];</script>
+
 <script>/**
  * Hanzi Writer v3.5.0 | https://chanind.github.io/hanzi-writer
  */
