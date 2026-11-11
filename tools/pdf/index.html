@@ -310,11 +310,10 @@ deny()}catch(e){deny()}})();</script>
     if (!arr.length){ toast('กรุณาเลือกไฟล์ PDF เท่านั้น', true); return; }
     for (const f of arr){
       try{
-        const bytes = new Uint8Array(await f.arrayBuffer());
-        const doc = await pdfjsLib.getDocument({data: bytes.slice()}).promise;
+        const doc = await pdfjsLib.getDocument({data: new Uint8Array(await f.arrayBuffer())}).promise;
         const id = ++fileSeq;
         const color = COLORS[(id-1) % COLORS.length];
-        files.push({id, name:f.name, bytes, pdfjs:doc, count:doc.numPages, color});
+        files.push({id, name:f.name, blob:f, pdfjs:doc, count:doc.numPages, color});
         for (let i=0;i<doc.numPages;i++){
           let baseRot = 0;
           try { baseRot = (await doc.getPage(i+1)).rotate || 0; } catch(_){}
@@ -632,6 +631,29 @@ deny()}catch(e){deny()}})();</script>
   $('allOn').onclick = ()=>{ pages.forEach(p=>p.on=true); renderPages(); updateSummary(); };
   $('resetOrder').onclick = ()=>{ sortPagesByFile(); renderPages(); };
 
+  // บันทึก PDF แบบประหยัดหน่วยความจำ: เขียนทีละชิ้นแล้วต่อเป็น Blob (ไม่จองหน่วยความจำก้อนใหญ่ก้อนเดียว)
+  async function saveLowMem(doc){
+    await doc.flush();
+    const w = PDFLib.PDFWriter.forContext(doc.context, 50);
+    const { header, indirectObjects, xref, trailerDict, trailer } = await w.computeBufferSize();
+    const enc = new TextEncoder(), parts = []; let buf = [], n = 0;
+    const push = u => { buf.push(u); n += u.length; if (n > 4e6){ parts.push(new Blob(buf)); buf = []; n = 0; } };
+    const bin = o => { const u = new Uint8Array(o.sizeInBytes()); o.copyBytesInto(u, 0); return u; };
+    push(bin(header)); push(enc.encode('\n\n'));
+    for (let i=0; i<indirectObjects.length; i++){
+      const [ref, obj] = indirectObjects[i];
+      push(enc.encode(ref.objectNumber + ' ' + ref.generationNumber + ' obj\n'));
+      push(bin(obj));
+      push(enc.encode('\nendobj\n\n'));
+      if (i % 200 === 199) await new Promise(r=>setTimeout(r,0));
+    }
+    push(bin(xref)); push(enc.encode('\n'));
+    push(bin(trailerDict)); push(enc.encode('\n\n'));
+    push(bin(trailer));
+    parts.push(new Blob(buf));
+    return new Blob(parts, {type:'application/pdf'});
+  }
+
   $('mergeBtn').onclick = async ()=>{
     const btn = $('mergeBtn');
     const chosen = pages.filter(p=>p.on);
@@ -640,19 +662,28 @@ deny()}catch(e){deny()}})();</script>
     try{
       const { PDFDocument, degrees } = PDFLib;
       const out = await PDFDocument.create();
-      const libDocs = new Map();
+      const copied = new Map();
+      const fileIds = [...new Set(chosen.map(p=>p.fileId))];
+      for (let fi=0; fi<fileIds.length; fi++){
+        const fid = fileIds[fi];
+        btn.textContent = `กำลังรวมไฟล์… (${fi+1}/${fileIds.length})`;
+        const want = [...new Set(chosen.filter(p=>p.fileId===fid).map(p=>p.index))];
+        let src = await PDFDocument.load(new Uint8Array(await fileById(fid).blob.arrayBuffer()), {ignoreEncryption:true});
+        const cps = await out.copyPages(src, want);
+        want.forEach((ix,k)=>copied.set(fid+'-'+ix, cps[k]));
+        src = null;
+        await new Promise(r=>setTimeout(r,0));
+      }
       for (const p of chosen){
-        if (!libDocs.has(p.fileId)){
-          libDocs.set(p.fileId, await PDFDocument.load(fileById(p.fileId).bytes, {ignoreEncryption:true}));
-        }
-        const [cp] = await out.copyPages(libDocs.get(p.fileId), [p.index]);
+        const cp = copied.get(p.fileId+'-'+p.index);
         cp.setRotation(degrees((p.baseRot + p.rot) % 360));
         out.addPage(cp);
       }
+      copied.clear();
       await pnStamp(out);
-      const data = await out.save();
+      btn.textContent = 'กำลังบันทึกไฟล์…';
+      const blob = await saveLowMem(out);
       let name = ($('outName').value || 'รวมไฟล์').trim().replace(/[\\/:*?"<>|]+/g,'-').replace(/\.pdf$/i,'');
-      const blob = new Blob([data], {type:'application/pdf'});
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob); a.download = name + '.pdf';
       document.body.appendChild(a); a.click(); a.remove();
@@ -660,7 +691,8 @@ deny()}catch(e){deny()}})();</script>
       toast(`รวมเสร็จแล้ว ${chosen.length} หน้า${PN.on?' พร้อมเลขหน้า':''} ✓`);
     }catch(e){
       console.error(e);
-      toast('รวมไฟล์ไม่สำเร็จ: ' + (e.message||e), true);
+      const big = /allocation|out of memory|Array buffer|Invalid array length|memory/i.test(String(e&&e.message||e));
+      toast(big ? 'ไฟล์รวมใหญ่เกินหน่วยความจำของเครื่องนี้ ลองรวมทีละน้อยลง (เช่น ครั้งละ 1–2 ไฟล์) หรือใช้คอมพิวเตอร์' : 'รวมไฟล์ไม่สำเร็จ: ' + (e.message||e), true);
     }finally{
       btn.textContent = 'รวมและดาวน์โหลด'; updateSummary();
     }
