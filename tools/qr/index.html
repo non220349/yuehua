@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สร้าง QR Code · YUEHUA 悦华中文</title>
+<style>
+  :root{--red:#C8102E;--red-dark:#9E0B23;--brand:#a32626;--black:#141414;--yellow:#F5C518;--bg:#FAFAF7;--card:#FFFFFF;--line:#E6E3DC;--muted:#6B6B6B}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Sarabun","Noto Sans Thai","Leelawadee UI","Tahoma",system-ui,sans-serif;background:var(--bg);color:var(--black)}
+  header{background:var(--black);color:#fff;border-bottom:4px solid var(--yellow)}
+  .head-in{max-width:980px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .logo{width:44px;height:44px;border-radius:10px;background:var(--red);display:grid;place-items:center;font-size:24px;font-weight:700;color:var(--yellow);flex:none}
+  .brand b{display:block;font-size:18px;letter-spacing:.5px}
+  .brand span{font-size:13px;color:#cfcfcf}
+  main{max-width:980px;margin:0 auto;padding:18px;display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start}
+  .p-form{grid-column:1;grid-row:1}.p-hist{grid-column:1;grid-row:2}.p-prev{grid-column:2;grid-row:1/span 2;position:sticky;top:12px}
+  @media (max-width:780px){main{grid-template-columns:1fr}.p-form,.p-hist,.p-prev{grid-column:1;grid-row:auto;position:static}.p-form{order:1}.p-prev{order:2}.p-hist{order:3}}
+  section.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .panel h3{margin:0 0 4px;font-size:16px}
+  .hint{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5}
+  label.l{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
+  input[type=text],input[type=url]{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--black)}
+  input:focus{outline:2px solid var(--yellow);outline-offset:1px}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{flex:1;min-width:110px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font:inherit;font-weight:600;cursor:pointer;color:var(--black)}
+  .seg button.on{border-color:var(--brand);background:#FFF4F5;color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+  .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+  .chk{display:flex;align-items:center;gap:8px;font-size:15px;margin-top:12px;cursor:pointer}
+  .chk input{width:18px;height:18px;accent-color:var(--brand)}
+  .btn{border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-dark)}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--black)}.btn-ghost:hover{border-color:var(--black)}
+  .btn-sm{padding:7px 12px;font-size:14px}
+  .acts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .pv{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .pv canvas{width:100%;max-width:320px;height:auto;aspect-ratio:1;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .dest{font-size:13px;color:var(--muted);word-break:break-all;text-align:center;min-height:1.4em}
+  .dest.err{color:var(--red)}
+  .list{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+  .item{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .item .t{flex:1;min-width:0;cursor:pointer}.item b{display:block;font-size:15px}.item small{display:block;color:var(--muted);font-size:12px;word-break:break-all}
+  .empty{font-size:13px;color:var(--muted)}
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--black);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:.2s;pointer-events:none;z-index:50}
+  #toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div id="yhGate" style="position:fixed;inset:0;background:#141414;color:#fff;z-index:99999;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:16px/1.7 Sarabun,'Noto Sans Thai',Tahoma,sans-serif"><div id="yhGateMsg">กำลังตรวจสอบสิทธิ์ผู้ดูแล…</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>(async function(){var g=document.getElementById("yhGate"),m=document.getElementById("yhGateMsg");
+var P=null;try{if(window.parent!==window&&window.parent.YH_ADMIN===true)P=window.parent}catch(e){}
+if(P){g.remove();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.yhback");if(a){e.preventDefault();P.YH_TOOL_CLOSE()}});return}
+function deny(){m.innerHTML='<div style="font-size:40px">🔒</div><b>เครื่องมือนี้สำหรับผู้ดูแลเท่านั้น</b><br><span style="color:#bbb">กรุณาเข้าสู่ระบบหลังบ้านก่อน</span><br><a href="../../#admin-tools" style="display:inline-block;margin-top:14px;background:#c8102e;color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:700">เข้าสู่ระบบหลังบ้าน</a>'}
+try{var sb=supabase.createClient("https://zhzckrjacvlgfrwdwqvs.supabase.co","sb_publishable_EUcJNxCygdzWcMi8_ASROg_6yO4LX5E",{auth:{persistSession:true,autoRefreshToken:true,storageKey:"yh_auth"}});
+var r=await sb.auth.getSession(),s=r&&r.data&&r.data.session;
+if(s){var u=await sb.auth.getUser();var usr=u&&u.data&&u.data.user;if(usr&&usr.app_metadata&&usr.app_metadata.role==="admin"){g.remove();return}}
+deny()}catch(e){deny()}})();</script>
+<header>
+  <div class="head-in">
+    <div class="logo">悦</div>
+    <div class="brand"><b>YUEHUA 悦华中文</b><span>เครื่องมือสร้าง QR Code</span></div><a href="../../#admin-tools" class="yhback" style="margin-left:auto;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:8px;padding:6px 12px;font-size:14px;font-weight:600;white-space:nowrap">‹ กลับหลังบ้าน</a>
+  </div>
+</header>
+<main>
+    <section class="panel p-form">
+      <h3>สร้าง QR Code</h3>
+      <p class="hint">QR ของเว็บ YUEHUA พาไปหน้าแรกเสมอ (คนสแกนเห็นแบนเนอร์ใหญ่ก่อน) · ใส่ลิงก์ภายนอกได้ เช่น YouTube, LINE, TikTok</p>
+      <div class="seg" id="mode"></div>
+      <div id="urlw" style="display:none"><label class="l" for="url">ลิงก์</label><input id="url" type="url" inputmode="url" autocomplete="off" placeholder="วางลิงก์ เช่น https://youtube.com/..."></div>
+      <label class="l" for="name">ชื่อไฟล์ (ไม่ใส่ก็ได้)</label><input id="name" type="text" maxlength="40" placeholder="เช่น โปสเตอร์ทดลองเรียน">
+      <label class="l">สี QR</label><div class="seg" id="color"></div>
+      <label class="chk"><input type="checkbox" id="logo" checked> ใส่โลโก้ YUEHUA ตรงกลาง (มีกรอบ)</label>
+    </section>
+    <section class="panel p-hist">
+      <h3>QR ที่เก็บไว้</h3>
+      <p class="hint">เก็บในเครื่องนี้ · กดชื่อเพื่อเปิดอีกครั้ง</p>
+      <div class="list" id="hist"></div>
+    </section>
+  <section class="panel p-prev">
+    <div class="pv"><canvas id="cv" width="720" height="720" aria-label="ตัวอย่าง QR Code"></canvas><div class="dest" id="dest"></div></div>
+    <div class="acts">
+      <button class="btn btn-red" id="dlpng">ดาวน์โหลด PNG (สำหรับพิมพ์)</button>
+      <button class="btn btn-ghost" id="dlsvg">ดาวน์โหลด SVG (ขยายได้ไม่แตก)</button>
+      <button class="btn btn-ghost" id="save">เก็บไว้ในรายการ</button>
+    </div>
+    <p class="hint" style="margin:10px 0 0">พิมพ์ให้กว้างอย่างน้อย 2.5 ซม. และลองสแกนด้วยมือถือก่อนพิมพ์จริงทุกครั้ง</p>
+  </section>
+</main>
+<div id="toast" role="status"></div>
+<script src="qrcode.js"></script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const SITE="https://non220349.github.io/yuehua/",COLS=[["#a32626","แดง"],["#141414","ดำ"]];
+let MODE="home",COL="#a32626",CUR=null;
+try{qrcode.stringToBytes=qrcode.stringToBytesFuncs["UTF-8"]}catch(e){}
+const LOGO=new Image();LOGO.src="logo.png";
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const show=u=>{try{return decodeURI(u)}catch(e){return u}};
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2200)}
+function url(){if(MODE==="home")return SITE;let u=$("url").value.trim();if(!u)return "";if(!/^[a-z][a-z0-9+.-]*:/i.test(u))u="https://"+u;
+  try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:""}catch(e){return ""}}
+function fname(){return ($("name").value.trim()||(MODE==="home"?"YUEHUA-หน้าแรก":"QR")).replace(/[<>"`\\/:*?|]+/g,"-").slice(0,40)}
+/* ช่องว่างกลางสำหรับโลโก้: จัดให้ตรงตารางโมดูล ไม่มีจุด QR ชนกรอบ (ใช้ระดับกู้คืน H รับได้ 30%) */
+function geo(q,lg){const n=q.getModuleCount();if(!lg)return {n,a:-1,m:0};let m=Math.round(n*.27);if((n-m)%2)m++;return {n,a:(n-m)/2,m}}
+const hole=(g,r,k)=>g.a>=0&&r>=g.a&&r<g.a+g.m&&k>=g.a&&k<g.a+g.m;
+function make(u,lg){const q=qrcode(0,lg?"H":"M");q.addData(u,"Byte");q.make();return q}
+function rr(c,x,y,w,h,R){c.beginPath();c.moveTo(x+R,y);c.arcTo(x+w,y,x+w,y+h,R);c.arcTo(x+w,y+h,x,y+h,R);c.arcTo(x,y+h,x,y,R);c.arcTo(x,y,x+w,y,R);c.closePath()}
+function paint(cv,q,lg){const g=geo(q,lg),n=g.n,S=cv.width,u=S/(n+8),o=4*u,c=cv.getContext("2d");
+  c.fillStyle="#fff";c.fillRect(0,0,S,S);c.fillStyle=COL;
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k)&&!hole(g,r,k))c.fillRect(Math.floor(o+k*u),Math.floor(o+r*u),Math.ceil(u),Math.ceil(u));
+  if(lg){const pad=u*.6,bx=o+g.a*u+pad,bw=g.m*u-2*pad;rr(c,bx,bx,bw,bw,u*1.3);c.fillStyle="#fff";c.fill();c.lineWidth=u*.55;c.strokeStyle=COL;c.stroke();
+    if(LOGO.complete&&LOGO.naturalWidth){const L=bw*.8;c.drawImage(LOGO,(S-L)/2,(S-L)/2,L,L)}}}
+function draw(){const u=url(),lg=$("logo").checked,d=$("dest");CUR=null;const cv=$("cv"),c=cv.getContext("2d");
+  if(!u){c.fillStyle="#fff";c.fillRect(0,0,cv.width,cv.height);d.className="dest"+(MODE==="url"&&$("url").value.trim()?" err":"");d.textContent=MODE==="url"&&$("url").value.trim()?"ลิงก์ไม่ถูกต้อง ต้องขึ้นต้นด้วย https://":"วางลิงก์เพื่อสร้าง QR";return}
+  let q;try{q=make(u,lg)}catch(e){d.className="dest err";d.textContent="ลิงก์ยาวเกินไปสำหรับ QR";return}
+  paint(cv,q,lg);CUR={u,q,lg};d.className="dest";d.textContent="สแกนแล้วไปที่: "+show(u)}
+function ui(){$("mode").innerHTML=`<button class="${MODE==="home"?"on":""}" data-m="home">เว็บ YUEHUA</button><button class="${MODE==="url"?"on":""}" data-m="url">ลิงก์อื่น</button>`;
+  $("urlw").style.display=MODE==="url"?"":"none";
+  $("color").innerHTML=COLS.map(([c,n])=>`<button class="${c===COL?"on":""}" data-c="${c}"><span class="sw" style="background:${c}"></span>${n}</button>`).join("");draw()}
+$("mode").onclick=e=>{const b=e.target.closest("button");if(!b)return;MODE=b.dataset.m;ui();if(MODE==="url")$("url").focus()};
+$("color").onclick=e=>{const b=e.target.closest("button");if(!b)return;COL=b.dataset.c;ui()};
+$("url").oninput=draw;$("logo").onchange=draw;LOGO.onload=draw;
+function dl(href,fn){const a=document.createElement("a");a.href=href;a.download=fn;document.body.appendChild(a);a.click();a.remove()}
+$("dlpng").onclick=()=>{draw();if(!CUR){toast("กรุณาใส่ลิงก์ที่ถูกต้องก่อน");return}const cv=document.createElement("canvas");cv.width=cv.height=2000;paint(cv,CUR.q,CUR.lg);
+  cv.toBlob(b=>{const u=URL.createObjectURL(b);dl(u,fname()+".png");setTimeout(()=>URL.revokeObjectURL(u),4000)},"image/png")};
+$("dlsvg").onclick=()=>{draw();if(!CUR){toast("กรุณาใส่ลิงก์ที่ถูกต้องก่อน");return}const {q,lg}=CUR,g=geo(q,lg),n=g.n,W=n+8;let d="";
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k)&&!hole(g,r,k))d+=`M${k+4} ${r+4}h1v1h-1z`;
+  let x="";if(lg){const pad=.6,bx=4+g.a+pad,bw=g.m-2*pad,L=bw*.8,cv=document.createElement("canvas");cv.width=LOGO.naturalWidth;cv.height=LOGO.naturalHeight;cv.getContext("2d").drawImage(LOGO,0,0);
+    x=`<rect x="${bx}" y="${bx}" width="${bw}" height="${bw}" rx="1.3" fill="#fff" stroke="${COL}" stroke-width=".55"/><image href="${cv.toDataURL("image/png")}" x="${(W-L)/2}" y="${(W-L)/2}" width="${L}" height="${L}"/>`}
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${W}" width="1000" height="1000"><rect width="${W}" height="${W}" fill="#fff"/><path d="${d}" fill="${COL}" shape-rendering="crispEdges"/>${x}</svg>`;
+  const u=URL.createObjectURL(new Blob([svg],{type:"image/svg+xml"}));dl(u,fname()+".svg");setTimeout(()=>URL.revokeObjectURL(u),4000)};
+const getH=()=>{try{return JSON.parse(localStorage.getItem("yh_qrh")||"[]")}catch(e){return []}},setH=L=>{try{localStorage.setItem("yh_qrh",JSON.stringify(L.slice(0,30)))}catch(e){}};
+function hist(){const L=getH();$("hist").innerHTML=L.length?L.map((x,i)=>`<div class="item"><div class="t" data-o="${i}"><b>${esc(x.n)}</b><small>${esc(show(x.u))}</small></div><button class="btn btn-ghost btn-sm" data-o="${i}">เปิด</button><button class="btn btn-ghost btn-sm" data-d="${i}">ลบ</button></div>`).join(""):'<div class="empty">ยังไม่มี</div>'}
+$("hist").onclick=e=>{const t=e.target.closest("[data-o],[data-d]");if(!t)return;const L=getH();
+  if(t.dataset.d!==undefined){L.splice(+t.dataset.d,1);setH(L);hist();return}
+  const x=L[+t.dataset.o];if(!x)return;MODE=x.m==="home"?"home":"url";COL=x.c||COL;$("url").value=x.m==="home"?"":show(x.u);$("name").value=x.n;$("logo").checked=x.l!==false;ui();window.scrollTo({top:0,behavior:"smooth"})};
+$("save").onclick=()=>{const u=url();if(!u){toast("กรุณาใส่ลิงก์ที่ถูกต้องก่อน");return}const n=fname(),L=getH().filter(x=>!(x.u===u&&x.n===n));L.unshift({n,u,m:MODE,c:COL,l:$("logo").checked});setH(L);hist();toast("เก็บ QR ไว้ในรายการแล้ว")};
+ui();hist();
+})();
+</script>
+</body>
+</html>

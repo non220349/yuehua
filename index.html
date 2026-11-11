@@ -456,7 +456,6 @@ body.pvmode{padding-bottom:64px}body.pvmode .fab{bottom:80px}
 .bnrow{display:flex;gap:10px;align-items:center}.bnsw{width:44px;height:30px;border-radius:8px;flex-shrink:0;background-size:cover;background-position:center}
 .bkfree{background:var(--okbg);color:var(--okfg);border-radius:12px;padding:10px 12px;margin-top:10px}.bkfree b,.bkadd b{display:block}.bkfree span,.bkadd span{font-size:13px}
 .bkadd{display:flex;gap:12px;align-items:center;border:2px solid var(--seal);border-radius:12px;padding:10px 12px;margin-top:8px}.bkap{font-size:22px;font-weight:800;color:var(--seal);white-space:nowrap;line-height:1}
-.qrbox{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px}.qrbox canvas{width:min(260px,70vw);height:auto;aspect-ratio:1;border-radius:12px;border:1px solid var(--bd);background:#fff}
 .crsw{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.crsw button{width:34px;height:34px;border-radius:9px;border:2px solid transparent;cursor:pointer;padding:0}.crsw button.on{outline:3px solid var(--seal);outline-offset:1px}
 .crex{border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;padding:8px 10px;margin:8px 0}.crex input,.crex textarea{margin:4px 0}.crrow{margin:8px 0;padding:12px 14px}.crcalc{font-size:13px;background:rgba(163,38,38,.06);border-radius:8px;padding:8px 10px;margin-top:8px}
 details.crd{margin-top:12px}details.crd>summary{cursor:pointer;font-weight:700}
@@ -600,7 +599,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b><button class="btn sm" onclick="adminPreview()" title="ดูหน้าเรียนแบบที่นักเรียนเห็น เห็นทุกคอร์ส ไม่บันทึกอะไร">มุมมองนักเรียน</button></div>
-  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-qr">QR Code</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
+  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
   <div class="pane" id="a-ov"><div id="ovw"></div></div>
 <div class="pane" id="a-fin">
   <div class="row" style="margin:10px 0;align-items:center"><label for="fmsel" style="margin:0">เดือน</label><select id="fmsel" style="width:auto;margin:0" onchange="FNM=this.value;renderFin()"></select></div>
@@ -710,18 +709,6 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="row" style="margin:12px 0 4px;align-items:center;justify-content:space-between"><span class="mut" style="font-size:13px">ลำดับสไลด์บนหน้าแรก · กด ↑ ↓ เพื่อย้าย</span><button class="btn sm" onclick="addBan()">+ เพิ่มสไลด์โปรใหม่</button></div>
     <div id="bnl"></div>
   </div>
-  <div class="pane" id="a-qr">
-    <div class="card" style="margin-top:10px"><b>สร้าง QR Code</b><div class="mut" style="font-size:13px">QR ของเว็บ YUEHUA พาไปหน้าแรกเสมอ (คนสแกนเห็นแบนเนอร์ใหญ่ก่อน) · ใส่ลิงก์ภายนอกได้ เช่น YouTube, LINE, TikTok</div>
-      <div class="seg" id="qrm" style="margin:10px 0 4px"></div>
-      <div id="qruw"><label for="qru">ลิงก์</label><input id="qru" type="url" inputmode="url" autocomplete="off" placeholder="วางลิงก์ เช่น https://youtube.com/..." oninput="qrDraw()"></div>
-      <label for="qrn">ชื่อไฟล์ (ไม่ใส่ก็ได้)</label><input id="qrn" maxlength="40" placeholder="เช่น โปสเตอร์ทดลองเรียน">
-      <div class="vg2"><div><label>สี QR</label><div class="seg" id="qrc" style="margin:0"></div></div><div><label>โลโก้ตรงกลาง</label><label class="chk" style="margin:6px 0 0"><input type="checkbox" id="qrl" checked onchange="qrDraw()"> ใส่โลโก้ YUEHUA</label></div></div>
-      <div class="qrbox"><canvas id="qrcv" width="640" height="640" aria-label="ตัวอย่าง QR Code"></canvas><div class="mut" id="qrinf" style="font-size:12px;word-break:break-all"></div></div>
-      <div class="row"><button class="btn" onclick="qrDl('png')">ดาวน์โหลด PNG (สำหรับพิมพ์)</button><button class="btn alt" onclick="qrDl('svg')">ดาวน์โหลด SVG</button><button class="btn alt" onclick="qrSave()">เก็บไว้ในรายการ</button></div>
-      <div class="mut" style="font-size:12px">พิมพ์ให้กว้างอย่างน้อย 2.5 ซม. และลองสแกนด้วยมือถือก่อนพิมพ์จริงทุกครั้ง</div></div>
-    <p class="mut" style="font-size:13px;margin:12px 0 4px">QR ที่เก็บไว้ (เก็บในเครื่องนี้) · กดเพื่อเปิดอีกครั้ง</p>
-    <div id="qrh"></div>
-  </div>
   <div class="pane" id="a-rv">
     <div class="card" style="margin-top:10px"><b id="rvh">เพิ่มรีวิว</b><div class="mut" style="font-size:13px">พี่เขียนรีวิวเองจากที่นักเรียนส่งมาทาง LINE · ต้องมีชื่อเล่น และข้อความหรือผลสอบอย่างน้อย 1 อย่าง</div>
       <label for="rvn">ชื่อเล่น (ระบบเติมคำว่า “น้อง” ให้เอง)</label><input id="rvn" maxlength="40" placeholder="เช่น หยก">
@@ -747,6 +734,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="toolg">
       <a class="card toolc" href="tools/pdf/" onclick="return openTool(event,'tools/pdf/')"><span class="tooli">📄</span><span><b>รวมไฟล์ PDF</b><small class="mut">รวมหลายไฟล์ เรียง/หมุน/เลือกหน้า ใส่เลขหน้า แล้วดาวน์โหลดเป็นไฟล์เดียว</small></span><span class="toolgo">เปิด ›</span></a>
       <a class="card toolc" href="tools/worksheet/" onclick="return openTool(event,'tools/worksheet/')"><span class="tooli">✍️</span><span><b>ตัวทำสมุดคัดจีน</b><small class="mut">ใส่คำศัพท์หรือนำเข้า .txt ได้ตารางคัดพร้อมลำดับขีด หัว/ท้ายกระดาษ เลขหน้า บันทึกเป็น PDF</small></span><span class="toolgo">เปิด ›</span></a>
+      <a class="card toolc" href="tools/qr/" onclick="return openTool(event,'tools/qr/')"><span class="tooli" style="color:var(--seal)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM20 14v.01M14 20v.01M17 20h4v-3"/></svg></span><span><b>สร้าง QR Code</b><small class="mut">QR ไปหน้าแรกเว็บ YUEHUA หรือลิงก์อื่น เช่น YouTube ใส่โลโก้ตรงกลางได้ ดาวน์โหลด PNG/SVG สำหรับพิมพ์</small></span></a>
       <a class="card toolc" href="#" onclick="backupXlsx();return false"><span class="tooli">💾</span><span><b>ดาวน์โหลดข้อมูลสำรอง</b><small class="mut">ไฟล์ Excel ไฟล์เดียว: นักเรียน · คำสั่งซื้อ · การจองเวลาเรียน · ทดลองเรียน · คะแนนแบบฝึกหัด · อีเมลที่ส่ง (ไม่รวมรูปสลิปและบัตรประชาชน)</small></span><span class="toolgo" id="bkxs">โหลด ›</span></a>
     </div>
     <p class="mut" style="font-size:13px">แนะนำให้กดสำรองข้อมูลเก็บไว้อย่างน้อยเดือนละครั้ง · เครื่องมือเปิดเต็มหน้าจอ ไม่ต้องใส่รหัสซ้ำ · กด “‹ กลับหลังบ้าน” แล้วงานที่ทำค้างไว้ยังอยู่ กลับมาเปิดต่อได้ · ไฟล์ทำงานในเครื่องนี้ ไม่ถูกอัปโหลด</p>
@@ -1241,7 +1229,7 @@ function gate(){
 }
 function renderAdmin(){
   if(AT==="a-fin")renderFin();
-  if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();if(AT==="a-ban")renderBanAdmin();if(AT==="a-qr")renderQr();
+  if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();if(AT==="a-ban")renderBanAdmin();
   if(AT==="a-mail")renderMail();else mailBadge();
   if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
   document.querySelectorAll("#atabs .asub button").forEach(b=>b.classList.toggle("on",b.dataset.t===AT));
@@ -1360,7 +1348,7 @@ function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
   document.querySelectorAll("#fec2 .fbr").forEach(row=>{const k=row.dataset.k.slice(1),c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};ebc[k]=c;eb[k]=bcCalc(c,m).cb});
   return {m,pc,eb,ebc}}
 function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;EBC=v.ebc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
-const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-qr":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
+const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
 const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-crs"};
 function aTab(t){AT=t;renderAdmin();try{scrollTo({top:0})}catch(e){}}
 function agNav(){const g=AGRP[AT]||"ov";AGL[g]=AT;
@@ -2408,47 +2396,6 @@ function cancelRv(){RVE=null;$("rvn").dataset.k="";renderRvAdmin()}
 function togRv(i){STU[i].on=STU[i].on===false;renderRvAdmin();renderStu()}
 function delRv(i){if(RVDEL!==i){RVDEL=i;renderRvAdmin();return}RVDEL=null;STU.splice(i,1);if(RVE===i)RVE=null;$("rvn").dataset.k="";renderRvAdmin();renderStu()}
 function mvRv(i,d){const j=i+d;if(j<0||j>=STU.length)return;[STU[i],STU[j]]=[STU[j],STU[i]];if(RVE===i)RVE=j;else if(RVE===j)RVE=i;renderRvAdmin();renderStu()}
-/* ===== QR Code (หลังบ้าน) · สร้างในเครื่อง ไม่ผ่านเว็บอื่น ===== */
-const qrShow=u=>{try{return decodeURI(u)}catch(e){return u}};
-const QRSITE="https://non220349.github.io/yuehua/",QRCOL=[["#a32626","แดง"],["#1c1917","ดำ"]];
-let QRM="home",QRC="#a32626",QRP=null,QRLG=null,QRK=null;
-function loadQr(){if(window.qrcode)return Promise.resolve();if(QRP)return QRP;
-  QRP=new Promise((ok,no)=>{const e=document.createElement("script");e.src="a/qrcode-1.4.4.js";e.onload=()=>{try{qrcode.stringToBytes=qrcode.stringToBytesFuncs["UTF-8"]}catch(x){}ok()};e.onerror=()=>{e.remove();QRP=null;no(new Error("qr"))};document.head.appendChild(e)});return QRP}
-function qrLogo(){if(QRLG)return Promise.resolve(QRLG);const v=getComputedStyle(document.documentElement).getPropertyValue("--logo"),m=v.match(/url\(["']?(data:[^"')]+)/);
-  if(!m)return Promise.resolve(null);return new Promise(ok=>{const im=new Image();im.onload=()=>{QRLG=im;ok(im)};im.onerror=()=>ok(null);im.src=m[1]})}
-function qrUrl(){if(QRM==="home")return QRSITE;let u=$("qru").value.trim();if(!u)return "";if(!/^[a-z][a-z0-9+.-]*:/i.test(u))u="https://"+u;
-  try{const x=new URL(u);if(!/^https?:$/.test(x.protocol))return "";return x.href}catch(e){return ""}}
-function qrMake(u,lg){const q=qrcode(0,lg?"H":"M");q.addData(u,"Byte");q.make();return q}
-/* วาดลงแคนวาส: ขอบขาว 4 ช่อง · โลโก้กินพื้นที่ ~22% (ระดับกู้คืน H รับได้ 30%) */
-function qrPaint(cv,q,col,lg){const n=q.getModuleCount(),S=cv.width,u=S/(n+8),o=4*u,c=cv.getContext("2d");
-  c.fillStyle="#fff";c.fillRect(0,0,S,S);c.fillStyle=col;
-  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(Math.floor(o+k*u),Math.floor(o+r*u),Math.ceil(u),Math.ceil(u));
-  if(lg){const w=n*u*.24,x=(S-w)/2,pad=w*.08;c.fillStyle="#fff";const rr=w*.18;c.beginPath();c.moveTo(x+rr,x);c.arcTo(x+w,x,x+w,x+w,rr);c.arcTo(x+w,x+w,x,x+w,rr);c.arcTo(x,x+w,x,x,rr);c.arcTo(x,x,x+w,x,rr);c.closePath();c.fill();
-    c.drawImage(lg,x+pad,x+pad,w-2*pad,w-2*pad)}}
-function renderQr(){$("qrm").innerHTML=`<button class="${QRM==="home"?"on":""}" onclick="qrMode('home')">เว็บ YUEHUA</button><button class="${QRM==="url"?"on":""}" onclick="qrMode('url')">ลิงก์อื่น</button>`;
-  $("qruw").style.display=QRM==="url"?"":"none";$("qrc").innerHTML=QRCOL.map(([c,n])=>`<button class="${c===QRC?"on":""}" onclick="QRC='${c}';renderQr()"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${c};vertical-align:-1px;margin-right:5px"></span>${n}</button>`).join("");
-  qrDraw();qrHist()}
-function qrMode(m){QRM=m;renderQr();if(m==="url")$("qru").focus()}
-async function qrDraw(){const cv=$("qrcv"),u=qrUrl(),lg=$("qrl").checked;QRK=null;
-  if(!u){const c=cv.getContext("2d");c.fillStyle="#fff";c.fillRect(0,0,cv.width,cv.height);$("qrinf").textContent=QRM==="url"&&$("qru").value.trim()?"ลิงก์ไม่ถูกต้อง ต้องขึ้นต้นด้วย https://":"วางลิงก์ด้านบนเพื่อสร้าง QR";return}
-  try{await loadQr()}catch(e){$("qrinf").textContent="โหลดตัวสร้าง QR ไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วเปิดแท็บนี้ใหม่";return}
-  let q;try{q=qrMake(u,lg)}catch(e){$("qrinf").textContent="ลิงก์ยาวเกินไปสำหรับ QR";return}
-  const im=lg?await qrLogo():null;if(u!==qrUrl())return;qrPaint(cv,q,QRC,im);QRK={u,q,im};$("qrinf").textContent="สแกนแล้วไปที่: "+qrShow(u)}
-function qrName(){return (crTxt($("qrn").value,40)||(QRM==="home"?"YUEHUA-หน้าแรก":"QR")).replace(/[\\/:*?|]+/g,"-")}
-function qrDlUrl(href,fn){const a=document.createElement("a");a.href=href;a.download=fn;document.body.appendChild(a);a.click();a.remove()}
-async function qrDl(t){await qrDraw();if(!QRK){note("กรุณาใส่ลิงก์ที่ถูกต้องก่อน",1);return}const {q,im}=QRK,fn=qrName();
-  if(t==="png"){const cv=document.createElement("canvas");cv.width=cv.height=2000;qrPaint(cv,q,QRC,im);cv.toBlob(b=>{const u=URL.createObjectURL(b);qrDlUrl(u,fn+".png");setTimeout(()=>URL.revokeObjectURL(u),4000)},"image/png");return}
-  const n=q.getModuleCount(),W=n+8;let d="";for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))d+=`M${k+4} ${r+4}h1v1h-1z`;
-  let lg="";if(im){const w=n*.24,x=(W-w)/2,pad=w*.08,cv=document.createElement("canvas");cv.width=im.naturalWidth;cv.height=im.naturalHeight;cv.getContext("2d").drawImage(im,0,0);
-    lg=`<rect x="${x}" y="${x}" width="${w}" height="${w}" rx="${w*.18}" fill="#fff"/><image href="${cv.toDataURL("image/png")}" x="${x+pad}" y="${x+pad}" width="${w-2*pad}" height="${w-2*pad}"/>`}
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${W}" width="1000" height="1000" shape-rendering="crispEdges"><rect width="${W}" height="${W}" fill="#fff"/><path d="${d}" fill="${QRC}"/>${lg}</svg>`;
-  const u=URL.createObjectURL(new Blob([svg],{type:"image/svg+xml"}));qrDlUrl(u,fn+".svg");setTimeout(()=>URL.revokeObjectURL(u),4000)}
-const qrGetH=()=>{try{return JSON.parse(localStorage.getItem("yh_qrh")||"[]")}catch(e){return []}};
-function qrSave(){const u=qrUrl();if(!u){note("กรุณาใส่ลิงก์ที่ถูกต้องก่อน",1);return}const L=qrGetH().filter(x=>!(x.u===u&&x.n===qrName()));L.unshift({n:qrName(),u,m:QRM,c:QRC,l:$("qrl").checked});
-  try{localStorage.setItem("yh_qrh",JSON.stringify(L.slice(0,30)))}catch(e){}qrHist();note("เก็บ QR ไว้ในรายการแล้ว")}
-function qrHist(){const L=qrGetH();$("qrh").innerHTML=L.length?L.map((x,i)=>`<div class="vw" style="align-items:center"><div style="flex:1;min-width:0;cursor:pointer" onclick="qrOpen(${i})"><b>${esc(x.n)}</b><div class="mut" style="font-size:12px;word-break:break-all">${esc(qrShow(x.u))}</div></div><button class="btn alt sm" onclick="qrOpen(${i})">เปิด</button><button class="btn alt sm" onclick="qrDel(${i})">ลบ</button></div>`).join(""):'<div class="mut" style="font-size:13px">ยังไม่มี</div>'}
-function qrOpen(i){const x=qrGetH()[i];if(!x)return;QRM=x.m==="home"?"home":"url";QRC=x.c||QRC;$("qru").value=x.m==="home"?"":qrShow(x.u);$("qrn").value=x.n;$("qrl").checked=x.l!==false;renderQr();$("qrcv").scrollIntoView({behavior:"smooth",block:"center"})}
-function qrDel(i){const L=qrGetH();L.splice(i,1);try{localStorage.setItem("yh_qrh",JSON.stringify(L))}catch(e){}qrHist()}
 /* ===== แบนเนอร์ (หลังบ้าน) ===== */
 let BNE=null,BNNEW=false,BNIMG=null,BNSC=1,BNDEL=null;
 function picFit(file,mw){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const r=Math.min(1,mw/im.width),c=document.createElement("canvas");c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.85))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
