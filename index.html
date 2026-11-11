@@ -183,6 +183,31 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .sbar{display:block;height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.sbar i{display:block;height:100%;background:var(--seal);border-radius:9px}
 .sld>*,.sld>.rv{flex:0 0 300px;max-width:85vw;min-width:0}.sbw,.ssl{min-width:0;width:100%}
 .rcd{height:auto}.sbw{margin-top:auto}
+/* ===== แนะนำเพื่อน ===== */
+.rfm{font-size:13px;min-height:20px;margin-top:4px;color:var(--mut)}.rfm.ok{color:var(--ok)}.rfm.bad{color:var(--seal)}
+.dsc{color:var(--ok);font-weight:600}
+.rfx{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--bd);padding:26px 18px 18px;display:flex;flex-direction:column;gap:14px;color:#1a1a1a;
+ background-color:#fbf6ec;background-image:linear-gradient(#ece2cf 1px,transparent 1px),linear-gradient(90deg,#ece2cf 1px,transparent 1px);background-size:18px 18px;max-width:520px;margin:6px auto 0}
+.rfx .rfbar{position:absolute;left:0;right:0;top:0;height:7px;background:#b3122b}
+.rfhd{text-align:center;display:flex;flex-direction:column;gap:2px}
+.rfzh{font:900 24px/1.2 "Noto Serif SC",serif;color:#b3122b}.rfpy{font-size:12px;color:#5f574c;letter-spacing:.5px}
+.rfhd h2{margin:6px 0 0;font-size:24px;line-height:1.3;color:#1a1a1a}.rfhd h2 span{color:#b3122b}.rfhd p{margin:2px 0 0;font-size:14px;color:#3a342c}
+.rfgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rfbx{border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:2px;line-height:1.3;color:#fff}
+.rfbx.r{background:#b3122b}.rfbx.k{background:#1a1a1a}.rfbx.k b{color:#f2b705}
+.rfbx span{font-size:13px}.rfbx b{font-size:clamp(17px,5.2vw,22px);white-space:nowrap}.rfbx small{font-size:12px;opacity:.85}
+.rfcd{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:2px dashed #b3122b;border-radius:10px;padding:8px 12px}
+.rfcd span{font-size:14px;font-weight:600}.rfcd b{font:700 22px/1 "Noto Serif SC",monospace;letter-spacing:2px;color:#b3122b}
+.rfbt{display:flex;flex-direction:column;gap:8px}.rfbt .btn{width:100%;box-sizing:border-box;text-decoration:none}
+.rfbt .btn.alt{background:#fff;color:#1a1a1a;border:1px solid #d9cdb8}
+.rfx .rft{margin:0;font-size:12px;color:#5f574c;text-align:center;line-height:1.5}
+.rfown{max-width:520px;margin:12px auto 0}
+.rfst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.rfs{border:1px solid var(--bd);border-radius:10px;padding:8px 4px;text-align:center;display:flex;flex-direction:column;color:var(--mut)}
+.rfs b{font-size:18px}.rfs span{font-size:12px}.rfs.on{background:var(--seal);border-color:var(--seal);color:#fff}
+.rfb{margin:6px 0;padding:8px 10px;border-radius:8px;background:var(--okbg);color:var(--okfg);font-size:14px}
+.rfwn{margin:6px 0;padding:8px 10px;border-radius:8px;background:var(--nobg);color:var(--nofg);font-size:14px;font-weight:600}
+
 .sbx{min-height:150px}
 .sstab{display:flex;gap:6px;margin-bottom:8px}.sstab button{border:1px solid var(--bd);background:var(--card);color:var(--mut);border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.sstab button.on{background:var(--seal);border-color:var(--seal);color:#fff}
 .ssl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:0}.ssl::-webkit-scrollbar{display:none}.ssl>.sbx{flex:0 0 100%;scroll-snap-align:start}
@@ -565,6 +590,8 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <label for="nm">ชื่อ-นามสกุล</label><input id="nm" placeholder="ตามบัตรประชาชน">
     <label for="ph">เบอร์โทร</label><input id="ph" inputmode="tel" placeholder="08x-xxx-xxxx">
     <label for="em">อีเมล (ใช้รับลิงก์ไลฟ์สด)</label><input id="em" type="email" inputmode="email" placeholder="name@gmail.com">
+    <div id="rfw"><label for="rfc">รหัสผู้แนะนำ (ถ้ามี)</label><input id="rfc" placeholder="รหัสนักเรียนของเพื่อนที่ชวนมา เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="rfIn()"><div class="rfm" id="rfm"></div>
+      <details class="terms" id="cpw"><summary>นักเรียนเก่า: ใช้คูปองแนะนำเพื่อนของฉัน</summary><label for="cpc">รหัสนักเรียนของคุณ (เจ้าของคูปอง)</label><input id="cpc" placeholder="เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="cpIn()"><div class="rfm" id="cpm"></div><div class="mut" style="font-size:12px">ใช้ได้ 1 คูปองต่อ 1 คอร์ส · พี่จะตรวจชื่อกับเจ้าของคูปองก่อนอนุมัติ</div></details></div>
     <div id="bkw"><label for="bk">หนังสือเรียน</label>
     <select id="bk" onchange="calc()"><option value="0">ไม่รับหนังสือ</option><option value="150">รับหนังสือเล่ม เข้าสันเกลียว (+150 บาท)</option></select><div class="mut" style="font-size:12px;margin-top:4px">ไม่รับเล่มก็ได้ไฟล์หนังสือ PDF ฟรี ดาวน์โหลดได้ในหน้าเรียน</div>
       <div id="adw" style="display:none"><label for="ad">ที่อยู่จัดส่งหนังสือ</label><textarea id="ad" rows="3" placeholder="ชื่อผู้รับ เบอร์โทร บ้านเลขที่ ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด"></textarea><label for="zp">รหัสไปรษณีย์</label><input id="zp" inputmode="numeric" maxlength="5" placeholder="เช่น 10240"></div></div>
@@ -588,6 +615,11 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   </div>
 </section>
 
+<section class="scr" id="s-ref">
+  <div class="top"><button class="btn alt sm" id="rfback" onclick="go('s-home')">‹ หน้าแรก</button></div>
+  <div id="rfv"></div>
+</section>
+
 <section class="scr" id="s-gate">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
   <h2>เข้าสู่หลังบ้าน</h2>
@@ -599,7 +631,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <!-- แอดมิน -->
 <section class="scr" id="s-admin">
   <div class="top"><button class="btn alt sm" onclick="adminLogout()">‹ ออกจากระบบ</button><b>หลังบ้านผู้ดูแล</b><button class="btn sm" onclick="adminPreview()" title="ดูหน้าเรียนแบบที่นักเรียนเห็น เห็นทุกคอร์ส ไม่บันทึกอะไร">มุมมองนักเรียน</button></div>
-  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
+  <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-ref">แนะนำเพื่อน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
   <div class="pane" id="a-ov"><div id="ovw"></div></div>
 <div class="pane" id="a-fin">
   <div class="row" style="margin:10px 0;align-items:center"><label for="fmsel" style="margin:0">เดือน</label><select id="fmsel" style="width:auto;margin:0" onchange="FNM=this.value;renderFin()"></select></div>
@@ -625,6 +657,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button></div></div>
   <p class="mut" style="font-size:12px">ตัวเลขในหน้านี้ไว้ดูภาพรวมธุรกิจ ไม่ใช่เอกสารบัญชีหรือภาษี · ค่าเรียนนับในเดือนที่สมัครและได้รับอนุมัติ · ร้านหนังสือนับในเดือนที่กด “เงินเข้าแล้ว”</p>
 </div>
+<div class="pane" id="a-ref"><div id="rfa"></div></div>
 <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
   <div class="pane" id="a-shop">
     <div class="card" style="margin-top:10px"><b id="pfh">เพิ่มหนังสือ</b>
@@ -912,6 +945,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="g3" id="st"></div>
     <div id="tcont"></div>
     <div id="tbk"></div>
+    <div id="refc"></div>
     <h3 style="margin-top:16px">จับเวลาเรียน</h3>
     <div id="tm">
     <div class="card" style="margin-top:10px">
@@ -1180,11 +1214,41 @@ function renderSch(){
   $("asl").innerHTML=g+DN.map((n,i)=>{const l=SL.filter(x=>x.dw===i).sort((a,b)=>a.h-b.h);
     return `<details class="card"><summary><b>วัน${n}</b> <span class="mut">${l.length} ช่วงเวลา</span></summary>${l.map(x=>`<div class="vw" style="align-items:center"><div style="flex:1"><b>${fh(x.h,x.du)}</b> <span class="tag">${x.ty==="single"?"เดี่ยว":"กลุ่ม"}</span> <span class="tag">${KD(x)==="lc"?"คอร์สเรียนสด":"รายชั่วโมง"}</span>${x.full?' <span class="tag" style="background:#555;color:#fff">ปิดรับ (เต็ม)</span>':""}<div class="mut">${esc(x.tp)} · จองผ่านเว็บ ${x.bk.length} · นักเรียนเก่า ${x.tk||0} · ว่าง ${SLEFT(x)}/${x.cap}${x.bk.length?" · "+x.bk.map(esc).join(", "):""}</div><div class="slx"><label class="chk" style="margin:0"><input type="checkbox" ${x.full?"checked":""} onchange="slotFull(${x.id},this.checked)"> ปิดรับ (เต็มแล้ว)</label><span>นักเรียนเก่าที่นั่งอยู่แล้ว</span><input type="number" min="0" max="${x.cap}" value="${x.tk||0}" onchange="slotTk(${x.id},this.value)"> <span>คน</span></div></div><button class="btn alt sm" onclick="delSlot(${x.id})">ลบ</button></div>`).join("")}</details>`}).join("");
 }
-function openEnroll(k,ins,fm,ty){if(!C[k])k=CV().find(x=>!C[x].pk)||CV()[0]||"live";FMT=fm||"v";TYP=ty||"group";$("enForm").style.display="block";$("enDone").style.display="none";$("cs").value=k;$("ins").checked=!!ins;$("insok").checked=false;$("ad").value="";$("zp").value="";calc();go("s-enroll")}
+function openEnroll(k,ins,fm,ty){if(!C[k])k=CV().find(x=>!C[x].pk)||CV()[0]||"live";FMT=fm||"v";TYP=ty||"group";$("enForm").style.display="block";$("enDone").style.display="none";$("cs").value=k;$("ins").checked=!!ins;$("insok").checked=false;$("ad").value="";$("zp").value="";if(!$("rfc").value.trim()){const s=rfStored();if(s&&!(ST&&ST.code===s))$("rfc").value=s}calc();rfIn();if($("cpc").value.trim())cpIn();go("s-enroll")}
 const ty0=()=>BK.length?SL.find(x=>x.id===BK[0]).ty:HT;
 const base=()=>{const k=$("cs").value;return k!=="live"?(FMT==="l"?lv(k,TYP):C[k].p):(LC?parseInt(C[LC].h)*rt(ty0()):0)};
 const eligible=k=>k==="live"?(!!LC&&!!C[LC]&&!!C[LC].ins):!!(C[k]&&C[k].ins);
 let FMT="v",TYP="group";
+/* ===== แนะนำเพื่อน: ส่วนลดในใบสมัคร ===== */
+let RF=null,CP=null,RFT=null,CPT=null;/* RF={code,nick} ผู้แนะนำที่ตรวจแล้ว · CP={code,v,exp} คูปองของฉัน */
+const REFV=200,REFPIN=100,BOOKREF=50,REFT=[200,250,300];
+const ncode=s=>{const d=String(s||"").toUpperCase().replace(/\s/g,"").replace(/^YH-?/,"");return /^\d{3,6}$/.test(d)?"YH"+d:""};
+const isCrs=()=>{const k=$("cs").value;return k!=="live"||!!LC};
+const isPinK=()=>($("cs").value==="live"?LC:$("cs").value)==="pinyin";
+function disc(){if(!isCrs())return 0;if(RF)return isPinK()?REFPIN:REFV;if(CP)return isPinK()?Math.min(REFPIN,CP.v):CP.v;return 0}
+function price(){const k=$("cs").value,need=isCrs(),ins=eligible(k)&&$("ins").checked,b0=need?+$("bk").value:0,bd=b0&&RF?BOOKREF:0,b=b0-bd,full=base(),d=Math.min(disc(),full),bs=full-d,f=Math.round(bs*.7);
+  return {need,ins,b0,bd,b,full,d,bs,f,total:(need?(ins?f:bs):0)+b,second:ins?bs-f:0}}
+async function yhLookDemo(kind,code){const d={YH1001:{nick:"มีมี่",cp:250},YH1002:{nick:"",cp:0}}[code];if(!d)return {ok:false};
+  return kind==="ref"?{ok:true,code,nick:d.nick}:d.cp?{ok:true,code,value:d.cp,expires_at:new Date(Date.now()+300*864e5).toISOString()}:{ok:false}}
+const yhLook=(k,c)=>(window.yhLookFn||yhLookDemo)(k,c);
+function rfCheck(inp,msg,kind,set){const v=$(inp).value,c=ncode(v),m=$(msg),other=$(kind==="ref"?"cpc":"rfc").value.trim();set(null);
+  if(!v.trim()){m.textContent="";m.className="rfm";calc();return 0}
+  if(!c){m.textContent="รหัสนักเรียนขึ้นต้นด้วย YH ตามด้วยตัวเลข เช่น YH1003";m.className="rfm bad";calc();return 0}
+  if(other){m.textContent=kind==="ref"?"ใช้รหัสผู้แนะนำกับคูปองพร้อมกันไม่ได้ ลบช่องคูปองก่อนนะ":"ใช้คูปองกับรหัสผู้แนะนำพร้อมกันไม่ได้ ลบช่องรหัสผู้แนะนำก่อนนะ";m.className="rfm bad";calc();return 0}
+  if(!isCrs()){m.textContent="ส่วนลดใช้ได้กับคอร์สวิดีโอและคอร์สเรียนสดเท่านั้น";m.className="rfm bad";calc();return 0}
+  m.textContent="กำลังตรวจรหัส…";m.className="rfm";calc();return c}
+function rfIn(){clearTimeout(RFT);const c=rfCheck("rfc","rfm","ref",x=>RF=x);if(!c)return;
+  RFT=setTimeout(async()=>{let r=null;try{r=await yhLook("ref",c)}catch(e){}if(ncode($("rfc").value)!==c)return;const m=$("rfm");
+    if(!r){m.textContent="ตรวจรหัสไม่ได้ ลองเช็กอินเทอร์เน็ต";m.className="rfm bad";return}
+    if(!r.ok){m.textContent="ไม่พบรหัสนี้ ลองเช็กกับเพื่อนอีกครั้ง";m.className="rfm bad";calc();return}
+    RF={code:r.code,nick:r.nick||""};m.innerHTML="✓ "+(RF.nick?"<b>"+esc(RF.nick)+"</b> ชวนมา · ":"")+"ได้ส่วนลดเพื่อนใหม่ (สำหรับคนที่ยังไม่เคยเรียนกับเรา)";m.className="rfm ok";calc()},350)}
+function cpIn(){clearTimeout(CPT);const c=rfCheck("cpc","cpm","cp",x=>CP=x);if(!c)return;
+  CPT=setTimeout(async()=>{let r=null;try{r=await yhLook("cp",c)}catch(e){}if(ncode($("cpc").value)!==c)return;const m=$("cpm");
+    if(!r){m.textContent="ตรวจคูปองไม่ได้ ลองเช็กอินเทอร์เน็ต";m.className="rfm bad";return}
+    if(!r.ok){m.textContent="รหัสนี้ไม่มีคูปองที่ใช้ได้ (อาจใช้ไปแล้วหรือหมดอายุ)";m.className="rfm bad";calc();return}
+    CP={code:r.code,v:r.value,exp:r.expires_at};m.innerHTML="✓ คูปองลด <b>"+B(r.value)+"</b> · ใช้ได้ถึง "+fdl(+new Date(r.expires_at))+(isPinK()&&r.value>REFPIN?" (คอร์สพินอินลดได้สูงสุด 100 บาท)":"");m.className="rfm ok";calc()},350)}
+function rfStore(c){try{localStorage.setItem("yh_ref",JSON.stringify({c,t:Date.now()}))}catch(e){}}
+function rfStored(){try{const o=JSON.parse(localStorage.getItem("yh_ref")||"null");return o&&o.c&&Date.now()-o.t<60*864e5?String(o.c):""}catch(e){return ""}}
 function setFm(f){FMT=f;calc()}
 function setTy(t){TYP=t;calc()}
 function calc(){
@@ -1192,14 +1256,15 @@ function calc(){
   {const nl=k==="live";$("fmw").style.display=nl?"none":"block";$("tyw").style.display=(!nl&&FMT==="l")?"block":"none";
   $("tg").textContent="เรียนกลุ่ม · "+(nl?"":c.pk?B(lv(k,"group")):B(lrate(k,"group"))+"/ชม.");$("ts").textContent="เรียนเดี่ยว · "+(nl?"":c.pk?B(lv(k,"single")):B(lrate(k,"single"))+"/ชม.");
   $("fv").classList.toggle("on",FMT==="v");$("fl").classList.toggle("on",FMT==="l");$("tg").classList.toggle("on",TYP==="group");$("ts").classList.toggle("on",TYP==="single")}
-  $("bkw").style.display=$("slw").style.display=need?"block":"none";$("inw").style.display=el?"block":"none";$("adw").style.display=need&&b?"block":"none";$("iok").style.display=ins?"flex":"none";
-  const bs=base(),f=Math.round(bs*.7);let h;
+  $("bkw").style.display=$("slw").style.display=need?"block":"none";$("inw").style.display=el?"block":"none";$("adw").style.display=need&&b?"block":"none";$("iok").style.display=ins?"flex":"none";$("rfw").style.display=need?"block":"none";
+  const P=price(),bs=P.full,f=P.f;let h;
   if(k!=="live")h=FMT==="l"?`<div>${c.n} เรียนสด (${TYP==="single"?"เดี่ยว":"กลุ่ม"}) ${c.h}${c.pk?"":" × "+B(lrate(k,TYP))+"/ชม."} = ${B(bs)}</div>`:`<div>${c.n} (คอร์สวิดีโอ): ${B(c.p)}</div>`;
   else if(LC)h=`<div>${C[LC].n} เรียนสด ${C[LC].h} × ${B(rt(ty0()))}/ชม. = ${B(bs)}</div>`;
   else h=`<div>เรียนสด ${bkh()} ชม./สัปดาห์ · ${B(rt(ty0()))}/ชม.</div><b>ยังไม่ต้องโอนเงิน</b><div class="mut">จ่ายหลังเรียนจบ ตามจำนวนชั่วโมงที่เรียนจริง</div>`;
   if(need){
-    if(b)h+=`<div>หนังสือเล่ม: ${B(b)} (จ่ายพร้อมงวดแรก)</div>`;
-    h+=ins?`<div>งวดแรก 70%: ${B(f)}</div><b>รวมโอนวันนี้ ${B(f+b)}</b><div class="mut">งวดที่ 2 (30%) ${B(bs-f)} จ่ายเมื่อเรียนครบ 1 เดือน</div>`:`<b>รวมโอน ${B(bs+b)}</b>`;
+    if(P.d)h+=`<div class="dsc">${RF?"ส่วนลดเพื่อนใหม่":"คูปองแนะนำเพื่อน"}: −${B(P.d)} · ค่าคอร์สเหลือ ${B(P.bs)}</div>`;
+    if(b)h+=`<div>หนังสือเล่ม: ${P.bd?`<s>${B(P.b0)}</s> <b class="dsc">${B(P.b)}</b> (ราคาเพื่อนแนะนำ)`:B(P.b)} (จ่ายพร้อมงวดแรก)</div>`;
+    h+=ins?`<div>งวดแรก 70%: ${B(f)}</div><b>รวมโอนวันนี้ ${B(f+P.b)}</b><div class="mut">งวดที่ 2 (30%) ${B(P.second)} จ่ายเมื่อเรียนครบ 1 เดือน</div>`:`<b>รวมโอน ${B(P.bs+P.b)}</b>`;
     h+=`<div class="payqr"><img src="${PAYQR}" alt="QR พร้อมเพย์ของสถาบัน ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล" onclick="$('bkmb').innerHTML='<img src=&quot;'+PAYQR+'&quot; alt=&quot;QR พร้อมเพย์&quot; style=&quot;width:100%;border-radius:10px&quot;><button class=&quot;btn alt&quot; onclick=&quot;closeBook()&quot;>ปิด</button>';$('bkm').classList.add('on')"><div><b>สแกนจ่ายผ่านพร้อมเพย์</b><div class="mut" style="font-size:13px">ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล · ธนาคารกรุงไทย</div><div class="mut" style="font-size:13px">โอนตามยอดด้านบน แล้วแคปสลิปแนบในช่องถัดไป</div><a href="${PAYQR}" download="YUEHUA-QR.jpg">บันทึกรูป QR</a></div></div>`;
   }
   if(k==="live"&&!BK.length)h+="<div style='color:var(--seal)'>ยังไม่ได้เลือกช่วงเวลา กลับไปจองก่อน</div>";
@@ -1216,11 +1281,85 @@ async function enroll(){
   if(+$("bk").value&&(k!=="live"||LC)&&(!$("ad").value.trim()||!/^\d{5}$/.test($("zp").value.trim()))){alert("กรุณากรอกที่อยู่จัดส่งหนังสือและรหัสไปรษณีย์ 5 หลัก");return}
   if(k==="live"){const e=BK.length?chk():"ยังไม่ได้เลือกช่วงเวลาเรียน";if(e){alert(e);return}}
   const need=k!=="live"||!!LC,ins=eligible(k)&&$("ins").checked,c=C[k],b=need?+$("bk").value:0,code="YH"+Math.floor(1000+Math.random()*9000);
-  SUBS.unshift({name:n,ph,em,course:(k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n)),book:b?"รับหนังสือเล่ม":"ไม่รับหนังสือ",total:(need?(ins?Math.round(base()*.7):base()):0)+b,after:!need,addr:b?$("ad").value.trim():"",zip:b?$("zp").value.trim():"",ins,insAt:ins?new Date().toLocaleString("th-TH"):null,second:ins?base()-Math.round(base()*.7):0,paid2:false,live:k==="live"||FMT==="l",access:C[k].pk?[...C[k].pk]:k==="live"?(LC?[LC]:[]):[k],slip:sl?await rd(sl):null,idc:await rd(id),at:new Date().toLocaleString("th-TH"),st:"รอตรวจสอบ",code});
+  SUBS.unshift({name:n,ph,em,course:(k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n)),book:b?"รับหนังสือเล่ม":"ไม่รับหนังสือ",total:price().total,after:!need,addr:b?$("ad").value.trim():"",zip:b?$("zp").value.trim():"",ins,insAt:ins?new Date().toLocaleString("th-TH"):null,second:price().second,paid2:false,live:k==="live"||FMT==="l",access:C[k].pk?[...C[k].pk]:k==="live"?(LC?[LC]:[]):[k],slip:sl?await rd(sl):null,idc:await rd(id),at:new Date().toLocaleString("th-TH"),st:"รอตรวจสอบ",code});
   if(k==="live"){BK.forEach(id=>SL.find(x=>x.id===id).bk.push(n));BK=[]}
   me={name:n,course:c.n,code};
   $("newCode").textContent=code;$("enForm").style.display="none";$("enDone").style.display="block";
 }
+
+/* ===== การ์ดชวนเพื่อน (ลิงก์ ?ref=รหัส) ===== */
+const LINEU="https://line.me/ti/p/4ssGEo74A7";
+const rfUrl=c=>location.origin+location.pathname+"?ref="+encodeURIComponent(c);
+const rfMsg=c=>"มาเรียนภาษาจีนกับ YUEHUA ด้วยกันนะ! สมัครผ่านลิงก์นี้ได้ลดค่าคอร์ส 200 บาท + หนังสือเหลือ 100 บาท 👉 "+rfUrl(c);
+let RFV=null;
+function refView(code,nick,own){RFV={code,nick:nick||"",own:!!own};
+  $("rfback").textContent=own?"‹ กลับหน้าเรียน":"‹ หน้าแรก";$("rfback").onclick=()=>go(own?"s-dash":"s-home");
+  $("rfv").innerHTML=`<div class="rfx"><i class="rfbar"></i>
+  <div class="rfhd"><span class="rfzh">一起学中文吧！</span><span class="rfpy">yìqǐ xué Zhōngwén ba · มาเรียนจีนด้วยกันนะ</span>
+  <h2>${nick?`<span>${esc(nick)}</span> ชวนคุณ`:"เพื่อนชวนคุณ"}มาเรียนภาษาจีน</h2><p>สมัครด้วยรหัสผู้แนะนำ รับส่วนลดสำหรับเพื่อนใหม่</p></div>
+  <div class="rfgr"><div class="rfbx r"><span>ค่าคอร์สลด</span><b>200 บาท</b><small>คอร์สพินอินลด 100 บาท</small></div><div class="rfbx k"><span>หนังสือเล่ม</span><b>เหลือ 100 บาท</b><small>จากปกติ 150 บาท</small></div></div>
+  <div class="rfcd"><span>รหัสผู้แนะนำ</span><b>${esc(code)}</b></div>
+  <div class="rfbt"><button class="btn" onclick="refGo('enroll')">สมัครเรียน · ใส่ส่วนลดให้แล้ว</button><button class="btn alt" onclick="refGo('trial')">ทดลองเรียนฟรี 1 ชม. ก่อน</button><a class="btn alt" href="${LINEU}" target="_blank" rel="noopener">ถามพี่ทาง LINE</a></div>
+  <p class="rft">ใช้กับคอร์สวิดีโอและคอร์สเรียนสด (ไม่รวมเรียนสดรายชั่วโมง) · สำหรับคนที่ยังไม่เคยเรียนกับ YUEHUA</p></div>
+  ${own?`<div class="card rfown"><b>ส่งการ์ดนี้ให้เพื่อน</b><div class="mut" style="font-size:13px">เพื่อนกดลิงก์หรือสแกน QR ในรูป ช่องรหัสผู้แนะนำจะใส่ให้เอง</div>
+  <div class="row"><button class="btn sm" onclick="rfShare()">แชร์รูปการ์ด</button><button class="btn alt sm" onclick="rfSave()">บันทึกรูปการ์ด</button><button class="btn alt sm" onclick="rfCopy()">คัดลอกลิงก์</button></div><div class="mut" id="rfsm" style="font-size:13px;min-height:20px"></div></div>`:""}`}
+function refGo(w){if(RFV&&RFV.own){toast2("นี่คือหน้าที่เพื่อนจะเห็น ปุ่มนี้ให้เพื่อนกดนะ");return}
+  if(w==="trial"){openTrial();return}
+  $("rfc").value=RFV?RFV.code:"";openEnroll(C.hsk1&&C.hsk1.on!==false?"hsk1":undefined)}
+const toast2=m=>{if(window.yhToast)yhToast(m);else alert(m)};
+async function refOpen(c){let r=null;try{r=await yhLook("ref",c)}catch(e){}if(!r||!r.ok)return;rfStore(r.code);refView(r.code,r.nick,false);go("s-ref")}
+function refInit(){if(window.YH_REF_INIT)return;window.YH_REF_INIT=1;let c="";try{c=ncode(new URLSearchParams(location.search).get("ref"))}catch(e){}if(c)refOpen(c)}
+window.addEventListener("load",()=>setTimeout(refInit,0));
+function refOwn(){if(!ST)return;refView(ST.code,ST.nick,true);go("s-ref")}
+async function rfCopy(){const c=RFV&&RFV.own?RFV.code:ST&&ST.code;if(!c)return;const t=rfMsg(c);
+  try{await navigator.clipboard.writeText(t);toast2("คัดลอกลิงก์ชวนเพื่อนแล้ว ส่งให้เพื่อนทาง LINE ได้เลย")}catch(e){prompt("คัดลอกข้อความนี้ส่งให้เพื่อน",t)}}
+let QRP=null;
+function qrLib(){if(window.qrcode)return Promise.resolve();if(QRP)return QRP;
+  QRP=new Promise((ok,no)=>{const s=document.createElement("script");s.src="tools/qr/qrcode.js";s.onload=ok;s.onerror=()=>{QRP=null;no(new Error("qr"))};document.head.appendChild(s)});return QRP}
+async function rfImage(code,nick){
+  await qrLib();try{await Promise.all(['700 60px "Noto Sans Thai"','400 26px "Noto Sans Thai"','900 60px "Noto Serif SC"'].map(f=>document.fonts.load(f,"一起学中文吧！ชวนคุณ")))}catch(e){}
+  const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
+  const TH='"Noto Sans Thai",Tahoma,sans-serif';
+  x.fillStyle="#fbf6ec";x.fillRect(0,0,W,H);x.strokeStyle="#ece2cf";x.lineWidth=2;
+  for(let i=0;i<=W;i+=36){x.beginPath();x.moveTo(i,0);x.lineTo(i,H);x.stroke()}for(let j=0;j<=H;j+=36){x.beginPath();x.moveTo(0,j);x.lineTo(W,j);x.stroke()}
+  x.fillStyle="#b3122b";x.fillRect(0,0,W,16);
+  const T=(t,y,font,col,al)=>{x.font=font;x.fillStyle=col;x.textAlign=al||"center";x.textBaseline="alphabetic";x.fillText(t,al==="left"?0:W/2,y)};
+  const fit=(t,max,px,w)=>{let p=px;do{x.font=`${w} ${p}px ${TH}`;if(x.measureText(t).width<=max)break;p-=2}while(p>24);return p};
+  const rr=(X,Y,w,h,r,fill,stroke,dash)=>{x.beginPath();x.roundRect?x.roundRect(X,Y,w,h,r):x.rect(X,Y,w,h);if(fill){x.fillStyle=fill;x.fill()}if(stroke){x.setLineDash(dash||[]);x.lineWidth=4;x.strokeStyle=stroke;x.stroke();x.setLineDash([])}};
+  T("一起学中文吧！",130,'900 64px "Noto Serif SC",serif',"#b3122b");
+  T("yìqǐ xué Zhōngwén ba · มาเรียนจีนด้วยกันนะ",182,`400 28px ${TH}`,"#5f574c");
+  const hd=(nick?nick+" ":"เพื่อน")+"ชวนคุณมาเรียนภาษาจีน",hp=fit(hd,960,64,700);T(hd,280,`700 ${hp}px ${TH}`,"#1a1a1a");
+  T("สมัครด้วยรหัสผู้แนะนำ รับส่วนลดสำหรับเพื่อนใหม่",336,`400 32px ${TH}`,"#3a342c");
+  rr(70,380,455,230,24,"#b3122b");rr(555,380,455,230,24,"#1a1a1a");
+  x.textAlign="left";x.fillStyle="#fff";x.font=`400 32px ${TH}`;x.fillText("ค่าคอร์สลด",100,436);x.font=`700 72px ${TH}`;x.fillText("200 บาท",100,526);x.font=`400 26px ${TH}`;x.fillText("คอร์สพินอินลด 100 บาท",100,580);
+  x.fillStyle="#fff";x.font=`400 32px ${TH}`;x.fillText("หนังสือเล่ม",585,436);x.fillStyle="#f2b705";x.font=`700 64px ${TH}`;x.fillText("เหลือ 100 บาท",585,522);x.fillStyle="#fff";x.font=`400 26px ${TH}`;x.fillText("จากปกติ 150 บาท",585,580);
+  rr(200,644,680,96,18,"#fff","#b3122b",[16,12]);x.textAlign="left";x.font=`700 34px ${TH}`;x.fillStyle="#1a1a1a";const lb="รหัสผู้แนะนำ  ",lw=x.measureText(lb).width;x.font='700 48px "Noto Serif SC",monospace';const cw=x.measureText(code).width,sx=(W-(lw+cw))/2;
+  x.font=`700 34px ${TH}`;x.fillText(lb,sx,706);x.font='700 48px "Noto Serif SC",monospace';x.fillStyle="#b3122b";x.fillText(code,sx+lw,710);
+  const q=qrcode(0,"M");q.addData(rfUrl(code));q.make();const n=q.getModuleCount(),QS=360,cell=QS/(n+8),qx=(W-QS)/2,qy=780;
+  rr(qx,qy,QS,QS,22,"#fff");x.fillStyle="#1a1a1a";for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))x.fillRect(Math.floor(qx+(c+4)*cell),Math.floor(qy+(r+4)*cell),Math.ceil(cell),Math.ceil(cell));
+  T("สแกนเพื่อสมัคร ช่องรหัสผู้แนะนำจะใส่ให้เอง",1196,`600 30px ${TH}`,"#1a1a1a");
+  T("ใช้กับคอร์สวิดีโอและคอร์สเรียนสด · สำหรับคนที่ยังไม่เคยเรียนกับ YUEHUA",1244,`400 24px ${TH}`,"#5f574c");
+  x.fillStyle="#b3122b";x.fillRect(0,H-70,W,70);T("YUEHUA 悦华中文 · เรียนภาษาจีนออนไลน์ HSK 1–4",H-24,`700 30px ${TH}`,"#fff");
+  return await new Promise(ok=>cv.toBlob(ok,"image/png"))}
+async function rfBlob(){const m=$("rfsm");if(m)m.textContent="กำลังสร้างรูปการ์ด…";
+  try{const b=await rfImage(RFV.code,RFV.nick);if(m)m.textContent="";return b}catch(e){console.error(e);if(m)m.textContent="สร้างรูปไม่สำเร็จ ลองใช้ปุ่มคัดลอกลิงก์แทน";return null}}
+async function rfSave(){const b=await rfBlob();if(!b)return;const u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="YUEHUA-ชวนเพื่อน-"+RFV.code+".png";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000);
+  const m=$("rfsm");if(m)m.textContent="บันทึกรูปแล้ว ถ้าไม่เห็นไฟล์ ลองกดค้างที่รูปในหน้าถัดไปเพื่อบันทึก"}
+async function rfShare(){const b=await rfBlob();if(!b)return;const f=new File([b],"YUEHUA-"+RFV.code+".png",{type:"image/png"});
+  if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],text:rfMsg(RFV.code)});return}catch(e){if(e&&e.name==="AbortError")return}}
+  rfSave()}
+/* หน้าเรียน: การ์ดสรุปการชวนเพื่อน */
+let MYREF={total:2,friends:[{first:"ต้น",at:new Date().toISOString()},{first:"มายด์",at:new Date().toISOString()}],coupons:[{id:1,friends:2,value:250,status:"open",expires_at:new Date(Date.now()+330*864e5).toISOString()}]};
+function renderRef(){const el=$("refc");if(!el||!ST)return;const R=MYREF||{total:0,friends:[],coupons:[]};
+  const cp=(R.coupons||[]).find(c=>c.status==="open"||c.status==="held"),n=cp?cp.friends:0;
+  const step=(i,v)=>`<div class="rfs${n>=i?" on":""}"><b>${v}</b><span>${i===3?"ชวน 3 คนขึ้นไป":"ชวน "+i+" คน"}</span></div>`;
+  const ct=cp?(cp.status==="held"?`คูปองลด <b>${B(cp.value)}</b> กำลังใช้กับใบสมัครที่รออนุมัติ`:`คูปองของคุณ: ลด <b>${B(cp.value)}</b> · ใช้ได้ถึง ${fdl(+new Date(cp.expires_at))}${n<3?` · ชวนอีก 1 คน เพิ่มเป็น ${B(REFT[n])}`:""}`):"ยังไม่มีคูปอง · เพื่อนคนแรกสมัครสำเร็จ รับคูปองลด 200 บาท";
+  const fr=(R.friends||[]).slice(0,6).map(f=>esc(f.first||"")).filter(Boolean);
+  el.innerHTML=`<div class="card" style="margin-top:10px"><div class="eb">ชวนเพื่อนมาเรียน</div>
+  <div class="rfst">${step(1,200)}${step(2,250)}${step(3,300)}</div><div>${ct}</div>
+  <div class="mut" style="font-size:13px;margin-top:4px">ชวนสำเร็จแล้วทั้งหมด ${R.total||0} คน${fr.length?" · "+fr.join(", "):""}</div>
+  <div class="row"><button class="btn sm" onclick="refOwn()">การ์ดชวนเพื่อนของฉัน</button><button class="btn alt sm" onclick="rfCopy()">คัดลอกลิงก์</button></div>
+  <div class="mut" style="font-size:12px">เพื่อนใหม่ได้ลดค่าคอร์ส 200 บาท + หนังสือเหลือ 100 · ใช้คูปองตอนสมัครคอร์สถัดไป: เปิด “ใช้คูปองแนะนำเพื่อนของฉัน” ในใบสมัคร แล้วใส่รหัส ${esc(ST.code)}</div></div>`}
 function openAdmin(){if(AUTH){renderAdmin();go("s-admin")}else{$("ge").textContent="";go("s-gate")}}
 function gate(){
   if(GF>=5){$("ge").textContent="ลองผิดหลายครั้งแล้ว กรุณารีเฟรชหน้าเว็บ";return}
@@ -1228,7 +1367,7 @@ function gate(){
   else{GF++;$("ge").textContent="รหัสไม่ถูกต้อง"}
 }
 function renderAdmin(){
-  if(AT==="a-fin")renderFin();
+  if(AT==="a-fin")renderFin();if(AT==="a-ref")renderRefAdmin();
   if(AT==="a-rv")renderRvAdmin();if(AT==="a-crs")renderCrsAdmin();if(AT==="a-ban")renderBanAdmin();
   if(AT==="a-mail")renderMail();else mailBadge();
   if(AT==="a-vid")renderVidAdmin();if(AT==="a-bf")renderBfAdmin();if(AT==="a-shop")renderShopAdmin();if(AT==="a-vf")renderVfAdmin();
@@ -1237,7 +1376,7 @@ function renderAdmin(){
   const nw=SUBS.map((r,i)=>[r,i]).filter(x=>x[0].st==="รอตรวจสอบ");
   $("bn").textContent=nw.length?"("+nw.length+")":"";
   $("al").innerHTML=nw.length?nw.map(([r,i])=>`<div class="card"><b>${esc(r.name)}</b> <span class="mut">${esc(r.ph)}</span>
-  <div class="mut">${esc(r.em)}</div><div>${r.course} · ${r.book} · <b>${r.after?"จ่ายหลังเรียน":B(r.total)}</b>${r.ins?" <span class='tag'>ผ่อน 70/30 · งวด 2: "+B(r.second)+"</span>":""}${r.ins&&r.insAt?`<div class="mut">ยอมรับเงื่อนไขผ่อนเมื่อ ${r.insAt}</div>`:""}</div>${r.addr?`<div class="card" style="margin:8px 0;padding:10px;font-size:14px"><b>จัดส่งหนังสือ</b><div>${esc(r.addr)} ${esc(r.zip||"")}</div></div>`:""}<div class="mut">ส่งเมื่อ ${r.at} · รหัส ${r.code}</div>
+  <div class="mut">${esc(r.em)}</div><div>${r.course} · ${r.book} · <b>${r.after?"จ่ายหลังเรียน":B(r.total)}</b>${r.ins?" <span class='tag'>ผ่อน 70/30 · งวด 2: "+B(r.second)+"</span>":""}${r.ins&&r.insAt?`<div class="mut">ยอมรับเงื่อนไขผ่อนเมื่อ ${r.insAt}</div>`:""}</div>${r.addr?`<div class="card" style="margin:8px 0;padding:10px;font-size:14px"><b>จัดส่งหนังสือ</b><div>${esc(r.addr)} ${esc(r.zip||"")}</div></div>`:""}<div class="mut">ส่งเมื่อ ${r.at} · รหัส ${r.code}</div>${rfBadge(r)}
   ${r.idc?`<details><summary>ดูหลักฐาน</summary>${r.slip?`<img src="${r.slip}" alt="สลิปโอนเงิน">`:""}<img src="${r.idc}" alt="บัตรประชาชน"></details>`:""}
   <div class="row"><span class="tag">${r.st}</span><button class="btn sm" onclick="openApp('${r.code}')">เปิดใบสมัคร / พิมพ์</button><button class="btn sm" onclick="approve('${r.code}')">ตรวจเอกสารแล้ว อนุมัติ</button></div></div>`).join(""):"<div class='card mut'>ไม่มีผู้สมัครที่รอตรวจสอบ</div>";
   const q=($("ss").value||"").toLowerCase(),st=SUBS.filter(r=>r.st!=="รอตรวจสอบ"&&(!q||(r.name+r.em).toLowerCase().includes(q)));
@@ -1348,7 +1487,7 @@ function fcVals(){const m=matRead(),pc=[],eb={},ebc={};
   document.querySelectorAll("#fec2 .fbr").forEach(row=>{const k=row.dataset.k.slice(1),c={p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked};ebc[k]=c;eb[k]=bcCalc(c,m).cb});
   return {m,pc,eb,ebc}}
 function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;EBC=v.ebc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
-const AGRP={"a-ov":"ov","a-new":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
+const AGRP={"a-ov":"ov","a-new":"stu","a-ref":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
 const AGL={ov:"a-ov",stu:"a-new",les:"a-vid",shop:"a-bk",sys:"a-crs"};
 function aTab(t){AT=t;renderAdmin();try{scrollTo({top:0})}catch(e){}}
 function agNav(){const g=AGRP[AT]||"ov";AGL[g]=AT;
@@ -1544,13 +1683,35 @@ function trDel(id){if(!confirm("ยกเลิกการจองทดลอ
 const PAYQR="a/img-eabc7632.jpg",IDEX="a/img-79f96b17.jpg";
 const fdl=t=>t?new Date(t).toLocaleDateString("th-TH",{day:"numeric",month:"long",year:"numeric"}):"-";
 const apRow=(k,v)=>v===null||v===undefined||v===""?"":`<tr><th>${k}</th><td>${v}</td></tr>`;
+
+/* ===== หลังบ้าน: แนะนำเพื่อน ===== */
+let COUPONS=[{id:1,owner:"YH1001",friends:2,value:250,status:"open",exp:Date.now()+330*864e5,at:Date.now()-20*864e5,usedAt:null},{id:2,owner:"YH1002",friends:1,value:200,status:"used",exp:Date.now()+200*864e5,at:Date.now()-90*864e5,usedAt:Date.now()-5*864e5}],
+REFS=[{at:Date.now()-20*864e5,from:"YH1001",to:"YH1003",first:"ต้น"},{at:Date.now()-3*864e5,from:"YH1001",to:"YH1004",first:"มายด์"}],CPDEL=null;
+const subBy=c=>SUBS.find(x=>x.code===c);
+const nmOf=c=>{const s=subBy(c);return s?esc(s.name)+(s.nick?" ("+esc(s.nick)+")":""):""};
+function rfDiscTxt(r){if(r.refCode)return `แนะนำโดย ${esc(r.refCode)} · ลดค่าคอร์ส ${B(r.refDisc||0)}${r.bookDisc?" · หนังสือลด "+B(r.bookDisc):""}`;
+  if(r.cpDisc){const c=COUPONS.find(x=>x.id===r.cpId);return `ใช้คูปองแนะนำเพื่อน${c?" ของ "+esc(c.owner):""} · ลด ${B(r.cpDisc)}`}return ""}
+function rfBadge(r){const t=rfDiscTxt(r);if(!t)return "";let h=`<div class="rfb">${t}`;
+  if(r.refCode){const n=nmOf(r.refCode);if(n)h+=`<div style="font-size:13px">ผู้แนะนำ: ${n}</div>`}
+  if(r.cpDisc){const c=COUPONS.find(x=>x.id===r.cpId),n=c?nmOf(c.owner):"";if(n)h+=`<div style="font-size:13px">เจ้าของคูปอง: ${n}</div>`}
+  h+="</div>";if((r.rflags||[]).length)h+=`<div class="rfwn">⚠ ${(r.rflags||[]).includes("coupon_name")?"ชื่อ":""}${(r.rflags||[]).length>1?"และ":""}${(r.rflags||[]).includes("coupon_contact")?"เบอร์/อีเมล":""}ไม่ตรงกับเจ้าของคูปอง ตรวจว่าเป็นคนเดียวกันก่อนอนุมัติ</div>`;return h}
+const CPST={open:"ใช้ได้",held:"รอใช้กับใบสมัคร",used:"ใช้แล้ว",void:"ยกเลิกแล้ว",expired:"หมดอายุ"};
+const cpSt=c=>c.status==="open"&&c.exp<=Date.now()?"expired":c.status;
+function renderRefAdmin(){const live=COUPONS.filter(c=>cpSt(c)==="open"),held=COUPONS.filter(c=>c.status==="held");
+  let h=`<div class="g3" style="margin:10px 0"><div class="card sc"><b>${live.length}</b><span class="mut">คูปองที่ใช้ได้ · รวม ${B(live.reduce((a,c)=>a+c.value,0))}</span></div><div class="card sc"><b>${held.length}</b><span class="mut">รอใช้กับใบสมัคร</span></div><div class="card sc"><b>${REFS.length}</b><span class="mut">ชวนเพื่อนสำเร็จทั้งหมด</span></div></div>
+  <details class="card"><summary><b>กติกาแนะนำเพื่อน</b></summary><ul class="ul" style="font-size:14px;margin:8px 0 0"><li>เพื่อนใหม่ใส่รหัสผู้แนะนำ: ลดค่าคอร์ส 200 บาท (พินอิน 100) · หนังสือเล่ม 150 → 100</li><li>ผู้แนะนำได้คูปองเมื่อพี่อนุมัติใบสมัครของเพื่อน: ชวน 1 คน 200 · 2 คน 250 · 3 คนขึ้นไป 300</li><li>ใช้คูปองได้ 1 ใบต่อ 1 คอร์ส (พินอินลดสูงสุด 100) · อายุ 1 ปี นับใหม่ทุกครั้งที่ได้เพื่อนเพิ่ม · ใช้แล้วเริ่มนับใหม่</li><li>ใช้ได้กับคอร์สวิดีโอและคอร์สเรียนสด ไม่รวมเรียนสดรายชั่วโมง</li></ul></details>
+  <div class="card"><b>คูปองทั้งหมด</b>`;
+  h+=COUPONS.length?COUPONS.map(c=>{const st=cpSt(c);return `<div class="vw" style="align-items:center"><div style="flex:1"><b>${nmOf(c.owner)||esc(c.owner)}</b> <span class="mut">${esc(c.owner)}</span><div class="mut" style="font-size:13px">ชวน ${c.friends} คน · ลด ${B(c.value)} · ${st==="used"?"ใช้เมื่อ "+fdl(c.usedAt):"ใช้ได้ถึง "+fdl(c.exp)}</div></div><span class="tag"${st==="open"?' style="background:var(--okbg);color:var(--okfg)"':""}>${CPST[st]}</span>${st==="open"?`<button class="btn alt sm" onclick="voidCp(${c.id})">${CPDEL===c.id?"ยืนยันยกเลิก?":"ยกเลิก"}</button>`:""}</div>`}).join(""):`<div class="mut">ยังไม่มีคูปอง</div>`;
+  h+=`</div><div class="card"><b>ประวัติการชวนเพื่อน</b>`+(REFS.length?REFS.slice(0,100).map(f=>`<div class="vw"><div style="flex:1"><b>${nmOf(f.from)||esc(f.from)}</b> ชวน <b>${nmOf(f.to)||esc(f.first||f.to)}</b><div class="mut" style="font-size:13px">${esc(f.from)} → ${esc(f.to)} · ${fdl(f.at)}</div></div></div>`).join(""):`<div class="mut">ยังไม่มี</div>`)+`</div>`;
+  $("rfa").innerHTML=h}
+function voidCp(id){if(CPDEL!==id){CPDEL=id;renderRefAdmin();return}CPDEL=null;const c=COUPONS.find(x=>x.id===id);if(c)c.status="void";renderRefAdmin()}
 function appH(r){
   const pend=r.st==="รอตรวจสอบ",slots=SL.filter(x=>x.bk.includes(r.name)).sort((a,b)=>a.dw-b.dw||a.h-b.h);
   const pay=r.after?"จ่ายหลังเรียน ตามชั่วโมงที่เรียนจริง":r.ins?"ผ่อน 2 งวด (70/30)":"ชำระเต็มจำนวน";
   const head=(t,sm)=>`<header class="aph${sm?" sm":""}"><div><div class="apb">YUEHUA 悦华中文</div><h2>${t}</h2></div><div class="apc"><span>รหัสนักเรียน</span><b>${esc(r.code)}</b><em class="${pend?"w":""}">${pend?"รอตรวจสอบ":"อนุมัติแล้ว"}</em></div></header>`;
   const p1=`<div class="pg app">${head("ใบสมัครเรียน")}
 <h3>ข้อมูลผู้สมัคร</h3><table class="apt">${apRow("ชื่อ-นามสกุล","<b>"+esc(r.name)+"</b>")}${apRow("ชื่อเล่น",r.nick?esc(r.nick):"")}${apRow("เบอร์โทร",esc(r.ph))}${apRow("อีเมล",esc(r.em))}${apRow("วันที่สมัคร",esc(r.at||""))}</table>
-<h3>คอร์สและการชำระเงิน</h3><table class="apt">${apRow("คอร์สที่สมัคร","<b>"+esc(r.course)+"</b>")}${apRow("สิทธิ์เข้าเรียนวิดีโอ",accLbl(r))}${apRow("หนังสือเรียน",r.book)}${apRow("รูปแบบการชำระ",pay)}${apRow("ยอดที่ชำระตอนสมัคร",r.after?"ยังไม่ต้องชำระ":"<b>"+B(r.total)+"</b>")}${r.ins?apRow("งวดที่ 2 (30%)",`${B(r.second)} · ครบกำหนด ${r.due?fdl(r.due):"นับ 1 เดือนหลังอนุมัติ"} · ${r.paid2?"ชำระแล้ว":"ยังไม่ชำระ"}`)+apRow("ยอมรับเงื่อนไขผ่อน",esc(r.insAt||"")):""}${slots.length?apRow("ช่วงเวลาเรียนที่จอง",slots.map(x=>`วัน${DN[x.dw]} ${fh(x.h,x.du)}`).join("<br>")):""}</table>
+<h3>คอร์สและการชำระเงิน</h3><table class="apt">${apRow("คอร์สที่สมัคร","<b>"+esc(r.course)+"</b>")}${apRow("สิทธิ์เข้าเรียนวิดีโอ",accLbl(r))}${apRow("หนังสือเรียน",r.book)}${apRow("รูปแบบการชำระ",pay)}${rfDiscTxt(r)?apRow("ส่วนลด",rfDiscTxt(r)):""}${apRow("ยอดที่ชำระตอนสมัคร",r.after?"ยังไม่ต้องชำระ":"<b>"+B(r.total)+"</b>")}${r.ins?apRow("งวดที่ 2 (30%)",`${B(r.second)} · ครบกำหนด ${r.due?fdl(r.due):"นับ 1 เดือนหลังอนุมัติ"} · ${r.paid2?"ชำระแล้ว":"ยังไม่ชำระ"}`)+apRow("ยอมรับเงื่อนไขผ่อน",esc(r.insAt||"")):""}${slots.length?apRow("ช่วงเวลาเรียนที่จอง",slots.map(x=>`วัน${DN[x.dw]} ${fh(x.h,x.du)}`).join("<br>")):""}</table>
 ${r.book==="รับหนังสือเล่ม"?`<h3>จัดส่งหนังสือ</h3><table class="apt">${apRow("ที่อยู่จัดส่ง",esc(r.addr||"-").replace(/\n/g,"<br>"))}${apRow("รหัสไปรษณีย์",esc(r.zip||"-"))}${apRow("ขนส่ง / เลขพัสดุ",esc((r.car||"-")+(r.trk?" · "+r.trk:"")))}${apRow("สถานะ",r.sh==="sent"?"ส่งแล้ว":r.sh==="printed"?"พิมพ์ใบปะหน้าแล้ว":"ยังไม่ได้จัดส่ง")}</table>`:""}
 <div class="apk"><div>☐ ตรวจสลิปโอนเงินแล้ว</div><div>☐ ตรวจสำเนาบัตรประชาชนแล้ว</div><div>ผู้ตรวจ/อนุมัติ</div><div>วันที่</div></div>
 <div class="apf">เอกสารนี้มีข้อมูลส่วนบุคคล เก็บรักษาและใช้ตาม PDPA เพื่อการเรียนกับ YUEHUA เท่านั้น · พิมพ์เมื่อ ${new Date().toLocaleString("th-TH")} · หน้า 1/2</div></div>`;
@@ -2006,7 +2167,7 @@ function enter(k){
   $("lvl").textContent=(k?"คอร์ส "+C[k].n:"เรียนสดรายชั่วโมง")+" · รหัส "+ST.code;
   $("chg").style.display=ST.access.length>1?"inline-block":"none";
   document.querySelector('#tabs button[data-t="p-sched"]').style.display=isLive(ST)?"":"none";
-  renderMenu();renderGram();renderGame();renderLive();go("s-dash");
+  renderMenu();renderGram();renderGame();renderLive();renderRef();go("s-dash");
   document.querySelector('#tabs button[data-t="p-today"]').click();
 }
 $("tabs").onclick=e=>{
@@ -2687,7 +2848,8 @@ function toSub(r){return {id:r.id,uid:r.user_id,code:r.code,name:r.name,ph:r.pho
   ins:r.ins,insAt:r.ins_accepted_at?new Date(r.ins_accepted_at).toLocaleString("th-TH"):null,second:r.second_amount,paid2:r.paid2,due:ms(r.due),
   live:r.live,access:r.access||[],slipPath:r.slip_path,idcPath:r.idcard_path,slip:null,idc:null,
   st:r.status==="pending"?"รอตรวจสอบ":"ยืนยันแล้ว",sus:r.suspended,sh:r.ship_status||"",car:r.carrier||"",trk:r.tracking||"",
-  nick:r.nick||"",av:r.avatar||"",pic:r.photo_url||"",pd:!!(r.state&&r.state.pd),state:r.state||{},
+  nick:r.nick||"",av:r.avatar||"",pic:r.photo_url||"",
+  refCode:r.ref_code||"",refDisc:r.ref_disc||0,bookDisc:r.book_disc||0,cpId:r.coupon_id!=null?Number(r.coupon_id):null,cpDisc:r.coupon_disc||0,rflags:r.ref_flags||[],pd:!!(r.state&&r.state.pd),state:r.state||{},
   at:new Date(r.created_at).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"}),crAt:ms(r.created_at),apAt:ms(r.approved_at),p2At:ms(r.paid2_at)}}
 const byCode=c=>SUBS.find(x=>x.code===c);
 
@@ -2745,14 +2907,17 @@ window.enroll=async function(){
   const k=$("cs").value;if($("ins").checked&&(k!=="live"||LC)&&!$("insok").checked){alert("กรุณายอมรับเงื่อนไขโปรผ่อน 70/30 ก่อนส่งข้อมูล");return}
   if(+$("bk").value&&(k!=="live"||LC)&&(!$("ad").value.trim()||!/^\d{5}$/.test($("zp").value.trim()))){alert("กรุณากรอกที่อยู่จัดส่งหนังสือและรหัสไปรษณีย์ 5 หลัก");return}
   if(k==="live"){const e=BK.length?chk():"ยังไม่ได้เลือกช่วงเวลาเรียน";if(e){alert(e);return}}
-  const need=k!=="live"||!!LC,ins=eligible(k)&&$("ins").checked,c=C[k],b=need?+$("bk").value:0;
+  if($("rfc").value.trim()&&!RF&&isCrs()){alert("รหัสผู้แนะนำยังใช้ไม่ได้ (ดูข้อความใต้ช่อง) แก้รหัสหรือลบออกก่อนส่งนะ");$("rfc").focus();return}
+  if($("cpc").value.trim()&&!CP&&isCrs()){alert("คูปองยังใช้ไม่ได้ (ดูข้อความใต้ช่อง) แก้รหัสหรือลบออกก่อนส่งนะ");$("cpc").focus();return}
+  const need=k!=="live"||!!LC,ins=eligible(k)&&$("ins").checked,c=C[k],PR=price(),b=PR.b;
   const label=k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n);
   const fd=new FormData();
   const put=(a,v)=>fd.append(a,v==null?"":String(v));
   put("name",n);put("phone",ph);put("email",em);put("password",p1);put("course_key",k);put("fmt",k==="live"?"hourly":FMT);
   put("lesson_type",k==="live"?ty0():(FMT==="l"?TYP:""));put("course_label",label);put("want_book",b?1:0);
   put("addr",b?$("ad").value.trim():"");put("zip",b?$("zp").value.trim():"");put("ins",ins?1:0);
-  put("total",(need?(ins?Math.round(base()*.7):base()):0)+b);put("second",ins?base()-Math.round(base()*.7):0);
+  put("total",PR.total);put("second",PR.second);put("lc",k==="live"&&LC?LC:"");
+  if(need&&RF)put("ref_code",RF.code);if(need&&CP&&!RF)put("coupon_code",CP.code);
   put("pdpa",1);put("slot_ids",JSON.stringify(k==="live"?BK:[]));
   if(sl)fd.append("slip",sl);fd.append("idcard",id);
   busy(btn,true,"กำลังส่งข้อมูล…");
@@ -2761,6 +2926,7 @@ window.enroll=async function(){
     const j=await r.json().catch(()=>({}));
     if(!r.ok||!j.code){alert(j.error||"ส่งข้อมูลไม่สำเร็จ ลองใหม่อีกครั้ง");if(r.status===409)loadPublic();return}
     if(k==="live")BK=[];
+    try{localStorage.removeItem("yh_ref")}catch(e){}RF=CP=null;$("rfc").value=$("cpc").value="";$("rfm").textContent=$("cpm").textContent="";
     me={name:n,course:c.n,code:j.code};$("pw1").value=$("pw2").value="";
     $("newCode").textContent=j.code;$("enForm").style.display="none";$("enDone").style.display="block";
     loadPublic();
@@ -2788,6 +2954,18 @@ async function loadStudent(){
   const {data:r,error}=await sb.from("students").select("*").eq("user_id",u.user.id).maybeSingle();
   if(error||!r)return null;return r;
 }
+/* ---------- แนะนำเพื่อน ---------- */
+MYREF=null;COUPONS=[];REFS=[];
+window.yhLookFn=async function(kind,code){const {data,error}=await sb.rpc(kind==="ref"?"ref_lookup":"coupon_lookup",{p_code:code});if(error)throw error;return data};
+async function loadRefAdm(){const [cp,rf]=await Promise.all([
+    sb.from("coupons").select("id,owner_code,friends,value,status,expires_at,created_at,used_at").order("id",{ascending:false}).limit(2000),
+    sb.from("referrals").select("referrer_code,referee_code,referee_first,created_at").order("created_at",{ascending:false}).limit(1000)]);
+  if(cp.error)throw cp.error;if(rf.error)throw rf.error;
+  COUPONS=(cp.data||[]).map(c=>({id:Number(c.id),owner:c.owner_code,friends:c.friends,value:c.value,status:c.status,exp:ms(c.expires_at),at:ms(c.created_at),usedAt:ms(c.used_at)}));
+  REFS=(rf.data||[]).map(f=>({at:ms(f.created_at),from:f.referrer_code,to:f.referee_code,first:f.referee_first||""}))}
+window.voidCp=async function(id){if(CPDEL!==id){CPDEL=id;renderRefAdmin();return}CPDEL=null;
+  const {error}=await sb.from("coupons").update({status:"void",updated_at:new Date().toISOString()}).eq("id",id).eq("status","open");
+  if(error){fail(error);return}toast("ยกเลิกคูปองแล้ว");try{await loadRefAdm()}catch(e){console.error(e)}renderRefAdmin()};
 async function loadStudentData(){
   const my=await sb.from("bookings").select("slot_id").eq("student_id",ST.id);
   await loadSlots((my.data||[]).map(b=>[Number(b.slot_id),ST.name]));
@@ -2796,7 +2974,8 @@ async function loadStudentData(){
   const li=await sb.from("lives").select("title,starts_at,meet_url").order("starts_at",{ascending:true});
   const now=Date.now(),L=(li.data||[]).map(x=>({t:x.title,ts:ms(x.starts_at),when:new Date(x.starts_at).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"}),l:x.meet_url}));
   const up=L.filter(x=>x.ts>now-3*3600e3);LIVES.length=0;(up.length?up:L.slice(-1)).forEach(x=>LIVES.push(x));
-  await Promise.all([loadVideos().catch(e=>console.error(e)),loadBooks(true).catch(e=>console.error(e))]);
+  MYREF=null;
+  await Promise.all([loadVideos().catch(e=>console.error(e)),loadBooks(true).catch(e=>console.error(e)),sb.rpc("my_ref").then(({data,error})=>{if(error)throw error;MYREF=data}).catch(e=>console.error(e))]);
   const s=ST.state||{};Object.keys(DONE).forEach(k=>delete DONE[k]);
   Object.entries(s.done||{}).forEach(([k,a])=>DONE[k]=new Set(a));
   GHIST=Array.isArray(s.gh)?s.gh:[];
@@ -2938,7 +3117,7 @@ async function adminLoad(){
       LIVES.push({t:x.title,when,l:x.meet_url});
       SENT.push({t:x.title,when,n:to.length,em:to.map(r=>r.em),ex:`สวัสดีครับ\n\nครูขอเชิญเข้าเรียนไลฟ์สด: ${x.title}\nเวลา: ${when}\nเข้าห้อง: ${x.meet_url}\n${x.message?"\n"+x.message+"\n":""}\n– YUEHUA 悦华中文`})});
     (se.data||[]).forEach(r=>{if(r.k==="sender")SENDER=r.v});
-    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),loadFin().catch(e=>console.error(e))]);
+    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),loadFin().catch(e=>console.error(e)),loadRefAdm().catch(e=>console.error(e))]);
     const pend=SUBS.filter(s=>s.st==="รอตรวจสอบ"),paths=pend.flatMap(s=>[s.slipPath,s.idcPath]).filter(Boolean);
     if(paths.length){const {data}=await sb.storage.from("applications").createSignedUrls(paths,3600);
       const u=Object.fromEntries((data||[]).map(d=>[d.path,d.signedUrl]));pend.forEach(s=>{s.slip=s.slipPath?u[s.slipPath]||null:null;s.idc=s.idcPath?u[s.idcPath]||"#":"#"})}
@@ -2961,8 +3140,10 @@ window.approve=async function(code,fromApp){
   if(!confirm(`ยืนยันว่าตรวจสลิปและสำเนาบัตรประชาชนของ ${r.name} แล้ว และอนุมัติให้เข้าเรียน?`))return;
   if(fromApp)closePv();
   try{const j=await adminFn({action:"approve",student_id:r.id});
-    r.st="ยืนยันแล้ว";if(j.due)r.due=ms(j.due);renderAdmin();
-    toast(j.emailed?"อนุมัติแล้ว ส่งอีเมลแจ้ง "+r.name+" แล้ว":"อนุมัติแล้ว แต่ส่งอีเมลหานักเรียนไม่สำเร็จ แจ้งทาง LINE แทนได้",!j.emailed&&!j.already)}
+    r.st="ยืนยันแล้ว";if(j.due)r.due=ms(j.due);if(j.ref||r.cpId)try{await loadRefAdm()}catch(e){console.error(e)}renderAdmin();
+    let t=j.emailed?"อนุมัติแล้ว ส่งอีเมลแจ้ง "+r.name+" แล้ว":"อนุมัติแล้ว แต่ส่งอีเมลหานักเรียนไม่สำเร็จ แจ้งทาง LINE แทนได้";
+    if(j.ref)t+=` · คูปองของ ${j.ref.name} (${j.ref.code}) ตอนนี้ลด ${j.ref.value} บาท${j.ref_mailed===false?" (ส่งอีเมลแจ้งผู้แนะนำไม่สำเร็จ)":""}`;
+    toast(t,!j.emailed&&!j.already)}
   catch(e){fail(e,"อนุมัติไม่สำเร็จ: "+e.message);adminLoad()}
 };
 window.accTog=async function(c,k){const r=byCode(c),a=r.access.slice(),i=a.indexOf(k);i<0?a.push(k):a.splice(i,1);
@@ -3258,6 +3439,7 @@ window.bkSheets=async function(){
 {const f=window.adminLogout;window.adminLogout=function(...a){if(PREV)exitPreview();return f.apply(this,a)}}
 
 loadPublic();
+refInit();
 /* กลับจากหน้าเครื่องมือ: #admin หรือ #admin-tools เปิดหลังบ้านให้เลย */
 if(/^#admin/.test(location.hash)){const h=location.hash;try{history.replaceState(history.state,"",location.pathname+location.search)}catch(e){}
   if(h==="#admin-tools")AT="a-tools";setTimeout(()=>openAdmin(),0)}
