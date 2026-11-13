@@ -183,6 +183,33 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .sbar{display:block;height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.sbar i{display:block;height:100%;background:var(--seal);border-radius:9px}
 .sld>*,.sld>.rv{flex:0 0 300px;max-width:85vw;min-width:0}.sbw,.ssl{min-width:0;width:100%}
 .rcd{height:auto}.sbw{margin-top:auto}
+/* ===== รายได้ประจำสัปดาห์ ===== */
+.offh{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.offh .wk{flex:1;min-width:190px;text-align:center;line-height:1.45}
+.offh .wk b{display:block;font-size:15px}.offh .wk small{color:var(--mut);font-size:12px}
+.offh input[type=date]{width:auto;margin:4px auto 0;display:block}
+.offs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 4px}
+.offs div{border:1px solid var(--bd);border-radius:10px;padding:8px 4px;text-align:center;display:flex;flex-direction:column;line-height:1.3}
+.offs b{font-size:17px}.offs span{font-size:12px;color:var(--mut)}
+@media(max-width:520px){.offs{grid-template-columns:repeat(2,1fr)}}
+.offr{padding:10px 0;border-top:1px solid var(--bd);display:flex;flex-direction:column;gap:6px}
+.offr.skip{opacity:.55}
+.offr .ot{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.offr .ot small{color:var(--mut);font-size:12px}
+.offr .oc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.offr label{margin:0;display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500}
+.offr input[type=number]{width:78px;margin:0;padding:6px 8px}.offr input[type=date]{width:auto;margin:0;padding:5px 8px}
+.offr input[type=checkbox]{width:20px;height:20px;margin:0;accent-color:var(--seal)}
+.ost{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--soft)}
+.ost.ok{background:var(--okbg);color:var(--okfg)}.ost.bad{background:var(--nobg);color:var(--nofg)}.ost.warn{background:rgba(242,183,5,.22)}
+.olk{background:none;border:0;padding:0;color:var(--mut);font-size:12px;text-decoration:underline;cursor:pointer}
+.obar{height:6px;border-radius:3px;background:var(--bd);overflow:hidden;margin-top:4px}.obar i{display:block;height:100%;background:var(--ok)}
+.odr{padding:8px 0;border-top:1px solid var(--bd)}.odr .ot{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:14px}
+.odays{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}.odays label{margin:0;display:flex;align-items:center;gap:4px;border:1px solid var(--bd);border-radius:999px;padding:4px 10px;font-size:13px}
+.odays input{width:16px;height:16px;margin:0}
+.omw{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--bd);padding:10px 0;color:inherit;font:inherit;cursor:pointer}
+.omw.on b{color:var(--seal)}.omw .ot{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:14px}.omw small{color:var(--mut);font-size:12px}
+.ombar{height:10px;border-radius:5px;background:var(--soft);margin:6px 0 3px;overflow:hidden}.ombar>div{height:100%;display:flex}.ombar i{height:100%;display:block}
+.olg{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:8px}.olg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+
 /* ===== แนะนำเพื่อน ===== */
 .rfm{font-size:13px;min-height:20px;margin-top:4px;color:var(--mut)}.rfm.ok{color:var(--ok)}.rfm.bad{color:var(--seal)}
 .dsc{color:var(--ok);font-weight:600}
@@ -640,6 +667,16 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   <div class="tabs agnav" id="atabs"><button class="agh" data-g="ov" data-t="a-ov">ภาพรวม <span class="gbd" id="gb-ov"></span></button><button class="agh" data-g="stu">นักเรียน <span class="gbd" id="gb-stu"></span></button><div class="asub" data-g="stu"><button data-t="a-new">ผู้สมัครใหม่ <span id="bn"></span></button><button data-t="a-stu">นักเรียน</button><button data-t="a-ref">แนะนำเพื่อน</button><button data-t="a-tr">ทดลองเรียน <span id="tbn"></span></button><button data-t="a-sch">ตารางเรียน</button><button data-t="a-rs">ตารางนักเรียน</button><button data-t="a-live">ส่งลิงก์ไลฟ์</button></div><button class="agh" data-g="les">บทเรียน</button><div class="asub" data-g="les"><button data-t="a-vid">วิดีโอ</button><button data-t="a-bf">ไฟล์หนังสือ</button><button data-t="a-vf">ไฟล์คำศัพท์</button></div><button class="agh" data-g="shop">ร้านค้า &amp; การเงิน <span class="gbd" id="gb-shop"></span></button><div class="asub" data-g="shop"><button data-t="a-bk">คำสั่งซื้อ <span id="bkn"></span></button><button data-t="a-shop">ร้านค้า</button><button data-t="a-fin">การเงิน</button></div><button class="agh" data-g="sys">เว็บ &amp; ระบบ <span class="gbd" id="gb-sys"></span></button><div class="asub" data-g="sys"><button data-t="a-crs">คอร์สเรียน</button><button data-t="a-ban">แบนเนอร์</button><button data-t="a-rv">รีวิว</button><button data-t="a-mail">อีเมล <span id="mln"></span></button><button data-t="a-tools">เครื่องมือ</button></div></div>
   <div class="pane" id="a-ov"><div id="ovw"></div></div>
 <div class="pane" id="a-fin">
+  <div class="card" style="margin-top:10px"><b>รายได้ประจำสัปดาห์</b> <span class="mut" style="font-size:13px">นักเรียนนอกระบบ (สอนออนไซต์) · ติ๊กเมื่อได้รับเงิน</span><div id="offw"></div></div>
+  <div class="card"><div class="row" style="align-items:center;justify-content:space-between;margin:0"><b>สรุปรายเดือน</b><select id="offmo" style="width:auto;margin:0" onchange="OFFM=this.value;renderOffMonth()" aria-label="เลือกเดือน"></select></div><div class="mut" style="font-size:12px">สัปดาห์ที่คร่อมเดือน นับเข้าเดือนของวันจันทร์ · แตะสัปดาห์เพื่อไปติ๊กจ่าย</div><div id="offmw"></div></div>
+  <div class="card"><div class="row" style="align-items:center;justify-content:space-between;margin:0"><b>ความสม่ำเสมอในการจ่าย</b><select id="offp" style="width:auto;margin:0" onchange="OFFP=this.value;renderOff()"><option value="4">4 สัปดาห์ล่าสุด</option><option value="12" selected>12 สัปดาห์ล่าสุด</option><option value="52">1 ปีล่าสุด</option><option value="0">ทั้งหมด</option></select></div><div class="mut" style="font-size:12px">ตรงเวลา = จ่ายภายในวันที่เรียนวันสุดท้ายของสัปดาห์ · ยังไม่จ่ายแต่ยังไม่เลยกำหนด จะยังไม่นับ</div><div id="offd"></div></div>
+  <details class="card" id="offm"><summary><b>รายชื่อนักเรียนนอกระบบ</b> <span class="mut" style="font-size:13px" id="offmc"></span></summary>
+    <div class="mut" style="font-size:13px;margin-top:6px">ตั้งครั้งเดียว ระบบดึงมาใส่ทุกสัปดาห์เอง · แก้ราคาหรือชั่วโมงทีหลัง จะมีผลกับสัปดาห์ใหม่เท่านั้น</div>
+    <div class="vg2"><div><label for="ofn">ชื่อนักเรียน</label><input id="ofn" maxlength="60" placeholder="เช่น น้องมิว"></div><div><label for="ofr">ราคาต่อชั่วโมง (บาท)</label><input id="ofr" type="number" min="0" inputmode="numeric"></div></div>
+    <div class="vg2"><div><label for="ofh">ชั่วโมงต่อสัปดาห์ (ปกติ)</label><input id="ofh" type="number" min="0" step="0.5" inputmode="decimal"></div><div><label for="ofo">หมายเหตุ</label><input id="ofo" maxlength="80" placeholder="เช่น เรียนที่บ้าน ม.4"></div></div>
+    <label style="margin-bottom:0">วันที่เรียน (ใช้คิดกำหนดจ่าย)</label><div class="odays" id="ofd"></div>
+    <div class="row"><button class="btn" id="ofsv" onclick="offStuSave()">เพิ่มนักเรียน</button><button class="btn alt" id="ofx" style="display:none" onclick="offStuEdit(null)">ยกเลิกแก้ไข</button></div>
+    <div id="ofl"></div></details>
   <div class="row" style="margin:10px 0;align-items:center"><label for="fmsel" style="margin:0">เดือน</label><select id="fmsel" style="width:auto;margin:0" onchange="FNM=this.value;renderFin()"></select></div>
   <div class="g3" id="fsum"></div>
   <div class="card"><b>12 เดือนล่าสุด</b> <span class="mut" style="font-size:13px">แตะที่เดือนเพื่อดูรายละเอียด</span><div id="fchart"></div><div class="flg"><span><i style="background:var(--ok)"></i>รายรับ</span><span><i style="background:var(--seal)"></i>ต้นทุน+รายจ่าย</span><span><i class="ln"></i>กำไร</span></div></div>
@@ -1417,6 +1454,99 @@ const FCAT={exp:["ค่าโฆษณา","โปรแกรม/แอป","�
 const FCRS=()=>CL().map(k=>[k,C[k].n]);
 const ym=t=>{const d=new Date(t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")};
 const ymL=(k,long)=>{const [y,m]=k.split("-").map(Number);return new Date(y,m-1,1).toLocaleDateString("th-TH",{month:long?"long":"short",year:long?"numeric":"2-digit"})};
+
+/* ===== รายได้ประจำสัปดาห์ (นักเรียนนอกระบบ) ===== */
+let OFFS=[{id:1,name:"น้องมิว",rate:150,hours:2,days:[1,3],active:true,note:"ม.4"},{id:2,name:"น้องเจได",rate:200,hours:1.5,days:[6],active:true,note:""},{id:3,name:"คุณแพร",rate:250,hours:1,days:[2],active:true,note:""}],
+  OFFB=[],OFFW=null,OFFP="12",OFFED=null,OFFDEL=null,OFFID=100;const OFFAUTO=new Set();
+const DOW=["","จ.","อ.","พ.","พฤ.","ศ.","ส.","อา."];
+const iso=d=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+const monOf=d=>{const x=new Date(typeof d==="string"?d+"T00:00:00":d);x.setHours(0,0,0,0);x.setDate(x.getDate()-(x.getDay()+6)%7);return iso(x)};
+const addD=(s,n)=>{const x=new Date(s+"T00:00:00");x.setDate(x.getDate()+n);return iso(x)};
+const dDiff=(a,b)=>Math.round((new Date(a+"T00:00:00")-new Date(b+"T00:00:00"))/864e5);
+const dueOf=(ws,days)=>addD(ws,(days&&days.length?Math.max(...days):7)-1);
+const thD=s=>new Date(s+"T00:00:00").toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+const thS=s=>new Date(s+"T00:00:00").toLocaleDateString("th-TH",{day:"numeric",month:"short",year:"2-digit"});
+const offStu=b=>OFFS.find(x=>x.id===b.student_id);
+const offName=b=>{const x=offStu(b);return x?x.name:"(ลบรายชื่อแล้ว)"};
+const offErr=e=>{console.error(e);if(window.fail)fail(e);else alert("บันทึกไม่สำเร็จ")};
+/* ที่เก็บข้อมูล (ต้นแบบเก็บในหน่วยความจำ · เว็บจริงเปลี่ยนเป็นฐานข้อมูล) */
+let OFFDB={async ensure(rows){rows.forEach(r=>{if(!OFFB.some(b=>b.student_id===r.student_id&&b.week_start===r.week_start))OFFB.push({...r,id:++OFFID,paid:false,paid_on:null,skip:false})})},
+  async upd(id,p){Object.assign(OFFB.find(b=>b.id===id),p)},
+  async stuSave(x){if(x.id)Object.assign(OFFS.find(o=>o.id===x.id),x);else OFFS.push({...x,id:++OFFID})},
+  async stuDel(id){OFFS=OFFS.filter(o=>o.id!==id);OFFB=OFFB.filter(b=>b.student_id!==id)}};
+function offSt(b){if(b.skip)return {t:"งดเรียน",c:""};const today=iso(Date.now());
+  if(b.paid){const l=b.paid_on?dDiff(b.paid_on,b.due_on):0;return l<=0?{t:"จ่ายตรงเวลา",c:"ok"}:{t:`จ่ายช้า ${l} วัน`,c:"warn"}}
+  if(today>b.due_on)return {t:`ค้างจ่าย ${dDiff(today,b.due_on)} วัน`,c:"bad"};return {t:today===b.due_on?"ครบกำหนดวันนี้":"ยังไม่ถึงกำหนด",c:""}}
+const offRow=(x,ws)=>({student_id:x.id,week_start:ws,due_on:dueOf(ws,x.days),hours:+x.hours||0,rate:+x.rate||0,amount:Math.round((+x.hours||0)*(+x.rate||0))});
+async function offAddAll(ws,quiet){const miss=OFFS.filter(x=>x.active&&!OFFB.some(b=>b.student_id===x.id&&b.week_start===ws));if(!miss.length)return;
+  try{await OFFDB.ensure(miss.map(x=>offRow(x,ws)));if(!quiet&&window.toast)toast("เพิ่มรายชื่อเข้าสัปดาห์นี้แล้ว");renderFin()}catch(e){offErr(e)}}
+function offGo(n){OFFW=addD(OFFW||monOf(Date.now()),n);renderOff()}
+function offPick(v){if(v){OFFW=monOf(v);renderOff()}}
+async function offUpd(id,p){try{await OFFDB.upd(id,p);renderFin()}catch(e){offErr(e);renderFin()}}
+function offHr(id,v){const b=OFFB.find(x=>x.id===id),h=Math.max(0,+v||0);offUpd(id,{hours:h,amount:Math.round(h*b.rate)})}
+function offAmt(id,v){offUpd(id,{amount:Math.max(0,Math.round(+v||0))})}
+function offPaid(id,on){offUpd(id,on?{paid:true,paid_on:iso(Date.now())}:{paid:false,paid_on:null})}
+function offPon(id,v){if(v)offUpd(id,{paid_on:v})}
+function offSkip(id){const b=OFFB.find(x=>x.id===id);offUpd(id,{skip:!b.skip})}
+function renderOff(){const el=$("offw");if(!el)return;const cw=monOf(Date.now()),today=iso(Date.now());if(!OFFW)OFFW=cw;const ws=OFFW,we=addD(ws,6);
+  if(ws===cw&&!OFFAUTO.has(ws)&&OFFS.some(x=>x.active&&!OFFB.some(b=>b.student_id===x.id&&b.week_start===ws))){OFFAUTO.add(ws);offAddAll(ws,true);return}
+  const rows=OFFB.filter(b=>b.week_start===ws).sort((a,b)=>offName(a).localeCompare(offName(b),"th")),act=rows.filter(b=>!b.skip);
+  const exp=act.reduce((a,b)=>a+(+b.amount||0),0),got=act.filter(b=>b.paid).reduce((a,b)=>a+(+b.amount||0),0),pc=act.length?Math.round(act.filter(b=>b.paid).length/act.length*100):0;
+  const miss=OFFS.filter(x=>x.active&&!rows.some(b=>b.student_id===x.id));
+  let h=`<div class="offh" style="margin-top:10px"><button class="btn alt sm" onclick="offGo(-7)" aria-label="สัปดาห์ก่อน">‹</button>
+  <div class="wk"><small>${ws===cw?"สัปดาห์นี้":ws<cw?"สัปดาห์ที่ผ่านมา":"สัปดาห์หน้า"}</small><b>${thD(ws)}</b><small>ถึง</small><b>${thD(we)}</b>
+  <input type="date" value="${ws}" onchange="offPick(this.value)" aria-label="เลือกวันที่เพื่อไปสัปดาห์นั้น"></div>
+  <button class="btn alt sm" onclick="offGo(7)" aria-label="สัปดาห์ถัดไป">›</button></div>
+  ${ws!==cw?`<div style="text-align:center;margin-top:6px"><button class="olk" onclick="offPick('${today}')">กลับไปสัปดาห์นี้</button></div>`:""}
+  <div class="offs"><div><b>${B(exp)}</b><span>ต้องได้</span></div><div><b style="color:var(--ok)">${B(got)}</b><span>ได้รับแล้ว</span></div><div><b style="color:${exp-got?"var(--seal)":"inherit"}">${B(exp-got)}</b><span>ยังค้าง</span></div><div><b>${pc}%</b><span>จ่ายแล้ว</span></div></div>`;
+  h+=rows.length?rows.map(b=>{const x=offStu(b),st=offSt(b);return `<div class="offr${b.skip?" skip":""}"><div class="ot"><b>${esc(offName(b))}</b><small>${B(b.rate)}/ชม.${x&&x.days.length?" · เรียน "+x.days.map(d=>DOW[d]).join(" "):""} · กำหนดจ่าย ${thS(b.due_on)}</small><span class="ost ${st.c}">${st.t}</span></div>
+    <div class="oc"><label>ชม. <input type="number" min="0" step="0.5" inputmode="decimal" value="${+b.hours}" onchange="offHr(${b.id},this.value)" ${b.skip?"disabled":""}></label>
+    <label>บาท <input type="number" min="0" inputmode="numeric" value="${b.amount}" onchange="offAmt(${b.id},this.value)" ${b.skip?"disabled":""}></label>
+    <label><input type="checkbox" ${b.paid?"checked":""} onchange="offPaid(${b.id},this.checked)" ${b.skip?"disabled":""}> จ่ายแล้ว</label>
+    ${b.paid?`<label>วันที่จ่าย <input type="date" value="${b.paid_on||""}" onchange="offPon(${b.id},this.value)"></label>`:""}
+    <button class="olk" onclick="offSkip(${b.id})">${b.skip?"ยกเลิกงดเรียน":"งดเรียนสัปดาห์นี้"}</button></div></div>`}).join(""):`<div class="mut" style="padding:10px 0">ยังไม่มีรายชื่อในสัปดาห์นี้${OFFS.length?"":" · เพิ่มนักเรียนในหัวข้อ “รายชื่อนักเรียนนอกระบบ” ด้านล่างก่อน"}</div>`;
+  if(miss.length)h+=`<div class="mut" style="font-size:13px;padding-top:8px;border-top:1px solid var(--bd)">ยังไม่อยู่ในสัปดาห์นี้: ${miss.map(x=>esc(x.name)).join(", ")} <button class="btn alt sm" onclick="offAddAll('${ws}')">เพิ่มเข้าสัปดาห์นี้</button></div>`;
+  el.innerHTML=h;renderOffMonth();renderOffDash();renderOffList()}
+let OFFM=null;
+function renderOffMonth(){const el=$("offmw");if(!el)return;const today=iso(Date.now()),cm=today.slice(0,7);
+  const ms=[...new Set([cm,...OFFB.map(b=>String(b.week_start).slice(0,7))])].sort().reverse();if(!OFFM||!ms.includes(OFFM))OFFM=cm;
+  $("offmo").innerHTML=ms.map(m=>`<option value="${m}" ${m===OFFM?"selected":""}>${ymL(m,1)}</option>`).join("");
+  let w=monOf(OFFM+"-01");if(w.slice(0,7)!==OFFM)w=addD(w,7);const W=[];while(w.slice(0,7)===OFFM){W.push(w);w=addD(w,7)}
+  const sm=L=>L.reduce((a,b)=>a+(+b.amount||0),0);
+  const agg=L=>{const a=L.filter(b=>!b.skip),u=a.filter(b=>!b.paid);return {t:sm(a),p:sm(a.filter(b=>b.paid)),od:sm(u.filter(b=>b.due_on<today)),pd:sm(u.filter(b=>b.due_on>=today)),n:a.length,np:a.filter(b=>b.paid).length}};
+  const rows=W.map(ws=>({ws,...agg(OFFB.filter(b=>b.week_start===ws))})),T=agg(OFFB.filter(b=>String(b.week_start).slice(0,7)===OFFM)),mx=Math.max(1,...rows.map(r=>r.t));
+  const pc=(a,b)=>b?a/b*100:0;
+  let h=`<div class="offs"><div><b>${B(T.t)}</b><span>ต้องได้ทั้งเดือน</span></div><div><b style="color:var(--ok)">${B(T.p)}</b><span>ได้รับแล้ว${T.t?` · ${Math.round(pc(T.p,T.t))}%`:""}</span></div><div><b style="color:${T.od?"var(--seal)":"inherit"}">${B(T.od)}</b><span>ค้าง (เลยกำหนด)</span></div><div><b>${B(T.pd)}</b><span>รอจ่าย (ยังไม่ถึงกำหนด)</span></div></div>`;
+  h+=rows.map(r=>`<button class="omw${r.ws===OFFW?" on":""}" onclick="offJump('${r.ws}')"><div class="ot"><b>${thS(r.ws)} – ${thS(addD(r.ws,6))}${r.ws===monOf(Date.now())?" (สัปดาห์นี้)":""}</b><span>${r.t?`ได้ ${B(r.p)} / ${B(r.t)}`:"ไม่มีรายการ"}</span></div>
+  ${r.t?`<div class="ombar" aria-hidden="true"><div style="width:${pc(r.t,mx)}%"><i style="width:${pc(r.p,r.t)}%;background:var(--ok)"></i><i style="width:${pc(r.od,r.t)}%;background:var(--seal)"></i><i style="width:${pc(r.pd,r.t)}%;background:var(--bd)"></i></div></div>
+  <small>จ่ายแล้ว ${r.np}/${r.n} คน${r.od?` · ค้าง ${B(r.od)}`:""}${r.pd?` · รอจ่าย ${B(r.pd)}`:""}</small>`:""}</button>`).join("");
+  h+=`<div class="olg"><span><i style="background:var(--ok)"></i>ได้รับแล้ว</span><span><i style="background:var(--seal)"></i>ค้าง (เลยกำหนด)</span><span><i style="background:var(--bd)"></i>รอจ่าย</span></div>`;
+  el.innerHTML=h}
+function offJump(ws){OFFW=ws;renderOff();$("offw").scrollIntoView({behavior:"smooth",block:"center"})}
+function renderOffDash(){const el=$("offd");if(!el)return;const today=iso(Date.now()),n=+OFFP,from=n?addD(monOf(Date.now()),-7*(n-1)):"0000";
+  const due=OFFB.filter(b=>!b.skip&&(b.paid||b.due_on<today)&&b.week_start>=from);
+  if(!due.length){el.innerHTML=`<div class="mut" style="padding:8px 0">ยังไม่มีสัปดาห์ที่ถึงกำหนดจ่ายในช่วงนี้</div>`;return}
+  const st=L=>{const p=L.filter(b=>b.paid),on=p.filter(b=>!b.paid_on||b.paid_on<=b.due_on),late=p.filter(b=>b.paid_on&&b.paid_on>b.due_on),owe=L.filter(b=>!b.paid);
+    return {n:L.length,p:p.length,on:on.length,pp:Math.round(p.length/L.length*100),op:Math.round(on.length/L.length*100),avg:late.length?Math.round(late.reduce((a,b)=>a+dDiff(b.paid_on,b.due_on),0)/late.length*10)/10:0,owe:owe.reduce((a,b)=>a+(+b.amount||0),0)}};
+  const T=st(due);let h=`<div class="offs"><div><b>${T.pp}%</b><span>จ่ายแล้ว (${T.p}/${T.n})</span></div><div><b style="color:var(--ok)">${T.op}%</b><span>จ่ายตรงเวลา</span></div><div><b>${T.avg} วัน</b><span>ช้าเฉลี่ย (คนที่ช้า)</span></div><div><b style="color:${T.owe?"var(--seal)":"inherit"}">${B(T.owe)}</b><span>ค้างรวม</span></div></div>`;
+  const ids=[...new Set(due.map(b=>b.student_id))],P=ids.map(id=>({id,name:offName({student_id:id}),...st(due.filter(b=>b.student_id===id))})).sort((a,b)=>a.op-b.op||b.owe-a.owe);
+  h+=P.map(p=>`<div class="odr"><div class="ot"><b>${esc(p.name)}</b><span>ตรงเวลา <b>${p.op}%</b></span></div><div class="obar" aria-hidden="true"><i style="width:${p.op}%"></i></div>
+  <div class="mut" style="font-size:12px;margin-top:3px">จ่ายแล้ว ${p.p}/${p.n} สัปดาห์ (${p.pp}%)${p.avg?` · ช้าเฉลี่ย ${p.avg} วัน`:""}${p.owe?` · <span style="color:var(--seal)">ค้าง ${B(p.owe)}</span>`:""}</div></div>`).join("");
+  el.innerHTML=h}
+function offDays(sel){$("ofd").innerHTML=[1,2,3,4,5,6,7].map(d=>`<label><input type="checkbox" value="${d}" ${sel.includes(d)?"checked":""}> ${["","จันทร์","อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์","อาทิตย์"][d]}</label>`).join("")}
+function renderOffList(){const el=$("ofl");if(!el)return;if(!$("ofd").innerHTML)offDays([]);
+  $("offmc").textContent=OFFS.length?`(${OFFS.filter(x=>x.active).length} คนที่เรียนอยู่)`:"";
+  el.innerHTML=OFFS.length?OFFS.map(x=>`<div class="odr"><div class="ot"><span><b>${esc(x.name)}</b>${x.active?"":' <span class="ost">หยุดเรียนแล้ว</span>'}</span><span>${B(x.rate)}/ชม. · ${+x.hours} ชม./สัปดาห์</span></div>
+  <div class="mut" style="font-size:12px">เรียน ${x.days.length?x.days.map(d=>DOW[d]).join(" "):"(ไม่ได้ระบุวัน · กำหนดจ่ายเป็นวันอาทิตย์)"}${x.note?" · "+esc(x.note):""}</div>
+  <div class="row" style="margin:6px 0 0"><button class="btn alt sm" onclick="offStuEdit(${x.id})">แก้ไข</button><button class="btn alt sm" onclick="offStuAct(${x.id})">${x.active?"หยุดเรียนแล้ว":"กลับมาเรียน"}</button><button class="btn alt sm" onclick="offStuDel(${x.id})">${OFFDEL===x.id?"ยืนยันลบ? (ประวัติการจ่ายจะหายด้วย)":"ลบ"}</button></div></div>`).join(""):`<div class="mut" style="padding:8px 0">ยังไม่มีรายชื่อ</div>`}
+function offStuEdit(id){OFFED=id;const x=id?OFFS.find(o=>o.id===id):null;$("ofn").value=x?x.name:"";$("ofr").value=x?x.rate:"";$("ofh").value=x?x.hours:"";$("ofo").value=x?x.note||"":"";offDays(x?x.days:[]);
+  $("ofsv").textContent=x?"บันทึกการแก้ไข":"เพิ่มนักเรียน";$("ofx").style.display=x?"":"none";if(x){$("offm").open=true;$("ofn").focus()}}
+async function offStuSave(){const name=$("ofn").value.trim(),rate=Math.round(+$("ofr").value||0),hours=Math.max(0,+$("ofh").value||0),days=[...$("ofd").querySelectorAll("input:checked")].map(i=>+i.value);
+  if(!name){alert("ใส่ชื่อนักเรียนก่อนนะ");return}if(!rate){alert("ใส่ราคาต่อชั่วโมงก่อนนะ");return}
+  const old=OFFED?OFFS.find(o=>o.id===OFFED):null;
+  try{await OFFDB.stuSave({id:OFFED||undefined,name,rate,hours,days,note:$("ofo").value.trim(),active:old?old.active:true});offStuEdit(null);OFFAUTO.delete(monOf(Date.now()));if(window.toast)toast("บันทึกรายชื่อแล้ว");renderFin()}catch(e){offErr(e)}}
+async function offStuAct(id){const x=OFFS.find(o=>o.id===id);try{await OFFDB.stuSave({...x,active:!x.active});renderFin()}catch(e){offErr(e)}}
+async function offStuDel(id){if(OFFDEL!==id){OFFDEL=id;renderOffList();return}OFFDEL=null;try{await OFFDB.stuDel(id);if(OFFED===id)offStuEdit(null);renderFin()}catch(e){offErr(e)}}
 function finMonths(){const out=[],d=new Date();for(let i=11;i>=0;i--)out.push(ym(new Date(d.getFullYear(),d.getMonth()-i,1)));return out}
 const prodCost=id=>{const p=prodBy(id);return p&&p.cb||0};
 function itemCost(i){if(i.fmt!=="book")return 0;if(i.cost!=null)return +i.cost||0;if(i.kind==="promo"){const pr=PROMOS.find(x=>x.id===i.id);return (i.pids||(pr?pr.ids:[])).reduce((a,x)=>a+prodCost(x),0)}return prodCost(i.id)}
@@ -1431,6 +1561,7 @@ function finRows(){const R=[],months=finMonths();
     if(r.book==="รับหนังสือเล่ม"){const c=ebCost(r);R.push({m,k:"exp",g:"หนังสือที่ส่งให้นักเรียน",l:r.name+(c?"":" (ยังไม่ได้ตั้งต้นทุน)"),a:c})}});
   ORDERS.filter(o=>oPaidSt(o.st)).forEach(o=>{const m=ym(o.pa||o.at);R.push({m,k:"inc",g:"ร้านหนังสือ",l:`${o.code} · ${o.name}`,a:+o.total||0});const c=orderCost(o);if(o.ns)R.push({m,k:"exp",g:"ต้นทุนหนังสือในร้าน",l:o.code,a:c})});
   FIN.ent.forEach(e=>R.push({m:String(e.d).slice(0,7),k:e.k,g:e.cat||"อื่น ๆ",l:e.t,a:+e.a||0}));
+  OFFB.filter(b=>b.paid&&!b.skip).forEach(b=>R.push({m:String(b.paid_on||b.week_start).slice(0,7),k:"inc",g:"สอนนอกระบบ",l:`${offName(b)} · สัปดาห์ ${thS(b.week_start)}`,a:+b.amount||0}));
   FIN.rec.forEach(r=>months.forEach(m=>{if(m>=r.f&&(!r.to||m<=r.to))R.push({m,k:"exp",g:r.cat||"ค่าใช้จ่ายประจำ",l:r.t+" (ประจำเดือน)",a:+r.a||0})}));
   return R}
 function finMonth(m,rows){rows=rows||finRows();const x=rows.filter(r=>r.m===m);return {inc:x.filter(r=>r.k==="inc").reduce((a,r)=>a+r.a,0),exp:x.filter(r=>r.k==="exp").reduce((a,r)=>a+r.a,0),rows:x}}
@@ -1442,7 +1573,7 @@ function finChart(rows){const nar=innerWidth<560,fs=nar?20:11,ms=finMonths(),D=m
   <polyline fill="none" stroke="var(--gold)" stroke-width="2.5" points="${D.map((d,i)=>`${pl+i*cw+cw/2},${y(d.inc-d.exp)}`).join(" ")}"/>${D.map((d,i)=>`<circle cx="${pl+i*cw+cw/2}" cy="${y(d.inc-d.exp)}" r="3.5" fill="var(--gold)"/>`).join("")}</svg>`}
 function finGroup(list){const G={};list.forEach(r=>{(G[r.g]=G[r.g]||[]).push(r)});const ks=Object.keys(G).sort((a,b)=>G[b].reduce((s,r)=>s+r.a,0)-G[a].reduce((s,r)=>s+r.a,0));
   return ks.length?ks.map(g=>`<details class="fgd"><summary><span>${esc(g)} <span class="mut">(${G[g].length})</span></span><b>${B(G[g].reduce((s,r)=>s+r.a,0))}</b></summary>${G[g].map(r=>`<div class="frw"><span>${esc(r.l)}</span><span>${B(r.a)}</span></div>`).join("")}</details>`).join(""):'<div class="mut" style="font-size:13px;margin-top:6px">ไม่มีรายการ</div>'}
-function renderFin(){if(!$("fsum"))return;const ms=finMonths();if(!FNM||!ms.includes(FNM))FNM=ms[ms.length-1];
+function renderFin(){if(!$("fsum"))return;renderOff();const ms=finMonths();if(!FNM||!ms.includes(FNM))FNM=ms[ms.length-1];
   $("fmsel").innerHTML=ms.slice().reverse().map(m=>`<option value="${m}" ${m===FNM?"selected":""}>${ymL(m,1)}</option>`).join("");
   const rows=finRows(),cur=finMonth(FNM,rows),pr=cur.inc-cur.exp;
   $("fsum").innerHTML=`<div class="card sc"><b style="color:var(--ok)">${B(cur.inc)}</b><span class="mut">รายรับ</span></div><div class="card sc"><b>${B(cur.exp)}</b><span class="mut">ต้นทุน + รายจ่าย</span></div><div class="card sc"><b style="color:${pr<0?"var(--seal)":"var(--ok)"}">${B(pr)}</b><span class="mut">กำไร${cur.inc?` · ${Math.round(pr/cur.inc*100)}%`:""}</span></div>`;
@@ -3137,7 +3268,7 @@ async function adminLoad(){
       LIVES.push({t:x.title,when,l:x.meet_url});
       SENT.push({t:x.title,when,n:to.length,em:to.map(r=>r.em),ex:`สวัสดีครับ\n\nครูขอเชิญเข้าเรียนไลฟ์สด: ${x.title}\nเวลา: ${when}\nเข้าห้อง: ${x.meet_url}\n${x.message?"\n"+x.message+"\n":""}\n– YUEHUA 悦华中文`})});
     (se.data||[]).forEach(r=>{if(r.k==="sender")SENDER=r.v});
-    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),loadFin().catch(e=>console.error(e)),loadRefAdm().catch(e=>console.error(e))]);
+    await Promise.all([loadVideos(),loadBooks(true),loadShop(true).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadOrders().catch(e=>console.error(e)),loadMails().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),loadFin().catch(e=>console.error(e)),loadRefAdm().catch(e=>console.error(e)),loadOff().catch(e=>console.error(e))]);
     const pend=SUBS.filter(s=>s.st==="รอตรวจสอบ"),paths=pend.flatMap(s=>[s.slipPath,s.idcPath]).filter(Boolean);
     if(paths.length){const {data}=await sb.storage.from("applications").createSignedUrls(paths,3600);
       const u=Object.fromEntries((data||[]).map(d=>[d.path,d.signedUrl]));pend.forEach(s=>{s.slip=s.slipPath?u[s.slipPath]||null:null;s.idc=s.idcPath?u[s.idcPath]||"#":"#"})}
@@ -3358,6 +3489,17 @@ window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCA
 SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};
 VOCAB=[];PRODS=[];PROMOS=[];ORDERS=[];
 /* ---------- การเงิน ---------- */
+/* ---------- รายได้ประจำสัปดาห์ (นักเรียนนอกระบบ) ---------- */
+OFFS=[];OFFB=[];
+async function loadOff(){const [a,b]=await Promise.all([sb.from("off_students").select("*").order("sort").order("id"),sb.from("off_bills").select("*").order("week_start",{ascending:false}).limit(20000)]);
+  if(a.error)throw a.error;if(b.error)throw b.error;
+  OFFS=(a.data||[]).map(r=>({id:Number(r.id),name:r.name,rate:r.rate,hours:Number(r.hours),days:(r.days||[]).map(Number),active:r.active,note:r.note||""}));
+  OFFB=(b.data||[]).map(r=>({id:Number(r.id),student_id:Number(r.student_id),week_start:r.week_start,due_on:r.due_on,hours:Number(r.hours),rate:r.rate,amount:r.amount,paid:r.paid,paid_on:r.paid_on,skip:r.skip}))}
+OFFDB={async ensure(rows){const {error}=await sb.from("off_bills").upsert(rows,{onConflict:"student_id,week_start",ignoreDuplicates:true});if(error)throw error;await loadOff()},
+  async upd(id,p){const {error}=await sb.from("off_bills").update({...p,updated_at:new Date().toISOString()}).eq("id",id);if(error)throw error;const b=OFFB.find(x=>x.id===id);if(b)Object.assign(b,p)},
+  async stuSave(x){const row={name:x.name,rate:x.rate,hours:x.hours,days:x.days,note:x.note||null,active:x.active!==false};
+    const {error}=x.id?await sb.from("off_students").update(row).eq("id",x.id):await sb.from("off_students").insert(row);if(error)throw error;await loadOff()},
+  async stuDel(id){const {error}=await sb.from("off_students").delete().eq("id",id);if(error)throw error;await loadOff()}};
 async function loadFin(){const [e,r,c]=await Promise.all([sb.from("fin_entries").select("*").order("d",{ascending:false}).limit(5000),sb.from("fin_recurring").select("*").order("id"),sb.from("fin_cfg").select("k,v")]);
   if(e.error)throw e.error;if(r.error)throw r.error;
   const cfg=Object.fromEntries((c.data||[]).map(x=>[x.k,x.v]));
