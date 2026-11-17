@@ -254,6 +254,8 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .vsh .vgo{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:14px}
 .vnav{display:flex;gap:8px;margin-top:8px}.vnav .btn{flex:1}.vnav .btn:disabled{opacity:.4;cursor:default}
 .glg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.grpy ruby{ruby-position:over}.grpy rt{font-size:.6em;font-weight:400;opacity:.75;letter-spacing:0;font-family:system-ui,sans-serif}
+.grpy>p{line-height:2.1}.grpy .gch{line-height:1.9;padding-top:2px}.grpy .gx .han{line-height:2}
 .gch{display:inline-block;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;border:2px solid currentColor;line-height:1.5}
 .gch.n{color:#2b2623}.gch.v{color:#c0262d}.gch.a{color:#a8740f}.gch.t{color:#7a4a1e}.gch.p{color:#6b6259}.gch.o{color:#57534e;border-style:dashed}
 .gch.k{background:#b3122b;border-color:#b3122b;color:#fff}
@@ -2117,7 +2119,7 @@ function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0
   <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
   return h}
 /* ข้อมูลเสริมการ์ด (คำที่ใช้คู่กัน + เทคนิคจำ) และสรุปไวยากรณ์ โหลดแยกไฟล์เมื่อเปิดใช้ */
-const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823", "4": "dict/dx4.js?v=0bcb1557", "5": "dict/dx5.js?v=74bcae74"},GRF={"1": "dict/gr1.js?v=560d8901", "2": "dict/gr2.js?v=d5ee431b", "3": "dict/gr3.js?v=ee4dd8ca", "4": "dict/gr4.js?v=ea6bbbd0", "5": "dict/gr5.js?v=592d65a8", "6": "dict/gr6.js?v=bb72cab6", "7": "dict/gr7.js?v=1235bc39"};const DXD={},GRD={},XP={};
+const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823", "4": "dict/dx4.js?v=0bcb1557", "5": "dict/dx5.js?v=74bcae74"},GRF={"1": "dict/gr1.js?v=560d8901", "2": "dict/gr2.js?v=d5ee431b", "3": "dict/gr3.js?v=ee4dd8ca", "4": "dict/gr4.js?v=ea6bbbd0", "5": "dict/gr5.js?v=64917a41", "6": "dict/gr6.js?v=12d68cfb", "7": "dict/gr7.js?v=eb0bbecc"};const DXD={},GRD={},XP={};
 function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP[key])return XP[key];
   XP[key]=new Promise((ok,no)=>{const e=document.createElement("script");e.src=url;e.onload=()=>window[key]?ok(window[key]):no(new Error(key));e.onerror=()=>{e.remove();no(new Error(key))};document.head.appendChild(e)});
   XP[key].catch(()=>{delete XP[key]});return XP[key]}
@@ -2190,12 +2192,14 @@ function openGram(l){$("grbk").textContent=lvn(l);go("s-gram");window.scrollTo(0
   if(!GRF[l]){$("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>สรุปไวยากรณ์ ${lvn(l)}</h2><div class="card mut">กำลังจัดทำสรุปไวยากรณ์ของระดับนี้ เร็ว ๆ นี้มาอ่านได้นะ</div>`;return}
   $("grv").innerHTML=`<div class="card mut">กำลังโหลดสรุปไวยากรณ์…</div>`;
   (GRD[l]?Promise.resolve(GRD[l]):xload(GRF[l],"GRAM"+l)).then(d=>{GRD[l]=d;drawGram(l)},()=>{$("grv").innerHTML=`<div class="card mut">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`})}
-function gpt(p){return `<div class="gpt"><h4>${esc(p.t)}</h4>
-  ${p.f&&p.f.length?`<div class="gf">${p.f.map((c,j)=>(j?"<em>+</em>":"")+`<span class="gch ${c[1]||"p"} han">${esc(c[0])}</span>`).join("")}</div>`:""}
-  ${p.d?`<p>${esc(p.d)}</p>`:""}
+let GRPY=null;
+const grb=t=>{const h=esc(t);return GRPY?h.replace(/[\u3400-\u9fff]+/g,r=>{const y=GRPY[r];if(!y)return r;const a=y.split(" ");return [...r].map((c,i)=>`<ruby>${c}<rt>${esc(a[i]||"")}</rt></ruby>`).join("")}):h};
+function gpt(p){return `<div class="gpt${GRPY?" grpy":""}"><h4>${esc(p.t)}</h4>
+  ${p.f&&p.f.length?`<div class="gf">${p.f.map((c,j)=>(j?"<em>+</em>":"")+`<span class="gch ${c[1]||"p"} han">${grb(c[0])}</span>`).join("")}</div>`:""}
+  ${p.d?`<p>${grb(p.d)}</p>`:""}
   ${p.ex&&p.ex.length?`<div class="gex">${p.ex.map((e,j)=>`<div><b class="nm">${j+1}</b><span><div class="py">${esc(e[1])}</div><div class="zh han">${gzh(e[0],p.hl)}</div><div class="th">${esc(e[2])}</div></span></div>`).join("")}</div>`:""}
-  ${p.x&&p.x.length?`<div class="gx"><b>จุดที่มักใช้ผิด</b>${p.x.map(x=>`<div><span class="gxw han">✗ ${esc(x[0])}</span><span class="gxr han">✓ ${esc(x[1])}</span>${x[2]?`<small>${esc(x[2])}</small>`:""}</div>`).join("")}</div>`:""}</div>`}
-function drawGram(l){const d=GRD[l];
+  ${p.x&&p.x.length?`<div class="gx"><b>จุดที่มักใช้ผิด</b>${p.x.map(x=>`<div><span class="gxw han">✗ ${grb(x[0])}</span><span class="gxr han">✓ ${grb(x[1])}</span>${x[2]?`<small>${esc(x[2])}</small>`:""}</div>`).join("")}</div>`:""}</div>`}
+function drawGram(l){const d=GRD[l];GRPY=d.py||null;
   $("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>ไวยากรณ์เป็นสูตรสี</h2><p class="mut" style="margin-top:0">เห็นโครงประโยคทันที · ${esc(d.src||"")}</p>
   <div class="glg">${GRL.map(g=>`<span class="gch ${g[0]}">${g[1]}</span>`).join("")}</div>
   ${(d.ls||[]).map((s,j)=>`<details class="gls card" ${j?"":"open"}><summary>${esc(s.n)} <small>${esc(s.t||"")} · ${s.p.length} หัวข้อ</small></summary>${s.p.map(gpt).join("")}</details>`).join("")}`}
