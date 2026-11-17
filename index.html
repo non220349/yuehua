@@ -183,6 +183,52 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .sbar{display:block;height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.sbar i{display:block;height:100%;background:var(--seal);border-radius:9px}
 .sld>*,.sld>.rv{flex:0 0 300px;max-width:85vw;min-width:0}.sbw,.ssl{min-width:0;width:100%}
 .rcd{height:auto}.sbw{margin-top:auto}
+/* ===== พจนานุกรมแบบใหม่ ===== */
+:root{--l1:#0f766e;--l2:#1d4ed8;--l3:#6d28d9;--l4:#c2410c;--l5:#9f1239;--l6:#1a1a1a;--l7:#b3122b}
+:root[data-theme="dark"]{--l1:#2dd4bf;--l2:#60a5fa;--l3:#a78bfa;--l4:#fb923c;--l5:#fb7185;--l6:#e7e1d8;--l7:#e0605c}
+.dct{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.dcr{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--bd)}
+.dlb{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:4px 0;text-align:center}
+:root[data-theme="dark"] .dlb{color:#1c1917}
+.dbar{display:flex;height:14px;border-radius:4px;overflow:hidden}.dbar i{display:block;height:100%}.dbar i.o{background:var(--bd)}
+.dnum{font-size:12px;color:var(--mut);margin-top:3px}.dnum b{color:var(--fg);font-size:13px}
+.d79{margin-top:10px;background:var(--soft);border-radius:8px;padding:8px 12px;font-size:13px;line-height:1.5}
+.dlg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:8px}.dlg i{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.dlc{border:2px solid var(--lc);border-radius:14px;padding:16px 8px;background:var(--card);color:var(--fg);font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .15s}
+.dlc:hover{transform:translateY(-2px)}.dlc b{font-size:21px;color:var(--lc)}.dlc span{font-size:15px;font-weight:600}.dlc small{font-size:11px;color:var(--mut)}
+.dlc.wide{grid-column:1/-1;flex-direction:row;justify-content:center;gap:12px;flex-wrap:wrap}
+@media(max-width:420px){.dgrid{grid-template-columns:repeat(2,1fr)}}
+.gbtn{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:14px 16px;border:2px solid var(--seal);border-radius:14px;background:var(--soft);color:var(--fg);font-family:inherit;text-align:left;cursor:pointer}
+.gbtn b{display:block;font-size:17px;color:var(--seal)}.gbtn small{color:var(--mut);font-size:12px}.gbtn svg{flex-shrink:0;color:var(--seal)}.gbtn .ar{margin-left:auto;font-size:22px;color:var(--seal)}
+.vcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px;margin-top:12px}
+.vcd{border:1px solid var(--bd);border-top:4px solid var(--lc);border-radius:12px;background:var(--card);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.vch{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.vch .no{font-size:11px;color:var(--mut);font-variant-numeric:tabular-nums}
+.vch .hz{font-size:24px;line-height:1.2}.vch .py{color:var(--lc);font-size:14px;font-weight:600}
+.vpos{font-size:11px;border:1px solid var(--bd);border-radius:6px;padding:0 6px;color:var(--mut);white-space:nowrap}
+.vmn{font-weight:600;line-height:1.45}
+.vrow{display:flex;gap:8px;font-size:13px;line-height:1.5}.vrow>i{flex-shrink:0;font-style:normal;font-size:11px;font-weight:700;background:var(--soft);color:var(--seal);border-radius:5px;padding:1px 6px;height:fit-content;margin-top:2px;white-space:nowrap}
+.vrow small{display:block;color:var(--mut)}
+.vtip{display:flex;gap:6px;font-size:12.5px;line-height:1.5;background:rgba(242,183,5,.16);border-radius:8px;padding:5px 9px}.vtip svg{flex-shrink:0;margin-top:2px;color:#b07d00}
+:root[data-theme="dark"] .vtip svg{color:#f2b705}
+.vbt{align-self:flex-start;display:inline-flex;align-items:center;gap:6px}
+.glg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.gch{display:inline-block;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;border:2px solid currentColor;line-height:1.5}
+.gch.n{color:#1d4ed8}.gch.v{color:#c0262d}.gch.a{color:#c2410c}.gch.t{color:#0f766e}.gch.p{color:#6b6259}.gch.o{color:#6d28d9}
+.gch.k{background:#b3122b;border-color:#b3122b;color:#fff}
+:root[data-theme="dark"] .gch.n{color:#60a5fa}:root[data-theme="dark"] .gch.v{color:#f87171}:root[data-theme="dark"] .gch.a{color:#fb923c}:root[data-theme="dark"] .gch.t{color:#2dd4bf}:root[data-theme="dark"] .gch.p{color:#a39b92}:root[data-theme="dark"] .gch.o{color:#a78bfa}
+.glg .gch{font-size:12px;padding:1px 8px}
+.gls{margin-top:12px}.gls>summary{cursor:pointer;font-size:16px;font-weight:700;padding:6px 0}.gls>summary small{color:var(--mut);font-weight:400;font-size:13px}
+.gpt{border:1px solid var(--bd);border-radius:12px;background:var(--card);padding:12px;margin-top:10px}
+.gpt h4{margin:0;font-size:16px}.gf{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}.gf em{font-style:normal;color:var(--mut);font-weight:700}
+.gpt p{margin:4px 0;font-size:14px;line-height:1.6}
+.gex{margin-top:8px;display:flex;flex-direction:column;gap:8px}.gex>div{display:flex;gap:8px}.gex b.nm{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--soft);color:var(--seal);font-size:12px;display:flex;align-items:center;justify-content:center}
+.gex .py{font-size:12px;color:var(--mut)}.gex .zh{font-size:17px}.gex .th{font-size:13px;color:var(--mut)}.gex mark{background:none;color:var(--seal);font-weight:700}
+.gx{margin-top:10px;border:1px solid var(--nobg);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--nobg) 45%,transparent)}
+.gx b{color:var(--seal);font-size:13px}.gx div{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;font-size:14px}
+.gx .gxw{color:var(--seal)}.gx .gxr{color:var(--ok)}.gx small{display:block;color:var(--mut);font-size:12px;grid-column:1/-1}
+@media(max-width:480px){.gx div{grid-template-columns:1fr}}
+
 /* ===== รายได้ประจำสัปดาห์ ===== */
 .offh{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.offh .wk{flex:1;min-width:190px;text-align:center;line-height:1.45}
 .offh .wk b{display:block;font-size:15px}.offh .wk small{color:var(--mut);font-size:12px}
@@ -729,6 +775,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div class="card" style="margin-top:10px"><b id="vfh">เพิ่มไฟล์คำศัพท์</b><div class="mut" style="font-size:13px">แสดงเป็นชั้นหนังสือบนหน้าพจนานุกรม ทุกคนโหลดได้ฟรี</div>
       <label for="vft">ชื่อไฟล์</label><input id="vft" placeholder="เช่น คำศัพท์ HSK1 · 300 คำ">
       <label for="vfu">ลิงก์ Google Drive</label><input id="vfu" placeholder="https://drive.google.com/file/d/...">
+      <label for="vfp">เล่มจริงในร้าน (ปุ่ม “เล่มจริง (เข้าสันเกลียว)”)</label><select id="vfp"></select>
       <label>ปก</label><div class="row" style="margin:0;align-items:center"><span id="vfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="vfPic(this)"></label><span id="vfprev"></span></div>
       <div class="row"><button class="btn" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="vfl"></div>
@@ -943,12 +990,26 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 </section>
 <section class="scr" id="s-dict">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
-  <div id="vshelf"></div>
-  <div class="eb">DICTIONARY</div><h2>พจนานุกรม HSK 1–9</h2>
-  <p class="mut">ค้นหาคำศัพท์ หรือกดเลือกระดับเพื่อดูคำ กดที่คำเพื่อดูลำดับขีด พินอิน คำแปลไทย และประโยคตัวอย่าง</p>
-  <input id="dq" oninput="drawDict()" placeholder="ค้นหาตัวจีน พินอิน หรือคำไทย">
+  <div class="eb">DICTIONARY · HSK 3.0</div><h2>พจนานุกรม HSK 1–9</h2>
+  <p class="mut">กดเลือกระดับเพื่อดูการ์ดคำศัพท์และสรุปไวยากรณ์ หรือค้นหาคำได้เลย</p>
+  <input id="dq" oninput="drawDict()" placeholder="ค้นหาตัวจีน พินอิน หรือคำไทย (ทุกระดับ)">
   <div id="dl" style="margin-top:12px"></div>
+  <div id="vshelf"></div>
   <p class="mut" style="font-size:12px">คลังคำศัพท์ HSK 1–9 รวม 11,000 คำ · ลำดับขีด: Hanzi Writer และข้อมูล Make Me a Hanzi</p>
+</section>
+
+<section class="scr" id="s-lv">
+  <div class="top"><button class="btn alt sm" onclick="openDict()">‹ พจนานุกรม</button></div>
+  <div class="eb" id="lveb"></div><h2 id="lvh"></h2><p class="mut" id="lvs" style="margin-top:0"></p>
+  <input id="lq" oninput="lvDraw()" placeholder="ค้นหาในระดับนี้: ตัวจีน พินอิน หรือคำไทย">
+  <div id="lqa"></div>
+  <div id="lvg"></div>
+  <div id="lvl"></div>
+</section>
+
+<section class="scr" id="s-gram">
+  <div class="top"><button class="btn alt sm" onclick="go('s-lv')">‹ คำศัพท์ <span id="grbk"></span></button></div>
+  <div id="grv"></div>
 </section>
 
 <section class="scr" id="s-prof">
@@ -1967,7 +2028,7 @@ const nz=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s/g,"").
 const chipI=(i,k)=>{const w=DD[i];return `<button class="wc" style="animation-delay:${Math.min(k,20)*30}ms" onclick="showW(${i})"><b class="han">${w[1]}</b><small>${w[2]}</small>${GR[w[1]]?'<i class="gtag">ไวยากรณ์</i>':""}</button>`};
 const chip=(w,k)=>chipI(DD.indexOf(w),k);
 const PYK=new WeakMap(),pyk=w=>{let t=PYK.get(w);if(t==null){t=w[2].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();PYK.set(w,t)}return t};
-function openDict(){$("dq").value="";drawDict();renderVocab();go("s-dict");loadSD().catch(()=>{});load79().catch(()=>{})}
+function openDict(){$("dl").innerHTML="";$("dq").value="";drawDict();renderVocab();go("s-dict");loadSD().catch(()=>{});load79().catch(()=>{})}
 function drawDict(){
   const q=$("dq").value.trim(),n=nz(q).replace(/['’\-]/g,"");
   if(q){const pm=w=>{const t=pyk(w);return n&&(t.replace(/[\s'’\-]/g,"").startsWith(n)||t.split(/[\s\-]+/).some(x=>x.replace(/['’]/g,"").startsWith(n)))};
@@ -1976,14 +2037,76 @@ function drawDict(){
     let st="";if(!D79OK){if(D79ERR)st=`<div class="mut" style="font-size:12px">โหลดคำศัพท์ HSK 7-9 ไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วพิมพ์ค้นหาใหม่อีกครั้ง</div>`;
       else{st=`<div class="mut" style="font-size:12px">กำลังโหลดคำศัพท์ HSK 7-9 เพิ่มเติม…</div>`;load79().then(()=>{if($("dq").value.trim()===q)drawDict()},()=>{if($("dq").value.trim()===q)drawDict()})}}
     $("dl").innerHTML=st+(I.length?`<div class="mut">พบ ${I.length.toLocaleString()} คำ${I.length>200?" (แสดง 200 คำแรก)":""}</div><div class="wg">${NAV.map(chipI).join("")}</div>`:(st&&!D79ERR?"":"<div class='card mut'>ไม่พบคำนี้ ลองพิมพ์คำอื่น</div>"));return}
-  NAV=null;$("dl").innerHTML=HL.map((h,i)=>{const l=i+1,L=DD.filter(w=>w[0]===l),c=l===7&&!D79OK?D79N:L.length,e=l===7&&!D79OK?D79N:L.filter(w=>w[4]).length;
-    return `<details class="card lvd" data-l="${l}" ontoggle="lvOpen(this,${l})"><summary><b>${h[0]}</b><span class="mut">${c.toLocaleString()} คำ</span><span class="mut" style="margin-left:auto;font-size:12px">มีประโยคตัวอย่าง ${e.toLocaleString()} คำ</span></summary><div class="wg"></div></details>`}).join("");
+  NAV=null;$("dl").innerHTML=dictHome();
 }
 function lvOpen(d,l){if(!d.open||d.dataset.r)return;const g=d.querySelector(".wg");
   if(l===7&&!D79OK){g.innerHTML="<div class='mut'>กำลังโหลดคำศัพท์ HSK 7-9…</div>";
     load79().then(()=>lvOpen(d,l),()=>{g.innerHTML="<div class='mut'>โหลดคำศัพท์ไม่สำเร็จ ลองเช็กอินเทอร์เน็ต แล้วกดปิดและเปิดระดับนี้ใหม่อีกครั้ง</div>"});return}
   d.dataset.r=1;const I=DD.reduce((a,w,k)=>(w[0]===l&&a.push(k),a),[]);let k=0;g.innerHTML="";
   const add=()=>{if(!g.isConnected)return;const s0=k;k+=400;g.insertAdjacentHTML("beforeend",I.slice(s0,k).map((i,j)=>chipI(i,s0+j)).join(""));if(k<I.length)requestAnimationFrame(add)};add()}
+
+/* ===== พจนานุกรมแบบใหม่: หน้าแรก (กราฟ + การ์ดระดับ) · หน้าระดับ (การ์ดคำ) · สรุปไวยากรณ์ ===== */
+const IC={pen:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  bulb:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
+  book:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2Z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8Z"/></svg>'};
+const lvCnt=l=>l===7&&!D79OK?D79N:DD.reduce((a,w)=>a+(w[0]===l?1:0),0);
+function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0];for(let l=1;l<=7;l++)S.push(S[l-1]+C[l]);const mx=S[6]||1;
+  let h=`<div class="card"><div class="dct"><b>คำศัพท์ที่ต้องรู้ (สะสม) ต่อระดับ</b><span class="mut" style="font-size:12px">HSK 3.0</span></div>`;
+  for(let l=1;l<=6;l++)h+=`<div class="dcr"><span class="dlb" style="background:var(--l${l})">HSK ${l}</span><div><div class="dbar" role="img" aria-label="HSK ${l} รวม ${S[l]} คำ"><i class="o" style="width:${S[l-1]/mx*100}%"></i><i style="width:${C[l]/mx*100}%;background:var(--l${l})"></i></div><div class="dnum"><b>${S[l].toLocaleString()}</b> คำ${l>1?` · เพิ่มจาก HSK ${l-1} อีก <b>+${C[l].toLocaleString()}</b> คำ`:""}</div></div></div>`;
+  h+=`<div class="d79"><b>HSK 7–9</b> เพิ่มอีก <b>${C[7].toLocaleString()}</b> คำ → รวมทั้งหมด <b>${S[7].toLocaleString()}</b> คำ</div>
+  <div class="dlg"><span><i style="background:var(--bd)"></i>คำที่เรียนมาแล้วจากระดับก่อน</span><span><i style="background:var(--l1)"></i>คำใหม่ของระดับนั้น</span></div></div>`;
+  h+=`<div class="dgrid">${[1,2,3,4,5,6].map(l=>`<button class="dlc" style="--lc:var(--l${l})" onclick="openLv(${l})"><b>HSK ${l}</b><span>${C[l].toLocaleString()} คำ</span><small>สะสม ${S[l].toLocaleString()} คำ</small></button>`).join("")}
+  <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
+  return h}
+/* ข้อมูลเสริมการ์ด (คำที่ใช้คู่กัน + เทคนิคจำ) และสรุปไวยากรณ์ โหลดแยกไฟล์เมื่อเปิดใช้ */
+const DXF={"1": "dict/dx1.js?v=8c7070d4"},GRF={"2": "dict/gr2.js?v=5a1ce02b"};const DXD={},GRD={},XP={};
+function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP[key])return XP[key];
+  XP[key]=new Promise((ok,no)=>{const e=document.createElement("script");e.src=url;e.onload=()=>window[key]?ok(window[key]):no(new Error(key));e.onerror=()=>{e.remove();no(new Error(key))};document.head.appendChild(e)});
+  XP[key].catch(()=>{delete XP[key]});return XP[key]}
+let DLV=1,DLA=[],DLP=new Map(),DLI=[],DLK=0,DLO=null;
+const dmatch=(w,q,n)=>w[1].includes(q)||w[3].includes(q)||(n&&(()=>{const t=pyk(w);return t.replace(/[\s'’\-]/g,"").startsWith(n)||t.split(/[\s\-]+/).some(x=>x.replace(/['’]/g,"").startsWith(n))})());
+function openLv(l){DLV=l;$("lq").value="";$("lqa").innerHTML="";
+  if(l===7&&!D79OK){$("lveb").textContent="HSK 3.0";$("lvh").textContent="HSK 7–9";$("lvs").textContent="";$("lvg").innerHTML="";$("lvl").innerHTML=`<div class="card mut">กำลังโหลดคำศัพท์ HSK 7–9…</div>`;go("s-lv");
+    load79().then(()=>{if(DLV===7)openLv(7)},()=>{$("lvl").innerHTML=`<div class="card mut">โหลดคำศัพท์ไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`});return}
+  DLA=[];DD.forEach((w,i)=>{if(w[0]===l)DLA.push(i)});DLP=new Map(DLA.map((i,k)=>[i,k+1]));
+  let cum=0;for(let k=1;k<=l;k++)cum+=lvCnt(k);
+  $("lveb").textContent="HSK 3.0 · คำศัพท์";$("lvh").textContent=`${lvn(l)} · ${DLA.length.toLocaleString()} คำ`;
+  $("lvs").textContent=l>1?`คำใหม่ของระดับนี้ · รวมกับระดับก่อนหน้าเป็น ${cum.toLocaleString()} คำ`:"คำศัพท์พื้นฐานชุดแรก";
+  $("lvg").innerHTML=`<button class="gbtn" onclick="openGram(${l})">${IC.book}<span><b>สรุปไวยากรณ์ ${lvn(l)}</b><small>สูตรสี เห็นโครงประโยคทันที</small></span><span class="ar">›</span></button>`;
+  lvDraw();go("s-lv");window.scrollTo(0,0);
+  if(DXF[l]&&!DXD[l])xload(DXF[l],"DX"+l).then(d=>{DXD[l]=d;if(DLV===l&&$("s-lv").classList.contains("on"))lvDraw(true)},()=>{})}
+function lvDraw(keep){const q=$("lq").value.trim(),n=nz(q).replace(/['’\-]/g,"");
+  DLI=q?DLA.filter(i=>dmatch(DD[i],q,n)):DLA;NAV=q?DLI:null;
+  $("lqa").innerHTML=q?`<div class="mut" style="font-size:13px;margin-top:6px">พบ ${DLI.length.toLocaleString()} คำใน ${lvn(DLV)} · <button class="olk" onclick="lvAll()">ค้นทุกระดับ ›</button></div>`:"";
+  const k0=keep?Math.max(DLK,60):60;$("lvl").innerHTML=DLI.length?`<div class="vcg" id="vcg"></div><div id="vmore"></div>`:`<div class="card mut" style="margin-top:12px">ไม่พบคำนี้ใน ${lvn(DLV)} <button class="olk" onclick="lvAll()">ลองค้นทุกระดับ ›</button></div>`;
+  DLK=0;if(DLI.length)lvMore(k0)}
+function lvMore(step){const g=$("vcg");if(!g)return;const s0=DLK;DLK+=step||60;g.insertAdjacentHTML("beforeend",DLI.slice(s0,DLK).map(vcard).join(""));
+  const m=$("vmore");if(DLK<DLI.length){m.innerHTML=`<button class="btn alt" style="width:100%;margin-top:12px" onclick="lvMore()">ดูเพิ่มอีก · เหลือ ${(DLI.length-DLK).toLocaleString()} คำ</button>`;
+    if("IntersectionObserver" in window){if(DLO)DLO.disconnect();DLO=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){DLO.disconnect();lvMore()}},{rootMargin:"600px"});DLO.observe(m)}}
+  else m.innerHTML=""}
+function lvAll(){const q=$("lq").value.trim();openDict();$("dq").value=q;drawDict()}
+function vcard(i){const w=DD[i],l=w[0],no=DLP.get(i)||0,d=DXD[l],x=d&&d[no-1];
+  return `<div class="vcd" style="--lc:var(--l${l})"><div class="vch"><span class="no">${String(no).padStart(4,"0")}</span><b class="han hz">${w[1]}</b><span class="py">${esc(w[2])}</span>${w[7]?`<span class="vpos">${esc(w[7])}</span>`:""}${GR[w[1]]?'<span class="vpos" style="color:var(--seal)">มีโน้ตไวยากรณ์</span>':""}</div>
+  <div class="vmn">${esc(w[3])}</div>
+  ${x&&x[0]?`<div class="vrow"><i>คำที่ใช้คู่กัน</i><span>${esc(x[0])}</span></div>`:""}
+  ${w[4]?`<div class="vrow"><i>ตัวอย่าง</i><span><span class="han">${esc(w[4])}</span><small>${esc(w[6]||"")}</small></span></div>`:""}
+  ${x&&x[1]?`<div class="vtip">${IC.bulb}<span>${esc(x[1])}</span></div>`:""}
+  <button class="btn alt sm vbt" onclick="showW(${i})">${IC.pen}ดูลำดับขีด · ฟังเสียง</button></div>`}
+const GRL=[["n","คำนาม / ประธาน"],["v","คำกริยา"],["a","คำคุณศัพท์"],["t","เวลา / สถานที่"],["o","คำบอกจำนวน / อื่น ๆ"],["k","คำสำคัญของสูตร"]];
+const gzh=(z,hl)=>{let t=esc(z);(hl||[]).forEach(k=>{if(k)t=t.split(esc(k)).join(`<mark>${esc(k)}</mark>`)});return t};
+function openGram(l){$("grbk").textContent=lvn(l);go("s-gram");window.scrollTo(0,0);
+  if(!GRF[l]){$("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>สรุปไวยากรณ์ ${lvn(l)}</h2><div class="card mut">กำลังจัดทำสรุปไวยากรณ์ของระดับนี้ เร็ว ๆ นี้มาอ่านได้นะ</div>`;return}
+  $("grv").innerHTML=`<div class="card mut">กำลังโหลดสรุปไวยากรณ์…</div>`;
+  (GRD[l]?Promise.resolve(GRD[l]):xload(GRF[l],"GRAM"+l)).then(d=>{GRD[l]=d;drawGram(l)},()=>{$("grv").innerHTML=`<div class="card mut">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`})}
+function gpt(p){return `<div class="gpt"><h4>${esc(p.t)}</h4>
+  ${p.f&&p.f.length?`<div class="gf">${p.f.map((c,j)=>(j?"<em>+</em>":"")+`<span class="gch ${c[1]||"p"} han">${esc(c[0])}</span>`).join("")}</div>`:""}
+  ${p.d?`<p>${esc(p.d)}</p>`:""}
+  ${p.ex&&p.ex.length?`<div class="gex">${p.ex.map((e,j)=>`<div><b class="nm">${j+1}</b><span><div class="py">${esc(e[1])}</div><div class="zh han">${gzh(e[0],p.hl)}</div><div class="th">${esc(e[2])}</div></span></div>`).join("")}</div>`:""}
+  ${p.x&&p.x.length?`<div class="gx"><b>จุดที่มักใช้ผิด</b>${p.x.map(x=>`<div><span class="gxw han">✗ ${esc(x[0])}</span><span class="gxr han">✓ ${esc(x[1])}</span>${x[2]?`<small>${esc(x[2])}</small>`:""}</div>`).join("")}</div>`:""}</div>`}
+function drawGram(l){const d=GRD[l];
+  $("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>ไวยากรณ์เป็นสูตรสี</h2><p class="mut" style="margin-top:0">เห็นโครงประโยคทันที · ${esc(d.src||"")}</p>
+  <div class="glg">${GRL.map(g=>`<span class="gch ${g[0]}">${g[1]}</span>`).join("")}</div>
+  ${(d.ls||[]).map((s,j)=>`<details class="gls card" ${j?"":"open"}><summary>${esc(s.n)} <small>${esc(s.t||"")} · ${s.p.length} หัวข้อ</small></summary>${s.p.map(gpt).join("")}</details>`).join("")}`}
 const stp=(d,k)=>`<div class="st1"><svg viewBox="0 0 1024 1024" width="44" height="44"><g transform="scale(1,-1) translate(0,-900)">${d.strokes.slice(0,k+1).map((p,j)=>`<path d="${p}" fill="${j===k?"#b73532":"#9a9a9a"}"/>`).join("")}</g></svg><span>${k+1}</span></div>`;
 let WB=[];
 const wst=t=>{$("wst").textContent=t};
@@ -2500,9 +2623,10 @@ const cov=b=>{const c=String(b.c||"");const src=BCOV[c]||(/^(data:image\/|https:
 function shelfRows(list,per,cell){let h="";for(let i=0;i<list.length;i+=per)h+=`<div class="shelf"><div class="shrow">${list.slice(i,i+per).map((x,j)=>cell(x,i+j)).join("")}</div><div class="plank"></div></div>`;return h}
 function renderVocab(){const e=$("vshelf");if(!e)return;
   if(!VOCAB.length){e.innerHTML="";return}
-  e.innerHTML=`<div class="card vsh"><div class="eb">FREE DOWNLOAD</div><b>ไฟล์คำศัพท์ โหลดฟรี 📚</b><div class="mut" style="font-size:13px">แตะที่ปกเพื่อดาวน์โหลด</div>${shelfRows(VOCAB,4,(b,i)=>`<button class="book" onclick="openVocab(${i})" aria-label="${esc(b.t)}"><span class="bcv">${cov(b)}</span>${b.u?'<span class="brib dl">↓ ฟรี</span>':""}<span class="bnm">${esc(b.t)}</span></button>`)}</div>`}
+  e.innerHTML=`<div class="card vsh"><div class="eb">FREE DOWNLOAD</div><b>โหลดคำศัพท์ฟรี</b><div class="mut" style="font-size:13px">แตะที่ปกเพื่อโหลด PDF หรือสั่งเล่มจริง</div>${shelfRows(VOCAB,4,(b,i)=>`<button class="book" onclick="openVocab(${i})" aria-label="${esc(b.t)}"><span class="bcv">${cov(b)}</span>${b.u?'<span class="brib dl">↓ ฟรี</span>':""}<span class="bnm">${esc(b.t)}</span></button>`)}</div>`}
 function openVocab(i){const b=VOCAB[i];if(!b)return;
-  pop(`<span class="bcv">${cov(b)}</span><h3 id="bkmt">${esc(b.t)}</h3>${b.u?`<a class="btn" href="${esc(dlUrl(b.u))}" target="_blank" rel="noopener">ดาวน์โหลดไฟล์</a><a class="btn alt" href="${esc(b.u)}" target="_blank" rel="noopener">เปิดใน Google Drive</a>`:'<p class="mut">ไฟล์นี้กำลังเตรียม เร็ว ๆ นี้โหลดได้นะ</p>'}<button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  const pr=b.p?prodBy(b.p):null,pb=pr&&pr.on!==false?pr:null;
+  pop(`<span class="bcv">${cov(b)}</span><h3 id="bkmt">${esc(b.t)}</h3>${b.u?`<a class="btn" href="${esc(dlUrl(b.u))}" target="_blank" rel="noopener">โหลด PDF ฟรี</a>`:'<p class="mut">ไฟล์นี้กำลังเตรียม เร็ว ๆ นี้โหลดได้นะ</p>'}${pb?`<button class="btn alt" onclick="closeBook();openProd(${pb.id})">เล่มจริง (เข้าสันเกลียว)${pb.pb?" · "+B(pb.pb):""}</button>`:""}${b.u?`<a class="btn alt" href="${esc(b.u)}" target="_blank" rel="noopener">เปิดใน Google Drive</a>`:""}<button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 /* หลังบ้าน: ไฟล์คำศัพท์ */
 let VFE=null,VFPIC="",VFDEL=null;
 function covSel(id,cur){return `<select id="${id}"><option value="">ไม่มีรูป (ใช้ชื่อเป็นปก)</option>${Object.keys(BCOV).map(k=>`<option value="${k}" ${cur===k?"selected":""}>ปก ${k.toUpperCase()}</option>`).join("")}${/^(data:|https:)/.test(cur||"")?`<option value="__pic" selected>รูปที่อัปโหลด</option>`:""}</select>`}
@@ -2510,11 +2634,11 @@ function picToJpeg(file,max){return new Promise((res,rej)=>{const fr=new FileRea
 async function vfPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{VFPIC=await picToJpeg(f,700);$("vfprev").innerHTML=`<span class="bcv sm2"><img src="${VFPIC}" alt=""></span>`;$("vfcv").innerHTML=covSel("vfc","__pic").replace(/^<select id="vfc">/,'<select id="vfc">')}catch(e){alert("อ่านรูปไม่ได้")}}
 function renderVfAdmin(){const e=$("vfl");if(!e)return;const cur=VFE!=null?VOCAB[VFE]:null;
   $("vfh").textContent=cur?"แก้ไขไฟล์คำศัพท์":"เพิ่มไฟล์คำศัพท์";
-  if(!$("vft").dataset.k||$("vft").dataset.k!==String(VFE)){$("vft").dataset.k=String(VFE);$("vft").value=cur?cur.t:"";$("vfu").value=cur?cur.u:"";VFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";$("vfcv").innerHTML=covSel("vfc",cur?(VFPIC?"__pic":cur.c):"");$("vfprev").innerHTML=VFPIC?`<span class="bcv sm2"><img src="${esc(VFPIC)}" alt=""></span>`:""}
+  if(!$("vft").dataset.k||$("vft").dataset.k!==String(VFE)){$("vft").dataset.k=String(VFE);$("vft").value=cur?cur.t:"";$("vfu").value=cur?cur.u:"";$("vfp").innerHTML=`<option value="">ไม่มีเล่มจริง (ซ่อนปุ่ม)</option>`+PRODS.map(p=>`<option value="${p.id}" ${cur&&cur.p===p.id?"selected":""}>${esc(p.t)}${p.on===false?" (ปิดขายอยู่)":""}</option>`).join("");VFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";$("vfcv").innerHTML=covSel("vfc",cur?(VFPIC?"__pic":cur.c):"");$("vfprev").innerHTML=VFPIC?`<span class="bcv sm2"><img src="${esc(VFPIC)}" alt=""></span>`:""}
   $("vfx").style.display=cur?"":"none";
   e.innerHTML=VOCAB.length?VOCAB.map((b,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(b)}</span><div style="flex:1;min-width:0"><b>${esc(b.t)}</b><div class="mut" style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${b.u?esc(b.u):"ยังไม่ใส่ลิงก์"}</div></div><button class="btn alt sm" onclick="mvVf(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvVf(${i},1)" ${i<VOCAB.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="VFE=${i};renderVfAdmin();$('vft').focus()">แก้ไข</button><button class="btn alt sm" onclick="delVf(${i})">${VFDEL===i?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีไฟล์คำศัพท์</div>"}
 function vfVals(){const t=$("vft").value.trim(),u=$("vfu").value.trim(),c=$("vfc").value;if(!t){alert("กรุณาใส่ชื่อไฟล์");return null}
-  if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ต้องขึ้นต้นด้วย https://");return null}return {t,u,c:c==="__pic"?VFPIC:c}}
+  if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ต้องขึ้นต้นด้วย https://");return null}return {t,u,c:c==="__pic"?VFPIC:c,p:$("vfp").value?+$("vfp").value:null}}
 function saveVf(){const v=vfVals();if(!v)return;if(VFE!=null)VOCAB[VFE]=v;else VOCAB.push(v);vSaveV();VFE=null;$("vft").dataset.k="";renderVfAdmin();renderVocab()}
 function cancelVf(){VFE=null;$("vft").dataset.k="";renderVfAdmin()}
 function delVf(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;VOCAB.splice(i,1);vSaveV();if(VFE===i)VFE=null;renderVfAdmin();renderVocab()}
@@ -3035,7 +3159,7 @@ async function loadShop(admin){
   cartBadge();
 }
 async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
-  VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort}))}
+  VOCAB=(data||[]).map(x=>({dbid:Number(x.id),t:x.title,c:x.cover||"",u:x.file_url||"",sort:x.sort,p:x.product_id!=null?Number(x.product_id):null}))}
 async function loadPublic(){
   try{await Promise.all([loadSlots(),loadTrialSessions(),loadBooks(false),loadShop(false).catch(e=>console.error(e)),loadVocab().catch(e=>console.error(e)),loadReviews().catch(e=>console.error(e)),(window.YH_CRS=loadCourses().catch(e=>console.error(e))),loadSiteCfg().catch(e=>console.error(e))])}catch(e){console.error(e)}
   const on=document.querySelector(".scr.on");if(!on)return;
@@ -3478,7 +3602,7 @@ window.delPo=async function(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return
 window.mvPo=async function(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PROMOS[i],PROMOS[j]]=[PROMOS[j],PROMOS[i]];renderShopAdmin();await reorder("promos",PROMOS);await loadShop(true)};
 /* ---------- หลังบ้าน: ไฟล์คำศัพท์ ---------- */
 window.saveVf=async function(){const v=vfVals();if(!v)return;
-  try{const cover=await upCover(v.c,"vocab");const row={title:v.t,file_url:v.u,cover};const cur=VFE!=null?VOCAB[VFE]:null;
+  try{const cover=await upCover(v.c,"vocab");const row={title:v.t,file_url:v.u,cover,product_id:v.p||null};const cur=VFE!=null?VOCAB[VFE]:null;
     const q=cur?sb.from("vocab_files").update(row).eq("id",cur.dbid):sb.from("vocab_files").insert(Object.assign(row,{sort:VOCAB.length}));
     const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
 window.delVf=async function(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;
