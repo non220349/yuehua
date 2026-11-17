@@ -255,9 +255,9 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .vnav{display:flex;gap:8px;margin-top:8px}.vnav .btn{flex:1}.vnav .btn:disabled{opacity:.4;cursor:default}
 .glg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .gch{display:inline-block;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;border:2px solid currentColor;line-height:1.5}
-.gch.n{color:#1d4ed8}.gch.v{color:#c0262d}.gch.a{color:#c2410c}.gch.t{color:#0f766e}.gch.p{color:#6b6259}.gch.o{color:#6d28d9}
+.gch.n{color:#2b2623}.gch.v{color:#c0262d}.gch.a{color:#a8740f}.gch.t{color:#7a4a1e}.gch.p{color:#6b6259}.gch.o{color:#57534e;border-style:dashed}
 .gch.k{background:#b3122b;border-color:#b3122b;color:#fff}
-:root[data-theme="dark"] .gch.n{color:#60a5fa}:root[data-theme="dark"] .gch.v{color:#f87171}:root[data-theme="dark"] .gch.a{color:#fb923c}:root[data-theme="dark"] .gch.t{color:#2dd4bf}:root[data-theme="dark"] .gch.p{color:#a39b92}:root[data-theme="dark"] .gch.o{color:#a78bfa}
+:root[data-theme="dark"] .gch.n{color:#f1ebe3}:root[data-theme="dark"] .gch.v{color:#f87171}:root[data-theme="dark"] .gch.a{color:#e3b448}:root[data-theme="dark"] .gch.t{color:#d0a172}:root[data-theme="dark"] .gch.p{color:#a39b92}:root[data-theme="dark"] .gch.o{color:#c9c1b6}
 .glg .gch{font-size:12px;padding:1px 8px}
 .gls{margin-top:12px}.gls>summary{cursor:pointer;font-size:16px;font-weight:700;padding:6px 0}.gls>summary small{color:var(--mut);font-weight:400;font-size:13px}
 .gpt{border:1px solid var(--bd);border-radius:12px;background:var(--card);padding:12px;margin-top:10px}
@@ -2102,7 +2102,7 @@ function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0
   <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
   return h}
 /* ข้อมูลเสริมการ์ด (คำที่ใช้คู่กัน + เทคนิคจำ) และสรุปไวยากรณ์ โหลดแยกไฟล์เมื่อเปิดใช้ */
-const DXF={"1": "dict/dx1.js?v=8c7070d4"},GRF={"2": "dict/gr2.js?v=5a1ce02b"};const DXD={},GRD={},XP={};
+const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823"},GRF={"2": "dict/gr2.js?v=5a1ce02b", "3": "dict/gr3.js?v=1ff9b964", "4": "dict/gr4.js?v=e633a02b"};const DXD={},GRD={},XP={};
 function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP[key])return XP[key];
   XP[key]=new Promise((ok,no)=>{const e=document.createElement("script");e.src=url;e.onload=()=>window[key]?ok(window[key]):no(new Error(key));e.onerror=()=>{e.remove();no(new Error(key))};document.head.appendChild(e)});
   XP[key].catch(()=>{delete XP[key]});return XP[key]}
