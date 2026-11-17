@@ -66,6 +66,10 @@ button.ck{background:transparent;font:inherit;flex:none}
 .vin{flex:1;min-width:0}.vin b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vin small{color:var(--mut)}
 .vac{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}.vac button{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;padding:5px 9px;font:inherit;font-size:13px;cursor:pointer;min-width:34px}.vac button.dg{color:#fff;background:var(--seal);border-color:var(--seal)}
 .vno{font-size:13px;color:var(--mut)}
+.alr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)}.alr .vin small{display:block}.alr input{flex:1;min-width:0;margin:0}
+.alnew{display:flex;gap:8px;align-items:center;margin-top:10px}.alnew input{flex:1;min-width:0;margin:0}
+.alr .vac{width:auto;padding-left:0}
+.alnk{display:inline-block;margin-top:6px;font-size:13px;font-weight:600;color:var(--seal);text-decoration:none}
 .ls .lt{flex:1}.ls.cur{background:var(--soft);border-radius:8px;padding-left:8px;padding-right:8px}.ls .pl{color:var(--seal);font-size:13px;font-weight:700}
 .vlink{display:inline-block;margin-top:8px;font-size:13px}
 @media(max-width:560px){.vli{flex-wrap:wrap}.vac{width:100%;justify-content:flex-start;padding-left:106px}.vth{width:96px}}
@@ -953,13 +957,18 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   <div class="pane" id="a-vid">
     <div class="card" style="margin-top:10px"><b id="vfh">เพิ่มวิดีโอ</b>
       <div class="vg2"><div><label for="vc">คอร์ส</label><select id="vc" onchange="renderVidAdmin()"></select></div>
-      <div><label for="vs">หมวด</label><select id="vs" onchange="renderVidAdmin()"></select></div></div>
+      <div><label for="vs">อัลบั้ม</label><select id="vs" onchange="renderVidAdmin()"></select><a class="alnk" href="#van" onclick="event.preventDefault();$('van').focus();$('van').scrollIntoView({behavior:'smooth',block:'center'})">+ สร้างอัลบั้มใหม่</a></div></div>
       <label for="vtt">ชื่อตอน</label><input id="vtt" placeholder="เช่น บทที่ 1 – ทักทาย">
       <label for="vu">ลิงก์ YouTube</label><input id="vu" inputmode="url" placeholder="https://youtu.be/… หรือ https://www.youtube.com/watch?v=…" oninput="vPrev()">
       <div class="mut" id="vue" style="font-size:13px;margin-top:4px"></div>
       <div id="vpv"></div>
       <div class="row"><button class="btn" id="vsb" onclick="saveVid()">เพิ่มวิดีโอ</button><button class="btn alt" id="vcx" style="display:none" onclick="cancelVid()">ยกเลิกการแก้ไข</button></div>
       <p class="mut" style="font-size:12px;margin:8px 0 0">แนะนำให้อัปโหลดวิดีโอใน YouTube แบบ “ไม่เป็นสาธารณะ (Unlisted)” แล้วคัดลอกลิงก์มาวาง วิดีโอจะแสดงในแท็บ “วิดีโอ” ของนักเรียนคอร์สนั้นตามลำดับในรายการด้านล่าง</p>
+    </div>
+    <div class="card"><b>อัลบั้มของคอร์สนี้</b><div class="mut" style="font-size:13px;margin-top:2px">นักเรียนจะเห็นวิดีโอแยกตามอัลบั้มตามลำดับนี้ · อัลบั้มที่ยังไม่มีวิดีโอจะไม่แสดงให้นักเรียนเห็น</div>
+      <div id="val"></div>
+      <div class="alnew"><input id="van" maxlength="80" placeholder="ชื่ออัลบั้มใหม่ เช่น เล่ม 3" onkeydown="if(event.key==='Enter')addAlb()"><button class="btn sm" onclick="addAlb()">เพิ่มอัลบั้ม</button></div>
+      <div class="mut" id="vae" style="font-size:13px;margin-top:4px"></div>
     </div>
     <div id="vla"></div>
   </div>
@@ -1838,12 +1847,12 @@ function renderToday(){
   const LV=isLive(ST);$("nxh").textContent=LV?"คลาสถัดไป":"ไลฟ์สด";
   $("nx").innerHTML=!LV?"":n?`<b>วัน${DN[n.x.dw]} ${fh(n.x.h,n.x.du)}</b><div class="mut">${dstr(n.d)} · ${n.x.ty==="single"?"เรียนเดี่ยว":"เรียนกลุ่ม"}</div>`:`<div class="mut">ยังไม่มีคลาสที่จองไว้</div><button class="btn sm" style="margin-top:8px" onclick="openHour('group')">จองเวลาเรียน</button>`;
   renderLive();
-  const vd=Object.keys(SEC).reduce((a,k)=>a+dn(k),0),vt=Object.keys(SEC).reduce((a,k)=>a+secItems(k).length,0);
+  const SA=stAlbs(),vd=SA.reduce((a,x)=>a+dn(x.k),0),vt=SA.reduce((a,x)=>a+secItems(x.k).length,0);
   $("st").style.gridTemplateColumns=LV?"":"repeat(2,1fr)";
   $("st").innerHTML=!LV?`<div class="card sc"><b>${vd}/${vt}</b><span class="mut">วิดีโอที่เรียนจบ</span></div><div class="card sc"><b>${Math.floor(today/60)}</b><span class="mut">นาทีที่เรียนวันนี้</span></div>`:`<div class="card sc"><b>${m.length}</b><span class="mut">ช่วงเรียน/สัปดาห์</span></div><div class="card sc"><b>${lv}/4</b><span class="mut">ลาไปแล้ว</span></div><div class="card sc"><b>${Math.floor(today/60)}</b><span class="mut">นาทีที่เรียนวันนี้</span></div>`;
   $("tbk").innerHTML=CUR&&bookList(CUR).length?`<div class="card"><div class="eb">หนังสือเรียนของฉัน</div><b>แตะที่ปกเพื่อดาวน์โหลด</b>${shelf(CUR,"own")}</div>`:"";
-  const k=LAST||"b1";
-  $("tcont").innerHTML=CUR?`<div class="card ctn"><div class="ctnt"><div class="eb">เรียนต่อจากเดิม</div><b>${C[CUR].n} · ${SEC[k].n}</b></div><button class="btn sm" onclick="document.querySelector('#tabs button[data-t=p-learn]').click();openSec('${k}')">เรียนต่อ →</button></div>`:"";
+  const k=stLast();
+  $("tcont").innerHTML=CUR&&k?`<div class="card ctn"><div class="ctnt"><div class="eb">เรียนต่อจากเดิม</div><b>${C[CUR].n} · ${esc(stAlb(k).n)}</b></div><button class="btn sm" onclick="document.querySelector('#tabs button[data-t=p-learn]').click();openSec('${k}')">เรียนต่อ →</button></div>`:"";
 }
 function renderSched(){
   const m=mine().map(x=>({x,d:nextOcc(x)})).sort((a,b)=>a.d-b.d),lv=LEAVES.filter(l=>l.code===ST.code);
@@ -2608,18 +2617,46 @@ const ytEmbed=id=>`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel
 const ytThumb=id=>`https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
 const vList=(c,k)=>((VIDS[c]||{})[k]||[]);
 let VEDIT=null;
+let ALBS=(()=>{try{return JSON.parse(localStorage.getItem("yh_albs")||"null")||{}}catch(e){return {}}})();
+function aSave(){try{localStorage.setItem("yh_albs",JSON.stringify(ALBS))}catch(e){}}
+function albs(c){if(!ALBS[c]){ALBS[c]=Object.keys(SEC).map(k=>({k,n:SEC[k].n}));aSave()}return ALBS[c]}
+const albName=(c,k)=>{const a=albs(c).find(x=>x.k===k);return a?a.n:""};
+let AEDIT=null,ADEL=null;
 function renderVidAdmin(){
   const vc=$("vc"),vs=$("vs");
-  {const v=vc.value;vc.innerHTML=CL().map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join("");if(v&&CL().includes(v))vc.value=v}if(!vs.options.length){vs.innerHTML=Object.keys(SEC).map(k=>`<option value="${k}">${SEC[k].g} · ${SEC[k].n}</option>`).join("")}
-  const c=vc.value;
-  $("vla").innerHTML=Object.keys(SEC).map(k=>{const L=vList(c,k);return `<div class="card"><b>${C[c].n} · ${SEC[k].n}</b> <span class="mut">(${L.length} วิดีโอ)</span>`+
+  {const v=vc.value;vc.innerHTML=CL().map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join("");if(v&&CL().includes(v))vc.value=v}
+  const c=vc.value,A=c?albs(c):[];
+  {const v=vs.value;vs.innerHTML=A.length?A.map(a=>`<option value="${a.k}">${esc(a.n)}</option>`).join(""):`<option value="">ยังไม่มีอัลบั้ม · สร้างด้านล่างก่อน</option>`;if(v&&A.some(a=>a.k===v))vs.value=v}
+  $("val").innerHTML=A.length?A.map((a,i)=>{const n=vList(c,a.k).length,id=c+"|"+a.k;
+    if(AEDIT===id)return `<div class="alr"><input id="vae_${i}" maxlength="80" value="${esc(a.n)}" onkeydown="if(event.key==='Enter')renAlb('${c}','${a.k}',${i});if(event.key==='Escape')cancelAlb()"><div class="vac"><button onclick="renAlb('${c}','${a.k}',${i})">บันทึก</button><button onclick="cancelAlb()">ยกเลิก</button></div></div>`;
+    return `<div class="alr"><div class="vin"><b>${i+1}. ${esc(a.n)}</b><small>${n} วิดีโอ</small></div><div class="vac">
+      <button onclick="mvAlb('${c}',${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button onclick="mvAlb('${c}',${i},1)" ${i<A.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button>
+      <button onclick="editAlb('${c}','${a.k}')">แก้ชื่อ</button><button class="${ADEL===id?"dg":""}" onclick="delAlb('${c}','${a.k}')">${ADEL===id?"ยืนยันลบ":"ลบ"}</button></div></div>`}).join(""):`<div class="vno" style="padding:8px 0">คอร์สนี้ยังไม่มีอัลบั้ม พิมพ์ชื่อด้านล่างแล้วกด “เพิ่มอัลบั้ม”</div>`;
+  $("vla").innerHTML=A.map(a=>{const k=a.k,L=vList(c,k);return `<div class="card"><b>${esc(C[c].n)} · ${esc(a.n)}</b> <span class="mut">(${L.length} วิดีโอ)</span>`+
     (L.length?L.map((v,i)=>`<div class="vli"><img class="vth" src="${ytThumb(v.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div class="vin"><b>${i+1}. ${esc(v.t)}</b><small>youtu.be/${v.id}</small></div><div class="vac">
       <button onclick="mvVid('${c}','${k}',${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">↑</button><button onclick="mvVid('${c}','${k}',${i},1)" ${i<L.length-1?"":"disabled"} aria-label="เลื่อนลง">↓</button>
-      <button onclick="editVid('${c}','${k}',${i})">แก้ไข</button><button class="${VDEL===c+k+i?"dg":""}" onclick="delVid('${c}','${k}',${i})">${VDEL===c+k+i?"ยืนยันลบ":"ลบ"}</button></div></div>`).join(""):`<div class="vno">ยังไม่มีวิดีโอ · นักเรียนจะเห็นรายการตอนตัวอย่างเดิม</div>`)+`</div>`}).join("");
+      <button onclick="editVid('${c}','${k}',${i})">แก้ไข</button><button class="${VDEL===c+k+i?"dg":""}" onclick="delVid('${c}','${k}',${i})">${VDEL===c+k+i?"ยืนยันลบ":"ลบ"}</button></div></div>`).join(""):`<div class="vno">ยังไม่มีวิดีโอในอัลบั้มนี้ · นักเรียนจะยังไม่เห็นอัลบั้มนี้</div>`)+`</div>`}).join("");
 }
+function albErr(m){$("vae").textContent=m}
+function addAlb(){const c=$("vc").value,n=$("van").value.trim();albErr("");
+  if(!c)return;if(!n){albErr("กรุณาพิมพ์ชื่ออัลบั้ม");$("van").focus();return}
+  if(albs(c).some(a=>a.n===n)){albErr("มีอัลบั้มชื่อนี้ในคอร์สนี้แล้ว");$("van").focus();return}
+  const k="a"+Date.now();albs(c).push({k,n});aSave();$("van").value="";$("vs").value="";renderVidAdmin();$("vs").value=k}
+function editAlb(c,k){AEDIT=c+"|"+k;ADEL=null;albErr("");renderVidAdmin();const i=albs(c).findIndex(a=>a.k===k),el=$("vae_"+i);if(el){el.focus();el.select()}}
+function cancelAlb(){AEDIT=null;albErr("");renderVidAdmin()}
+function renAlb(c,k,i){const el=$("vae_"+i),n=el?el.value.trim():"";
+  if(!n){albErr("ชื่ออัลบั้มว่างไม่ได้");return}
+  if(albs(c).some(a=>a.n===n&&a.k!==k)){albErr("มีอัลบั้มชื่อนี้ในคอร์สนี้แล้ว");return}
+  albs(c).find(a=>a.k===k).n=n;aSave();AEDIT=null;albErr("");renderVidAdmin()}
+function delAlb(c,k){albErr("");const n=vList(c,k).length;
+  if(n){ADEL=null;albErr(`ลบไม่ได้: อัลบั้ม “${albName(c,k)}” ยังมีวิดีโอ ${n} ตอน กรุณาย้ายวิดีโอไปอัลบั้มอื่น (กด “แก้ไข” ที่วิดีโอ) หรือลบวิดีโอออกก่อน`);renderVidAdmin();return}
+  if(ADEL!==c+"|"+k){ADEL=c+"|"+k;renderVidAdmin();return}
+  ADEL=null;ALBS[c]=albs(c).filter(a=>a.k!==k);aSave();renderVidAdmin()}
+function mvAlb(c,i,d){const A=albs(c),j=i+d;if(j<0||j>=A.length)return;[A[i],A[j]]=[A[j],A[i]];aSave();renderVidAdmin()}
 function vPrev(){const id=ytId($("vu").value);$("vue").textContent=$("vu").value.trim()&&!id?"ลิงก์นี้ไม่ใช่ลิงก์วิดีโอ YouTube ลองคัดลอกจากปุ่ม “แชร์” ใน YouTube อีกครั้ง":"";$("vpv").innerHTML=id?`<div class="vpw">${ytEmbed(id)}</div><a class="vlink" href="https://youtu.be/${id}" target="_blank" rel="noopener">เปิดดูใน YouTube ↗</a>`:""}
 function saveVid(){
   const c=$("vc").value,k=$("vs").value,t=$("vtt").value.trim(),id=ytId($("vu").value);
+  if(!k){$("vue").textContent="กรุณาสร้างอัลบั้มก่อน แล้วเลือกอัลบั้มให้วิดีโอนี้";$("van").focus();return}
   if(!t){$("vue").textContent="กรุณาใส่ชื่อตอน";$("vtt").focus();return}
   if(!id){$("vue").textContent="กรุณาวางลิงก์วิดีโอ YouTube ให้ถูกต้อง";$("vu").focus();return}
   VIDS[c]=VIDS[c]||{};
@@ -2636,7 +2673,13 @@ function delVid(c,k,i){if(VDEL!==c+k+i){VDEL=c+k+i;renderVidAdmin();return}VDEL=
 function mvVid(c,k,i,d){const L=VIDS[c][k],j=i+d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]];vSave();renderVidAdmin()}
 /* ฝั่งนักเรียน */
 const vidCourse=()=>CUR;
-function secItems(k){const L=vList(vidCourse(),k);if(CUR==="hsk1pin"&&!L.length){const a=vList("hsk1",k).concat(vList("pinyin",k));if(a.length)return a}return L.length?L:SEC[k].l.map(t=>({t,id:""}))}
+/* อัลบั้มที่นักเรียนเห็น = อัลบั้มที่มีวิดีโอ · แพ็กคู่ที่ไม่มีวิดีโอของตัวเอง ใช้อัลบั้มของคอร์สในแพ็ก */
+function stAlbs(){if(!CUR)return [];
+  const one=c=>albs(c).filter(a=>vList(c,a.k).length).map(a=>({k:c===CUR?a.k:c+"/"+a.k,c,ak:a.k,n:a.n}));
+  let r=one(CUR);if(!r.length&&C[CUR]&&C[CUR].pk){const P=C[CUR].pk;r=[].concat(...P.map(one));if(P.length>1)r.forEach(a=>a.n=C[a.c].n+" · "+a.n)}return r}
+const stAlb=k=>stAlbs().find(a=>a.k===k);
+function secItems(k){const a=stAlb(k);return a?vList(a.c,a.ak):[]}
+const stLast=()=>{const A=stAlbs();return LAST&&A.some(a=>a.k===LAST)?LAST:(A[0]?A[0].k:null)};
 let VCUR=0;
 function showVid(i){VCUR=i;const it=secItems(SECK)[i]||{t:"",id:""},box=document.querySelector("#lview .vid");
   if(it.id){box.classList.add("has");box.innerHTML=ytEmbed(it.id)}
@@ -2646,13 +2689,16 @@ function renderMenu(){
   $("lview").style.display="none";$("lmenu").style.display="block";
   if(locked(ST)){$("lmenu").innerHTML=lockCard();return}
   if(!CUR){$("lmenu").innerHTML="<div class='card mut' style='margin-top:10px'>ยังไม่มีสิทธิ์เข้าเรียนวิดีโอ ติดต่อทีมงานเพื่อเปิดสิทธิ์</div>";return}
-  const k=LAST||"b1",pc=Math.round(dn(k)/secItems(k).length*100);
-  $("lmenu").innerHTML=`<div class="card" style="margin-top:10px"><div class="eb">เรียนต่อจากเดิม</div><b>${C[CUR].n} · ${SEC[k].n}</b><div class="bar"><span style="width:${pc}%"></span></div><button class="btn sm" style="margin-top:12px" onclick="openSec('${k}')">เรียนต่อ →</button></div>`+["เล่ม","แบบฝึกหัด","เพิ่มเติม"].map(g=>`<h3 style="margin-top:14px">${g}</h3>`+Object.keys(SEC).filter(k=>SEC[k].g===g).map(k=>`<div class="card lv" style="cursor:pointer" onclick="openSec('${k}')"><div style="flex:1"><b>${SEC[k].n}</b><div class="mut">เรียนแล้ว ${dn(k)}/${secItems(k).length}</div></div><span class="mut">›</span></div>`).join("")).join("");
+  const A=stAlbs(),k=stLast();
+  if(!k){$("lmenu").innerHTML="<div class='card mut' style='margin-top:10px'>คอร์สนี้ยังไม่มีวิดีโอ ทีมงานกำลังเตรียมเนื้อหา</div>";return}
+  const pc=Math.round(dn(k)/Math.max(1,secItems(k).length)*100);
+  $("lmenu").innerHTML=`<div class="card" style="margin-top:10px"><div class="eb">เรียนต่อจากเดิม</div><b>${C[CUR].n} · ${esc(stAlb(k).n)}</b><div class="bar"><span style="width:${pc}%"></span></div><button class="btn sm" style="margin-top:12px" onclick="openSec('${k}')">เรียนต่อ →</button></div><h3 style="margin-top:14px">อัลบั้มวิดีโอ</h3>`+A.map(a=>`<div class="card lv" style="cursor:pointer" onclick="openSec('${a.k}')"><div style="flex:1"><b>${esc(a.n)}</b><div class="mut">เรียนแล้ว ${dn(a.k)}/${secItems(a.k).length}</div></div><span class="mut">›</span></div>`).join("");
 }
 function openSec(k){
   if(locked(ST)){renderMenu();return}
+  if(!stAlb(k)){renderMenu();return}
   SECK=k;LAST=k;const key=CUR+"|"+k;DONE[key]=DONE[key]||new Set();
-  $("sect").textContent=C[CUR].n+" · "+SEC[k].n;
+  $("sect").textContent=C[CUR].n+" · "+stAlb(k).n;
   $("lmenu").style.display="none";$("lview").style.display="block";showVid(0);
 }
 function renderL(){
@@ -3287,9 +3333,11 @@ async function loadBooks(withFiles){
   BOOKS=B;
 }
 async function loadVideos(){
-  const {data,error}=await sb.from("videos").select("id,course,section,title,yt_id,sort").order("sort").order("id");if(error)throw error;
-  const V={};(data||[]).forEach(v=>{V[v.course]=V[v.course]||{};(V[v.course][v.section]=V[v.course][v.section]||[]).push({dbid:v.id,t:v.title,id:v.yt_id,sort:v.sort})});
-  VIDS=V;
+  const [a,r]=await Promise.all([sb.from("video_albums").select("id,course,name,sort").order("sort").order("id"),sb.from("videos").select("id,course,album_id,title,yt_id,sort").order("sort").order("id")]);
+  if(a.error)throw a.error;if(r.error)throw r.error;
+  const A={};(a.data||[]).forEach(x=>{(A[x.course]=A[x.course]||[]).push({k:"a"+x.id,dbid:x.id,n:x.name,sort:x.sort})});
+  const V={};(r.data||[]).forEach(v=>{if(!v.album_id)return;const k="a"+v.album_id;V[v.course]=V[v.course]||{};(V[v.course][k]=V[v.course][k]||[]).push({dbid:v.id,t:v.title,id:v.yt_id,sort:v.sort})});
+  ALBS=A;VIDS=V;
 }
 async function loadShop(admin){
   const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
@@ -3634,14 +3682,38 @@ window.delSlot=async function(id){
 
 /* ---------- แอดมิน: วิดีโอ ---------- */
 window.vSave=function(){};
+window.aSave=function(){};
+window.albs=function(c){return ALBS[c]||[]};
+const albId=k=>+String(k).slice(1);
+window.addAlb=async function(){const c=$("vc").value,n=$("van").value.trim();albErr("");
+  if(!c)return;if(!n){albErr("กรุณาพิมพ์ชื่ออัลบั้ม");$("van").focus();return}
+  if(albs(c).some(a=>a.n===n)){albErr("มีอัลบั้มชื่อนี้ในคอร์สนี้แล้ว");$("van").focus();return}
+  const A=albs(c),sort=A.length?Math.max(...A.map(a=>a.sort||0))+1:0;
+  const {data,error}=await sb.from("video_albums").insert({course:c,name:n,sort}).select("id").single();if(error){fail(error);return}
+  $("van").value="";await loadVideos();renderVidAdmin();$("vs").value="a"+data.id;toast("เพิ่มอัลบั้มแล้ว")};
+window.renAlb=async function(c,k,i){const el=$("vae_"+i),n=el?el.value.trim():"";
+  if(!n){albErr("ชื่ออัลบั้มว่างไม่ได้");return}
+  if(albs(c).some(a=>a.n===n&&a.k!==k)){albErr("มีอัลบั้มชื่อนี้ในคอร์สนี้แล้ว");return}
+  const {error}=await sb.from("video_albums").update({name:n}).eq("id",albId(k));if(error){fail(error);return}
+  AEDIT=null;albErr("");await loadVideos();renderVidAdmin();toast("แก้ชื่ออัลบั้มแล้ว")};
+window.delAlb=async function(c,k){albErr("");const n=vList(c,k).length;
+  if(n){ADEL=null;albErr(`ลบไม่ได้: อัลบั้ม “${albName(c,k)}” ยังมีวิดีโอ ${n} ตอน กรุณาย้ายวิดีโอไปอัลบั้มอื่น (กด “แก้ไข” ที่วิดีโอ) หรือลบวิดีโอออกก่อน`);renderVidAdmin();return}
+  if(ADEL!==c+"|"+k){ADEL=c+"|"+k;renderVidAdmin();return}ADEL=null;
+  const {error}=await sb.from("video_albums").delete().eq("id",albId(k));
+  if(error){if(error.code==="23503"){await loadVideos();albErr("ลบไม่ได้ เพราะยังมีวิดีโออยู่ในอัลบั้มนี้");renderVidAdmin();return}fail(error);return}
+  if($("vs").value===k)$("vs").value="";await loadVideos();renderVidAdmin();toast("ลบอัลบั้มแล้ว")};
+window.mvAlb=async function(c,i,d){const A=albs(c).slice(),j=i+d;if(j<0||j>=A.length)return;[A[i],A[j]]=[A[j],A[i]];
+  const r=await Promise.all(A.map((a,n)=>a.sort!==n?sb.from("video_albums").update({sort:n}).eq("id",a.dbid):null).filter(Boolean));
+  if(r.some(x=>x.error)){fail(r.find(x=>x.error).error)}await loadVideos();renderVidAdmin()};
 window.saveVid=async function(){
   const c=$("vc").value,k=$("vs").value,t=$("vtt").value.trim(),id=ytId($("vu").value);
+  if(!k){$("vue").textContent="กรุณาสร้างอัลบั้มก่อน แล้วเลือกอัลบั้มให้วิดีโอนี้";$("van").focus();return}
   if(!t){$("vue").textContent="กรุณาใส่ชื่อตอน";$("vtt").focus();return}
   if(!id){$("vue").textContent="กรุณาวางลิงก์วิดีโอ YouTube ให้ถูกต้อง";$("vu").focus();return}
   const L=vList(c,k),sort=L.length?Math.max(...L.map(v=>v.sort||0))+1:0;let r;
   if(VEDIT){const [oc,ok,oi]=VEDIT,v=VIDS[oc][ok][oi],same=oc===c&&ok===k;
-    r=await sb.from("videos").update(Object.assign({course:c,section:k,title:t,yt_id:id},same?{}:{sort})).eq("id",v.dbid)}
-  else r=await sb.from("videos").insert({course:c,section:k,title:t,yt_id:id,sort});
+    r=await sb.from("videos").update(Object.assign({course:c,section:k,album_id:albId(k),title:t,yt_id:id},same?{}:{sort})).eq("id",v.dbid)}
+  else r=await sb.from("videos").insert({course:c,section:k,album_id:albId(k),title:t,yt_id:id,sort});
   if(r.error){fail(r.error);return}
   cancelVid();await loadVideos();renderVidAdmin();toast("บันทึกวิดีโอแล้ว");
 };
@@ -3758,7 +3830,7 @@ window.delVf=async function(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDE
 window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]]=[VOCAB[j],VOCAB[i]];renderVfAdmin();await reorder("vocab_files",VOCAB);await loadVocab()};
 
 /* ---------- เริ่มต้น ---------- */
-SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};
+SUBS.length=0;SL.length=0;TSES.length=0;LIVES.length=0;SENT.length=0;LEAVES.length=0;TRIALS.length=0;VIDS={};ALBS={};
 VOCAB=[];PRODS=[];PROMOS=[];ORDERS=[];
 /* ---------- การเงิน ---------- */
 /* ---------- รายได้ประจำสัปดาห์ (นักเรียนนอกระบบ) ---------- */
@@ -3805,7 +3877,7 @@ window.saveCrs=async function(){const r=crsVals();if(!r)return;const btn=$("crsv
 window.togCrs=async function(k){const on=C[k].on===false;
   try{const rows=CORD.map(crRow);rows.find(x=>x.k===k).data.on=on;const {error}=await sb.from("courses").upsert(rows);if(error)throw error;C[k].on=on;syncCourses();renderCrsAdmin();toast(on?"แสดงคอร์สแล้ว":"ซ่อนคอร์สแล้ว")}catch(e){fail(e)}};
 window.delCrs=async function(k){if(CRDEL!==k){CRDEL=k;renderCrsAdmin();return}CRDEL=null;if(crUse(k).length){renderCrsAdmin();return}
-  try{const {error}=await sb.from("courses").delete().eq("k",k);if(error)throw error;CORD=CORD.filter(x=>x!==k);delete C[k];if(CRE===k)CRE=null;$("crn").dataset.k="";syncCourses();renderCrsAdmin();toast("ลบคอร์สแล้ว")}catch(e){fail(e)}};
+  try{const {error}=await sb.from("courses").delete().eq("k",k);if(error)throw error;sb.from("video_albums").delete().eq("course",k).then(()=>{},()=>{});CORD=CORD.filter(x=>x!==k);delete C[k];if(CRE===k)CRE=null;$("crn").dataset.k="";syncCourses();renderCrsAdmin();toast("ลบคอร์สแล้ว")}catch(e){fail(e)}};
 window.mvCrs=async function(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD[i],CORD[j]]=[CORD[j],CORD[i]];syncCourses();renderCrsAdmin();
   try{await crsSaveAll()}catch(e){fail(e,"บันทึกลำดับไม่สำเร็จ");try{await loadCourses()}catch(x){}}};
 
