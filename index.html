@@ -59,7 +59,8 @@ input,select{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radi
 .pane{display:none}.pane.on{display:block}
 button.ck{background:transparent;font:inherit;flex:none}
 .vg2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.vpw{margin-top:10px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#16211e}.vpw iframe,.vid iframe{width:100%;height:100%;border:0;display:block}
+.vpw{margin-top:10px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#16211e}
+.vlite{display:block;width:100%;position:relative;border:0;padding:0;cursor:pointer}.vlite img{width:100%;height:100%;object-fit:cover;display:block}.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:44px;border-radius:12px;background:var(--seal);color:#fff;display:flex;align-items:center;justify-content:center}.vpw iframe,.vid iframe{width:100%;height:100%;border:0;display:block}
 .vid.has{display:block;padding:0;overflow:hidden}
 .vli{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}.vli:last-child{border:0}
 .vth{width:96px;aspect-ratio:16/9;border-radius:8px;object-fit:cover;background:var(--soft);flex:none}
@@ -823,7 +824,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <div id="smpdf" class="card" style="display:none;margin:8px 0 0;padding:10px 12px"></div>
       <div id="smpl" class="smpl"></div>
       <label class="chk" style="margin-top:10px"><input type="checkbox" id="pfon" checked> แสดงในร้าน</label>
-      <div class="row"><button class="btn" onclick="savePr()">บันทึกหนังสือ</button><button class="btn alt" id="pfx" onclick="cancelPr()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+      <div class="row"><button class="btn" id="prsb" onclick="savePr()">บันทึกหนังสือ</button><button class="btn alt" id="pfx" onclick="cancelPr()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="prl"></div>
     <div class="card" style="margin-top:18px;border-color:var(--seal)"><b id="poh">เพิ่มโปรโมชันชุดหนังสือ</b><div class="mut" style="font-size:13px">โปรจะแสดงเป็นชั้นบนสุดของร้าน</div>
       <label for="pot">ชื่อโปร</label><input id="pot" placeholder="เช่น ซื้อคู่ HSK1 + HSK2 ถูกกว่า">
@@ -840,7 +841,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label for="vfu">ลิงก์ Google Drive</label><input id="vfu" placeholder="https://drive.google.com/file/d/...">
       <label for="vfp">เล่มจริงในร้าน (ปุ่ม “เล่มจริง (เข้าสันเกลียว)”)</label><select id="vfp"></select>
       <label>ปก</label><div class="row" style="margin:0;align-items:center"><span id="vfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="vfPic(this)"></label><span id="vfprev"></span></div><label class="chk" style="margin:8px 0 0"><input type="checkbox" id="vfcf" onchange="cvFirst('vf',this)"> ใช้ภาพจากหน้าแรกของไฟล์</label><div class="mut" id="vfcfs" style="font-size:13px"></div>
-      <div class="row"><button class="btn" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
+      <div class="row"><button class="btn" id="vfsb" onclick="saveVf()">บันทึก</button><button class="btn alt" id="vfx" onclick="cancelVf()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="vfl"></div>
   </div>
   <div class="pane" id="a-crs">
@@ -2653,7 +2654,10 @@ function delAlb(c,k){albErr("");const n=vList(c,k).length;
   if(ADEL!==c+"|"+k){ADEL=c+"|"+k;renderVidAdmin();return}
   ADEL=null;ALBS[c]=albs(c).filter(a=>a.k!==k);aSave();renderVidAdmin()}
 function mvAlb(c,i,d){const A=albs(c),j=i+d;if(j<0||j>=A.length)return;[A[i],A[j]]=[A[j],A[i]];aSave();renderVidAdmin()}
-function vPrev(){const id=ytId($("vu").value);$("vue").textContent=$("vu").value.trim()&&!id?"ลิงก์นี้ไม่ใช่ลิงก์วิดีโอ YouTube ลองคัดลอกจากปุ่ม “แชร์” ใน YouTube อีกครั้ง":"";$("vpv").innerHTML=id?`<div class="vpw">${ytEmbed(id)}</div><a class="vlink" href="https://youtu.be/${id}" target="_blank" rel="noopener">เปิดดูใน YouTube ↗</a>`:""}
+let VPID="";
+function vPrev(){const id=ytId($("vu").value);$("vue").textContent=$("vu").value.trim()&&!id?"ลิงก์นี้ไม่ใช่ลิงก์วิดีโอ YouTube ลองคัดลอกจากปุ่ม “แชร์” ใน YouTube อีกครั้ง":"";
+  if(id===VPID)return;VPID=id;$("vpv").innerHTML=id?`<button type="button" class="vpw vlite" onclick="vPlay()" aria-label="เล่นตัวอย่างวิดีโอ"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><span class="vplay"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button><a class="vlink" href="https://youtu.be/${id}" target="_blank" rel="noopener">เปิดดูใน YouTube ↗</a>`:""}
+function vPlay(){const b=document.querySelector("#vpv .vlite");if(b&&VPID)b.outerHTML=`<div class="vpw">${ytEmbed(VPID)}</div>`}
 function saveVid(){
   const c=$("vc").value,k=$("vs").value,t=$("vtt").value.trim(),id=ytId($("vu").value);
   if(!k){$("vue").textContent="กรุณาสร้างอัลบั้มก่อน แล้วเลือกอัลบั้มให้วิดีโอนี้";$("van").focus();return}
@@ -2914,8 +2918,64 @@ function smpMv(i,d){const j=i+d;if(j<0||j>=PFSM.length)return;[PFSM[i],PFSM[j]]=
 async function smpImgs(inp){const fs=[...(inp.files||[])];inp.value="";for(const f of fs){if(PFSM.length>=SMMAX){note("ใส่ตัวอย่างได้สูงสุด "+SMMAX+" หน้า",1);break}try{PFSM.push(await picToJpeg(f,1400))}catch(e){note("อ่านรูปไม่ได้: "+f.name,1)}}smpDraw()}
 let PDFJ=null;
 function loadPdfJs(){if(window.pdfjsLib)return Promise.resolve(window.pdfjsLib);if(PDFJ)return PDFJ;PDFJ=new Promise((ok,no)=>{const e=document.createElement("script");e.src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";e.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";ok(pdfjsLib)};e.onerror=()=>{PDFJ=null;e.remove();no(new Error("pdfjs"))};document.head.appendChild(e)});return PDFJ}
+/* เปิด PDF แบบอ่านเฉพาะช่วงที่ต้องใช้ (ไม่โหลดทั้งเล่ม) · ใช้ worker ตัวเดียวร่วมกัน */
+let PDFW=null;const pdfWorker=lib=>PDFW||(PDFW=new lib.PDFWorker());
+const PDFCH=524288;
+async function pdfRanged(len,get,init){const lib=await loadPdfJs();let task=null;
+  const t=new lib.PDFDataRangeTransport(len,init||null);
+  t.requestDataRange=(b,e)=>{get(b,e).then(buf=>t.onDataRange(b,new Uint8Array(buf)),er=>{console.error(er);if(task)task.destroy()})};
+  task=lib.getDocument({range:t,rangeChunkSize:PDFCH,disableAutoFetch:true,disableStream:true,worker:pdfWorker(lib)});return task.promise}
+async function pdfFile(f){const H=Math.min(f.size,PDFCH),head=await f.slice(0,H).arrayBuffer();
+  return pdfRanged(f.size,(b,e)=>f.slice(b,e).arrayBuffer(),new Uint8Array(head))}
+/* ลิงก์ที่อ่านทีละช่วงได้ (เช่น Google Drive ผ่าน pdfcover)
+   ปัญหาเดิม: pdf.js ต้องเปิดอ่านหัวข้อมูลของ "ทุกหน้า" ก่อนแสดงหน้าแรก ถ้าเล่มมี 140 หน้า = ยิงขอ 140 ครั้งต่อกันทีละครั้ง (ช้ามาก)
+   วิธีใหม่: ขอหัว+ท้ายไฟล์พร้อมกัน → อ่านสารบัญตำแหน่งข้อมูล (xref) → ดึงหัวข้อมูลทุกหน้ามารวดเดียว (batch) แล้วค่อยให้ pdf.js เปิด */
+const PCS=8192;
+const b2s=u=>{let r="";for(let i=0;i<u.length;i+=8192)r+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return r};
+async function pool(fs,n){const out=new Array(fs.length);let k=0;await Promise.all(Array.from({length:Math.min(n,fs.length)},async()=>{while(k<fs.length){const i=k++;out[i]=await fs[i]()}}));return out}
+async function inflateZ(u){return new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer())}
+async function pdfUrlRanged(url,h,batch){const lib=await loadPdfJs();
+  const rd=async r=>{const x=await fetch(url,{headers:Object.assign({Range:r},h)});if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}return x};
+  const [a,z]=await Promise.all([rd("bytes=0-65535"),rd("bytes=-262144")]);
+  const cr=a.headers.get("content-range")||"",tot=+(cr.split("/")[1]||0),head=new Uint8Array(await a.arrayBuffer());
+  if(a.status!==206||!tot||head.length>=tot){try{z.body&&z.body.cancel()}catch(e){}return lib.getDocument({data:head,worker:pdfWorker(lib)}).promise}
+  const tail=new Uint8Array(await z.arrayBuffer()),t0=tot-tail.length,nch=Math.ceil(tot/PCS),C=new Map();
+  const put=(s,u)=>{for(let i=Math.ceil(s/PCS);i<nch;i++){const b=i*PCS,e=Math.min(tot,b+PCS);if(e>s+u.length)break;if(!C.has(i))C.set(i,u.subarray(b-s,e-s))}};
+  put(0,head);put(t0,tail);
+  batch=batch||(R=>pool(R.map(([x,y])=>()=>rd(`bytes=${x}-${y-1}`).then(r=>r.arrayBuffer())),6));
+  const fill=async idx=>{const runs=[];for(const i of [...new Set(idx)].sort((p,q)=>p-q)){if(C.has(i)||i<0||i>=nch)continue;const r=runs[runs.length-1];if(r&&r[1]===i)r[1]=i+1;else runs.push([i,i+1])}
+    if(!runs.length)return;const R=runs.map(([x,y])=>[x*PCS,Math.min(tot,y*PCS)]),B=await batch(R);B.forEach((b,k)=>put(R[k][0],new Uint8Array(b)))};
+  const get=async(b,e)=>{const i0=Math.floor(b/PCS),i1=Math.ceil(e/PCS),need=[];for(let i=i0;i<i1;i++)need.push(i);await fill(need);
+    const o=new Uint8Array(e-b);for(let i=i0;i<i1;i++){const c=C.get(i),cs=i*PCS,x0=Math.max(b,cs),x1=Math.min(e,cs+c.length);o.set(c.subarray(x0-cs,x1-cs),x0-b)}return o.buffer};
+  try{await pdfPrefetch(tail,t0,get,fill)}catch(e){console.warn("prefetch",e)}
+  let task=null;const t=new lib.PDFDataRangeTransport(tot,null);
+  t.requestDataRange=(b,e)=>{get(b,e).then(buf=>t.onDataRange(b,new Uint8Array(buf)),er=>{console.error(er);if(task)task.destroy()})};
+  task=lib.getDocument({range:t,rangeChunkSize:PCS,disableAutoFetch:true,disableStream:true,worker:pdfWorker(lib)});return task.promise}
+/* อ่าน xref จากท้ายไฟล์ แล้วดึงหัวข้อมูลของทุกหน้า (Kids) มาเก็บไว้ในคำขอเดียว */
+async function pdfPrefetch(tail,t0,get,fill){
+  const tt=b2s(tail),m=tt.lastIndexOf("startxref");if(m<0)return;const N=parseInt(tt.slice(m+9).trim(),10);if(!(N>=t0))return;
+  const at=tt.slice(N-t0),off=new Map();let trailer="";
+  if(at.startsWith("xref")){const ti=at.indexOf("trailer");if(ti<0)return;trailer=at.slice(ti,ti+4000);let cur=0;
+    for(const L of at.slice(4,ti).split(/[\r\n]+/)){const p=L.trim().split(/\s+/);if(p.length===2)cur=+p[0];else if(p.length>=3){if(p[2]==="n")off.set(cur,+p[0]);cur++}}}
+  else{const di=at.indexOf("<<"),si=at.indexOf("stream",di);if(di<0||si<0)return;const d=at.slice(di,si);trailer=d;
+    const W=(d.match(/\/W\s*\[\s*(\d+)\s+(\d+)\s+(\d+)\s*\]/)||[]).slice(1).map(Number),L=+((d.match(/\/Length\s+(\d+)(?!\s+\d+\s+R)/)||[])[1]||0);if(W.length!==3||!L)return;
+    let ds=si+6;if(at[ds]==="\r")ds++;if(at[ds]==="\n")ds++;let u=tail.subarray(N-t0+ds,N-t0+ds+L);if(/FlateDecode/.test(d))u=await inflateZ(u);
+    const pr=+((d.match(/\/Predictor\s+(\d+)/)||[])[1]||1),rw=W[0]+W[1]+W[2];
+    if(pr>=10){const cols=+((d.match(/\/Columns\s+(\d+)/)||[])[1]||rw),n=Math.floor(u.length/(cols+1)),o=new Uint8Array(n*cols);
+      for(let r=0;r<n;r++){const f=u[r*(cols+1)];for(let c=0;c<cols;c++){const x=u[r*(cols+1)+1+c],up=r?o[(r-1)*cols+c]:0,lf=c?o[r*cols+c-1]:0;
+        o[r*cols+c]=f===0?x:f===1?(x+lf)&255:f===2?(x+up)&255:NaN}if(f>2)return}u=o}else if(pr!==1)return;
+    const ix=((d.match(/\/Index\s*\[([^\]]*)\]/)||[])[1]||"0 "+((d.match(/\/Size\s+(\d+)/)||[])[1]||0)).trim().split(/\s+/).map(Number);
+    const rdn=(p,w)=>{let v=0;for(let k=0;k<w;k++)v=v*256+u[p+k];return v};let p=0;
+    for(let q=0;q+1<ix.length;q+=2)for(let k=0;k<ix[q+1]&&p+rw<=u.length;k++,p+=rw){const ty=W[0]?rdn(p,W[0]):1;if(ty===1)off.set(ix[q]+k,rdn(p+W[0],W[1]))}}
+  const obj=async(n,len)=>{const o=off.get(n);if(o==null)return "";const e=o+len;return b2s(new Uint8Array(await get(Math.floor(o/PCS)*PCS,Math.min(Math.ceil(e/PCS)*PCS,t0+tail.length))).subarray(o%PCS,o%PCS+len))};
+  const ref=(t,k)=>{const r=t.match(new RegExp("/"+k+"\\s+(\\d+)\\s+\\d+\\s+R"));return r?+r[1]:null};
+  const root=ref(trailer,"Root");if(root==null)return;const pages=ref(await obj(root,4096),"Pages");if(pages==null)return;
+  const pt=await obj(pages,65536),kd=(pt.match(/\/Kids\s*\[([^\]]*)\]/)||[])[1];if(!kd)return;
+  const kids=[...kd.matchAll(/(\d+)\s+\d+\s+R/g)].map(x=>+x[1]).slice(0,3000),idx=[];
+  for(const k of kids){const o=off.get(k);if(o!=null)idx.push(Math.floor(o/PCS),Math.floor((o+1024)/PCS))}
+  await fill(idx)}
 async function smpPdf(inp){const f=inp.files&&inp.files[0];inp.value="";if(!f)return;const box=$("smpdf");box.style.display="";box.innerHTML='<span class="mut">กำลังเปิดไฟล์ PDF…</span>';
-  try{const lib=await loadPdfJs();const doc=await lib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;SMPDF=doc;
+  try{const doc=await pdfFile(f);SMPDF=doc;
     box.innerHTML=`<div class="mut" style="font-size:13px">${esc(f.name)} · ทั้งหมด ${doc.numPages} หน้า</div><label for="smpg" style="margin-top:6px">หน้าที่จะโชว์</label><input id="smpg" placeholder="เช่น 1-5 หรือ 1,3,8,12" value="1-${Math.min(5,doc.numPages)}"><div class="row" style="margin:8px 0 0"><button class="btn sm" id="smpgo" onclick="smpMake()">สร้างรูปตัวอย่าง</button><button class="btn alt sm" onclick="SMPDF=null;$('smpdf').style.display='none'">ปิด</button></div><div class="mut" style="font-size:12px;margin-top:6px">ไฟล์ PDF ไม่ถูกอัปโหลด ระบบเอาเฉพาะหน้าที่เลือกมาทำเป็นรูป</div>`}
   catch(e){console.error(e);box.innerHTML='<span style="color:var(--seal)">เปิดไฟล์ PDF ไม่ได้ ลองไฟล์อื่น หรืออัปโหลดเป็นรูปแทน</span>'}}
 /* ใช้หน้าแรกของไฟล์ PDF เป็นปก: ไฟล์ตัวอย่างที่เปิดไว้ → ลิงก์ Google Drive → เลือกไฟล์จากเครื่อง */
@@ -2942,7 +3002,7 @@ async function cvFirst(k,box){const s=$(k+"cfs");
     await loadPdfJs();await cvUse(k,await cvDriveDoc(id))}
   catch(e){console.error(e);if(box.checked)cvPick(k,e&&e.message&&e.message!=="proto"&&!/pdf|fetch|network|Failed/i.test(e.message)?e.message:"ดึงไฟล์จากลิงก์ไม่ได้")}}
 async function cvLocal(k,inp){const f=inp.files&&inp.files[0];inp.value="";if(!f)return;const s=$(k+"cfs");s.textContent="กำลังเปิดไฟล์…";
-  try{const lib=await loadPdfJs();const doc=await lib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;$(k+"cf").checked=true;await cvUse(k,doc);doc.destroy()}
+  try{const doc=await pdfFile(f);$(k+"cf").checked=true;await cvUse(k,doc);doc.destroy()}
   catch(e){console.error(e);cvPick(k,"เปิดไฟล์ PDF นี้ไม่ได้")}}
 function pgParse(t,max){const out=[];for(const part of String(t).split(/[,\s]+/).filter(Boolean)){const m=part.match(/^(\d+)(?:-(\d+))?$/);if(!m)return null;let a=+m[1],b=m[2]?+m[2]:a;if(a>b)[a,b]=[b,a];for(let i=a;i<=b;i++)if(i>=1&&i<=max&&!out.includes(i))out.push(i)}return out}
 async function smpMake(){const doc=SMPDF;if(!doc)return;const pg=pgParse($("smpg").value,doc.numPages);
@@ -3585,10 +3645,14 @@ async function adminLoad(){
     const pend=SUBS.filter(s=>s.st==="รอตรวจสอบ"),paths=pend.flatMap(s=>[s.slipPath,s.idcPath]).filter(Boolean);
     if(paths.length){const {data}=await sb.storage.from("applications").createSignedUrls(paths,3600);
       const u=Object.fromEntries((data||[]).map(d=>[d.path,d.signedUrl]));pend.forEach(s=>{s.slip=s.slipPath?u[s.slipPath]||null:null;s.idc=s.idcPath?u[s.idcPath]||"#":"#"})}
-    renderAdmin();
+    renderAdmin();setTimeout(pdfWarm,2500);
   }catch(e){fail(e,"โหลดข้อมูลหลังบ้านไม่สำเร็จ ลองรีเฟรชหน้าเว็บ")}
 }
 window.adminLoad=adminLoad;
+/* อุ่นเครื่องล่วงหน้า: โหลด pdf.js + worker และปลุกฟังก์ชัน pdfcover ให้พร้อมก่อนกดใช้หน้าแรกเป็นปก */
+let PDFWT=0;function pdfWarm(){if(Date.now()-PDFWT<120000)return;PDFWT=Date.now();
+  loadPdfJs().then(l=>pdfWorker(l)).catch(()=>{});fetch(FN+"pdfcover?id=").catch(()=>{})}
+document.addEventListener("focusin",e=>{if(e.target&&/^(pfu|vfu|bfu)$/.test(e.target.id))pdfWarm()});
 async function loadOrders(){const {data,error}=await sb.from("orders").select("*").order("created_at",{ascending:false}).limit(500);if(error)throw error;
   ORDERS=(data||[]).map(o=>({id:Number(o.id),code:o.code,at:ms(o.created_at),pa:ms(o.paid_at),bt:o.buyer_type,name:o.name,em:o.email,ph:o.phone,addr:o.addr||"",zip:o.zip||"",items:o.items||[],total:o.total,st:o.status,ns:o.needs_ship,hf:o.has_file,car:o.carrier||"",trk:o.tracking||"",note:o.note||"",slipPath:o.slip_path}))}
 async function upd(code,patch,msg){
@@ -3710,12 +3774,12 @@ window.saveVid=async function(){
   if(!k){$("vue").textContent="กรุณาสร้างอัลบั้มก่อน แล้วเลือกอัลบั้มให้วิดีโอนี้";$("van").focus();return}
   if(!t){$("vue").textContent="กรุณาใส่ชื่อตอน";$("vtt").focus();return}
   if(!id){$("vue").textContent="กรุณาวางลิงก์วิดีโอ YouTube ให้ถูกต้อง";$("vu").focus();return}
-  const L=vList(c,k),sort=L.length?Math.max(...L.map(v=>v.sort||0))+1:0;let r;
+  const L=vList(c,k),sort=L.length?Math.max(...L.map(v=>v.sort||0))+1:0,btn=$("vsb");let r;busy(btn,true);try{
   if(VEDIT){const [oc,ok,oi]=VEDIT,v=VIDS[oc][ok][oi],same=oc===c&&ok===k;
     r=await sb.from("videos").update(Object.assign({course:c,section:k,album_id:albId(k),title:t,yt_id:id},same?{}:{sort})).eq("id",v.dbid)}
   else r=await sb.from("videos").insert({course:c,section:k,album_id:albId(k),title:t,yt_id:id,sort});
   if(r.error){fail(r.error);return}
-  cancelVid();await loadVideos();renderVidAdmin();toast("บันทึกวิดีโอแล้ว");
+  cancelVid();await loadVideos();renderVidAdmin();toast("บันทึกวิดีโอแล้ว");}finally{busy(btn,false)}
 };
 window.delVid=async function(c,k,i){
   if(VDEL!==c+k+i){VDEL=c+k+i;renderVidAdmin();return}VDEL=null;
@@ -3790,24 +3854,25 @@ window.sShip=async function(code){const v=shipVals("sc-"+code,"stk-"+code);if(!v
     toast(j.emailed===false?"บันทึกแล้ว แต่ส่งอีเมลไม่สำเร็จ":"บันทึกเลขพัสดุและแจ้งนักเรียนแล้ว",j.emailed===false);renderBk()}catch(e){fail(e,e.message)}};
 /* ---------- หลังบ้าน: รูปปก ---------- */
 /* ปกจากหน้าแรกของไฟล์: ดึง PDF จากลิงก์ Google Drive ผ่านฟังก์ชัน pdfcover (แอดมินเท่านั้น · อ่านทีละช่วง ไม่โหลดทั้งเล่ม) */
-cvDriveDoc=async function(id){const lib=await loadPdfJs();const {data}=await sb.auth.getSession();const t=data&&data.session&&data.session.access_token;
-  if(!t)throw new Error("กรุณาเข้าสู่ระบบแอดมินใหม่");const url=FN+"pdfcover?id="+encodeURIComponent(id),h={Authorization:"Bearer "+t,apikey:SB_KEY};
-  const r=await fetch(url,{headers:Object.assign({Range:"bytes=0-1023"},h)});
-  if(!r.ok){let m="";try{m=(await r.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}
-  try{await r.body.cancel()}catch(e){}
-  return lib.getDocument({url,httpHeaders:h,disableAutoFetch:true,disableStream:true,rangeChunkSize:262144}).promise};
+cvDriveDoc=async function(id){const {data}=await sb.auth.getSession();const t=data&&data.session&&data.session.access_token;
+  if(!t)throw new Error("กรุณาเข้าสู่ระบบแอดมินใหม่");
+  const url=FN+"pdfcover?id="+encodeURIComponent(id),h={Authorization:"Bearer "+t,apikey:SB_KEY};
+  const batch=async R=>{const out=[];for(let i=0;i<R.length;i+=400){const P=R.slice(i,i+400);
+      const x=await fetch(url,{method:"POST",headers:Object.assign({"Content-Type":"application/json"},h),body:JSON.stringify({r:P})});
+      if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}
+      const b=new Uint8Array(await x.arrayBuffer());let p=0;for(const [a,z] of P){out.push(b.slice(p,p+z-a).buffer);p+=z-a}}return out};
+  return pdfUrlRanged(url,h,batch)};
 async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))return dataUrl;
   const blob=await (await fetch(dataUrl)).blob(),path=`${folder}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
   const {error}=await sb.storage.from("public-assets").upload(path,blob,{contentType:"image/jpeg",upsert:false});if(error)throw error;
   return sb.storage.from("public-assets").getPublicUrl(path).data.publicUrl}
 /* ---------- หลังบ้าน: ร้านค้า ---------- */
-window.savePr=async function(){const v=prVals();if(!v)return;
-  try{const cover=await upCover(v.c,"shop");const samples=[];for(const u of v.sm||[])samples.push(await upCover(u,"samples"));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples};
+window.savePr=async function(){const v=prVals();if(!v)return;const btn=$("prsb");busy(btn,true);
+  try{const [cover,...samples]=await Promise.all([upCover(v.c,"shop")].concat((v.sm||[]).map(u=>upCover(u,"samples"))));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples};
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
-    const {error:fe}=await sb.from("product_files").upsert({product_id:id,file_url:v.u});if(fe)throw fe;
-    const {error:ce}=await sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()});if(ce)throw ce;
-    PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
+    const [{error:fe},{error:ce}]=await Promise.all([sb.from("product_files").upsert({product_id:id,file_url:v.u}),sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()})]);if(fe)throw fe;if(ce)throw ce;
+    PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 window.delPr=async function(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;
   const {error}=await sb.from("products").delete().eq("id",id);if(error){fail(error);return}
   for(const x of PROMOS.filter(p=>p.ids.includes(id)))await sb.from("promos").update({product_ids:x.ids.filter(i=>i!==id)}).eq("id",x.id);
@@ -3821,10 +3886,10 @@ window.delPo=async function(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return
   const {error}=await sb.from("promos").delete().eq("id",id);if(error){fail(error);return}if(POE===id)POE=null;await loadShop(true);renderShopAdmin();toast("ลบแล้ว")};
 window.mvPo=async function(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PROMOS[i],PROMOS[j]]=[PROMOS[j],PROMOS[i]];renderShopAdmin();await reorder("promos",PROMOS);await loadShop(true)};
 /* ---------- หลังบ้าน: ไฟล์คำศัพท์ ---------- */
-window.saveVf=async function(){const v=vfVals();if(!v)return;
+window.saveVf=async function(){const v=vfVals();if(!v)return;const btn=$("vfsb");busy(btn,true);
   try{const cover=await upCover(v.c,"vocab");const row={title:v.t,file_url:v.u,cover,product_id:v.p||null};const cur=VFE!=null?VOCAB[VFE]:null;
     const q=cur?sb.from("vocab_files").update(row).eq("id",cur.dbid):sb.from("vocab_files").insert(Object.assign(row,{sort:VOCAB.length}));
-    const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}};
+    const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 window.delVf=async function(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;
   const {error}=await sb.from("vocab_files").delete().eq("id",VOCAB[i].dbid);if(error){fail(error);return}if(VFE===i)VFE=null;await loadVocab();renderVfAdmin();toast("ลบแล้ว")};
 window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]]=[VOCAB[j],VOCAB[i]];renderVfAdmin();await reorder("vocab_files",VOCAB);await loadVocab()};
