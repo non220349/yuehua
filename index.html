@@ -254,6 +254,7 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .vsh .vgo{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:14px}
 .vnav{display:flex;gap:8px;margin-top:8px}.vnav .btn{flex:1}.vnav .btn:disabled{opacity:.4;cursor:default}
 .glg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.gls .gpt{content-visibility:auto;contain-intrinsic-size:auto 320px}
 .grpy ruby{ruby-position:over}.grpy rt{font-size:.6em;font-weight:400;opacity:.75;letter-spacing:0;font-family:system-ui,sans-serif}
 .grpy>p{line-height:2.1}.grpy .gch{line-height:1.9;padding-top:2px}.grpy .gx .han{line-height:2}
 .gch{display:inline-block;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;border:2px solid currentColor;line-height:1.5}
@@ -2125,7 +2126,7 @@ function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP
   XP[key].catch(()=>{delete XP[key]});return XP[key]}
 let DLV=1,DLA=[],DLP=new Map(),DLI=[],DLK=0,DLO=null;
 const dmatch=(w,q,n)=>w[1].includes(q)||w[3].includes(q)||(n&&(()=>{const t=pyk(w);return t.replace(/[\s'’\-]/g,"").startsWith(n)||t.split(/[\s\-]+/).some(x=>x.replace(/['’]/g,"").startsWith(n))})());
-function openLv(l){DLV=l;$("lq").value="";$("lqa").innerHTML="";
+function openLv(l){DLV=l;$("lq").value="";$("lqa").innerHTML="";setTimeout(()=>grPre(l),700);
   if(l===7&&!D79OK){$("lveb").textContent="HSK 3.0";$("lvh").textContent="HSK 7–9";$("lvs").textContent="";$("lvg").innerHTML="";$("lvl").innerHTML=`<div class="card mut">กำลังโหลดคำศัพท์ HSK 7–9…</div>`;go("s-lv");
     load79().then(()=>{if(DLV===7)openLv(7)},()=>{$("lvl").innerHTML=`<div class="card mut">โหลดคำศัพท์ไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`});return}
   DLA=[];DD.forEach((w,i)=>{if(w[0]===l)DLA.push(i)});DLP=new Map(DLA.map((i,k)=>[i,k+1]));
@@ -2188,10 +2189,12 @@ function vOpen(i){vStop();VI=i;const w=DD[i],l=w[0],no=DLP.get(i)||0,d=DXD[l],x=
   if(sdReady(w))requestAnimationFrame(go2);else sdFor(w).then(go2,()=>{if(VI===i)vst("โหลดลำดับขีดไม่สำเร็จ ลองเช็กอินเทอร์เน็ต")})}
 const GRL=[["n","คำนาม / ประธาน"],["v","คำกริยา"],["a","คำคุณศัพท์"],["t","เวลา / สถานที่"],["o","คำบอกจำนวน / อื่น ๆ"],["k","คำสำคัญของสูตร"]];
 const gzh=(z,hl)=>{let t=esc(z);(hl||[]).forEach(k=>{if(k)t=t.split(esc(k)).join(`<mark>${esc(k)}</mark>`)});return t};
+function grPre(l){if(GRF[l]&&!GRD[l])xload(GRF[l],"GRAM"+l).then(d=>{GRD[l]=d},()=>{})}
 function openGram(l){$("grbk").textContent=lvn(l);go("s-gram");window.scrollTo(0,0);
+  if($("grv").dataset.l==l&&GRD[l])return;$("grv").dataset.l="";
   if(!GRF[l]){$("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>สรุปไวยากรณ์ ${lvn(l)}</h2><div class="card mut">กำลังจัดทำสรุปไวยากรณ์ของระดับนี้ เร็ว ๆ นี้มาอ่านได้นะ</div>`;return}
   $("grv").innerHTML=`<div class="card mut">กำลังโหลดสรุปไวยากรณ์…</div>`;
-  (GRD[l]?Promise.resolve(GRD[l]):xload(GRF[l],"GRAM"+l)).then(d=>{GRD[l]=d;drawGram(l)},()=>{$("grv").innerHTML=`<div class="card mut">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`})}
+  (GRD[l]?Promise.resolve(GRD[l]):xload(GRF[l],"GRAM"+l)).then(d=>{GRD[l]=d;requestAnimationFrame(()=>drawGram(l))},()=>{$("grv").innerHTML=`<div class="card mut">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ตแล้วกดเข้าใหม่อีกครั้ง</div>`})}
 let GRPY=null;
 const grb=t=>{const h=esc(t);return GRPY?h.replace(/[\u3400-\u9fff]+/g,r=>{const y=GRPY[r];if(!y)return r;const a=y.split(" ");return [...r].map((c,i)=>`<ruby>${c}<rt>${esc(a[i]||"")}</rt></ruby>`).join("")}):h};
 function gpt(p){return `<div class="gpt${GRPY?" grpy":""}"><h4>${esc(p.t)}</h4>
@@ -2202,7 +2205,10 @@ function gpt(p){return `<div class="gpt${GRPY?" grpy":""}"><h4>${esc(p.t)}</h4>
 function drawGram(l){const d=GRD[l];GRPY=d.py||null;
   $("grv").innerHTML=`<div class="eb">GRAMMAR · ${lvn(l)}</div><h2>ไวยากรณ์เป็นสูตรสี</h2><p class="mut" style="margin-top:0">เห็นโครงประโยคทันที · ${esc(d.src||"")}</p>
   <div class="glg">${GRL.map(g=>`<span class="gch ${g[0]}">${g[1]}</span>`).join("")}</div>
-  ${(d.ls||[]).map((s,j)=>`<details class="gls card" ${j?"":"open"}><summary>${esc(s.n)} <small>${esc(s.t||"")} · ${s.p.length} หัวข้อ</small></summary>${s.p.map(gpt).join("")}</details>`).join("")}`}
+  ${(d.ls||[]).map((s,j)=>`<details class="gls card" data-j="${j}" ${j?"":"open"} ontoggle="grLazy(this)"><summary>${esc(s.n)} <small>${esc(s.t||"")} · ${s.p.length} หัวข้อ</small></summary>${j?"":s.p.map(gpt).join("")}</details>`).join("")}`;
+  $("grv").dataset.l=l}
+function grLazy(el){if(!el.open||el.dataset.done)return;el.dataset.done=1;const l=+$("grv").dataset.l,d=GRD[l];if(!d)return;GRPY=d.py||null;
+  const s=d.ls[+el.dataset.j];if(s&&!el.querySelector(".gpt"))el.insertAdjacentHTML("beforeend",s.p.map(gpt).join(""))}
 const stp=(d,k)=>`<div class="st1"><svg viewBox="0 0 1024 1024" width="44" height="44"><g transform="scale(1,-1) translate(0,-900)">${d.strokes.slice(0,k+1).map((p,j)=>`<path d="${p}" fill="${j===k?"#b73532":"#9a9a9a"}"/>`).join("")}</g></svg><span>${k+1}</span></div>`;
 let WB=[];
 const wst=t=>{$("wst").textContent=t};
