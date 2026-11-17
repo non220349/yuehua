@@ -184,8 +184,8 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .sld>*,.sld>.rv{flex:0 0 300px;max-width:85vw;min-width:0}.sbw,.ssl{min-width:0;width:100%}
 .rcd{height:auto}.sbw{margin-top:auto}
 /* ===== พจนานุกรมแบบใหม่ ===== */
-:root{--l1:#0f766e;--l2:#1d4ed8;--l3:#6d28d9;--l4:#c2410c;--l5:#9f1239;--l6:#1a1a1a;--l7:#b3122b}
-:root[data-theme="dark"]{--l1:#2dd4bf;--l2:#60a5fa;--l3:#a78bfa;--l4:#fb923c;--l5:#fb7185;--l6:#e7e1d8;--l7:#e0605c}
+:root{--l1:#d9473f;--l2:#b73532;--l3:#8a1f24;--l4:#a8740f;--l5:#7d5512;--l6:#3d3631;--l7:#1a1a1a}
+:root[data-theme="dark"]{--l1:#f2837b;--l2:#e0605c;--l3:#c9474b;--l4:#e3b448;--l5:#c99a4a;--l6:#bdb5aa;--l7:#f1ebe3}
 .dct{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .dcr{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--bd)}
 .dlb{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:4px 0;text-align:center}
@@ -199,19 +199,60 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 .dlc:hover{transform:translateY(-2px)}.dlc b{font-size:21px;color:var(--lc)}.dlc span{font-size:15px;font-weight:600}.dlc small{font-size:11px;color:var(--mut)}
 .dlc.wide{grid-column:1/-1;flex-direction:row;justify-content:center;gap:12px;flex-wrap:wrap}
 @media(max-width:420px){.dgrid{grid-template-columns:repeat(2,1fr)}}
-.gbtn{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:14px 16px;border:2px solid var(--seal);border-radius:14px;background:var(--soft);color:var(--fg);font-family:inherit;text-align:left;cursor:pointer}
-.gbtn b{display:block;font-size:17px;color:var(--seal)}.gbtn small{color:var(--mut);font-size:12px}.gbtn svg{flex-shrink:0;color:var(--seal)}.gbtn .ar{margin-left:auto;font-size:22px;color:var(--seal)}
-.vcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px;margin-top:12px}
-.vcd{border:1px solid var(--bd);border-top:4px solid var(--lc);border-radius:12px;background:var(--card);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-.vch{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.vch .no{font-size:11px;color:var(--mut);font-variant-numeric:tabular-nums}
-.vch .hz{font-size:24px;line-height:1.2}.vch .py{color:var(--lc);font-size:14px;font-weight:600}
-.vpos{font-size:11px;border:1px solid var(--bd);border-radius:6px;padding:0 6px;color:var(--mut);white-space:nowrap}
-.vmn{font-weight:600;line-height:1.45}
-.vrow{display:flex;gap:8px;font-size:13px;line-height:1.5}.vrow>i{flex-shrink:0;font-style:normal;font-size:11px;font-weight:700;background:var(--soft);color:var(--seal);border-radius:5px;padding:1px 6px;height:fit-content;margin-top:2px;white-space:nowrap}
-.vrow small{display:block;color:var(--mut)}
-.vtip{display:flex;gap:6px;font-size:12.5px;line-height:1.5;background:rgba(242,183,5,.16);border-radius:8px;padding:5px 9px}.vtip svg{flex-shrink:0;margin-top:2px;color:#b07d00}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:11px 16px;border:0;border-radius:12px;background:#b73532;color:#fff;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.14);transition:background .15s}
+.gbtn:hover{background:#9c2b28}.gbtn:active{transform:translateY(1px)}.gbtn svg{width:19px;height:19px;flex-shrink:0}
+.scr#s-lv{max-width:780px}
+.vcg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+@media(min-width:620px){.vcg{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}}
+.vcd{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px 10px;border:1px solid var(--bd);border-radius:14px;background:var(--card);color:var(--fg);font-family:inherit;text-align:center;cursor:pointer;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
+.vcd:hover{border-color:var(--lc);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.vcd:focus-visible{outline:2px solid var(--lc);outline-offset:2px}
+.vcd .no{position:absolute;left:10px;top:8px;font-size:10.5px;font-weight:600;color:var(--lc);opacity:.85;font-variant-numeric:tabular-nums}
+.vcd .vdot{position:absolute;right:9px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--lc);opacity:.6}
+.vzg{display:flex;justify-content:center;margin-top:8px}
+.vzg i{position:relative;display:flex;align-items:center;justify-content:center;width:42px;height:42px;font-style:normal;font-size:27px;line-height:1;border:1.5px solid color-mix(in srgb,var(--lc) 55%,transparent);background:color-mix(in srgb,var(--lc) 5%,var(--card))}
+.vzg i+i{border-left-width:0}
+.vzg i::before,.vzg i::after{content:"";position:absolute;pointer-events:none}
+.vzg i::before{left:0;right:0;top:50%;border-top:1px dashed color-mix(in srgb,var(--lc) 35%,transparent)}
+.vzg i::after{top:0;bottom:0;left:50%;border-left:1px dashed color-mix(in srgb,var(--lc) 35%,transparent)}
+.vzg.sm i{width:32px;height:32px;font-size:20px}
+.vzg.xs i{width:25px;height:25px;font-size:16px}
+.vzg.lg i{width:64px;height:64px;font-size:42px}
+.vcd .py{color:var(--lc);font-size:14px;font-weight:600;margin-top:2px}
+.vcd .mn{font-size:13px;line-height:1.4;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em}
+.vsh{text-align:left;--lc:var(--seal)}
+.vsh .vhd{display:flex;align-items:center;gap:8px}
+.vsh .vlv{font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--card);background:var(--lc);border-radius:6px;padding:2px 8px}
+.vsh .vx{margin-left:auto;width:34px;height:34px;border:1px solid var(--bd);border-radius:50%;background:var(--card);color:var(--fg);font-size:18px;line-height:1;cursor:pointer}
+.vsh .vtop{text-align:center;margin:12px 0 8px}
+.vsh .vtop .py{display:block;color:var(--lc);font-size:19px;font-weight:600;margin-top:8px}
+.vsh .vtop .mn{display:block;font-size:18px;font-weight:700;margin-top:4px;line-height:1.4}
+.vsh .vtags{display:flex;justify-content:center;gap:6px;margin-top:6px;flex-wrap:wrap}
+.vpos{font-size:11.5px;border:1px solid var(--bd);border-radius:6px;padding:1px 7px;color:var(--mut);white-space:nowrap}
+.vsec{border-top:1px solid var(--bd);padding-top:10px;margin-top:10px}
+.vsec h5{margin:0 0 7px;font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--mut)}
+.vcl{display:flex;flex-wrap:wrap;gap:6px}
+.vcl span{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--bd);border-radius:8px;padding:4px 9px;font-size:13px;background:var(--bg)}
+.vcl b{font-weight:600;font-size:15px}
+.vex .zh{font-size:17px;line-height:1.5}.vex .sp{color:var(--lc);font-size:13px}.vex .th{color:var(--mut);font-size:13.5px}
+.vtip{display:flex;gap:8px;font-size:13.5px;line-height:1.55;background:rgba(242,183,5,.16);border-radius:10px;padding:9px 11px;margin-top:12px}.vtip svg{flex-shrink:0;margin-top:3px;color:#b07d00}
 :root[data-theme="dark"] .vtip svg{color:#f2b705}
-.vbt{align-self:flex-start;display:inline-flex;align-items:center;gap:6px}
+.vzw{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.vzw .vbx{position:relative;border:1.5px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:10px;background:color-mix(in srgb,var(--lc) 4%,var(--card));cursor:pointer;touch-action:none}
+.vzw .vbx::before,.vzw .vbx::after{content:"";position:absolute;pointer-events:none}
+.vzw .vbx::before{left:0;right:0;top:50%;border-top:1px dashed color-mix(in srgb,var(--lc) 30%,transparent)}
+.vzw .vbx::after{top:0;bottom:0;left:50%;border-left:1px dashed color-mix(in srgb,var(--lc) 30%,transparent)}
+.vzw .vbx.q{border-color:var(--lc);box-shadow:0 0 0 3px color-mix(in srgb,var(--lc) 18%,transparent)}
+.vzw .vbx.done{border-color:var(--ok)}
+.vzw .vbx svg{position:relative;z-index:1}
+.vwc{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.vwc button{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:999px;padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
+.vwc button:hover{border-color:var(--lc);color:var(--lc)}
+.vwst{text-align:center;font-size:12.5px;color:var(--mut);min-height:19px;margin-top:6px}
+.vsp{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--bd);border-radius:50%;background:var(--card);color:var(--lc);cursor:pointer;vertical-align:middle;margin-left:6px;padding:0}
+.vsp svg{width:16px;height:16px}
+.vsh .vgo{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:14px}
+.vnav{display:flex;gap:8px;margin-top:8px}.vnav .btn{flex:1}.vnav .btn:disabled{opacity:.4;cursor:default}
 .glg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .gch{display:inline-block;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;border:2px solid currentColor;line-height:1.5}
 .gch.n{color:#1d4ed8}.gch.v{color:#c0262d}.gch.a{color:#c2410c}.gch.t{color:#0f766e}.gch.p{color:#6b6259}.gch.o{color:#6d28d9}
@@ -2046,7 +2087,9 @@ function lvOpen(d,l){if(!d.open||d.dataset.r)return;const g=d.querySelector(".wg
   const add=()=>{if(!g.isConnected)return;const s0=k;k+=400;g.insertAdjacentHTML("beforeend",I.slice(s0,k).map((i,j)=>chipI(i,s0+j)).join(""));if(k<I.length)requestAnimationFrame(add)};add()}
 
 /* ===== พจนานุกรมแบบใหม่: หน้าแรก (กราฟ + การ์ดระดับ) · หน้าระดับ (การ์ดคำ) · สรุปไวยากรณ์ ===== */
-const IC={pen:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+const IC={spk:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>',
+  rep:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+  pen:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
   bulb:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
   book:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2Z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8Z"/></svg>'};
 const lvCnt=l=>l===7&&!D79OK?D79N:DD.reduce((a,w)=>a+(w[0]===l?1:0),0);
@@ -2072,7 +2115,7 @@ function openLv(l){DLV=l;$("lq").value="";$("lqa").innerHTML="";
   let cum=0;for(let k=1;k<=l;k++)cum+=lvCnt(k);
   $("lveb").textContent="HSK 3.0 · คำศัพท์";$("lvh").textContent=`${lvn(l)} · ${DLA.length.toLocaleString()} คำ`;
   $("lvs").textContent=l>1?`คำใหม่ของระดับนี้ · รวมกับระดับก่อนหน้าเป็น ${cum.toLocaleString()} คำ`:"คำศัพท์พื้นฐานชุดแรก";
-  $("lvg").innerHTML=`<button class="gbtn" onclick="openGram(${l})">${IC.book}<span><b>สรุปไวยากรณ์ ${lvn(l)}</b><small>สูตรสี เห็นโครงประโยคทันที</small></span><span class="ar">›</span></button>`;
+  $("lvg").innerHTML=`<button class="gbtn" onclick="openGram(${l})">${IC.book}สรุปไวยากรณ์ ${lvn(l)}</button>`;
   lvDraw();go("s-lv");window.scrollTo(0,0);
   if(DXF[l]&&!DXD[l])xload(DXF[l],"DX"+l).then(d=>{DXD[l]=d;if(DLV===l&&$("s-lv").classList.contains("on"))lvDraw(true)},()=>{})}
 function lvDraw(keep){const q=$("lq").value.trim(),n=nz(q).replace(/['’\-]/g,"");
@@ -2085,13 +2128,47 @@ function lvMore(step){const g=$("vcg");if(!g)return;const s0=DLK;DLK+=step||60;g
     if("IntersectionObserver" in window){if(DLO)DLO.disconnect();DLO=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){DLO.disconnect();lvMore()}},{rootMargin:"600px"});DLO.observe(m)}}
   else m.innerHTML=""}
 function lvAll(){const q=$("lq").value.trim();openDict();$("dq").value=q;drawDict()}
-function vcard(i){const w=DD[i],l=w[0],no=DLP.get(i)||0,d=DXD[l],x=d&&d[no-1];
-  return `<div class="vcd" style="--lc:var(--l${l})"><div class="vch"><span class="no">${String(no).padStart(4,"0")}</span><b class="han hz">${w[1]}</b><span class="py">${esc(w[2])}</span>${w[7]?`<span class="vpos">${esc(w[7])}</span>`:""}${GR[w[1]]?'<span class="vpos" style="color:var(--seal)">มีโน้ตไวยากรณ์</span>':""}</div>
-  <div class="vmn">${esc(w[3])}</div>
-  ${x&&x[0]?`<div class="vrow"><i>คำที่ใช้คู่กัน</i><span>${esc(x[0])}</span></div>`:""}
-  ${w[4]?`<div class="vrow"><i>ตัวอย่าง</i><span><span class="han">${esc(w[4])}</span><small>${esc(w[6]||"")}</small></span></div>`:""}
+const vzg=(z,c)=>{const a=[...z];return `<span class="vzg ${c||(a.length>5?"xs":a.length>3?"sm":"")} han">${a.map(ch=>`<i>${esc(ch)}</i>`).join("")}</span>`};
+function vcard(i){const w=DD[i],l=w[0],no=DLP.get(i)||0;
+  return `<button type="button" class="vcd" style="--lc:var(--l${l})" onclick="vOpen(${i})" aria-label="${esc(w[1])} ${esc(w[2])} ${esc(w[3])}"><span class="no">${String(no).padStart(4,"0")}</span>${vzg(w[1])}<span class="py">${esc(w[2])}</span><span class="mn">${esc(w[3])}</span></button>`}
+const vcl=t=>t.split(/\s*·\s*/).filter(Boolean).map(p=>{const m=p.match(/^([^฀-๿]+?)[\s。]*([฀-๿(].*)$/);return m?`<span><b class="han">${esc(m[1])}</b>${esc(m[2])}</span>`:`<span>${esc(p)}</span>`}).join("");
+let VW=[],VG=0,VI=-1;
+const vst=t=>{const e=$("vwst");if(e)e.textContent=t};
+function vStop(){VG++;VW.forEach(o=>{try{o.hw.cancelQuiz();o.hw.pauseAnimation()}catch(e){}});VW=[];try{speechSynthesis.cancel()}catch(e){}}
+function vPlay(){const g=++VG;let k=0;VW.forEach(o=>{try{o.hw.cancelQuiz()}catch(e){}o.mode="anim";o.el.classList.remove("q","done")});
+  const nx=()=>{if(g!==VG)return;if(k>=VW.length){vst("แตะที่ตัวอักษรเพื่อฝึกเขียนได้เลย");return}const o=VW[k++];o.hw.animateCharacter({onComplete:()=>setTimeout(nx,250)})};
+  vst("กำลังแสดงลำดับขีด…");nx()}
+function vQuiz(k){const o=VW[k];if(!o||o.mode==="quiz")return;VG++;
+  VW.forEach(x=>{if(x!==o&&x.mode==="quiz"){try{x.hw.cancelQuiz()}catch(e){}x.el.classList.remove("q");x.hw.showCharacter()}x.mode=x===o?"quiz":"anim"});
+  try{o.hw.pauseAnimation()}catch(e){}o.el.classList.remove("done");o.el.classList.add("q");
+  vst(`ฝึกเขียน ${o.ch} · เขียนตามลำดับขีด (ผิด 3 ครั้งจะมีคำใบ้)`);
+  o.hw.quiz({showHintAfterMisses:3,highlightOnComplete:true,leniency:1.3,
+    onCorrectStroke:d=>vst(`${o.ch} · ขีดที่ ${d.strokeNum+1}/${d.strokeNum+1+d.strokesRemaining} ถูกต้อง`),
+    onMistake:d=>vst(`${o.ch} · ขีดที่ ${d.strokeNum+1} ยังไม่ถูก ลองใหม่อีกครั้ง`),
+    onComplete:d=>{o.mode="done";o.el.classList.remove("q");o.el.classList.add("done");
+      if(VW[k+1]){vst(`เขียน ${o.ch} ถูกแล้ว ต่อตัวถัดไป`);const L0=VW;setTimeout(()=>{if(VW===L0)vQuiz(k+1)},700)}
+      else vst(`เยี่ยมมาก เขียนถูกแล้ว (ผิด ${d.totalMistakes} ครั้ง) · แตะเพื่อฝึกอีกครั้ง`)}})}
+function vMount(i){if(VI!==i||!$("vzw"))return;const w=DD[i],ch=[...w[1]].filter(c=>SD&&SD[c]);if(!ch.length||typeof HanziWriter==="undefined")return;
+  const cs=getComputedStyle($("vzw")),lc=cs.getPropertyValue("--lc").trim()||"#b73532",fg=getComputedStyle(document.body).getPropertyValue("--fg").trim()||"#222",bd=getComputedStyle(document.body).getPropertyValue("--bd").trim()||"#ddd";
+  const n=ch.length,cw=Math.min(($("vzw").clientWidth||320),380),sz=Math.max(64,Math.min(n<=2?120:110,Math.floor((cw-(n-1)*8)/n)));
+  $("vzw").innerHTML="";
+  VW=ch.map((c,k)=>{const el=document.createElement("div");el.className="vbx";el.style.width=el.style.height=sz+"px";el.setAttribute("role","button");el.setAttribute("aria-label","ฝึกเขียน "+c);$("vzw").appendChild(el);
+    const hw=HanziWriter.create(el,c,{width:sz,height:sz,padding:8,strokeColor:fg,outlineColor:bd,drawingColor:lc,highlightColor:lc,radicalColor:null,drawingWidth:5,delayBetweenStrokes:220,strokeAnimationSpeed:1.1,showCharacter:false,charDataLoader:(x,ok)=>ok(SD[x])});
+    const o={ch:c,el,hw,mode:"anim"};el.onclick=()=>vQuiz(k);return o});
+  $("vwc").hidden=false;vPlay()}
+function vSay(t){if(!HASTTS){note("อุปกรณ์นี้เล่นเสียงไม่ได้ ลองเปิดด้วย Chrome หรือ Safari",1);return}say(t)}
+function vOpen(i){vStop();VI=i;const w=DD[i],l=w[0],no=DLP.get(i)||0,d=DXD[l],x=d&&no&&d[no-1],L=DLI||[],k=L.indexOf(i),pv=k>0?L[k-1]:-1,nx=k>=0&&k<L.length-1?L[k+1]:-1;
+  pop(`<div class="vsh" style="--lc:var(--l${l})"><div class="vhd"><span class="vlv">${lvn(l)}${no?` · ${String(no).padStart(4,"0")}`:""}</span><button class="vx" onclick="closeBook()" aria-label="ปิด">×</button></div>
+  <div class="vtop"><div class="vzw" id="vzw">${vzg(w[1],[...w[1]].length>4?"":"lg")}</div>
+  <div class="vwc" id="vwc" hidden><button onclick="vPlay()">${IC.rep}ดูลำดับขีดอีกครั้ง</button><button onclick="vQuiz(0)">${IC.pen}ฝึกเขียน</button></div><div class="vwst" id="vwst">กำลังโหลดลำดับขีด…</div>
+  <span class="py">${esc(w[2])}</span><span class="mn">${esc(w[3])}</span>${w[7]||GR[w[1]]?`<div class="vtags">${w[7]?`<span class="vpos">${esc(w[7])}</span>`:""}${GR[w[1]]?'<span class="vpos" style="color:var(--seal)">มีโน้ตไวยากรณ์</span>':""}</div>`:""}</div>
+  ${x&&x[0]?`<div class="vsec"><h5>คำที่ใช้คู่กัน</h5><div class="vcl">${vcl(x[0])}</div></div>`:""}
+  ${w[4]?`<div class="vsec vex"><h5>ตัวอย่างประโยค</h5><div class="zh han">${esc(w[4])}<button class="vsp" onclick="vSay(DD[${i}][4])" aria-label="ฟังเสียงประโยค">${IC.spk}</button></div>${w[5]?`<div class="sp">${esc(w[5])}</div>`:""}<div class="th">${esc(w[6]||"")}</div></div>`:""}
   ${x&&x[1]?`<div class="vtip">${IC.bulb}<span>${esc(x[1])}</span></div>`:""}
-  <button class="btn alt sm vbt" onclick="showW(${i})">${IC.pen}ดูลำดับขีด · ฟังเสียง</button></div>`}
+  <button class="btn vgo vbt" onclick="vSay(DD[${i}][1])">${IC.spk}ฟังเสียง</button>
+  ${L.length>1?`<div class="vnav"><button class="btn alt sm" ${pv<0?"disabled":`onclick="vOpen(${pv})"`}>‹ คำก่อนหน้า</button><button class="btn alt sm" ${nx<0?"disabled":`onclick="vOpen(${nx})"`}>คำถัดไป ›</button></div>`:""}</div>`);
+  const go2=()=>{if(VI===i)vMount(i)};
+  if(sdReady(w))requestAnimationFrame(go2);else sdFor(w).then(go2,()=>{if(VI===i)vst("โหลดลำดับขีดไม่สำเร็จ ลองเช็กอินเทอร์เน็ต")})}
 const GRL=[["n","คำนาม / ประธาน"],["v","คำกริยา"],["a","คำคุณศัพท์"],["t","เวลา / สถานที่"],["o","คำบอกจำนวน / อื่น ๆ"],["k","คำสำคัญของสูตร"]];
 const gzh=(z,hl)=>{let t=esc(z);(hl||[]).forEach(k=>{if(k)t=t.split(esc(k)).join(`<mark>${esc(k)}</mark>`)});return t};
 function openGram(l){$("grbk").textContent=lvn(l);go("s-gram");window.scrollTo(0,0);
@@ -2469,7 +2546,7 @@ function openBook(k,i,mode){const b=bookList(k)[i];if(!b)return;let a;
   else a=`<a class="btn" href="${esc(dlUrl(b.u))}" target="_blank" rel="noopener">ดาวน์โหลดหนังสือ (PDF)</a><a class="btn alt" href="${esc(b.u)}" target="_blank" rel="noopener">เปิดอ่านใน Google Drive</a>`;
   $("bkmb").innerHTML=`<span class="bcv">${covImg(b)}</span><h3 id="bkmt" class="han">${esc(b.t)}</h3><div class="mut" style="font-size:13px">${C[k]?C[k].n:""}</div>${a}<button class="btn alt" onclick="closeBook()">ปิด</button>`;
   $("bkm").classList.add("on")}
-function closeBook(){$("bkm").classList.remove("on")}
+function closeBook(){$("bkm").classList.remove("on");if(typeof vStop==="function"&&VI>=0){vStop();VI=-1}}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBook()});
 /* หลังบ้าน */
 let BFE=null,BFDEL=null,BFPIC=null;
