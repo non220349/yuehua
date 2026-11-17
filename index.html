@@ -2102,7 +2102,7 @@ function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0
   <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
   return h}
 /* ข้อมูลเสริมการ์ด (คำที่ใช้คู่กัน + เทคนิคจำ) และสรุปไวยากรณ์ โหลดแยกไฟล์เมื่อเปิดใช้ */
-const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823"},GRF={"1": "dict/gr1.js?v=560d8901", "2": "dict/gr2.js?v=d5ee431b", "3": "dict/gr3.js?v=ee4dd8ca", "4": "dict/gr4.js?v=ea6bbbd0"};const DXD={},GRD={},XP={};
+const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823", "4": "dict/dx4.js?v=0bcb1557"},GRF={"1": "dict/gr1.js?v=560d8901", "2": "dict/gr2.js?v=d5ee431b", "3": "dict/gr3.js?v=ee4dd8ca", "4": "dict/gr4.js?v=ea6bbbd0"};const DXD={},GRD={},XP={};
 function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP[key])return XP[key];
   XP[key]=new Promise((ok,no)=>{const e=document.createElement("script");e.src=url;e.onload=()=>window[key]?ok(window[key]):no(new Error(key));e.onerror=()=>{e.remove();no(new Error(key))};document.head.appendChild(e)});
   XP[key].catch(()=>{delete XP[key]});return XP[key]}
