@@ -670,6 +670,19 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .fbi .fu .btn{white-space:nowrap}.pdesc{text-align:left;margin:6px auto 12px;max-width:460px;font-size:14px;line-height:1.55}.pdesc p{margin:0 0 6px}.pdesc .pdh{font-weight:700;margin:10px 0 4px;color:var(--ink,inherit)}.pdesc .pdh:first-child{margin-top:0}
 .pdl{list-style:none;margin:0 0 6px;padding:0}.pdl li{display:flex;gap:8px;align-items:flex-start;margin:4px 0}.pdl li i{flex:none;color:var(--seal);display:inline-flex;margin-top:2px}
 .pdesc.sm{font-size:12.5px;margin:2px 0 0;max-width:none;color:var(--mut)}.pdesc.sm .pdh{margin:4px 0 2px;font-size:12.5px}.pdesc.sm .pdl li{margin:2px 0}
+.pcd{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;margin:12px 0;cursor:pointer;flex-wrap:wrap;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.pcd:focus-visible{outline:3px solid var(--seal);outline-offset:2px}
+.pcs{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;padding:6px 8px 0;border-radius:12px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 16%,var(--card)) 0%,var(--card) 100%);min-width:150px}
+.pcs .bcv{--bw:118px;transform:none}.pcs .pstack.big{--w:110px;--dx:40px;margin:4px 6px 0;height:calc(110px * 1.42 + 6px)}.pcs .pstack.big .pcv{top:calc(var(--i) * 2px);transform:rotate(calc((var(--i) - (var(--n) - 1) / 2) * 3deg))}.pcd .pinfo{min-width:240px}.pcpr>span{display:flex;flex-direction:column;line-height:1.25}.pcpr small{margin:2px 0 0}
+.pcpl{display:block;align-self:stretch;height:10px;margin:-6px -8px 0;border-radius:3px;background:linear-gradient(180deg,#c99a66 0,#a8743f 55%,#7c5128 100%);box-shadow:0 8px 12px -6px rgba(60,30,10,.45);position:relative;z-index:2}
+.pcn{background:#1c1714;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pcv2{display:flex;flex-direction:column;font-size:13px;color:var(--mut);line-height:1.45}
+.pcd .sbk{font-size:13.5px;line-height:1.45;margin:2px 0}.pcd .sbk svg{width:15px;height:15px}
+.pcp{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:6px}
+.pcpr{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1.5px solid color-mix(in srgb,var(--seal) 35%,var(--bd));background:color-mix(in srgb,var(--seal) 6%,var(--card));border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px}
+.pcpr small{font-weight:400;color:var(--mut);font-size:12px;margin-left:4px}.pcpr b{color:var(--seal);font-size:24px;line-height:1;white-space:nowrap}.pcpr b i{font-style:normal;font-size:14px}
+.pcb{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.pcb .btn{margin:0}
+@media(max-width:560px){.pcd{flex-direction:column;align-items:stretch;padding:14px}.pcs{align-self:stretch}.pcd .pinfo{min-width:0}}
 .book.shb{width:auto;min-width:calc(var(--bw) + 16px);max-width:210px;flex:0 1 210px}.book.shb .bcv{flex:none}
 .sbst{position:relative;display:block}.sbst .pstack{--w:var(--bw);--dx:calc(var(--bw)*.3);margin:0;height:calc(var(--bw)*340/240)}.sbst .pcv{top:calc(var(--i)*2px);transform:rotate(calc((var(--i) - (var(--n) - 1) / 2) * 3deg))}
 .bvn{position:absolute;left:-2px;top:-6px;z-index:3;background:#1c1714;color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;box-shadow:0 2px 4px rgba(0,0,0,.25)}
@@ -3077,10 +3090,13 @@ function renderShop(){cartBadge();
     const save=Math.max(...fs.map(f=>promoNormal(x,f)-priceOf(x,f)));
     return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button></div></div>`}).join("")}`:"";
   const ps=PRODS.filter(p=>p.on);
-  $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?shelfRows(ps,innerWidth<560?2:3,p=>{const CV=pcovs(p),V=pvols(p),K=pperks(p.d,2);
-    return `<button class="book shb" onclick="openProd(${p.id})" aria-label="${esc(p.t)}">${CV.length>1?`<span class="sbst">${stackCov(CV)}<span class="bvn">${CV.length} เล่ม</span></span>`:`<span class="bcv">${cov(p)}</span>`}
-      <span class="bnm">${esc(p.t)}</span><span class="sbi">${V.length?`<span class="sbv">${V.map(esc).join(" · ")}</span>`:""}${K.length?`<span class="sbk">${K.map(x=>`<span><i>${DCHK}</i>${esc(x)}</span>`).join("")}</span>`:""}
-      <span class="sbp">${fmts(p).map(f=>`<span>${f==="file"?"ไฟล์ PDF":"เล่ม"} <b>${N0(priceOf(p,f))}฿</b></span>`).join("")}</span></span></button>`}):"<div class='card mut'>เร็ว ๆ นี้</div>");
+  /* หนังสือ 1 รายการ = การ์ด 1 ใบ เรียงต่อกันลงมา · ปกทุกเล่มอยู่บนชั้นเล็กด้านซ้าย (มือถืออยู่ด้านบน) */
+  $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?ps.map(p=>{const CV=pcovs(p),V=pvols(p),K=pperks(p.d,3);
+    return `<div class="pcd" onclick="openProd(${p.id})" role="button" tabindex="0" aria-label="${esc(p.t)}"><div class="pcs">${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}<span class="pcpl"></span></div>
+      <div class="pinfo">${V.length?`<span class="pcn">ชุด ${V.length} เล่ม</span>`:""}<b class="pt">${esc(p.t)}</b>${V.length?`<div class="pcv2">${V.map((x,i)=>`<span>${i+1}. ${esc(x)}</span>`).join("")}</div>`:""}
+      ${K.length?`<div class="sbk">${K.map(x=>`<span><i>${DCHK}</i>${esc(x)}</span>`).join("")}</div>`:""}
+      <div class="pcp">${fmts(p).map(f=>`<div class="pcpr"><span>${f==="file"?"ไฟล์ PDF <small>ได้ลิงก์ทางอีเมล</small>":"หนังสือเล่ม <small>ส่งฟรีทั่วไทย</small>"}</span><b>${N0(priceOf(p,f))} <i>บาท</i></b></div>`).join("")}</div>
+      <div class="pcb"><button class="btn sm" onclick="event.stopPropagation();addCart('p',${p.id})">${CARTI} ใส่ตะกร้า</button><button class="btn alt sm" onclick="event.stopPropagation();openProd(${p.id})">ดูรายละเอียด</button></div></div></div>`}).join(""):"<div class='card mut'>เร็ว ๆ นี้</div>");
 }
 const N0=n=>Number(n||0).toLocaleString("th-TH");
 function openShop(){renderShop();go("s-shop")}
