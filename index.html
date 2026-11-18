@@ -3039,7 +3039,7 @@ async function pdfUrlRanged(url,h,batch){const lib=await loadPdfJs();
   put(0,head);put(t0,tail);
   batch=batch||(R=>pool(R.map(([x,y])=>()=>rd(`bytes=${x}-${y-1}`).then(r=>r.arrayBuffer())),6));
   const fill=async idx=>{const runs=[];for(const i of [...new Set(idx)].sort((p,q)=>p-q)){if(C.has(i)||i<0||i>=nch)continue;const r=runs[runs.length-1];if(r&&r[1]===i)r[1]=i+1;else runs.push([i,i+1])}
-    if(!runs.length)return;const R=runs.map(([x,y])=>[x*PCS,Math.min(tot,y*PCS)]),B=await batch(R);B.forEach((b,k)=>put(R[k][0],new Uint8Array(b)))};
+    if(!runs.length)return;const R=[];for(const [x,y] of runs)for(let i=x;i<y;i+=128)R.push([i*PCS,Math.min(tot,Math.min(y,i+128)*PCS)]);const B=await batch(R);B.forEach((b,k)=>put(R[k][0],new Uint8Array(b)))};
   const get=async(b,e)=>{const i0=Math.floor(b/PCS),i1=Math.ceil(e/PCS),need=[];for(let i=i0;i<i1;i++)need.push(i);await fill(need);
     const o=new Uint8Array(e-b);for(let i=i0;i<i1;i++){const c=C.get(i),cs=i*PCS,x0=Math.max(b,cs),x1=Math.min(e,cs+c.length);o.set(c.subarray(x0-cs,x1-cs),x0-b)}return o.buffer};
   try{await pdfPrefetch(tail,t0,get,fill)}catch(e){console.warn("prefetch",e)}
@@ -3095,7 +3095,7 @@ async function cvFirst(k,box){const s=$(k+"cfs");
   try{if(k==="pf"&&SMPDF){await cvUse(k,SMPDF);return}
     const id=driveId($(CVF[k].u).value);if(!id){cvPick(k,"ยังไม่ได้ใส่ลิงก์ Google Drive ด้านบน");return}
     await loadPdfJs();await cvUse(k,await cvDriveDoc(id))}
-  catch(e){console.error(e);if(box.checked)cvPick(k,e&&e.message&&e.message!=="proto"&&!/pdf|fetch|network|Failed/i.test(e.message)?e.message:"ดึงไฟล์จากลิงก์ไม่ได้")}}
+  catch(e){console.error(e);if(box.checked)cvPick(k,e&&e.message&&e.message!=="proto"&&!/pdf|fetch|network|Failed|Render|cancel|abort|Invalid|Missing|Unexpected/i.test(e.message)?e.message:"ดึงหน้าแรกจากลิงก์ไม่สำเร็จ ลองติ๊กใหม่อีกครั้ง หรือเลือกไฟล์จากเครื่องแทน")}}
 async function cvLocal(k,inp){const f=inp.files&&inp.files[0];inp.value="";if(!f)return;const s=$(k+"cfs");s.textContent="กำลังเปิดไฟล์…";
   try{const doc=await pdfFile(f);$(k+"cf").checked=true;await cvUse(k,doc);doc.destroy()}
   catch(e){console.error(e);cvPick(k,"เปิดไฟล์ PDF นี้ไม่ได้")}}
@@ -3952,10 +3952,13 @@ window.sShip=async function(code){const v=shipVals("sc-"+code,"stk-"+code);if(!v
 cvDriveDoc=async function(id){const {data}=await sb.auth.getSession();const t=data&&data.session&&data.session.access_token;
   if(!t)throw new Error("กรุณาเข้าสู่ระบบแอดมินใหม่");
   const url=FN+"pdfcover?id="+encodeURIComponent(id),h={Authorization:"Bearer "+t,apikey:SB_KEY};
-  const batch=async R=>{const out=[];for(let i=0;i<R.length;i+=400){const P=R.slice(i,i+400);
-      const x=await fetch(url,{method:"POST",headers:Object.assign({"Content-Type":"application/json"},h),body:JSON.stringify({r:P})});
-      if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}
-      const b=new Uint8Array(await x.arrayBuffer());let p=0;for(const [a,z] of P){out.push(b.slice(p,p+z-a).buffer);p+=z-a}}return out};
+  /* แบ่งเป็นกลุ่ม (ไม่เกิน 400 ช่วง / 8MB ต่อคำขอ) ยิงพร้อมกันได้ 3 กลุ่ม · ถ้าเซิร์ฟเวอร์ตอบผิดพลาดชั่วคราว ลองใหม่สูงสุด 2 ครั้ง */
+  const one=async P=>{for(let t=0;;t++){const x=await fetch(url,{method:"POST",headers:Object.assign({"Content-Type":"application/json"},h),body:JSON.stringify({r:P})});
+      if(x.ok)return new Uint8Array(await x.arrayBuffer());let m="";try{m=(await x.json()).error}catch(e){}
+      if(t>=2||x.status<500)throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้");await new Promise(r=>setTimeout(r,400*(t+1)))}};
+  const batch=async R=>{const G=[];let g=[],n=0;for(const q of R){const z=q[1]-q[0];if(g.length&&(g.length>=400||n+z>8388608)){G.push(g);g=[];n=0}g.push(q);n+=z}if(g.length)G.push(g);
+    const B=await pool(G.map(P=>()=>one(P)),3),out=[];
+    G.forEach((P,i)=>{const b=B[i];let p=0;for(const [a,z] of P){out.push(b.slice(p,p+z-a).buffer);p+=z-a}});return out};
   return pdfUrlRanged(url,h,batch)};
 async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))return dataUrl;
   const blob=await (await fetch(dataUrl)).blob(),path=`${folder}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
