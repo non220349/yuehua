@@ -117,7 +117,16 @@ button.ck{background:transparent;font:inherit;flex:none}
 .lbex .zh{font-size:20px}.lbex .sp{font-size:14.5px}.lbex .th{font-size:15px}.lbex .lbxt{font-size:14px}
 .lbe{font-size:16px;padding:12px 16px}.lbe .lbwhy{font-size:14.5px}
 .lbc .vtip{font-size:15.5px}
-.lbc .vex{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 28px;align-items:start}.lbc .vex>:first-child{grid-column:1/-1}}
+.lbc .vex{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 28px;align-items:start}.lbc .vex>:first-child{grid-column:1/-1}
+/* การ์ดคำศัพท์: ซ้าย = ลำดับขีด พินอิน ความหมาย · ขวา = คำคู่ ตัวอย่าง เทคนิคจำ */
+.bkmb.lbwide .vsh:not(.lbc){display:grid;grid-template-columns:minmax(300px,400px) 1fr;column-gap:36px;align-items:start}
+.bkmb.lbwide .vsh:not(.lbc)>*{grid-column:2;min-width:0}
+.bkmb.lbwide .vsh:not(.lbc)>.vhd,.bkmb.lbwide .vsh:not(.lbc)>.vnav{grid-column:1/-1}
+.bkmb.lbwide .vsh:not(.lbc)>.vtop{grid-column:1;grid-row:2/span 6;margin-top:18px;position:sticky;top:0}
+.bkmb.lbwide .vsh:not(.lbc)>.vsec:nth-child(3){border-top:0;margin-top:18px}
+.vsh .vtop .py{font-size:24px}.vsh .vtop .mn{font-size:22px}.vsh .vpos{font-size:13px}
+.vsec h5{font-size:13.5px}.vcl span{font-size:15px;padding:6px 12px}.vcl b{font-size:18px}
+.vex .zh{font-size:22px}.vex .sp{font-size:15px}.vex .th{font-size:15.5px}.vtip{font-size:15.5px}}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lbe .lbok svg{color:#f1ebe3}}
 
 .alr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)}.alr .vin small{display:block}.alr input{flex:1;min-width:0;margin:0}
@@ -2286,7 +2295,7 @@ function vQuiz(k){const o=VW[k];if(!o||o.mode==="quiz")return;VG++;
       else vst(`เยี่ยมมาก เขียนถูกแล้ว (ผิด ${d.totalMistakes} ครั้ง) · แตะเพื่อฝึกอีกครั้ง`)}})}
 function vMount(i){if(VI!==i||!$("vzw"))return;const w=DD[i],ch=[...w[1]].filter(c=>SD&&SD[c]);if(!ch.length||typeof HanziWriter==="undefined")return;
   const cs=getComputedStyle($("vzw")),lc=cs.getPropertyValue("--lc").trim()||"#b73532",fg=getComputedStyle(document.body).getPropertyValue("--fg").trim()||"#222",bd=getComputedStyle(document.body).getPropertyValue("--bd").trim()||"#ddd";
-  const n=ch.length,cw=Math.min(($("vzw").clientWidth||320),380),sz=Math.max(64,Math.min(n<=2?120:110,Math.floor((cw-(n-1)*8)/n)));
+  const n=ch.length,big=innerWidth>=768,cw=Math.min(($("vzw").clientWidth||320),big?420:380),sz=Math.max(64,Math.min(big?(n===1?180:n===2?160:130):(n<=2?120:110),Math.floor((cw-(n-1)*8)/n)));
   $("vzw").innerHTML="";
   VW=ch.map((c,k)=>{const el=document.createElement("div");el.className="vbx";el.style.width=el.style.height=sz+"px";el.setAttribute("role","button");el.setAttribute("aria-label","ฝึกเขียน "+c);$("vzw").appendChild(el);
     const hw=HanziWriter.create(el,c,{width:sz,height:sz,padding:8,strokeColor:fg,outlineColor:bd,drawingColor:lc,highlightColor:lc,radicalColor:null,drawingWidth:5,delayBetweenStrokes:220,strokeAnimationSpeed:1.1,showCharacter:false,charDataLoader:(x,ok)=>ok(SD[x])});
@@ -2857,7 +2866,7 @@ function slotTk(id,v){const s=SL.find(x=>x.id===id);if(!s)return;s.tk=Math.max(0
 /* ===================== ข้อความเด้ง (ใช้ร่วม) ===================== */
 function note(m,err){let t=$("note");if(!t){t=document.createElement("div");t.id="note";t.className="notet";document.body.appendChild(t)}
   t.textContent=m;t.classList.toggle("err",!!err);t.classList.add("on");clearTimeout(note._t);note._t=setTimeout(()=>t.classList.remove("on"),3200)}
-function pop(html){$("bkmb").innerHTML=html;$("bkmb").classList.toggle("lbwide",/class="vsh lbc"/.test(html));$("bkm").classList.add("on")}
+function pop(html){$("bkmb").innerHTML=html;$("bkmb").classList.toggle("lbwide",/class="vsh/.test(html));$("bkm").classList.add("on")}
 
 /* ===================== เกมหน้าหลัก (คนทั่วไปเล่นได้เฉพาะ 🐼 ต้น) ===================== */
 let GPUB=false,PGB="hsk1";
