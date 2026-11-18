@@ -67,6 +67,46 @@ button.ck{background:transparent;font:inherit;flex:none}
 .vin{flex:1;min-width:0}.vin b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vin small{color:var(--mut)}
 .vac{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}.vac button{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;padding:5px 9px;font:inherit;font-size:13px;cursor:pointer;min-width:34px}.vac button.dg{color:#fff;background:var(--seal);border-color:var(--seal)}
 .vno{font-size:13px;color:var(--mut)}
+/* ห้องสมุดคำจีน */
+.dlib{grid-column:1/-1;display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 0;padding:14px 16px;border:2px solid var(--seal);border-radius:14px;background:var(--card);color:var(--fg);font-family:inherit;text-align:left;cursor:pointer;transition:transform .15s}
+.dlib:hover{transform:translateY(-2px)}.dlib .lbi{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--seal);color:#fff;display:flex;align-items:center;justify-content:center}
+.dlib b{display:block;font-size:17px;color:var(--seal)}.dlib small{display:block;font-size:12px;color:var(--mut);margin-top:2px}.dlib .ar{margin-left:auto;color:var(--seal);font-size:22px;font-weight:700}
+.lbh{line-height:1.35}.lbdot{color:var(--seal)}
+.lbsh{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+.lbs{border:2px solid var(--bd);border-radius:14px;padding:14px 6px 12px;background:var(--card);color:var(--fg);font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.lbs svg{color:var(--seal)}.lbs b{font-size:15px}.lbs .zh{font-size:13px;color:var(--seal);font-weight:700}.lbs small{font-size:11px;color:var(--mut)}
+.lbs.on{border-color:var(--seal);background:var(--seal);color:#fff}.lbs.on svg,.lbs.on .zh,.lbs.on small{color:#fff}
+.lbacc details{border:1px solid var(--bd);border-radius:12px;background:var(--card);margin-top:8px;overflow:hidden}
+.lbacc summary{list-style:none;display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer;font-weight:700}
+.lbacc summary::-webkit-details-marker{display:none}
+.lbacc summary .lblt{border-radius:6px;padding:2px 8px;font-size:12px;color:#fff;background:var(--lc)}
+.lbacc summary small{color:var(--mut);font-weight:400}.lbacc summary .lbcv{margin-left:auto;transition:transform .2s;color:var(--mut)}
+.lbacc details[open] summary .lbcv{transform:rotate(180deg)}
+.lbl{display:flex;flex-direction:column;border-top:1px solid var(--bd)}
+.lbit{display:flex;align-items:center;gap:10px;padding:11px 14px;border:0;border-bottom:1px solid var(--bd);background:none;color:var(--fg);font-family:inherit;text-align:left;cursor:pointer}
+.lbit:last-child{border-bottom:0}.lbit b{font-size:17px;white-space:nowrap}.lbit span{font-size:13px;color:var(--mut);flex:1;min-width:0}.lbit i{font-style:normal;color:var(--seal);font-weight:700}
+.lbit .lbvs,.lbtt .lbvs{color:var(--seal);font-weight:700;font-size:.8em;margin:0 3px}
+.lbsoon{padding:12px 14px;font-size:13px;color:var(--mut);border-top:1px solid var(--bd)}
+.lbc .lbtt{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:4px 8px;margin:14px 0 4px;text-align:center}
+.lbc .lbtt .lbw{display:flex;flex-direction:column;align-items:center}.lbc .lbtt .lbw b{font-size:34px;line-height:1.15}.lbc .lbtt .lbw small{color:var(--lc);font-size:14px;font-weight:600}
+.lbc .lbtt .lbvs{align-self:center;font-size:15px}
+.lbc .lbo{text-align:center;font-weight:700;font-size:15.5px;line-height:1.5;margin:6px 0 2px}
+.lbc .lbhd{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:15px}
+.lbc .lbhd i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--seal);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lbc ul.lbd{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14.5px;line-height:1.6}
+.lbu{border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin-top:8px}
+.lbu .lbuh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.lbu .lbuh b{font-size:20px}.lbu .lbuh small{color:var(--lc);font-weight:600}.lbu .lbuh span{font-size:14px}
+.lbu .gf{margin:8px 0 2px}.lbu .lbfd{font-size:13.5px;color:var(--mut);margin:0 0 4px}
+.lbu ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}
+.lbex{margin-top:10px}.lbex .lbxt{display:inline-block;font-weight:700;font-size:13px;color:#fff;background:var(--lc);border-radius:6px;padding:1px 8px;margin-bottom:4px}
+.lbex .lbxs{padding:6px 0 6px 10px;border-left:3px solid var(--bd);margin:4px 0}
+.lbex .zh{font-size:17px;line-height:1.5}.lbex .zh mark{background:none;color:var(--seal);font-weight:700}.lbex .sp{color:var(--lc);font-size:13px}.lbex .th{color:var(--mut);font-size:13.5px}
+.lbe{display:flex;flex-direction:column;gap:3px;border:1px solid var(--bd);border-radius:12px;padding:9px 12px;margin-top:8px;font-size:14px}
+.lbe .lbno,.lbe .lbok{display:flex;gap:6px;align-items:flex-start}.lbe .lbno{color:var(--mut);text-decoration:line-through}.lbe .lbok{font-weight:700}
+.lbe svg{flex-shrink:0;margin-top:3px}.lbe .lbno svg{color:var(--seal)}.lbe .lbok svg{color:#2b2623}.lbe .lbwhy{font-size:13px;color:var(--mut)}
+.lbe .lbno svg,.lbe .lbok svg{text-decoration:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lbe .lbok svg{color:#f1ebe3}}
+
 .alr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)}.alr .vin small{display:block}.alr input{flex:1;min-width:0;margin:0}
 .alnew{display:flex;gap:8px;align-items:center;margin-top:10px}.alnew input{flex:1;min-width:0;margin:0}
 .alr .vac{width:auto;padding-left:0}
@@ -681,7 +721,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <p class="mut" style="font-size:17px;max-width:560px">เรียนภาษาจีนอย่างเป็นระบบ ตั้งแต่พินอินถึง HSK พร้อมวิดีโอ แบบฝึกหัด และจองเวลาเรียนสดในที่เดียว</p>
 </div>
     <div class="card hc"><div class="hh"><div class="logo lg" role="img" aria-label="โลโก้ YUEHUA 悦华"></div><div><div class="eb">START HERE</div><h3 style="margin:6px 0 0">เริ่มจากศูนย์ก็เรียนได้</h3></div></div>
-    <div class="qag"><button class="qa qp" onclick="openTrial()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8s2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span class="qt"><b>ทดลองเรียนฟรี</b><small id="qtrh">1 คลาส 1 ชม.</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openHour('group')"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><span class="qt"><b>จองเรียนสด</b><small>เลือกเวลาเอง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openDict()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="qt"><b>พจนานุกรม</b><small>ค้นคำฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openPubGame()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59c-.01.05-.02.1-.02.15C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.68-7.26-.01-.05-.01-.1-.02-.15A4 4 0 0 0 17.32 5z"/></svg></span><span class="qt"><b>เกมฝึกจีน</b><small>เล่นฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openShop()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="qt"><b>ร้านหนังสือ</b><small>PDF และเล่มจริง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button></div></div></div></section>
+    <div class="qag"><button class="qa qp" onclick="openTrial()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8s2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span class="qt"><b>ทดลองเรียนฟรี</b><small id="qtrh">1 คลาส 1 ชม.</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openHour('group')"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><span class="qt"><b>จองเรียนสด</b><small>เลือกเวลาเอง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openDict()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="qt"><b>คลังความรู้ YUEHUA</b><small>คำศัพท์ · ไวยากรณ์ · ห้องสมุดคำ ฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openPubGame()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59c-.01.05-.02.1-.02.15C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.68-7.26-.01-.05-.01-.1-.02-.15A4 4 0 0 0 17.32 5z"/></svg></span><span class="qt"><b>เกมฝึกจีน</b><small>เล่นฟรี</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button><button class="qa" onclick="openShop()"><span class="qi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="qt"><b>ร้านหนังสือ</b><small>PDF และเล่มจริง</small></span><span class="qg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></button></div></div></div></section>
   <section class="sec" id="courses"><div class="eb">COURSES</div><h2>เลือกคอร์สที่เหมาะกับคุณ</h2><div class="g" id="cl"></div>
     </section>
   <section class="sec" id="hourly"><div class="eb">LIVE CLASS</div><h2>เรียนสดรายชั่วโมง</h2>
@@ -1074,6 +1114,16 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   <div id="lqa"></div>
   <div id="lvg"></div>
   <div id="lvl"></div>
+</section>
+
+<section class="scr" id="s-lib">
+  <div class="top"><button class="btn alt sm" onclick="openDict()">‹ พจนานุกรม</button></div>
+  <div class="eb">悦华词语馆 · ห้องสมุดคำจีนฟรี</div><h2 class="lbh">悦华词语馆 <span class="lbdot">•</span> คำนี้ใช้ยังไงนะ?</h2>
+  <p class="mut" style="margin-top:0">คำจีนที่คนไทยมักสับสน อธิบายเป็นข้อ ๆ พร้อมตัวอย่าง เปิดอ่านได้ฟรีทุกคน</p>
+  <input id="lbq" oninput="libSearch()" placeholder="ค้นหาในห้องสมุด เช่น 想 หรือ อยาก">
+  <div id="lbr"></div>
+  <div class="lbsh" id="lbsh"></div>
+  <div id="lbacc"></div>
 </section>
 
 <section class="scr" id="s-gram">
@@ -2119,6 +2169,7 @@ const IC={spk:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" strok
   rep:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
   pen:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
   bulb:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
+  lib:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>',
   book:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2Z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8Z"/></svg>'};
 const lvCnt=l=>l===7&&!D79OK?D79N:DD.reduce((a,w)=>a+(w[0]===l?1:0),0);
 function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0];for(let l=1;l<=7;l++)S.push(S[l-1]+C[l]);const mx=S[6]||1;
@@ -2126,9 +2177,53 @@ function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0
   for(let l=1;l<=6;l++)h+=`<div class="dcr"><span class="dlb" style="background:var(--l${l})">HSK ${l}</span><div><div class="dbar" role="img" aria-label="HSK ${l} รวม ${S[l]} คำ"><i class="o" style="width:${S[l-1]/mx*100}%"></i><i style="width:${C[l]/mx*100}%;background:var(--l${l})"></i></div><div class="dnum"><b>${S[l].toLocaleString()}</b> คำ${l>1?` · เพิ่มจาก HSK ${l-1} อีก <b>+${C[l].toLocaleString()}</b> คำ`:""}</div></div></div>`;
   h+=`<div class="d79"><b>HSK 7–9</b> เพิ่มอีก <b>${C[7].toLocaleString()}</b> คำ → รวมทั้งหมด <b>${S[7].toLocaleString()}</b> คำ</div>
   <div class="dlg"><span><i style="background:var(--bd)"></i>คำที่เรียนมาแล้วจากระดับก่อน</span><span><i style="background:var(--l1)"></i>คำใหม่ของระดับนั้น</span></div></div>`;
+  h+=`<button class="dlib" onclick="openLib()"><span class="lbi">${IC.lib}</span><span><b>悦华词语馆 • คำนี้ใช้ยังไงนะ?</b><small>ห้องสมุดคำจีนฟรี · คำแฝด · คำหลายหน้า · คำหลายเสียง</small></span><span class="ar">›</span></button>`;
   h+=`<div class="dgrid">${[1,2,3,4,5,6].map(l=>`<button class="dlc" style="--lc:var(--l${l})" onclick="openLv(${l})"><b>HSK ${l}</b><span>${C[l].toLocaleString()} คำ</span><small>สะสม ${S[l].toLocaleString()} คำ</small></button>`).join("")}
   <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
   return h}
+/* ===== ห้องสมุดคำจีน (悦华词语馆 • คำนี้ใช้ยังไงนะ?) · เนื้อหาแยกไฟล์ dict/lb{ระดับ}.js โหลดเมื่อเปิดใช้ ===== */
+const LBF={"1": "dict/lb1.js?v=c57167a7"},LBN={"1": {"s": 24, "p": 0, "y": 0}};const LBD={};
+const LBS=[["s","ชั้นคำแฝด","近义词","คำความหมายใกล้กัน",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>'],
+  ["p","ชั้นคำหลายหน้า","多义词","คำเดียวหลายความหมาย",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>'],
+  ["y","ชั้นคำหลายเสียง","多音字","ตัวเดียวอ่านได้หลายเสียง",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10v4"/><path d="M6 6v12"/><path d="M10 3v18"/><path d="M14 8v8"/><path d="M18 5v14"/><path d="M22 10v4"/></svg>']];
+const LBNAME=k=>(LBS.find(x=>x[0]===k)||[])[1]||"";
+let LBK="s",LBC=null,LBNAV=[];
+const lbCnt=(k,l)=>((LBN[l]||{})[k])||0;
+const lbLoad=l=>LBD[l]?Promise.resolve(LBD[l]):LBF[l]?xload(LBF[l],"LB"+l).then(d=>LBD[l]=d):Promise.reject(new Error("none"));
+function openLib(k){if(k)LBK=k;$("lbq").value="";$("lbr").innerHTML="";libDraw();go("s-lib");window.scrollTo(0,0)}
+function libDraw(){
+  $("lbsh").innerHTML=LBS.map(([k,n,zh,sub,ic])=>{let c=0;for(let l=1;l<=7;l++)c+=lbCnt(k,l);
+    return `<button class="lbs${k===LBK?" on":""}" onclick="LBK='${k}';libDraw()" aria-pressed="${k===LBK}">${ic}<b>${n}</b><span class="zh">${zh}</span><small>${c?c+" หัวข้อ":"เร็ว ๆ นี้"}</small></button>`}).join("");
+  const sh=LBS.find(x=>x[0]===LBK);
+  $("lbacc").className="lbacc";$("lbacc").innerHTML=`<div class="mut" style="font-size:13px;margin-top:8px">${sh[1]} · ${sh[3]} · แตะระดับเพื่อเปิดดูรายการ</div>`+[1,2,3,4,5,6,7].map(l=>{const c=lbCnt(LBK,l);
+    return `<details style="--lc:var(--l${l})" ${c?`ontoggle="libLv(this,${l})"`:""}><summary><span class="lblt">${lvn(l)}</span>${c?`<span>${c} หัวข้อ</span>`:`<small>เร็ว ๆ นี้</small>`}<svg class="lbcv" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>${c?`<div class="lbl"><div class="lbsoon">กำลังโหลด…</div></div>`:`<div class="lbsoon">กำลังจัดทำเนื้อหาของระดับนี้ เร็ว ๆ นี้มาอ่านได้นะ</div>`}</details>`}).join("")}
+const lbTitle=c=>c.h.map((h,j)=>(j?'<i class="lbvs">vs</i>':"")+`<span class="han">${esc(h[0])}</span>`).join("");
+function libLv(d,l){if(!d.open||d.dataset.r)return;const box=d.querySelector(".lbl");
+  lbLoad(l).then(D=>{d.dataset.r=1;const L=D[LBK]||[];box.innerHTML=L.map((c,i)=>`<button class="lbit" onclick="libCard('${LBK}',${l},${i})"><b>${lbTitle(c)}</b><span>${esc(c.o)}</span><i>›</i></button>`).join("")},
+    ()=>{box.innerHTML=`<div class="lbsoon">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ต แล้วปิดและเปิดระดับนี้ใหม่</div>`})}
+function libSearch(){const q=$("lbq").value.trim(),box=$("lbr");if(!q){box.innerHTML="";return}
+  const ls=[1,2,3,4,5,6,7].filter(l=>LBF[l]);box.innerHTML=`<div class="mut" style="font-size:13px;margin-top:8px">กำลังค้นหา…</div>`;
+  Promise.all(ls.map(l=>lbLoad(l).catch(()=>null))).then(()=>{if($("lbq").value.trim()!==q)return;const hit=[],n=q.toLowerCase();
+    ls.forEach(l=>{const D=LBD[l];if(!D)return;LBS.forEach(([k])=>(D[k]||[]).forEach((c,i)=>{const t=[c.k,c.o,...c.h.map(h=>h[0]+" "+h[1]),...(c.u||[]).map(u=>u.w+" "+u.m)].join(" ").toLowerCase();if(t.includes(n))hit.push([k,l,i,c])}))});
+    box.innerHTML=hit.length?`<div class="lbacc"><details open><summary><span>ผลการค้นหา ${hit.length} หัวข้อ</span></summary><div class="lbl">${hit.slice(0,60).map(([k,l,i,c])=>`<button class="lbit" onclick="libCard('${k}',${l},${i})"><b>${lbTitle(c)}</b><span>${lvn(l)} · ${LBNAME(k)} · ${esc(c.o)}</span><i>›</i></button>`).join("")}</div></details></div>`:`<div class="card mut" style="margin-top:8px">ยังไม่มีหัวข้อนี้ในห้องสมุด ลองค้นคำอื่น</div>`})}
+const LBX='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>',LBOK='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+const lbHL=(z,w)=>{let t=esc(z);(w||[]).forEach(k=>{if(k)t=t.split(esc(k)).join(`<mark>${esc(k)}</mark>`)});return t};
+const LBH={s:["ความต่าง","วิธีใช้","ตัวอย่างการใช้"],p:["ภาพรวมความหมาย","แต่ละความหมายใช้ยังไง","ตัวอย่างการใช้"],y:["ภาพรวมเสียงอ่าน","แต่ละเสียงใช้ยังไง","ตัวอย่างการใช้"]};
+function libCard(k,l,i){const D=LBD[l];if(!D)return;const L=D[k]||[],c=L[i];if(!c)return;LBC=c;
+  const H=LBH[k],hl=c.h.map(h=>h[0]),sec=(n,t)=>`<div class="lbhd"><i>${n}</i><b>${t}</b></div>`;let xi=0;LBNAV=[k,l,i,L.length];
+  pop(`<div class="vsh lbc" style="--lc:var(--l${l})"><div class="vhd"><span class="vlv">${lvn(l)} · ${LBNAME(k)}</span><button class="vx" onclick="closeBook()" aria-label="ปิด">×</button></div>
+  <div class="lbtt">${c.h.map((h,j)=>(j?'<span class="lbvs">vs</span>':"")+`<span class="lbw"><b class="han">${esc(h[0])}</b><small>${esc(h[1])}</small></span>`).join("")}</div>
+  <div class="lbo">${esc(c.o)}</div>
+  ${c.d&&c.d.length?`<div class="vsec">${sec(1,H[0])}<ul class="lbd">${c.d.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+  ${c.u&&c.u.length?`<div class="vsec">${sec(2,H[1])}${c.u.map(u=>`<div class="lbu"><div class="lbuh"><b class="han">${esc(u.w)}</b>${u.py?`<small>${esc(u.py)}</small>`:""}<span>${esc(u.m)}</span></div>
+    ${(u.f||[]).map(f=>`<div class="gf">${f.c.map((x,j)=>(j?"<em>+</em>":"")+`<span class="gch ${x[1]||"p"} han">${esc(x[0])}</span>`).join("")}</div>${f.d?`<p class="lbfd">${esc(f.d)}</p>`:""}`).join("")}
+    ${u.n&&u.n.length?`<ul>${u.n.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div>`:""}
+  ${c.x&&c.x.length?`<div class="vsec vex">${sec(3,H[2])}${c.x.map(g=>`<div class="lbex">${g.w?`<span class="lbxt han">${esc(g.w)}</span>`:""}${g.s.map(s=>{const j=xi++;return `<div class="lbxs"><div class="zh han">${lbHL(s[0],g.hl||hl)}<button class="vsp" onclick="lbSay(${j})" aria-label="ฟังเสียงประโยค">${IC.spk}</button></div><div class="sp">${esc(s[1])}</div><div class="th">${esc(s[2])}</div></div>`}).join("")}</div>`).join("")}</div>`:""}
+  ${c.e&&c.e.length?`<div class="vsec"><div class="lbhd"><i>!</i><b>ประโยคที่คนไทยมักพูดผิด</b></div>${c.e.map(e=>`<div class="lbe"><div class="lbno">${LBX}<span class="han">${esc(e[0])}</span></div><div class="lbok">${LBOK}<span class="han">${esc(e[1])}</span></div>${e[2]?`<div class="lbwhy">${esc(e[2])}</div>`:""}</div>`).join("")}</div>`:""}
+  ${c.t?`<div class="vtip">${IC.bulb}<span><b>จำง่าย ๆ</b> ${esc(c.t)}</span></div>`:""}
+  ${L.length>1?`<div class="vnav"><button class="btn alt sm" ${i?`onclick="libCard('${k}',${l},${i-1})"`:"disabled"}>‹ หัวข้อก่อนหน้า</button><button class="btn alt sm" ${i<L.length-1?`onclick="libCard('${k}',${l},${i+1})"`:"disabled"}>หัวข้อถัดไป ›</button></div>`:""}</div>`);
+  const m=$("bkmb");if(m)m.scrollTop=0}
+function lbSay(j){if(!LBC)return;let n=0;for(const g of LBC.x)for(const s of g.s){if(n===j){vSay(s[0]);return}n++}}
 /* ข้อมูลเสริมการ์ด (คำที่ใช้คู่กัน + เทคนิคจำ) และสรุปไวยากรณ์ โหลดแยกไฟล์เมื่อเปิดใช้ */
 const DXF={"1": "dict/dx1.js?v=8c7070d4", "2": "dict/dx2.js?v=7e115e7a", "3": "dict/dx3.js?v=b06a3823", "4": "dict/dx4.js?v=0bcb1557", "5": "dict/dx5.js?v=74bcae74", "6": "dict/dx6.js?v=c52dae6a", "7": "dict/dx7.js?v=1bba4716"},GRF={"1": "dict/gr1.js?v=560d8901", "2": "dict/gr2.js?v=d5ee431b", "3": "dict/gr3.js?v=ee4dd8ca", "4": "dict/gr4.js?v=ea6bbbd0", "5": "dict/gr5.js?v=64917a41", "6": "dict/gr6.js?v=12d68cfb", "7": "dict/gr7.js?v=eb0bbecc"};const DXD={},GRD={},XP={};
 function xload(url,key){if(window[key])return Promise.resolve(window[key]);if(XP[key])return XP[key];
@@ -2656,8 +2751,8 @@ function delAlb(c,k){albErr("");const n=vList(c,k).length;
 function mvAlb(c,i,d){const A=albs(c),j=i+d;if(j<0||j>=A.length)return;[A[i],A[j]]=[A[j],A[i]];aSave();renderVidAdmin()}
 let VPID="";
 function vPrev(){const id=ytId($("vu").value);$("vue").textContent=$("vu").value.trim()&&!id?"ลิงก์นี้ไม่ใช่ลิงก์วิดีโอ YouTube ลองคัดลอกจากปุ่ม “แชร์” ใน YouTube อีกครั้ง":"";
-  if(id===VPID)return;VPID=id;$("vpv").innerHTML=id?`<button type="button" class="vpw vlite" onclick="vPlay()" aria-label="เล่นตัวอย่างวิดีโอ"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><span class="vplay"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button><a class="vlink" href="https://youtu.be/${id}" target="_blank" rel="noopener">เปิดดูใน YouTube ↗</a>`:""}
-function vPlay(){const b=document.querySelector("#vpv .vlite");if(b&&VPID)b.outerHTML=`<div class="vpw">${ytEmbed(VPID)}</div>`}
+  if(id===VPID)return;VPID=id;$("vpv").innerHTML=id?`<button type="button" class="vpw vlite" onclick="vpPlay()" aria-label="เล่นตัวอย่างวิดีโอ"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><span class="vplay"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button><a class="vlink" href="https://youtu.be/${id}" target="_blank" rel="noopener">เปิดดูใน YouTube ↗</a>`:""}
+function vpPlay(){const b=document.querySelector("#vpv .vlite");if(b&&VPID)b.outerHTML=`<div class="vpw">${ytEmbed(VPID)}</div>`}
 function saveVid(){
   const c=$("vc").value,k=$("vs").value,t=$("vtt").value.trim(),id=ytId($("vu").value);
   if(!k){$("vue").textContent="กรุณาสร้างอัลบั้มก่อน แล้วเลือกอัลบั้มให้วิดีโอนี้";$("van").focus();return}
