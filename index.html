@@ -670,7 +670,14 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .fbi .fu .btn{white-space:nowrap}.pdesc{text-align:left;margin:6px auto 12px;max-width:460px;font-size:14px;line-height:1.55}.pdesc p{margin:0 0 6px}.pdesc .pdh{font-weight:700;margin:10px 0 4px;color:var(--ink,inherit)}.pdesc .pdh:first-child{margin-top:0}
 .pdl{list-style:none;margin:0 0 6px;padding:0}.pdl li{display:flex;gap:8px;align-items:flex-start;margin:4px 0}.pdl li i{flex:none;color:var(--seal);display:inline-flex;margin-top:2px}
 .pdesc.sm{font-size:12.5px;margin:2px 0 0;max-width:none;color:var(--mut)}.pdesc.sm .pdh{margin:4px 0 2px;font-size:12.5px}.pdesc.sm .pdl li{margin:2px 0}
-.bcv.mv{position:relative}.bvn{position:absolute;right:4px;bottom:4px;background:rgba(28,23,20,.82);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px}
+.book.shb{width:auto;min-width:calc(var(--bw) + 16px);max-width:210px;flex:0 1 210px}.book.shb .bcv{flex:none}
+.sbst{position:relative;display:block}.sbst .pstack{--w:var(--bw);--dx:calc(var(--bw)*.3);margin:0;height:calc(var(--bw)*340/240)}.sbst .pcv{top:calc(var(--i)*2px);transform:rotate(calc((var(--i) - (var(--n) - 1) / 2) * 3deg))}
+.bvn{position:absolute;left:-2px;top:-6px;z-index:3;background:#1c1714;color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.book.shb .bnm{margin:24px 0 4px}.sbi{display:flex;flex-direction:column;align-items:stretch;gap:5px;padding:0 4px 12px;text-align:left;font-size:12px;line-height:1.4;width:100%}
+.sbv{color:var(--mut);text-align:center}.sbk{display:flex;flex-direction:column;gap:2px}.sbk>span{display:flex;gap:4px;align-items:flex-start}.sbk i{flex:none;color:var(--seal);display:inline-flex;margin-top:1px}.sbk svg{width:13px;height:13px}
+.sbp{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}.sbp>span{border:1px solid var(--bd);border-radius:999px;padding:1px 8px;background:var(--card);white-space:nowrap}.sbp b{color:var(--seal)}
+.pvl{margin:-2px auto 8px;font-size:13px;text-align:left;max-width:460px}.pvl ol{margin:4px 0 0;padding-left:22px}.pvl li{margin:1px 0}
+.pfvn{width:100%}
 .pfvr{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:4px 0 2px 52px}.pfvr .bcv.sm2{flex:none}.pfvr .mut{font-size:12px}.pfnc{width:34px;aspect-ratio:240/340;border:1px dashed var(--bd);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:var(--mut);flex:none}
 .pfr{display:flex;gap:6px;align-items:center;margin-top:6px}.pfr:first-child{margin-top:0}.pfr input{flex:1;min-width:0}.pfn{flex:none;font-size:13px;font-weight:700;min-width:46px}.pfr .btn{flex:none}.fbi>label{flex:0 0 auto}.fbi .fu input{width:96px;flex:0 0 96px}
 .fbr{display:grid;grid-template-columns:1.2fr 1.5fr 1fr;gap:10px;align-items:center;border-top:1px solid var(--bd);padding:10px 0}
@@ -3057,6 +3064,9 @@ function descHTML(d,small){const L=String(d||"").split(/\r?\n/).map(x=>x.trim())
     flush();const e=x.match(EM);h+=e?`<div class="pdh">${esc(x.slice(e[0].length).trim())}</div>`:`<p>${esc(x)}</p>`}
   flush();return `<div class="pdesc${small?" sm":""}">${h}</div>`}
 /* ปกของหนังสือ 1 รายการ: ปกหลัก + ปกของไฟล์เล่มถัดไป (ถ้ามี) */
+/* จำนวนเล่ม/ชื่อเล่มที่ลูกค้าเห็น · จุดเด่นย่อ 2 ข้อแรกจากคำอธิบาย */
+const pvols=p=>{const n=Math.max(1+(p.vc||[]).length,(p.vn||[]).length);return n>1?Array.from({length:n},(_,i)=>String((p.vn||[])[i]||"").trim()||`เล่ม ${i+1}`):[]};
+const pperks=(d,k)=>String(d||"").split(/\r?\n/).map(x=>x.trim()).filter(x=>/^(?:[✅✔☑️✓]+|[-•*])/u.test(x)).map(x=>x.replace(/^(?:[✅✔☑️✓]+|[-•*])\s*/u,"")).filter(Boolean).slice(0,k);
 const pcovs=p=>[{c:p.c,t:p.t}].concat((p.vc||[]).filter(Boolean).map((c,i)=>({c,t:`${p.t} เล่ม ${i+2}`})));
 function stackCov(L,big){const n=L.length;return `<div class="pstack${big?" big":""}" style="--n:${n}">${L.map((p,i)=>`<span class="pcv" style="--i:${i}">${cov(p)}</span>`).join("")}</div>`}
 function stackHTML(ids,big){return stackCov(ids.map(prodBy).filter(Boolean).flatMap(pcovs).slice(0,6),big)}
@@ -3067,12 +3077,16 @@ function renderShop(){cartBadge();
     const save=Math.max(...fs.map(f=>promoNormal(x,f)-priceOf(x,f)));
     return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button></div></div>`}).join("")}`:"";
   const ps=PRODS.filter(p=>p.on);
-  $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?shelfRows(ps,3,p=>{const lo=Math.min(...fmts(p).map(f=>priceOf(p,f)));const CV=pcovs(p);return `<button class="book" onclick="openProd(${p.id})" aria-label="${esc(p.t)}"><span class="bcv${CV.length>1?" mv":""}">${cov(p)}${CV.length>1?`<span class="bvn">${CV.length} เล่ม</span>`:""}</span>${isFinite(lo)?`<span class="brib">เริ่ม ${lo}฿</span>`:""}<span class="bnm">${esc(p.t)}</span></button>`}):"<div class='card mut'>เร็ว ๆ นี้</div>");
+  $("shlist").innerHTML=`<h3 class="shh">📚 หนังสือทั้งหมด</h3>`+(ps.length?shelfRows(ps,innerWidth<560?2:3,p=>{const CV=pcovs(p),V=pvols(p),K=pperks(p.d,2);
+    return `<button class="book shb" onclick="openProd(${p.id})" aria-label="${esc(p.t)}">${CV.length>1?`<span class="sbst">${stackCov(CV)}<span class="bvn">${CV.length} เล่ม</span></span>`:`<span class="bcv">${cov(p)}</span>`}
+      <span class="bnm">${esc(p.t)}</span><span class="sbi">${V.length?`<span class="sbv">${V.map(esc).join(" · ")}</span>`:""}${K.length?`<span class="sbk">${K.map(x=>`<span><i>${DCHK}</i>${esc(x)}</span>`).join("")}</span>`:""}
+      <span class="sbp">${fmts(p).map(f=>`<span>${f==="file"?"ไฟล์ PDF":"เล่ม"} <b>${N0(priceOf(p,f))}฿</b></span>`).join("")}</span></span></button>`}):"<div class='card mut'>เร็ว ๆ นี้</div>");
 }
+const N0=n=>Number(n||0).toLocaleString("th-TH");
 function openShop(){renderShop();go("s-shop")}
 const fmtLine=(x,f)=>`<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF <small class='mut'>ได้ลิงก์ทางอีเมล</small>":"📚 หนังสือเล่ม <small class='mut'>เข้าสันเกลียว · ส่งฟรีทั่วไทย</small>"}</span><b>${B(priceOf(x,f))}</b></div>`;
 function openProd(id){const p=prodBy(id);if(!p)return;
-  const sm=p.sm||[],CV=pcovs(p);pop(`${CV.length>1?`${stackCov(CV,1)}<div class="mut" style="font-size:12px;margin:-4px 0 6px">ได้ครบ ${CV.length} เล่มในชุดนี้</div>`:`<span class="bcv">${cov(p)}</span>`}<h3 id="bkmt">${esc(p.t)}</h3>${descHTML(p.d)}${sm.length?`<div class="smpw"><div class="smph">ตัวอย่างหน้าหนังสือ <span class="mut">· ${sm.length} หน้า · แตะเพื่อดูเต็มจอ</span></div><div class="smps">${sm.map((u,i)=>`<button onclick="smpOpen(${p.id},${i})" aria-label="ดูตัวอย่างหน้า ${i+1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div></div>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  const sm=p.sm||[],CV=pcovs(p);pop(`${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}${pvols(p).length?`<div class="pvl"><b>ได้ครบ ${pvols(p).length} เล่มในชุดนี้</b><ol>${pvols(p).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}<h3 id="bkmt">${esc(p.t)}</h3>${descHTML(p.d)}${sm.length?`<div class="smpw"><div class="smph">ตัวอย่างหน้าหนังสือ <span class="mut">· ${sm.length} หน้า · แตะเพื่อดูเต็มจอ</span></div><div class="smps">${sm.map((u,i)=>`<button onclick="smpOpen(${p.id},${i})" aria-label="ดูตัวอย่างหน้า ${i+1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div></div>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function openPromo(id){const x=promoBy(id);if(!x)return;
   pop(`${stackHTML(x.ids,1)}<h3 id="bkmt">${esc(x.t)}</h3>${x.d?`<p class="mut" style="margin:4px 0 8px">${esc(x.d)}</p>`:""}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${descHTML(p.d,1)}</div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด <small class='mut'>เข้าสันเกลียว</small>"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function addCart(k,id){const x=k==="b"?promoBy(id):prodBy(id);if(!x)return;const fs=fmts(x);if(!fs.length){note("รายการนี้ยังไม่เปิดขาย",1);return}
@@ -3122,7 +3136,7 @@ function placeOrder(){if(pvBlock())return;const [o,err]=orderForm();$("oerr").te
 let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null,PFSM=[],SMPDF=null;
 function renderShopAdmin(){const e=$("prl");if(!e)return;
   const cur=PFE!=null?prodBy(PFE):null;
-  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";pfuDraw(plinks(cur&&cur.u),[""].concat(cur&&cur.vc||[]));$("pfon").checked=cur?cur.on:true;
+  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";pfuDraw(plinks(cur&&cur.u),[""].concat(cur&&cur.vc||[]),cur&&cur.vn||[]);$("pfon").checked=cur?cur.on:true;
     cvReset("pf");PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";PFSM=cur?(cur.sm||[]).slice():[];SMPDF=null;$("smpdf").style.display="none";smpDraw();$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
   $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
   e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
@@ -3142,27 +3156,31 @@ const numOrNull=v=>{v=String(v).trim();if(v==="")return null;const n=Math.round(
 /* ลิงก์ไฟล์ของหนังสือในร้าน: มีได้หลายเล่ม (เก็บรวมเป็นข้อความ คั่นด้วยขึ้นบรรทัดใหม่) */
 const plinks=u=>String(u||"").split(/\s+/).filter(x=>/^https:\/\//.test(x));
 const pfuVals=()=>[...document.querySelectorAll("#pful input.pfui")].map(x=>x.value.trim());
-let PFVC=[];/* ปกของลิงก์เล่ม 2 เป็นต้นไป (ตำแหน่งตรงกับลิงก์) · เล่ม 1 ใช้ปกหนังสือด้านล่าง */
-function pfuDraw(L,C){L=L&&L.length?L:[""];if(C)PFVC=C.slice();PFVC.length=L.length;const many=L.length>1;
-  $("pful").innerHTML=L.map((u,i)=>`<div class="pfr">${many?`<span class="pfn">เล่ม ${i+1}</span>`:""}<input class="pfui"${i?"":' id="pfu"'} value="${esc(u)}" placeholder="https://drive.google.com/file/d/..."${i?` onchange="pfvAuto(${i},1)"`:""}>${i?`<button class="btn alt sm" type="button" onclick="pfuDel(${i})" aria-label="ลบลิงก์เล่ม ${i+1}">ลบ</button>`:""}</div>
+let PFVN=[];let PFVC=[];/* ปกของลิงก์เล่ม 2 เป็นต้นไป (ตำแหน่งตรงกับลิงก์) · เล่ม 1 ใช้ปกหนังสือด้านล่าง */
+function pfuDraw(L,C,Nm){L=L&&L.length?L:[""];if(C)PFVC=C.slice();if(Nm)PFVN=Nm.slice();PFVC.length=L.length;PFVN.length=L.length;const many=L.length>1;
+  $("pful").innerHTML=L.map((u,i)=>`<div class="pfr">${many?`<span class="pfn">เล่ม ${i+1}</span>`:""}<input class="pfui"${i?"":' id="pfu"'} value="${esc(u)}" placeholder="https://drive.google.com/file/d/..." onchange="pfvAuto(${i},1)">${i?`<button class="btn alt sm" type="button" onclick="pfuDel(${i})" aria-label="ลบลิงก์เล่ม ${i+1}">ลบ</button>`:""}</div>
+    ${many?`<div class="pfvr"><input class="pfvn" value="${esc(PFVN[i]||"")}" maxlength="60" placeholder="ชื่อเล่ม ${i+1} ที่ลูกค้าเห็น เช่น แบบฝึกหัด เล่ม ${i+1}" oninput="PFVN[${i}]=this.value" aria-label="ชื่อเล่ม ${i+1}"></div>`:""}
     ${i?`<div class="pfvr">${PFVC[i]?`<span class="bcv sm2"><img src="${esc(PFVC[i])}" alt="ปกเล่ม ${i+1}"></span>`:'<span class="pfnc">ไม่มีปก</span>'}<button class="btn alt sm" type="button" onclick="pfvAuto(${i})">ปกจากหน้าแรกของไฟล์</button><label class="btn alt sm" style="margin:0">อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfvUp(${i},this)"></label>${PFVC[i]?`<button class="btn alt sm" type="button" onclick="PFVC[${i}]='';pfuDraw(pfuVals())">เอาปกออก</button>`:""}<span class="mut" id="pfvs${i}"></span></div>`:""}`).join("")+(many?'<div class="mut" style="font-size:12px;margin-top:4px">เล่ม 1 ใช้ปกหนังสือด้านล่าง · ปกทุกเล่มแสดงในร้านให้ลูกค้าเห็นว่าได้ครบกี่เล่ม</div>':"")}
 function pfuAdd(){const L=pfuVals();if(L.length>=10)return;L.push("");pfuDraw(L);const x=document.querySelectorAll("#pful input.pfui");x[x.length-1].focus()}
-function pfuDel(i){const L=pfuVals();L.splice(i,1);PFVC.splice(i,1);pfuDraw(L)}
+function pfuDel(i){const L=pfuVals();L.splice(i,1);PFVC.splice(i,1);PFVN.splice(i,1);pfuDraw(L)}
 async function pfvUp(i,inp){const f=inp.files&&inp.files[0];if(!f)return;try{const L=pfuVals();PFVC[i]=await picToJpeg(f,700);pfuDraw(L)}catch(e){alert("อ่านรูปไม่ได้")}}
 /* ปกเล่มถัดไป: ใช้ปกที่เคยอัปโหลดไว้กับไฟล์เดียวกัน (บทเรียน/คลังคำศัพท์) ก่อน ไม่มีค่อยเปิดหน้าแรกของไฟล์ */
-async function pfvAuto(i,quiet){const L=pfuVals(),u=L[i]||"",f=driveId(u),st=()=>$("pfvs"+i);if(quiet&&PFVC[i])return;
+async function pfvAuto(i,quiet){const L=pfuVals(),u=L[i]||"",f=driveId(u),st=()=>$("pfvs"+i);
+  const KN=Object.values(BOOKS).flat().concat(typeof VOCAB!=="undefined"?VOCAB:[]).filter(b=>f&&driveId(b.u)===f);
+  if(KN.length&&!PFVN[i]){PFVN[i]=KN[0].t;if(L.length>1)pfuDraw(L)}
+  if(!i||(quiet&&PFVC[i]))return;
   if(!f){if(!quiet&&st())st().textContent="ใส่ลิงก์ Google Drive ก่อน";return}
-  const known=Object.values(BOOKS).flat().concat(typeof VOCAB!=="undefined"?VOCAB:[]).find(b=>driveId(b.u)===f&&/^https:\/\//.test(b.c||""));
+  const known=KN.find(b=>/^https:\/\//.test(b.c||""));
   if(known){PFVC[i]=known.c;pfuDraw(L);return}
   if(st())st().textContent="กำลังเปิดหน้าแรกของไฟล์…";
   try{await loadPdfJs();const d=await cvDriveDoc(f);try{const c=await pg1Canvas(d);if(pfuVals()[i]!==u)return;PFVC[i]=cvFit(c,700);pfuDraw(pfuVals())}finally{try{d.destroy()}catch(e){}}}
   catch(e){if(st())st().textContent="เปิดหน้าแรกไม่ได้ ใช้ปุ่มอัปโหลดปกแทน"}}
-function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),RW=pfuVals().map((x,i)=>({u:x,c:PFVC[i]||""})).filter(x=>x.u),UL=RW.map(x=>x.u),u=UL.join("\n"),vc=RW.slice(1).map(x=>x.c),c=$("pfc").value;
+function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),RW=pfuVals().map((x,i)=>({u:x,c:PFVC[i]||"",n:String(PFVN[i]||"").trim().slice(0,60)})).filter(x=>x.u),UL=RW.map(x=>x.u),u=UL.join("\n"),vc=RW.slice(1).map(x=>x.c),vn=RW.length>1?RW.map(x=>x.n):[],c=$("pfc").value;
   if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
   if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
   if(UL.some(x=>!/^https:\/\/\S+$/.test(x))){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https:// (ช่องละ 1 ลิงก์)");return null}
   const cur=PFE!=null?prodBy(PFE):null;
-  return {t,d:$("pfd").value.trim(),pf,pb,u,vc,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
+  return {t,d:$("pfd").value.trim(),pf,pb,u,vc,vn,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
 function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
 /* ตัวอย่างหน้าหนังสือ: PDF (เลือกหน้า) หรือรูป */
 const SMMAX=12;
@@ -3727,7 +3745,7 @@ async function loadShop(admin){
   const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
   if(p.error)throw p.error;
   let files={},costs={};if(admin){const [f,c]=await Promise.all([sb.from("product_files").select("product_id,file_url"),sb.from("product_costs").select("product_id,cost_book,calc")]);(f.data||[]).forEach(x=>files[x.product_id]=x.file_url);(c.data||[]).forEach(x=>costs[x.product_id]=x)}
-  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",vc:Array.isArray(x.vcovers)?x.vcovers:[],sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]?costs[x.id].cost_book||0:0,bc:costs[x.id]?costs[x.id].calc:null}));
+  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",vc:Array.isArray(x.vcovers)?x.vcovers:[],vn:Array.isArray(x.vnames)?x.vnames:[],sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]?costs[x.id].cost_book||0:0,bc:costs[x.id]?costs[x.id].calc:null}));
   PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort}));
   cartBadge();
 }
@@ -4196,7 +4214,7 @@ async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))ret
   return sb.storage.from("public-assets").getPublicUrl(path).data.publicUrl}
 /* ---------- หลังบ้าน: ร้านค้า ---------- */
 window.savePr=async function(){const v=prVals();if(!v)return;const btn=$("prsb");busy(btn,true);
-  try{const [cover,...samples]=await Promise.all([upCover(v.c,"shop")].concat((v.sm||[]).map(u=>upCover(u,"samples"))));const vcovers=await Promise.all((v.vc||[]).map(c=>c?upCover(c,"shop"):""));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples,vcovers};
+  try{const [cover,...samples]=await Promise.all([upCover(v.c,"shop")].concat((v.sm||[]).map(u=>upCover(u,"samples"))));const vcovers=await Promise.all((v.vc||[]).map(c=>c?upCover(c,"shop"):""));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples,vcovers,vnames:v.vn||[]};
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
     const [{error:fe},{error:ce}]=await Promise.all([sb.from("product_files").upsert({product_id:id,file_url:v.u}),sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()})]);if(fe)throw fe;if(ce)throw ce;
