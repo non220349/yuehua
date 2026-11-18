@@ -1866,35 +1866,63 @@ async function bcCountAll(){const rows=[...document.querySelectorAll("#fpc .fbr"
     try{const n=await countPdfPages(g.u);if(!row.querySelector("[data-p]").value){row.querySelector("[data-p]").value=n;bcLive()}ok++}catch(e){}
     finally{if(cb)cb.disabled=false;done++;b.textContent=`กำลังนับ ${done}/${rows.length}…`}}),4);
   b.textContent=b.dataset.t0;bbusy(b,false);bcLive();note(ok===rows.length?`นับครบ ${ok} เล่มแล้ว อย่าลืมกดบันทึกต้นทุน`:`นับได้ ${ok}/${rows.length} เล่ม ที่เหลือใส่เองได้`,ok<rows.length)}
-/* เอกสารต้นทุนหนังสือ (A4): ใช้ตัวเลขที่แสดงบนหน้าจอตอนกด · ปิดแล้วกลับมาที่เดิม ตัวเลขที่ยังไม่บันทึกไม่หาย */
-function printBc(){const m=matRead(),gc=bcRead(),G=bcGroups(),bv=n=>r2(n).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2});
-  const dt=new Date().toLocaleDateString("th-TH",{year:"numeric",month:"long",day:"numeric"})+" "+new Date().toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"});
+/* เอกสารต้นทุนหนังสือ: จัดเป็นแผ่น A4 จริงทีละแผ่น (วัดความสูงแล้วแบ่งหน้าเอง ตารางยาวขึ้นหัวตารางซ้ำ)
+   ใช้ตัวเลขที่แสดงบนหน้าจอตอนกด · ปิดแล้วกลับมาที่เดิม ตัวเลขที่ยังไม่บันทึกไม่หาย */
+function printBc(){const m=matRead(),gc=bcRead(),G=bcGroups(),bv=n=>r2(n).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2}),N=n=>n.toLocaleString("th-TH");
+  const now=new Date(),dt=now.toLocaleDateString("th-TH",{year:"numeric",month:"long",day:"numeric"})+" "+now.toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"});
   const used=g=>[g.cs.length?"บทเรียน "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"คอร์สที่ปิดแล้ว":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน":""].filter(Boolean).join(" · ");
-  const rows=G.map(g=>{const c=gc[g.k]||bcOf(g),r=bcCalc(c,m),p=g.ps[0],price=p&&p.pb!=null?p.pb:null;return {g,c,r,price}});
-  const ok=rows.filter(x=>x.r.pg),miss=rows.length-ok.length;
-  const mat=MATF.map(([k,l,u])=>`<tr><td>${esc(l.replace(/\s*\(.*\)$/,""))}</td><td class="n">${fnum(m[k]).toLocaleString("th-TH")} ${esc(u)}</td></tr>`).join("")+(m.ot||[]).map(o=>`<tr><td>${esc(o.n||"อื่น ๆ")}</td><td class="n">${fnum(o.a).toLocaleString("th-TH")} บาท/ชุด</td></tr>`).join("");
-  const tb=rows.map((x,i)=>`<tr${x.r.pg?"":' class="mt"'}><td class="n">${i+1}</td><td><b>${esc(x.g.t)}</b><div class="u">${esc(used(x.g))}${x.c.s?" · ส่งตอนสมัคร":""}</div></td><td class="n">${x.r.pg||"-"}</td><td class="n">${x.r.pg?x.r.v:"-"}</td><td class="c">${x.r.pg?(x.c.d?"2 หน้า":"หน้าเดียว"):"-"}</td><td class="n"><b>${x.r.pg?x.r.cb.toLocaleString("th-TH"):"-"}</b></td><td class="n">${x.r.pg&&x.r.v>1?Math.ceil(x.r.tot/x.r.v).toLocaleString("th-TH"):"-"}</td><td class="n">${x.price!=null?x.price.toLocaleString("th-TH"):"-"}</td><td class="n">${x.price!=null&&x.r.pg?(x.price-x.r.cb).toLocaleString("th-TH"):"-"}</td></tr>`).join("");
-  const {eb,used:eu}=ebCalc(gc,m),en=FCRS().map(([k,n])=>`<tr><td><b>${esc(n)}</b><div class="u">${eu[k].length?esc(eu[k].join(" + ")):(+FIN.eb[k]?"ยังไม่ได้ติ๊กเล่มที่ส่ง · ใช้ตัวเลขเดิม":"ไม่ส่งเล่มจริง")}</div></td><td class="n"><b>${eb[k].toLocaleString("th-TH")}</b> บาท</td></tr>`).join("");
-  const det=ok.map(x=>`<div class="bd"><div class="bh"><b>${esc(x.g.t)}</b><span>${x.r.pg} หน้า${x.r.v>1?` · ${x.r.v} เล่ม`:""} · ${x.c.d?"พิมพ์ 2 หน้า":"พิมพ์หน้าเดียว"}</span></div><table>${x.r.L.filter(l=>l[2]).map(l=>`<tr><td>${esc(l[0])}${l[1]?` <i>(${esc(l[1])})</i>`:""}</td><td class="n">${bv(l[2])}</td></tr>`).join("")}<tr class="t"><td>รวม (ปัดขึ้น)</td><td class="n">${x.r.cb.toLocaleString("th-TH")} บาท</td></tr></table></div>`).join("");
-  const css=`<style>#pv .pg.bc{font:12px/1.45 "Noto Sans Thai","YHPinyin",sans-serif;padding:12mm 13mm;min-height:0}
+  const rows=G.map(g=>{const c=gc[g.k]||bcOf(g),r=bcCalc(c,m),p=g.ps[0];return {g,c,r,price:p&&p.pb!=null?p.pb:null}}),ok=rows.filter(x=>x.r.pg),miss=rows.length-ok.length;
+  const B=[],add=(h,o)=>B.push(Object.assign({h},o||{}));
+  add(`<div class="hd"><h2>สรุปต้นทุนหนังสือ</h2><span>YUEHUA 悦华中文</span></div><div class="mt0">ออกเอกสารเมื่อ ${dt} · หนังสือ ${rows.length} รายการ${miss?` (ยังไม่ใส่จำนวนหน้า ${miss} รายการ)`:""} · ตัวเลขตามที่แสดงบนหน้าจอตอนออกเอกสาร</div>`);
+  add(`<h3>1. ราคาวัสดุ</h3>`,{kn:1});
+  const ml=MATF.map(([k,l,u])=>[l.replace(/\s*\(.*\)$/,""),`${N(fnum(m[k]))} ${u}`]).concat((m.ot||[]).map(o=>[o.n||"อื่น ๆ",`${N(fnum(o.a))} บาท/ชุด`])),hm=Math.ceil(ml.length/2);
+  const mt=L=>`<table class="mtb">${L.map(([a,b])=>`<tr><td>${esc(a)}</td><td class="n">${esc(b)}</td></tr>`).join("")}</table>`;
+  add(`<div class="mg">${mt(ml.slice(0,hm))}${mt(ml.slice(hm))}</div><div class="u" style="margin-top:4px">${esc(matUnit())}</div>`);
+  add(`<h3>2. ต้นทุนหนังสือทุกเล่ม (บาท)</h3>`,{kn:1});
+  const CG=`<colgroup><col style="width:5%"><col style="width:35%"><col style="width:7%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:9%"><col style="width:8%"><col style="width:8%"></colgroup>`,
+    TH=`<table class="st">${CG}<tr><th>#</th><th>ชื่อเล่ม</th><th class="n">หน้า</th><th class="n">แบ่งเล่ม</th><th class="c">พิมพ์</th><th class="n">ต้นทุน/ชุด</th><th class="n">≈ ต่อเล่ม</th><th class="n">ราคาขาย</th><th class="n">กำไร</th></tr></table>`;
+  add(TH,{kn:1});
+  rows.forEach((x,i)=>add(`<table class="st sr">${CG}<tr${x.r.pg?"":' class="mt"'}><td class="n">${i+1}</td><td><b>${esc(x.g.t)}</b><div class="u">${esc(used(x.g))}${x.c.s?" · ส่งตอนสมัคร":""}</div></td><td class="n">${x.r.pg||"-"}</td><td class="n">${x.r.pg?x.r.v:"-"}</td><td class="c">${x.r.pg?(x.c.d?"2 หน้า":"หน้าเดียว"):"-"}</td><td class="n"><b>${x.r.pg?N(x.r.cb):"-"}</b></td><td class="n">${x.r.pg&&x.r.v>1?N(Math.ceil(x.r.tot/x.r.v)):"-"}</td><td class="n">${x.price!=null?N(x.price):"-"}</td><td class="n">${x.price!=null&&x.r.pg?N(x.price-x.r.cb):"-"}</td></tr></table>`,{rep:TH}));
+  add(`<h3>3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h3>`,{kn:1});
+  const {eb,used:eu}=ebCalc(gc,m);
+  FCRS().forEach(([k,n],i)=>add(`<table class="st ebt${i?" sr":""}"><tr><td><b>${esc(n)}</b><div class="u">${eu[k].length?esc(eu[k].join(" + ")):(+FIN.eb[k]?"ยังไม่ได้ติ๊กเล่มที่ส่ง · ใช้ตัวเลขเดิม":"ไม่ส่งเล่มจริง")}</div></td><td class="n" style="width:30%"><b>${N(eb[k])}</b> บาท</td></tr></table>`));
+  const box=x=>`<div class="bd"><div class="bh"><b>${esc(x.g.t)}</b><span>${x.r.pg} หน้า${x.r.v>1?` · ${x.r.v} เล่ม`:""} · ${x.c.d?"พิมพ์ 2 หน้า":"พิมพ์หน้าเดียว"}</span></div><table>${x.r.L.filter(l=>l[2]).map(l=>`<tr><td>${esc(l[0])}${l[1]?` <i>(${esc(l[1])})</i>`:""}</td><td class="n">${bv(l[2])}</td></tr>`).join("")}<tr class="t"><td>รวม (ปัดขึ้น)</td><td class="n">${N(x.r.cb)} บาท</td></tr></table></div>`;
+  if(ok.length){add(`<h3>4. รายละเอียดค่าใช้จ่ายแต่ละเล่ม (บาท)</h3>`,{kn:1});for(let i=0;i<ok.length;i+=2)add(`<div class="dg">${box(ok[i])}${ok[i+1]?box(ok[i+1]):"<div></div>"}</div>`)}
+  add(`<div class="ft">สันเกลียวและแผ่นใสคูณตามจำนวนเล่มที่แบ่ง · กระดาษปก ซอง/กล่อง และค่าส่ง คิดครั้งเดียวต่อชุด · ต้นทุนต่อชุดปัดขึ้นเป็นบาทเต็ม</div>`);
+  const css=`<style>.bc{font:12px/1.45 "Noto Sans Thai","YHPinyin",sans-serif;color:#111}
 .bc .hd{display:flex;flex-wrap:wrap;gap:2px 10px;justify-content:space-between;align-items:flex-end;border-bottom:3px solid #a32626;padding-bottom:6px;margin-bottom:4px}.bc .hd h2{margin:0;font-size:20px;color:#111}.bc .hd span{font-weight:700;color:#a32626;font-size:14px}
-.bc .mt0{color:#555;font-size:11px;margin-bottom:10px}.bc h3{font-size:14px;margin:14px 0 6px;color:#a32626;break-after:avoid;page-break-after:avoid}
-.bc table{border-collapse:collapse;width:100%}.bc td,.bc th{border:1px solid #d9d2c8;padding:4px 6px;text-align:left;vertical-align:top}.bc th{background:#f6f1ea;font-size:11px;white-space:nowrap}
-.bc .n{text-align:right;white-space:nowrap}.bc .c{text-align:center;white-space:nowrap}.bc .u{color:#666;font-size:10.5px}.bc tr.mt td{color:#999}.bc tr{break-inside:avoid;page-break-inside:avoid}
-.bc .tw{overflow-x:auto}.bc .mtab{max-width:120mm}.bc .ebt{max-width:150mm}
-.bc .dg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bc .bd{border:1px solid #d9d2c8;border-radius:6px;padding:6px 8px;break-inside:avoid;page-break-inside:avoid}.bc .bh{display:flex;justify-content:space-between;gap:6px;margin-bottom:4px;flex-wrap:wrap}.bc .bh span{color:#666;font-size:10.5px}
+.bc .mt0{color:#555;font-size:11px;margin-bottom:4px}.bc h3{font-size:14px;margin:12px 0 6px;color:#a32626}
+.bc table{border-collapse:collapse;width:100%;table-layout:fixed}.bc td,.bc th{border:1px solid #d9d2c8;padding:4px 6px;text-align:left;vertical-align:top;overflow-wrap:anywhere}.bc th{background:#f6f1ea;font-size:11px}
+.bc .st.sr td{border-top:0}.bc .n{text-align:right}.bc .c{text-align:center}.bc .u{color:#666;font-size:10.5px}.bc tr.mt td{color:#999}
+.bc .mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bc .mtb td{padding:3px 6px}
+.bc .dg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.bc .bd{border:1px solid #d9d2c8;border-radius:6px;padding:6px 8px}.bc .bh{display:flex;justify-content:space-between;gap:6px;margin-bottom:4px;flex-wrap:wrap}.bc .bh span{color:#666;font-size:10.5px}
 .bc .bd table td{border:0;border-bottom:1px solid #eee;padding:2px 0}.bc .bd i{color:#777;font-style:normal;font-size:10.5px}.bc .bd tr.t td{border-bottom:0;font-weight:700;padding-top:4px}
-.bc .ft{margin-top:12px;color:#777;font-size:10.5px;border-top:1px solid #d9d2c8;padding-top:6px}
-@media(max-width:560px){.bc .dg{grid-template-columns:1fr}}
-@media print{@page{size:A4;margin:11mm 12mm}#pv .pg.bc{padding:0}.bc .tw{overflow:visible}.bc .dg{grid-template-columns:1fr 1fr}}</style>`;
-  showPv(css+`<div class="pg bc"><div class="hd"><h2>สรุปต้นทุนหนังสือ</h2><span>YUEHUA 悦华中文</span></div>
-  <div class="mt0">ออกเอกสารเมื่อ ${dt} · หนังสือ ${rows.length} รายการ${miss?` (ยังไม่ใส่จำนวนหน้า ${miss} รายการ)`:""} · ตัวเลขตามที่แสดงบนหน้าจอตอนกดพิมพ์</div>
-  <h3>1. ราคาวัสดุ</h3><table class="mtab">${mat}</table><div class="u" style="margin-top:4px">${esc(matUnit())}</div>
-  <h3>2. ต้นทุนหนังสือทุกเล่ม (บาท)</h3><div class="tw"><table><tr><th>#</th><th>ชื่อเล่ม</th><th>หน้า</th><th>แบ่งเล่ม</th><th>พิมพ์</th><th>ต้นทุน/ชุด</th><th>≈ ต่อเล่ม</th><th>ราคาขาย</th><th>กำไร</th></tr>${tb}</table></div>
-  <h3>3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h3><table class="ebt">${en}</table>
-  ${det?`<h3>4. รายละเอียดค่าใช้จ่ายแต่ละเล่ม (บาท)</h3><div class="dg">${det}</div>`:""}
-  <div class="ft">สันเกลียวและแผ่นใสคูณตามจำนวนเล่มที่แบ่ง · กระดาษปก ซอง/กล่อง และค่าส่ง คิดครั้งเดียวต่อชุด · ต้นทุนต่อชุดปัดขึ้นเป็นบาทเต็ม</div></div>`,[]);
-  PVKEEP=true;PVT0=document.title;document.title="ต้นทุนหนังสือ YUEHUA "+new Date().toISOString().slice(0,10);try{$("pv").scrollTop=0}catch(e){}}
+.bc .ft{margin-top:10px;color:#777;font-size:10.5px;border-top:1px solid #d9d2c8;padding-top:6px}
+.bc .bk{display:flow-root}
+#pv .pg.a4{width:210mm;height:297mm;min-height:0;padding:12mm 12mm 14mm;margin:0 auto 14px;box-sizing:border-box;position:relative;overflow:hidden;background:#fff}
+#pv .pg.a4 .pf{position:absolute;left:12mm;right:12mm;bottom:6mm;display:flex;justify-content:space-between;font-size:10px;color:#888}
+.bcx{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:0 auto 10px}
+@media print{@page{size:A4;margin:0}.bcx{display:none!important}#bcw{zoom:1!important}#pv .pg.a4{height:296.5mm;margin:0!important;box-shadow:none;page-break-after:always;break-after:page}#pv .pg.a4:last-child{page-break-after:auto;break-after:auto}}</style>`;
+  showPv(css+`<div class="bcx"><button class="btn" id="bcpdf" onclick="bcPdf(this)">ดาวน์โหลดไฟล์ PDF (A4)</button><span class="mut" style="font-size:12px" id="bcpn"></span></div><div id="bcw"></div><div class="bc" id="bcm" style="position:absolute;left:-10000px;top:0;width:186mm"></div>`,[]);
+  PVKEEP=true;PVT0=document.title;document.title="ต้นทุนหนังสือ YUEHUA "+now.toISOString().slice(0,10);
+  /* วัดความสูงแต่ละช่วง แล้วจัดลงแผ่น */
+  const ms=$("bcm");ms.innerHTML=B.map(b=>`<div class="bk">${b.h}</div>`).join("")+`<div class="bk" id="bcrep">${TH}</div><div id="bcmm" style="width:100mm;height:0"></div>`;
+  const ks=[...ms.children];B.forEach((b,i)=>b.px=ks[i].offsetHeight);const rp=$("bcrep").offsetHeight,mm=$("bcmm").offsetWidth/100||3.7795,H=(297-12-14-4)*mm;ms.remove();
+  const P=[[]];let u=0;
+  B.forEach((b,i)=>{let need=b.px;if(b.kn){let j=i+1;need+=B[j]?B[j].px:0;if(B[j]&&B[j].kn&&B[j+1])need+=B[j+1].px}
+    if(u>0&&u+need>H){P.push([]);u=0;if(b.rep){P[P.length-1].push(b.rep);u+=rp}}P[P.length-1].push(b.h);u+=b.px});
+  $("bcw").innerHTML=P.map((p,i)=>`<div class="pg a4 bc">${p.map(h=>`<div class="bk">${h}</div>`).join("")}<div class="pf"><span>สรุปต้นทุนหนังสือ · YUEHUA 悦华中文</span><span>หน้า ${i+1}/${P.length}</span></div></div>`).join("");
+  $("bcpn").textContent=`ทั้งหมด ${P.length} แผ่น A4`;bcZoom();try{$("pv").scrollTop=0}catch(e){}}
+/* ย่อแผ่นให้พอดีจอ (ตอนพิมพ์กลับเป็นขนาดจริง) */
+function bcZoom(){const w=$("bcw");if(!w)return;w.style.zoom=1;const z=Math.min(1,(($("pv").clientWidth||innerWidth)-28)/(w.querySelector(".pg.a4")||{offsetWidth:794}).offsetWidth);w.style.zoom=z>0?z:1}
+addEventListener("resize",()=>{if($("bcw")&&$("pv").style.display!=="none")bcZoom()});
+const loadJs=(()=>{const M={};return src=>M[src]||(M[src]=new Promise((ok,no)=>{const e=document.createElement("script");e.src=src;e.onload=ok;e.onerror=()=>{delete M[src];no(new Error("โหลดตัวช่วยสร้าง PDF ไม่สำเร็จ ลองใหม่อีกครั้ง"))};document.head.appendChild(e)}))})();
+/* สร้างไฟล์ PDF A4 จริงในเครื่อง (หนึ่งแผ่น = หนึ่งหน้า) แล้วดาวน์โหลด */
+async function bcPdf(btn){const w=$("bcw");if(!w)return;bbusy(btn,true,"กำลังสร้างไฟล์…");const z=w.style.zoom;
+  try{await Promise.all([loadJs("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"),loadJs("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js")]);
+    try{await document.fonts.ready}catch(e){}w.style.zoom=1;const pgs=[...w.querySelectorAll(".pg.a4")],doc=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true});
+    for(let i=0;i<pgs.length;i++){btn.textContent=`กำลังสร้างแผ่น ${i+1}/${pgs.length}…`;const c=await html2canvas(pgs[i],{scale:2,backgroundColor:"#ffffff",logging:false});if(i)doc.addPage();doc.addImage(c.toDataURL("image/jpeg",.92),"JPEG",0,0,210,297)}
+    doc.save(document.title.replace(/\s+/g,"-")+".pdf");note("ดาวน์โหลดไฟล์ PDF แล้ว")}catch(e){console.error(e);note(e&&e.message||"สร้างไฟล์ PDF ไม่สำเร็จ",1)}finally{w.style.zoom=z;bbusy(btn,false)}}
 const fotRow=o=>`<div class="fot"><input data-n maxlength="40" placeholder="เช่น สติกเกอร์" value="${esc(o&&o.n||"")}" oninput="bcLive()"><span class="fu"><input data-a type="number" min="0" step="any" inputmode="decimal" placeholder="0" value="${o&&o.a||""}" oninput="bcLive()"><i>บาท/เล่ม</i></span><button class="btn alt sm" onclick="this.parentNode.remove();bcLive()" aria-label="ลบรายการ">ลบ</button></div>`;
 function addFot(){$("fmot").insertAdjacentHTML("beforeend",fotRow());$("fmot").lastElementChild.querySelector("input").focus()}
 function fcVals(){const m=matRead(),gc=bcRead(),pc=[];
