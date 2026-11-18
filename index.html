@@ -105,6 +105,19 @@ button.ck{background:transparent;font:inherit;flex:none}
 .lbe .lbno,.lbe .lbok{display:flex;gap:6px;align-items:flex-start}.lbe .lbno{color:var(--mut);text-decoration:line-through}.lbe .lbok{font-weight:700}
 .lbe svg{flex-shrink:0;margin-top:3px}.lbe .lbno svg{color:var(--seal)}.lbe .lbok svg{color:#2b2623}.lbe .lbwhy{font-size:13px;color:var(--mut)}
 .lbe .lbno svg,.lbe .lbok svg{text-decoration:none}
+/* การ์ดห้องสมุดบนแท็บเล็ต/คอม: กว้างขึ้น ตัวใหญ่ขึ้น วิธีใช้เรียงคู่กัน */
+@media(min-width:768px){
+.bkmb.lbwide{width:min(900px,100%);padding:28px 36px 26px;max-height:92vh}
+.lbc .lbtt{gap:6px 16px;margin-top:18px}.lbc .lbtt .lbw b{font-size:48px}.lbc .lbtt .lbw small{font-size:17px}.lbc .lbtt .lbvs{font-size:18px}
+.lbc .lbo{font-size:18px;max-width:720px;margin:10px auto 4px}
+.lbc .lbhd{font-size:17px}.lbc .lbhd i{width:28px;height:28px;font-size:14px}
+.lbc ul.lbd{font-size:16px;gap:8px}
+.lbc .lbus{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;align-items:start}.lbc .lbus .lbu{margin-top:0}
+.lbu{padding:14px 16px}.lbu .lbuh b{font-size:24px}.lbu .lbuh span{font-size:15.5px}.lbu .lbfd,.lbu ul{font-size:14.5px}
+.lbex .zh{font-size:20px}.lbex .sp{font-size:14.5px}.lbex .th{font-size:15px}.lbex .lbxt{font-size:14px}
+.lbe{font-size:16px;padding:12px 16px}.lbe .lbwhy{font-size:14.5px}
+.lbc .vtip{font-size:15.5px}
+.lbc .vex{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 28px;align-items:start}.lbc .vex>:first-child{grid-column:1/-1}}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lbe .lbok svg{color:#f1ebe3}}
 
 .alr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)}.alr .vin small{display:block}.alr input{flex:1;min-width:0;margin:0}
@@ -2215,9 +2228,9 @@ function libCard(k,l,i){const D=LBD[l];if(!D)return;const L=D[k]||[],c=L[i];if(!
   <div class="lbtt">${c.h.map((h,j)=>(j?'<span class="lbvs">vs</span>':"")+`<span class="lbw"><b class="han">${esc(h[0])}</b><small>${esc(h[1])}</small></span>`).join("")}</div>
   <div class="lbo">${esc(c.o)}</div>
   ${c.d&&c.d.length?`<div class="vsec">${sec(1,H[0])}<ul class="lbd">${c.d.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
-  ${c.u&&c.u.length?`<div class="vsec">${sec(2,H[1])}${c.u.map(u=>`<div class="lbu"><div class="lbuh"><b class="han">${esc(u.w)}</b>${u.py?`<small>${esc(u.py)}</small>`:""}<span>${esc(u.m)}</span></div>
+  ${c.u&&c.u.length?`<div class="vsec">${sec(2,H[1])}<div class="lbus">${c.u.map(u=>`<div class="lbu"><div class="lbuh"><b class="han">${esc(u.w)}</b>${u.py?`<small>${esc(u.py)}</small>`:""}<span>${esc(u.m)}</span></div>
     ${(u.f||[]).map(f=>`<div class="gf">${f.c.map((x,j)=>(j?"<em>+</em>":"")+`<span class="gch ${x[1]||"p"} han">${esc(x[0])}</span>`).join("")}</div>${f.d?`<p class="lbfd">${esc(f.d)}</p>`:""}`).join("")}
-    ${u.n&&u.n.length?`<ul>${u.n.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div>`:""}
+    ${u.n&&u.n.length?`<ul>${u.n.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div></div>`:""}
   ${c.x&&c.x.length?`<div class="vsec vex">${sec(3,H[2])}${c.x.map(g=>`<div class="lbex">${g.w?`<span class="lbxt han">${esc(g.w)}</span>`:""}${g.s.map(s=>{const j=xi++;return `<div class="lbxs"><div class="zh han">${lbHL(s[0],g.hl||hl)}<button class="vsp" onclick="lbSay(${j})" aria-label="ฟังเสียงประโยค">${IC.spk}</button></div><div class="sp">${esc(s[1])}</div><div class="th">${esc(s[2])}</div></div>`}).join("")}</div>`).join("")}</div>`:""}
   ${c.e&&c.e.length?`<div class="vsec"><div class="lbhd"><i>!</i><b>ประโยคที่คนไทยมักพูดผิด</b></div>${c.e.map(e=>`<div class="lbe"><div class="lbno">${LBX}<span class="han">${esc(e[0])}</span></div><div class="lbok">${LBOK}<span class="han">${esc(e[1])}</span></div>${e[2]?`<div class="lbwhy">${esc(e[2])}</div>`:""}</div>`).join("")}</div>`:""}
   ${c.t?`<div class="vtip">${IC.bulb}<span><b>จำง่าย ๆ</b> ${esc(c.t)}</span></div>`:""}
@@ -2844,7 +2857,7 @@ function slotTk(id,v){const s=SL.find(x=>x.id===id);if(!s)return;s.tk=Math.max(0
 /* ===================== ข้อความเด้ง (ใช้ร่วม) ===================== */
 function note(m,err){let t=$("note");if(!t){t=document.createElement("div");t.id="note";t.className="notet";document.body.appendChild(t)}
   t.textContent=m;t.classList.toggle("err",!!err);t.classList.add("on");clearTimeout(note._t);note._t=setTimeout(()=>t.classList.remove("on"),3200)}
-function pop(html){$("bkmb").innerHTML=html;$("bkm").classList.add("on")}
+function pop(html){$("bkmb").innerHTML=html;$("bkmb").classList.toggle("lbwide",/class="vsh lbc"/.test(html));$("bkm").classList.add("on")}
 
 /* ===================== เกมหน้าหลัก (คนทั่วไปเล่นได้เฉพาะ 🐼 ต้น) ===================== */
 let GPUB=false,PGB="hsk1";
