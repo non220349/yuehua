@@ -667,7 +667,7 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .fmg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.fmg label,.fbi label{font-size:12px;color:var(--mut);margin:0;display:flex;flex-direction:column;gap:2px}
 .fu{display:flex;align-items:center;gap:6px}.fu input{margin:0;min-width:0;flex:1}.fu i{font-style:normal;font-size:12px;color:var(--mut);white-space:nowrap}
 .fot{display:flex;gap:6px;align-items:center;margin:4px 0}.fot>input{flex:1.3;margin:0;min-width:0}.fot .fu{flex:1}
-.fbi .fu .btn{white-space:nowrap}.fbi>label{flex:0 0 auto}.fbi .fu input{width:96px;flex:0 0 96px}
+.fbi .fu .btn{white-space:nowrap}.pfr{display:flex;gap:6px;align-items:center;margin-top:6px}.pfr:first-child{margin-top:0}.pfr input{flex:1;min-width:0}.pfn{flex:none;font-size:13px;font-weight:700;min-width:46px}.pfr .btn{flex:none}.fbi>label{flex:0 0 auto}.fbi .fu input{width:96px;flex:0 0 96px}
 .fbr{display:grid;grid-template-columns:1.2fr 1.5fr 1fr;gap:10px;align-items:center;border-top:1px solid var(--bd);padding:10px 0}
 .fbi{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}.fbi input[data-p]{width:110px;margin:0}.fbd{margin:0 0 8px!important;flex-direction:row!important;align-items:center;font-size:13px!important;color:var(--fg)!important}
 .fbo summary{cursor:pointer;color:var(--fg);font-weight:400}.fbo details[open] summary{margin-bottom:4px}
@@ -881,7 +881,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label for="pft2">ชื่อหนังสือ</label><input id="pft2" placeholder="เช่น 新HSK教程 1">
       <label for="pfd">รายละเอียดสั้น ๆ</label><textarea id="pfd" rows="2" placeholder="เช่น หนังสือเรียน HSK1 ใช้คู่กับคอร์ส"></textarea>
       <div class="vg2"><div><label for="pfpf">ราคาไฟล์ PDF (บาท)</label><input id="pfpf" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div><div><label for="pfpb">ราคาหนังสือเล่ม (บาท · ส่งฟรี)</label><input id="pfpb" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div></div>
-      <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><input id="pfu" placeholder="https://drive.google.com/file/d/...">
+      <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><div id="pful"></div><button class="btn alt sm" type="button" onclick="pfuAdd()" style="margin-top:6px">+ เพิ่มลิงก์เล่มถัดไป</button>
       <label>ปกหนังสือ</label><div class="row" style="margin:0;align-items:center"><span id="pfcv"></span><label class="btn alt sm" style="margin:0">📷 อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfPic(this)"></label><span id="pfprev"></span></div><label class="chk" style="margin:8px 0 0"><input type="checkbox" id="pfcf" onchange="cvFirst('pf',this)"> ใช้ภาพจากหน้าแรกของไฟล์</label><div class="mut" id="pfcfs" style="font-size:13px"></div>
       <label>ตัวอย่างหน้าหนังสือ (ลูกค้ากดดูได้ในร้าน · สูงสุด 12 หน้า)</label>
       <div class="row" style="margin:0"><label class="btn alt sm" style="margin:0">เลือกไฟล์ PDF<input type="file" accept="application/pdf" style="display:none" onchange="smpPdf(this)"></label><label class="btn alt sm" style="margin:0">อัปโหลดรูปหน้า<input type="file" accept="image/*" multiple style="display:none" onchange="smpImgs(this)"></label></div>
@@ -1825,17 +1825,22 @@ let BCALC={};
 function bcGroups(){const G=new Map(),add=(key,t,u)=>{let g=G.get(key);if(!g){g={k:key,t,u:u||"",cs:[],bo:0,vs:0,ps:[]};G.set(key,g)}if(!g.u&&u)g.u=u;return g};
   Object.keys(BOOKS).forEach(k=>{(BOOKS[k]||[]).forEach(b=>{const f=driveId(b.u),g=add(f?"f:"+f:"b:"+(b.dbid!=null?b.dbid:k+":"+b.t),b.t,b.u);if(C[k]){if(!g.cs.includes(k))g.cs.push(k)}else g.bo++})});
   (typeof VOCAB!=="undefined"?VOCAB:[]).forEach((v,i)=>{const f=driveId(v.u),g=add(f?"f:"+f:"v:"+(v.dbid!=null?v.dbid:i),v.t,v.u);g.vs++});
-  PRODS.forEach(p=>{const f=driveId(p.u),g=add(f?"f:"+f:"p:"+p.id,p.t,p.u);g.ps.push(p);if(!g.cs.length&&!g.vs)g.t=p.t});
+  PRODS.forEach(p=>{const L=plinks(p.u);if(L.length<=1){const f=driveId(L[0]||""),g=add(f?"f:"+f:"p:"+p.id,p.t,L[0]||"");g.ps.push(p);if(!g.cs.length&&!g.vs)g.t=p.t;return}
+    /* ขายเป็นชุดหลายไฟล์: แต่ละไฟล์เป็นหนึ่งรายการ ต้นทุนของชุด = รวมทุกไฟล์ */
+    L.forEach((u,i)=>{const f=driveId(u),g=add(f?"f:"+f:"p:"+p.id+":"+i,`${p.t} (เล่ม ${i+1})`,u);g.pp=g.pp||[];g.pp.push({p,i,n:L.length})})});
   return [...G.values()]}
 const bcOf=g=>BCALC[g.k]||(g.ps[0]&&g.ps[0].bc)||{};
+/* หนังสือในร้านที่ขายเป็นชุดหลายไฟล์: ต้นทุนชุด = รวมต้นทุนทุกไฟล์ในชุด */
+function bcSets(G,gc,m){const S=new Map();G.forEach(g=>(g.pp||[]).forEach(({p,n})=>{let s=S.get(p.id);if(!s){s={p,n,cb:0,miss:0};S.set(p.id,s)}const r=bcCalc(gc[g.k]||bcOf(g),m);s.cb+=r.cb;if(!r.pg)s.miss++}));return S}
+const bcSetLine=s=>`<div class="mut" style="font-size:12.5px;margin-top:4px">ชุดในร้าน “${esc(s.p.t)}” (${s.n} ไฟล์): ${s.miss?`ยังขาดจำนวนหน้า ${s.miss} ไฟล์`:`ต้นทุนรวม <b>${B(s.cb)}</b>${s.p.pb!=null?` · ขายชุดละ ${B(s.p.pb)} · กำไร <b style="color:${s.p.pb-s.cb<0?"var(--seal)":"var(--ok)"}">${B(s.p.pb-s.cb)}</b>`:""}`}</div>`;
 function bcRow(g){const c=bcOf(g),p=g.ps[0],price=p&&p.pb!=null?p.pb:null,r=bcCalc(c);
-  const sub=[g.cs.length?"บทเรียน: "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"ไฟล์หนังสือ (คอร์สที่ปิดไปแล้ว)":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน: "+g.ps.map(x=>x.pb!=null?`ขายเล่มละ ${B(x.pb)}`:"ไม่ขายแบบเล่ม").join(", "):""].filter(Boolean).join(" · ");
+  const sub=[g.cs.length?"บทเรียน: "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"ไฟล์หนังสือ (คอร์สที่ปิดไปแล้ว)":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน: "+g.ps.map(x=>x.pb!=null?`ขายเล่มละ ${B(x.pb)}`:"ไม่ขายแบบเล่ม").join(", "):"",(g.pp||[]).map(x=>`ร้าน: ชุด “${x.p.t}” ไฟล์ที่ ${x.i+1}/${x.n}`).join(", ")].filter(Boolean).join(" · ");
   return `<div class="fbr" data-k="${esc(g.k)}"><div class="fbt"><b>${esc(g.t)}</b><div class="mut" style="font-size:12px">${esc(sub)}</div>
     ${g.cs.length?`<label class="chk fbd" style="margin-top:6px!important"><input type="checkbox" data-s ${c.s?"checked":""} onchange="bcLive()"> ส่งเล่มจริงตอนสมัคร</label>`:""}</div>
   <div class="fbi"><label>จำนวนหน้า<span class="fu"><input type="number" min="0" inputmode="numeric" data-p value="${c.p||""}" placeholder="เช่น 120" oninput="bcLive()">${driveId(g.u)?`<button class="btn alt sm" type="button" data-cnt onclick="bcCount(this)">นับหน้า</button>`:""}</span></label>
     <label>แบ่งพิมพ์เป็น<span class="fu"><input type="number" min="1" inputmode="numeric" data-v value="${c.v>1?c.v:""}" placeholder="1" oninput="bcLive()"><i>เล่ม</i></span></label>
     <label class="chk fbd"><input type="checkbox" data-d ${c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label></div>
-  <div class="fbo" data-o>${bcOut(r,price)}</div></div>`}
+  <div class="fbo" data-o>${bcOut(r,price)}</div><div data-set></div></div>`}
 function bcOut(r,price){if(!r.pg)return '<span class="mut" style="font-size:13px">ใส่จำนวนหน้าเพื่อคิดต้นทุน</span>';
   return `<details><summary><b>${B(r.cb)}</b> <span class="mut">/ ชุด${r.v>1?` (${r.v} เล่ม ≈ ${B(Math.ceil(r.tot/r.v))}/เล่ม)`:""}</span>${price!=null?` · กำไร <b style="color:${price-r.cb<0?"var(--seal)":"var(--ok)"}">${B(price-r.cb)}</b>`:""}</summary>${r.L.filter(x=>x[2]).map(x=>`<div class="frw"><span>${esc(x[0])}${x[1]?` <span class="mut">(${x[1]})</span>`:""}</span><span>${r2(x[2]).toLocaleString("th-TH")} บาท</span></div>`).join("")}<div class="frw"><span>รวม (ปัดขึ้น)</span><b>${B(r.cb)}</b></div></details>`}
 const rowCalc=row=>({p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked,v:Math.max(1,Math.round(fnum(row.querySelector("[data-v]").value))||1),s:!!(row.querySelector("[data-s]")&&row.querySelector("[data-s]").checked)});
@@ -1846,6 +1851,7 @@ function ebOut(gc,m){const {eb,used}=ebCalc(gc,m);return FCRS().map(([k,n])=>`<d
 function bcRead(){const gc={};document.querySelectorAll("#fpc .fbr").forEach(row=>{gc[row.dataset.k]=rowCalc(row)});return gc}
 function bcLive(){BMAT=matRead();const pu=$("fmu");if(pu)pu.innerHTML=matUnit();const gc=bcRead(),G=new Map(bcGroups().map(g=>[g.k,g]));
   document.querySelectorAll("#fpc .fbr").forEach(row=>{const g=G.get(row.dataset.k),p=g&&g.ps[0];row.querySelector("[data-o]").innerHTML=bcOut(bcCalc(gc[row.dataset.k]),p&&p.pb!=null?p.pb:null)});
+  bcSetDraw([...G.values()],gc);
   if($("fec2"))$("fec2").innerHTML=ebOut(gc,BMAT)}
 const matUnit=()=>`กระดาษ ${BMAT.rs?r2(fnum(BMAT.rp)/fnum(BMAT.rs)):0} บาท/แผ่น · หมึก ${BMAT.iy?r2(fnum(BMAT.ip)/fnum(BMAT.iy)):0} บาท/หน้า`;
 function renderBc(){if(!$("fmat"))return;
@@ -1853,7 +1859,7 @@ function renderBc(){if(!$("fmat"))return;
   <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อชุด)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
   <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
   const G=bcGroups();$("fpc").innerHTML=G.length?G.map(bcRow).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือ เพิ่มได้ที่เมนูไฟล์หนังสือ คลังคำศัพท์ หรือร้านหนังสือ</div>';
-  const gc={};G.forEach(g=>gc[g.k]=bcOf(g));$("fec2").innerHTML=ebOut(gc,BMAT)}
+  const gc={};G.forEach(g=>gc[g.k]=bcOf(g));$("fec2").innerHTML=ebOut(gc,BMAT);bcSetDraw(G,gc)}
 /* นับหน้าจากไฟล์ (ใช้ได้กับลิงก์ Google Drive ในหลังบ้านจริง) */
 let countPdfPages=u=>Promise.reject(new Error("ตัวอย่างนี้นับหน้าจากไฟล์ไม่ได้ ใส่จำนวนหน้าเองได้เลย"));
 const bbusy=(b,on,t)=>{if(!b)return;if(on){b.dataset.t0=b.textContent;b.disabled=true;if(t)b.textContent=t}else{b.disabled=false;if(b.dataset.t0!=null)b.textContent=b.dataset.t0}};
@@ -1870,7 +1876,7 @@ async function bcCountAll(){const rows=[...document.querySelectorAll("#fpc .fbr"
    ใช้ตัวเลขที่แสดงบนหน้าจอตอนกด · ปิดแล้วกลับมาที่เดิม ตัวเลขที่ยังไม่บันทึกไม่หาย */
 function printBc(){const m=matRead(),gc=bcRead(),G=bcGroups(),bv=n=>r2(n).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2}),N=n=>n.toLocaleString("th-TH");
   const now=new Date(),dt=now.toLocaleDateString("th-TH",{year:"numeric",month:"long",day:"numeric"})+" "+now.toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"});
-  const used=g=>[g.cs.length?"บทเรียน "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"คอร์สที่ปิดแล้ว":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน":""].filter(Boolean).join(" · ");
+  const used=g=>[g.cs.length?"บทเรียน "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"คอร์สที่ปิดแล้ว":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน":"",(g.pp||[]).map(x=>`ร้าน: ชุด “${x.p.t}” ไฟล์ ${x.i+1}/${x.n}`).join(", ")].filter(Boolean).join(" · ");
   const rows=G.map(g=>{const c=gc[g.k]||bcOf(g),r=bcCalc(c,m),p=g.ps[0];return {g,c,r,price:p&&p.pb!=null?p.pb:null}}),ok=rows.filter(x=>x.r.pg),miss=rows.length-ok.length;
   const B=[],add=(h,o)=>B.push(Object.assign({h},o||{}));
   add(`<div class="hd"><h2>สรุปต้นทุนหนังสือ</h2><span>YUEHUA 悦华中文</span></div><div class="mt0">ออกเอกสารเมื่อ ${dt} · หนังสือ ${rows.length} รายการ${miss?` (ยังไม่ใส่จำนวนหน้า ${miss} รายการ)`:""} · ตัวเลขตามที่แสดงบนหน้าจอตอนออกเอกสาร</div>`);
@@ -1883,6 +1889,9 @@ function printBc(){const m=matRead(),gc=bcRead(),G=bcGroups(),bv=n=>r2(n).toLoca
     TH=`<table class="st">${CG}<tr><th>#</th><th>ชื่อเล่ม</th><th class="n">หน้า</th><th class="n">แบ่งเล่ม</th><th class="c">พิมพ์</th><th class="n">ต้นทุน/ชุด</th><th class="n">≈ ต่อเล่ม</th><th class="n">ราคาขาย</th><th class="n">กำไร</th></tr></table>`;
   add(TH,{kn:1});
   rows.forEach((x,i)=>add(`<table class="st sr">${CG}<tr${x.r.pg?"":' class="mt"'}><td class="n">${i+1}</td><td><b>${esc(x.g.t)}</b><div class="u">${esc(used(x.g))}${x.c.s?" · ส่งตอนสมัคร":""}</div></td><td class="n">${x.r.pg||"-"}</td><td class="n">${x.r.pg?x.r.v:"-"}</td><td class="c">${x.r.pg?(x.c.d?"2 หน้า":"หน้าเดียว"):"-"}</td><td class="n"><b>${x.r.pg?N(x.r.cb):"-"}</b></td><td class="n">${x.r.pg&&x.r.v>1?N(Math.ceil(x.r.tot/x.r.v)):"-"}</td><td class="n">${x.price!=null?N(x.price):"-"}</td><td class="n">${x.price!=null&&x.r.pg?N(x.price-x.r.cb):"-"}</td></tr></table>`,{rep:TH}));
+  const SS=[...bcSets(G,gc,m).values()];
+  if(SS.length){add(`<div class="u" style="margin:8px 0 4px"><b>หนังสือในร้านที่ขายเป็นชุดหลายไฟล์</b> (ต้นทุนชุด = รวมทุกไฟล์ในชุด)</div>`,{kn:1});
+    SS.forEach((x,i)=>add(`<table class="st ebt${i?" sr":""}"><tr><td><b>${esc(x.p.t)}</b><div class="u">${x.n} ไฟล์${x.miss?` · ยังขาดจำนวนหน้า ${x.miss} ไฟล์`:""}</div></td><td class="n" style="width:22%">ต้นทุน <b>${x.miss?"-":N(x.cb)}</b></td><td class="n" style="width:20%">ขาย ${x.p.pb!=null?N(x.p.pb):"-"}</td><td class="n" style="width:20%">กำไร ${x.p.pb!=null&&!x.miss?N(x.p.pb-x.cb):"-"}</td></tr></table>`))}
   add(`<h3>3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h3>`,{kn:1});
   const {eb,used:eu}=ebCalc(gc,m);
   FCRS().forEach(([k,n],i)=>add(`<table class="st ebt${i?" sr":""}"><tr><td><b>${esc(n)}</b><div class="u">${eu[k].length?esc(eu[k].join(" + ")):(+FIN.eb[k]?"ยังไม่ได้ติ๊กเล่มที่ส่ง · ใช้ตัวเลขเดิม":"ไม่ส่งเล่มจริง")}</div></td><td class="n" style="width:30%"><b>${N(eb[k])}</b> บาท</td></tr></table>`));
@@ -1925,8 +1934,11 @@ async function bcPdf(btn){const w=$("bcw");if(!w)return;bbusy(btn,true,"กำ�
     doc.save(document.title.replace(/\s+/g,"-")+".pdf");note("ดาวน์โหลดไฟล์ PDF แล้ว")}catch(e){console.error(e);note(e&&e.message||"สร้างไฟล์ PDF ไม่สำเร็จ",1)}finally{w.style.zoom=z;bbusy(btn,false)}}
 const fotRow=o=>`<div class="fot"><input data-n maxlength="40" placeholder="เช่น สติกเกอร์" value="${esc(o&&o.n||"")}" oninput="bcLive()"><span class="fu"><input data-a type="number" min="0" step="any" inputmode="decimal" placeholder="0" value="${o&&o.a||""}" oninput="bcLive()"><i>บาท/เล่ม</i></span><button class="btn alt sm" onclick="this.parentNode.remove();bcLive()" aria-label="ลบรายการ">ลบ</button></div>`;
 function addFot(){$("fmot").insertAdjacentHTML("beforeend",fotRow());$("fmot").lastElementChild.querySelector("input").focus()}
-function fcVals(){const m=matRead(),gc=bcRead(),pc=[];
-  bcGroups().forEach(g=>{const c=gc[g.k];if(!c)return;g.ps.forEach(p=>pc.push([p.id,bcCalc(c,m).cb,{p:c.p,d:c.d,v:c.v}]))});
+function bcSetDraw(G,gc){const S=bcSets(G,gc,BMAT);document.querySelectorAll("#fpc .fbr [data-set]").forEach(e=>e.innerHTML="");
+  S.forEach(s=>{const g=G.find(g=>(g.pp||[]).some(x=>x.p.id===s.p.id&&x.i===0)),e=g&&document.querySelector(`#fpc .fbr[data-k="${CSS.escape(g.k)}"] [data-set]`);if(e)e.innerHTML=bcSetLine(s)})}
+function fcVals(){const m=matRead(),gc=bcRead(),pc=[],G=bcGroups();
+  G.forEach(g=>{const c=gc[g.k];if(!c)return;g.ps.forEach(p=>pc.push([p.id,bcCalc(c,m).cb,{p:c.p,d:c.d,v:c.v}]))});
+  bcSets(G,gc,m).forEach(s=>pc.push([s.p.id,s.cb,{set:s.n}]));
   return {m,gc,pc,eb:ebCalc(gc,m).eb}}
 function saveFc(){const v=fcVals();BMAT=v.m;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});FIN.eb=v.eb;BCALC=v.gc;try{document.activeElement.blur()}catch(e){}renderFin();renderBc();note("บันทึกต้นทุนแล้ว")}
 const AGRP={"a-ov":"ov","a-new":"stu","a-ref":"stu","a-stu":"stu","a-tr":"stu","a-sch":"stu","a-rs":"stu","a-live":"stu","a-vid":"les","a-bf":"les","a-vf":"les","a-bk":"shop","a-shop":"shop","a-fin":"shop","a-crs":"sys","a-ban":"sys","a-rv":"sys","a-mail":"sys","a-tools":"sys"};
@@ -3094,7 +3106,7 @@ function placeOrder(){if(pvBlock())return;const [o,err]=orderForm();$("oerr").te
 let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null,PFSM=[],SMPDF=null;
 function renderShopAdmin(){const e=$("prl");if(!e)return;
   const cur=PFE!=null?prodBy(PFE):null;
-  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";$("pfu").value=cur?cur.u||"":"";$("pfon").checked=cur?cur.on:true;
+  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";pfuDraw(plinks(cur&&cur.u));$("pfon").checked=cur?cur.on:true;
     cvReset("pf");PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";PFSM=cur?(cur.sm||[]).slice():[];SMPDF=null;$("smpdf").style.display="none";smpDraw();$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
   $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
   e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
@@ -3111,10 +3123,17 @@ function poHint(){const ids=[...document.querySelectorAll("#pops input:checked")
   $("pohint").textContent=ids.length<2?"เลือกหนังสืออย่างน้อย 2 เล่ม":`ราคาปกติรวม · ไฟล์ ${B(promoNormal(t,"file"))} · เล่ม ${B(promoNormal(t,"book"))}`}
 async function pfPic(inp){const f=inp.files&&inp.files[0];if(!f)return;try{PFPIC=await picToJpeg(f,700);$("pfprev").innerHTML=`<span class="bcv sm2"><img src="${PFPIC}" alt=""></span>`;$("pfcv").innerHTML=covSel("pfc","__pic")}catch(e){alert("อ่านรูปไม่ได้")}}
 const numOrNull=v=>{v=String(v).trim();if(v==="")return null;const n=Math.round(+v);return isFinite(n)&&n>=0?n:NaN};
-function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),u=$("pfu").value.trim(),c=$("pfc").value;
+/* ลิงก์ไฟล์ของหนังสือในร้าน: มีได้หลายเล่ม (เก็บรวมเป็นข้อความ คั่นด้วยขึ้นบรรทัดใหม่) */
+const plinks=u=>String(u||"").split(/\s+/).filter(x=>/^https:\/\//.test(x));
+const pfuVals=()=>[...document.querySelectorAll("#pful input")].map(x=>x.value.trim());
+function pfuDraw(L){L=L&&L.length?L:[""];const many=L.length>1;
+  $("pful").innerHTML=L.map((u,i)=>`<div class="pfr">${many?`<span class="pfn">เล่ม ${i+1}</span>`:""}<input${i?"":' id="pfu"'} value="${esc(u)}" placeholder="https://drive.google.com/file/d/...">${i?`<button class="btn alt sm" type="button" onclick="pfuDel(${i})" aria-label="ลบลิงก์เล่ม ${i+1}">ลบ</button>`:""}</div>`).join("")}
+function pfuAdd(){const L=pfuVals();if(L.length>=10)return;L.push("");pfuDraw(L);const x=document.querySelectorAll("#pful input");x[x.length-1].focus()}
+function pfuDel(i){const L=pfuVals();L.splice(i,1);pfuDraw(L)}
+function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),UL=pfuVals().filter(Boolean),u=UL.join("\n"),c=$("pfc").value;
   if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
   if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
-  if(u&&!/^https:\/\//.test(u)){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https://");return null}
+  if(UL.some(x=>!/^https:\/\/\S+$/.test(x))){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https:// (ช่องละ 1 ลิงก์)");return null}
   const cur=PFE!=null?prodBy(PFE):null;
   return {t,d:$("pfd").value.trim(),pf,pb,u,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
 function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
@@ -4142,7 +4161,7 @@ window.savePr=async function(){const v=prVals();if(!v)return;const btn=$("prsb")
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
     const [{error:fe},{error:ce}]=await Promise.all([sb.from("product_files").upsert({product_id:id,file_url:v.u}),sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()})]);if(fe)throw fe;if(ce)throw ce;
-    PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว");if(v.u)bcAutoCount(v.u)}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+    PFE=null;$("pft2").dataset.k="";await loadShop(true);renderShopAdmin();toast("บันทึกหนังสือแล้ว");(async()=>{for(const u of plinks(v.u))await bcAutoCount(u)})()}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 window.delPr=async function(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return}PRDEL=null;
   const {error}=await sb.from("products").delete().eq("id",id);if(error){fail(error);return}
   for(const x of PROMOS.filter(p=>p.ids.includes(id)))await sb.from("promos").update({product_ids:x.ids.filter(i=>i!==id)}).eq("id",x.id);
