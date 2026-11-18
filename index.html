@@ -868,7 +868,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <div id="frl"></div></div>
   <div class="card" id="fbc"><b>คิดต้นทุนหนังสือ</b><div class="mut" style="font-size:13px">ใส่ราคาวัสดุครั้งเดียว แล้วแต่ละเล่มใส่จำนวนหน้ากับจำนวนเล่มที่แบ่งพิมพ์ ระบบคิดต้นทุนให้ และหักให้อัตโนมัติทุกคำสั่งซื้อและทุกการสมัครเรียน</div>
     <h4 class="fbh">1. ราคาวัสดุ (ใช้กับทุกเล่ม)</h4><div id="fmat"></div>
-    <h4 class="fbh">2. หนังสือทั้งหมด</h4><div class="mut" style="font-size:12.5px">รวมไฟล์หนังสือในบทเรียนทุกคอร์สและหนังสือในร้าน · ไฟล์เดียวกันที่อยู่หลายที่แสดงครั้งเดียว · หนังสือที่มีลิงก์ Google Drive กด “นับหน้า” ให้ระบบอ่านจำนวนหน้าจากไฟล์ได้</div>
+    <h4 class="fbh">2. หนังสือทั้งหมด</h4><div class="mut" style="font-size:12.5px">รวมทุกเล่มที่อยู่ในระบบ: ไฟล์หนังสือในบทเรียน คลังคำศัพท์ฟรี และหนังสือในร้าน · ไฟล์เดียวกันที่อยู่หลายที่แสดงครั้งเดียว · หนังสือที่มีลิงก์ Google Drive กด “นับหน้า” ให้ระบบอ่านจำนวนหน้าจากไฟล์ได้</div>
     <div class="row" style="margin-top:6px"><button class="btn alt sm" id="fbcall" onclick="bcCountAll()">นับหน้าทุกเล่มที่ยังว่าง</button></div><div id="fpc"></div>
     <h4 class="fbh">3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h4><div class="mut" style="font-size:12.5px">คิดจากเล่มที่ติ๊ก “ส่งเล่มจริงตอนสมัคร” ในข้อ 2</div><div id="fec2"></div>
     <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button></div></div>
@@ -1820,15 +1820,16 @@ function bcCalc(c,m){m=m||BMAT;const pg=Math.max(0,Math.round(fnum(c&&c.p))),v=M
   const tot=L.reduce((a,x)=>a+x[2],0);return {pg,v,sheets,L,tot,cb:pg?Math.ceil(tot):0}}
 function matRead(){const m=Object.assign({},MATDEF);MATF.forEach(([k])=>{const e=$("bm-"+k);if(e)m[k]=fnum(e.value)});
   m.ot=[...document.querySelectorAll("#fmot .fot")].map(r=>({n:r.querySelector("input[data-n]").value.trim().slice(0,40),a:fnum(r.querySelector("input[data-a]").value)})).filter(o=>o.n||o.a);return m}
-/* หนังสือทั้งหมด = ไฟล์หนังสือในบทเรียน + หนังสือในร้าน · ไฟล์ Drive เดียวกันรวมเป็นรายการเดียว */
+/* หนังสือทั้งหมด = ไฟล์หนังสือในบทเรียน + คลังคำศัพท์ + หนังสือในร้าน · ไฟล์ Drive เดียวกันรวมเป็นรายการเดียว */
 let BCALC={};
-function bcGroups(){const G=new Map(),add=(key,t,u)=>{let g=G.get(key);if(!g){g={k:key,t,u:u||"",cs:[],ps:[]};G.set(key,g)}if(!g.u&&u)g.u=u;return g};
-  Object.keys(BOOKS).forEach(k=>{if(!C[k])return;(BOOKS[k]||[]).forEach(b=>{const f=driveId(b.u),g=add(f?"f:"+f:"b:"+b.dbid,b.t,b.u);if(!g.cs.includes(k))g.cs.push(k)})});
-  PRODS.forEach(p=>{const f=driveId(p.u),g=add(f?"f:"+f:"p:"+p.id,p.t,p.u);g.ps.push(p);if(!g.cs.length)g.t=p.t});
+function bcGroups(){const G=new Map(),add=(key,t,u)=>{let g=G.get(key);if(!g){g={k:key,t,u:u||"",cs:[],bo:0,vs:0,ps:[]};G.set(key,g)}if(!g.u&&u)g.u=u;return g};
+  Object.keys(BOOKS).forEach(k=>{(BOOKS[k]||[]).forEach(b=>{const f=driveId(b.u),g=add(f?"f:"+f:"b:"+(b.dbid!=null?b.dbid:k+":"+b.t),b.t,b.u);if(C[k]){if(!g.cs.includes(k))g.cs.push(k)}else g.bo++})});
+  (typeof VOCAB!=="undefined"?VOCAB:[]).forEach((v,i)=>{const f=driveId(v.u),g=add(f?"f:"+f:"v:"+(v.dbid!=null?v.dbid:i),v.t,v.u);g.vs++});
+  PRODS.forEach(p=>{const f=driveId(p.u),g=add(f?"f:"+f:"p:"+p.id,p.t,p.u);g.ps.push(p);if(!g.cs.length&&!g.vs)g.t=p.t});
   return [...G.values()]}
 const bcOf=g=>BCALC[g.k]||(g.ps[0]&&g.ps[0].bc)||{};
 function bcRow(g){const c=bcOf(g),p=g.ps[0],price=p&&p.pb!=null?p.pb:null,r=bcCalc(c);
-  const sub=[g.cs.length?"บทเรียน: "+g.cs.map(k=>C[k].n).join(", "):"",g.ps.length?"ร้าน: "+g.ps.map(x=>x.pb!=null?`ขายเล่มละ ${B(x.pb)}`:"ไม่ขายแบบเล่ม").join(", "):""].filter(Boolean).join(" · ");
+  const sub=[g.cs.length?"บทเรียน: "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"ไฟล์หนังสือ (คอร์สที่ปิดไปแล้ว)":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน: "+g.ps.map(x=>x.pb!=null?`ขายเล่มละ ${B(x.pb)}`:"ไม่ขายแบบเล่ม").join(", "):""].filter(Boolean).join(" · ");
   return `<div class="fbr" data-k="${esc(g.k)}"><div class="fbt"><b>${esc(g.t)}</b><div class="mut" style="font-size:12px">${esc(sub)}</div>
     ${g.cs.length?`<label class="chk fbd" style="margin-top:6px!important"><input type="checkbox" data-s ${c.s?"checked":""} onchange="bcLive()"> ส่งเล่มจริงตอนสมัคร</label>`:""}</div>
   <div class="fbi"><label>จำนวนหน้า<span class="fu"><input type="number" min="0" inputmode="numeric" data-p value="${c.p||""}" placeholder="เช่น 120" oninput="bcLive()">${driveId(g.u)?`<button class="btn alt sm" type="button" data-cnt onclick="bcCount(this)">นับหน้า</button>`:""}</span></label>
@@ -1851,7 +1852,7 @@ function renderBc(){if(!$("fmat"))return;
   $("fmat").innerHTML=`<div class="fmg">${MATF.map(([k,l,u])=>`<label>${l}<span class="fu"><input id="bm-${k}" type="number" min="0" step="any" inputmode="decimal" value="${BMAT[k]||""}" placeholder="0" oninput="bcLive()"><i>${u}</i></span></label>`).join("")}</div>
   <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อชุด)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
   <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
-  const G=bcGroups();$("fpc").innerHTML=G.length?G.map(bcRow).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือ เพิ่มได้ที่เมนูไฟล์หนังสือหรือร้านหนังสือ</div>';
+  const G=bcGroups();$("fpc").innerHTML=G.length?G.map(bcRow).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือ เพิ่มได้ที่เมนูไฟล์หนังสือ คลังคำศัพท์ หรือร้านหนังสือ</div>';
   const gc={};G.forEach(g=>gc[g.k]=bcOf(g));$("fec2").innerHTML=ebOut(gc,BMAT)}
 /* นับหน้าจากไฟล์ (ใช้ได้กับลิงก์ Google Drive ในหลังบ้านจริง) */
 let countPdfPages=u=>Promise.reject(new Error("ตัวอย่างนี้นับหน้าจากไฟล์ไม่ได้ ใส่จำนวนหน้าเองได้เลย"));
@@ -4038,7 +4039,7 @@ window.mvPo=async function(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PRO
 window.saveVf=async function(){const v=vfVals();if(!v)return;const btn=$("vfsb");busy(btn,true);
   try{const cover=await upCover(v.c,"vocab");const row={title:v.t,file_url:v.u,cover,product_id:v.p||null};const cur=VFE!=null?VOCAB[VFE]:null;
     const q=cur?sb.from("vocab_files").update(row).eq("id",cur.dbid):sb.from("vocab_files").insert(Object.assign(row,{sort:VOCAB.length}));
-    const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+    const {error}=await q;if(error)throw error;VFE=null;$("vft").dataset.k="";await loadVocab();renderVfAdmin();toast("บันทึกไฟล์คำศัพท์แล้ว");if(v.u)bcAutoCount(v.u)}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 window.delVf=async function(i){if(VFDEL!==i){VFDEL=i;renderVfAdmin();return}VFDEL=null;
   const {error}=await sb.from("vocab_files").delete().eq("id",VOCAB[i].dbid);if(error){fail(error);return}if(VFE===i)VFE=null;await loadVocab();renderVfAdmin();toast("ลบแล้ว")};
 window.mvVf=async function(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]]=[VOCAB[j],VOCAB[i]];renderVfAdmin();await reorder("vocab_files",VOCAB);await loadVocab()};
