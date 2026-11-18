@@ -1860,9 +1860,11 @@ const bbusy=(b,on,t)=>{if(!b)return;if(on){b.dataset.t0=b.textContent;b.disabled
 async function bcCount(btn){const row=btn.closest(".fbr"),g=bcGroups().find(x=>x.k===row.dataset.k);if(!g)return;bbusy(btn,true,"กำลังนับ…");
   try{const n=await countPdfPages(g.u);row.querySelector("[data-p]").value=n;bcLive();note(`${g.t}: ${n} หน้า`)}catch(e){note(e&&e.message||"นับหน้าไม่สำเร็จ",1)}finally{bbusy(btn,false)}}
 async function bcCountAll(){const rows=[...document.querySelectorAll("#fpc .fbr")].filter(r=>!r.querySelector("[data-p]").value&&r.querySelector("[data-cnt]"));
-  if(!rows.length){note("ทุกเล่มที่มีลิงก์ Drive มีจำนวนหน้าแล้ว");return}const b=$("fbcall");bbusy(b,true,`กำลังนับ 0/${rows.length}…`);let ok=0;
-  for(let i=0;i<rows.length;i++){b.textContent=`กำลังนับ ${i+1}/${rows.length}…`;const g=bcGroups().find(x=>x.k===rows[i].dataset.k);
-    try{rows[i].querySelector("[data-p]").value=await countPdfPages(g.u);ok++}catch(e){}}
+  if(!rows.length){note("ทุกเล่มที่มีลิงก์ Drive มีจำนวนหน้าแล้ว");return}const b=$("fbcall");bbusy(b,true,`กำลังนับ 0/${rows.length}…`);let ok=0,done=0;
+  /* นับพร้อมกันครั้งละ 4 เล่ม */
+  await pool(rows.map(row=>async()=>{const g=bcGroups().find(x=>x.k===row.dataset.k),cb=row.querySelector("[data-cnt]");if(cb)cb.disabled=true;
+    try{const n=await countPdfPages(g.u);if(!row.querySelector("[data-p]").value){row.querySelector("[data-p]").value=n;bcLive()}ok++}catch(e){}
+    finally{if(cb)cb.disabled=false;done++;b.textContent=`กำลังนับ ${done}/${rows.length}…`}}),4);
   b.textContent=b.dataset.t0;bbusy(b,false);bcLive();note(ok===rows.length?`นับครบ ${ok} เล่มแล้ว อย่าลืมกดบันทึกต้นทุน`:`นับได้ ${ok}/${rows.length} เล่ม ที่เหลือใส่เองได้`,ok<rows.length)}
 const fotRow=o=>`<div class="fot"><input data-n maxlength="40" placeholder="เช่น สติกเกอร์" value="${esc(o&&o.n||"")}" oninput="bcLive()"><span class="fu"><input data-a type="number" min="0" step="any" inputmode="decimal" placeholder="0" value="${o&&o.a||""}" oninput="bcLive()"><i>บาท/เล่ม</i></span><button class="btn alt sm" onclick="this.parentNode.remove();bcLive()" aria-label="ลบรายการ">ลบ</button></div>`;
 function addFot(){$("fmot").insertAdjacentHTML("beforeend",fotRow());$("fmot").lastElementChild.querySelector("input").focus()}
@@ -3081,7 +3083,7 @@ const PCS=8192;
 const b2s=u=>{let r="";for(let i=0;i<u.length;i+=8192)r+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return r};
 async function pool(fs,n){const out=new Array(fs.length);let k=0;await Promise.all(Array.from({length:Math.min(n,fs.length)},async()=>{while(k<fs.length){const i=k++;out[i]=await fs[i]()}}));return out}
 async function inflateZ(u){return new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer())}
-async function pdfUrlRanged(url,h,batch){const lib=await loadPdfJs();
+async function pdfUrlRanged(url,h,batch,noPre){const lib=await loadPdfJs();
   const rd=async r=>{const x=await fetch(url,{headers:Object.assign({Range:r},h)});if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}return x};
   const [a,z]=await Promise.all([rd("bytes=0-65535"),rd("bytes=-262144")]);
   const cr=a.headers.get("content-range")||"",tot=+(cr.split("/")[1]||0),head=new Uint8Array(await a.arrayBuffer());
@@ -3094,26 +3096,56 @@ async function pdfUrlRanged(url,h,batch){const lib=await loadPdfJs();
     if(!runs.length)return;const R=[];for(const [x,y] of runs)for(let i=x;i<y;i+=128)R.push([i*PCS,Math.min(tot,Math.min(y,i+128)*PCS)]);const B=await batch(R);B.forEach((b,k)=>put(R[k][0],new Uint8Array(b)))};
   const get=async(b,e)=>{const i0=Math.floor(b/PCS),i1=Math.ceil(e/PCS),need=[];for(let i=i0;i<i1;i++)need.push(i);await fill(need);
     const o=new Uint8Array(e-b);for(let i=i0;i<i1;i++){const c=C.get(i),cs=i*PCS,x0=Math.max(b,cs),x1=Math.min(e,cs+c.length);o.set(c.subarray(x0-cs,x1-cs),x0-b)}return o.buffer};
-  try{await pdfPrefetch(tail,t0,get,fill)}catch(e){console.warn("prefetch",e)}
+  if(!noPre)try{await pdfPrefetch(tail,t0,get,fill)}catch(e){console.warn("prefetch",e)}
   let task=null;const t=new lib.PDFDataRangeTransport(tot,null);
   t.requestDataRange=(b,e)=>{get(b,e).then(buf=>t.onDataRange(b,new Uint8Array(buf)),er=>{console.error(er);if(task)task.destroy()})};
   task=lib.getDocument({range:t,rangeChunkSize:PCS,disableAutoFetch:true,disableStream:true,worker:pdfWorker(lib)});return task.promise}
 /* อ่าน xref จากท้ายไฟล์ แล้วดึงหัวข้อมูลของทุกหน้า (Kids) มาเก็บไว้ในคำขอเดียว */
-async function pdfPrefetch(tail,t0,get,fill){
-  const tt=b2s(tail),m=tt.lastIndexOf("startxref");if(m<0)return;const N=parseInt(tt.slice(m+9).trim(),10);if(!(N>=t0))return;
-  const at=tt.slice(N-t0),off=new Map();let trailer="";
-  if(at.startsWith("xref")){const ti=at.indexOf("trailer");if(ti<0)return;trailer=at.slice(ti,ti+4000);let cur=0;
+/* อ่านตาราง xref ที่ตำแหน่งเริ่มของ buf → {trailer, off: เลขวัตถุ→ตำแหน่งในไฟล์, os: เลขวัตถุ→[สตรีมที่เก็บ, ลำดับ]} */
+async function pdfXrefAt(buf){const at=b2s(buf.subarray(0,Math.min(buf.length,4194304))),off=new Map(),os=new Map();let trailer="";
+  if(at.startsWith("xref")){const ti=at.indexOf("trailer");if(ti<0)return null;trailer=at.slice(ti,ti+4000);let cur=0;
     for(const L of at.slice(4,ti).split(/[\r\n]+/)){const p=L.trim().split(/\s+/);if(p.length===2)cur=+p[0];else if(p.length>=3){if(p[2]==="n")off.set(cur,+p[0]);cur++}}}
-  else{const di=at.indexOf("<<"),si=at.indexOf("stream",di);if(di<0||si<0)return;const d=at.slice(di,si);trailer=d;
-    const W=(d.match(/\/W\s*\[\s*(\d+)\s+(\d+)\s+(\d+)\s*\]/)||[]).slice(1).map(Number),L=+((d.match(/\/Length\s+(\d+)(?!\s+\d+\s+R)/)||[])[1]||0);if(W.length!==3||!L)return;
-    let ds=si+6;if(at[ds]==="\r")ds++;if(at[ds]==="\n")ds++;let u=tail.subarray(N-t0+ds,N-t0+ds+L);if(/FlateDecode/.test(d))u=await inflateZ(u);
+  else{const di=at.indexOf("<<"),si=at.indexOf("stream",di);if(di<0||si<0)return null;const d=at.slice(di,si);trailer=d;
+    const W=(d.match(/\/W\s*\[\s*(\d+)\s+(\d+)\s+(\d+)\s*\]/)||[]).slice(1).map(Number),L=+((d.match(/\/Length\s+(\d+)(?!\s+\d+\s+R)/)||[])[1]||0);if(W.length!==3||!L)return null;
+    let ds=si+6;if(at[ds]==="\r")ds++;if(at[ds]==="\n")ds++;if(ds+L>buf.length)return null;let u=buf.subarray(ds,ds+L);if(/FlateDecode/.test(d))u=await inflateZ(u);
     const pr=+((d.match(/\/Predictor\s+(\d+)/)||[])[1]||1),rw=W[0]+W[1]+W[2];
     if(pr>=10){const cols=+((d.match(/\/Columns\s+(\d+)/)||[])[1]||rw),n=Math.floor(u.length/(cols+1)),o=new Uint8Array(n*cols);
       for(let r=0;r<n;r++){const f=u[r*(cols+1)];for(let c=0;c<cols;c++){const x=u[r*(cols+1)+1+c],up=r?o[(r-1)*cols+c]:0,lf=c?o[r*cols+c-1]:0;
-        o[r*cols+c]=f===0?x:f===1?(x+lf)&255:f===2?(x+up)&255:NaN}if(f>2)return}u=o}else if(pr!==1)return;
+        o[r*cols+c]=f===0?x:f===1?(x+lf)&255:f===2?(x+up)&255:NaN}if(f>2)return null}u=o}else if(pr!==1)return null;
     const ix=((d.match(/\/Index\s*\[([^\]]*)\]/)||[])[1]||"0 "+((d.match(/\/Size\s+(\d+)/)||[])[1]||0)).trim().split(/\s+/).map(Number);
     const rdn=(p,w)=>{let v=0;for(let k=0;k<w;k++)v=v*256+u[p+k];return v};let p=0;
-    for(let q=0;q+1<ix.length;q+=2)for(let k=0;k<ix[q+1]&&p+rw<=u.length;k++,p+=rw){const ty=W[0]?rdn(p,W[0]):1;if(ty===1)off.set(ix[q]+k,rdn(p+W[0],W[1]))}}
+    for(let q=0;q+1<ix.length;q+=2)for(let k=0;k<ix[q+1]&&p+rw<=u.length;k++,p+=rw){const ty=W[0]?rdn(p,W[0]):1;if(ty===1)off.set(ix[q]+k,rdn(p+W[0],W[1]));else if(ty===2)os.set(ix[q]+k,[rdn(p+W[0],W[1]),rdn(p+W[0]+W[1],W[2])])}}
+  const pv=trailer.match(/\/Prev\s+(\d+)/);return {trailer,off,os,prev:pv?+pv[1]:null}}
+const pdfRef=(t,k)=>{const r=t.match(new RegExp("/"+k+"\\s+(\\d+)\\s+\\d+\\s+R"));return r?+r[1]:null};
+/* นับหน้าแบบเร็ว: อ่าน xref → Root → Pages แล้วเอาค่า /Count ตรง ๆ ไม่ต้องเปิดตัวอ่าน PDF · get(a,b) คืนไบต์ช่วง [a,b) · อ่านไม่ได้คืน 0 */
+async function pdfCountFast(tail,t0,tot,get){const tt=b2s(tail.subarray(Math.max(0,tail.length-2048))),m=tt.lastIndexOf("startxref");if(m<0)return 0;
+  let N=parseInt(tt.slice(m+9).trim(),10);if(!(N>=0&&N<tot))return 0;
+  const rd=async(a,b)=>{b=Math.min(tot,b);if(a>=t0)return tail.subarray(a-t0,b-t0);return get(a,b)};
+  const off=new Map(),os=new Map();let trailer="",seen=0;
+  while(N!=null&&seen<8){seen++;let X=await pdfXrefAt(await rd(N,N+(N>=t0?tot:32768)));if(!X&&N<t0)X=await pdfXrefAt(await rd(N,N+1048576));if(!X)return 0;
+    if(!trailer)trailer=X.trailer;X.off.forEach((v,k)=>{if(!off.has(k)&&!os.has(k))off.set(k,v)});X.os.forEach((v,k)=>{if(!off.has(k)&&!os.has(k))os.set(k,v)});
+    const xs=X.trailer.match(/\/XRefStm\s+(\d+)/);if(xs){const Y=await pdfXrefAt(await rd(+xs[1],+xs[1]+262144));if(Y)Y.os.forEach((v,k)=>{if(!os.has(k))os.set(k,v)})}
+    N=X.prev}
+  const stm=new Map();
+  const obj=async n=>{if(off.has(n)){const o=off.get(n);let t=b2s(await rd(o,o+4096));if(t.indexOf("endobj")<0&&t.indexOf("stream")<0)t=b2s(await rd(o,o+65536));const e=t.indexOf("endobj");return e<0?t:t.slice(0,e)}
+    if(!os.has(n))return "";const [sn,k]=os.get(n);let S=stm.get(sn);
+    if(!S){const o=off.get(sn);if(o==null)return "";const hd=b2s(await rd(o,o+4096)),si=hd.indexOf("stream");if(si<0)return "";const d=hd.slice(0,si);
+      const L=+((d.match(/\/Length\s+(\d+)(?!\s+\d+\s+R)/)||[])[1]||0),F=+((d.match(/\/First\s+(\d+)/)||[])[1]||0);if(!L||!F||L>8388608)return "";
+      let ds=si+6;if(hd[ds]==="\r")ds++;if(hd[ds]==="\n")ds++;let u=await rd(o+ds,o+ds+L);if(/FlateDecode/.test(d))u=await inflateZ(u);else if(/\/Filter/.test(d))return "";
+      const nums=b2s(u.subarray(0,F)).trim().split(/\s+/).map(Number);S={u,F,nums};stm.set(sn,S)}
+    const a=S.F+S.nums[k*2+1],b=k*2+3<S.nums.length?S.F+S.nums[k*2+3]:S.u.length;return b2s(S.u.subarray(a,b))};
+  const root=pdfRef(trailer,"Root");if(root==null)return 0;const pages=pdfRef(await obj(root),"Pages");if(pages==null)return 0;
+  const c=(await obj(pages)).match(/\/Count\s+(\d+)(?!\s+\d+\s+R)/);return c?+c[1]:0}
+/* นับหน้าไฟล์จากลิงก์ (ผ่านฟังก์ชันที่อ่านทีละช่วง): ลองแบบเร็วก่อน ไม่ได้ค่อยเปิดด้วยตัวอ่าน PDF (ไม่ดึงข้อมูลทุกหน้าล่วงหน้า) */
+async function pdfUrlCount(url,h,batch){const rd=async r=>{const x=await fetch(url,{headers:Object.assign({Range:r},h)});if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}return x};
+  try{const z=await rd("bytes=-262144"),cr=z.headers.get("content-range")||"",tail=new Uint8Array(await z.arrayBuffer()),tot=z.status===206?+(cr.split("/")[1]||0):tail.length;
+    if(tot){const t0=tot-tail.length;
+      const get=async(a,b)=>{const o=new Uint8Array(b-a);for(let p=a;p<b;p+=1048576){const e=Math.min(b,p+1048576),x=await rd(`bytes=${p}-${e-1}`);o.set(new Uint8Array(await x.arrayBuffer()),p-a)}return o};
+      const n=await pdfCountFast(tail,t0,tot,get);if(n>0)return n}}catch(e){if(/สิทธิ์|เข้าสู่ระบบ|แชร์|403|401/.test(e&&e.message||""))throw e;console.warn("fast count",e)}
+  const d=await pdfUrlRanged(url,h,batch,true);try{return d.numPages}finally{try{d.destroy()}catch(e){}}}
+async function pdfPrefetch(tail,t0,get,fill){
+  const tt=b2s(tail),m=tt.lastIndexOf("startxref");if(m<0)return;const N=parseInt(tt.slice(m+9).trim(),10);if(!(N>=t0))return;
+  const X=await pdfXrefAt(tail.subarray(N-t0));if(!X)return;const off=X.off,trailer=X.trailer;
   const obj=async(n,len)=>{const o=off.get(n);if(o==null)return "";const e=o+len;return b2s(new Uint8Array(await get(Math.floor(o/PCS)*PCS,Math.min(Math.ceil(e/PCS)*PCS,t0+tail.length))).subarray(o%PCS,o%PCS+len))};
   const ref=(t,k)=>{const r=t.match(new RegExp("/"+k+"\\s+(\\d+)\\s+\\d+\\s+R"));return r?+r[1]:null};
   const root=ref(trailer,"Root");if(root==null)return;const pages=ref(await obj(root,4096),"Pages");if(pages==null)return;
@@ -4001,7 +4033,7 @@ window.sShip=async function(code){const v=shipVals("sc-"+code,"stk-"+code);if(!v
     toast(j.emailed===false?"บันทึกแล้ว แต่ส่งอีเมลไม่สำเร็จ":"บันทึกเลขพัสดุและแจ้งนักเรียนแล้ว",j.emailed===false);renderBk()}catch(e){fail(e,e.message)}};
 /* ---------- หลังบ้าน: รูปปก ---------- */
 /* ปกจากหน้าแรกของไฟล์: ดึง PDF จากลิงก์ Google Drive ผ่านฟังก์ชัน pdfcover (แอดมินเท่านั้น · อ่านทีละช่วง ไม่โหลดทั้งเล่ม) */
-cvDriveDoc=async function(id){const {data}=await sb.auth.getSession();const t=data&&data.session&&data.session.access_token;
+async function driveSrc(id){const {data}=await sb.auth.getSession();const t=data&&data.session&&data.session.access_token;
   if(!t)throw new Error("กรุณาเข้าสู่ระบบแอดมินใหม่");
   const url=FN+"pdfcover?id="+encodeURIComponent(id),h={Authorization:"Bearer "+t,apikey:SB_KEY};
   /* แบ่งเป็นกลุ่ม (ไม่เกิน 400 ช่วง / 8MB ต่อคำขอ) ยิงพร้อมกันได้ 3 กลุ่ม · ถ้าเซิร์ฟเวอร์ตอบผิดพลาดชั่วคราว ลองใหม่สูงสุด 2 ครั้ง */
@@ -4011,7 +4043,8 @@ cvDriveDoc=async function(id){const {data}=await sb.auth.getSession();const t=da
   const batch=async R=>{const G=[];let g=[],n=0;for(const q of R){const z=q[1]-q[0];if(g.length&&(g.length>=400||n+z>8388608)){G.push(g);g=[];n=0}g.push(q);n+=z}if(g.length)G.push(g);
     const B=await pool(G.map(P=>()=>one(P)),3),out=[];
     G.forEach((P,i)=>{const b=B[i];let p=0;for(const [a,z] of P){out.push(b.slice(p,p+z-a).buffer);p+=z-a}});return out};
-  return pdfUrlRanged(url,h,batch)};
+  return {url,h,batch}}
+cvDriveDoc=async function(id){const s=await driveSrc(id);return pdfUrlRanged(s.url,s.h,s.batch)};
 async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))return dataUrl;
   const blob=await (await fetch(dataUrl)).blob(),path=`${folder}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
   const {error}=await sb.storage.from("public-assets").upload(path,blob,{contentType:"image/jpeg",upsert:false});if(error)throw error;
@@ -4079,9 +4112,8 @@ window.saveFc=async function(){const v=fcVals();const btn=$("fcsv");busy(btn,tru
     const {error:e2}=await sb.from("fin_cfg").upsert([{k:"book_mat",v:v.m},{k:"book_calc",v:v.gc},{k:"enroll_book_cost",v:v.eb}]);if(e2)throw e2;
     BMAT=v.m;BCALC=v.gc;FIN.eb=v.eb;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});try{document.activeElement.blur()}catch(e){}renderFin();renderBc();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 /* นับหน้าจากลิงก์ Google Drive (อ่านแค่โครงไฟล์ ไม่โหลดทั้งเล่ม) */
-countPdfPages=async function(u){const f=driveId(u);if(!f)throw new Error("นับหน้าได้เฉพาะลิงก์ Google Drive");await loadPdfJs();
-  let d;try{d=await cvDriveDoc(f)}catch(e){throw new Error(e&&e.message&&!/pdf|fetch|network|Failed|Invalid|Missing|Unexpected/i.test(e.message)?e.message:"อ่านไฟล์จากลิงก์ไม่ได้ ตรวจว่าแชร์เป็น “ทุกคนที่มีลิงก์” แล้ว")}
-  try{return d.numPages}finally{try{d.destroy()}catch(e){}}};
+countPdfPages=async function(u){const f=driveId(u);if(!f)throw new Error("นับหน้าได้เฉพาะลิงก์ Google Drive");
+  try{const s=await driveSrc(f);return await pdfUrlCount(s.url,s.h,s.batch)}catch(e){throw new Error(e&&e.message&&!/pdf|fetch|network|Failed|Invalid|Missing|Unexpected/i.test(e.message)?e.message:"อ่านไฟล์จากลิงก์ไม่ได้ ตรวจว่าแชร์เป็น “ทุกคนที่มีลิงก์” แล้ว")}};
 /* เพิ่มหนังสือใหม่ที่มีลิงก์ Drive: นับหน้าให้เองเบื้องหลัง แล้วเก็บไว้ในต้นทุนหนังสือ (ไม่ทับตัวเลขที่ใส่ไว้แล้ว) */
 async function bcAutoCount(u){const f=driveId(u);if(!f)return;const k="f:"+f;if(BCALC[k]&&BCALC[k].p)return;
   try{const n=await countPdfPages(u);if(!n)return;const {data}=await sb.from("fin_cfg").select("v").eq("k","book_calc").maybeSingle();const cur=(data&&data.v)||{};
