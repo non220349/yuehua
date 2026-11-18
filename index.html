@@ -84,7 +84,7 @@ button.ck{background:transparent;font:inherit;flex:none}
 .lbacc details[open] summary .lbcv{transform:rotate(180deg)}
 .lbl{display:flex;flex-direction:column;border-top:1px solid var(--bd)}
 .lbit{display:flex;align-items:center;gap:10px;padding:11px 14px;border:0;border-bottom:1px solid var(--bd);background:none;color:var(--fg);font-family:inherit;text-align:left;cursor:pointer}
-.lbit:last-child{border-bottom:0}.lbit b{font-size:17px;white-space:nowrap}.lbit span{font-size:13px;color:var(--mut);flex:1;min-width:0}.lbit i{font-style:normal;color:var(--seal);font-weight:700}
+.lbit:last-child{border-bottom:0}.lbit .lbpy{font-size:13px;font-weight:600;color:var(--seal);margin-left:6px}.lbit b{font-size:17px;white-space:nowrap}.lbit span{font-size:13px;color:var(--mut);flex:1;min-width:0}.lbit i{font-style:normal;color:var(--seal);font-weight:700}
 .lbit .lbvs,.lbtt .lbvs{color:var(--seal);font-weight:700;font-size:.8em;margin:0 3px}
 .lbsoon{padding:12px 14px;font-size:13px;color:var(--mut);border-top:1px solid var(--bd)}
 .lbc .lbtt{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:4px 8px;margin:14px 0 4px;text-align:center}
@@ -2182,7 +2182,7 @@ function dictHome(){const C=[0];for(let l=1;l<=7;l++)C.push(lvCnt(l));const S=[0
   <button class="dlc wide" style="--lc:var(--l7)" onclick="openLv(7)"><b>HSK 7–9</b><span>${C[7].toLocaleString()} คำ</span><small>สะสม ${S[7].toLocaleString()} คำ</small></button></div>`;
   return h}
 /* ===== ห้องสมุดคำจีน (悦华词语馆 • คำนี้ใช้ยังไงนะ?) · เนื้อหาแยกไฟล์ dict/lb{ระดับ}.js โหลดเมื่อเปิดใช้ ===== */
-const LBF={"1": "dict/lb1.js?v=c57167a7"},LBN={"1": {"s": 24, "p": 0, "y": 0}};const LBD={};
+const LBF={"1": "dict/lb1.js?v=b0c972d9", "2": "dict/lb2.js?v=314c76f8", "3": "dict/lb3.js?v=2afbc498"},LBN={"1": {"s": 24, "p": 11, "y": 3}, "2": {"s": 12, "p": 5, "y": 2}, "3": {"s": 34, "p": 9, "y": 12}};const LBD={};
 const LBS=[["s","ชั้นคำแฝด","近义词","คำความหมายใกล้กัน",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>'],
   ["p","ชั้นคำหลายหน้า","多义词","คำเดียวหลายความหมาย",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>'],
   ["y","ชั้นคำหลายเสียง","多音字","ตัวเดียวอ่านได้หลายเสียง",'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10v4"/><path d="M6 6v12"/><path d="M10 3v18"/><path d="M14 8v8"/><path d="M18 5v14"/><path d="M22 10v4"/></svg>']];
@@ -2197,7 +2197,7 @@ function libDraw(){
   const sh=LBS.find(x=>x[0]===LBK);
   $("lbacc").className="lbacc";$("lbacc").innerHTML=`<div class="mut" style="font-size:13px;margin-top:8px">${sh[1]} · ${sh[3]} · แตะระดับเพื่อเปิดดูรายการ</div>`+[1,2,3,4,5,6,7].map(l=>{const c=lbCnt(LBK,l);
     return `<details style="--lc:var(--l${l})" ${c?`ontoggle="libLv(this,${l})"`:""}><summary><span class="lblt">${lvn(l)}</span>${c?`<span>${c} หัวข้อ</span>`:`<small>เร็ว ๆ นี้</small>`}<svg class="lbcv" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>${c?`<div class="lbl"><div class="lbsoon">กำลังโหลด…</div></div>`:`<div class="lbsoon">กำลังจัดทำเนื้อหาของระดับนี้ เร็ว ๆ นี้มาอ่านได้นะ</div>`}</details>`}).join("")}
-const lbTitle=c=>c.h.map((h,j)=>(j?'<i class="lbvs">vs</i>':"")+`<span class="han">${esc(h[0])}</span>`).join("");
+const lbTitle=c=>c.h.length>1&&c.h.every(h=>h[0]===c.h[0][0])?`<span class="han">${esc(c.h[0][0])}</span><small class="lbpy">${c.h.map(h=>esc(h[1])).join(" · ")}</small>`:c.h.map((h,j)=>(j?'<i class="lbvs">vs</i>':"")+`<span class="han">${esc(h[0])}</span>`).join("");
 function libLv(d,l){if(!d.open||d.dataset.r)return;const box=d.querySelector(".lbl");
   lbLoad(l).then(D=>{d.dataset.r=1;const L=D[LBK]||[];box.innerHTML=L.map((c,i)=>`<button class="lbit" onclick="libCard('${LBK}',${l},${i})"><b>${lbTitle(c)}</b><span>${esc(c.o)}</span><i>›</i></button>`).join("")},
     ()=>{box.innerHTML=`<div class="lbsoon">โหลดไม่สำเร็จ ลองเช็กอินเทอร์เน็ต แล้วปิดและเปิดระดับนี้ใหม่</div>`})}
@@ -2210,7 +2210,7 @@ const LBX='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="c
 const lbHL=(z,w)=>{let t=esc(z);(w||[]).forEach(k=>{if(k)t=t.split(esc(k)).join(`<mark>${esc(k)}</mark>`)});return t};
 const LBH={s:["ความต่าง","วิธีใช้","ตัวอย่างการใช้"],p:["ภาพรวมความหมาย","แต่ละความหมายใช้ยังไง","ตัวอย่างการใช้"],y:["ภาพรวมเสียงอ่าน","แต่ละเสียงใช้ยังไง","ตัวอย่างการใช้"]};
 function libCard(k,l,i){const D=LBD[l];if(!D)return;const L=D[k]||[],c=L[i];if(!c)return;LBC=c;
-  const H=LBH[k],hl=c.h.map(h=>h[0]),sec=(n,t)=>`<div class="lbhd"><i>${n}</i><b>${t}</b></div>`;let xi=0;LBNAV=[k,l,i,L.length];
+  const H=LBH[k],hl=[...new Set(c.h.map(h=>h[0]))],sec=(n,t)=>`<div class="lbhd"><i>${n}</i><b>${t}</b></div>`;let xi=0;LBNAV=[k,l,i,L.length];
   pop(`<div class="vsh lbc" style="--lc:var(--l${l})"><div class="vhd"><span class="vlv">${lvn(l)} · ${LBNAME(k)}</span><button class="vx" onclick="closeBook()" aria-label="ปิด">×</button></div>
   <div class="lbtt">${c.h.map((h,j)=>(j?'<span class="lbvs">vs</span>':"")+`<span class="lbw"><b class="han">${esc(h[0])}</b><small>${esc(h[1])}</small></span>`).join("")}</div>
   <div class="lbo">${esc(c.o)}</div>
