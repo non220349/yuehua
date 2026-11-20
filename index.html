@@ -667,7 +667,10 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .fmg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.fmg label,.fbi label{font-size:12px;color:var(--mut);margin:0;display:flex;flex-direction:column;gap:2px}
 .fu{display:flex;align-items:center;gap:6px}.fu input{margin:0;min-width:0;flex:1}.fu i{font-style:normal;font-size:12px;color:var(--mut);white-space:nowrap}
 .fot{display:flex;gap:6px;align-items:center;margin:4px 0}.fot>input{flex:1.3;margin:0;min-width:0}.fot .fu{flex:1}
-.fbi .fu .btn{white-space:nowrap}.fbm .fbt label{display:block;font-size:12.5px;margin-top:6px}.fbm .fbt input,.fbm .fbt select{width:100%}.fbm{border:1.5px dashed color-mix(in srgb,var(--seal) 40%,var(--bd))!important;border-radius:12px;padding:10px 12px!important;margin:8px 0}.pdesc{text-align:left;margin:6px auto 12px;max-width:460px;font-size:14px;line-height:1.55}.pdesc p{margin:0 0 6px}.pdesc .pdh{font-weight:700;margin:10px 0 4px;color:var(--ink,inherit)}.pdesc .pdh:first-child{margin-top:0}
+.fbi .fu .btn{white-space:nowrap}.fbdel{margin-top:6px}.fbhid{opacity:.7}.bcdo{display:flex;flex-direction:column;gap:8px;text-align:left}.bcdo .btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;white-space:normal;height:auto;padding:10px 14px}.bcdo small{font-weight:400;color:var(--mut);font-size:12.5px}.bcdo ul{margin:4px 0 0;padding-left:18px;font-weight:400;font-size:13px}.bcdx{border-color:var(--seal)!important;color:var(--seal)}
+.bctab{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}.bctab button{border:1.5px solid var(--bd);background:var(--card);color:inherit;font:inherit;font-size:13.5px;font-weight:700;border-radius:99px;padding:5px 12px;cursor:pointer}.bctab button span{color:var(--seal);margin-left:2px}.bctab button[aria-pressed="true"]{background:var(--seal);border-color:var(--seal);color:#fff}.bctab button[aria-pressed="true"] span{color:#fff}
+.fbgc{font-size:12px}.fbgc select{display:block;margin-top:2px;padding:4px 6px;font-size:13px}.gdset{margin-top:14px;border-top:1px solid var(--bd);padding-top:10px}.gdset summary{cursor:pointer;font-weight:700;font-size:14px}
+.fbm .fbt label{display:block;font-size:12.5px;margin-top:6px}.fbm .fbt input,.fbm .fbt select{width:100%}.fbm{border:1.5px dashed color-mix(in srgb,var(--seal) 40%,var(--bd))!important;border-radius:12px;padding:10px 12px!important;margin:8px 0}.pdesc{text-align:left;margin:6px auto 12px;max-width:460px;font-size:14px;line-height:1.55}.pdesc p{margin:0 0 6px}.pdesc .pdh{font-weight:700;margin:10px 0 4px;color:var(--ink,inherit)}.pdesc .pdh:first-child{margin-top:0}
 .pdl{list-style:none;margin:0 0 6px;padding:0}.pdl li{display:flex;gap:8px;align-items:flex-start;margin:4px 0}.pdl li i{flex:none;color:var(--seal);display:inline-flex;margin-top:2px}
 .pdesc.sm{font-size:12.5px;margin:2px 0 0;max-width:none;color:var(--mut)}.pdesc.sm .pdh{margin:4px 0 2px;font-size:12.5px}.pdesc.sm .pdl li{margin:2px 0}
 .prc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0;padding:0}.prc::-webkit-scrollbar{display:none}.prc>.promo{flex:0 0 100%;scroll-snap-align:start;margin:10px 0 4px}
@@ -900,9 +903,14 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
   <div class="card" id="fbc"><b>คิดต้นทุนหนังสือ</b><div class="mut" style="font-size:13px">ใส่ราคาวัสดุครั้งเดียว แล้วแต่ละเล่มใส่จำนวนหน้ากับจำนวนเล่มที่แบ่งพิมพ์ ระบบคิดต้นทุนให้ และหักให้อัตโนมัติทุกคำสั่งซื้อและทุกการสมัครเรียน</div>
     <h4 class="fbh">1. ราคาวัสดุ (ใช้กับทุกเล่ม)</h4><div id="fmat"></div>
     <h4 class="fbh">2. หนังสือทั้งหมด</h4><div class="mut" style="font-size:12.5px">รวมทุกเล่มที่อยู่ในระบบ: ไฟล์หนังสือในบทเรียน คลังคำศัพท์ฟรี และหนังสือในร้าน · ไฟล์เดียวกันที่อยู่หลายที่แสดงครั้งเดียว · หนังสือที่มีลิงก์ Google Drive กด “นับหน้า” ให้ระบบอ่านจำนวนหน้าจากไฟล์ได้</div>
-    <div class="row" style="margin-top:6px"><button class="btn alt sm" id="fbcall" onclick="bcCountAll()">นับหน้าทุกเล่มที่ยังว่าง</button></div><div id="fpc"></div>
+    <div class="row" style="margin-top:6px"><button class="btn alt sm" id="fbcall" onclick="bcCountAll()">นับหน้าทุกเล่มที่ยังว่าง</button></div><nav class="bctab" id="bctab" aria-label="หมวดหนังสือในหน้าต้นทุน"></nav><div id="fpc"></div>
     <h4 class="fbh">3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h4><div class="mut" style="font-size:12.5px">คิดจากเล่มที่ติ๊ก “ส่งเล่มจริงตอนสมัคร” ในข้อ 2</div><div id="fec2"></div>
-    <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button><button class="btn alt" onclick="printBc()">พิมพ์เอกสารต้นทุน</button></div></div>
+    <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button><button class="btn alt" onclick="printBc()">พิมพ์เอกสารต้นทุน</button></div>
+    <details id="gdset" class="gdset"><summary>ตั้งค่าการเลือกไฟล์จาก Google Drive</summary><div class="mut" style="font-size:12.5px;margin:6px 0">ใช้กับปุ่ม “เลือกจาก Drive” ในหนังสือที่เพิ่มเอง · ใส่ครั้งเดียว ทำตามขั้นตอนที่ Claude ส่งให้ในแชท</div>
+      <label for="gd-c">Client ID</label><input id="gd-c" placeholder="xxxx.apps.googleusercontent.com" autocomplete="off">
+      <label for="gd-k">API key</label><input id="gd-k" placeholder="AIza..." autocomplete="off">
+      <label for="gd-a">หมายเลขโปรเจกต์ (Project number)</label><input id="gd-a" inputmode="numeric" placeholder="เช่น 123456789012" autocomplete="off">
+      <div class="row"><button class="btn sm" type="button" onclick="gdSetSave()">บันทึกการเชื่อม</button></div></details></div>
   <p class="mut" style="font-size:12px">ตัวเลขในหน้านี้ไว้ดูภาพรวมธุรกิจ ไม่ใช่เอกสารบัญชีหรือภาษี · ค่าเรียนนับในเดือนที่สมัครและได้รับอนุมัติ · ร้านหนังสือนับในเดือนที่กด “เงินเข้าแล้ว”</p>
 </div>
 <div class="pane" id="a-ref"><div id="rfa"></div></div>
@@ -1858,6 +1866,14 @@ function matRead(){const m=Object.assign({},MATDEF);MATF.forEach(([k])=>{const e
 let BCALC={};
 /* หนังสือที่พี่เพิ่มเองในหน้าต้นทุน (ไม่ต้องอยู่ในบทเรียน/ร้าน): [{id,t,u,c}] · c = คอร์สที่ส่งเล่มนี้ตอนสมัคร ("" = ไม่ส่ง) */
 let BCUST=[];
+/* หมวดในหน้าต้นทุน: ระบบเดาจากชื่อ · พี่เปลี่ยนเองได้ (เก็บใน book_calc[key].g) */
+const BCG=[["tb","หนังสือเรียน"],["wb","แบบฝึกหัดของสถาบัน"],["vc","แบบคัดคำศัพท์"],["ot","อื่น ๆ"]];let BCTAB="all";
+const bcGuess=t=>{t=String(t||"");return /แบบคัด|คัดศัพท์|คำศัพท์|vocab/i.test(t)?"vc":/workbook|แบบฝึก|练习|เฉลย|answer/i.test(t)?"wb":/教程|หนังสือเรียน|textbook|课本/i.test(t)?"tb":"ot"};
+const bcCat=(g,c)=>(c&&c.g&&BCG.some(x=>x[0]===c.g))?c.g:bcGuess(g.t);
+function bcTabs(){const e=$("bctab");if(!e)return;const all=[...document.querySelectorAll("#fpc .fbr")],rows=all.filter(r=>r.dataset.h!=="1"),nh=all.length-rows.length,n={all:rows.length,hid:nh};BCG.forEach(([k])=>n[k]=0);
+  if(BCTAB==="hid"&&!nh)BCTAB="all";
+  all.forEach(r=>{const h=r.dataset.h==="1",k=r.querySelector("[data-g]").value;if(!h)n[k]=(n[k]||0)+1;r.hidden=BCTAB==="hid"?!h:(h||(BCTAB!=="all"&&k!==BCTAB))});
+  e.innerHTML=[["all","ทั้งหมด"]].concat(BCG).concat(nh?[["hid","ที่ซ่อนไว้"]]:[]).map(([k,l])=>`<button type="button" aria-pressed="${BCTAB===k}" onclick="BCTAB='${k}';bcTabs()">${l} <span>${n[k]||0}</span></button>`).join("")}
 function bcGroups(){const G=new Map(),add=(key,t,u)=>{let g=G.get(key);if(!g){g={k:key,t,u:u||"",cs:[],bo:0,vs:0,ps:[]};G.set(key,g)}if(!g.u&&u)g.u=u;return g};
   Object.keys(BOOKS).forEach(k=>{(BOOKS[k]||[]).forEach(b=>{const f=driveId(b.u),g=add(f?"f:"+f:"b:"+(b.dbid!=null?b.dbid:k+":"+b.t),b.t,b.u);if(C[k]){if(!g.cs.includes(k))g.cs.push(k)}else g.bo++})});
   (typeof VOCAB!=="undefined"?VOCAB:[]).forEach((v,i)=>{const f=driveId(v.u),g=add(f?"f:"+f:"v:"+(v.dbid!=null?v.dbid:i),v.t,v.u);g.vs++});
@@ -1873,32 +1889,78 @@ const bcSetLine=s=>`<div class="mut" style="font-size:12.5px;margin-top:4px">ช
 function bcRow(g,c0){const c=c0||bcOf(g),p=g.ps[0],price=p&&p.pb!=null?p.pb:null,r=bcCalc(c);
   if(g.m)return bcRowM(g,c,r);
   const sub=[g.cs.length?"บทเรียน: "+g.cs.map(k=>C[k].n).join(", "):"",g.bo?"ไฟล์หนังสือ (คอร์สที่ปิดไปแล้ว)":"",g.vs?"คลังคำศัพท์ฟรี":"",g.ps.length?"ร้าน: "+g.ps.map(x=>x.pb!=null?`ขายเล่มละ ${B(x.pb)}`:"ไม่ขายแบบเล่ม").join(", "):"",(g.pp||[]).map(x=>`ร้าน: ชุด “${x.p.t}” ไฟล์ที่ ${x.i+1}/${x.n}`).join(", ")].filter(Boolean).join(" · ");
-  return `<div class="fbr" data-k="${esc(g.k)}"><div class="fbt"><b>${esc(g.t)}</b><div class="mut" style="font-size:12px">${esc(sub)}</div>
-    ${g.cs.length?`<label class="chk fbd" style="margin-top:6px!important"><input type="checkbox" data-s ${c.s?"checked":""} onchange="bcLive()"> ส่งเล่มจริงตอนสมัคร</label>`:""}</div>
+  return `<div class="fbr${c.h?" fbhid":""}" data-k="${esc(g.k)}"${c.h?' data-h="1"':""}><div class="fbt"><b>${esc(g.t)}</b><div class="mut" style="font-size:12px">${esc(sub)}</div>
+    ${g.cs.length?`<label class="chk fbd" style="margin-top:6px!important"><input type="checkbox" data-s ${c.s?"checked":""} onchange="bcLive()"> ส่งเล่มจริงตอนสมัคร</label>`:""}
+    ${c.h?`<div class="row" style="margin:6px 0 0"><span class="tag">ซ่อนจากต้นทุน</span><button class="btn alt sm" type="button" onclick="bcUnhide(this)">ดึงกลับ</button></div>`:`<button class="btn alt sm fbdel" type="button" onclick="bcDelAsk(this)">ลบ</button>`}</div>
   <div class="fbi"><label>จำนวนหน้า<span class="fu"><input type="number" min="0" inputmode="numeric" data-p value="${c.p||""}" placeholder="เช่น 120" oninput="bcLive()">${driveId(g.u)?`<button class="btn alt sm" type="button" data-cnt onclick="bcCount(this)">นับหน้า</button>`:""}</span></label>
     <label>แบ่งพิมพ์เป็น<span class="fu"><input type="number" min="1" inputmode="numeric" data-v value="${c.v>1?c.v:""}" placeholder="1" oninput="bcLive()"><i>เล่ม</i></span></label>
-    <label class="chk fbd"><input type="checkbox" data-d ${c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label></div>
+    <label class="chk fbd"><input type="checkbox" data-d ${c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label><label class="fbgc">หมวด<select data-g onchange="bcTabs()" aria-label="หมวดของเล่มนี้">${BCG.map(([k,l])=>`<option value="${k}"${bcCat(g,c)===k?" selected":""}>${l}</option>`).join("")}</select></label></div>
   <div class="fbo" data-o>${bcOut(r,price)}</div><div data-set></div></div>`}
 /* แถวหนังสือที่เพิ่มเอง: แก้ชื่อ ลิงก์ และคอร์สที่ส่งตอนสมัครได้ */
 function bcRowM(g,c,r){const x=g.m,crs=FCRS();
   return `<div class="fbr fbm" data-k="${esc(g.k)}" data-m="${esc(x.id)}"><div class="fbt"><span class="tag">เพิ่มเอง</span>
     <label>ชื่อหนังสือ<input data-t value="${esc(x.t||"")}" maxlength="80" placeholder="เช่น สมุดคัดจีนเล่มเล็ก" oninput="bcMset('${esc(x.id)}','t',this.value)"></label>
-    <label>ลิงก์ Google Drive (ถ้ามี ใช้นับหน้าให้)<input data-u value="${esc(x.u||"")}" placeholder="https://drive.google.com/file/d/..." oninput="bcMset('${esc(x.id)}','u',this.value.trim())"></label>
+    <label>ลิงก์ Google Drive (ถ้ามี ใช้นับหน้าให้)<span class="fu"><input data-u value="${esc(x.u||"")}" placeholder="https://drive.google.com/file/d/..." oninput="bcMset('${esc(x.id)}','u',this.value.trim())"><button class="btn alt sm" type="button" onclick="bcPick('${esc(x.id)}',this)">เลือกจาก Drive</button></span></label>
     <label>ส่งเล่มนี้ตอนสมัครคอร์ส<select data-c onchange="bcMset('${esc(x.id)}','c',this.value);bcLive()"><option value="">ไม่ส่ง</option>${crs.map(([k,n])=>`<option value="${k}"${x.c===k?" selected":""}>${esc(n)}</option>`).join("")}</select></label>
     <button class="btn alt sm" type="button" onclick="bcMdel('${esc(x.id)}')" style="margin-top:6px">ลบเล่มนี้</button></div>
   <div class="fbi"><label>จำนวนหน้า<span class="fu"><input type="number" min="0" inputmode="numeric" data-p value="${c.p||""}" placeholder="เช่น 120" oninput="bcLive()"><button class="btn alt sm" type="button" data-cnt onclick="bcCount(this)">นับหน้า</button></span></label>
     <label>แบ่งพิมพ์เป็น<span class="fu"><input type="number" min="1" inputmode="numeric" data-v value="${c.v>1?c.v:""}" placeholder="1" oninput="bcLive()"><i>เล่ม</i></span></label>
-    <label class="chk fbd"><input type="checkbox" data-d ${c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label></div>
+    <label class="chk fbd"><input type="checkbox" data-d ${c.d?"checked":""} onchange="bcLive()"> พิมพ์ 2 หน้า</label><label class="fbgc">หมวด<select data-g onchange="bcTabs()" aria-label="หมวดของเล่มนี้">${BCG.map(([k,l])=>`<option value="${k}"${bcCat(g,c)===k?" selected":""}>${l}</option>`).join("")}</select></label></div>
   <div class="fbo" data-o>${bcOut(r,null)}</div><div data-set></div></div>`}
+/* ปุ่มลบเล่มเก่า: ถามก่อนว่าจะเอาออกแค่หน้าต้นทุน หรือลบออกจากระบบจริง */
+function bcSrc(g){const S=[];Object.keys(BOOKS).forEach(k=>(BOOKS[k]||[]).forEach((b,i)=>{const f=driveId(b.u);if((f&&g.k==="f:"+f)||g.k==="b:"+(b.dbid!=null?b.dbid:k+":"+b.t))S.push({ty:"book",k,i,t:b.t,dbid:b.dbid,w:`ไฟล์หนังสือในบทเรียน ${C[k]?C[k].n:k}: ${b.t}`})}));
+  (typeof VOCAB!=="undefined"?VOCAB:[]).forEach((v,i)=>{const f=driveId(v.u);if((f&&g.k==="f:"+f)||g.k==="v:"+(v.dbid!=null?v.dbid:i))S.push({ty:"vocab",i,dbid:v.dbid,t:v.t,w:`คลังคำศัพท์ฟรี: ${v.t}`})});
+  g.ps.forEach(p=>S.push({ty:"prod",id:p.id,t:p.t,w:`หนังสือในร้าน: ${p.t} (ลบทั้งรายการ)`}));
+  (g.pp||[]).forEach(x=>S.push({ty:"plink",id:x.p.id,i:x.i,t:x.p.t,w:`ไฟล์เล่ม ${x.i+1} ในชุด “${x.p.t}” (ชุดยังอยู่ เหลือ ${x.n-1} ไฟล์)`}));return S}
+function bcDelAsk(btn){const row=btn.closest(".fbr"),g=bcGroups().find(x=>x.k===row.dataset.k);if(!g)return;const S=bcSrc(g);BCDEL={k:g.k,S};
+  pop(`<h3 id="bkmt">ลบ “${esc(g.t)}”</h3><p class="mut" style="font-size:14px;text-align:left">เลือกว่าจะลบแค่ไหน</p>
+  <div class="bcdo"><button class="btn alt" type="button" onclick="bcHide()"><b>เอาออกจากหน้าต้นทุนเท่านั้น</b><small>ไฟล์ในบทเรียน/คลังคำศัพท์/ร้านยังอยู่ครบ · ดึงกลับได้จากแท็บ “ที่ซ่อนไว้” · มีผลเมื่อกดบันทึกต้นทุน</small></button>
+  ${S.length?`<button class="btn alt bcdx" type="button" onclick="bcSysDel(this)"><b>ลบออกจากระบบ</b><small>ลบทันที กู้คืนไม่ได้ · นักเรียนและลูกค้าจะมองไม่เห็นอีก:</small><ul>${S.map(x=>`<li>${esc(x.w)}</li>`).join("")}</ul></button>`:""}
+  <button class="btn alt" type="button" onclick="closeBook()">ยกเลิก</button></div>`)}
+let BCDEL=null;
+function bcHide(){if(!BCDEL)return;const keep=bcRead();keep[BCDEL.k]=Object.assign({},keep[BCDEL.k],{h:true});BCDEL=null;closeBook();renderBc(keep);note("ซ่อนแล้ว กด “บันทึกต้นทุน” เพื่อยืนยัน")}
+function bcUnhide(btn){const k=btn.closest(".fbr").dataset.k,keep=bcRead();keep[k]=Object.assign({},keep[k],{h:undefined});renderBc(keep)}
+async function bcSysDel(btn){if(!BCDEL)return;const D=BCDEL;if(!confirm("ลบออกจากระบบจริงใช่ไหม กู้คืนไม่ได้"))return;bbusy(btn,true);
+  try{const keep=bcRead();delete keep[D.k];await bcSysDelRun(D.S);BCDEL=null;closeBook();renderBc(keep);note("ลบออกจากระบบแล้ว")}catch(e){alert("ลบไม่สำเร็จ: "+(e.message||e))}finally{bbusy(btn,false)}}
+let bcSysDelRun=async S=>{const B2=S.filter(x=>x.ty==="book").sort((a,b)=>b.i-a.i);B2.forEach(x=>BOOKS[x.k].splice(x.i,1));
+  S.filter(x=>x.ty==="vocab").sort((a,b)=>b.i-a.i).forEach(x=>VOCAB.splice(x.i,1));
+  S.filter(x=>x.ty==="plink").forEach(x=>{const p=prodBy(x.id);if(!p)return;const L=plinks(p.u);L.splice(x.i,1);p.u=L.join("\n");if(x.i>0&&p.vc)p.vc.splice(x.i-1,1);if(p.vn&&p.vn.length)p.vn.splice(x.i,1)});
+  const del=S.filter(x=>x.ty==="prod").map(x=>x.id);PRODS=PRODS.filter(p=>!del.includes(p.id));PROMOS.forEach(x=>x.ids=x.ids.filter(i=>!del.includes(i)))};
 const bcMset=(id,k,v)=>{const x=BCUST.find(x=>x.id===id);if(x)x[k]=v};
-function bcMadd(){const keep=bcRead(),id="m"+Date.now().toString(36);BCUST.push({id,t:"",u:"",c:""});renderBc(keep);const r=document.querySelector(`#fpc .fbr[data-m="${id}"]`);if(r){r.scrollIntoView({block:"center"});r.querySelector("[data-t]").focus()}}
+/* เลือกไฟล์จาก Google Drive (Google Picker) แล้วนับหน้าให้ทันที · ไฟล์ไม่ต้องแชร์สาธารณะ เพราะอ่านด้วยสิทธิ์ของพี่เอง */
+let GDRV={client:"",key:"",app:""},GTOK=null;
+let gdrvSave=async v=>{GDRV=v};
+const gdrvReady=()=>!!(GDRV&&GDRV.client&&GDRV.key&&GDRV.app);
+const loadJsOnce=src=>(loadJsOnce[src]=loadJsOnce[src]||new Promise((ok,no)=>{const e=document.createElement("script");e.src=src;e.async=true;e.onload=ok;e.onerror=()=>{delete loadJsOnce[src];no(new Error("โหลดตัวเลือกไฟล์ของ Google ไม่สำเร็จ"))};document.head.appendChild(e)}));
+async function gdrvToken(){if(GTOK&&GTOK.exp>Date.now()+60e3)return GTOK.t;await loadJsOnce("https://accounts.google.com/gsi/client");
+  return new Promise((ok,no)=>{const tc=google.accounts.oauth2.initTokenClient({client_id:GDRV.client,scope:"https://www.googleapis.com/auth/drive.file",
+    callback:r=>{if(r&&r.access_token){GTOK={t:r.access_token,exp:Date.now()+(+r.expires_in||3000)*1000};ok(r.access_token)}else no(new Error("ไม่ได้รับสิทธิ์จาก Google"))},
+    error_callback:e=>no(new Error(e&&e.type==="popup_closed"?"ปิดหน้าต่าง Google ก่อนเลือกบัญชี":"เข้าสู่ระบบ Google ไม่สำเร็จ"))});tc.requestAccessToken({prompt:GTOK?"":"consent"})})}
+async function gdrvPick(){const tok=await gdrvToken();await loadJsOnce("https://apis.google.com/js/api.js");await new Promise(r=>gapi.load("picker",r));
+  return new Promise(ok=>{const v=new google.picker.DocsView(google.picker.ViewId.DOCS).setMimeTypes("application/pdf").setIncludeFolders(true).setMode(google.picker.DocsViewMode.LIST);
+    new google.picker.PickerBuilder().addView(v).setOAuthToken(tok).setDeveloperKey(GDRV.key).setAppId(GDRV.app).setLocale("th").setTitle("เลือกไฟล์ PDF หนังสือ")
+      .setCallback(d=>{if(d.action===google.picker.Action.PICKED){const f=d.docs[0];ok({id:f.id,name:f.name,tok})}else if(d.action===google.picker.Action.CANCEL)ok(null)}).build().setVisible(true)})}
+async function bcPick(id,btn){if(!gdrvReady()){const d=$("gdset");if(d){d.open=true;d.scrollIntoView({block:"center"})}note("ตั้งค่าการเชื่อม Google Drive ก่อน (ด้านล่างหน้านี้)",1);return}
+  const x=BCUST.find(x=>x.id===id);if(!x)return;bbusy(btn,true,"กำลังเปิด…");
+  try{const f=await gdrvPick();if(!f)return;const row=btn.closest(".fbr");x.u=`https://drive.google.com/file/d/${f.id}/view`;row.querySelector("[data-u]").value=x.u;
+    if(!x.t){x.t=String(f.name||"").replace(/\.pdf$/i,"").slice(0,80);row.querySelector("[data-t]").value=x.t;const gs=row.querySelector("[data-g]");if(gs)gs.value=bcGuess(x.t)}
+    btn.textContent="กำลังนับหน้า…";const H={Authorization:"Bearer "+f.tok},api=`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(f.id)}`;
+    const meta=await (await fetch(api+"?fields=size,mimeType",{headers:H})).json();if(meta.mimeType&&meta.mimeType!=="application/pdf")throw new Error("ไฟล์นี้ไม่ใช่ PDF");
+    const n=await pdfUrlCount(api+"?alt=media",H,null,+meta.size||0);
+    row.querySelector("[data-p]").value=n;bcLive();bcTabs();note(`${x.t}: ${n} หน้า`)}
+  catch(e){note(e&&e.message||"เลือกไฟล์ไม่สำเร็จ",1)}finally{bbusy(btn,false)}}
+function gdSetSave(){const v={client:$("gd-c").value.trim(),key:$("gd-k").value.trim(),app:$("gd-a").value.trim()};
+  if(v.client&&!/\.apps\.googleusercontent\.com$/.test(v.client)){alert("Client ID ต้องลงท้ายด้วย .apps.googleusercontent.com");return}
+  if(v.app&&!/^\d{6,}$/.test(v.app)){alert("หมายเลขโปรเจกต์เป็นตัวเลขล้วน");return}
+  gdrvSave(v).then(()=>{GTOK=null;note("บันทึกการเชื่อม Google Drive แล้ว")}).catch(e=>alert("บันทึกไม่สำเร็จ: "+(e.message||e)))}
+function bcMadd(){const keep=bcRead(),id="m"+Date.now().toString(36);BCUST.push({id,t:"",u:"",c:""});BCTAB="all";renderBc(keep);const r=document.querySelector(`#fpc .fbr[data-m="${id}"]`);if(r){r.scrollIntoView({block:"center"});r.querySelector("[data-t]").focus()}}
 function bcMdel(id){const x=BCUST.find(x=>x.id===id);if(!x)return;if(!confirm(`ลบ “${x.t||"หนังสือที่เพิ่มเอง"}” ออกจากรายการต้นทุนไหม (ลบจริงเมื่อกดบันทึกต้นทุน)`))return;const keep=bcRead();BCUST=BCUST.filter(y=>y.id!==id);renderBc(keep)}
 function bcOut(r,price){if(!r.pg)return '<span class="mut" style="font-size:13px">ใส่จำนวนหน้าเพื่อคิดต้นทุน</span>';
   return `<details><summary><b>${B(r.cb)}</b> <span class="mut">/ ชุด${r.v>1?` (${r.v} เล่ม ≈ ${B(Math.ceil(r.tot/r.v))}/เล่ม)`:""}</span>${price!=null?` · กำไร <b style="color:${price-r.cb<0?"var(--seal)":"var(--ok)"}">${B(price-r.cb)}</b>`:""}</summary>${r.L.filter(x=>x[2]).map(x=>`<div class="frw"><span>${esc(x[0])}${x[1]?` <span class="mut">(${x[1]})</span>`:""}</span><span>${r2(x[2]).toLocaleString("th-TH")} บาท</span></div>`).join("")}<div class="frw"><span>รวม (ปัดขึ้น)</span><b>${B(r.cb)}</b></div></details>`}
-const rowCalc=row=>({p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked,v:Math.max(1,Math.round(fnum(row.querySelector("[data-v]").value))||1),s:!!((row.querySelector("[data-s]")&&row.querySelector("[data-s]").checked)||(row.querySelector("[data-c]")&&row.querySelector("[data-c]").value))});
+const rowCalc=row=>({p:Math.round(fnum(row.querySelector("[data-p]").value)),d:row.querySelector("[data-d]").checked,v:Math.max(1,Math.round(fnum(row.querySelector("[data-v]").value))||1),s:!!((row.querySelector("[data-s]")&&row.querySelector("[data-s]").checked)||(row.querySelector("[data-c]")&&row.querySelector("[data-c]").value)),g:row.querySelector("[data-g]")?row.querySelector("[data-g]").value:undefined,h:row.dataset.h==="1"||undefined});
 /* ต้นทุนตอนสมัครต่อคอร์ส: รวมเล่มที่ติ๊ก · ถ้าคอร์สไหนยังไม่ได้ติ๊กเล่มใดเลย ใช้ตัวเลขเดิมที่เคยตั้งไว้ */
 function ebCalc(gc,m){const G=bcGroups(),eb={},used={};
-  FCRS().forEach(([k])=>{const L=G.filter(g=>g.cs.includes(k)&&gc[g.k]&&gc[g.k].s);used[k]=L.map(g=>g.t);eb[k]=L.length?L.reduce((a,g)=>a+bcCalc(gc[g.k],m).cb,0):(+FIN.eb[k]||0)});return {eb,used}}
+  FCRS().forEach(([k])=>{const L=G.filter(g=>g.cs.includes(k)&&gc[g.k]&&gc[g.k].s&&!gc[g.k].h);used[k]=L.map(g=>g.t);eb[k]=L.length?L.reduce((a,g)=>a+bcCalc(gc[g.k],m).cb,0):(+FIN.eb[k]||0)});return {eb,used}}
 function ebOut(gc,m){const {eb,used}=ebCalc(gc,m);return FCRS().map(([k,n])=>`<div class="frw"><span><b>${esc(n)}</b><br><span class="mut" style="font-size:12px">${used[k].length?esc(used[k].join(" + ")):(+FIN.eb[k]?"ยังไม่ได้ติ๊กเล่มที่ส่ง · ใช้ตัวเลขเดิม":"ไม่ส่งเล่มจริง")}</span></span><b>${B(eb[k])}</b></div>`).join("")}
 function bcRead(){const gc={};document.querySelectorAll("#fpc .fbr").forEach(row=>{gc[row.dataset.k]=rowCalc(row)});return gc}
 function bcLive(){BMAT=matRead();const pu=$("fmu");if(pu)pu.innerHTML=matUnit();const gc=bcRead(),G=new Map(bcGroups().map(g=>[g.k,g]));
@@ -1906,13 +1968,13 @@ function bcLive(){BMAT=matRead();const pu=$("fmu");if(pu)pu.innerHTML=matUnit();
   bcSetDraw([...G.values()],gc);
   if($("fec2"))$("fec2").innerHTML=ebOut(gc,BMAT)}
 const matUnit=()=>`กระดาษ ${BMAT.rs?r2(fnum(BMAT.rp)/fnum(BMAT.rs)):0} บาท/แผ่น · หมึก ${BMAT.iy?r2(fnum(BMAT.ip)/fnum(BMAT.iy)):0} บาท/หน้า`;
-function renderBc(keep){if(!$("fmat"))return;const mk=keep?matRead():null;if(mk)BMAT=mk;
+function renderBc(keep){if(!$("fmat"))return;if($("gd-c")&&!$("gd-c").value){$("gd-c").value=GDRV.client||"";$("gd-k").value=GDRV.key||"";$("gd-a").value=GDRV.app||""}const mk=keep?matRead():null;if(mk)BMAT=mk;
   $("fmat").innerHTML=`<div class="fmg">${MATF.map(([k,l,u])=>`<label>${l}<span class="fu"><input id="bm-${k}" type="number" min="0" step="any" inputmode="decimal" value="${BMAT[k]||""}" placeholder="0" oninput="bcLive()"><i>${u}</i></span></label>`).join("")}</div>
   <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อชุด)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
   <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
   const G=bcGroups();$("fpc").innerHTML=(G.length?G.map(g=>bcRow(g,keep&&keep[g.k])).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหนังสือ เพิ่มได้ที่เมนูไฟล์หนังสือ คลังคำศัพท์ หรือร้านหนังสือ หรือกด “+ เพิ่มหนังสือเอง”</div>')
     +'<div class="row" style="margin-top:8px"><button class="btn alt sm" type="button" onclick="bcMadd()">+ เพิ่มหนังสือเอง</button></div>';
-  const gc={};G.forEach(g=>gc[g.k]=(keep&&keep[g.k])||bcOf(g));$("fec2").innerHTML=ebOut(gc,BMAT);bcSetDraw(G,gc)}
+  bcTabs();const gc={};G.forEach(g=>gc[g.k]=(keep&&keep[g.k])||bcOf(g));$("fec2").innerHTML=ebOut(gc,BMAT);bcSetDraw(G,gc)}
 /* นับหน้าจากไฟล์ (ใช้ได้กับลิงก์ Google Drive ในหลังบ้านจริง) */
 let countPdfPages=u=>Promise.reject(new Error("ตัวอย่างนี้นับหน้าจากไฟล์ไม่ได้ ใส่จำนวนหน้าเองได้เลย"));
 const bbusy=(b,on,t)=>{if(!b)return;if(on){b.dataset.t0=b.textContent;b.disabled=true;if(t)b.textContent=t}else{b.disabled=false;if(b.dataset.t0!=null)b.textContent=b.dataset.t0}};
@@ -3359,9 +3421,9 @@ async function pdfCountFast(tail,t0,tot,get){const CS=65536,CH=new Map();
   const root=pdfRef(trailer,"Root");if(root==null)return 0;const pages=pdfRef(await obj(root),"Pages");if(pages==null)return 0;
   const c=(await obj(pages)).match(/\/Count\s+(\d+)(?!\s+\d+\s+R)/);return c?+c[1]:0}
 /* นับหน้าไฟล์จากลิงก์ (ผ่านฟังก์ชันที่อ่านทีละช่วง): ลองแบบเร็วก่อน · ไม่ได้ค่อยโหลดทั้งไฟล์ (ทีละ 1MB พร้อมกันหลายช่วง) แล้วเปิดด้วยตัวอ่าน PDF */
-async function pdfUrlCount(url,h,batch){const rd=async r=>{const x=await fetch(url,{headers:Object.assign({Range:r},h)});if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}return x};
+async function pdfUrlCount(url,h,batch,knownTot){const rd=async r=>{const x=await fetch(url,{headers:Object.assign({Range:r},h)});if(!x.ok){let m="";try{m=(await x.json()).error}catch(e){}throw new Error(m||"ดึงไฟล์จากลิงก์ไม่ได้")}return x};
   let tot=0;
-  try{const z=await rd("bytes=-262144"),cr=z.headers.get("content-range")||"",tail=new Uint8Array(await z.arrayBuffer());tot=z.status===206?+(cr.split("/")[1]||0):tail.length;
+  try{const z=await rd(knownTot?`bytes=${Math.max(0,knownTot-262144)}-${knownTot-1}`:"bytes=-262144"),cr=z.headers.get("content-range")||"",tail=new Uint8Array(await z.arrayBuffer());tot=knownTot||(z.status===206?+(cr.split("/")[1]||0):tail.length);if(tail.length>tot)throw new Error("size");
     if(tot){const t0=tot-tail.length;
       const get=async(a,b)=>{const o=new Uint8Array(b-a);await Promise.all(Array.from({length:Math.ceil((b-a)/1048576)},async(_,j)=>{const p=a+j*1048576,e=Math.min(b,p+1048576),x=await rd(`bytes=${p}-${e-1}`);o.set(new Uint8Array(await x.arrayBuffer()),p-a)}));return o};
       const n=await pdfCountFast(tail,t0,tot,get);if(n>0)return n}}catch(e){if(/สิทธิ์|เข้าสู่ระบบ|แชร์|403|401/.test(e&&e.message||""))throw e;console.warn("fast count",e)}
@@ -4380,9 +4442,17 @@ window.mvCrs=async function(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD
 
 /* ---------- แบนเนอร์ใหญ่ + ค่าที่ใช้ทั้งเว็บ (ราคาเรียนสดรายชั่วโมง / เวลาทดลองเรียน) ---------- */
 async function loadSiteCfg(){const {data,error}=await sb.from("site_cfg").select("k,v");if(error)throw error;
-  (data||[]).forEach(r=>{const v=r.v||{};if(r.k==="banner"&&Array.isArray(v.list))BAN=v.list;if(r.k==="rates"&&+v.group>0&&+v.single>0)RTS={group:+v.group,single:+v.single};if(r.k==="trial"&&+v.h>0)TRH=+v.h;if(r.k==="shop_cats"&&Array.isArray(v.list))SCATS=v.list.filter(c=>c&&c.id&&c.n)});
+  (data||[]).forEach(r=>{const v=r.v||{};if(r.k==="banner"&&Array.isArray(v.list))BAN=v.list;if(r.k==="rates"&&+v.group>0&&+v.single>0)RTS={group:+v.group,single:+v.single};if(r.k==="trial"&&+v.h>0)TRH=+v.h;if(r.k==="shop_cats"&&Array.isArray(v.list))SCATS=v.list.filter(c=>c&&c.id&&c.n);if(r.k==="gdrive")GDRV={client:v.client||"",key:v.key||"",app:v.app||""}});
   {const on=document.querySelector(".scr.on");if(on&&on.id==="s-shop")renderShop()}if(ROLE==="admin"&&AT==="a-shop"){SCED=null;renderShopAdmin()}
   ban();renderCl();const on=document.querySelector(".scr.on");if(on&&on.id==="s-hour")renderHour();if(ROLE==="admin"&&AT==="a-ban")renderBanAdmin()}
+bcSysDelRun=async function(S){const ok=r=>{if(r&&r.error)throw r.error};
+  for(const x of S.filter(x=>x.ty==="book"&&x.dbid!=null))ok(await sb.from("books").delete().eq("id",x.dbid));
+  for(const x of S.filter(x=>x.ty==="vocab"&&x.dbid!=null))ok(await sb.from("vocab_files").delete().eq("id",x.dbid));
+  for(const x of S.filter(x=>x.ty==="plink")){const p=prodBy(x.id);if(!p)continue;const L=plinks(p.u);L.splice(x.i,1);const vc=(p.vc||[]).slice(),vn=(p.vn||[]).slice();if(x.i>0)vc.splice(x.i-1,1);if(vn.length)vn.splice(x.i,1);
+    ok(await sb.from("product_files").upsert({product_id:p.id,file_url:L.join("\n")}));ok(await sb.from("products").update({vcovers:vc,vnames:L.length>1?vn:[]}).eq("id",p.id))}
+  for(const x of S.filter(x=>x.ty==="prod")){ok(await sb.from("products").delete().eq("id",x.id));for(const q of PROMOS.filter(q=>q.ids.includes(x.id)))ok(await sb.from("promos").update({product_ids:q.ids.filter(i=>i!==x.id)}).eq("id",q.id))}
+  await Promise.all([S.some(x=>x.ty==="book")?loadBooks(true):0,S.some(x=>x.ty==="vocab")?loadVocab():0,S.some(x=>x.ty==="prod"||x.ty==="plink")?loadShop(true):0])};
+gdrvSave=async function(v){const {error}=await sb.from("site_cfg").upsert({k:"gdrive",v});if(error)throw error;GDRV=v};
 scatSave=async function(L){const {error}=await sb.from("site_cfg").upsert({k:"shop_cats",v:{list:L}});if(error)throw error;SCATS=L;const on=document.querySelector(".scr.on");if(on&&on.id==="s-shop")renderShop()};
 async function banSave(L){const {error}=await sb.from("site_cfg").upsert({k:"banner",v:{list:L}});if(error)throw error;banSet(L)}
 window.saveBan=async function(){const r=bnVals();if(!r)return;const btn=$("bnsv");busy(btn,true);
