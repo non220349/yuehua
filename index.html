@@ -369,7 +369,7 @@ input,select{border-radius:10px;background:var(--card)}input:focus,select:focus{
 
 /* ===== แนะนำเพื่อน ===== */
 .rfm{font-size:13px;min-height:20px;margin-top:4px;color:var(--mut)}.rfm.ok{color:var(--ok)}.rfm.bad{color:var(--seal)}
-.dsc{color:var(--ok);font-weight:600}
+.dsc{color:var(--seal);font-weight:600}
 .rfx{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--bd);padding:26px 18px 18px;display:flex;flex-direction:column;gap:14px;color:#1a1a1a;
  background-color:#fbf6ec;background-image:linear-gradient(#ece2cf 1px,transparent 1px),linear-gradient(90deg,#ece2cf 1px,transparent 1px);background-size:18px 18px;max-width:520px;margin:6px auto 0}
 .rfx .rfbar{position:absolute;left:0;right:0;top:0;height:7px;background:#b3122b}
@@ -667,7 +667,9 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .fmg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.fmg label,.fbi label{font-size:12px;color:var(--mut);margin:0;display:flex;flex-direction:column;gap:2px}
 .fu{display:flex;align-items:center;gap:6px}.fu input{margin:0;min-width:0;flex:1}.fu i{font-style:normal;font-size:12px;color:var(--mut);white-space:nowrap}
 .fot{display:flex;gap:6px;align-items:center;margin:4px 0}.fot>input{flex:1.3;margin:0;min-width:0}.fot .fu{flex:1}
-.fbi .fu .btn{white-space:nowrap}#fpc .fbr[hidden]{display:none!important}.fbdel{margin-top:6px}.fbact{margin:6px 0 0;gap:6px}.fbact .btn{margin:0}.fbhid{opacity:.7}.bcdo{display:flex;flex-direction:column;gap:8px;text-align:left}.bcdo .btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;white-space:normal;height:auto;padding:10px 14px}.bcdo small{font-weight:400;color:var(--mut);font-size:12.5px}.bcdo ul{margin:4px 0 0;padding-left:18px;font-weight:400;font-size:13px}.bcdx{border-color:var(--seal)!important;color:var(--seal)}
+.fbi .fu .btn{white-space:nowrap}#fpc .fbr[hidden]{display:none!important}.prop{display:flex!important;align-items:center;gap:10px;border:1.5px solid var(--bd);border-radius:12px;padding:8px 12px;margin:6px 0!important;cursor:pointer}.prop:has(input:checked){border-color:var(--seal);background:color-mix(in srgb,var(--seal) 6%,var(--card))}.prop span{flex:1;display:flex;flex-direction:column;min-width:0}.prop input[type=radio]{width:18px!important;height:18px;flex:none;margin:0;accent-color:var(--seal)}.prop>b{white-space:nowrap}.prop small{color:var(--mut);font-size:12px}
+.ckg{display:flex;flex-wrap:wrap;gap:4px 14px}.ckg .chk{margin:2px 0!important}.spr{border-top:1px solid var(--bd);padding:8px 0}.spr:first-child{border-top:0}.vg3{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:4px}.vg3 label{font-size:12.5px}.vg3 input{width:100%}
+.fbdel{margin-top:6px}.fbact{margin:6px 0 0;gap:6px}.fbact .btn{margin:0}.fbhid{opacity:.7}.bcdo{display:flex;flex-direction:column;gap:8px;text-align:left}.bcdo .btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;white-space:normal;height:auto;padding:10px 14px}.bcdo small{font-weight:400;color:var(--mut);font-size:12.5px}.bcdo ul{margin:4px 0 0;padding-left:18px;font-weight:400;font-size:13px}.bcdx{border-color:var(--seal)!important;color:var(--seal)}
 .bctab{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}.bctab button{border:1.5px solid var(--bd);background:var(--card);color:inherit;font:inherit;font-size:13.5px;font-weight:700;border-radius:99px;padding:5px 12px;cursor:pointer}.bctab button span{color:var(--seal);margin-left:2px}.bctab button[aria-pressed="true"]{background:var(--seal);border-color:var(--seal);color:#fff}.bctab button[aria-pressed="true"] span{color:#fff}
 .fbgc{font-size:12px}.fbgc select{display:block;margin-top:2px;padding:4px 6px;font-size:13px}.gdset{margin-top:14px;border-top:1px solid var(--bd);padding-top:10px}.gdset summary{cursor:pointer;font-weight:700;font-size:14px}
 .fbm .fbt label{display:block;font-size:12.5px;margin-top:6px}.fbm .fbt input,.fbm .fbt select{width:100%}.fbm{border:1.5px dashed color-mix(in srgb,var(--seal) 40%,var(--bd))!important;border-radius:12px;padding:10px 12px!important;margin:8px 0}.pdesc{text-align:left;margin:6px auto 12px;max-width:460px;font-size:14px;line-height:1.55}.pdesc p{margin:0 0 6px}.pdesc .pdh{font-weight:700;margin:10px 0 4px;color:var(--ink,inherit)}.pdesc .pdh:first-child{margin-top:0}
@@ -675,7 +677,9 @@ ruby.gr{ruby-position:over;ruby-align:center}ruby.gr rt{font:400 .42em/1.1 "YHPi
 .pdesc.sm{font-size:12.5px;margin:2px 0 0;max-width:none;color:var(--mut)}.pdesc.sm .pdh{margin:4px 0 2px;font-size:12.5px}.pdesc.sm .pdl li{margin:2px 0}
 .prc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0;padding:0}.prc::-webkit-scrollbar{display:none}.prc>.promo{flex:0 0 100%;scroll-snap-align:start;margin:10px 0 4px}
 .prdots{display:flex;justify-content:center;gap:6px;margin:2px 0 8px}.prdots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:color-mix(in srgb,var(--seal) 25%,var(--bd));cursor:pointer;transition:width .2s}.prdots button[aria-current="true"]{width:22px;background:var(--seal)}
-.scch{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 0;margin:6px 0 0;background:var(--bg)}.scch::-webkit-scrollbar{display:none}
+.shnav{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0 2px;margin-top:6px}.scch{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:6px 0}.lvch{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center;padding:4px 0}.lvch::-webkit-scrollbar{display:none}.lvch .mut{font-size:13px;flex:none;margin-right:2px}.lvch button{flex:none;border:1.5px solid var(--bd);background:var(--card);color:inherit;font:inherit;font-size:13.5px;font-weight:700;border-radius:8px;padding:4px 11px;cursor:pointer}.lvch button[aria-pressed="true"]{background:#1c1714;border-color:#1c1714;color:#fff}
+.psl .pslv{flex:none;width:150px;min-height:140px;border-radius:14px;background:linear-gradient(150deg,var(--seal),#6d1717);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:12px}.psl .pslv b{font-size:40px;line-height:1}.psl .pslv span{font-size:13px;font-weight:700;opacity:.92}.pcd .psave{align-self:flex-start}.pcpr b s{color:var(--mut);font-size:15px;font-weight:400}
+@media(max-width:560px){.psl .pslv{width:100%;min-height:90px;flex-direction:row;gap:10px}.psl .pslv b{font-size:32px}}.scch::-webkit-scrollbar{display:none}
 .scch button{flex:none;border:1.5px solid color-mix(in srgb,var(--seal) 35%,var(--bd));background:var(--card);color:inherit;font:inherit;font-weight:700;font-size:14px;border-radius:99px;padding:6px 14px;cursor:pointer}.scch button span{color:var(--seal);margin-left:2px}.scch button:hover{background:color-mix(in srgb,var(--seal) 8%,var(--card))}
 .scsec{scroll-margin-top:64px}.scsec .shh small{font-weight:400;font-size:13px}
 .scr2{display:flex;gap:6px;align-items:center;margin:6px 0;flex-wrap:wrap}.scr2 input{flex:1;min-width:140px}.scn{width:22px;text-align:center;font-weight:700;color:var(--mut)}.scc{font-size:12px;min-width:44px}
@@ -762,6 +766,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 .glv.lk{opacity:.72;border-style:dashed}.glv.lk .glvi{filter:grayscale(.3)}
 .slx{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px}.slx input[type=number]{width:70px;padding:6px 8px}
 .chip.full{background:#555!important;color:#fff!important}
+.pfq{display:inline-flex;align-items:center;gap:6px;font-size:13px}.pfq input{width:64px}.pfx{flex-wrap:wrap;gap:6px}.pfx .bcv{position:relative}.pfxd{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;border:0;background:#111;color:#fff;font-size:12px;line-height:22px;padding:0;cursor:pointer}
 </style>
 </head>
 <body>
@@ -831,7 +836,8 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <label for="ph">เบอร์โทร</label><input id="ph" inputmode="tel" placeholder="08x-xxx-xxxx">
     <label for="em">อีเมล (ใช้รับลิงก์ไลฟ์สด)</label><input id="em" type="email" inputmode="email" placeholder="name@gmail.com">
     <div id="rfw"><label for="rfc">รหัสผู้แนะนำ (ถ้ามี)</label><input id="rfc" placeholder="รหัสนักเรียนของเพื่อนที่ชวนมา เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="rfIn()"><div class="rfm" id="rfm"></div>
-      <details class="terms" id="cpw"><summary>นักเรียนเก่า: ใช้คูปองแนะนำเพื่อนของฉัน</summary><label for="cpc">รหัสนักเรียนของคุณ (เจ้าของคูปอง)</label><input id="cpc" placeholder="เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="cpIn()"><div class="rfm" id="cpm"></div><div class="mut" style="font-size:12px">ใช้ได้ 1 คูปองต่อ 1 คอร์ส · พี่จะตรวจชื่อกับเจ้าของคูปองก่อนอนุมัติ</div></details></div>
+      <details class="terms" id="cpw"><summary>นักเรียนเก่า: ใช้คูปองแนะนำเพื่อนของฉัน</summary><label for="cpc">รหัสนักเรียนของคุณ (เจ้าของคูปอง)</label><input id="cpc" placeholder="เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="cpIn()"><div class="rfm" id="cpm"></div><div class="mut" style="font-size:12px">ใช้ได้ 1 คูปองต่อ 1 คอร์ส · พี่จะตรวจชื่อกับเจ้าของคูปองก่อนอนุมัติ</div></details>
+      <details class="terms" id="bcw"><summary>ซื้อชุดหนังสือจากร้านแล้ว: นำมาหักค่าคอร์ส</summary><label for="bco">รหัสคำสั่งซื้อหนังสือ</label><input id="bco" placeholder="เช่น YB0001" autocapitalize="characters" autocomplete="off" oninput="bcClear()"><label for="bcc">อีเมลหรือเบอร์โทรที่ใช้สั่งซื้อ</label><input id="bcc" autocomplete="off" oninput="bcClear()"><button class="btn alt sm" type="button" id="bcb" onclick="bcIn()">ตรวจสอบ</button><div class="rfm" id="bcm"></div><div class="mut" style="font-size:12px">ใช้กับชุดพิชิต ชุดครบจบ และชุดต่อเนื่อง ที่ระดับตรงกับคอร์ส (HSK1–4) · ภายในเวลาที่กำหนดหลังชำระค่าหนังสือ · 1 คำสั่งซื้อใช้ได้ 1 คอร์ส · ใช้พร้อมรหัสผู้แนะนำหรือคูปองไม่ได้</div></details></div>
     <div id="bkw"><label for="bk">หนังสือเรียน</label>
     <select id="bk" onchange="calc()"><option value="0">ไม่รับหนังสือ</option><option value="150">รับหนังสือเล่ม เข้าสันเกลียว (+150 บาท)</option></select><div class="mut" style="font-size:12px;margin-top:4px">ไม่รับเล่มก็ได้ไฟล์หนังสือ PDF ฟรี ดาวน์โหลดได้ในหน้าเรียน</div>
       <div id="adw" style="display:none"><label for="ad">ที่อยู่จัดส่งหนังสือ</label><textarea id="ad" rows="3" placeholder="ชื่อผู้รับ เบอร์โทร บ้านเลขที่ ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด"></textarea><label for="zp">รหัสไปรษณีย์</label><input id="zp" inputmode="numeric" maxlength="5" placeholder="เช่น 10240"></div></div>
@@ -911,11 +917,15 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <div class="pane" id="a-ref"><div id="rfa"></div></div>
 <div class="pane" id="a-new"><div id="ast" class="g3" style="margin:10px 0"></div><div id="al" style="margin-top:6px"></div></div>
   <div class="pane" id="a-shop">
+    <div class="card" style="margin-top:10px"><b>โปรโมชันส่วนลด</b><div class="mut" style="font-size:13px;margin:2px 0 6px">ลูกค้าใช้ได้ 1 โปรต่อ 1 คำสั่งซื้อ · โปรที่เปิดอยู่ขึ้นแบนเนอร์ด้านบนร้านเอง · ระบบคิดราคาซ้ำฝั่งเซิร์ฟเวอร์ทุกครั้ง</div><div id="spcfg"></div>
+      <div class="row"><button class="btn sm" id="spsv" type="button" onclick="spSave()">บันทึกโปรโมชัน</button></div></div>
     <div class="card" style="margin-top:10px"><b>หมวดหนังสือในร้าน</b><div class="mut" style="font-size:13px;margin:2px 0 6px">ลูกค้าเห็นหมวดเรียงตามลำดับนี้ใต้แบนเนอร์โปรโมชัน มีปุ่มลัดกดไปหมวดนั้นได้ · หมวดที่ยังไม่มีหนังสือจะไม่แสดงในร้าน</div><div id="scl"></div>
       <div class="row"><button class="btn alt sm" type="button" onclick="scAdd()">+ เพิ่มหมวด</button><button class="btn sm" id="scsv" type="button" onclick="scSave()">บันทึกหมวด</button></div></div>
     <div class="card" style="margin-top:10px"><b id="pfh">เพิ่มหนังสือ</b>
       <label for="pft2">ชื่อหนังสือ</label><input id="pft2" placeholder="เช่น 新HSK教程 1">
-      <label for="pfcat">หมวด</label><select id="pfcat"></select>
+      <label>หมวด (เลือกได้หลายหมวด)</label><div id="pfcats" class="ckg"></div>
+      <label>ระดับ HSK</label><div id="pflv" class="ckg"></div>
+      <div class="ckg" style="margin-top:6px"><label class="chk"><input type="checkbox" id="pffeat"> ขึ้นแบนเนอร์เป็นชุดเด่น</label><label class="chk"><input type="checkbox" id="pfcred"> นำค่าหนังสือไปหักค่าคอร์สได้ (โปรหักค่าคอร์ส)</label></div>
       <label for="pfd">รายละเอียดสั้น ๆ</label><textarea id="pfd" rows="2" placeholder="เช่น หนังสือเรียน HSK1 ใช้คู่กับคอร์ส"></textarea>
       <div class="vg2"><div><label for="pfpf">ราคาไฟล์ PDF (บาท)</label><input id="pfpf" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div><div><label for="pfpb">ราคาหนังสือเล่ม (บาท · ส่งฟรี)</label><input id="pfpb" type="number" min="0" placeholder="เว้นว่าง = ไม่ขาย"></div></div>
       <label for="pfu">ลิงก์ไฟล์ Google Drive (ส่งให้ลูกค้าทางอีเมลหลังยืนยันเงินเข้า)</label><div id="pful"></div><button class="btn alt sm" type="button" onclick="pfuAdd()" style="margin-top:6px">+ เพิ่มลิงก์เล่มถัดไป</button>
@@ -927,9 +937,12 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <label class="chk" style="margin-top:10px"><input type="checkbox" id="pfon" checked> แสดงในร้าน</label>
       <div class="row"><button class="btn" id="prsb" onclick="savePr()">บันทึกหนังสือ</button><button class="btn alt" id="pfx" onclick="cancelPr()" style="display:none">ยกเลิกแก้ไข</button></div></div>
     <div id="prl"></div>
-    <div class="card" style="margin-top:18px;border-color:var(--seal)"><b id="poh">เพิ่มโปรโมชันชุดหนังสือ</b><div class="mut" style="font-size:13px">โปรจะแสดงเป็นชั้นบนสุดของร้าน</div>
+    <div class="card" style="margin-top:18px;border-color:var(--seal)"><b id="poh">เพิ่มชุดหนังสือ (ชุดรวมราคาพิเศษ)</b><div class="mut" style="font-size:13px">ชุดแสดงในหมวดที่เลือก · ติ๊ก “ขึ้นแบนเนอร์” ถ้าอยากให้เป็นชุดเด่นด้านบนร้าน</div>
       <label for="pot">ชื่อโปร</label><input id="pot" placeholder="เช่น ซื้อคู่ HSK1 + HSK2 ถูกกว่า">
-      <label for="pod">คำอธิบาย</label><input id="pod" placeholder="เช่น เริ่มจากศูนย์จนคุยได้">
+      <label for="pod">คำอธิบาย (ขึ้นบรรทัดใหม่ได้ · บรรทัดที่ขึ้นต้นด้วย ✅ เป็นจุดเด่น)</label><textarea id="pod" rows="3" placeholder="เช่น เริ่มจากศูนย์จนคุยได้"></textarea>
+      <label>หมวด (เลือกได้หลายหมวด)</label><div id="pocats" class="ckg"></div>
+      <label>ระดับ HSK</label><div id="polv" class="ckg"></div>
+      <div class="ckg" style="margin-top:6px"><label class="chk"><input type="checkbox" id="pofeat"> ขึ้นแบนเนอร์เป็นชุดเด่น</label><label class="chk"><input type="checkbox" id="pocred"> นำค่าชุดไปหักค่าคอร์สได้ (โปรหักค่าคอร์ส)</label></div>
       <label>เลือกหนังสือในชุด (2 เล่มขึ้นไป)</label><div id="pops"></div><div class="mut" id="pohint" style="font-size:13px"></div>
       <div class="vg2"><div><label for="popf">ราคาโปร · ไฟล์ทั้งชุด</label><input id="popf" type="number" min="0" placeholder="เว้นว่าง = ไม่มี"></div><div><label for="popb">ราคาโปร · เล่มทั้งชุด</label><input id="popb" type="number" min="0" placeholder="เว้นว่าง = ไม่มี"></div></div>
       <label class="chk" style="margin-top:10px"><input type="checkbox" id="poon" checked> เปิดใช้โปรนี้</label>
@@ -1509,7 +1522,21 @@ const REFV=200,REFPIN=100,BOOKREF=50,REFT=[200,250,300];
 const ncode=s=>{const d=String(s||"").toUpperCase().replace(/\s/g,"").replace(/^YH-?/,"");return /^\d{3,6}$/.test(d)?"YH"+d:""};
 const isCrs=()=>{const k=$("cs").value;return k!=="live"||!!LC};
 const isPinK=()=>($("cs").value==="live"?LC:$("cs").value)==="pinyin";
-function disc(){if(!isCrs())return 0;if(RF)return isPinK()?REFPIN:REFV;if(CP)return isPinK()?Math.min(REFPIN,CP.v):CP.v;return 0}
+/* โปร 2: หักค่าชุดหนังสือ · BCR={code,contact,credit,ck} ผูกกับคอร์สที่ตรวจไว้ */
+let BCR=null;
+const ckNow=()=>$("cs").value==="live"?LC:$("cs").value;
+const bcOk=()=>!!(BCR&&BCR.ck===ckNow());
+let bcLook=async(code,contact,course)=>{const d={YB0001:{credit:389,lv:"1"}}[String(code).toUpperCase()];const lv={hsk1:"1",hsk1pin:"1",hsk2:"2",hsk3:"3",hsk4:"4"}[course];
+  if(!d)return {ok:false,msg:"ไม่พบคำสั่งซื้อนี้ (ใช้อีเมลหรือเบอร์เดียวกับตอนสั่งซื้อ)"};if(d.lv!==lv)return {ok:false,msg:"ในคำสั่งซื้อนี้ไม่มีชุดพิชิตหรือชุดครบจบระดับเดียวกับคอร์ส"};return {ok:true,code:String(code).toUpperCase(),credit:d.credit,msg:"หักค่าชุดหนังสือได้ "+d.credit+" บาท"}};
+function bcClear(){if(BCR){BCR=null;calc()}const m=$("bcm");m.textContent="";m.className="rfm"}
+async function bcIn(){const c=$("bco").value.trim(),k=$("bcc").value.trim(),m=$("bcm");BCR=null;
+  if($("rfc").value.trim()||$("cpc").value.trim()){m.textContent="ใช้พร้อมรหัสผู้แนะนำหรือคูปองไม่ได้ ลบช่องนั้นก่อนนะ";m.className="rfm bad";calc();return}
+  if(!isCrs()){m.textContent="ใช้ได้กับคอร์สวิดีโอและคอร์สเรียนสดเท่านั้น";m.className="rfm bad";calc();return}
+  if(!c||!k){m.textContent="ใส่รหัสคำสั่งซื้อ และอีเมลหรือเบอร์ที่ใช้สั่งซื้อ";m.className="rfm bad";return}
+  const b=$("bcb");bbusy(b,true,"กำลังตรวจ…");try{const r=await bcLook(c,k,ckNow());
+    if(r&&r.ok){BCR={code:r.code,contact:k,credit:+r.credit||0,ck:ckNow()};m.innerHTML="✓ "+esc(r.msg||"")+(BCR.credit>base()?" (หักได้ไม่เกินค่าคอร์ส)":"");m.className="rfm ok"}
+    else{m.textContent=(r&&r.msg)||"ใช้ไม่ได้";m.className="rfm bad"}}catch(e){m.textContent="ตรวจไม่สำเร็จ ลองเช็กอินเทอร์เน็ต";m.className="rfm bad"}finally{bbusy(b,false);calc()}}
+function disc(){if(!isCrs())return 0;if(bcOk())return BCR.credit;if(RF)return isPinK()?REFPIN:REFV;if(CP)return isPinK()?Math.min(REFPIN,CP.v):CP.v;return 0}
 function price(){const k=$("cs").value,need=isCrs(),ins=eligible(k)&&$("ins").checked,b0=need?+$("bk").value:0,bd=b0&&RF?BOOKREF:0,b=b0-bd,full=base(),d=Math.min(disc(),full),bs=full-d,f=Math.round(bs*.7);
   return {need,ins,b0,bd,b,full,d,bs,f,total:(need?(ins?f:bs):0)+b,second:ins?bs-f:0}}
 async function yhLookDemo(kind,code){const d={YH1001:{nick:"มีมี่",cp:250},YH1002:{nick:"",cp:0}}[code];if(!d)return {ok:false};
@@ -1518,6 +1545,7 @@ const yhLook=(k,c)=>(window.yhLookFn||yhLookDemo)(k,c);
 function rfCheck(inp,msg,kind,set){const v=$(inp).value,c=ncode(v),m=$(msg),other=$(kind==="ref"?"cpc":"rfc").value.trim();set(null);
   if(!v.trim()){m.textContent="";m.className="rfm";calc();return 0}
   if(!c){m.textContent="รหัสนักเรียนขึ้นต้นด้วย YH ตามด้วยตัวเลข เช่น YH1003";m.className="rfm bad";calc();return 0}
+  if(bcOk()){m.textContent="ใช้พร้อมโปรหักค่าชุดหนังสือไม่ได้ ลบรหัสคำสั่งซื้อหนังสือก่อนนะ";m.className="rfm bad";calc();return 0}
   if(other){m.textContent=kind==="ref"?"ใช้รหัสผู้แนะนำกับคูปองพร้อมกันไม่ได้ ลบช่องคูปองก่อนนะ":"ใช้คูปองกับรหัสผู้แนะนำพร้อมกันไม่ได้ ลบช่องรหัสผู้แนะนำก่อนนะ";m.className="rfm bad";calc();return 0}
   if(!isCrs()){m.textContent="ส่วนลดใช้ได้กับคอร์สวิดีโอและคอร์สเรียนสดเท่านั้น";m.className="rfm bad";calc();return 0}
   m.textContent="กำลังตรวจรหัส…";m.className="rfm";calc();return c}
@@ -1546,7 +1574,8 @@ function calc(){
   else if(LC)h=`<div>${C[LC].n} เรียนสด ${C[LC].h} × ${B(rt(ty0()))}/ชม. = ${B(bs)}</div>`;
   else h=`<div>เรียนสด ${bkh()} ชม./สัปดาห์ · ${B(rt(ty0()))}/ชม.</div><b>ยังไม่ต้องโอนเงิน</b><div class="mut">จ่ายหลังเรียนจบ ตามจำนวนชั่วโมงที่เรียนจริง</div>`;
   if(need){
-    if(P.d)h+=`<div class="dsc">${RF?"ส่วนลดเพื่อนใหม่":"คูปองแนะนำเพื่อน"}: −${B(P.d)} · ค่าคอร์สเหลือ ${B(P.bs)}</div>`;
+    if(P.d)h+=`<div class="dsc">${bcOk()?`หักค่าชุดหนังสือ ${esc(BCR.code)}`:RF?"ส่วนลดเพื่อนใหม่":"คูปองแนะนำเพื่อน"}: −${B(P.d)} · ค่าคอร์สเหลือ ${B(P.bs)}</div>`;
+    if(BCR&&!bcOk())h+=`<div style="color:var(--seal);font-size:13px">เปลี่ยนคอร์สแล้ว กด "ตรวจสอบ" รหัสคำสั่งซื้อหนังสืออีกครั้ง</div>`;
     if(b)h+=`<div>หนังสือเล่ม: ${P.bd?`<s>${B(P.b0)}</s> <b class="dsc">${B(P.b)}</b> (ราคาเพื่อนแนะนำ)`:B(P.b)} (จ่ายพร้อมงวดแรก)</div>`;
     h+=ins?`<div>งวดแรก 70%: ${B(f)}</div><b>รวมโอนวันนี้ ${B(f+P.b)}</b><div class="mut">งวดที่ 2 (30%) ${B(P.second)} จ่ายเมื่อเรียนครบ 1 เดือน</div>`:`<b>รวมโอน ${B(P.bs+P.b)}</b>`;
     h+=`<div class="payqr"><img src="${PAYQR}" alt="QR พร้อมเพย์ของสถาบัน ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล" onclick="$('bkmb').innerHTML='<img src=&quot;'+PAYQR+'&quot; alt=&quot;QR พร้อมเพย์&quot; style=&quot;width:100%;border-radius:10px&quot;><button class=&quot;btn alt&quot; onclick=&quot;closeBook()&quot;>ปิด</button>';$('bkm').classList.add('on')"><div><b>สแกนจ่ายผ่านพร้อมเพย์</b><div class="mut" style="font-size:13px">ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล · ธนาคารกรุงไทย</div><div class="mut" style="font-size:13px">โอนตามยอดด้านบน แล้วแคปสลิปแนบในช่องถัดไป</div><a href="${PAYQR}" download="YUEHUA-QR.jpg">บันทึกรูป QR</a></div></div>`;
@@ -1879,7 +1908,9 @@ function bcGroups(){const G=new Map(),add=(key,t,u)=>{let g=G.get(key);if(!g){g=
   return [...G.values()]}
 const bcOf=g=>BCALC[g.k]||(g.ps[0]&&g.ps[0].bc)||{};
 /* หนังสือในร้านที่ขายเป็นชุดหลายไฟล์: ต้นทุนชุด = รวมต้นทุนทุกไฟล์ในชุด */
-function bcSets(G,gc,m){const S=new Map();G.forEach(g=>(g.pp||[]).forEach(({p,n})=>{let s=S.get(p.id);if(!s){s={p,n,cb:0,miss:0};S.set(p.id,s)}const r=bcCalc(gc[g.k]||bcOf(g),m);s.cb+=r.cb;if(!r.pg)s.miss++}));return S}
+function bcSets(G,gc,m){const S=new Map();G.forEach(g=>(g.pp||[]).forEach(({p,n})=>{let s=S.get(p.id);if(!s){s={p,n,cb:0,miss:0};S.set(p.id,s)}const r=bcCalc(gc[g.k]||bcOf(g),m);s.cb+=r.cb;if(!r.pg)s.miss++}));
+  /* ชุดหลายไฟล์ส่งในกล่องเดียว: ค่าซอง/กล่อง + ค่าส่ง นับครั้งเดียว */
+  const M=m||BMAT,dup=fnum(M.pk)+fnum(M.sh);S.forEach(s=>{if(s.n>1)s.cb=Math.max(0,s.cb-dup*(s.n-1))});return S}
 const bcSetLine=s=>`<div class="mut" style="font-size:12.5px;margin-top:4px">ชุดในร้าน “${esc(s.p.t)}” (${s.n} ไฟล์): ${s.miss?`ยังขาดจำนวนหน้า ${s.miss} ไฟล์`:`ต้นทุนรวม <b>${B(s.cb)}</b>${s.p.pb!=null?` · ขายชุดละ ${B(s.p.pb)} · กำไร <b style="color:${s.p.pb-s.cb<0?"var(--seal)":"var(--ok)"}">${B(s.p.pb-s.cb)}</b>`:""}`}</div>`;
 function bcRow(g,c0){const c=c0||bcOf(g),p=g.ps[0],price=p&&p.pb!=null?p.pb:null,r=bcCalc(c);
   if(g.m)return bcRowM(g,c,r);
@@ -2269,7 +2300,8 @@ REFS=[{at:Date.now()-20*864e5,from:"YH1001",to:"YH1003",first:"ต้น"},{at:D
 const subBy=c=>SUBS.find(x=>x.code===c);
 const nmOf=c=>{const s=subBy(c);return s?esc(s.name)+(s.nick?" ("+esc(s.nick)+")":""):""};
 function rfDiscTxt(r){if(r.refCode)return `แนะนำโดย ${esc(r.refCode)} · ลดค่าคอร์ส ${B(r.refDisc||0)}${r.bookDisc?" · หนังสือลด "+B(r.bookDisc):""}`;
-  if(r.cpDisc){const c=COUPONS.find(x=>x.id===r.cpId);return `ใช้คูปองแนะนำเพื่อน${c?" ของ "+esc(c.owner):""} · ลด ${B(r.cpDisc)}`}return ""}
+  if(r.cpDisc){const c=COUPONS.find(x=>x.id===r.cpId);return `ใช้คูปองแนะนำเพื่อน${c?" ของ "+esc(c.owner):""} · ลด ${B(r.cpDisc)}`}
+  if(r.bookOrder)return `หักค่าชุดหนังสือ ${esc(r.bookOrder)} · ${B(r.bookCredit||0)} (ระบบตรวจคำสั่งซื้อแล้ว)`;return ""}
 function rfBadge(r){const t=rfDiscTxt(r);if(!t)return "";let h=`<div class="rfb">${t}`;
   if(r.refCode){const n=nmOf(r.refCode);if(n)h+=`<div style="font-size:13px">ผู้แนะนำ: ${n}</div>`}
   if(r.cpDisc){const c=COUPONS.find(x=>x.id===r.cpId),n=c?nmOf(c.owner):"";if(n)h+=`<div style="font-size:13px">เจ้าของคูปอง: ${n}</div>`}
@@ -3157,13 +3189,33 @@ function mvVf(i,d){const j=i+d;if(j<0||j>=VOCAB.length)return;[VOCAB[i],VOCAB[j]
 let PRODS=[{id:1,cat:"c1",t:"新HSK教程 1",d:"หนังสือเรียน HSK1 ใช้คู่กับคอร์สของสถาบัน",c:"hsk1",pf:199,pb:350,on:true,u:"",cb:140},{id:2,t:"新HSK教程 2",d:"หนังสือเรียน HSK2",c:"hsk2",pf:199,pb:350,on:true,u:""},{id:3,t:"新HSK教程 3",d:"หนังสือเรียน HSK3",c:"hsk3",pf:249,pb:390,on:true,u:""}];
 /* หมวดหนังสือในร้าน: [{id,n}] เรียงตามลำดับที่แสดง · หนังสืออยู่ได้หมวดเดียว (p.cat = id) */
 let SCATS=[{id:"c1",n:"หนังสือเรียน"},{id:"c2",n:"แบบฝึกหัด"}];let SCED=null;
+const SLVS=[["1","HSK1"],["2","HSK2"],["3","HSK3"],["4","HSK4"],["5","HSK5"],["6","HSK6"],["79","HSK7–9"]];
+const pcats=x=>Array.isArray(x.cats)&&x.cats.length?x.cats:(x.cat?[x.cat]:[]);
+const plvs=x=>Array.isArray(x.lv)&&x.lv.length?x.lv:(x.ids?[...new Set(x.ids.map(prodBy).filter(Boolean).flatMap(p=>p.lv||[]))]:[]);
+const ckgDraw=(id,opts,sel)=>{const e=$(id);if(e)e.innerHTML=opts.map(([v,l])=>`<label class="chk"><input type="checkbox" value="${esc(v)}" ${sel.includes(v)?"checked":""}> ${esc(l)}</label>`).join("")||'<span class="mut" style="font-size:13px">ยังไม่มีหมวด · เพิ่มได้ที่การ์ด “หมวดหนังสือในร้าน”</span>'};
+const ckgVal=id=>[...document.querySelectorAll("#"+id+" input:checked")].map(i=>i.value);
+/* โปรโมชันส่วนลด (site_cfg: shop_promos) */
+let SHOPP={open:{on:true,pct:10,start:"2026-11-21",end:"2026-12-20"},student:{on:true,pct:20},upgrade:{on:true,days:90},credit:{on:true,days:30}};
+let spSaveFn=async v=>{SHOPP=v};
+const dTH=d=>{try{return new Date(d+"T00:00:00+07:00").toLocaleDateString("th-TH",{day:"numeric",month:"short",year:"2-digit"})}catch(e){return d}};
+const bkkDay=()=>new Date(Date.now()+7*36e5).toISOString().slice(0,10);
+const openLive=()=>{const o=SHOPP.open||{};const t=bkkDay();return !!(o.on&&+o.pct>0&&(!o.start||t>=o.start)&&(!o.end||t<=o.end))};
+function spDraw(){const e=$("spcfg");if(!e)return;const o=SHOPP.open||{},st=SHOPP.student||{},u=SHOPP.upgrade||{},c=SHOPP.credit||{};
+  e.innerHTML=`<div class="spr"><label class="chk"><input type="checkbox" id="sp-o-on" ${o.on?"checked":""}> <b>โปร 1 เปิดร้าน</b> ลดเล่มแยกและชุดพิชิต (ไม่ใช้กับชุดรวมที่ลดอยู่แล้ว)</label><div class="vg3"><label>ลด (%)<input id="sp-o-pct" type="number" min="1" max="90" value="${+o.pct||10}"></label><label>เริ่ม<input id="sp-o-st" type="date" value="${esc(o.start||"")}"></label><label>สิ้นสุด<input id="sp-o-en" type="date" value="${esc(o.end||"")}"></label></div></div>
+  <div class="spr"><label class="chk"><input type="checkbox" id="sp-s-on" ${st.on?"checked":""}> <b>โปร 4 นักเรียน YUEHUA</b> นักเรียนที่เข้าสู่ระบบอยู่ ลดเล่มแยกและชุดพิชิต</label><div class="vg3"><label>ลด (%)<input id="sp-s-pct" type="number" min="1" max="90" value="${+st.pct||20}"></label></div></div>
+  <div class="spr"><label class="chk"><input type="checkbox" id="sp-u-on" ${u.on?"checked":""}> <b>โปร 3 อัปเกรด PDF เป็นเล่ม</b> จ่ายส่วนต่าง = ราคาเล่ม − ราคา PDF ที่จ่ายไป</label><div class="vg3"><label>ภายใน (วันหลังซื้อ)<input id="sp-u-d" type="number" min="1" value="${+u.days||90}"></label></div></div>
+  <div class="spr"><label class="chk"><input type="checkbox" id="sp-c-on" ${c.on?"checked":""}> <b>โปร 2 นำค่าชุดหักค่าคอร์ส</b> ชุดที่ติ๊ก “นำไปหักค่าคอร์สได้” ระดับเดียวกับคอร์ส HSK1–4 · ใช้ที่หน้าสมัครเรียน</label><div class="vg3"><label>ภายใน (วันหลังชำระ)<input id="sp-c-d" type="number" min="1" value="${+c.days||30}"></label></div></div>`}
+async function spSave(){const g=id=>$(id),v={open:{on:g("sp-o-on").checked,pct:Math.max(1,Math.min(90,Math.round(+g("sp-o-pct").value)||10)),start:g("sp-o-st").value||"",end:g("sp-o-en").value||""},
+  student:{on:g("sp-s-on").checked,pct:Math.max(1,Math.min(90,Math.round(+g("sp-s-pct").value)||20))},upgrade:{on:g("sp-u-on").checked,days:Math.max(1,Math.round(+g("sp-u-d").value)||90)},credit:{on:g("sp-c-on").checked,days:Math.max(1,Math.round(+g("sp-c-d").value)||30)}};
+  if(v.open.start&&v.open.end&&v.open.end<v.open.start){alert("วันสิ้นสุดต้องไม่ก่อนวันเริ่ม");return}
+  try{await spSaveFn(v);note("บันทึกโปรโมชันแล้ว")}catch(e){alert("บันทึกไม่สำเร็จ: "+(e.message||e))}}
 const scOpts=v=>`<option value="">ยังไม่จัดหมวด</option>`+SCATS.map(c=>`<option value="${esc(c.id)}"${c.id===v?" selected":""}>${esc(c.n)}</option>`).join("");
-function scDraw(){if(!SCED)SCED=SCATS.map(c=>({...c}));const cnt=id=>PRODS.filter(p=>p.cat===id).length;
-  $("scl").innerHTML=SCED.length?SCED.map((c,i)=>`<div class="scr2"><span class="scn">${i+1}</span><input value="${esc(c.n)}" maxlength="40" placeholder="ชื่อหมวด เช่น สมุดคัดคำศัพท์" oninput="SCED[${i}].n=this.value" aria-label="ชื่อหมวดที่ ${i+1}"><span class="mut scc">${cnt(c.id)} เล่ม</span>
+function scDraw(){if(!SCED)SCED=SCATS.map(c=>({...c}));const cnt=id=>PRODS.filter(p=>pcats(p).includes(id)).length+PROMOS.filter(x=>pcats(x).includes(id)).length;
+  $("scl").innerHTML=SCED.length?SCED.map((c,i)=>`<div class="scr2"><span class="scn">${i+1}</span><input value="${esc(c.n)}" maxlength="40" placeholder="ชื่อหมวด เช่น สมุดคัดคำศัพท์" oninput="SCED[${i}].n=this.value" aria-label="ชื่อหมวดที่ ${i+1}"><span class="mut scc">${cnt(c.id)} รายการ</span>
     <button class="btn alt sm" type="button" onclick="scMove(${i},-1)" ${i?"":"disabled"} aria-label="เลื่อนขึ้น">ขึ้น</button><button class="btn alt sm" type="button" onclick="scMove(${i},1)" ${i<SCED.length-1?"":"disabled"} aria-label="เลื่อนลง">ลง</button><button class="btn alt sm" type="button" onclick="scDel(${i})">ลบ</button></div>`).join(""):'<div class="mut" style="font-size:13px">ยังไม่มีหมวด · ในร้านจะแสดงหนังสือรวมกันทั้งหมด</div>'}
 function scAdd(){SCED.push({id:"c"+Date.now().toString(36),n:""});scDraw();const x=document.querySelectorAll("#scl input");x[x.length-1].focus()}
 function scMove(i,d){const j=i+d;if(j<0||j>=SCED.length)return;[SCED[i],SCED[j]]=[SCED[j],SCED[i]];scDraw()}
-function scDel(i){const n=PRODS.filter(p=>p.cat===SCED[i].id).length;if(n&&!confirm(`หมวด “${SCED[i].n}” มีหนังสือ ${n} เล่ม ลบแล้วหนังสือจะกลับไปเป็น “ยังไม่จัดหมวด” ลบเลยไหม`))return;SCED.splice(i,1);scDraw()}
+function scDel(i){const id=SCED[i].id,n=PRODS.filter(p=>pcats(p).includes(id)).length+PROMOS.filter(x=>pcats(x).includes(id)).length;if(n&&!confirm(`หมวด “${SCED[i].n}” มี ${n} รายการ ลบหมวดแล้วรายการเหล่านั้นจะไม่อยู่ในหมวดนี้ (ยังอยู่ในร้าน) ลบเลยไหม`))return;SCED.splice(i,1);scDraw()}
 async function scSave(){const L=SCED.map(c=>({id:c.id,n:String(c.n||"").trim().slice(0,40)}));if(L.some(c=>!c.n)){alert("ใส่ชื่อหมวดให้ครบก่อน (หรือลบหมวดที่ว่าง)");return}
   if(new Set(L.map(c=>c.n)).size<L.length){alert("มีชื่อหมวดซ้ำกัน");return}
   try{await scatSave(L);SCED=null;renderShopAdmin();note("บันทึกหมวดแล้ว")}catch(e){alert("บันทึกไม่สำเร็จ: "+(e.message||e))}}
@@ -3191,30 +3243,58 @@ function descHTML(d,small){const L=String(d||"").split(/\r?\n/).map(x=>x.trim())
   flush();return `<div class="pdesc${small?" sm":""}">${h}</div>`}
 /* ปกของหนังสือ 1 รายการ: ปกหลัก + ปกของไฟล์เล่มถัดไป (ถ้ามี) */
 /* จำนวนเล่ม/ชื่อเล่มที่ลูกค้าเห็น · จุดเด่นย่อ 2 ข้อแรกจากคำอธิบาย */
-const pvols=p=>{const n=Math.max(1+(p.vc||[]).length,(p.vn||[]).length);return n>1?Array.from({length:n},(_,i)=>String((p.vn||[])[i]||"").trim()||`เล่ม ${i+1}`):[]};
+/* แต่ละไฟล์ = 1 รายการ · q = จำนวนเล่มจริงของไฟล์นั้น (มาจากหน้าต้นทุน) */
+const pvols=p=>{const n=Math.max(1+(p.vc||[]).length,(p.vn||[]).length,(p.vq||[]).length,1);return Array.from({length:n},(_,i)=>({n:String((p.vn||[])[i]||"").trim()||(n>1?`เล่ม ${i+1}`:p.t),q:Math.max(1,+(p.vq||[])[i]||1)}))};
+const ptot=p=>pvols(p).reduce((a,v)=>a+v.q,0);
+const vqTxt=q=>q>1?` · ${q} เล่ม`:"";
+const vlist=p=>{const V=pvols(p);return V.length>1?V.map((v,i)=>`${i+1}. ${esc(v.n)}${vqTxt(v.q)}`):[]};
 const pperks=(d,k)=>String(d||"").split(/\r?\n/).map(x=>x.trim()).filter(x=>/^(?:[✅✔☑️✓]+|[-•*])/u.test(x)).map(x=>x.replace(/^(?:[✅✔☑️✓]+|[-•*])\s*/u,"")).filter(Boolean).slice(0,k);
-const pcovs=p=>[{c:p.c,t:p.t}].concat((p.vc||[]).filter(Boolean).map((c,i)=>({c,t:`${p.t} เล่ม ${i+2}`})));
+const pcovs=p=>{const X=p.vx||[],O=[{c:p.c,t:p.t}];(X[0]||[]).filter(Boolean).forEach(c=>O.push({c,t:p.t}));(p.vc||[]).forEach((c,i)=>{if(c)O.push({c,t:`${p.t} เล่ม ${i+2}`});(X[i+1]||[]).filter(Boolean).forEach(c=>O.push({c,t:p.t}))});return O};
 function stackCov(L,big){const n=L.length;return `<div class="pstack${big?" big":""}" style="--n:${n}">${L.map((p,i)=>`<span class="pcv" style="--i:${i}">${cov(p)}</span>`).join("")}</div>`}
-function stackHTML(ids,big){return stackCov(ids.map(prodBy).filter(Boolean).flatMap(pcovs).slice(0,6),big)}
+function stackHTML(ids,big){return stackCov(ids.map(prodBy).filter(Boolean).flatMap(pcovs).slice(0,8),big)}
+/* ร้านหนังสือ: แบนเนอร์ (โปรโมชันส่วนลด + ชุดเด่น) · ปุ่มกรองระดับ · หมวด (รายการเดียวอยู่ได้หลายหมวด) */
+let SLV="all";
+const ICP={cap:'<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>',
+  up:'<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 18v-6"/><path d="m9 14 3-3 3 3"/></svg>'};
+function toCourses(){go("s-home");setTimeout(()=>{const e=$("cl");if(e)e.scrollIntoView({behavior:"smooth",block:"start"})},90)}
+function upgInfo(){const d=(SHOPP.upgrade||{}).days||90;pop(`<h3 id="bkmt">ซื้อ PDF แล้วอัปเกรดเป็นเล่ม</h3><ol style="text-align:left;line-height:1.7;margin:6px 0 12px;padding-left:20px"><li>ใส่หนังสือหรือชุดเดิมแบบ “เล่ม” ลงตะกร้า</li><li>ในตะกร้า เลือกโปร “อัปเกรด PDF เป็นเล่ม” แล้วใส่รหัสคำสั่งซื้อ PDF เดิม (เช่น YB0001) กับอีเมลหรือเบอร์ที่ใช้สั่ง</li><li>ระบบหักราคา PDF ที่จ่ายไปแล้วให้ จ่ายแค่ส่วนต่าง</li></ol><div class="mut" style="font-size:13px;text-align:left">ใช้ได้ภายใน ${d} วันหลังซื้อ PDF · รายการเดียวกันเท่านั้น · ใช้พร้อมโปรอื่นไม่ได้</div><button class="btn" onclick="closeBook()">เข้าใจแล้ว</button>`)}
+function shopSlides(firstCat){const S=[],o=SHOPP.open||{},st=SHOPP.student||{},cr=SHOPP.credit||{},up=SHOPP.upgrade||{},isStu=window.yhRole&&window.yhRole()==="student";
+  const sl=(vis,badge,t,L,cta)=>`<div class="promo psl"><div class="pslv">${vis}</div><div class="pinfo"><span class="psave">${badge}</span><b class="pt">${t}</b><div class="sbk">${L.map(x=>`<span><i>${DCHK}</i>${x}</span>`).join("")}</div>${cta}</div></div>`;
+  if(openLive())S.push(sl(`<b>−${+o.pct}%</b><span>เปิดร้านใหม่</span>`,"โปรเปิดร้าน",`เปิดร้านใหม่ ลด ${+o.pct}%`,[`ลด ${+o.pct}% ทุกเล่มแยกและชุดพิชิต HSK1–4`,`${o.end?`ถึง ${esc(dTH(o.end))} · `:""}ลดให้เองในตะกร้า`],firstCat?`<button class="btn sm" onclick="scJump('${firstCat}')">เลือกหนังสือ</button>`:""));
+  if(st.on&&+st.pct>0)S.push(sl(`<b>−${+st.pct}%</b><span>นักเรียน</span>`,"นักเรียน YUEHUA",`นักเรียน YUEHUA ลด ${+st.pct}%`,["นักเรียนที่กำลังเรียนกับ YUEHUA","ใช้กับเล่มแยกและชุดพิชิต · เข้าสู่ระบบก่อนสั่งซื้อ"],isStu?`<button class="btn sm" onclick="${firstCat?`scJump('${firstCat}')`:"openCart()"}">ใช้ได้เลยในตะกร้า</button>`:`<button class="btn sm" onclick="go('s-login')">เข้าสู่ระบบนักเรียน</button>`));
+  if(cr.on)S.push(sl(`${ICP.cap}<span>หักค่าคอร์ส</span>`,"ซื้อหนังสือ = ส่วนลดคอร์ส","ซื้อหนังสือ แล้วนำมาหักค่าคอร์สได้",[`ซื้อชุดพิชิตหรือชุดครบจบ แล้วลงคอร์สระดับเดียวกันภายใน ${+cr.days||30} วัน`,"นำเงินที่จ่ายค่าชุดมาหักค่าคอร์ส HSK1–4 ได้เต็มจำนวน"],`<button class="btn sm" onclick="toCourses()">ดูคอร์สเรียน</button>`));
+  if(up.on)S.push(sl(`${ICP.up}<span>PDF → เล่ม</span>`,"อัปเกรดได้","ซื้อ PDF แล้วอัปเกรดเป็นเล่ม",["ซื้อ PDF ไปลองก่อน อยากได้เล่มจริงจ่ายแค่ส่วนต่าง",`ภายใน ${+up.days||90} วันหลังซื้อ PDF`],`<button class="btn sm" onclick="upgInfo()">วิธีใช้</button>`));
+  PROMOS.filter(x=>x.on&&x.feat&&x.ids.filter(prodBy).length>=2).forEach(x=>S.push(bundleCard(x,1)));
+  PRODS.filter(p=>p.on&&p.feat).forEach(p=>{const fs=fmts(p);S.push(`<div class="promo" onclick="openProd(${p.id})" role="button" tabindex="0">${pcovs(p).length>1?stackCov(pcovs(p)):`<span class="bcv">${cov(p)}</span>`}<div class="pinfo"><span class="psave">แนะนำ</span><b class="pt">${esc(p.t)}</b>${descHTML(p.d,1)}${fs.map(f=>`<div class="ppr"><span>${f==="file"?"ไฟล์ PDF":"หนังสือเล่ม"}</span><b>${B(priceOf(p,f))}</b></div>`).join("")}<button class="btn sm" onclick="event.stopPropagation();addCart('p',${p.id})">${CARTI} ใส่ตะกร้า</button></div></div>`)});
+  return S}
+/* การ์ดชุดรวม (ใช้ทั้งแบนเนอร์และในหมวด) */
+function bundleCard(x,banner){const fs=fmts(x),save=Math.max(0,...fs.map(f=>promoNormal(x,f)-priceOf(x,f))),P=x.ids.map(prodBy).filter(Boolean),K=pperks(x.d,banner?2:3);
+  if(banner)return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${K.length?`<div class="sbk">${K.map(k=>`<span><i>${DCHK}</i>${esc(k)}</span>`).join("")}</div>`:""}<ul class="pbl">${P.map(p=>`<li>${esc(p.t)}${vqTxt(ptot(p))}</li>`).join("")}</ul>${fs.map(f=>{const n=promoNormal(x,f),p=priceOf(x,f);return `<div class="ppr"><span>${f==="file"?"ไฟล์ PDF":"หนังสือเล่ม"}</span>${n>p?`<s>${B(n)}</s>`:""}<b>${B(p)}</b></div>`}).join("")}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button></div></div>`;
+  return `<div class="pcd" onclick="openPromo(${x.id})" role="button" tabindex="0" aria-label="${esc(x.t)}"><div class="pcs">${stackHTML(x.ids,1)}<span class="pcpl"></span></div>
+    <div class="pinfo"><span class="pcn">ชุด ${P.length} รายการ · รวม ${P.reduce((a,p)=>a+ptot(p),0)} เล่ม</span>${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b><div class="pcv2">${P.map((p,i)=>`<span>${i+1}. ${esc(p.t)}${vqTxt(ptot(p))}</span>`).join("")}</div>
+    ${K.length?`<div class="sbk">${K.map(k=>`<span><i>${DCHK}</i>${esc(k)}</span>`).join("")}</div>`:""}
+    <div class="pcp">${fs.map(f=>{const n=promoNormal(x,f),p=priceOf(x,f);return `<div class="pcpr"><span>${f==="file"?"ไฟล์ PDF <small>ได้ลิงก์ทางอีเมล</small>":"หนังสือเล่ม <small>ส่งฟรีทั่วไทย</small>"}</span><b>${n>p?`<s>${N0(n)}</s> `:""}${N0(p)} <i>บาท</i></b></div>`}).join("")}</div>
+    <div class="pcb"><button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button><button class="btn alt sm" onclick="event.stopPropagation();openPromo(${x.id})">ดูรายละเอียด</button></div></div></div>`}
+function prodCard(p){const CV=pcovs(p),V=vlist(p),T=ptot(p),K=pperks(p.d,3);
+  return `<div class="pcd" onclick="openProd(${p.id})" role="button" tabindex="0" aria-label="${esc(p.t)}"><div class="pcs">${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}<span class="pcpl"></span></div>
+    <div class="pinfo">${T>1?`<span class="pcn">${V.length?"ชุด ":"หนังสือ "}${T} เล่ม</span>`:""}<b class="pt">${esc(p.t)}</b>${V.length?`<div class="pcv2">${V.map(x=>`<span>${x}</span>`).join("")}</div>`:""}
+    ${K.length?`<div class="sbk">${K.map(x=>`<span><i>${DCHK}</i>${esc(x)}</span>`).join("")}</div>`:""}
+    <div class="pcp">${fmts(p).map(f=>`<div class="pcpr"><span>${f==="file"?"ไฟล์ PDF <small>ได้ลิงก์ทางอีเมล</small>":"หนังสือเล่ม <small>ส่งฟรีทั่วไทย</small>"}</span><b>${N0(priceOf(p,f))} <i>บาท</i></b></div>`).join("")}</div>
+    <div class="pcb"><button class="btn sm" onclick="event.stopPropagation();addCart('p',${p.id})">${CARTI} ใส่ตะกร้า</button><button class="btn alt sm" onclick="event.stopPropagation();openProd(${p.id})">ดูรายละเอียด</button></div></div></div>`}
+function setSLV(v){SLV=v;renderShop();const e=$("shlist");if(e){const t=e.getBoundingClientRect().top+scrollY-8;if(scrollY>t)scrollTo({top:t})}}
 function renderShop(){cartBadge();
-  const pr=PROMOS.filter(x=>x.on&&x.ids.filter(prodBy).length>=2);
-  $("shpromo").innerHTML=pr.length?`<h3 class="shh">🔥 โปรโมชันสุดคุ้ม</h3>${pr.length>1?'<div class="prc" id="prcs">':""}${pr.map(x=>{const fs=fmts(x);
-    const lines=fs.map(f=>{const n=promoNormal(x,f),p=priceOf(x,f);return `<div class="ppr"><span>${f==="file"?"📄 ไฟล์ PDF":"📚 หนังสือเล่ม"}</span>${n>p?`<s>${B(n)}</s>`:""}<b>${B(p)}</b></div>`}).join("");
-    const save=Math.max(...fs.map(f=>promoNormal(x,f)-priceOf(x,f)));
-    return `<div class="promo" onclick="openPromo(${x.id})" role="button" tabindex="0">${stackHTML(x.ids)}<div class="pinfo">${save>0?`<span class="psave">ประหยัด ${B(save)}</span>`:""}<b class="pt">${esc(x.t)}</b>${x.d?`<div class="mut" style="font-size:13px">${esc(x.d)}</div>`:""}<ul class="pbl">${x.ids.map(prodBy).filter(Boolean).map(p=>`<li>${esc(p.t)}</li>`).join("")}</ul>${lines}<button class="btn sm" onclick="event.stopPropagation();addCart('b',${x.id})">${CARTI} ใส่ตะกร้า</button></div></div>`}).join("")}${pr.length>1?`</div><div class="prdots" id="prdots">${pr.map((x,k)=>`<button type="button" aria-label="โปรโมชันที่ ${k+1}" aria-current="${k?"false":"true"}" onclick="prTo(${k});prStart()"></button>`).join("")}</div>`:""}`:"";
-  const ps=PRODS.filter(p=>p.on);
-  /* หนังสือ 1 รายการ = การ์ด 1 ใบ · จัดตามหมวด มีปุ่มลัดด้านบน */
-  const card=p=>{const CV=pcovs(p),V=pvols(p),K=pperks(p.d,3);
-    return `<div class="pcd" onclick="openProd(${p.id})" role="button" tabindex="0" aria-label="${esc(p.t)}"><div class="pcs">${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}<span class="pcpl"></span></div>
-      <div class="pinfo">${V.length?`<span class="pcn">ชุด ${V.length} เล่ม</span>`:""}<b class="pt">${esc(p.t)}</b>${V.length?`<div class="pcv2">${V.map((x,i)=>`<span>${i+1}. ${esc(x)}</span>`).join("")}</div>`:""}
-      ${K.length?`<div class="sbk">${K.map(x=>`<span><i>${DCHK}</i>${esc(x)}</span>`).join("")}</div>`:""}
-      <div class="pcp">${fmts(p).map(f=>`<div class="pcpr"><span>${f==="file"?"ไฟล์ PDF <small>ได้ลิงก์ทางอีเมล</small>":"หนังสือเล่ม <small>ส่งฟรีทั่วไทย</small>"}</span><b>${N0(priceOf(p,f))} <i>บาท</i></b></div>`).join("")}</div>
-      <div class="pcb"><button class="btn sm" onclick="event.stopPropagation();addCart('p',${p.id})">${CARTI} ใส่ตะกร้า</button><button class="btn alt sm" onclick="event.stopPropagation();openProd(${p.id})">ดูรายละเอียด</button></div></div></div>`};
-  const G=SCATS.map(c=>({id:c.id,n:c.n,ps:ps.filter(p=>p.cat===c.id)})).filter(g=>g.ps.length),rest=ps.filter(p=>!SCATS.some(c=>c.id===p.cat));
-  if(rest.length)G.push({id:"etc",n:G.length?"หนังสืออื่น ๆ":"หนังสือทั้งหมด",ps:rest});
-  $("shlist").innerHTML=!ps.length?`<h3 class="shh">หนังสือทั้งหมด</h3><div class='card mut'>เร็ว ๆ นี้</div>`
-    :(G.length>1?`<nav class="scch" aria-label="หมวดหนังสือ">${G.map(g=>`<button type="button" onclick="scJump('${g.id}')">${esc(g.n)} <span>${g.ps.length}</span></button>`).join("")}</nav>`:"")
-    +G.map(g=>`<section class="scsec" id="sc-${g.id}"><h3 class="shh">${esc(g.n)} <small class="mut">${g.ps.length} รายการ</small></h3>${g.ps.map(card).join("")}</section>`).join("");
+  const ps=PRODS.filter(p=>p.on),bs=PROMOS.filter(x=>x.on&&x.ids.filter(prodBy).length>=2),inLv=x=>SLV==="all"||plvs(x).includes(SLV);
+  const G=SCATS.map(c=>({id:c.id,n:c.n,L:[...ps.filter(p=>pcats(p).includes(c.id)).map(p=>({k:"p",x:p})),...bs.filter(x=>pcats(x).includes(c.id)).map(x=>({k:"b",x}))]})).filter(g=>g.L.length);
+  const rest=[...ps.filter(p=>!pcats(p).some(id=>SCATS.some(c=>c.id===id))).map(p=>({k:"p",x:p})),...bs.filter(x=>!pcats(x).some(id=>SCATS.some(c=>c.id===id))).map(x=>({k:"b",x}))];
+  if(rest.length)G.push({id:"etc",n:G.length?"หนังสืออื่น ๆ":"หนังสือทั้งหมด",L:rest});
+  const S=shopSlides(G[0]&&G[0].id);
+  $("shpromo").innerHTML=S.length?`<h3 class="shh">โปรโมชัน</h3>${S.length>1?'<div class="prc" id="prcs">':""}${S.join("")}${S.length>1?`</div><div class="prdots" id="prdots">${S.map((x,k)=>`<button type="button" aria-label="โปรโมชันที่ ${k+1}" aria-current="${k?"false":"true"}" onclick="prTo(${k});prStart()"></button>`).join("")}</div>`:""}`:"";
+  const lvHave=SLVS.filter(([v])=>[...ps,...bs].some(x=>plvs(x).includes(v)));if(SLV!=="all"&&!lvHave.some(l=>l[0]===SLV))SLV="all";
+  const GF=G.map(g=>({...g,L:g.L.filter(it=>inLv(it.x))})).filter(g=>g.L.length);
+  $("shlist").innerHTML=!(ps.length+bs.length)?`<h3 class="shh">หนังสือทั้งหมด</h3><div class='card mut'>เร็ว ๆ นี้</div>`
+    :`<div class="shnav">${lvHave.length>1?`<nav class="lvch" aria-label="เลือกระดับ"><span class="mut">ระดับ</span>${[["all","ทุกระดับ"]].concat(lvHave).map(([v,l])=>`<button type="button" aria-pressed="${SLV===v}" onclick="setSLV('${v}')">${l}</button>`).join("")}</nav>`:""}
+      ${GF.length>1?`<nav class="scch" aria-label="หมวดหนังสือ">${GF.map(g=>`<button type="button" onclick="scJump('${g.id}')">${esc(g.n)} <span>${g.L.length}</span></button>`).join("")}</nav>`:""}</div>`
+    +(GF.length?GF.map(g=>`<section class="scsec" id="sc-${g.id}"><h3 class="shh">${esc(g.n)} <small class="mut">${g.L.length} รายการ${SLV!=="all"?` · ${(SLVS.find(l=>l[0]===SLV)||[,""])[1]}`:""}</small></h3>${g.L.map(it=>it.k==="p"?prodCard(it.x):bundleCard(it.x)).join("")}</section>`).join(""):`<div class="card mut">ยังไม่มีหนังสือระดับนี้ <button class="btn alt sm" onclick="setSLV('all')">ดูทุกระดับ</button></div>`);
   prStart();
 }
 const N0=n=>Number(n||0).toLocaleString("th-TH");
@@ -3233,9 +3313,9 @@ function prStart(){clearInterval(PRT);const c=$("prcs");if(!c||c.children.length
 function openShop(){renderShop();go("s-shop")}
 const fmtLine=(x,f)=>`<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF <small class='mut'>ได้ลิงก์ทางอีเมล</small>":"📚 หนังสือเล่ม <small class='mut'>เข้าสันเกลียว · ส่งฟรีทั่วไทย</small>"}</span><b>${B(priceOf(x,f))}</b></div>`;
 function openProd(id){const p=prodBy(id);if(!p)return;
-  const sm=p.sm||[],CV=pcovs(p);pop(`${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}${pvols(p).length?`<div class="pvl"><b>ได้ครบ ${pvols(p).length} เล่มในชุดนี้</b><ol>${pvols(p).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}<h3 id="bkmt">${esc(p.t)}</h3>${descHTML(p.d)}${sm.length?`<div class="smpw"><div class="smph">ตัวอย่างหน้าหนังสือ <span class="mut">· ${sm.length} หน้า · แตะเพื่อดูเต็มจอ</span></div><div class="smps">${sm.map((u,i)=>`<button onclick="smpOpen(${p.id},${i})" aria-label="ดูตัวอย่างหน้า ${i+1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div></div>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  const sm=p.sm||[],CV=pcovs(p);pop(`${CV.length>1?stackCov(CV,1):`<span class="bcv">${cov(p)}</span>`}${ptot(p)>1?`<div class="pvl"><b>ได้ครบ ${ptot(p)} เล่ม${pvols(p).length>1?"ในชุดนี้":""}</b>${pvols(p).length>1?`<ol>${pvols(p).map(v=>`<li>${esc(v.n)}${vqTxt(v.q)}</li>`).join("")}</ol>`:""}</div>`:""}<h3 id="bkmt">${esc(p.t)}</h3>${descHTML(p.d)}${sm.length?`<div class="smpw"><div class="smph">ตัวอย่างหน้าหนังสือ <span class="mut">· ${sm.length} หน้า · แตะเพื่อดูเต็มจอ</span></div><div class="smps">${sm.map((u,i)=>`<button onclick="smpOpen(${p.id},${i})" aria-label="ดูตัวอย่างหน้า ${i+1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div></div>`:""}${fmts(p).map(f=>fmtLine(p,f)).join("")}<div class="mut" style="font-size:12px;margin:6px 0 10px">เลือกแบบไฟล์หรือเล่มได้ในตะกร้า</div><button class="btn" onclick="addCart('p',${p.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function openPromo(id){const x=promoBy(id);if(!x)return;
-  pop(`${stackHTML(x.ids,1)}<h3 id="bkmt">${esc(x.t)}</h3>${x.d?`<p class="mut" style="margin:4px 0 8px">${esc(x.d)}</p>`:""}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${descHTML(p.d,1)}</div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด <small class='mut'>เข้าสันเกลียว</small>"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
+  pop(`${stackHTML(x.ids,1)}<div class="pvl"><b>ได้ครบ ${x.ids.map(prodBy).filter(Boolean).reduce((a,p)=>a+ptot(p),0)} เล่มในชุดนี้</b></div><h3 id="bkmt">${esc(x.t)}</h3>${descHTML(x.d)}<div class="pdet">${x.ids.map(prodBy).filter(Boolean).map(p=>`<div class="pdi"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;text-align:left"><b>${esc(p.t)}</b>${ptot(p)>1?` <span class="tag">${ptot(p)} เล่ม</span>`:""}${vlist(p).length?`<div style="font-size:12.5px">${vlist(p).join("<br>")}</div>`:""}<div class="mut" style="font-size:12.5px">${pperks(p.d,2).map(esc).join(" · ")}</div></div></div>`).join("")}</div>${fmts(x).map(f=>{const n=promoNormal(x,f);return `<div class="pfm"><span>${f==="file"?"📄 ไฟล์ PDF ทั้งชุด":"📚 หนังสือเล่มทั้งชุด <small class='mut'>เข้าสันเกลียว</small>"}</span><span>${n>priceOf(x,f)?`<s class="mut">${B(n)}</s> `:""}<b>${B(priceOf(x,f))}</b></span></div>`}).join("")}<button class="btn" onclick="addCart('b',${x.id});closeBook()">${CARTI} ใส่ตะกร้า</button><button class="btn alt" onclick="closeBook()">ปิด</button>`)}
 function addCart(k,id){const x=k==="b"?promoBy(id):prodBy(id);if(!x)return;const fs=fmts(x);if(!fs.length){note("รายการนี้ยังไม่เปิดขาย",1);return}
   const ex=CART.find(l=>l.k===k&&l.id===id);
   if(ex){if(ex.f==="book")ex.q=Math.min(20,(ex.q||1)+1)}else CART.push({k,id,f:fs[0],q:1});
@@ -3244,6 +3324,33 @@ let CO=false,ODONE=null;
 function openCart(){CO=false;ODONE=null;renderCart();go("s-cart")}
 function cartClean(){CART=CART.filter(l=>{const x=itemOf(l);if(!x||!x.on)return false;const fs=fmts(x);if(!fs.length)return false;if(!fs.includes(l.f))l.f=fs[0];if(l.f==="file")l.q=1;return true})}
 const cartTotal2=()=>CART.reduce((a,l)=>{const x=itemOf(l);return a+(x?priceOf(x,l.f)*(l.q||1):0)},0);
+/* ===== โปรโมชันในตะกร้า: 1 คำสั่งซื้อ 1 โปร · เซิร์ฟเวอร์คิดซ้ำและตรวจสิทธิ์ทุกครั้ง ===== */
+let PSEL=null,UPG=null;
+const isStuNow=()=>!!(window.yhRole&&window.yhRole()==="student");
+function promoOpts(){const O=[],L=CART.map((l,i)=>({l,i,x:itemOf(l)})).filter(o=>o.x),sum=P=>P.reduce((a,o)=>a+o.d,0);
+  const pct=p=>L.filter(o=>o.l.k==="p").map(o=>({i:o.i,d:Math.round(priceOf(o.x,o.l.f)*p/100)*(o.l.q||1)})).filter(o=>o.d>0);
+  if(openLive()){const P=pct(+SHOPP.open.pct);if(P.length)O.push({k:"open",t:`เปิดร้านใหม่ ลด ${+SHOPP.open.pct}%`,s:"เล่มแยกและชุดพิชิต",d:sum(P),P})}
+  if(SHOPP.student&&SHOPP.student.on&&isStuNow()){const P=pct(+SHOPP.student.pct);if(P.length)O.push({k:"student",t:`นักเรียน YUEHUA ลด ${+SHOPP.student.pct}%`,s:"เล่มแยกและชุดพิชิต",d:sum(P),P})}
+  if(SHOPP.upgrade&&SHOPP.upgrade.on&&UPG){const P=L.filter(o=>o.l.f==="book").map(o=>{const u=UPG.items.find(u=>u.k===o.l.k&&+u.id===o.l.id);return u?{i:o.i,d:Math.min(priceOf(o.x,"book"),Math.max(0,+u.paid||0))}:null}).filter(o=>o&&o.d>0);
+    if(P.length)O.push({k:"upgrade",t:"อัปเกรด PDF เป็นเล่ม",s:`หักราคา PDF จากคำสั่งซื้อ ${UPG.code}`,d:sum(P),P})}
+  return O}
+function promoPick(){const O=promoOpts();if(!O.length)return null;return O.find(o=>o.k===PSEL)||O.reduce((a,b)=>b.d>a.d?b:a)}
+const cartFinal=()=>{const p=promoPick();return cartTotal2()-(p?p.d:0)};
+function promoBox(){const O=promoOpts(),p=promoPick(),hasBook=CART.some(l=>l.f==="book"),hasP=CART.some(l=>l.k==="p");
+  const st=SHOPP.student||{},up=SHOPP.upgrade||{};let h="";
+  if(O.length)h+=O.map(o=>`<label class="chk prop"><input type="radio" name="psel" ${p&&p.k===o.k?"checked":""} onchange="PSEL='${o.k}';renderCart()"><span><b>${esc(o.t)}</b><small>${esc(o.s)}</small></span><b class="dsc">−${B(o.d)}</b></label>`).join("");
+  else h+=`<div class="mut" style="font-size:13px">${CART.some(l=>l.k==="b")&&!hasP?"ชุดรวมลดราคาอยู่แล้ว ใช้โปรเพิ่มไม่ได้":"ยังไม่มีโปรที่ใช้กับตะกร้านี้"}</div>`;
+  if(st.on&&!isStuNow()&&hasP)h+=`<div class="mut" style="font-size:12.5px;margin-top:6px">นักเรียน YUEHUA ลด ${+st.pct}% · <a href="#" onclick="go('s-login');return false">เข้าสู่ระบบนักเรียน</a> ก่อนสั่งซื้อ</div>`;
+  if(up.on&&hasBook)h+=`<details class="terms" style="margin-top:8px" ${UPG?"open":""}><summary>เคยซื้อ PDF แล้ว? อัปเกรดเป็นเล่ม จ่ายแค่ส่วนต่าง</summary>
+    <label for="upc">รหัสคำสั่งซื้อ PDF เดิม</label><input id="upc" placeholder="เช่น YB0001" value="${esc(UPG?UPG.code:"")}" autocapitalize="characters" autocomplete="off">
+    <label for="upk">อีเมลหรือเบอร์ที่ใช้สั่งซื้อครั้งนั้น</label><input id="upk" value="${esc(UPG?UPG.contact:"")}" autocomplete="off">
+    <div class="row" style="margin:6px 0 0"><button class="btn alt sm" type="button" id="upb" onclick="upgCheck()">ตรวจสอบ</button>${UPG?`<button class="btn alt sm" type="button" onclick="UPG=null;PSEL=null;renderCart()">ยกเลิก</button>`:""}</div><div class="rfm" id="upm">${UPG?esc(UPG.msg||""):""}</div></details>`;
+  return `<div class="card"><b>โปรโมชัน</b> <span class="mut" style="font-size:12.5px">ใช้ได้ 1 โปรต่อ 1 คำสั่งซื้อ · ระบบเลือกโปรที่คุ้มที่สุดให้</span><div style="margin-top:6px">${h}</div></div>`}
+let upgLook=async(code,contact)=>{const d={YB0001:[{k:"p",id:1,paid:199}]}[String(code).toUpperCase()];return d?{ok:true,code:String(code).toUpperCase(),items:d,msg:`อัปเกรดได้ ${d.length} รายการ`}:{ok:false,msg:"ไม่พบคำสั่งซื้อนี้ (ใช้อีเมลหรือเบอร์เดียวกับตอนสั่งซื้อ)"}};
+async function upgCheck(){const c=($("upc").value||"").trim(),k=($("upk").value||"").trim(),m=$("upm");if(!c||!k){m.textContent="ใส่รหัสคำสั่งซื้อและอีเมลหรือเบอร์ก่อน";m.className="rfm bad";return}
+  const b=$("upb");bbusy(b,true,"กำลังตรวจ…");try{const r=await upgLook(c,k);if(r&&r.ok){UPG={code:r.code,contact:k,items:r.items||[],msg:r.msg};PSEL="upgrade";renderCart();
+      if(!promoOpts().some(o=>o.k==="upgrade")){const m2=$("upm");if(m2){m2.textContent="คำสั่งซื้อนี้ใช้ได้ แต่ในตะกร้ายังไม่มีรายการเดียวกันแบบเล่ม";m2.className="rfm bad"}}}
+    else{UPG=null;m.textContent=(r&&r.msg)||"ตรวจไม่ผ่าน";m.className="rfm bad"}}catch(e){m.textContent="ตรวจไม่สำเร็จ ลองใหม่อีกครั้ง";m.className="rfm bad"}finally{const b2=$("upb");if(b2)bbusy(b2,false)}}
 function setCartF(i,f){CART[i].f=f;if(f==="file")CART[i].q=1;cartSave();renderCart()}
 function setCartQ(i,d){CART[i].q=Math.max(1,Math.min(20,(CART[i].q||1)+d));cartSave();renderCart()}
 function rmCart(i){CART.splice(i,1);cartSave();renderCart()}
@@ -3253,8 +3360,8 @@ function renderCart(){cartClean();cartSave();
   $("cartl").innerHTML=CART.map((l,i)=>{const x=itemOf(l),fs=fmts(x),one=priceOf(x,l.f);
     return `<div class="card cl"><div class="clh">${l.k==="b"?stackHTML(x.ids):`<span class="bcv sm2">${cov(x)}</span>`}<div style="flex:1;min-width:0"><b>${esc(x.t)}</b>${l.k==="b"?` <span class="tag">โปรชุด</span><div class="mut" style="font-size:12px">${x.ids.map(prodBy).filter(Boolean).map(p=>esc(p.t)).join(" + ")}</div>`:""}</div><button class="btn alt sm" onclick="rmCart(${i})" aria-label="ลบ">✕</button></div>
     <div class="seg cseg">${fs.map(f=>`<button class="${l.f===f?"on":""}" onclick="setCartF(${i},'${f}')">${f==="file"?"📄 ไฟล์":"📚 เล่ม"} ${B(priceOf(x,f))}</button>`).join("")}</div>
-    <div class="clf">${l.f==="book"?`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="qty"><button onclick="setCartQ(${i},-1)" aria-label="ลด">−</button><b>${l.q||1}</b><button onclick="setCartQ(${i},1)" aria-label="เพิ่ม">+</button></div><span class="mut" style="font-size:12px">เล่มจริงเข้าสันเกลียว</span></div>`:'<span class="mut" style="font-size:13px">ได้ลิงก์ดาวน์โหลดทางอีเมล</span>'}<b>${B(one*(l.q||1))}</b></div></div>`}).join("")+
-    `<div class="card ctot"><span>รวมทั้งหมด</span><b>${B(cartTotal2())}</b></div>${CO?"":`<button class="btn" style="width:100%" onclick="CO=true;renderCart();setTimeout(()=>$('cartf').scrollIntoView({behavior:'smooth'}),50)">ไปชำระเงิน ›</button>`}`;
+    <div class="clf">${l.f==="book"?`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="qty"><button onclick="setCartQ(${i},-1)" aria-label="ลด">−</button><b>${l.q||1}</b><button onclick="setCartQ(${i},1)" aria-label="เพิ่ม">+</button></div><span class="mut" style="font-size:12px">เล่มจริงเข้าสันเกลียว</span></div>`:'<span class="mut" style="font-size:13px">ได้ลิงก์ดาวน์โหลดทางอีเมล</span>'}${(()=>{const pp=promoPick(),ln=pp&&pp.P.find(o=>o.i===i);return ln?`<span><s class="mut">${B(one*(l.q||1))}</s> <b class="dsc">${B(one*(l.q||1)-ln.d)}</b></span>`:`<b>${B(one*(l.q||1))}</b>`})()}</div></div>`}).join("")+promoBox()+
+    `<div class="card ctot"><span>รวมทั้งหมด${promoPick()?`<br><small class="mut">ราคาปกติ ${B(cartTotal2())} · ${esc(promoPick().t)} −${B(promoPick().d)}</small>`:""}</span><b style="white-space:nowrap">${B(cartFinal())}</b></div>${CO?"":`<button class="btn" style="width:100%" onclick="CO=true;renderCart();setTimeout(()=>$('cartf').scrollIntoView({behavior:'smooth'}),50)">ไปชำระเงิน ›</button>`}`;
   if(!CO){$("cartf").innerHTML="";return}
   const ns=CART.some(l=>l.f==="book"),me=(window.yhRole?window.yhRole()==="student":false)&&ST?ST:null,keep=id=>($(id)&&$(id).value)||"";
   const v={n:keep("onm")||(me?me.name:""),p:keep("oph")||(me?me.ph||"":""),e:keep("oem")||(me?me.em||"":""),a:keep("oad")||(me?me.addr||"":""),z:keep("ozp")||(me?me.zip||"":"")};
@@ -3264,7 +3371,7 @@ function renderCart(){cartClean();cartSave();
     <label for="oem">อีเมล (ใช้รับลิงก์ไฟล์และเลขพัสดุ)</label><input id="oem" type="email" value="${esc(v.e)}" autocomplete="email">
     ${ns?`<label for="oad">ที่อยู่จัดส่ง (ส่งฟรี)</label><textarea id="oad" rows="3" placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด">${esc(v.a)}</textarea><label for="ozp">รหัสไปรษณีย์</label><input id="ozp" inputmode="numeric" maxlength="5" value="${esc(v.z)}">`:""}
     <label for="ont">หมายเหตุ (ไม่ใส่ก็ได้)</label><input id="ont" maxlength="200" value="${esc(keep("ont"))}"></div>
-    <div class="card" style="text-align:center"><b>สแกนจ่าย ${B(cartTotal2())}</b><div class="payqr"><img src="${PAYQR}" alt="QR พร้อมเพย์ของสถาบัน"></div><div class="mut" style="font-size:13px">ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล</div>
+    <div class="card" style="text-align:center"><b>สแกนจ่าย ${B(cartFinal())}</b><div class="payqr"><img src="${PAYQR}" alt="QR พร้อมเพย์ของสถาบัน"></div><div class="mut" style="font-size:13px">ชื่อบัญชี นาย นนทนพงศ์ ศิริมงคล</div>
     <label for="osl" style="text-align:left">แนบสลิปการโอนเงิน</label><input type="file" id="osl" accept="image/*,application/pdf"></div>
     <div id="oerr" style="color:var(--seal);min-height:22px"></div>
     <button class="btn" id="obtn" style="width:100%" onclick="placeOrder()">ยืนยันคำสั่งซื้อ</button>`}
@@ -3275,25 +3382,26 @@ function orderForm(){const g=id=>($(id)&&$(id).value||"").trim();const ns=CART.s
   if(ns&&(!o.addr||!/^\d{5}$/.test(o.zip)))return [null,"กรุณากรอกที่อยู่และรหัสไปรษณีย์ 5 หลัก"];
   if(!o.slip)return [null,"กรุณาแนบสลิปการโอนเงิน"];return [o,""]}
 function placeOrder(){if(pvBlock())return;const [o,err]=orderForm();$("oerr").textContent=err;if(!o)return;
-  const items=CART.map(l=>{const x=itemOf(l);return {kind:l.k==="b"?"promo":"product",id:l.id,title:x.t,fmt:l.f,qty:l.q||1,price:priceOf(x,l.f),books:l.k==="b"?x.ids.map(prodBy).filter(Boolean).map(p=>p.t):undefined}});
-  const code="OD"+(1001+ORDERS.length);ORDERS.unshift({id:ORDERS.length+1,code,at:Date.now(),bt:(window.yhRole&&window.yhRole()==="student")?"student":"public",name:o.name,em:o.email,ph:o.phone,addr:o.ns?o.addr:"",zip:o.ns?o.zip:"",items,total:cartTotal2(),st:"pending",ns:o.ns,hf:items.some(i=>i.fmt==="file"),car:"",trk:"",slip:null});
-  ODONE={code,ns:o.ns,hf:items.some(i=>i.fmt==="file")};CART=[];cartSave();renderCart();scrollTo(0,0)}
+  const pp=promoPick(),items=CART.map((l,i)=>{const x=itemOf(l),ln=pp&&pp.P.find(o=>o.i===i);return {kind:l.k==="b"?"promo":"product",id:l.id,title:x.t,fmt:l.f,qty:l.q||1,price:priceOf(x,l.f),disc:ln?ln.d:0,books:l.k==="b"?x.ids.map(prodBy).filter(Boolean).map(p=>p.t):undefined}});
+  const code="OD"+(1001+ORDERS.length);ORDERS.unshift({id:ORDERS.length+1,code,at:Date.now(),bt:(window.yhRole&&window.yhRole()==="student")?"student":"public",name:o.name,em:o.email,ph:o.phone,addr:o.ns?o.addr:"",zip:o.ns?o.zip:"",items,total:cartFinal(),promo:pp?{k:pp.k,t:pp.t,ref:pp.k==="upgrade"&&UPG?UPG.code:undefined}:null,disc:pp?pp.d:0,st:"pending",ns:o.ns,hf:items.some(i=>i.fmt==="file"),car:"",trk:"",slip:null});
+  ODONE={code,ns:o.ns,hf:items.some(i=>i.fmt==="file")};CART=[];PSEL=null;UPG=null;cartSave();renderCart();scrollTo(0,0)}
 
 /* ===================== หลังบ้าน: ร้านค้า ===================== */
 let PFE=null,PFPIC="",PRDEL=null,POE=null,PODEL=null,PFSM=[],SMPDF=null;
 function renderShopAdmin(){const e=$("prl");if(!e)return;
-  const cur=PFE!=null?prodBy(PFE):null;scDraw();{const sv=$("pfcat").dataset.k===String(PFE)?$("pfcat").value:(cur?cur.cat||"":"");$("pfcat").innerHTML=scOpts(sv);$("pfcat").dataset.k=String(PFE)}
-  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";pfuDraw(plinks(cur&&cur.u),[""].concat(cur&&cur.vc||[]),cur&&cur.vn||[]);$("pfon").checked=cur?cur.on:true;
+  const cur=PFE!=null?prodBy(PFE):null;scDraw();spDraw();{const same=$("pfcats").dataset.k===String(PFE),sv=same?ckgVal("pfcats"):(cur?pcats(cur):[]),lv=same?ckgVal("pflv"):(cur?cur.lv||[]:[]);ckgDraw("pfcats",SCATS.map(c=>[c.id,c.n]),sv);ckgDraw("pflv",SLVS,lv);if(!same){$("pffeat").checked=!!(cur&&cur.feat);$("pfcred").checked=!!(cur&&cur.credit)}$("pfcats").dataset.k=String(PFE)}
+  if($("pft2").dataset.k!==String(PFE)){$("pft2").dataset.k=String(PFE);$("pft2").value=cur?cur.t:"";$("pfd").value=cur?cur.d:"";$("pfpf").value=cur&&cur.pf!=null?cur.pf:"";$("pfpb").value=cur&&cur.pb!=null?cur.pb:"";PFVQ=[];pfuDraw(plinks(cur&&cur.u),[""].concat(cur&&cur.vc||[]),cur&&cur.vn||[],cur&&cur.vq||[],cur&&cur.vx||[]);$("pfon").checked=cur?cur.on:true;
     cvReset("pf");PFPIC=cur&&/^(data:|https:)/.test(cur.c||"")?cur.c:"";PFSM=cur?(cur.sm||[]).slice():[];SMPDF=null;$("smpdf").style.display="none";smpDraw();$("pfcv").innerHTML=covSel("pfc",cur?(PFPIC?"__pic":cur.c):"");$("pfprev").innerHTML=PFPIC?`<span class="bcv sm2"><img src="${esc(PFPIC)}" alt=""></span>`:""}
   $("pfh").textContent=cur?"แก้ไขหนังสือ":"เพิ่มหนังสือ";$("pfx").style.display=cur?"":"none";
-  e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">${esc((SCATS.find(c=>c.id===p.cat)||{n:"ยังไม่จัดหมวด"}).n)} · ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
+  e.innerHTML=PRODS.length?PRODS.map((p,i)=>`<div class="vw" style="align-items:center"><span class="bcv sm2">${cov(p)}</span><div style="flex:1;min-width:0"><b>${esc(p.t)}</b> ${p.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">${esc(pcats(p).map(id=>(SCATS.find(c=>c.id===id)||{}).n).filter(Boolean).join(", ")||"ยังไม่จัดหมวด")}${(p.lv||[]).length?" · "+(p.lv||[]).map(v=>(SLVS.find(x=>x[0]===v)||[,v])[1]).join(" "):""}${p.feat?" · ชุดเด่น":""}${p.credit?" · หักค่าคอร์สได้":""} · ไฟล์ ${p.pf!=null&&p.pf!==""?B(+p.pf):"ไม่ขาย"} · เล่ม ${p.pb!=null&&p.pb!==""?B(+p.pb):"ไม่ขาย"}${p.pf!=null&&p.pf!==""&&!p.u?' · <span style="color:var(--seal)">ยังไม่ใส่ลิงก์ไฟล์</span>':""}</div></div><button class="btn alt sm" onclick="mvPr(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPr(${i},1)" ${i<PRODS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="PFE=${p.id};renderShopAdmin();$('pft2').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPr(${p.id})">${PRDEL===p.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีหนังสือในร้าน</div>";
   // โปรโมชัน
   const cp=POE!=null?promoBy(POE):null;
+  {const same=$("pot").dataset.k===String(POE),sv=same?ckgVal("pocats"):(cp?pcats(cp):[]),lv=same?ckgVal("polv"):(cp?cp.lv||[]:[]);ckgDraw("pocats",SCATS.map(c=>[c.id,c.n]),sv);ckgDraw("polv",SLVS,lv);if(!same){$("pofeat").checked=!!(cp&&cp.feat);$("pocred").checked=!!(cp&&cp.credit)}}
   if($("pot").dataset.k!==String(POE)){$("pot").dataset.k=String(POE);$("pot").value=cp?cp.t:"";$("pod").value=cp?cp.d:"";$("popf").value=cp&&cp.pf!=null?cp.pf:"";$("popb").value=cp&&cp.pb!=null?cp.pb:"";$("poon").checked=cp?cp.on:true;
     $("pops").dataset.ids=cp?cp.ids.join(","):""}
   {const was=new Set([...document.querySelectorAll("#pops input:checked")].map(i=>+i.value)),init=$("pops").dataset.ids;if(init!==undefined&&init!==null&&$("pops").dataset.done!==String(POE)){$("pops").dataset.done=String(POE);was.clear();init.split(",").filter(Boolean).forEach(x=>was.add(+x))}
     $("pops").innerHTML=PRODS.map(p=>`<label class="chk"><input type="checkbox" value="${p.id}" ${was.has(p.id)?"checked":""} onchange="poHint()"> ${esc(p.t)}</label>`).join("")||'<span class="mut">เพิ่มหนังสือก่อน</span>'}
-  $("poh").textContent=cp?"แก้ไขโปรโมชัน":"เพิ่มโปรโมชันชุดหนังสือ";$("pox").style.display=cp?"":"none";poHint();
+  $("poh").textContent=cp?"แก้ไขชุดหนังสือ":"เพิ่มชุดหนังสือ (ชุดรวมราคาพิเศษ)";$("pox").style.display=cp?"":"none";poHint();
   $("pol").innerHTML=PROMOS.length?PROMOS.map((x,i)=>`<div class="vw" style="align-items:center">${stackHTML(x.ids)}<div style="flex:1;min-width:0"><b>${esc(x.t)}</b> ${x.on?"":'<span class="tag">ซ่อนอยู่</span>'}<div class="mut" style="font-size:13px">${x.ids.map(prodBy).filter(Boolean).map(p=>esc(p.t)).join(" + ")}</div><div class="mut" style="font-size:13px">ไฟล์ ${x.pf!=null&&x.pf!==""?B(+x.pf)+` (ปกติ ${B(promoNormal(x,"file"))})`:"ไม่มี"} · เล่ม ${x.pb!=null&&x.pb!==""?B(+x.pb)+` (ปกติ ${B(promoNormal(x,"book"))})`:"ไม่มี"}</div></div><button class="btn alt sm" onclick="mvPo(${i},-1)" ${i?"":"disabled"}>↑</button><button class="btn alt sm" onclick="mvPo(${i},1)" ${i<PROMOS.length-1?"":"disabled"}>↓</button><button class="btn alt sm" onclick="POE=${x.id};renderShopAdmin();$('pot').focus()">แก้ไข</button><button class="btn alt sm" onclick="delPo(${x.id})">${PODEL===x.id?"กดอีกครั้งเพื่อลบ":"ลบ"}</button></div>`).join(""):"<div class='mut'>ยังไม่มีโปรโมชัน</div>";
 }
 function poHint(){const ids=[...document.querySelectorAll("#pops input:checked")].map(i=>+i.value);const t={ids};
@@ -3303,16 +3411,22 @@ const numOrNull=v=>{v=String(v).trim();if(v==="")return null;const n=Math.round(
 /* ลิงก์ไฟล์ของหนังสือในร้าน: มีได้หลายเล่ม (เก็บรวมเป็นข้อความ คั่นด้วยขึ้นบรรทัดใหม่) */
 const plinks=u=>String(u||"").split(/\s+/).filter(x=>/^https:\/\//.test(x));
 const pfuVals=()=>[...document.querySelectorAll("#pful input.pfui")].map(x=>x.value.trim());
-let PFVN=[];let PFVC=[];/* ปกของลิงก์เล่ม 2 เป็นต้นไป (ตำแหน่งตรงกับลิงก์) · เล่ม 1 ใช้ปกหนังสือด้านล่าง */
-function pfuDraw(L,C,Nm){L=L&&L.length?L:[""];if(C)PFVC=C.slice();if(Nm)PFVN=Nm.slice();PFVC.length=L.length;PFVN.length=L.length;const many=L.length>1;
+let PFVN=[];let PFVC=[];let PFVQ=[];let PFVX=[];/* PFVQ = จำนวนเล่มจริงต่อไฟล์ · PFVX = ปกเล่มที่ 2 เป็นต้นไปในไฟล์เดียวกัน */
+/* จำนวนเล่มจากหน้าต้นทุน (ช่อง "เล่ม" ของไฟล์เดียวกัน) */
+function costVq(u){const f=driveId(u||"");if(!f)return null;let r=BCALC["f:"+f];if(!r){const m=BCUST.find(x=>driveId(x.u||"")===f);r=m&&BCALC["m:"+m.id]}return r&&+r.v>0?Math.round(+r.v):null}/* ปกของลิงก์เล่ม 2 เป็นต้นไป (ตำแหน่งตรงกับลิงก์) · เล่ม 1 ใช้ปกหนังสือด้านล่าง */
+function pfuDraw(L,C,Nm,Q,X){L=L&&L.length?L:[""];if(C)PFVC=C.slice();if(Nm)PFVN=Nm.slice();if(Q)PFVQ=L.map((u,i)=>costVq(u)||+Q[i]||0);if(X)PFVX=X.map(a=>Array.isArray(a)?a.slice():[]);PFVC.length=L.length;PFVN.length=L.length;PFVQ.length=L.length;PFVX.length=L.length;
+  L.forEach((u,i)=>{if(!(+PFVQ[i]>0)){const q=costVq(u);PFVQ[i]=q||1;PFVQ["a"+i]=!!q}if(!Array.isArray(PFVX[i]))PFVX[i]=[]});const many=L.length>1;
   $("pful").innerHTML=L.map((u,i)=>`<div class="pfr">${many?`<span class="pfn">เล่ม ${i+1}</span>`:""}<input class="pfui"${i?"":' id="pfu"'} value="${esc(u)}" placeholder="https://drive.google.com/file/d/..." onchange="pfvAuto(${i},1)">${i?`<button class="btn alt sm" type="button" onclick="pfuDel(${i})" aria-label="ลบลิงก์เล่ม ${i+1}">ลบ</button>`:""}</div>
     ${many?`<div class="pfvr"><input class="pfvn" value="${esc(PFVN[i]||"")}" maxlength="60" placeholder="ชื่อเล่ม ${i+1} ที่ลูกค้าเห็น เช่น แบบฝึกหัด เล่ม ${i+1}" oninput="PFVN[${i}]=this.value" aria-label="ชื่อเล่ม ${i+1}"></div>`:""}
+    <div class="pfvr"><label class="pfq">จำนวนเล่มจริง <input type="number" min="1" max="20" value="${+PFVQ[i]||1}" onchange="PFVQ[${i}]=Math.max(1,Math.min(20,Math.round(+this.value)||1));pfuDraw(pfuVals())" aria-label="จำนวนเล่มของไฟล์ ${i+1}"></label><span class="mut" style="font-size:12px">${costVq(u)?`ต้นทุนตั้งไว้ ${costVq(u)} เล่ม`:"ยังไม่มีในหน้าต้นทุน"}</span></div>
+    ${+PFVQ[i]>1?`<div class="pfvr pfx"><span class="mut" style="font-size:12px">ปกเล่มอื่นในไฟล์นี้ (ไม่ใส่ก็ได้):</span>${PFVX[i].map((c,j)=>`<span class="bcv sm2"><img src="${esc(c)}" alt="ปกเพิ่ม ${j+1}"><button type="button" class="pfxd" onclick="PFVX[${i}].splice(${j},1);pfuDraw(pfuVals())" aria-label="เอาปกนี้ออก">✕</button></span>`).join("")}${PFVX[i].length<+PFVQ[i]-1?`<label class="btn alt sm" style="margin:0">เพิ่มปก<input type="file" accept="image/*" multiple style="display:none" onchange="pfxUp(${i},this)"></label>`:""}</div>`:""}
     ${i?`<div class="pfvr">${PFVC[i]?`<span class="bcv sm2"><img src="${esc(PFVC[i])}" alt="ปกเล่ม ${i+1}"></span>`:'<span class="pfnc">ไม่มีปก</span>'}<button class="btn alt sm" type="button" onclick="pfvAuto(${i})">ปกจากหน้าแรกของไฟล์</button><label class="btn alt sm" style="margin:0">อัปโหลดปก<input type="file" accept="image/*" style="display:none" onchange="pfvUp(${i},this)"></label>${PFVC[i]?`<button class="btn alt sm" type="button" onclick="PFVC[${i}]='';pfuDraw(pfuVals())">เอาปกออก</button>`:""}<span class="mut" id="pfvs${i}"></span></div>`:""}`).join("")+(many?'<div class="mut" style="font-size:12px;margin-top:4px">เล่ม 1 ใช้ปกหนังสือด้านล่าง · ปกทุกเล่มแสดงในร้านให้ลูกค้าเห็นว่าได้ครบกี่เล่ม</div>':"")}
 function pfuAdd(){const L=pfuVals();if(L.length>=10)return;L.push("");pfuDraw(L);const x=document.querySelectorAll("#pful input.pfui");x[x.length-1].focus()}
-function pfuDel(i){const L=pfuVals();L.splice(i,1);PFVC.splice(i,1);PFVN.splice(i,1);pfuDraw(L)}
+function pfuDel(i){const L=pfuVals();L.splice(i,1);PFVC.splice(i,1);PFVN.splice(i,1);PFVQ.splice(i,1);PFVX.splice(i,1);pfuDraw(L)}
+async function pfxUp(i,inp){const fs=[...(inp.files||[])];inp.value="";for(const f of fs){if(PFVX[i].length>=(+PFVQ[i]||1)-1)break;try{PFVX[i].push(await picToJpeg(f,700))}catch(e){alert("อ่านรูปไม่ได้: "+f.name)}}pfuDraw(pfuVals())}
 async function pfvUp(i,inp){const f=inp.files&&inp.files[0];if(!f)return;try{const L=pfuVals();PFVC[i]=await picToJpeg(f,700);pfuDraw(L)}catch(e){alert("อ่านรูปไม่ได้")}}
 /* ปกเล่มถัดไป: ใช้ปกที่เคยอัปโหลดไว้กับไฟล์เดียวกัน (บทเรียน/คลังคำศัพท์) ก่อน ไม่มีค่อยเปิดหน้าแรกของไฟล์ */
-async function pfvAuto(i,quiet){const L=pfuVals(),u=L[i]||"",f=driveId(u),st=()=>$("pfvs"+i);
+async function pfvAuto(i,quiet){const L=pfuVals(),u=L[i]||"",f=driveId(u),st=()=>$("pfvs"+i);{const q=costVq(u);if(q&&q!==+PFVQ[i]){PFVQ[i]=q;pfuDraw(L)}}
   const KN=Object.values(BOOKS).flat().concat(typeof VOCAB!=="undefined"?VOCAB:[]).filter(b=>f&&driveId(b.u)===f);
   if(KN.length&&!PFVN[i]){PFVN[i]=KN[0].t;if(L.length>1)pfuDraw(L)}
   if(!i||(quiet&&PFVC[i]))return;
@@ -3322,12 +3436,12 @@ async function pfvAuto(i,quiet){const L=pfuVals(),u=L[i]||"",f=driveId(u),st=()=
   if(st())st().textContent="กำลังเปิดหน้าแรกของไฟล์…";
   try{await loadPdfJs();const d=await cvDriveDoc(f);try{const c=await pg1Canvas(d);if(pfuVals()[i]!==u)return;PFVC[i]=cvFit(c,700);pfuDraw(pfuVals())}finally{try{d.destroy()}catch(e){}}}
   catch(e){if(st())st().textContent="เปิดหน้าแรกไม่ได้ ใช้ปุ่มอัปโหลดปกแทน"}}
-function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),RW=pfuVals().map((x,i)=>({u:x,c:PFVC[i]||"",n:String(PFVN[i]||"").trim().slice(0,60)})).filter(x=>x.u),UL=RW.map(x=>x.u),u=UL.join("\n"),vc=RW.slice(1).map(x=>x.c),vn=RW.length>1?RW.map(x=>x.n):[],c=$("pfc").value;
+function prVals(){const t=$("pft2").value.trim(),pf=numOrNull($("pfpf").value),pb=numOrNull($("pfpb").value),RW=pfuVals().map((x,i)=>({u:x,c:PFVC[i]||"",n:String(PFVN[i]||"").trim().slice(0,60),q:Math.max(1,+PFVQ[i]||1),x:(PFVX[i]||[]).slice(0,Math.max(0,(+PFVQ[i]||1)-1))})).filter(x=>x.u),UL=RW.map(x=>x.u),u=UL.join("\n"),vc=RW.slice(1).map(x=>x.c),vn=RW.length>1?RW.map(x=>x.n):[],c=$("pfc").value;
   if(!t){alert("กรุณาใส่ชื่อหนังสือ");return null}if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}
   if(pf==null&&pb==null){alert("ใส่ราคาอย่างน้อย 1 แบบ (ไฟล์ หรือ เล่ม)");return null}
   if(UL.some(x=>!/^https:\/\/\S+$/.test(x))){alert("ลิงก์ไฟล์ต้องขึ้นต้นด้วย https:// (ช่องละ 1 ลิงก์)");return null}
   const cur=PFE!=null?prodBy(PFE):null;
-  return {t,cat:$("pfcat").value||"",d:$("pfd").value.trim(),pf,pb,u,vc,vn,on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
+  const cats=ckgVal("pfcats");return {t,cats,cat:cats[0]||"",lv:ckgVal("pflv"),feat:$("pffeat").checked,credit:$("pfcred").checked,d:$("pfd").value.trim(),pf,pb,u,vc,vn,vq:RW.map(x=>x.q),vx:RW.map(x=>x.x),on:$("pfon").checked,c:c==="__pic"?PFPIC:c,sm:PFSM.slice(),cb:cur&&cur.cb||0,bc:cur&&cur.bc||null}}
 function savePr(){const v=prVals();if(!v)return;if(PFE!=null)Object.assign(prodBy(PFE),v);else PRODS.push(Object.assign({id:Math.max(0,...PRODS.map(p=>p.id))+1},v));PFE=null;$("pft2").dataset.k="";renderShopAdmin()}
 /* ตัวอย่างหน้าหนังสือ: PDF (เลือกหน้า) หรือรูป */
 const SMMAX=12;
@@ -3517,7 +3631,7 @@ function mvPr(i,d){const j=i+d;if(j<0||j>=PRODS.length)return;[PRODS[i],PRODS[j]
 function poVals(){const t=$("pot").value.trim(),ids=[...document.querySelectorAll("#pops input:checked")].map(i=>+i.value),pf=numOrNull($("popf").value),pb=numOrNull($("popb").value);
   if(!t){alert("กรุณาใส่ชื่อโปรโมชัน");return null}if(ids.length<2){alert("เลือกหนังสืออย่างน้อย 2 เล่ม");return null}
   if(Number.isNaN(pf)||Number.isNaN(pb)){alert("ราคาต้องเป็นตัวเลข");return null}if(pf==null&&pb==null){alert("ใส่ราคาโปรอย่างน้อย 1 แบบ");return null}
-  return {t,d:$("pod").value.trim(),ids,pf,pb,on:$("poon").checked}}
+  const cats=ckgVal("pocats");return {t,d:$("pod").value.trim(),ids,pf,pb,on:$("poon").checked,cats,lv:ckgVal("polv"),feat:$("pofeat").checked,credit:$("pocred").checked}}
 function savePo(){$("pops").dataset.done="";const v=poVals();if(!v)return;if(POE!=null)Object.assign(promoBy(POE),v);else PROMOS.push(Object.assign({id:Math.max(0,...PROMOS.map(p=>p.id))+1},v));POE=null;$("pot").dataset.k="";renderShopAdmin()}
 function cancelPo(){$("pops").dataset.done="";POE=null;$("pot").dataset.k="";renderShopAdmin()}
 function delPo(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return}PODEL=null;PROMOS=PROMOS.filter(p=>p.id!==id);if(POE===id)POE=null;renderShopAdmin()}
@@ -3527,7 +3641,7 @@ function mvPo(i,d){const j=i+d;if(j<0||j>=PROMOS.length)return;[PROMOS[i],PROMOS
 let OF="all";
 const OST={pending:["รอตรวจเงิน","#c47f17"],paid:["ชำระแล้ว · รอส่ง","#1565c0"],shipped:["ส่งแล้ว","#2e7d5a"],done:["เสร็จแล้ว","#2e7d5a"],cancelled:["ยกเลิก","#888"]};
 const oBadge=s=>{const v=OST[s]||[s,"#888"];return `<span class="bdg" style="background:${v[1]}">${v[0]}</span>`};
-const oItems=o=>o.items.map(i=>`<div class="oit"><span>${esc(i.title)}${i.kind==="promo"?' <span class="tag">โปรชุด</span>':""} · ${i.fmt==="file"?"📄 ไฟล์":"📚 เล่ม"}${i.qty>1?" × "+i.qty:""}${i.books?`<div class="mut" style="font-size:12px">${i.books.map(esc).join(" + ")}</div>`:""}</span><b>${B(i.price*i.qty)}</b></div>`).join("");
+const oItems=o=>o.items.map(i=>`<div class="oit"><span>${esc(i.title)}${i.kind==="promo"?' <span class="tag">โปรชุด</span>':""} · ${i.fmt==="file"?"📄 ไฟล์":"📚 เล่ม"}${i.qty>1?" × "+i.qty:""}${i.books?`<div class="mut" style="font-size:12px">${i.books.map(esc).join(" + ")}</div>`:""}</span><b>${i.disc>0?`<s class="mut" style="font-weight:400">${B(i.price*i.qty)}</s> `:""}${B(i.price*i.qty-(i.disc||0))}</b></div>`).join("")+(o.promo&&o.promo.k?`<div class="oit"><span>โปร: ${esc(o.promo.t||o.promo.k)}${o.promo.ref?` · อ้างอิง ${esc(o.promo.ref)}`:""}</span><b style="color:var(--seal)">−${B(o.disc||o.discount||0)}</b></div>`:"");
 function orderRows(){
   const shop=ORDERS.map(o=>({t:"o",o,at:o.at,stage:o.st==="pending"?"pay":(o.st==="paid"&&o.ns)?"ship":(o.st==="cancelled"?"x":"done")}));
   const enr=SUBS.filter(r=>r.book==="รับหนังสือเล่ม").map(r=>({t:"s",r,at:0,stage:r.st==="รอตรวจสอบ"?"pay":r.sh==="sent"?"done":"ship"}));
@@ -3824,7 +3938,7 @@ document.addEventListener("click",()=>navLater());
 NST=[navSnap()];NI=0;try{history.replaceState({yh:0},"")}catch(e){}
 </script>
 <script>let SD=null;</script>
-<script>const S79U=["a/s790-a759e8a5.gz","a/s791-a030e3ab.gz","a/s792-55885bb3.gz","a/s793-0c90a099.gz","a/s794-050932f4.gz","a/s795-2ac66a1b.gz","a/s796-b1e19be3.gz","a/s797-e4c94000.gz"];</script>
+<script>const S79U=["a/s790-a759e8a5.gz","a/s791-a030e3ab.gz","a/s792-55885bb3.gz","a/s793-0c90a099.gz","a/s794-0fa191f0.gz","a/s795-889f4606.gz","a/s796-b1e19be3.gz","a/s797-e4c94000.gz"];</script>
 
 <script>/**
  * Hanzi Writer v3.5.0 | https://chanind.github.io/hanzi-writer
@@ -3860,7 +3974,7 @@ function toSub(r){return {id:r.id,uid:r.user_id,code:r.code,name:r.name,ph:r.pho
   live:r.live,access:r.access||[],slipPath:r.slip_path,idcPath:r.idcard_path,slip:null,idc:null,
   st:r.status==="pending"?"รอตรวจสอบ":"ยืนยันแล้ว",sus:r.suspended,sh:r.ship_status||"",car:r.carrier||"",trk:r.tracking||"",
   nick:r.nick||"",av:r.avatar||"",pic:r.photo_url||"",
-  refCode:r.ref_code||"",refDisc:r.ref_disc||0,bookDisc:r.book_disc||0,cpId:r.coupon_id!=null?Number(r.coupon_id):null,cpDisc:r.coupon_disc||0,rflags:r.ref_flags||[],pd:!!(r.state&&r.state.pd),state:r.state||{},
+  refCode:r.ref_code||"",refDisc:r.ref_disc||0,bookDisc:r.book_disc||0,cpId:r.coupon_id!=null?Number(r.coupon_id):null,cpDisc:r.coupon_disc||0,bookOrder:r.book_order||"",bookCredit:r.book_credit||0,rflags:r.ref_flags||[],pd:!!(r.state&&r.state.pd),state:r.state||{},
   at:new Date(r.created_at).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"}),crAt:ms(r.created_at),apAt:ms(r.approved_at),p2At:ms(r.paid2_at)}}
 const byCode=c=>SUBS.find(x=>x.code===c);
 
@@ -3892,8 +4006,8 @@ async function loadShop(admin){
   const [p,b]=await Promise.all([sb.from("products").select("*").order("sort").order("id"),sb.from("promos").select("*").order("sort").order("id")]);
   if(p.error)throw p.error;
   let files={},costs={};if(admin){const [f,c]=await Promise.all([sb.from("product_files").select("product_id,file_url"),sb.from("product_costs").select("product_id,cost_book,calc")]);(f.data||[]).forEach(x=>files[x.product_id]=x.file_url);(c.data||[]).forEach(x=>costs[x.product_id]=x)}
-  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",vc:Array.isArray(x.vcovers)?x.vcovers:[],vn:Array.isArray(x.vnames)?x.vnames:[],cat:x.cat||"",sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]?costs[x.id].cost_book||0:0,bc:costs[x.id]?costs[x.id].calc:null}));
-  PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort}));
+  PRODS=(p.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",c:x.cover||"",pf:x.price_file,pb:x.price_book,on:x.active,u:files[x.id]||"",vc:Array.isArray(x.vcovers)?x.vcovers:[],vn:Array.isArray(x.vnames)?x.vnames:[],cat:x.cat||"",cats:Array.isArray(x.cats)?x.cats:[],lv:Array.isArray(x.lv)?x.lv.map(String):[],feat:!!x.feat,credit:!!x.credit,vq:Array.isArray(x.vq)?x.vq.map(Number):[],vx:Array.isArray(x.vxc)?x.vxc.map(a=>Array.isArray(a)?a:[]):[],sort:x.sort,sm:Array.isArray(x.samples)?x.samples:[],cb:costs[x.id]?costs[x.id].cost_book||0:0,bc:costs[x.id]?costs[x.id].calc:null}));
+  PROMOS=(b.data||[]).map(x=>({id:Number(x.id),t:x.title,d:x.descr||"",ids:(x.product_ids||[]).map(Number),pf:x.price_file,pb:x.price_book,on:x.active,sort:x.sort,cats:Array.isArray(x.cats)?x.cats:[],lv:Array.isArray(x.lv)?x.lv.map(String):[],feat:!!x.feat,credit:!!x.credit}));
   cartBadge();
 }
 async function loadVocab(){const {data,error}=await sb.from("vocab_files").select("*").order("sort").order("id");if(error)throw error;
@@ -3921,6 +4035,7 @@ window.enroll=async function(){
   if(+$("bk").value&&(k!=="live"||LC)&&(!$("ad").value.trim()||!/^\d{5}$/.test($("zp").value.trim()))){alert("กรุณากรอกที่อยู่จัดส่งหนังสือและรหัสไปรษณีย์ 5 หลัก");return}
   if(k==="live"){const e=BK.length?chk():"ยังไม่ได้เลือกช่วงเวลาเรียน";if(e){alert(e);return}}
   if($("rfc").value.trim()&&!RF&&isCrs()){alert("รหัสผู้แนะนำยังใช้ไม่ได้ (ดูข้อความใต้ช่อง) แก้รหัสหรือลบออกก่อนส่งนะ");$("rfc").focus();return}
+  if(isCrs()&&($("bco").value.trim()||BCR)&&!bcOk()){alert("รหัสคำสั่งซื้อหนังสือยังไม่ได้ตรวจ (กดปุ่มตรวจสอบ) หรือใช้ไม่ได้ ลบออกก่อนส่งนะ");const d=$("bcw");if(d)d.open=true;$("bco").focus();return}
   if($("cpc").value.trim()&&!CP&&isCrs()){alert("คูปองยังใช้ไม่ได้ (ดูข้อความใต้ช่อง) แก้รหัสหรือลบออกก่อนส่งนะ");$("cpc").focus();return}
   const need=k!=="live"||!!LC,ins=eligible(k)&&$("ins").checked,c=C[k],PR=price(),b=PR.b;
   const label=k==="live"?(LC?C[LC].n+" เรียนสด":c.n):(FMT==="l"?c.n+" เรียนสด ("+(TYP==="single"?"เดี่ยว":"กลุ่ม")+")":c.n);
@@ -3930,7 +4045,7 @@ window.enroll=async function(){
   put("lesson_type",k==="live"?ty0():(FMT==="l"?TYP:""));put("course_label",label);put("want_book",b?1:0);
   put("addr",b?$("ad").value.trim():"");put("zip",b?$("zp").value.trim():"");put("ins",ins?1:0);
   put("total",PR.total);put("second",PR.second);put("lc",k==="live"&&LC?LC:"");
-  if(need&&RF)put("ref_code",RF.code);if(need&&CP&&!RF)put("coupon_code",CP.code);
+  if(need&&RF)put("ref_code",RF.code);if(need&&CP&&!RF)put("coupon_code",CP.code);if(need&&bcOk()&&!RF&&!CP){put("book_order",BCR.code);put("book_contact",BCR.contact)}
   put("pdpa",1);put("slot_ids",JSON.stringify(k==="live"?BK:[]));
   if(sl)fd.append("slip",sl);fd.append("idcard",id);
   busy(btn,true,"กำลังส่งข้อมูล…");
@@ -3939,7 +4054,7 @@ window.enroll=async function(){
     const j=await r.json().catch(()=>({}));
     if(!r.ok||!j.code){alert(j.error||"ส่งข้อมูลไม่สำเร็จ ลองใหม่อีกครั้ง");if(r.status===409)loadPublic();return}
     if(k==="live")BK=[];
-    try{localStorage.removeItem("yh_ref")}catch(e){}RF=CP=null;$("rfc").value=$("cpc").value="";$("rfm").textContent=$("cpm").textContent="";
+    try{localStorage.removeItem("yh_ref")}catch(e){}RF=CP=null;BCR=null;$("rfc").value=$("cpc").value=$("bco").value=$("bcc").value="";$("bcm").textContent="";$("rfm").textContent=$("cpm").textContent="";
     me={name:n,course:c.n,code:j.code};$("pw1").value=$("pw2").value="";
     $("newCode").textContent=j.code;$("enForm").style.display="none";$("enDone").style.display="block";
     loadPublic();
@@ -3969,6 +4084,7 @@ async function loadStudent(){
 }
 /* ---------- แนะนำเพื่อน ---------- */
 MYREF=null;COUPONS=[];REFS=[];
+bcLook=async function(code,contact,course){const {data,error}=await sb.rpc("book_credit_check",{p_code:code,p_contact:contact,p_course:course});if(error)throw error;return data||{ok:false,msg:"ตรวจไม่สำเร็จ"}};
 window.yhLookFn=async function(kind,code){const {data,error}=await sb.rpc(kind==="ref"?"ref_lookup":"coupon_lookup",{p_code:code});if(error)throw error;return data};
 async function loadRefAdm(){const [cp,rf]=await Promise.all([
     sb.from("coupons").select("id,owner_code,friends,value,status,expires_at,created_at,used_at").order("id",{ascending:false}).limit(2000),
@@ -4143,7 +4259,7 @@ let PDFWT=0;function pdfWarm(){if(Date.now()-PDFWT<120000)return;PDFWT=Date.now(
   loadPdfJs().then(l=>pdfWorker(l)).catch(()=>{});fetch(FN+"pdfcover?id=").catch(()=>{})}
 document.addEventListener("focusin",e=>{if(e.target&&/^(pfu|vfu|bfu)$/.test(e.target.id))pdfWarm()});
 async function loadOrders(){const {data,error}=await sb.from("orders").select("*").order("created_at",{ascending:false}).limit(500);if(error)throw error;
-  ORDERS=(data||[]).map(o=>({id:Number(o.id),code:o.code,at:ms(o.created_at),pa:ms(o.paid_at),bt:o.buyer_type,name:o.name,em:o.email,ph:o.phone,addr:o.addr||"",zip:o.zip||"",items:o.items||[],total:o.total,st:o.status,ns:o.needs_ship,hf:o.has_file,car:o.carrier||"",trk:o.tracking||"",note:o.note||"",slipPath:o.slip_path}))}
+  ORDERS=(data||[]).map(o=>({id:Number(o.id),code:o.code,at:ms(o.created_at),pa:ms(o.paid_at),bt:o.buyer_type,name:o.name,em:o.email,ph:o.phone,addr:o.addr||"",zip:o.zip||"",items:o.items||[],total:o.total,st:o.status,ns:o.needs_ship,hf:o.has_file,car:o.carrier||"",trk:o.tracking||"",note:o.note||"",slipPath:o.slip_path,promo:o.promo||null,disc:o.discount||0}))}
 async function upd(code,patch,msg){
   const r=byCode(code);if(!r)return;
   const {error}=await sb.from("students").update(patch).eq("id",r.id);
@@ -4321,13 +4437,13 @@ window.placeOrder=async function(){
   const items=CART.map(l=>({k:l.k,id:l.id,f:l.f,q:l.q||1}));
   const fd=new FormData();const put=(a,v)=>fd.append(a,v==null?"":String(v));
   put("name",o.name);put("phone",o.phone);put("email",o.email);put("addr",o.ns?o.addr:"");put("zip",o.ns?o.zip:"");put("note",o.note);
-  put("items",JSON.stringify(items));put("total",cartTotal2());fd.append("slip",o.slip);
+  put("items",JSON.stringify(items));put("total",cartFinal());const pp=promoPick();put("promo",pp?pp.k:"");if(pp&&pp.k==="upgrade"&&UPG){put("upg_code",UPG.code);put("upg_contact",UPG.contact)}fd.append("slip",o.slip);
   let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(ROLE==="student"&&data&&data.session)tok=data.session.access_token}catch(e){}
   busy(btn,true,"กำลังส่งคำสั่งซื้อ…");
   try{const r=await fetch(FN+"shop",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+tok},body:fd});
     const j=await r.json().catch(()=>({}));
-    if(!r.ok||!j.code){$("oerr").textContent=j.error||"ส่งคำสั่งซื้อไม่สำเร็จ ลองใหม่อีกครั้ง";if(r.status===409){await loadShop(false);renderCart()}return}
-    ODONE={code:j.code,ns:o.ns,hf:items.some(i=>i.f==="file")};CART=[];cartSave();renderCart();scrollTo(0,0);
+    if(!r.ok||!j.code){$("oerr").textContent=j.error||"ส่งคำสั่งซื้อไม่สำเร็จ ลองใหม่อีกครั้ง";if(r.status===409){await Promise.all([loadShop(false),loadSiteCfg().catch(()=>{})]);if(j.promo_bad){PSEL=null;UPG=null}renderCart()}return}
+    ODONE={code:j.code,ns:o.ns,hf:items.some(i=>i.f==="file")};CART=[];PSEL=null;UPG=null;cartSave();renderCart();scrollTo(0,0);
   }catch(e){fail(e,"ส่งคำสั่งซื้อไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่")}finally{const b=$("obtn");if(b)busy(b,false)}
 };
 /* ---------- หลังบ้าน: คำสั่งซื้อ ---------- */
@@ -4361,7 +4477,8 @@ async function upCover(dataUrl,folder){if(!/^data:image\//.test(dataUrl||""))ret
   return sb.storage.from("public-assets").getPublicUrl(path).data.publicUrl}
 /* ---------- หลังบ้าน: ร้านค้า ---------- */
 window.savePr=async function(){const v=prVals();if(!v)return;const btn=$("prsb");busy(btn,true);
-  try{const [cover,...samples]=await Promise.all([upCover(v.c,"shop")].concat((v.sm||[]).map(u=>upCover(u,"samples"))));const vcovers=await Promise.all((v.vc||[]).map(c=>c?upCover(c,"shop"):""));const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples,vcovers,vnames:v.vn||[],cat:v.cat||null};
+  try{const [cover,...samples]=await Promise.all([upCover(v.c,"shop")].concat((v.sm||[]).map(u=>upCover(u,"samples"))));const vcovers=await Promise.all((v.vc||[]).map(c=>c?upCover(c,"shop"):""));const vxc=await Promise.all((v.vx||[]).map(a=>Promise.all((a||[]).filter(Boolean).map(c=>upCover(c,"shop")))));
+    const row={title:v.t,descr:v.d,cover,price_file:v.pf,price_book:v.pb,active:v.on,samples,vcovers,vnames:v.vn||[],vq:v.vq||[],vxc,cats:v.cats||[],cat:(v.cats||[])[0]||null,lv:v.lv||[],feat:!!v.feat,credit:!!v.credit};
     let id=PFE;if(id!=null){const {error}=await sb.from("products").update(row).eq("id",id);if(error)throw error}
     else{const {data,error}=await sb.from("products").insert(Object.assign(row,{sort:PRODS.length})).select("id").single();if(error)throw error;id=data.id}
     const [{error:fe},{error:ce}]=await Promise.all([sb.from("product_files").upsert({product_id:id,file_url:v.u}),sb.from("product_costs").upsert({product_id:id,cost_book:v.cb||0,calc:v.bc||null,updated_at:new Date().toISOString()})]);if(fe)throw fe;if(ce)throw ce;
@@ -4372,7 +4489,7 @@ window.delPr=async function(id){if(PRDEL!==id){PRDEL=id;renderShopAdmin();return
   if(PFE===id)PFE=null;await loadShop(true);renderShopAdmin();toast("ลบแล้ว")};
 async function reorder(tbl,list){await Promise.all(list.map((x,n)=>x.sort!==n?sb.from(tbl).update({sort:n}).eq("id",x.id||x.dbid):null).filter(Boolean))}
 window.mvPr=async function(i,d){const j=i+d;if(j<0||j>=PRODS.length)return;[PRODS[i],PRODS[j]]=[PRODS[j],PRODS[i]];renderShopAdmin();await reorder("products",PRODS);await loadShop(true)};
-window.savePo=async function(){const v=poVals();if(!v)return;const row={title:v.t,descr:v.d,product_ids:v.ids,price_file:v.pf,price_book:v.pb,active:v.on};
+window.savePo=async function(){const v=poVals();if(!v)return;const row={title:v.t,descr:v.d,product_ids:v.ids,price_file:v.pf,price_book:v.pb,active:v.on,cats:v.cats||[],lv:v.lv||[],feat:!!v.feat,credit:!!v.credit};
   const q=POE!=null?sb.from("promos").update(row).eq("id",POE):sb.from("promos").insert(Object.assign(row,{sort:PROMOS.length}));
   const {error}=await q;if(error){fail(error);return}POE=null;$("pot").dataset.k="";$("pops").dataset.done="";await loadShop(true);renderShopAdmin();toast("บันทึกโปรโมชันแล้ว")};
 window.delPo=async function(id){if(PODEL!==id){PODEL=id;renderShopAdmin();return}PODEL=null;
@@ -4420,7 +4537,9 @@ window.delFr=async function(id){if(FRDEL!==id){FRDEL=id;renderFin();return}FRDEL
 window.saveFc=async function(){const v=fcVals(),bad=fcBad(v);if(bad){alert(bad);return}const btn=$("fcsv");busy(btn,true);
   try{const now=new Date().toISOString();if(v.pc.length){const {error}=await sb.from("product_costs").upsert(v.pc.map(([id,cb,c])=>({product_id:id,cost_book:cb,calc:c,updated_at:now})));if(error)throw error}
     const {error:e2}=await sb.from("fin_cfg").upsert([{k:"book_mat",v:v.m},{k:"book_calc",v:v.gc},{k:"book_custom",v:v.cu},{k:"enroll_book_cost",v:v.eb}]);if(e2)throw e2;
-    BMAT=v.m;BCALC=v.gc;BCUST=v.cu;FIN.eb=v.eb;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});try{document.activeElement.blur()}catch(e){}renderFin();renderBc();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
+    BMAT=v.m;BCALC=v.gc;BCUST=v.cu;FIN.eb=v.eb;v.pc.forEach(([id,cb,c])=>{const p=prodBy(id);if(p){p.cb=cb;p.bc=c}});
+    /* จำนวนเล่มในร้านตามหน้าต้นทุน (ช่อง "เล่ม") */
+    for(const p of PRODS){const L=plinks(p.u);if(!L.length)continue;const q=L.map((u,i)=>costVq(u)||+(p.vq||[])[i]||1);if(JSON.stringify(q)!==JSON.stringify((p.vq||[]).slice(0,L.length))){const {error}=await sb.from("products").update({vq:q}).eq("id",p.id);if(!error)p.vq=q}}try{document.activeElement.blur()}catch(e){}renderFin();renderBc();toast("บันทึกต้นทุนแล้ว")}catch(e){fail(e,"บันทึกไม่สำเร็จ: "+(e.message||e))}finally{busy(btn,false)}};
 /* นับหน้าจากลิงก์ Google Drive (อ่านแค่โครงไฟล์ ไม่โหลดทั้งเล่ม) */
 countPdfPages=async function(u){const f=driveId(u);if(!f)throw new Error("นับหน้าได้เฉพาะลิงก์ Google Drive");
   try{const s=await driveSrc(f);return await pdfUrlCount(s.url,s.h,s.batch)}catch(e){throw new Error(e&&e.message&&!/pdf|fetch|network|Failed|Invalid|Missing|Unexpected/i.test(e.message)?e.message:"อ่านไฟล์จากลิงก์ไม่ได้ ตรวจว่าแชร์เป็น “ทุกคนที่มีลิงก์” แล้ว")}};
@@ -4450,7 +4569,7 @@ window.mvCrs=async function(i,d){const j=i+d;if(j<0||j>=CORD.length)return;[CORD
 
 /* ---------- แบนเนอร์ใหญ่ + ค่าที่ใช้ทั้งเว็บ (ราคาเรียนสดรายชั่วโมง / เวลาทดลองเรียน) ---------- */
 async function loadSiteCfg(){const {data,error}=await sb.from("site_cfg").select("k,v");if(error)throw error;
-  (data||[]).forEach(r=>{const v=r.v||{};if(r.k==="banner"&&Array.isArray(v.list))BAN=v.list;if(r.k==="rates"&&+v.group>0&&+v.single>0)RTS={group:+v.group,single:+v.single};if(r.k==="trial"&&+v.h>0)TRH=+v.h;if(r.k==="shop_cats"&&Array.isArray(v.list))SCATS=v.list.filter(c=>c&&c.id&&c.n);if(r.k==="gdrive")GDRV={client:v.client||"",key:v.key||"",app:v.app||""}});
+  (data||[]).forEach(r=>{const v=r.v||{};if(r.k==="banner"&&Array.isArray(v.list))BAN=v.list;if(r.k==="rates"&&+v.group>0&&+v.single>0)RTS={group:+v.group,single:+v.single};if(r.k==="trial"&&+v.h>0)TRH=+v.h;if(r.k==="shop_cats"&&Array.isArray(v.list))SCATS=v.list.filter(c=>c&&c.id&&c.n);if(r.k==="shop_promos"&&v&&typeof v==="object")SHOPP=Object.assign({},SHOPP,v);if(r.k==="gdrive")GDRV={client:v.client||"",key:v.key||"",app:v.app||""}});
   {const on=document.querySelector(".scr.on");if(on&&on.id==="s-shop")renderShop()}if(ROLE==="admin"&&AT==="a-shop"){SCED=null;renderShopAdmin()}
   ban();renderCl();const on=document.querySelector(".scr.on");if(on&&on.id==="s-hour")renderHour();if(ROLE==="admin"&&AT==="a-ban")renderBanAdmin()}
 bcSysDelRun=async function(S){const ok=r=>{if(r&&r.error)throw r.error};
@@ -4467,6 +4586,8 @@ bcSysRenameRun=async function(S,n){const ok=r=>{if(r&&r.error)throw r.error};
   for(const x of S.filter(x=>x.ty==="plink")){const p=prodBy(x.id);if(!p)continue;const L=plinks(p.u),vn=Array.from({length:L.length},(_,i)=>(p.vn||[])[i]||"");vn[x.i]=n;ok(await sb.from("products").update({vnames:vn}).eq("id",p.id))}
   await Promise.all([S.some(x=>x.ty==="book")?loadBooks(true):0,S.some(x=>x.ty==="vocab")?loadVocab():0,S.some(x=>x.ty==="prod"||x.ty==="plink")?loadShop(true):0])};
 gdrvSave=async function(v){const {error}=await sb.from("site_cfg").upsert({k:"gdrive",v});if(error)throw error;GDRV=v};
+spSaveFn=async function(v){const {error}=await sb.from("site_cfg").upsert({k:"shop_promos",v});if(error)throw error;SHOPP=v;const on=document.querySelector(".scr.on");if(on&&on.id==="s-shop")renderShop()};
+upgLook=async function(code,contact){const {data,error}=await sb.rpc("upgrade_check",{p_code:code,p_contact:contact});if(error)throw error;return data||{ok:false,msg:"ตรวจไม่สำเร็จ"}};
 scatSave=async function(L){const {error}=await sb.from("site_cfg").upsert({k:"shop_cats",v:{list:L}});if(error)throw error;SCATS=L;const on=document.querySelector(".scr.on");if(on&&on.id==="s-shop")renderShop()};
 async function banSave(L){const {error}=await sb.from("site_cfg").upsert({k:"banner",v:{list:L}});if(error)throw error;banSet(L)}
 window.saveBan=async function(){const r=bnVals();if(!r)return;const btn=$("bnsv");busy(btn,true);
