@@ -905,12 +905,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <h4 class="fbh">2. หนังสือทั้งหมด</h4><div class="mut" style="font-size:12.5px">รวมทุกเล่มที่อยู่ในระบบ: ไฟล์หนังสือในบทเรียน คลังคำศัพท์ฟรี และหนังสือในร้าน · ไฟล์เดียวกันที่อยู่หลายที่แสดงครั้งเดียว · หนังสือที่มีลิงก์ Google Drive กด “นับหน้า” ให้ระบบอ่านจำนวนหน้าจากไฟล์ได้</div>
     <div class="row" style="margin-top:6px"><button class="btn alt sm" id="fbcall" onclick="bcCountAll()">นับหน้าทุกเล่มที่ยังว่าง</button></div><nav class="bctab" id="bctab" aria-label="หมวดหนังสือในหน้าต้นทุน"></nav><div id="fpc"></div>
     <h4 class="fbh">3. ต้นทุนหนังสือที่หักตอนสมัครเรียน (ต่อคอร์ส)</h4><div class="mut" style="font-size:12.5px">คิดจากเล่มที่ติ๊ก “ส่งเล่มจริงตอนสมัคร” ในข้อ 2</div><div id="fec2"></div>
-    <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button><button class="btn alt" onclick="printBc()">พิมพ์เอกสารต้นทุน</button></div>
-    <details id="gdset" class="gdset"><summary>ตั้งค่าการเลือกไฟล์จาก Google Drive</summary><div class="mut" style="font-size:12.5px;margin:6px 0">ใช้กับปุ่ม “เลือกจาก Drive” ในหนังสือที่เพิ่มเอง · ใส่ครั้งเดียว ทำตามขั้นตอนที่ Claude ส่งให้ในแชท</div>
-      <label for="gd-c">Client ID</label><input id="gd-c" placeholder="xxxx.apps.googleusercontent.com" autocomplete="off">
-      <label for="gd-k">API key</label><input id="gd-k" placeholder="AIza..." autocomplete="off">
-      <label for="gd-a">หมายเลขโปรเจกต์ (Project number)</label><input id="gd-a" inputmode="numeric" placeholder="เช่น 123456789012" autocomplete="off">
-      <div class="row"><button class="btn sm" type="button" onclick="gdSetSave()">บันทึกการเชื่อม</button></div></details></div>
+    <div class="row"><button class="btn" id="fcsv" onclick="saveFc()">บันทึกต้นทุน</button><button class="btn alt" onclick="printBc()">พิมพ์เอกสารต้นทุน</button></div></div>
   <p class="mut" style="font-size:12px">ตัวเลขในหน้านี้ไว้ดูภาพรวมธุรกิจ ไม่ใช่เอกสารบัญชีหรือภาษี · ค่าเรียนนับในเดือนที่สมัครและได้รับอนุมัติ · ร้านหนังสือนับในเดือนที่กด “เงินเข้าแล้ว”</p>
 </div>
 <div class="pane" id="a-ref"><div id="rfa"></div></div>
@@ -1900,7 +1895,7 @@ function bcRow(g,c0){const c=c0||bcOf(g),p=g.ps[0],price=p&&p.pb!=null?p.pb:null
 function bcRowM(g,c,r){const x=g.m,crs=FCRS();
   return `<div class="fbr fbm" data-k="${esc(g.k)}" data-m="${esc(x.id)}"><div class="fbt"><span class="tag">เพิ่มเอง</span>
     <label>ชื่อหนังสือ<input data-t value="${esc(x.t||"")}" maxlength="80" placeholder="เช่น สมุดคัดจีนเล่มเล็ก" oninput="bcMset('${esc(x.id)}','t',this.value)"></label>
-    <label>ลิงก์ Google Drive (ถ้ามี ใช้นับหน้าให้)<span class="fu"><input data-u value="${esc(x.u||"")}" placeholder="https://drive.google.com/file/d/..." oninput="bcMset('${esc(x.id)}','u',this.value.trim())"><button class="btn alt sm" type="button" onclick="bcPick('${esc(x.id)}',this)">เลือกจาก Drive</button></span></label>
+    <label>ลิงก์ Google Drive (ถ้ามี ใช้นับหน้าให้)<input data-u value="${esc(x.u||"")}" placeholder="https://drive.google.com/file/d/..." oninput="bcMset('${esc(x.id)}','u',this.value.trim())"></label>
     <label>ส่งเล่มนี้ตอนสมัครคอร์ส<select data-c onchange="bcMset('${esc(x.id)}','c',this.value);bcLive()"><option value="">ไม่ส่ง</option>${crs.map(([k,n])=>`<option value="${k}"${x.c===k?" selected":""}>${esc(n)}</option>`).join("")}</select></label>
     <button class="btn alt sm" type="button" onclick="bcMdel('${esc(x.id)}')" style="margin-top:6px">ลบเล่มนี้</button></div>
   <div class="fbi"><label>จำนวนหน้า<span class="fu"><input type="number" min="0" inputmode="numeric" data-p value="${c.p||""}" placeholder="เช่น 120" oninput="bcLive()"><button class="btn alt sm" type="button" data-cnt onclick="bcCount(this)">นับหน้า</button></span></label>
@@ -1968,7 +1963,7 @@ function bcLive(){BMAT=matRead();const pu=$("fmu");if(pu)pu.innerHTML=matUnit();
   bcSetDraw([...G.values()],gc);
   if($("fec2"))$("fec2").innerHTML=ebOut(gc,BMAT)}
 const matUnit=()=>`กระดาษ ${BMAT.rs?r2(fnum(BMAT.rp)/fnum(BMAT.rs)):0} บาท/แผ่น · หมึก ${BMAT.iy?r2(fnum(BMAT.ip)/fnum(BMAT.iy)):0} บาท/หน้า`;
-function renderBc(keep){if(!$("fmat"))return;if($("gd-c")&&!$("gd-c").value){$("gd-c").value=GDRV.client||"";$("gd-k").value=GDRV.key||"";$("gd-a").value=GDRV.app||""}const mk=keep?matRead():null;if(mk)BMAT=mk;
+function renderBc(keep){if(!$("fmat"))return;const mk=keep?matRead():null;if(mk)BMAT=mk;
   $("fmat").innerHTML=`<div class="fmg">${MATF.map(([k,l,u])=>`<label>${l}<span class="fu"><input id="bm-${k}" type="number" min="0" step="any" inputmode="decimal" value="${BMAT[k]||""}" placeholder="0" oninput="bcLive()"><i>${u}</i></span></label>`).join("")}</div>
   <div class="mut" style="font-size:12px;margin-top:4px">อื่น ๆ (ต่อชุด)</div><div id="fmot">${(BMAT.ot||[]).map(o=>fotRow(o)).join("")}</div><button class="btn alt sm" onclick="addFot()">+ เพิ่มรายการอื่น</button>
   <div class="mut" id="fmu" style="font-size:12px;margin-top:6px">${matUnit()}</div>`;
