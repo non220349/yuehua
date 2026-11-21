@@ -767,6 +767,27 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 .slx{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px}.slx input[type=number]{width:70px;padding:6px 8px}
 .chip.full{background:#555!important;color:#fff!important}
 .pfq{display:inline-flex;align-items:center;gap:6px;font-size:13px}.pfq input{width:64px}.pfx{flex-wrap:wrap;gap:6px}.pfx .bcv{position:relative}.pfxd{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;border:0;background:#111;color:#fff;font-size:12px;line-height:22px;padding:0;cursor:pointer}
+
+/* ===== ร้าน: ปกชุดตั้งตรงเรียงซ้อนกัน (ไม่เอียง/ไม่โค้ง) · ชุดหลายเล่มบีบระยะให้ไม่กว้างเกิน ===== */
+.pstack{--dxe:min(var(--dx),(var(--mw,400px) - var(--w)) / max(1,var(--n) - 1));width:calc(var(--w) + (var(--n) - 1) * var(--dxe));height:calc(var(--w) * 1.42 + 4px)}
+.pcv,.pcs .pstack.big .pcv{left:calc(var(--i) * var(--dxe));top:0;transform:none}
+.pstack.big{--mw:360px}.pcs .pstack.big{--mw:300px;height:calc(var(--w) * 1.42 + 4px)}
+/* แบนเนอร์โปร: แต่ละสไลด์สูงเท่าเนื้อหาตัวเอง ไม่ยืดตามสไลด์ที่สูงที่สุด */
+.prc{align-items:flex-start;transition:height .35s ease}.prc>.promo .pstack{margin-left:auto;margin-right:auto}
+.psl .pslv{width:118px;min-height:104px;padding:10px;border-radius:12px}.psl .pslv b{font-size:32px}.psl .pslv span{font-size:12px}
+@media(max-width:600px){.psl .pslv{width:100%;min-height:64px}.psl .pslv b{font-size:26px}}
+/* ===== จอกว้าง (iPad / คอม): ใช้พื้นที่เต็มจอ มือถือเหมือนเดิม ===== */
+@media(min-width:768px){
+.scr#s-shop,.scr#s-game,.scr#s-dict,.scr#s-lv,.scr#s-lib,.scr#s-gram,.scr#s-course,.scr#s-hour,.scr#s-ref,.scr#s-cart{max-width:1180px}
+.scr#s-enroll,.scr#s-trial,.scr#s-login,.scr#s-gate,.scr#s-pick,.scr#s-prof{max-width:760px}
+.scsec{display:grid;grid-template-columns:repeat(auto-fill,minmax(500px,1fr));gap:0 18px;align-items:stretch}
+.scsec>.shh{grid-column:1/-1}
+.scsec>.pcd{margin:8px 0}
+.prc>.promo{flex-wrap:nowrap;padding:22px 32px;gap:40px;justify-content:center}
+.prc>.promo .pstack{margin:4px 0}
+.prc>.promo .pinfo{min-width:0;flex:0 1 560px}
+.psl .pslv{width:150px;min-height:120px}.psl .pslv b{font-size:38px}
+}
 </style>
 </head>
 <body>
@@ -3303,8 +3324,9 @@ function scJump(id){const e=$("sc-"+id);if(!e)return;const nv=document.querySele
 let PRT=null,PRP=false;
 const prW=()=>{const c=$("prcs");return c&&c.children[0]?c.children[0].getBoundingClientRect().width+12:1};
 function prTo(i){const c=$("prcs");if(!c)return;const n=c.children.length;i=(i+n)%n;c.scrollTo({left:i*prW(),behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});prDots(i)}
-function prDots(i){document.querySelectorAll("#prdots button").forEach((b,k)=>b.setAttribute("aria-current",k===i?"true":"false"))}
-function prStart(){clearInterval(PRT);const c=$("prcs");if(!c||c.children.length<2)return;
+function prFit(i){const c=$("prcs");if(!c||!c.children[i])return;const h=c.children[i].offsetHeight;c.style.height=h?h+14+"px":""}
+function prDots(i){prFit(i);document.querySelectorAll("#prdots button").forEach((b,k)=>b.setAttribute("aria-current",k===i?"true":"false"))}
+function prStart(){clearInterval(PRT);const c=$("prcs");if(!c||c.children.length<2)return;prFit(Math.round(c.scrollLeft/prW()));requestAnimationFrame(()=>{const c2=$("prcs");if(c2)prFit(Math.round(c2.scrollLeft/prW()))});if(!window.__prRz){window.__prRz=1;addEventListener("resize",()=>{const c2=$("prcs");if(c2)prFit(Math.round(c2.scrollLeft/prW()))})}
   if(!c.dataset.ev){c.dataset.ev=1;const on=()=>{PRP=true},off=()=>{PRP=false;prStart()};["touchstart","focusin"].forEach(e=>c.addEventListener(e,on,{passive:true}));["touchend","touchcancel","focusout"].forEach(e=>c.addEventListener(e,off));
     if(matchMedia("(hover:hover)").matches){c.addEventListener("mouseenter",on);c.addEventListener("mouseleave",off)}
     c.addEventListener("scroll",()=>{clearTimeout(c._t);c._t=setTimeout(()=>prDots(Math.round(c.scrollLeft/prW())),80)},{passive:true})}
