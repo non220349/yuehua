@@ -779,7 +779,10 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 /* ===== จอกว้าง (iPad / คอม): ใช้พื้นที่เต็มจอ มือถือเหมือนเดิม ===== */
 @media(min-width:768px){
 .scr#s-shop,.scr#s-game,.scr#s-dict,.scr#s-lv,.scr#s-lib,.scr#s-gram,.scr#s-course,.scr#s-hour,.scr#s-ref,.scr#s-cart{max-width:1180px}
-.scr#s-enroll,.scr#s-trial,.scr#s-login,.scr#s-gate,.scr#s-pick,.scr#s-prof{max-width:760px}
+.scr#s-enroll,.scr#s-trial,.scr#s-login,.scr#s-gate,.scr#s-pick,.scr#s-prof{max-width:1180px}
+.frow2{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end}.frow2>.row{margin:0 0 2px}
+#pk{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0 16px}
+#avg{max-width:none}
 .scsec{display:grid;grid-template-columns:repeat(auto-fill,minmax(500px,1fr));gap:0 18px;align-items:stretch}
 .scsec>.shh{grid-column:1/-1}
 .scsec>.pcd{margin:8px 0}
@@ -788,6 +791,15 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 .prc>.promo .pinfo{min-width:0;flex:0 1 560px}
 .psl .pslv{width:150px;min-height:120px}.psl .pslv b{font-size:38px}
 }
+/* หน้าสมัครเรียนจอกว้าง: ฟอร์มซ้าย สรุปยอด + QR ติดขวา */
+@media(min-width:960px){
+#enForm:not([style*="none"]){display:grid!important;grid-template-columns:minmax(0,1fr) 400px;column-gap:28px;align-items:start}
+#enForm>*{grid-column:1}
+#enForm>#sum{grid-column:2;grid-row:1 / span 60;position:sticky;top:16px;margin-top:22px}
+#enForm>#sum .payqr{flex-direction:column;align-items:center;text-align:center}
+#enForm>#sum .payqr img{max-width:240px}
+}
+.frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 16px}.frow>div{min-width:0}
 </style>
 </head>
 <body>
@@ -853,9 +865,9 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
       <div class="seg" style="margin:4px 0"><button id="fv" onclick="setFm('v')">คอร์สวิดีโอ</button><button id="fl" onclick="setFm('l')">คอร์สเรียนสด</button></div>
       <div id="tyw" style="display:none"><div class="seg" style="margin:4px 0"><button id="tg" onclick="setTy('group')">เรียนกลุ่ม</button><button id="ts" onclick="setTy('single')">เรียนเดี่ยว</button></div></div>
     </div>
-    <label for="nm">ชื่อ-นามสกุล</label><input id="nm" placeholder="ตามบัตรประชาชน">
-    <label for="ph">เบอร์โทร</label><input id="ph" inputmode="tel" placeholder="08x-xxx-xxxx">
-    <label for="em">อีเมล (ใช้รับลิงก์ไลฟ์สด)</label><input id="em" type="email" inputmode="email" placeholder="name@gmail.com">
+    <div class="frow"><div><label for="nm">ชื่อ-นามสกุล</label><input id="nm" placeholder="ตามบัตรประชาชน"></div>
+    <div><label for="ph">เบอร์โทร</label><input id="ph" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
+    <div><label for="em">อีเมล (ใช้รับลิงก์ไลฟ์สด)</label><input id="em" type="email" inputmode="email" placeholder="name@gmail.com"></div></div>
     <div id="rfw"><label for="rfc">รหัสผู้แนะนำ (ถ้ามี)</label><input id="rfc" placeholder="รหัสนักเรียนของเพื่อนที่ชวนมา เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="rfIn()"><div class="rfm" id="rfm"></div>
       <details class="terms" id="cpw"><summary>นักเรียนเก่า: ใช้คูปองแนะนำเพื่อนของฉัน</summary><label for="cpc">รหัสนักเรียนของคุณ (เจ้าของคูปอง)</label><input id="cpc" placeholder="เช่น YH1003" autocapitalize="characters" autocomplete="off" oninput="cpIn()"><div class="rfm" id="cpm"></div><div class="mut" style="font-size:12px">ใช้ได้ 1 คูปองต่อ 1 คอร์ส · พี่จะตรวจชื่อกับเจ้าของคูปองก่อนอนุมัติ</div></details>
       <details class="terms" id="bcw"><summary>ซื้อชุดหนังสือจากร้านแล้ว: นำมาหักค่าคอร์ส</summary><label for="bco">รหัสคำสั่งซื้อหนังสือ</label><input id="bco" placeholder="เช่น YB0001" autocapitalize="characters" autocomplete="off" oninput="bcClear()"><label for="bcc">อีเมลหรือเบอร์โทรที่ใช้สั่งซื้อ</label><input id="bcc" autocomplete="off" oninput="bcClear()"><button class="btn alt sm" type="button" id="bcb" onclick="bcIn()">ตรวจสอบ</button><div class="rfm" id="bcm"></div><div class="mut" style="font-size:12px">ใช้กับชุดพิชิต ชุดครบจบ และชุดต่อเนื่อง ที่ระดับตรงกับคอร์ส (HSK1–4) · ภายในเวลาที่กำหนดหลังชำระค่าหนังสือ · 1 คำสั่งซื้อใช้ได้ 1 คอร์ส · ใช้พร้อมรหัสผู้แนะนำหรือคูปองไม่ได้</div></details></div>
@@ -890,9 +902,9 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <section class="scr" id="s-gate">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
   <h2>เข้าสู่หลังบ้าน</h2>
-  <label for="gp">รหัสผู้ดูแล</label><input id="gp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')gate()">
+  <div class="frow2"><div><label for="gp">รหัสผู้ดูแล</label><input id="gp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')gate()"></div>
+  <div class="row"><button class="btn" onclick="gate()">เข้าสู่ระบบ</button></div></div>
   <div id="ge" style="color:var(--seal);min-height:26px;margin-top:6px"></div>
-  <div class="row"><button class="btn" onclick="gate()">เข้าสู่ระบบ</button></div>
 </section>
 
 <!-- แอดมิน -->
@@ -1151,7 +1163,7 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
 <section class="scr" id="s-login">
   <div class="top"><button class="btn alt sm" onclick="go('s-home')">‹ กลับ</button></div>
   <h2>เข้าสู่ระบบ</h2>
-  <label for="lc">รหัสนักเรียน</label><input id="lc" placeholder="เช่น YH1001" autocapitalize="characters" autocomplete="username"><label for="lpw">รหัสผ่าน</label><input id="lpw" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()">
+  <div class="frow"><div><label for="lc">รหัสนักเรียน</label><input id="lc" placeholder="เช่น YH1001" autocapitalize="characters" autocomplete="username"></div><div><label for="lpw">รหัสผ่าน</label><input id="lpw" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()"></div></div>
   <div class="row"><button class="btn" onclick="login()">เข้าเรียน</button></div>
   <div id="le" style="color:var(--seal);min-height:24px;margin-top:6px"></div><p class="note">ลืมรหัสผ่าน? ทักทีมงานทาง LINE เพื่อรีเซ็ตรหัสผ่านใหม่</p>
 </section>
@@ -1164,9 +1176,9 @@ svg.cki{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline
     <h3>1. เลือกคอร์ส</h3><div class="chg" id="trc"></div>
     <h3 style="margin-top:16px">2. เลือกรอบทดลองเรียน</h3><div class="chg" id="trd" style="display:none"></div><div id="trs" style="margin-top:6px"></div>
     <h3 style="margin-top:16px">3. ข้อมูลของคุณ</h3>
-    <label for="tn">ชื่อผู้เรียน</label><input id="tn">
-    <label for="tp">เบอร์โทร</label><input id="tp" inputmode="tel" placeholder="08x-xxx-xxxx">
-    <label for="te">อีเมล</label><input id="te" type="email" inputmode="email" placeholder="name@gmail.com">
+    <div class="frow"><div><label for="tn">ชื่อผู้เรียน</label><input id="tn"></div>
+    <div><label for="tp">เบอร์โทร</label><input id="tp" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
+    <div><label for="te">อีเมล</label><input id="te" type="email" inputmode="email" placeholder="name@gmail.com"></div></div>
     <label class="chk"><input type="checkbox" id="tpd"> ฉันยินยอมให้เก็บและใช้ข้อมูลส่วนบุคคลตาม PDPA เพื่อติดต่อเรื่องทดลองเรียนเท่านั้น</label>
     <div id="tre" style="color:var(--seal);min-height:24px"></div>
     <div class="row"><button class="btn" onclick="submitTrial()">ยืนยันจองทดลองเรียน</button></div>
